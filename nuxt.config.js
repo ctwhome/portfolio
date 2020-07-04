@@ -29,12 +29,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/css/global.scss'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/tilt.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -65,4 +65,16 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+
+  /*
+   ** PWA options
+   */
+  pwa: {
+    manifest: {
+      name: 'Ctw home Creating a Technological World',
+      description: 'Design Studio and Research Engineering',
+      theme_color: '#1f2435',
+      lang: 'en',
+    },
+  },
 }

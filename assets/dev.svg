@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="447px" height="284px" viewBox="0 0 447 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Page 1</title>
+  <defs>
+    <linearGradient x1="100%" y1="51.1045051%" x2="6.4557421%" y2="49.4880244%" id="linearGradient-1">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+    <linearGradient x1="60.8947628%" y1="88.4201335%" x2="34.3240672%" y2="0%" id="linearGradient-2">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+    <linearGradient x1="80.26323%" y1="54.9509179%" x2="6.4557421%" y2="43.5568705%" id="linearGradient-3">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+    <linearGradient x1="80.26323%" y1="65.4289746%" x2="6.4557421%" y2="29.9207171%" id="linearGradient-4">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Ctw-UX-2020-STACK-Copy-2" transform="translate(-564.000000, -164.000000)" fill-rule="nonzero">
+      <g id="Group-2" transform="translate(620.000000, 202.000000)">
+        <text id="Research-Engineering" fill="url(#linearGradient-1)" font-family="TsukuARdGothic-Regular, Tsukushi A Round Gothic" font-size="34.5600005" font-weight="normal">
+          <tspan x="0" y="210">Research Engineering</tspan>
+        </text>
+        <g id="Group" stroke-width="1.60000002">
+          <path d="M0.860068259,2.80916815 L0.860068259,44.1482037 C0.860068259,45.1570317 1.39687658,46.0883676 2.26638462,46.588093 L38.4152085,67.3636186 C39.7521851,68.1320085 40.2179865,69.8472872 39.4556052,71.1948008 C39.2029897,71.6413002 38.8336535,72.0093734 38.3878254,72.2589293 L1.43369944,92.944296 C0.54882766,93.4396101 0,94.3795583 0,95.3997174 L0,137.191307 C0,138.742505 1.24766146,140 2.78672986,140 C3.26700423,140 3.73912688,139.874897 4.1573002,139.636827 L82.5838405,94.9878007 C83.4588792,94.4896322 84,93.5551884 84,92.542281 L84,47.6957711 C84,46.6899175 83.4663255,45.7608529 82.6008495,45.2600144 L5.0343775,0.373411443 C3.69966547,-0.39896723 1.99642714,0.0654215663 1.23008821,1.41065285 C0.987644315,1.83623884 0.860068259,2.31842113 0.860068259,2.80916815 Z" id="Path-4" stroke="url(#linearGradient-2)"></path>
+          <path d="M114.800211,100 L205.117717,100 C206.111568,100 207.03093,100.532192 207.533362,101.398348 L228.615429,137.742278 C229.39713,139.089873 228.949303,140.822407 227.615179,141.612001 C227.183158,141.867691 226.691156,142.001672 226.19044,142 L135.779093,141.695165 C134.79031,141.691832 133.876593,141.16192 133.375245,140.301051 L112.387018,104.26194 C111.60301,102.915712 112.04787,101.182398 113.38064,100.390475 C113.810907,100.134813 114.30102,100 114.800211,100 Z" id="Path-5" stroke="url(#linearGradient-3)"></path>
+        </g>
+      </g>
+      <rect id="Rectangle-Copy" stroke="url(#linearGradient-4)" stroke-width="1.60000002" x="565" y="165" width="445" height="282"></rect>
+    </g>
+  </g>
+</svg>
