@@ -15,6 +15,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background-color: #1f2435;
 }
 
 *,
@@ -41,8 +42,8 @@ html {
 .button--grey {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
+  border: 1px solid #656c7f;
+  color: #656c7f;
   text-decoration: none;
   padding: 10px 30px;
   margin-left: 15px;

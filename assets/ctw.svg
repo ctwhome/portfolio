@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="114px" viewBox="0 0 360 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Page 1</title>
+  <defs>
+    <linearGradient x1="80.26323%" y1="88.4201335%" x2="6.4557421%" y2="0%" id="linearGradient-1">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+    <linearGradient x1="100%" y1="68.1004799%" x2="6.4557421%" y2="41.6098127%" id="linearGradient-2">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+    <linearGradient x1="100%" y1="72.7710384%" x2="6.4557421%" y2="39.4448503%" id="linearGradient-3">
+      <stop stop-color="#456563" offset="0%"></stop>
+      <stop stop-color="#5A877E" offset="20.7110431%"></stop>
+      <stop stop-color="#FDC343" offset="44.0403294%"></stop>
+      <stop stop-color="#E99877" offset="70.0960726%"></stop>
+      <stop stop-color="#A4574E" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Ctw-UX-2020-STACK-Copy" transform="translate(-467.000000, -1491.000000)" fill-rule="nonzero">
+      <g id="Group-4" transform="translate(469.000000, 1493.000000)">
+        <circle id="Oval" stroke="url(#linearGradient-1)" stroke-width="4" cx="55" cy="55" r="55"></circle>
+        <text id="CTW" fill="url(#linearGradient-2)" transform="translate(55.500000, 55.000000) rotate(-5.000000) translate(-55.500000, -55.000000) " font-family="TsukuARdGothic-Bold, Tsukushi A Round Gothic" font-size="34.5600005" font-weight="bold">
+          <tspan x="14" y="68">CTW</tspan>
+        </text>
+      </g>
+      <text id="Creating-a-Technolog" fill="url(#linearGradient-3)" font-family="TsukuARdGothic-Bold, Tsukushi A Round Gothic" font-size="34.5600005" font-weight="bold">
+        <tspan x="608" y="1527">Creating </tspan>
+        <tspan x="756.331522" y="1527" font-family="TsukuARdGothic-Regular, Tsukushi A Round Gothic" font-weight="normal">a</tspan>
+        <tspan x="608" y="1561">Technological</tspan>
+        <tspan x="608" y="1595">World</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
