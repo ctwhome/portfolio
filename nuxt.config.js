@@ -71,7 +71,7 @@ export default {
    */
   pwa: {
     manifest: {
-      name: 'Ctw home Creating a Technological World',
+      name: 'Ctwhome - Creating a Technological World',
       description: 'Design Studio and Research Engineering',
       theme_color: '#1f2435',
       lang: 'en',
