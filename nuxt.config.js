@@ -21,7 +21,9 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content:
+          process.env.npm_package_description ||
+          'Ctw - Creating a Technological World',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -46,6 +48,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxtjs/google-analytics',
   ],
   /*
    ** Nuxt.js modules
@@ -76,5 +79,8 @@ export default {
       theme_color: '#1f2435',
       lang: 'en',
     },
+  },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
   },
 }
