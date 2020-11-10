@@ -13,21 +13,22 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@nuxt/content": "^1.6.0",
-    "@nuxtjs/pwa": "^3.0.0",
-    "nuxt": "^2.14.3",
+    "@nuxt/content": "^1.10.0",
+    "@nuxtjs/pwa": "^3.2.2",
+    "nuxt": "^2.14.7",
     "vue-tilt.js": "^1.1.1"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^3.1.0",
-    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/eslint-config": "^4.0.0",
+    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/google-analytics": "^2.4.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.7.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "node-sass": "^4.14.1",
-    "prettier": "^2.0.5",
-    "sass-loader": "^9.0.3"
+    "node-sass": "^5.0.0",
+    "prettier": "^2.1.2",
+    "sass-loader": "^10.0.5"
   }
 }
