@@ -11,12 +11,20 @@
         <div class="grid-buttons">
           <img
             v-tilt="tilt"
+            style="
+              transform: scale(1) perspective(1040px) rotateY(11deg)
+                rotateX(2deg) rotate(2deg);
+            "
             src="~/assets/ux.svg"
             alt="UX Button"
             class="card"
           />
           <img
             v-tilt="tilt"
+            style="
+              transform: scale(1) perspective(1040px) rotateY(-11deg)
+                rotateX(2deg) rotate(2deg);
+            "
             src="~/assets/dev.svg"
             alt="Research engineering Button"
             class="card"
@@ -76,7 +84,7 @@
 
               <div class="py-5">
                 <a
-                  href="mailto:ctw@ctwhome.com?subject=Hire UX or Engineering services&body=Hi Jos!, We are excited about your services.%0D%0AWe are thinking to improve our <brand image / website / application / users happiness>%0D%0A%0D%0AThese are the project details...%0D%0A%0D%0ABest,"
+                  href="mailto:ctw@ctwhome.com?subject=Hire UX or Engineering services&body=Hi Jos!,%0D%0A%0D%0AWe are excited about your services.%0D%0AWe are thinking to improve our <brand image / website / application / users happiness>%0D%0A%0D%0AThese are the project details...%0D%0A%0D%0ABest,"
                   class="text-black rounded-full py-2 px-5 text-lg font-semibold border text-white inline-block hover:bg-white hover:text-black inline-flex items-center transition duration-200 ease-in-out"
                 >
                   <svg
