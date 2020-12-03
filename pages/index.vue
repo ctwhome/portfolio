@@ -1,50 +1,118 @@
 <template>
-  <div class="container">
-    <div>
-      <img
-        src="~/assets/ctw-grey.svg"
-        v-tilt="tilt"
-        alt="Ctw Creating a Technological World Logo"
-        class="ctw-logo"
-      />
-      <div class="grid-buttons">
-        <img src="~/assets/ux.svg" v-tilt="tilt" alt="UX Button" class="card" />
+  <div>
+    <div class="first-fold">
+      <div>
         <img
-          src="~/assets/dev.svg"
           v-tilt="tilt"
-          alt="Research engineering Button"
-          class="card"
+          src="~/assets/ctw-grey.svg"
+          alt="Ctw Creating a Technological World Logo"
+          class="ctw-logo"
         />
-      </div>
+        <div class="grid-buttons">
+          <img
+            v-tilt="tilt"
+            src="~/assets/ux.svg"
+            alt="UX Button"
+            class="card"
+          />
+          <img
+            v-tilt="tilt"
+            src="~/assets/dev.svg"
+            alt="Research engineering Button"
+            class="card"
+          />
+        </div>
 
-      <div class="quote">
-        <span>Engineering</span> should have a purpose. <br />
-        <span>Design</span> should have a meaning. <br />
-        And ultimately, <span>Technology</span> should empower people.
-      </div>
+        <div class="quote">
+          <span>Engineering</span> should have a purpose. <br />
+          <span>Design</span> should have a meaning. <br />
+          And ultimately, <span>Technology</span> should empower people.
+        </div>
 
-      <div class="links">
-        <a
-          href="https://www.linkedin.com/in/ctwhome/"
-          target="_blank"
-          class="button--grey"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://www.behance.net/ctwhome"
-          target="_blank"
-          class="button--grey"
-        >
-          Behance
-        </a>
-        <a
-          href="https://github.com/ctwhome"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <div class="links">
+          <a
+            href="https://www.linkedin.com/in/ctwhome/"
+            target="_blank"
+            class="button--grey"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://www.behance.net/ctwhome"
+            target="_blank"
+            class="button--grey"
+          >
+            Behance
+          </a>
+          <a
+            href="https://github.com/ctwhome"
+            target="_blank"
+            class="button--grey"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="second-fold">
+      <div class="py-16">
+        <div class="container m-auto px-6">
+          <div class="lg:flex justify-between items-center">
+            <div class="lg:w-6/12 lg:p-0 p-7">
+              <h1 class="text-4xl font-bold leading-tight mb-5 text-gray-300">
+                Hi! I am Jos. UX Engineer.
+              </h1>
+              <p class="text-xl text-gray-100">
+                I weave together strong design aesthetics with technical
+                engineering know-how. Don't know what that means? take a look at
+                my portfolio on
+                <a
+                  class="no-underline hover:underline"
+                  href="https://www.behance.net/ctwhome"
+                  target="_blank"
+                  >Behance</a
+                >!
+              </p>
+
+              <div class="py-5">
+                <a
+                  href="mailto:ctw@ctwhome.com?subject=Hire UX or Engineering services&body=Hi Jos!, We are excited about your services.%0D%0AWe are thinking to improve our <brand image / website / application / users happiness>%0D%0A%0D%0AThese are the project details...%0D%0A%0D%0ABest,"
+                  class="text-black rounded-full py-2 px-5 text-lg font-semibold border text-white inline-block hover:bg-white hover:text-black inline-flex items-center transition duration-200 ease-in-out"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23 0C22.904 0.000658358 22.8086 0.0151297 22.7168 0.0429688C22.6898 0.0503069 22.663 0.0587779 22.6367 0.0683594L0.650391 7.06055V7.06445C0.459629 7.13564 0.295142 7.26336 0.178919 7.43054C0.0626958 7.59772 0.000274647 7.79639 0 8C0.000364268 8.17172 0.0449404 8.34045 0.129435 8.48994C0.213929 8.63943 0.335495 8.76464 0.482422 8.85352L7.16406 14.1543L20.373 3.62695L9.8457 16.8359L15.1426 23.5137C15.2313 23.6619 15.3569 23.7846 15.5072 23.8698C15.6575 23.9551 15.8272 23.9999 16 24C16.2036 23.9997 16.4023 23.9373 16.5695 23.8211C16.7366 23.7049 16.8644 23.5404 16.9355 23.3496H16.9395L23.9375 1.34375C23.9447 1.32378 23.9512 1.30359 23.957 1.2832C23.9849 1.19135 23.9993 1.09597 24 1C24 0.734784 23.8946 0.48043 23.7071 0.292893C23.5196 0.105357 23.2652 0 23 0V0Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Hire me</a
+                >
+              </div>
+            </div>
+            <div class="lg:w-5/12 order-2">
+              <img
+                v-tilt="tilt"
+                src="~/assets/ctw-jos-profile.jpg"
+                style="
+                  width: 100%;
+                  object-fit: cover;
+                  height: 450px;
+                  transform: scale(1) perspective(1040px) rotateY(-11deg)
+                    rotateX(2deg) rotate(2deg);
+                "
+                alt="Jos Ctw Profile"
+                class="rounded"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -112,13 +180,17 @@ export default {
   }
 }
 
-.container {
+.first-fold {
   margin: 0 auto;
-  min-height: 100vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.second-fold {
+  height: 70vh;
 }
 
 .title {
