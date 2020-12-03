@@ -182,7 +182,7 @@ export default {
 
 .first-fold {
   margin: 0 auto;
-  height: 70vh;
+  min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +190,7 @@ export default {
 }
 
 .second-fold {
-  height: 70vh;
+  min-height: 70vh;
 }
 
 .title {
