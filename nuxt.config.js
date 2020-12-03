@@ -1,10 +1,5 @@
 export default {
   /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
-  /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
@@ -47,6 +42,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-analytics',
   ],
