@@ -68,14 +68,15 @@
           <div class="lg:flex justify-between items-center">
             <div class="lg:w-6/12 lg:p-0 p-7">
               <h1 class="text-4xl font-bold leading-tight mb-5 text-gray-300">
-                Hi! I am Jos. UX Engineer.
+                Hi! I am J.
+                <span class="ctw-text-gradient">UX Engineer.</span>
               </h1>
               <p class="text-xl text-gray-100">
                 I weave together strong design aesthetics with technical
                 engineering know-how. Don't know what that means? take a look at
                 my portfolio on
                 <a
-                  class="no-underline hover:underline"
+                  class="glow underline hover:text-grey"
                   href="https://www.behance.net/ctwhome"
                   target="_blank"
                   >Behance</a
@@ -151,6 +152,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a.glow {
+  transition: text-shadow 200ms ease;
+  &:hover {
+    text-shadow: 0px 0px 4px white;
+  }
+}
+.ctw-text-gradient {
+  background: -webkit-linear-gradient(
+    110deg,
+    #456563 24.71%,
+    #5a877e 37.34%,
+    #fdc343 51.57%,
+    #e99877 67.46%,
+    #a4574e 85.7%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .ctw-logo {
   width: 180px;
   margin: 16px auto;
