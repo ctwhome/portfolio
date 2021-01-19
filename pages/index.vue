@@ -125,7 +125,8 @@
       </div>
     </div>
 
-    <div class="m-8">
+    <!-- Posts -->
+    <!-- <div class="m-8">
       <TheHeader />
       <NuxtLink to="/">
         <h1 class="font-bold text-4xl">Blog Posts</h1>
@@ -181,7 +182,7 @@
           load?
         </p>
       </footer>
-    </div>
+    </div> -->
   </div>
 </template>
 
