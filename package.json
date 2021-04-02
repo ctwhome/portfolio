@@ -19,10 +19,12 @@
     }
   },
   "dependencies": {
+
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.10.0",
     "nuxt": "^2.15.4",
+
     "vue-tilt.js": "^1.1.1"
   },
   "devDependencies": {
