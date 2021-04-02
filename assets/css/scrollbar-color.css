@@ -1,0 +1,20 @@
+/* Scrollbar colors*/
+html {
+  --scrollbarBG: #1F2435;
+  --thumbBG: #14161F;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+  background: var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid var(--scrollbarBG);  /* creates padding around scroll thumb */
+}
