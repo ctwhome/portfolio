@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  async asyncData({ $content }) {
+  async asyncData ({ $content }) {
     const page = await $content('hello').fetch()
 
     return {
-      page,
+      page
     }
-  },
+  }
 }
 </script>
