@@ -19,26 +19,26 @@
     }
   },
   "dependencies": {
-    "@nuxt/content": "^1.11.1",
-    "@nuxtjs/pwa": "^3.3.2",
-    "core-js": "^3.8.0",
-    "nuxt": "^2.14.11",
+
+    "@nuxt/content": "^1.14.0",
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.10.0",
+    "nuxt": "^2.15.4",
+
     "vue-tilt.js": "^1.1.1"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^5.0.0",
-    "@nuxtjs/eslint-module": "^3.0.1",
+    "@nuxtjs/eslint-config": "^6.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/google-analytics": "^2.4.0",
-    "@nuxtjs/tailwindcss": "^3.3.1",
+    "@nuxtjs/tailwindcss": "^4.0.3",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.17.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.23.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.2.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^10.1.0"
+    "sass-loader": "^10.1.1"
   }
 }
