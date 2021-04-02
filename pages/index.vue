@@ -7,7 +7,7 @@
           src="~/assets/ctw-grey.svg"
           alt="Ctw Creating a Technological World Logo"
           class="ctw-logo"
-        />
+        >
         <div class="grid-buttons">
           <img
             v-tilt="tilt"
@@ -18,7 +18,7 @@
             src="~/assets/ux.svg"
             alt="UX Button"
             class="card"
-          />
+          >
           <img
             v-tilt="tilt"
             style="
@@ -28,12 +28,12 @@
             src="~/assets/dev.svg"
             alt="Research engineering Button"
             class="card"
-          />
+          >
         </div>
 
         <div class="quote">
-          <span>Engineering</span> should have a purpose. <br />
-          <span>Design</span> should have a meaning. <br />
+          <span>Engineering</span> should have a purpose. <br>
+          <span>Design</span> should have a meaning. <br>
           And ultimately, <span>Technology</span> should empower people.
         </div>
 
@@ -68,7 +68,7 @@
           <div class="lg:flex justify-between items-center">
             <div class="lg:w-6/12 lg:p-0 p-7">
               <h1 class="text-4xl font-bold leading-tight mb-5 text-gray-300">
-                Hi! I am J. Gonzalez, 
+                Hi! I am J. Gonzalez,
                 <span class="ctw-text-gradient">UX Engineer.</span>
               </h1>
               <p class="text-xl text-gray-100">
@@ -79,15 +79,13 @@
                   class="glow underline hover:text-grey"
                   href="https://www.behance.net/ctwhome"
                   target="_blank"
-                  >Behance</a
-                >!
+                >Behance</a>!
               </p>
 
               <div class="py-5">
                 <a
-                  href="mailto:ctw@ctwhome.com?subject=
-                  re UX or Engineering services&body=Hi Jos!,%0D%0A%0D%0AWe are excited about your services.%0D%0AWe are thinking to improve our <brand image / website / application / users happiness>%0D%0A%0D%0AThese are the project details...%0D%0A%0D%0ABest,"
-                  class="text-black rounded-full py-2 px-5 text-lg font-semibold border text-white inline-block hover:bg-white hover:text-black inline-flex items-center transition duration-200 ease-in-out"
+                  href="mailto:ctw@ctwhome.com?subject=Hire UX or Engineering services&body=Hi J!,%0D%0A%0D%0AWe are excited about your services.%0D%0AWe are thinking to improve our <brand image / website / application / users happiness>%0D%0A%0D%0AThese are the project details...%0D%0A%0D%0ABest,"
+                  class="text-white rounded-full py-2 px-5 text-lg font-semibold border text-white inline-block hover:bg-white hover:text-black inline-flex items-center transition duration-200 ease-in-out"
                 >
                   <svg
                     class="w-4 h-4 mr-2"
@@ -102,8 +100,7 @@
                       fill="currentColor"
                     />
                   </svg>
-                  Hire me</a
-                >
+                  Hire me</a>
               </div>
             </div>
             <div class="lg:w-5/12 order-2">
@@ -119,7 +116,7 @@
                 "
                 alt="Jos Ctw Profile"
                 class="rounded"
-              />
+              >
             </div>
           </div>
         </div>
@@ -189,7 +186,7 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData ({ $content, params }) {
     const articles = await $content('articles', params.slug)
       .only(['title', 'description', 'img', 'slug', 'author'])
       .sortBy('createdAt', 'desc')
@@ -200,10 +197,10 @@ export default {
       .fetch()
     return {
       articles,
-      tags,
+      tags
     }
   },
-  data() {
+  data () {
     return {
       tilt: {
         reverse: true, // reverse the tilt direction
@@ -217,11 +214,11 @@ export default {
         easing: 'cubic-bezier(.03,.98,.52,.99)', // Easing on enter/exit.
         glare: false, // if it should have a "glare" effect
         'max-glare': 1, // the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
-        'glare-prerender': false, // false = VanillaTilt creates the glare elements for you, otherwise
+        'glare-prerender': false // false = VanillaTilt creates the glare elements for you, otherwise
         // you need to add .js-tilt-glare>.js-tilt-glare-inner by yourself
-      },
+      }
     }
-  },
+  }
 }
 </script>
 
