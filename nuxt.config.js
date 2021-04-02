@@ -18,15 +18,20 @@ export default {
         name: 'description',
         content:
           process.env.npm_package_description ||
-          'Ctw - Creating a Technological World',
-      },
+          'Ctw - Creating a Technological World'
+      }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Global CSS
    */
-  css: ['~/css/global.scss'],
+  css: ['~/css/global.css'],
+
+  tailwindcss: {
+    jit: true,
+    exposeConfig: true
+  },
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -44,7 +49,7 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/google-analytics',
+    '@nuxtjs/google-analytics'
   ],
   /*
    ** Nuxt.js modules
@@ -52,7 +57,7 @@ export default {
   modules: [
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
+    '@nuxt/content'
   ],
   /*
    ** Content module configuration
@@ -73,10 +78,10 @@ export default {
       name: 'Ctwhome - Creating a Technological World',
       description: 'Design Studio and Research Engineering',
       theme_color: '#1f2435',
-      lang: 'en',
-    },
+      lang: 'en'
+    }
   },
   googleAnalytics: {
-    id: 'UA-45665760-1', // Use as fallback if no runtime config is provided
-  },
+    id: 'UA-45665760-1' // Use as fallback if no runtime config is provided
+  }
 }
