@@ -1,20 +1,29 @@
+/* Import with  */
+/* @import './scrollbar-color.css';  */
+
+:root {
+  --scrollbarTrack: hsl(var(--b2));
+  --scrollbarThumb: hsl(var(--b3));
+  --scrollbarThumbHover: hsl(var(--b1));
+}
 /* Scrollbar colors*/
-html {
-  --scrollbarBG: #1F2435;
-  --thumbBG: #14161F;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-body::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
-  background: var(--scrollbarBG);
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbarTrack);
 }
 
-body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG); /* color of the tracking area */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbarThumb);
+  border-radius: 3px;
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid var(--scrollbarBG);  /* creates padding around scroll thumb */
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbarThumbHover);
 }
