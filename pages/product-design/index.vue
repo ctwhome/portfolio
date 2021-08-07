@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto h-full">
-    <div class="flex justify-center gap-10 mt-10">
+  <div class="container mx-auto h-full px-4">
+    <div class="flex flex-col md:flex-row justify-center gap-10 mt-10">
       <img src="~/assets/product-design.svg" alt="">
       <div>
         <p class="prose mt-4">

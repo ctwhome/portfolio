@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col ">
+  <div class="flex flex-col px-4">
     <div class="container mx-auto h-full">
-      <div class="flex justify-center gap-10 mt-10">
+      <div class="flex flex-col md:flex-row justify-center gap-10 mt-10">
         <img class="-mt-12" src="~/assets/digital-garden.svg" alt="">
         <div>
           <p class="prose mt-4">
