@@ -1,16 +1,16 @@
 ---
 items:
   - title: Product design
-    path: /pages/page-1
+    path: /product-design
     
   - title: Web Engineering
-    path: /pages/page-2
+    path: /web
     
   - title: My Apps
-    path: /pages/page-3
+    path: /apps
     
   - title: Digital Garden
-    path: /pages/page-4
+    path: /digital-garden
     
 ---
 

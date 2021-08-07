@@ -40,8 +40,8 @@
 export default {
   transition: 'fade',
   async asyncData ({ $content, params }) {
-    const post = await $content('posts', params.post).fetch()
-    const [prev, next] = await $content('posts')
+    const post = await $content('web', params.post).fetch()
+    const [prev, next] = await $content('web')
       .only(['title', 'post'])
       .sortBy('created', 'desc')
       .surround(params.post)
