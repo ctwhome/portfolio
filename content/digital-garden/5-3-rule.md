@@ -1,9 +1,9 @@
 ---
-title: Plant title 1
+title: The 5:3 Rule for productivity
 image: https://cdn.shopify.com/s/files/1/1186/0402/articles/productivity-focus_1000x.jpg?v=1613498970
 status: Seedling 🌱
-created: 2021-01-01
-updated: 2021-01-10
+created: 2020-06-21
+updated: 2020-06-21
 tags:
  - Productivity
 ---
