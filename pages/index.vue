@@ -1,24 +1,24 @@
 <template>
   <div>
-    <div class="first-fold py-16">
+    <div class="first-fold py-16 ">
       <div class="container m-auto px-6">
-        <div class="lg:flex justify-between items-center">
-          <div class="lg:w-6/12 lg:p-0 p-7 slidein-animation">
-            <h1 class="text-5xl font-bold font-title ">
+        <div class="md:flex justify-between items-center">
+          <div class="md:w-6/12 lg:p-0 p-7 slidein-animation">
+            <h1 class="text-3xl md:text-5xl font-bold font-title ">
               J. Gonzalez
             </h1>
 
-            <p class="mt-10 text-4xl font-serif">
+            <p class="mt-10 text-2xl md:text-3xl lg:text-4xl font-serif">
               Creates experiences weaving together strong <span class="ctw-text-gradient">design aesthetics</span> with
               <span class="ctw-text-gradient-green"> technical engineering</span> know-how.
             </p>
-            <p class="mt-10 text-xl opacity-80">
+            <p class="mt-10  text-lg md:text-xl opacity-80">
               Product Designer & Research Software Engineer <br class="hidden sm:inline"> at
               <a class="text-blue-300 glow" href="https://esciencecenter.nl" target="_blank" rel="noopener">The Netherlands eScience Center</a>
             </p>
           </div>
 
-          <div class="lg:w-5/12 order-2">
+          <div class="md:w-5/12 order-2">
             <img
               v-tilt="tilt"
               src="~/assets/ctw-jos-profile.jpg"
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="container flex flex-col-reverse md:flex-row gap-10 mt-20 mx-auto">
+    <div class="flex flex-col-reverse md:flex-row gap-14 mt-20 px-4 mx-auto" style="max-width: 1200px">
       <!--        digital garden-->
       <div class=" md:w-1/3 ">
         <nuxt-link to="/digital-garden">
@@ -54,7 +54,7 @@
         </p>
 
         <div class="flex flex-col mt-10 gap-6 ">
-          <nuxt-link v-for="index in 6 " :key="index" to="/">
+          <nuxt-link v-for="(post,index) in plants " :key="index" :to="post.path">
             <div
               class="bg-base-100 rounded p-2 flex gap-2 h-28
                 border-opacity-0 hover:border-opacity-100 border-b-4 border-primary shadow
@@ -62,11 +62,13 @@
                 transition ease-in-out duration-300 hover:shadow-xl transform hover:scale-105"
             >
               <div class="text-xl font-medium w-3/4">
-                Three lines title and trim if is possible? or maybe something smaller
+                {{ post.title }}
               </div>
               <div class="1-4 text-sm text-base-content text-opacity-70">
-                <div>23, jul 2021</div>
-                <div>Evergreen 🌳</div>
+                <div>{{ formatDate(post.created) }}</div>
+                <div class="mt-2">
+                  {{ post.status }}
+                </div>
               </div>
             </div>
           </nuxt-link>
@@ -78,9 +80,9 @@
       </div>
 
       <!--        second-->
-      <div class="flex flex-col sm:flex-row md:w-2/3 gap-6">
+      <div class="flex flex-col sm:flex-row md:w-2/3 gap-4  ">
         <!--          design-->
-        <div class="">
+        <div class="w-full">
           <nuxt-link to="/product-design">
             <img
               v-tilt="tilt"
@@ -91,32 +93,32 @@
             >
           </nuxt-link>
 
-          <div class="flex flex-col mt-20 gap-8">
+          <div class="flex flex-col w-full mt-20 gap-8">
             <nuxt-link
-              v-for="index in 3 "
+              v-for="(post,index) in products "
               :key="index"
-              to="/"
+              :to="post.path"
               class="bg-base-100 rounded flex flex-col gap-2
                 border-opacity-0 hover:border-opacity-100 border-b-4 border-primary shadow
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out  hover:shadow-xl transform duration-300 hover:scale-105"
             >
-              <img :src="`https://picsum.photos/id/${index+10}/300`" class="h-40 object-cover rounded-t" alt="">
+              <img :src="post.image" class="h-40 object-cover rounded-t" alt="">
               <div class="text-2xl font-medium px-2">
-                Three lines title and trim if is possible? or maybe something smaller
+                {{ post.title }}
               </div>
               <div class="1-4 text-sm text-base-content text-opacity-70 px-2 pb-4">
-                <div>23, jul 2021</div>
+                <div>{{ formatDate(post.created) }}</div>
               </div>
             </nuxt-link>
 
-            <nuxt-link to="/digital-garden" class="btn btn-ghost ml-auto normal-case">
+            <nuxt-link to="/product-design" class="btn btn-ghost ml-auto normal-case">
               See more Design Projects
             </nuxt-link>
           </div>
         </div>
         <!--          web-->
-        <div class="">
+        <div class="w-full">
           <nuxt-link class="" to="/web">
             <img
               v-tilt="tilt"
@@ -127,26 +129,26 @@
             >
           </nuxt-link>
 
-          <div class="flex flex-col mt-20 gap-8">
+          <div class="flex flex-col  mt-20 gap-8">
             <nuxt-link
-              v-for="index in 3 "
+              v-for="(post,index) in webs "
               :key="index"
-              to="/"
+              :to="post.path"
               class="bg-base-100 rounded flex flex-col gap-2
                 border-opacity-0 hover:border-opacity-100 border-b-4 border-primary shadow
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out  hover:shadow-xl transform duration-300 hover:scale-105"
             >
-              <img :src="`https://picsum.photos/id/${index+32}/300`" class="h-40 object-cover rounded-t" alt="">
+              <img :src="post.image" class="h-40 object-cover rounded-t" alt="">
               <div class="text-2xl font-medium px-2">
-                Three lines title and trim if is possible? or maybe something smaller
+                {{ post.title }}
               </div>
               <div class="1-4 text-sm text-base-content text-opacity-70 px-2 pb-4">
-                <div>23, jul 2021</div>
+                <div>{{ formatDate(post.created) }}</div>
               </div>
             </nuxt-link>
 
-            <nuxt-link to="/digital-garden" class="btn btn-ghost ml-auto normal-case">
+            <nuxt-link to="/web" class="btn btn-ghost ml-auto normal-case">
               Read more Web Engineering
             </nuxt-link>
           </div>
@@ -159,6 +161,15 @@
 
 <script>
 export default {
+  async asyncData ({ $content, params }) {
+    // blog list
+    const plants = await $content('digital-garden').sortBy('date', 'desc').limit(6).fetch()
+    const products = await $content('product-design').sortBy('date', 'desc').limit(6).fetch()
+    const webs = await $content('web').sortBy('date', 'desc').limit(6).fetch()
+    return {
+      plants, webs, products
+    }
+  },
   data () {
     return {
       tilt: {
@@ -176,6 +187,12 @@ export default {
         'glare-prerender': false // false = VanillaTilt creates the glare elements for you, otherwise
         // you need to add .js-tilt-glare>.js-tilt-glare-inner by yourself
       }
+    }
+  },
+  methods: {
+    formatDate (date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col ">
+  <div class="flex flex-col px-4">
     <div class="container mx-auto h-full">
       <blog-list :posts="posts" more-button="View more Articles" />
     </div>
