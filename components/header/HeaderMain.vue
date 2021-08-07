@@ -16,7 +16,7 @@
     </header-responsive-menu>
     <header class="flex justify-around items-center pt-2">
       <NuxtLink v-tilt="tilt" class="hidden sm:block" to="/">
-        <Logo class="mx-3 mt-1" />
+        <Logo class="mx-3 my-1" />
       </NuxtLink>
 
       <!-- menu-->

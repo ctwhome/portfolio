@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col ">
     <div class="container mx-auto h-full">
-      <blog-list :posts="posts" />
+      <blog-list :posts="posts" more-button="View more Articles" />
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   transition: 'fade',
   async asyncData ({ $content, params }) {
     // blog list
-    const posts = await $content('posts')
+    const posts = await $content('apps')
       .sortBy('date', 'desc')
       .fetch()
     return {
