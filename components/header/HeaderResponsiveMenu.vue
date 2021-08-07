@@ -1,13 +1,16 @@
 <template>
-  <div class="fixed top-0 left-0 z-10">
+  <div class="flex justify-between">
     <!--Open button-->
-    <div class="sm:hidden mt-4 ml-4 " @click="isOpen = !isOpen">
-      <!-- Trigger-->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+    <div class="flex" @click="isOpen = !isOpen">
+      <div class="sm:hidden mt-4 ml-4 ">
+        <!-- Trigger-->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </div>
+      <img class="sm:hidden mx-3 mt-1 w-9" src="~/assets/logo-small.svg">
     </div>
-
+    <daisyui-theme-switcher class="ml-auto sm:ml-14 sm:hidden" />
     <transition name="menu">
       <div v-if="isOpen" class="fixed top-0 z-10">
         <!-- Outside layer -->

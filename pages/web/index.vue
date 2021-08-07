@@ -11,6 +11,7 @@
       </div>
       <blog-list class="mt-10" :posts="posts" more-button="View more Articles" />
     </div>
+    <footer-main class="mt-30" />
   </div>
 </template>
 
