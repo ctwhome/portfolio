@@ -1,20 +1,23 @@
 <template>
-  <div class="container mx-auto h-full px-4">
-    <div class="flex flex-col md:flex-row justify-center gap-10 mt-10">
-      <img src="~/assets/product-design.svg" alt="">
-      <div>
-        <p class="prose mt-4">
-          Product design blends user needs with goals to help organizations make
-          consistently successful projects, optimizing the user experience to create products fair and sustainable for the longer term.
-          <br><br>
-          <span class="italic">“If you think good design is expensive, you should look at the cost of bad design.”</span>
-          <br>
-          — Dr. Ralf Speth, CEO of Jaguar Land Rover
-        </p>
+  <div class="flex flex-col px-4">
+    <div class="container mx-auto h-full px-4">
+      <div class="flex flex-col md:flex-row justify-center gap-10 mt-10">
+        <img src="~/assets/product-design.svg" alt="">
+        <div>
+          <p class="prose mt-4">
+            Product design blends user needs with goals to help organizations make
+            consistently successful projects, optimizing the user experience to create products fair and sustainable for the longer term.
+            <br><br>
+            <span class="italic">“If you think good design is expensive, you should look at the cost of bad design.”</span>
+            <br>
+            — Dr. Ralf Speth, CEO of Jaguar Land Rover
+          </p>
+        </div>
       </div>
-    </div>
 
-    <blog-list class="mt-10" :posts="posts" more-button="View more Articles" />
+      <blog-list class="mt-10" :posts="posts" more-button="View more Articles" />
+    </div>
+    <footer-main class="mt-30" />
   </div>
 </template>
 

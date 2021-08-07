@@ -1,11 +1,13 @@
 <template>
   <div class="relative container mx-auto">
-    <header-responsive-menu ref="menu">
+    <!--Mobile header -->
+    <header-responsive-menu ref="menu" class="relative">
+      <!--      Inside the sidebar-->
       <div class="p-6">
         <NuxtLink to="/" @click.native="$refs.menu.close">
-          <Logo class="mx-3 mt-1" />
+          <img src="~/assets/logo.svg" class="mx-3 mt-1">
         </NuxtLink>
-        <div class="mt-10">
+        <div class="mt-10 ">
           <div v-for="item in menu.items" :key="item.path" class="mt-3">
             <nuxt-link class="menu-link sm:text-lg  hover:text-primary transition" :to="item.path" @click.native="$refs.menu.close" @click="$refs.menu.close()">
               {{ item.title }}
@@ -14,14 +16,22 @@
         </div>
       </div>
     </header-responsive-menu>
+    <div class="mt-4 sm:hidden flex flex-wrap justify-center items-center space-x-2 space-x-4">
+      <div v-for="item in menu.items" :key="item.path">
+        <nuxt-link class="menu-link font-medium  text-sm sm:text-lg hover:text-primary transition" :to="item.path">
+          {{ item.title }}
+        </nuxt-link>
+      </div>
+    </div>
+    <!--Desktop Header-->
     <header class="flex justify-around items-center pt-2">
-      <NuxtLink v-tilt="tilt" class="hidden sm:block" to="/">
-        <Logo class="mx-3 my-1" />
+      <NuxtLink v-tilt="tilt" class="hidden sm:block mr-3 my-1" to="/">
+        <img src="~/assets/logo.svg">
       </NuxtLink>
 
       <!-- menu-->
       <div
-        class="hidden sm:flex ml-auto sm:items-center space-x-2 sm:space-x-8"
+        class="hidden sm:flex space-x-2 lg:space-x-8  w-full justify-end "
       >
         <div v-for="item in menu.items" :key="item.path">
           <nuxt-link class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium font-title text-sm sm:text-lg hover:text-primary transition" :to="item.path">
@@ -30,17 +40,8 @@
         </div>
       </div>
 
-      <daisyui-theme-switcher class="ml-auto sm:ml-14 " />
+      <daisyui-theme-switcher class="ml-auto hidden sm:block sm:ml-14 " />
     </header>
-    <div
-      class="sm:hidden flex flex-grow items-center space-x-2 space-x-6 mx-auto"
-    >
-      <div v-for="item in menu.items" :key="item.path">
-        <nuxt-link class="menu-link font-medium  text-sm sm:text-lg hover:text-primary transition" :to="item.path">
-          {{ item.title }}
-        </nuxt-link>
-      </div>
-    </div>
   </div>
 </template>
 <script>
