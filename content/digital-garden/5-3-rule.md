@@ -1,6 +1,6 @@
 ---
 title: Plant title 1
-image: https://ak.picdn.net/shutterstock/videos/1052869340/thumb/1.jpg
+image: https://cdn.shopify.com/s/files/1/1186/0402/articles/productivity-focus_1000x.jpg?v=1613498970
 status: Seedling 🌱
 created: 2021-01-01
 updated: 2021-01-10
