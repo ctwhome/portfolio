@@ -2,7 +2,7 @@
   <div class="py-10 ">
     <div class="container mx-auto px-4">
       <div class="mb-6 flex flex-wrap justify-center">
-        <div class="flex flex-wrap -mx-3 mb-16">
+        <div class="flex flex-wrap -mx-3 mb-16 w-full justify-center">
           <div class="flex flex-wrap w-full">
             <div
               v-for="(post,index) in posts"
@@ -17,6 +17,9 @@
                     <h2 class="my-2 text-xl font-bold ">
                       {{ post.title }}
                     </h2>
+                    <div class="flex gap-2">
+                      <small v-for="(tag,i) in post.tags" :key="i">#{{ tag }}</small>
+                    </div>
                     <div class="text-primary font-bold">
                       Read More
                     </div>
