@@ -15,6 +15,7 @@
           </div>
         </div>
       </div>
+      <social-icons class="mt-32 pl-6" />
     </header-responsive-menu>
     <div class="mt-4 sm:hidden flex flex-wrap justify-center items-center space-x-2 space-x-4">
       <div v-for="item in menu.items" :key="item.path">
@@ -24,20 +25,25 @@
       </div>
     </div>
     <!--Desktop Header-->
-    <header class="flex justify-around items-center pt-2">
-      <NuxtLink v-tilt="tilt" class="hidden sm:block mr-3 my-1" to="/">
+    <header class="flex items-center pt-2">
+      <NuxtLink v-tilt="tilt" class="flex-initial hidden sm:block mr-3 my-1" to="/">
         <img src="~/assets/logo.svg">
       </NuxtLink>
 
       <!-- menu-->
       <div
-        class="hidden sm:flex space-x-2 lg:space-x-8  w-full justify-end "
+        class="flex-1 hidden sm:flex space-x-4 lg:space-x-8 w-full justify-end "
       >
-        <div v-for="item in menu.items" :key="item.path">
-          <nuxt-link class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium font-title text-sm sm:text-lg hover:text-primary transition" :to="item.path">
-            {{ item.title }}
-          </nuxt-link>
-        </div>
+        <nuxt-link
+          v-for="item in menu.items"
+          :key="item.path"
+          class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium
+                    font-title text-sm md:text-md lg:text-lg hover:text-primary transition
+"
+          :to="item.path"
+        >
+          {{ item.title }}
+        </nuxt-link>
       </div>
 
       <daisyui-theme-switcher class="ml-auto hidden sm:block sm:ml-14 " />

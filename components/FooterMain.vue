@@ -31,7 +31,7 @@
           And ultimately, <strong>Technology</strong> should empower people.
         </div>
       </div>
-      <div class="flex mx-auto justify-center sm:justify-end mt-10 ">
+      <div class="flex mx-auto sm:mr-0  mt-10 ">
         <social-icons />
       </div>
     </div>
