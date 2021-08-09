@@ -2,14 +2,14 @@
 /* @import './scrollbar-color.css';  */
 
 :root {
-  --scrollbarTrack: hsl(var(--b2));
+  --scrollbarTrack: hsl(var(--b1));
   --scrollbarThumb: hsl(var(--b3));
-  --scrollbarThumbHover: hsl(var(--b1));
+  --scrollbarThumbHover: hsl(var(--b2));
 }
 /* Scrollbar colors*/
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 /* Track */

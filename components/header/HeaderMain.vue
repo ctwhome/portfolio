@@ -80,6 +80,8 @@ export default {
 </script>
 <style scoped>
 .menu-link.active{
-  @apply text-primary
+  @apply text-primary;
+    /*transform:  scale(0.9, 0.9);*/
 }
+
 </style>
