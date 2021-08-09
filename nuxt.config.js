@@ -21,9 +21,6 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   ssr: false,
-  generate: {
-    fallback: true // Be able to redirect webs to index when refreshing the page
-  },
 
   // Environment variables
   env: {
@@ -131,7 +128,15 @@ export default {
       }
     ]
   ],
+  generate: {
+    fallback: true, // Be able to redirect webs to index when refreshing the page
 
+    async routes () {
+      const { $content } = require('@nuxt/content')
+      const files = await $content({ deep: true }).only(['path']).fetch()
+      return files.map(file => file.path === '/index' ? '/' : file.path)
+    }
+  },
   googleFonts: {
     families: {
       // Roboto: true,
