@@ -97,6 +97,7 @@ export default {
     // Filter the tags!
     // console.log('entras', this.$route.query.tag)
     this.currentTags = this.$route.query.tag
+    this.status = this.$route.query.status
   },
   methods: {
     changeStatus (status) {
