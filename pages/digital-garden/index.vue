@@ -2,9 +2,9 @@
   <div class="flex flex-col px-4 ">
     <div class="h-full container mx-auto">
       <!--Header section-->
-      <div class="flex flex-col md:flex-row  gap-10 mt-10">
+      <div class="flex flex-col md:flex-row gap-10 mt-10">
         <img class="-mt-12" src="~/assets/digital-garden.svg" alt="">
-        <div class="text-xl  text-base-content text-opacity-90">
+        <div class="text-xl text-base-content text-opacity-90">
           <p class=" mt-4">
             A consistently tended collection of half-baked notes, research, and sketches.
             <br>
@@ -95,7 +95,6 @@ export default {
 
   mounted () {
     // Filter the tags!
-    // console.log('entras', this.$route.query.tag)
     this.currentTags = this.$route.query.tag
     this.status = this.$route.query.status
   },
@@ -106,8 +105,6 @@ export default {
       this.$fetch()
     },
     toggleTag (item) {
-      // const currentTags = this.$route.query.tags ? this.$route.query.tags + '+' + item : item
-
       const currentTags = this.$route.query.tag
       const newTags = []
       // Populate current tags
@@ -130,6 +127,7 @@ export default {
       this.$router.push({ path: 'digital-garden', query: { tag: newTags, status: this.$route.query.status } })
       this.$fetch()
     },
+
     formatDate (date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('en', options)

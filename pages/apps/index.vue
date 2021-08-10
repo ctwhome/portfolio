@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col px-4">
     <div class="container mx-auto h-full">
-      <blog-list :posts="posts" more-button="View more Articles" />
+      <blog-list :posts="posts" more-button="View more Articles" class="mt-20" />
     </div>
     <footer-main class="mt-30" />
   </div>
