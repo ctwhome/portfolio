@@ -43,7 +43,10 @@
         <nuxt-link to="/digital-garden">
           <img
             v-tilt="tilt"
-            class="w-full -mt-10"
+            class="w-full -mt-10
+                transition duration-500
+                border-opacity-0 hover:border-opacity-100 border-b-4 border-primary
+            "
             tag="nuxt-link"
             src="~/assets/digital-garden.svg"
             alt="UX Button"
@@ -57,7 +60,7 @@
           <nuxt-link v-for="(post,index) in plants " :key="index" :to="post.path">
             <div
               class="bg-base-100 rounded p-2 flex gap-2 h-28
-                border-opacity-0 hover:border-opacity-100 border-b-4 border-primary shadow
+                border-opacity-0 hover:border-opacity-100 border-b-8 border-primary shadow
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out duration-300 hover:shadow-xl transform hover:scale-105"
             >
@@ -87,7 +90,10 @@
             <img
               v-tilt="tilt"
               tag="nuxt-link"
-              class="w-full"
+              class="w-full
+                transition duration-500
+                border-opacity-0 hover:border-opacity-100 border-b-4 border-primary
+            "
               src="~/assets/product-design.svg"
               alt="UX Button"
             >
@@ -122,7 +128,10 @@
           <nuxt-link class="" to="/web">
             <img
               v-tilt="tilt"
-              class="w-full"
+              class="w-full
+                transition duration-500
+                border-opacity-0 hover:border-opacity-100 border-b-4 border-primary
+            "
               tag="nuxt-link"
               src="~/assets/web.svg"
               alt="UX Button"
