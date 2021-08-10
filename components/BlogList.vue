@@ -18,7 +18,7 @@
           <h2 class="my-2 text-xl font-bold ">
             {{ post.title }}
           </h2>
-          <div v-if="showTags" class="flex flex-wrap gap-2 text-base-content text-opacity-60">
+          <div v-if="showTags" class="flex flex-wrap gap-2 text-opacity-60">
             <small v-for="(tag,i) in post.tags" :key="i">#{{ tag }}</small>
           </div>
           <div class="mt-6 flex text-xs text-base-content text-opacity-60 border-t border-white border-opacity-5 pt-2">
