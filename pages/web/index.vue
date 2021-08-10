@@ -1,10 +1,11 @@
 <template>
-  <div class="flex flex-col px-4">
-    <div class="container mx-auto h-full">
-      <div class="flex flex-col md:flex-row justify-center gap-10 mt-10">
-        <img src="~/assets/web.svg" alt="">
-        <div>
-          <p class="prose mt-4">
+  <div class="flex flex-col px-4 ">
+    <div class="h-full container mx-auto">
+      <!--Header section-->
+      <div class="flex flex-col md:flex-row gap-10 mt-10">
+        <img class="-mt-12" src="~/assets/digital-garden.svg" alt="">
+        <div class="text-xl text-base-content text-opacity-90">
+          <p class=" mt-4">
             Web engineering focuses on the methodologies, techniques, and tools that are the foundation of Web application development and which support their <strong>design, development, evolution, and evaluation</strong>.
           </p>
         </div>
