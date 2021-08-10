@@ -18,9 +18,9 @@
             </p>
           </div>
 
-          <div class="md:w-5/12 order-2">
+          <div v-tilt="tilt" class="md:w-5/12 order-2">
             <img
-              v-tilt="tilt"
+
               src="~/assets/ctw-jos-profile.jpg"
               style="
                   width: 100%;
@@ -30,7 +30,7 @@
                     rotateX(2deg) rotate(2deg);
                 "
               alt="Jos Ctw Profile"
-              class="rounded"
+              class="rounded pointer-events-none"
             >
           </div>
         </div>

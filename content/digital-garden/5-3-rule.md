@@ -1,5 +1,5 @@
 ---
-title: The 5:3 Rule for productivity
+title: Yes
 image: https://cdn.shopify.com/s/files/1/1186/0402/articles/productivity-focus_1000x.jpg?v=1613498970
 status: 0
 created: 2020-06-21
