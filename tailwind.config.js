@@ -11,6 +11,13 @@ export default {
     tailwindTypography,
     daisyui
   ],
+  variants: {
+    extend: {
+      // ...
+
+      cursor: ['hover', 'focus']
+    }
+  },
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
