@@ -59,7 +59,9 @@
         <div class="flex flex-col mt-10 gap-6 ">
           <nuxt-link v-for="(post,index) in plants " :key="index" :to="post.path">
             <div
-              class="bg-base-100 rounded p-2 flex gap-2 h-28
+              class="
+              flex flex-col
+              bg-base-100 rounded p-2 flex gap-2 h-28
                 border-opacity-0 hover:border-opacity-100 border-b-8 border-primary shadow
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out duration-300 hover:shadow-xl transform hover:scale-105"
@@ -67,10 +69,11 @@
               <div class="text-xl font-medium w-3/4">
                 {{ post.title }}
               </div>
-              <div class="1-4 text-sm text-base-content text-opacity-70">
+
+              <div class="flex justify-between items-center text-sm text-base-content text-opacity-60">
                 <div>{{ formatDate(post.created) }}</div>
-                <div class="mt-2">
-                  {{ post.status }}
+                <div class="">
+                  {{ StatusEnum[post.status] }}
                 </div>
               </div>
             </div>
@@ -169,7 +172,14 @@
 </template>
 
 <script>
+import StatusEnum from '~/models/status-enum'
+
 export default {
+  setup () {
+    return {
+      StatusEnum
+    }
+  },
   async asyncData ({ $content, params }) {
     // blog list
     const plants = await $content('digital-garden').sortBy('date', 'desc').limit(6).fetch()
