@@ -1,48 +1,60 @@
 <template>
-  <div class="py-10 ">
-    <div class="container mx-auto px-4">
-      <div class="mb-6 flex flex-wrap justify-center">
-        <div class="flex flex-wrap -mx-3 mb-16 w-full justify-center">
-          <div class="flex flex-wrap w-full">
-            <div
-              v-for="(post,index) in posts"
-              :key="index"
-              class="mb-6 w-full md:w-1/2 lg:w-1/4 px-3"
-            >
-              <nuxt-link :to="post.path">
-                <div class="rounded overflow-hidden transition shadow hover:shadow-lg">
-                  <img class="w-full max-h-48 lg:h-30 rounded-t object-cover" :src="post.image" :alt="post.title">
-                  <div class="p-6 rounded-b bg-base-100">
-                    <span class="text-sm text-opacity-40">{{ formatDate(post.created) }}</span>
-                    <h2 class="my-2 text-xl font-bold ">
-                      {{ post.title }}
-                    </h2>
-                    <div class="flex gap-2">
-                      <small v-for="(tag,i) in post.tags" :key="i">#{{ tag }}</small>
-                    </div>
-                    <div class="text-primary font-bold">
-                      Read More
-                    </div>
-                  </div>
-                </div>
-              </nuxt-link>
-            </div>
+  <div class="container mx-auto px-4">
+    <div class="mb-6 flex flex-wrap gap-5 w-full">
+      <nuxt-link
+        v-for="(post,index) in posts"
+        :key="index"
+        :to="post.path"
+        class=" max-w-xs w-full shadow h-full
+                rounded overflow-hidden transition shadow hover:shadow-lg
+        "
+      >
+        <img v-if="showImage" class="w-full max-h-36 lg:h-30 rounded-t object-cover" :src="post.image" :alt="post.title">
+        <div
+          class="py-2 px-3 rounded-b bg-base-200 bg-opacity-40
+                transition duration-500
+                border-opacity-0 hover:border-opacity-100 border-b-4 border-primary"
+        >
+          <h2 class="my-2 text-xl font-bold ">
+            {{ post.title }}
+          </h2>
+          <div v-if="showTags" class="flex flex-wrap gap-2 text-base-content text-opacity-60">
+            <small v-for="(tag,i) in post.tags" :key="i">#{{ tag }}</small>
           </div>
+          <div class="mt-6 flex text-xs text-base-content text-opacity-60 border-t border-white border-opacity-5 pt-2">
+            <span class="">{{ formatDate(post.created) }}</span>
+            <span class="ml-auto">{{ StatusEnum[post.status] }}</span>
+          </div>
+          <!--                    <div class="text-primary font-bold">-->
+          <!--                      Read More-->
+          <!--                    </div>-->
         </div>
-        <div>
-          <nuxt-link v-if="more" class="btn" :to="to">
-            {{ moreButton }}}
-          </nuxt-link>
-        </div>
-      </div>
+      </nuxt-link>
     </div>
+    <nuxt-link v-if="more" class="btn" :to="to">
+      {{ moreButton }}}
+    </nuxt-link>
   </div>
 </template>
 
 <script>
-
+import StatusEnum from '~/models/status-enum'
 export default {
-  props: ['posts', 'more', 'to', 'moreButton'],
+  props: {
+    posts: { type: Array },
+    more: { type: Boolean, default: false },
+    moreButton: { type: String, default: 'Read More' },
+    to: { type: String },
+    showTags: { type: Boolean, default: false },
+    showImage: { type: Boolean, default: true },
+    status: { type: String, default: '' }
+  },
+  setup () {
+    return {
+      StatusEnum
+    }
+  },
+
   methods: {
     formatDate (date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
