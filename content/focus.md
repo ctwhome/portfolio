@@ -1,5 +1,5 @@
 ---
-title: My App title 2
+title: Focus Diamond
 image: https://ak.picdn.net/shutterstock/videos/1052869340/thumb/1.jpg
 created: 2021-01-01
 updated: 2021-01-10
