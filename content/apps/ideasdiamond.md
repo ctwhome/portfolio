@@ -1,7 +1,7 @@
 ---
-title: My App title 3
+title: IdeasDiamond
 image: https://ak.picdn.net/shutterstock/videos/1052869340/thumb/1.jpg
-created: 2021-01-02
+created: 2021-01-01
 updated: 2021-01-10
 ---
 
