@@ -8,7 +8,7 @@ tags:
 - Wireframe
 ---
 
-This website is a new structure and content redesign for the Netherlands group of Research Software Engineers website. In collaboration with de Jonge and the people from the NL-RSE, I have made a completely new portal where the community can find everything related to the Research Sofware engineers group in the Netherlands. 
+This website is a new structure and content redesign for the Netherlands group of Research Software Engineers website. In collaboration with Lieke de Boer and the people from the NL-RSE, I have made a completely new portal where the community can find everything related to the Research Sofware engineers group in the Netherlands. 
 
 The technology stack is using NuxtJs with Nuxt Content, an RSE Feed you can subscribe to, custom animations, and a performance experience without downtimes. You can see a preview running here: https://nl-rse.netlify.app/
 
