@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
-    <div class="h-full p-6 mx-auto mt-10 sm:mt-20 ">
-      <h1 class="font-bold text-4xl sm:text-6xl">
+    <div class="h-full p-6 mx-auto mt-10 sm:mt-20 prose lg:prose-xl ">
+      <h1 class=" font-bold text-4xl sm:text-6xl">
         {{ post.title }}
       </h1>
       <div
@@ -31,7 +31,7 @@
       <!-- table of contents -->
       <nav class="pb-6" />
       <!-- content from markdown -->
-      <nuxt-content :document="post" class="prose lg:prose-xl " />
+      <nuxt-content :document="post" class=" " />
       <!-- prevNext component -->
       <PrevNext :prev="prev" :next="next" class="mt-20" />
     </div>

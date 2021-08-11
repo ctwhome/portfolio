@@ -2,6 +2,7 @@
 title: [Fixed] Webpack problem with source maps mapping in Chrome Dev Tools
 image: https://cdn-images-1.medium.com/max/2000/1*Th5Zf-_ef0GUv7CpODQtFg.png
 created: 2018-05-04
+canonical: https://ctwux.medium.com/fixed-webpack-problem-with-sourcemaps-mapping-in-chrome-dev-tools-57064572ffc6
 tags:
 - Supabase
 - Nuxt
