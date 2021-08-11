@@ -56,5 +56,5 @@ That is a pretty long stack, and I can't even imagine how many thousands of hour
 ## Let's talk about Nuxt. 
 Nuxt came tonme a bag of candies, a super set of tooling that made my life so much easier. No more webpack, no more routing, no more PWA manual configurations. 
 
-... Tonbe continued
+... To be continued
 
