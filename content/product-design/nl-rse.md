@@ -1,6 +1,6 @@
 ---
 title: Do you write software for your research? New NL-RSE Website  
-image: https://user-images.githubusercontent.com/4195550/128983299-7488e272-59da-4a0d-979a-9a27b96432bd.png  
+image: https://user-images.githubusercontent.com/4195550/129007734-ec443a2a-1cf2-4056-967c-7326cf1e24ce.png  
 created: 2021-06-01 
 tags:
 - Web
@@ -15,3 +15,6 @@ The technology stack is using NuxtJs with Nuxt Content, an RSE Feed you can subs
 ![software research](https://user-images.githubusercontent.com/4195550/128981011-dd636ae0-ca7d-4759-96e5-96ca79809cf6.jpg)
 
 ![](https://user-images.githubusercontent.com/4195550/128982099-107fe765-f4cb-44a7-8453-1aef886b34cb.png)
+
+
+
