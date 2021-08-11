@@ -1,17 +1,12 @@
 ---
-title: Yes
+title: The 5:3 Rule for productivity
 image: https://cdn.shopify.com/s/files/1/1186/0402/articles/productivity-focus_1000x.jpg?v=1613498970
 status: 0
 created: 2020-06-21
 updated: 2020-06-21
 tags:
  - Productivity
- - Anna van Duin
- - hello?
 ---
-
-
-## The 5:3 Rule for productivity
 
 We all have a lot of things to do during the day, do sports, write your beloved and friends, buy and cook healthy, take care of the house: clean, organize… read that book, have proper sex, go outside with friends.. and yet you need to do your 8 hours or daily work (don’t forget the time you need to get ready, have breakfast, commute.. and then arrive at work).
 
