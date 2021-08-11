@@ -5,10 +5,9 @@ status: 1
 created: 2021-08-21  
 updated:  
 tags:
-
-*   Nuxt
-*   Web
-*   Tech Stack
+ - Nuxt
+ - Web
+ - Tech Stack
 ---
 
 ## Let me start with the bad news
