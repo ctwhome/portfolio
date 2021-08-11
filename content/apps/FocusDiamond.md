@@ -17,7 +17,7 @@ You think you are working fine, but at the end of the day/week/month, you **feel
 
 ![](https://cdn-images-1.medium.com/max/2000/1*fCUVELpk4-oDWRfcS6vJaA.png)
 
-*Access the App here, is free!!!* [**https://diamond-app.com](https://diamond-app.com)**
+*Access the App here, is free!!!* [**https://focusdiamond.app/](https://focusdiamond.app/)**
 
 Ok so, this is another Pomodoro timer. Yes, but with timers of 55 minutes and 55 seconds, and some extra gifts like the procrastination TODO lists, and a closed schedule for your working day.
 
