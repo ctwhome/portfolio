@@ -7,7 +7,6 @@ updated:
 tags:
 - Vegan
 - Health
-status-options: seeding
 
 ---
 After becoming vegan, our fight against basically everything in our society begun. The misinformation, the food industry interest is overwhelming for everyone. There is a special interest to NOT educate on prevention but rather highlighting a few amounts of macro (carbos, fats, proteins, fiber, and water) and micronutrients (vitamins and minerals) and marketeer those like if the product was any good. When in fact is packed with saturated fats and sugars to trigger your brain to not eat only one, but hundreds...
@@ -16,15 +15,14 @@ After becoming vegan, our fight against basically everything in our society begu
 ## How to Vegan!
 
 ### Documentaries
-![image](https://user-images.githubusercontent.com/4195550/129444813-6d0971bc-bb6e-449d-869d-bec5d0866fa4.png)
-
+![Frame 7](https://user-images.githubusercontent.com/4195550/129445558-a2d4978d-76e5-483d-9019-83e1f33b7fd4.png)
 
 ### Books
-![image](https://user-images.githubusercontent.com/4195550/129444975-3cc180b6-b154-431b-9362-760cbe8ba3ae.png)
-
+![Frame 8](https://user-images.githubusercontent.com/4195550/129445574-5a4a0175-8608-4c4a-816b-1eefe84677ab.png)
 
 ### Cookbooks
-![image](https://user-images.githubusercontent.com/4195550/129445052-59a0aab5-9747-47b8-8e54-36c133442808.png)
+![Frame 9](https://user-images.githubusercontent.com/4195550/129445591-596570c7-4639-476f-8dd7-a730e199f62c.png)
+
 
 ## Websites
 - Veganuary: https://veganuary.com/
