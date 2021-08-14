@@ -1,0 +1,22 @@
+---
+label: Digital Garden
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: image
+  label: image
+- type: number
+  name: status
+  label: status
+- type: datetime
+  name: created
+  label: created
+- type: datetime
+  name: updated
+  label: updated
+- type: list
+  name: tags
+  label: tags
