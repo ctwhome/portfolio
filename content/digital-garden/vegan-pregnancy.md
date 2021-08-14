@@ -1,14 +1,15 @@
 ---
-title: Vegan Pregnancy Roadmap 
-image: https://user-images.githubusercontent.com/4195550/129445096-4aa08e02-6d7c-4d0c-8f02-ab5ae52b65ae.png  
-status: 0
-created: 2021-08-14  
-updated:  
+title: Vegan Pregnancy Roadmap
+image: https://user-images.githubusercontent.com/4195550/129445096-4aa08e02-6d7c-4d0c-8f02-ab5ae52b65ae.png
+status: 
+created: 2021-08-14
+updated: 
 tags:
- - Vegan
- - Health
----
+- Vegan
+- Health
+status-options: seeding
 
+---
 After becoming vegan, our fight against basically everything in our society begun. The misinformation, the food industry interest is overwhelming for everyone. There is a special interest to NOT educate on prevention but rather highlighting a few amounts of macro (carbos, fats, proteins, fiber, and water) and micronutrients (vitamins and minerals) and marketeer those like if the product was any good. When in fact is packed with saturated fats and sugars to trigger your brain to not eat only one, but hundreds...
 
 
