@@ -20,3 +20,18 @@ fields:
 - type: list
   name: tags
   label: tags
+- name: status-options
+  type: select
+  default: []
+  config:
+    required: true
+    options:
+    - seeding
+    - seeding2
+    - seeding3
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Status Option
