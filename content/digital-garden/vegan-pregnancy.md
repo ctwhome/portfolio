@@ -11,6 +11,8 @@ tags:
 ---
 After becoming vegan, our fight against basically everything in our society begun. The misinformation, the food industry interest is overwhelming for everyone. There is a special interest to NOT educate on prevention but rather highlighting a few amounts of macro (carbos, fats, proteins, fiber, and water) and micronutrients (vitamins and minerals) and marketeer those like if the product was any good. When in fact is packed with saturated fats and sugars to trigger your brain to not eat only one, but hundreds...
 
+![image](https://user-images.githubusercontent.com/4195550/129445794-e609fd0a-adb5-401c-a5fe-c2fd6014b588.png)
+
 
 ## How to Vegan!
 
