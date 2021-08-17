@@ -2,8 +2,8 @@
 title: Building a second brain with Zettelkasten
 image: https://user-images.githubusercontent.com/4195550/129701325-05e8d674-49d6-4295-afd9-df720c18b216.jpg
 status: 0
-created: 2020-08-17
-updated: 2020-08-17
+created: 2021-08-17
+updated: 2021-08-17
 tags:
  - Productivity
  - Personal Knowledge
