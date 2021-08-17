@@ -14,6 +14,8 @@ I am starting to play with the idea of moving all my organization, notes, sketch
 The main idea is that this organization lasts a lifetime, independently of any platform and application. Just basic pen and paper was enough for Niklas Luhmann, a social scientist, to publish 50 Books and over 600 articles.
 
 The ideas resemble pretty much how Wikipedia is structured, closer to a Web. All articles link to other links and are intertwined.
+![image](https://user-images.githubusercontent.com/4195550/129708105-8b0fe236-d156-432b-88cc-57c3aff21c36.png)
+
 
 ## Principles
 
