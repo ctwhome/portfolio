@@ -3,7 +3,7 @@ logo_url: https://raw.githubusercontent.com/ctwhome/portfolio/main/static/OG-car
 
 publish_mode: editorial_workflow
 backend:
-  name: github
+  name: git-gateway
   branch: master
   squash_merges: true
 
