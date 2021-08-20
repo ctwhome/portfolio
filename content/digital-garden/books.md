@@ -1,6 +1,10 @@
 ---
 title: Books I read
 status: 0
+created: 2021-08-17
+updated: 2021-08-17
+tags:
+ - Personal Knowledge
 ---
 
 List of books I read by year
