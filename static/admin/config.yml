@@ -4,6 +4,7 @@ logo_url: https://raw.githubusercontent.com/ctwhome/portfolio/main/static/OG-car
 publish_mode: editorial_workflow
 backend:
   name: git-gateway
+  repo: ctwhome/portfolio
   branch: main
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
