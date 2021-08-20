@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col px-4 ">
-    <div class="h-full container mx-auto">
+    <div class="h-full container mx-auto mt-10">
       <!--Header section-->
       <div class="flex flex-col md:flex-row gap-10 mt-10">
         <img class="-mt-12" src="~/assets/web.svg" alt="">
