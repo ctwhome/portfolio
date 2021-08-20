@@ -7,7 +7,7 @@ tags:
  - Personal Knowledge
 ---
 
-List of books I read by year
+List of books I've read by year
 
 ## 2021
 - Show your work
