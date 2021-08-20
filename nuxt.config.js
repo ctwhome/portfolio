@@ -70,7 +70,8 @@ export default {
     ],
     htmlAttrs: {
       'data-theme': 'ctw' // https://daisyui.com/docs/default-themes
-    }
+    },
+    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
