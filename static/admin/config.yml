@@ -1,9 +1,9 @@
-site_url: https://ntn-boilerplate.netlify.app/
-logo_url: https://ntn-boilerplate.netlify.app/icon.png
+site_url: https://ctwhome.com/
+logo_url: https://raw.githubusercontent.com/ctwhome/portfolio/main/static/OG-card.png
 
 publish_mode: editorial_workflow
 backend:
-  name: git-gateway
+  name: github
   branch: master
   squash_merges: true
 
