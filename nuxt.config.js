@@ -104,12 +104,8 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/composition-api/module',
-    'nuxt-vite',
-    'nuxt-delay-hydration'
+    'nuxt-vite'
   ],
-  delayHydration: {
-    mode: 'init'
-  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
