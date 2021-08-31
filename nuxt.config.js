@@ -71,7 +71,7 @@ export default {
     htmlAttrs: {
       'data-theme': 'ctw' // https://daisyui.com/docs/default-themes
     },
-    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -104,8 +104,12 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/composition-api/module',
-    'nuxt-vite'
+    'nuxt-vite',
+    'nuxt-delay-hydration'
   ],
+  delayHydration: {
+    mode: 'init'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
