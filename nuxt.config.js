@@ -1,12 +1,12 @@
 /// //////////////////////////////////////////////
 // Site config
 // Domain where the website will be deployed
-const productionUrl = 'ctwhome.com'
+const productionUrl = 'research-software.nl'
 const useLocalSupabase = false
-const siteName = 'Ctw - Portfolio'
-const siteShortName = 'Ctw Portfolio'
-const siteDescription = 'J. Gonzalez - Product designer and Research Software Engineer'
-const twitterUser = '@ctwhome'
+const siteName = 'Research Software Directory'
+const siteShortName = 'RSD'
+const siteDescription = 'Research Software Directory for organizations'
+const twitterUser = '@eScienceCenter'
 const isGithubPages = false // true if deployed to github pages
 const githubRepositoryName = ''
 /// //////////////////////////////////////////////
