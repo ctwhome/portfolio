@@ -1,5 +1,10 @@
 @import './scrollbar-color.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --text: #212121;
   --bg: #e5e5e5;
