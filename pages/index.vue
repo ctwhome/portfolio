@@ -4,7 +4,7 @@
       <div class="container m-auto px-6">
         <div class="md:flex justify-between items-center">
           <div class="md:w-6/12 lg:p-0 p-7 slidein-animation">
-            <h1 class="text-3xl md:text-5xl font-bold font-title ">
+            <h1 class="text-3xl md:text-5xl font-bold font-title">
               J. Gonzalez
             </h1>
 
@@ -20,7 +20,6 @@
 
           <div v-tilt="tilt" class="md:w-5/12 order-2">
             <img
-
               src="~/assets/ctw-jos-profile.jpg"
               style="
                   width: 100%;

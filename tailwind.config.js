@@ -1,36 +1,21 @@
-import tailwindTypography from '@tailwindcss/typography'
-import daisyui from 'daisyui'
-// const themes = require('daisyui/colors/themes')
+const tailwindTypography = require('@tailwindcss/typography')
+const daisyui = require('daisyui')
 
-export default {
-  darkMode: false, // or 'media' or 'class'
-  // mode: 'jit', // NOT WORKING WITH VITE issue link -> https://github.com/
-  // nuxt/vite/issues/159
-  // see issue https://github.com/nuxt/vite/issues/159
+module.exports = {
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}'
+  ],
+  theme: {
+    extend: {}
+  },
   plugins: [
     tailwindTypography,
     daisyui
   ],
-  variants: {
-    extend: {
-      // ...
-
-      cursor: ['hover', 'focus']
-    }
-  },
-  purge: {
-    // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      'content/**/*.md',
-      'components/**/*.{vue,js}',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.{js,ts}',
-      'nuxt.config.{js,ts}'
-    ]
-  },
-
   daisyui: {
     themes: [
       {
@@ -80,5 +65,4 @@ export default {
       'dracula'
     ]
   }
-
 }
