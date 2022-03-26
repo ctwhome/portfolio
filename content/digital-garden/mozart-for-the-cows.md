@@ -30,7 +30,7 @@ During the year 2020, I will be documenting, enhancing and improving this guide 
 
 These are the questions that I want to approach in this guide and are always around every conversation and mind.
 
-## Table of content:
+## Content (WIP)
 
 What will happen to my body after 33 of not being vegan
 
