@@ -89,7 +89,7 @@ export default {
     }
     this.posts = await this.$content('digital-garden')
       .where(where)
-      .sortBy('date', 'desc')
+      .sortBy('created', 'desc')
       .fetch()
   },
 

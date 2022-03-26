@@ -29,7 +29,7 @@ export default {
   async asyncData ({ $content, params }) {
     // blog list
     const posts = await $content('product-design')
-      .sortBy('date', 'desc')
+      .sortBy('created', 'desc')
       .fetch()
     return {
       posts
