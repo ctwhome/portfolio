@@ -5,6 +5,10 @@ created: 2021-01-01
 updated: 2021-01-10
 ---
 
-This is the content, and it supports vue components inside! Beautiful.
+This is the content, and it supports vue components inside\! Beautiful.
 
-> Don't forget to NOT use _ underscode in the md files names.
+> Don't forget to NOT use \_ underscode in the md files names.
+
+My Ideas diamond\!?
+
+<img src="/uploads/20140101-003319-snow.gif" width="600" height="800" />
