@@ -175,7 +175,8 @@ export default {
       }
     }
   },
-
+  // Avoid triggering the server endlessly: https://github.com/nuxt/nuxt.js/discussions/10235
+  eslint: { cache: false },
   // Create a feed
   feed: [
     {
