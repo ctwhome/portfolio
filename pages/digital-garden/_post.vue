@@ -29,7 +29,7 @@
       </div>
 
       <!-- table of contents -->
-      <nav class="pb-6" />
+      <table-of-contents :toc="post.toc" />
       <!-- content from markdown -->
       <nuxt-content :document="post" class=" " />
       <!-- prevNext component -->
