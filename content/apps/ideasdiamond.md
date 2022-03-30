@@ -11,4 +11,4 @@ This is the content, and it supports vue components inside\! Beautiful.
 
 My Ideas diamond\!?
 
-<img src="/uploads/20140101-003319-snow.gif" width="600" height="800" />
+<img src="/uploads/20140101-003319-snow.gif" width="600" height="800" alt="logo asset"/>

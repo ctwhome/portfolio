@@ -21,15 +21,11 @@
           <div v-tilt="tilt" class="md:w-5/12 order-2">
             <img
               src="~/assets/ctw-jos-profile.jpg"
+              class="rounded pointer-events-none h-[450px] w-full object-cover"
               style="
-                  width: 100%;
-                  object-fit: cover;
-                  height: 450px;
-                  transform: scale(1) perspective(1040px) rotateY(-11deg)
-                    rotateX(2deg) rotate(2deg);
+                  transform: scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg);
                 "
               alt="Jos Ctw Profile"
-              class="rounded pointer-events-none"
             >
           </div>
         </div>
@@ -111,7 +107,7 @@
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out  hover:shadow-xl transform duration-300 hover:scale-105"
             >
-              <img :src="post.image" class="h-40 object-cover rounded-t" alt="">
+              <img :src="post.image" class="h-40 object-cover rounded-t" alt="post image">
               <div class="text-2xl font-medium px-2">
                 {{ post.title }}
               </div>
@@ -150,7 +146,7 @@
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out  hover:shadow-xl transform duration-300 hover:scale-105"
             >
-              <img :src="post.image" class="h-40 object-cover rounded-t" alt="">
+              <img :src="post.image" class="h-40 object-cover rounded-t" alt="post image">
               <div class="text-2xl font-medium px-2">
                 {{ post.title }}
               </div>

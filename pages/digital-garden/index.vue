@@ -3,7 +3,7 @@
     <div class="h-full container mx-auto">
       <!--Header section-->
       <div class="flex flex-col md:flex-row gap-10 mt-10">
-        <img class="-mt-12" src="~/assets/digital-garden.svg" alt="">
+        <img class="-mt-12" src="~/assets/digital-garden.svg" alt="digital garden image">
         <div class="text-xl text-base-content text-opacity-90">
           <p class=" mt-4">
             A consistently tended collection of half-baked notes, research, and sketches.

@@ -11,6 +11,9 @@ items:
     
   - title: Digital Garden
     path: /digital-garden
+  
+  - title: Notion CMS
+    path: /notion
     
 ---
 
