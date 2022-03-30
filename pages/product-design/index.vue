@@ -3,7 +3,7 @@
     <div class="h-full container mx-auto">
       <!--Header section-->
       <div class="flex flex-col md:flex-row gap-10 mt-10">
-        <img src="~/assets/product-design.svg" alt="">
+        <img src="~/assets/product-design.svg" alt="product design image">
         <div class="text-xl text-base-content text-opacity-90">
           <p class="mt-4">
             Product design blends user needs with goals to help organizations make

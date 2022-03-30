@@ -5,7 +5,7 @@
       <!--      Inside the sidebar-->
       <div class="p-6">
         <NuxtLink to="/" @click.native="$refs.menu.close">
-          <img src="~/assets/logo.svg" class="mx-3 mt-1">
+          <img src="~/assets/logo.svg" class="mx-3 mt-1" width="100%" height="100%" alt="Logo Ctwhome website">
         </NuxtLink>
         <div class="mt-10 ">
           <div v-for="item in menu.items" :key="item.path" class="mt-3">
@@ -27,7 +27,7 @@
     <!--Desktop Header-->
     <header class="flex items-center pt-2">
       <NuxtLink v-tilt="tilt" class="flex-initial hidden sm:block mr-3 my-1" to="/">
-        <img src="~/assets/logo.svg">
+        <img src="~/assets/logo.svg" alt="Logo asset">
       </NuxtLink>
 
       <!-- menu-->

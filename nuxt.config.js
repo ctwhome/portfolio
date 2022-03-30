@@ -1,12 +1,12 @@
 /// //////////////////////////////////////////////
 // Site config
 // Domain where the website will be deployed
-const productionUrl = 'research-software.nl'
+const productionUrl = 'ctwhome.com'
 const useLocalSupabase = false
-const siteName = 'Research Software Directory'
-const siteShortName = 'RSD'
-const siteDescription = 'Research Software Directory for organizations'
-const twitterUser = '@eScienceCenter'
+const siteName = 'Ctwhome Portfolio'
+const siteShortName = 'Ctw'
+const siteDescription = 'Ctwhome Portfolio - J. Gonzalez'
+const twitterUser = '@ctwhome'
 const isGithubPages = false // true if deployed to github pages
 const githubRepositoryName = ''
 /// //////////////////////////////////////////////
@@ -20,9 +20,11 @@ export default {
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: false,
 
   // Environment variables
+  privateRuntimeConfig: {
+    secretNotion: process.env.SECRET_NOTION
+  },
   env: {
     supabaseUrl: isDev && useLocalSupabase ? 'http://localhost:8000' : process.env.VITE_SUPABASE_URL,
     supabaseKey: isDev && useLocalSupabase
@@ -70,8 +72,8 @@ export default {
     ],
     htmlAttrs: {
       'data-theme': 'ctw' // https://daisyui.com/docs/default-themes
-    },
-    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
+    }
+    // script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -104,7 +106,8 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     // '@nuxtjs/tailwindcss',
     '@nuxt/postcss8',
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
+    'vue-notion/nuxt'
     // 'nuxt-vite'
   ],
 
@@ -132,12 +135,15 @@ export default {
   ],
   generate: {
     fallback: true, // Be able to redirect webs to index when refreshing the page
-
-    async routes () {
-      const { $content } = require('@nuxt/content')
-      const files = await $content({ deep: true }).only(['path']).fetch()
-      return files.map(file => file.path === '/index' ? '/' : file.path)
-    }
+    exclude: [
+      '/menu-items'
+    ]
+    // async routes () {
+    //   // get pages from notion as well
+    //   const { $content } = require('@nuxt/content')
+    //   const files = await $content({ deep: true }).only(['path']).fetch()
+    //   return files.map(file => file.path === '/index' ? '/' : file.path)
+    // }
   },
   googleFonts: {
     families: {
