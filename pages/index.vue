@@ -111,7 +111,7 @@
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out  hover:shadow-xl transform duration-300 hover:scale-105"
             >
-              <img :src="post.image" class="h-40 object-cover rounded-t" alt="">
+              <img :src="post.image" class="h-40 object-cover rounded-t" alt="post image">
               <div class="text-2xl font-medium px-2">
                 {{ post.title }}
               </div>
@@ -150,7 +150,7 @@
                 hover:bg-base-200 hover:bg-opacity-30
                 transition ease-in-out  hover:shadow-xl transform duration-300 hover:scale-105"
             >
-              <img :src="post.image" class="h-40 object-cover rounded-t" alt="">
+              <img :src="post.image" class="h-40 object-cover rounded-t" alt="post image">
               <div class="text-2xl font-medium px-2">
                 {{ post.title }}
               </div>
