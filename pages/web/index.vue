@@ -3,7 +3,7 @@
     <div class="h-full container mx-auto mt-10">
       <!--Header section-->
       <div class="flex flex-col md:flex-row gap-10 mt-10">
-        <img class="-mt-12" src="~/assets/web.svg" alt="">
+        <img class="-mt-12" src="~/assets/web.svg" alt="web section image">
         <div class="text-xl text-base-content text-opacity-90">
           <p class=" mt-4">
             Web engineering focuses on the methodologies, techniques, and tools that are the foundation of Web application development and which support their <strong>design, development, evolution, and evaluation</strong>.
