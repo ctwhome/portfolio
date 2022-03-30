@@ -21,15 +21,11 @@
           <div v-tilt="tilt" class="md:w-5/12 order-2">
             <img
               src="~/assets/ctw-jos-profile.jpg"
+              class="rounded pointer-events-none h-[450px] w-full object-cover"
               style="
-                  width: 100%;
-                  object-fit: cover;
-                  height: 450px;
-                  transform: scale(1) perspective(1040px) rotateY(-11deg)
-                    rotateX(2deg) rotate(2deg);
+                  transform: scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg);
                 "
               alt="Jos Ctw Profile"
-              class="rounded pointer-events-none"
             >
           </div>
         </div>

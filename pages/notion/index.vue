@@ -1,15 +1,35 @@
 <template>
-  <div class="container">
+  <div class="container mx-auto pt-10">
     <div>
-      <h1 class="title">
-        vue-notion-example
-      </h1>
+      <div class="font-italic text-base-300">
+        Notion CSM - WIP <br>
+        This is the transition to using the new Notion API as a CMS.
+      </div>
       <div class="posts">
-        <h2>All Posts</h2>
+        <h2 class="text-4xl font-bold my-5">
+          All Posts ({{ posts.results.length }})
+        </h2>
         <div v-if="posts">
-          <nuxt-link v-for="post in posts.results" :key="post.id" :to="'/notion/'+post.id" class="block mb-2 hover:bg-base-200 max-w-max">
-            {{ post.properties.title.title[0].text.content }} ({{ post.id }}) Tags: <span v-for="tag in post.properties.tags.multi_select" :key="tag.id" :style="{'background-color':tag.color}">{{ tag.name }} </span>
+          <nuxt-link
+            v-for="post in posts.results"
+            :key="post.id"
+            class="block mb-4 hover:bg-base-200 max-w-max text-lg transition-all p-2"
+            :to="'/notion/'+post.id"
+          >
+            <span class="font-bold">
+
+              {{ post.properties.title.title[0].text.content }}
+            </span>
+            <span
+              v-for="tag in post.properties.tags.multi_select"
+              :key="tag.id"
+              class="border-b mx-1"
+              :style="{'border-color':tag.color}"
+            >#{{ tag.name }} </span>
             <!--            <pre>{{ post }}</pre>-->
+            <div class="text-base-300">
+              ({{ post.id }})
+            </div>
           </nuxt-link>
         </div>
 
@@ -94,7 +114,7 @@ export default {
       headers: {
         'Notion-Version': '2022-02-22',
         'Content-Type': 'application/json',
-        Authorization: 'Bearer secret_A92jLLyZSyrGMxTbVAxfdmOGXXCeyl1Fj1s7UfmIKyY'
+        Authorization: this.$config.secretNotion
       }
     }
     try {

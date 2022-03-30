@@ -22,6 +22,9 @@ export default {
   target: 'static',
 
   // Environment variables
+  privateRuntimeConfig: {
+    secretNotion: process.env.SECRET_NOTION
+  },
   env: {
     supabaseUrl: isDev && useLocalSupabase ? 'http://localhost:8000' : process.env.VITE_SUPABASE_URL,
     supabaseKey: isDev && useLocalSupabase
