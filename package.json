@@ -27,11 +27,13 @@
     "core-js": "^3.16.0",
     "daisyui": "^2.13.0",
     "imagesloaded": "^4.1.4",
+    "katex": "^0.15.3",
     "lodash.isequal": "^4.5.0",
     "nuxt": "^2.15.8",
     "nuxt-mq": "^2.0.2",
     "prismjs": "^1.27.0",
     "theme-change": "^2.0.2",
+    "vue-katex": "^0.5.0",
     "vue-tilt.js": "^1.1.1"
   },
   "resolutions": {
