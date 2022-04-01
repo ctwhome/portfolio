@@ -83,7 +83,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/tilt', ssr: false }
+    { src: '~/plugins/tilt', ssr: false },
+    { src: '~/plugins/katex', ssr: false }
   ],
 
   vite: {

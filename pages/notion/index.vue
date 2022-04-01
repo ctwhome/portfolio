@@ -7,7 +7,7 @@
       </div>
       <div class="posts">
         <h2 class="text-4xl font-bold my-5">
-          All Posts ({{ posts.results.length }})
+          All Posts ({{ posts && posts.results && posts.results.length }})
         </h2>
         <div v-if="posts">
           <nuxt-link
