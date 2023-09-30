@@ -2,28 +2,28 @@
 /* @import './scrollbar-color.css';  */
 
 :root {
-  --scrollbarTrack: hsl(var(--b1));
-  --scrollbarThumb: hsl(var(--b3));
-  --scrollbarThumbHover: hsl(var(--b2));
+	--scrollbarTrack: hsl(var(--b1));
+	--scrollbarThumb: hsl(var(--b3));
+	--scrollbarThumbHover: hsl(var(--b2));
 }
 /* Scrollbar colors*/
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--scrollbarTrack);
+	background: var(--scrollbarTrack);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbarThumb);
-  border-radius: 3px;
+	background: var(--scrollbarThumb);
+	border-radius: 3px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbarThumbHover);
+	background: var(--scrollbarThumbHover);
 }
