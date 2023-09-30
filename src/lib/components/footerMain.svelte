@@ -38,6 +38,7 @@
     </div>
     <div class="flex mx-auto sm:mr-0  mt-10 ">
       <Socialicons />
+      <!-- todo -->
     </div>
   </div>
 </section>
