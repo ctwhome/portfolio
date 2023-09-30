@@ -74,12 +74,14 @@
 </nav>
  -->
 <style lang="postcss">
-	.menu-link.active {
-		@apply text-primary;
+
+  .menu-link.active {
+    @apply text-primary;
 		/*transform:  scale(0.9, 0.9);*/
 	}
 
 
+  /* Frosted navigation header */
 	nav {
 		z-index: 10000;
 	  position: sticky;
