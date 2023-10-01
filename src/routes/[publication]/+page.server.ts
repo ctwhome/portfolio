@@ -1,6 +1,4 @@
 export async function load({ params }) {
-	console.log('🎹 params', params);
-
 	let post = null;
 	let media = null;
 	let date = null;
