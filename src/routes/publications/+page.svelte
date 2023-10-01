@@ -19,7 +19,11 @@
 				>
 					<div class="">
 						{#if post.imageUrl}
-							<img src={post.imageUrl} alt={post.title} />
+							<img
+								class="w-[150px] aspect-[4/3] object-cover"
+								src={post.imageUrl}
+								alt={post.title}
+							/>
 						{/if}
 					</div>
 					<div>
