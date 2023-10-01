@@ -23,12 +23,6 @@ export async function load({ params }) {
 			month: 'long',
 			day: 'numeric'
 		});
-
-		// {
-		//   title: postData.title.rendered,
-		//   excerpt: postData.excerpt.rendered,
-		//   imageUrl: mediaData.source_url
-		// };
 	} else {
 		console.error('Failed to fetch post');
 	}
