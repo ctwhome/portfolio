@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	// import SocialIcons from './SocialIcons.svelte';
 	// import HeaderResponsiveMenu from './HeaderResponsiveMenu.svelte';
 	// import { Link } from 'svelte-routing';
@@ -7,13 +6,6 @@
 	// import { tilt } from '../../stores/tilt.js';
 	import menuItems from '$lib/models/menu-itmes.js';
 	import DaisyUIThemeSwitcher from '$lib/components/DaisyUIThemeSwitcher.svelte';
-
-	// let menu = get(menuItems);
-
-	onMount(async () => {
-		console.log('menuItems', menuItems);
-		// menu = await menuItems.fetch();
-	});
 </script>
 
 
