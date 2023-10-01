@@ -2,7 +2,6 @@
 	// import StatusEnum from '$lib/models/status-enum.js';
 	// import svelteTilt from 'vanilla-tilt-svelte';
 	import { onMount, onDestroy } from 'svelte';
-	import FooterMain from '$lib/components/footerMain.svelte';
 	import VanillaTilt from 'vanilla-tilt';
 
 	// let plants = [];
@@ -225,8 +224,6 @@
 		</div>
 		<!-- </div> -->
 	</div>
-
-	<FooterMain class="mt-40" />
 </div>
 
 <style>

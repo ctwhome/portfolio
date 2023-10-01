@@ -1,5 +1,5 @@
 <script>
-	// import Socialicons from '$lib/components/SocialIcons.svelte';
+	import Socialicons from '$lib/components/SocialIcons.svelte';
 	let className = undefined; // class is a reserved keyword in JS, with initialization
 	export { className as class };
 </script>
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<div class="flex mx-auto sm:mr-0 mt-10">
-			<!-- <Socialicons /> -->
+			<Socialicons />
 			<!-- todo -->
 		</div>
 	</div>
