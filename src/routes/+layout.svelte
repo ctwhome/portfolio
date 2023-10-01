@@ -1,6 +1,6 @@
 <script>
 	import '$lib/assets/css/app.css';
-	import FooterMain from '$lib/components/FooterMain.svelte';
+	import FooterMain from '$lib/components/footerMain.svelte';
 	import Header from '$lib/components/Header.svelte';
 </script>
 
@@ -15,4 +15,3 @@
 	</div>
 	<FooterMain class="mt-10" />
 </div>
-
