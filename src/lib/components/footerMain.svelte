@@ -1,5 +1,5 @@
 <script>
-	import Socialicons from '$lib/components/SocialIcons.svelte';
+	import Socialicons from '$lib/components/si.svelte';
 	let className = undefined; // class is a reserved keyword in JS, with initialization
 	export { className as class };
 </script>
