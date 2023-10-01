@@ -12,8 +12,8 @@ export default [
 		path: '/apps'
 	},
 	{
-		title: 'Digital Garden',
-		path: '/digital-garden'
+		title: 'Publications',
+		path: '/publications'
 	}
 	// {
 	// 	title: 'Notion CMS',
