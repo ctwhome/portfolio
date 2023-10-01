@@ -12,7 +12,11 @@
 	{:else if data?.posts?.length > 0}
 		<ul>
 			{#each data.posts as post}
-				<a href={'/' + post.id} class="flex gap-4 mb-10 rounded p-4 hover:bg-base-200 transition">
+				<a
+					data-sveltekit-preload-data="hover"
+					href={'/' + post.id}
+					class="flex gap-4 mb-10 rounded p-4 hover:bg-base-200 transition"
+				>
 					<div class="">
 						{#if post.imageUrl}
 							<img src={post.imageUrl} alt={post.title} />
