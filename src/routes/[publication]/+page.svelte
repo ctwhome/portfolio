@@ -7,7 +7,7 @@
 	let content = post?.content?.rendered;
 </script>
 
-<div class="prose mx-auto mt-6">
+<div class="prose mx-auto mt-6 px-2 sm:px-0">
 	{#if post}
 		<h1>{@html title}</h1>
 		<p>
