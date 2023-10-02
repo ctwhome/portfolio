@@ -8,7 +8,6 @@
 </script>
 
 <div class="prose mx-auto mt-6">
-	---
 	{#if post}
 		<h1>{@html title}</h1>
 		<p>
@@ -42,7 +41,7 @@
 
 		{#if nextPost}
 			<a data-sveltekit-preload-data="hover" href={`/${nextPost.id}`}
-				>→ <br />{nextPost.title.rendered} {nextPost.slug}</a
+				>→ {nextPost.title.rendered} {nextPost.slug}</a
 			>
 		{/if}
 	</div>

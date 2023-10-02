@@ -1,8 +1,10 @@
 <script>
 	export let data;
+	const { posts } = data;
 </script>
 
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->
+<!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
 
 <main class="mx-auto max-w-[700px]">
 	<h1 class="text-4xl font-bold my-10">My Publicaions ({data?.posts?.length})</h1>
@@ -11,28 +13,42 @@
 		<p>Loading...</p>
 	{:else if data?.posts?.length > 0}
 		<ul>
-			{#each data.posts as post}
+			{#each data.posts as { post }}
 				<a
 					data-sveltekit-preload-data="hover"
-					href={'/' + post.id}
+					href={'/' + post.ID}
 					class="flex gap-4 mb-10 rounded p-4 hover:bg-base-200 transition"
 				>
-					<div class="">
-						{#if post.imageUrl}
+					<div class="pt-2">
+						{#if post.media_url}
 							<img
 								class="w-[150px] aspect-[4/3] object-cover"
-								src={post.imageUrl}
-								alt={post.title}
+								src={post.media_url}
+								alt={post.post_title}
 							/>
 						{/if}
 					</div>
 					<div>
-						<h2 class="text-xl font-bold">{@html post.title}</h2>
-						{post.tags}
-						<div class="prose">
-							{@html post.excerpt}
-							<button class="btn btn-ghost hover:btn-primary">View Post</button>
+						<h2 class="text-xl font-bold">{post.post_title}</h2>
+
+						<div class="flex gap-3">
+							<div class="flex gap-3">
+								{#each post.categories as categorie}
+									<div>{categorie.name}</div>
+								{/each}
+								|
+							</div>
+							<div class="flex gap-3">
+								{#each post.tags as tag}
+									<div>{tag.name}</div>
+								{/each}
+							</div>
 						</div>
+
+						<div class="prose line-clamp-3">
+							{@html post.excerpt}
+						</div>
+						<button class="btn btn-ghost hover:btn-primary">View Post</button>
 					</div>
 				</a>
 			{/each}
