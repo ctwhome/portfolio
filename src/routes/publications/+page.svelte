@@ -27,7 +27,7 @@
 						{/if}
 					</div>
 					<div>
-						<h2 class="text-xl font-bold">{post.title}</h2>
+						<h2 class="text-xl font-bold">{@html post.title}</h2>
 						{post.tags}
 						<div class="prose">
 							{@html post.excerpt}
