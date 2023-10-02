@@ -36,13 +36,13 @@
 						</div>
 
 						<div class="flex gap-3 mt-2 opacity-60">
-							<div class="flex gap-3">
+							<div class="flex flex-wrap gap-3">
 								{#each post.categories as categorie}
 									<div>{categorie.name}</div>
 								{/each}
 								|
 							</div>
-							<div class="flex gap-3">
+							<div class="flex flex-wrap gap-3">
 								{#each post.tags as tag}
 									<div>{tag.name}</div>
 								{/each}
