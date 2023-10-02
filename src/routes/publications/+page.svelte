@@ -17,12 +17,12 @@
 				<a
 					data-sveltekit-preload-data="hover"
 					href={'/' + post.ID}
-					class="flex gap-4 mb-10 rounded p-4 hover:bg-base-200 transition"
+					class="flex flex-col sm:flex-row gap-4 mb-10 rounded p-4 hover:bg-base-200 transition bg-base-200 sm:bg-inherit"
 				>
 					<div class="pt-2 flex-none">
 						{#if post.media_url}
 							<img
-								class="w-[150px] aspect-[4/3] object-cover"
+								class="w-full sm:w-[150px] aspect-[4/2] object-cover"
 								src={post.media_url}
 								alt={post.post_title}
 							/>
