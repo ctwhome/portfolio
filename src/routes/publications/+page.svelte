@@ -7,7 +7,7 @@
 <!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
 
 <main class="mx-auto max-w-[900px]">
-	<h1 class="text-4xl font-bold my-10">My Publicaions ({data?.posts?.length})</h1>
+	<h1 class="text-2xl sm:text-4xl font-bold my-10 px-2">My Publicaions ({data?.posts?.length})</h1>
 
 	{#if data?.posts?.length === 0}
 		<p>Loading...</p>
@@ -35,7 +35,7 @@
 							{@html post.excerpt}
 						</div>
 
-						<div class="flex gap-3 mt-2 opacity-60">
+						<div class="flex gap-3 mt-2 opacity-40">
 							<div class="flex flex-wrap gap-3">
 								{#each post.categories as categorie}
 									<div>{categorie.name}</div>
