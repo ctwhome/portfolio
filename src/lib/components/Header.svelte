@@ -29,7 +29,7 @@
     </div>
     <SocialIcons class="mt-32 pl-6" />
   </HeaderResponsiveMenu> -->
-		<div class="mt-4 sm:hidden flex flex-wrap justify-center items-center space-x-2 space-x-4">
+		<div class="mt-4 flex flex-wrap justify-center items-center space-x-2 space-x-4">
 			<!-- {#each menu.items as item (item.path)}
     <Link class="menu-link font-medium  text-sm sm:text-lg hover:text-primary transition" href={item.path}>
       {{ item.title }}
@@ -39,16 +39,12 @@
 		<!--Desktop Header-->
 
 		<header class="flex items-center pt-2">
-			<a
-				data-sveltekit-preload-data="hover"
-				class="flex-initial hidden sm:block mr-3 my-1"
-				href="/"
-			>
+			<a data-sveltekit-preload-data="hover" class="flex-initial mr-3 my-1" href="/">
 				<img src="$lib/assets/images/logo.svg" alt="Logo asset" />
 			</a>
 
 			<!-- menu-->
-			<div class="z-10 flex-1 hidden sm:flex space-x-4 lg:space-x-8 w-full justify-end">
+			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
 				{#each menuItems as item}
 					<a
 						class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium font-title text-sm md:text-md lg:text-lg hover:text-primary transition"
@@ -59,7 +55,7 @@
 				{/each}
 			</div>
 
-			<DaisyUIThemeSwitcher class="z-50 ml-auto hidden sm:block sm:ml-14 " />
+			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />
 		</header>
 	</div>
 </nav>
@@ -82,7 +78,7 @@
 		left: 0;
 		right: 0;
 		top: 0;
-		height: 100px;
+		/* height: 100px; */
 	}
 
 	/* Frosted Navigation bar */
