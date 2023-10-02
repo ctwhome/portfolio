@@ -32,7 +32,7 @@
 	<div class="grid grid-cols-2 gap-4 w-full">
 		<div class="">
 			{#if previousPost}
-				<a data-sveltekit-preload-data="hover" href={`/${previousPost.id}`}>
+				<a data-sveltekit-preload-data="hover" data-sveltekit-reload href={`/${previousPost.id}`}>
 					←
 					{previousPost.title.rendered}</a
 				>
@@ -40,7 +40,7 @@
 		</div>
 
 		{#if nextPost}
-			<a data-sveltekit-preload-data="hover" href={`/${nextPost.id}`}
+			<a data-sveltekit-preload-data="hover" data-sveltekit-reload href={`/${nextPost.id}`}
 				>→ {nextPost.title.rendered} {nextPost.slug}</a
 			>
 		{/if}
