@@ -10,7 +10,6 @@ export async function load({ params }) {
 		posts = data.map((post) => {
 			return { post };
 		});
-		console.log('🎹 posts', posts);
 	} else {
 		console.error('Failed to fetch posts');
 	}
