@@ -1,14 +1,14 @@
 export default [
+	// {
+	// 	title: 'Product design',
+	// 	path: '/product-design'
+	// },
+	// {
+	// 	title: 'Web Engineering',
+	// 	path: '/web'
+	// },
 	{
-		title: 'Product design',
-		path: '/product-design'
-	},
-	{
-		title: 'Web Engineering',
-		path: '/web'
-	},
-	{
-		title: 'My Apps',
+		title: 'My Work',
 		path: '/apps'
 	},
 	{
