@@ -6,7 +6,7 @@
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->
 <!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
 
-<main class="mx-auto max-w-[700px]">
+<main class="mx-auto max-w-[900px]">
 	<h1 class="text-4xl font-bold my-10">My Publicaions ({data?.posts?.length})</h1>
 
 	{#if data?.posts?.length === 0}
@@ -19,7 +19,7 @@
 					href={'/' + post.ID}
 					class="flex gap-4 mb-10 rounded p-4 hover:bg-base-200 transition"
 				>
-					<div class="pt-2">
+					<div class="pt-2 flex-none">
 						{#if post.media_url}
 							<img
 								class="w-[150px] aspect-[4/3] object-cover"
@@ -29,9 +29,13 @@
 						{/if}
 					</div>
 					<div>
-						<h2 class="text-xl font-bold">{post.post_title}</h2>
+						<h2 class="text-2xl font-bold">{post.post_title}</h2>
 
-						<div class="flex gap-3">
+						<div class="prose line-clamp-3 mt-2">
+							{@html post.excerpt}
+						</div>
+
+						<div class="flex gap-3 mt-2 opacity-60">
 							<div class="flex gap-3">
 								{#each post.categories as categorie}
 									<div>{categorie.name}</div>
@@ -44,11 +48,7 @@
 								{/each}
 							</div>
 						</div>
-
-						<div class="prose line-clamp-3">
-							{@html post.excerpt}
-						</div>
-						<button class="btn btn-ghost hover:btn-primary">View Post</button>
+						<!-- <button class="btn btn-ghost hover:btn-primary">View Post</button> -->
 					</div>
 				</a>
 			{/each}
