@@ -1,4 +1,5 @@
 <script>
+	import { lazyLoad } from '$lib/actions/lazy-load.js';
 	export let data;
 	const { posts } = data;
 </script>
@@ -23,7 +24,7 @@
 						{#if post.media_url}
 							<img
 								class="w-full sm:w-[150px] aspect-[4/2] object-cover"
-								src={post.media_url}
+								use:lazyLoad={post.media_url}
 								alt={post.post_title}
 							/>
 						{/if}
@@ -55,3 +56,10 @@
 		</ul>
 	{/if}
 </main>
+
+<style>
+	img {
+		opacity: 0;
+		transition: opacity 0.1s ease;
+	}
+</style>
