@@ -11,7 +11,7 @@
 <nav class="bien-nav">
 	<div class="bien-glass" />
 	<div class="bien-glass-edge" />
-	<div class="relative container mx-auto">
+	<div class="relative container mx-auto -mt-4 py-2">
 		<!--Mobile header -->
 		<!--      Inside the sidebar-->
 		<!-- <HeaderResponsiveMenu ref="menu" class="relative">
@@ -29,7 +29,7 @@
     </div>
     <SocialIcons class="mt-32 pl-6" />
   </HeaderResponsiveMenu> -->
-		<div class="mt-4 flex flex-wrap justify-center items-center space-x-2 space-x-4">
+		<div class="mt-4 flex flex-wrap justify-center items-center">
 			<!-- {#each menu.items as item (item.path)}
     <Link class="menu-link font-medium  text-sm sm:text-lg hover:text-primary transition" href={item.path}>
       {{ item.title }}
@@ -38,7 +38,7 @@
 		</div>
 		<!--Desktop Header-->
 
-		<header class="flex items-center pt-2">
+		<header class="flex items-center">
 			<a data-sveltekit-preload-data="hover" class="flex-initial mr-3 my-1" href="/">
 				<img src="$lib/assets/images/logo.svg" alt="Logo asset" />
 			</a>
@@ -47,7 +47,7 @@
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
 				{#each menuItems as item}
 					<a
-						class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium font-title text-sm md:text-md lg:text-lg hover:text-primary transition"
+						class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium font-title text-md hover:text-primary transition"
 						href={item.path}
 					>
 						{item.title}
