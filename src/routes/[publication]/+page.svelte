@@ -1,30 +1,60 @@
 <script>
+	import VanillaTilt from 'vanilla-tilt';
+	import { onMount, onDestroy } from 'svelte';
+
 	export let data;
 	const { post, media, date, tags, categories, nextPost, previousPost } = data;
 
 	let large = media?.media_details?.sizes?.large?.source_url || media?.source_url;
 	let title = post?.title?.rendered;
 	let content = post?.content?.rendered;
+
+	let tiltCover;
+	onMount(async () => {
+		const tiltOtions = {
+			max: 25,
+			perspective: 1000,
+			scale: 1.05,
+			speed: 2000,
+			transition: true,
+			axis: null,
+			reset: true,
+			easing: 'cubic-bezier(.03,.98,.52,.99)',
+			glare: false,
+			'max-glare': 0.5,
+			'glare-prerender': false
+		};
+		VanillaTilt.init(tiltCover, tiltOtions);
+	});
+
+	onDestroy(() => {
+		// Cleanup if needed
+		// VanillaTilt.destroy(tiltElement);
+	});
 </script>
 
-<div class="prose mx-auto mt-6 px-2 sm:px-0">
+<div class="prose mx-auto mt-6 px-4 sm:px-0">
 	{#if post}
 		<h1>{@html title}</h1>
-		<p>
+		<p class="text-sm opacity-60">
 			{date} -
 			{#each categories as category}
-				<span class="mr-3">{category.name}</span>
+				<span class="mx-1">{category.name}</span>
 			{/each}
-
-			-
+			|
 			{#each tags as tag}
-				<span class="mr-3">{tag.name}</span>
+				<span class="mx-1">{tag.name}</span>
 			{/each}
 		</p>
 		<!-- each categories show catory.name -->
 
 		{#if media}
-			<img src={large} alt={title} class="w-full aspect-[5/3] object-cover" />
+			<img
+				src={large}
+				alt={title}
+				bind:this={tiltCover}
+				class="w-full aspect-[5/3] object-cover rounded sm:rounded-lg"
+			/>
 		{/if}
 		{@html content}
 	{/if}

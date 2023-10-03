@@ -7,10 +7,10 @@ export default [
 	// 	title: 'Web Engineering',
 	// 	path: '/web'
 	// },
-	{
-		title: 'My Work',
-		path: '/apps'
-	},
+	// {
+	// 	title: 'My Work',
+	// 	path: '/apps'
+	// },
 	{
 		title: 'Publications',
 		path: '/publications'
