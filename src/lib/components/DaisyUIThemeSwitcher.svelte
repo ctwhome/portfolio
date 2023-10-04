@@ -69,7 +69,7 @@
 		<ul class="p-4 menu compact">
 			{#each themes as theme, index}
 				<li key={index}>
-					<a tabindex="0" data-set-theme={theme.id} data-act-class="active">{theme.name}</a>
+					<div tabindex="0" data-set-theme={theme.id} data-act-class="active">{theme.name}</div>
 				</li>
 			{/each}
 		</ul>
