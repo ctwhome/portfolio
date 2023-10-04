@@ -55,7 +55,7 @@
 </head>
 
 <div>
-	<div class="first-fold py-16">
+	<div class="first-fold pt-6">
 		<div class="container m-auto px-6">
 			<div class="md:flex justify-between items-center">
 				<div class="md:w-6/12 lg:p-0 p-7 slidein-animation">
@@ -153,15 +153,15 @@
 		<!--          design-->
 		<div class="w-full">
 			<div bind:this={tiltUX}>
-				<a href="/product-design">
-					<img
-						class="w-full transition duration-500 border-opacity-0 hover:border-opacity-100 border-b-4 border-primary"
-						src="$lib/assets/images/product-design.svg"
-						alt="UX Button"
-					/>
-				</a>
+				<!-- <a href="/product-design"> -->
+				<img
+					class="w-full transition duration-500 border-opacity-0 hover:border-opacity-100 border-b-4 border-primary"
+					src="$lib/assets/images/product-design.svg"
+					alt="UX Button"
+				/>
+				<!-- </a> -->
 			</div>
-			<div class="flex flex-col w-full mt-20 gap-8">
+			<!-- <div class="flex flex-col w-full mt-20 gap-8">
 				{#each products as post}
 					<a
 						href={post.path}
@@ -183,24 +183,24 @@
 				<a href="/product-design" class="btn btn-ghost ml-auto normal-case">
 					See more Design Projects
 				</a>
-			</div>
+			</div> -->
 		</div>
 		<!--          web-->
 		<div class="w-full">
 			<div bind:this={tiltWeb}>
-				<a href="/web">
-					<img
-						class="w-full
+				<!-- <a href="/web"> -->
+				<img
+					class="w-full
             transition duration-500
             border-opacity-0 hover:border-opacity-100 border-b-4 border-primary
             "
-						src="$lib/assets/images/web.svg"
-						alt="UX Button"
-					/>
-				</a>
+					src="$lib/assets/images/web.svg"
+					alt="UX Button"
+				/>
+				<!-- </a> -->
 			</div>
 
-			<div class="flex flex-col mt-20 gap-8">
+			<!-- <div class="flex flex-col mt-20 gap-8">
 				{#each webs as post}
 					<a
 						href={post.path}
@@ -220,7 +220,7 @@
 				{/each}
 
 				<a href="/web" class="btn btn-ghost ml-auto normal-case"> Read more Web Engineering </a>
-			</div>
+			</div> -->
 		</div>
 		<!-- </div> -->
 	</div>
