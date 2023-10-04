@@ -43,6 +43,27 @@
 	});
 </script>
 
+<svelte:head>
+	{#if post}
+		<title>{post.title.rendered}</title>
+		<meta name="description" content={post.excerpt.rendered} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={post.excerpt.rendered} />
+		<meta property="og:image" content={large} />
+		<meta property="og:url" content={window.location.href} />
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content={title} />
+		<meta property="article:published_time" content={date} />
+		<meta property="article:modified_time" content={date} />
+		<meta property="article:section" content={categories[0].name} />
+		<meta property="article:tag" content={tags[0].name} />
+		<meta property="article:tag" content={tags[1].name} />
+		<meta property="article:tag" content={tags[2].name} />
+		<meta property="article:tag" content={tags[3].name} />
+		<meta property="article:tag" content={tags[4].name} />
+		<!-- other meta tags -->
+	{/if}
+</svelte:head>
 <!-- <pre>{JSON.stringify(nextPost, null, 2)}</pre> -->
 <div class="prose mx-auto mt-6 px-4 sm:px-0">
 	{#if post}
