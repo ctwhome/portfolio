@@ -44,8 +44,6 @@
 	});
 </script>
 
-{excerpt}
-<pre>{JSON.stringify(excerpt, null, 2)}</pre>
 <svelte:head>
 	{#if post}
 		<!-- HTML Meta Tags -->
