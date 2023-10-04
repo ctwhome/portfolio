@@ -8,16 +8,16 @@
 <!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
 
 <main class="mx-auto max-w-[900px] px-4">
-	<h1 class="text-2xl sm:text-4xl font-bold my-10 px-2">My Publicaions ({data?.posts?.length})</h1>
+	<h1 class="text-2xl sm:text-4xl font-bold px-2">My Publicaions ({data?.posts?.length})</h1>
 
 	{#if data?.posts?.length === 0}
 		<p>Loading...</p>
 	{:else if data?.posts?.length > 0}
-		<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5">
+		<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
 			{#each data.posts as { post }}
 				<a
 					data-sveltekit-preload-data="hover"
-					href={'/' + post.ID}
+					href={'/' + post.categories[0].name + '/' + post.slug}
 					class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
 				>
 					<div class="flex-none">

@@ -41,7 +41,11 @@
 			{#each categories as category}
 				<span class="mx-1">{category.name}</span>
 			{/each}
-			|
+
+			{#if tags.length > 0}
+				|
+			{/if}
+
 			{#each tags as tag}
 				<span class="mx-1">{tag.name}</span>
 			{/each}
@@ -59,7 +63,7 @@
 		{@html content}
 	{/if}
 
-	<div class="grid grid-cols-2 gap-4 w-full">
+	<!-- <div class="grid grid-cols-2 gap-4 w-full">
 		<div class="">
 			{#if previousPost}
 				<a data-sveltekit-preload-data="hover" data-sveltekit-reload href={`/${previousPost.id}`}>
@@ -74,5 +78,5 @@
 				>→ {nextPost.title.rendered} {nextPost.slug}</a
 			>
 		{/if}
-	</div>
+	</div> -->
 </div>

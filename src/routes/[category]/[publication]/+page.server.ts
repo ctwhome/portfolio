@@ -9,13 +9,13 @@ export async function load({ params }) {
 
 	const URL = `https://portfolio.ctwhome.com/wp-json/wp/v2`;
 	const id = params.publication;
-
-	const response = await fetch(`${URL}/posts/${id}`);
+	const response = await fetch(`${URL}/posts?slug=${id}`);
 
 	if (response.ok) {
 		const postData = await response.json();
 
-		post = postData;
+		[post] = postData;
+
 		date = new Date(post.date).toLocaleDateString('en-NL', {
 			year: 'numeric',
 			month: 'long',
@@ -29,9 +29,9 @@ export async function load({ params }) {
 			previousPostResponse,
 			nextPostResponse
 		] = await Promise.all([
-			fetch(`${URL}/media/${postData.featured_media}`),
-			fetch(`${URL}/categories?post=${id}`),
-			fetch(`${URL}/tags?post=${id}`),
+			fetch(`${URL}/media/${post.featured_media}`),
+			fetch(`${URL}/categories?post=${post.id}`),
+			fetch(`${URL}/tags?post=${post.id}`),
 			fetch(`${URL}/posts?per_page=1&order=asc&orderby=date&after=${post.date}`),
 			fetch(`${URL}/posts?per_page=1&order=desc&orderby=date&before=${post.date}`)
 		]);
