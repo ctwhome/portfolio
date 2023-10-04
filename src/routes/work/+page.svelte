@@ -21,7 +21,7 @@
 <!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
 
 <main class="mx-auto max-w-[900px] px-4">
-	<h1 class="text-2xl sm:text-4xl font-bold px-2">My Publicaions ({data?.posts?.length})</h1>
+	<h1 class="text-2xl sm:text-4xl font-bold px-2">Latest Work ({data?.posts?.length})</h1>
 
 	{#if data?.posts?.length === 0}
 		<p>Loading...</p>
