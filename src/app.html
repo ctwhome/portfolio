@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="ctw">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
 
-	<body data-sveltekit-preload-data="hover">
-		<div>%sveltekit.body%</div>
-	</body>
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div>%sveltekit.body%</div>
+</body>
+
+<script>
+	// Get all image elements on the page
+	const allImages = document.querySelectorAll('img');
+
+	// Loop through each image and prevent dragging
+	allImages.forEach(img => {
+		img.addEventListener('dragstart', function (event) {
+			event.preventDefault();
+		});
+	});
+</script>
+
 </html>

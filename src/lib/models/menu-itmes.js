@@ -12,11 +12,11 @@ export default [
 	// 	path: '/apps'
 	// },
 	{
-		title: 'Publications',
-		path: '/publications'
+		title: 'About me',
+		path: '/about'
+	},
+	{
+		title: 'Latest Work',
+		path: '/work'
 	}
-	// {
-	// 	title: 'Notion CMS',
-	// 	path: '/notion'
-	// }
 ];

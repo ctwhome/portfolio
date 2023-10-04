@@ -8,7 +8,7 @@
 	import DaisyUIThemeSwitcher from '$lib/components/DaisyUIThemeSwitcher.svelte';
 </script>
 
-<nav class="bien-nav">
+<nav class="bien-nav mb-10">
 	<div class="bien-glass" />
 	<div class="bien-glass-edge" />
 	<div class="relative container mx-auto -mt-4 py-2">
