@@ -6,6 +6,7 @@ export async function load({ params }) {
 	let date = null;
 	let categories = null;
 	let tags = null;
+	let excerpt = null;
 
 	const URL = `https://portfolio.ctwhome.com/wp-json/wp/v2`;
 	const id = params.publication;
@@ -21,6 +22,9 @@ export async function load({ params }) {
 			month: 'long',
 			day: 'numeric'
 		});
+		excerpt = post.excerpt.rendered
+			.replace(/<\/?[^>]+(>|$)/g, '') // Remove HTML tags
+			.replace(/&#[0-9]+;/g, ''); // Remove HTML entities in the format &#xxxx;
 
 		const [
 			mediaResponse,
@@ -50,5 +54,5 @@ export async function load({ params }) {
 		console.error('Failed to fetch post');
 	}
 
-	return { post, media, date, categories, tags, nextPost, previousPost };
+	return { post, media, date, categories, tags, nextPost, previousPost, excerpt };
 }
