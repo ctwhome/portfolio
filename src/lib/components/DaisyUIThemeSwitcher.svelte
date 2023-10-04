@@ -37,7 +37,7 @@
 	});
 </script>
 
-<div tabindex="1" class={'dropdown dropdown-end flex-none' + className} title="Change Theme">
+<div tabindex="0" class={'dropdown dropdown-end flex-none' + className} title="Change Theme">
 	<div tabindex="0" class="m-1 normal-case btn-ghost btn opacity-70 hover:opacity-100">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
