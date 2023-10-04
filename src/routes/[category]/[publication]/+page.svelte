@@ -73,7 +73,7 @@
 <div class="prose mx-auto mt-6 px-4 sm:px-0">
 	{#if post}
 		<h1>{@html title}</h1>
-		<p class="text-sm opacity-60">
+		<p class="text-sm">
 			{date} -
 			{#each categories as category}
 				<span class="mx-1">{category.name}</span>
