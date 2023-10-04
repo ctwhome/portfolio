@@ -12,9 +12,7 @@ const config = {
 
 	kit: {
 		// https://kit.svelte.dev/docs/adapter-static
-		adapter: adapter({
-			preserve: ['ld+json']
-		})
+		adapter: adapter()
 	}
 };
 
