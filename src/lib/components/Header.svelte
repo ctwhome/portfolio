@@ -40,7 +40,7 @@
 
 		<header class="flex items-center">
 			<a data-sveltekit-preload-data="hover" class="flex-initial mr-3 my-1" href="/">
-				<img src="$lib/assets/images/logo.svg" alt="Logo asset" />
+				<img src="$lib/assets/images/logo.svg" alt="Logo asset" class="aspect-4 sm:aspect-3" />
 			</a>
 
 			<!-- menu-->
