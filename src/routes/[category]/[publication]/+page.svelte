@@ -4,12 +4,11 @@
 	import { page } from '$app/stores';
 
 	export let data;
-	const { post, media, date, tags, categories, nextPost, previousPost } = data;
+	const { post, media, date, tags, categories, nextPost, previousPost, excerpt } = data;
 
 	let large = media?.media_details?.sizes?.large?.source_url || media?.source_url;
 	let title = post?.title?.rendered;
 	let content = post?.content?.rendered;
-	let excerpt = post?.excerpt?.rendered;
 
 	let tiltCover;
 	onMount(async () => {
@@ -45,6 +44,8 @@
 	});
 </script>
 
+{excerpt}
+<pre>{JSON.stringify(excerpt, null, 2)}</pre>
 <svelte:head>
 	{#if post}
 		<!-- HTML Meta Tags -->
