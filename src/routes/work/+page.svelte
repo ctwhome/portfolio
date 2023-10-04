@@ -1,7 +1,20 @@
 <script>
 	// import { lazyLoad } from '$lib/actions/lazy-load.js';
+	import { onMount } from 'svelte';
 	export let data;
 	const { posts } = data;
+
+	onMount(() => {
+		// Get all image elements on the page
+		const allImages = document.querySelectorAll('img');
+
+		// Loop through each image and prevent dragging
+		allImages.forEach((img) => {
+			img.addEventListener('dragstart', function (event) {
+				event.preventDefault();
+			});
+		});
+	});
 </script>
 
 <!-- <pre>{JSON.stringify(data, null, 2)}</pre> -->

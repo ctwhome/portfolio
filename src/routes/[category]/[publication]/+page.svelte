@@ -25,6 +25,16 @@
 			'glare-prerender': false
 		};
 		VanillaTilt.init(tiltCover, tiltOtions);
+
+		// Get all image elements on the page
+		const allImages = document.querySelectorAll('img');
+
+		// Loop through each image and prevent dragging
+		allImages.forEach((img) => {
+			img.addEventListener('dragstart', function (event) {
+				event.preventDefault();
+			});
+		});
 	});
 
 	onDestroy(() => {
@@ -33,6 +43,7 @@
 	});
 </script>
 
+<!-- <pre>{JSON.stringify(nextPost, null, 2)}</pre> -->
 <div class="prose mx-auto mt-6 px-4 sm:px-0">
 	{#if post}
 		<h1>{@html title}</h1>
@@ -63,10 +74,14 @@
 		{@html content}
 	{/if}
 
-	<!-- <div class="grid grid-cols-2 gap-4 w-full">
+	<div class="grid grid-cols-2 gap-4 w-full">
 		<div class="">
 			{#if previousPost}
-				<a data-sveltekit-preload-data="hover" data-sveltekit-reload href={`/${previousPost.id}`}>
+				<a
+					data-sveltekit-preload-data="hover"
+					data-sveltekit-reload
+					href={`/work/${previousPost.slug}`}
+				>
 					←
 					{previousPost.title.rendered}</a
 				>
@@ -74,9 +89,9 @@
 		</div>
 
 		{#if nextPost}
-			<a data-sveltekit-preload-data="hover" data-sveltekit-reload href={`/${nextPost.id}`}
+			<a data-sveltekit-preload-data="hover" data-sveltekit-reload href={`/work/${nextPost.slug}`}
 				>→ {nextPost.title.rendered} {nextPost.slug}</a
 			>
 		{/if}
-	</div> -->
+	</div>
 </div>
