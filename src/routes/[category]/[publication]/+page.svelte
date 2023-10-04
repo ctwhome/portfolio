@@ -54,7 +54,7 @@
 		<meta property="og:url" content={$page.url.toString()} />
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
-		<meta property="og:description" content={excerpt} />
+		<meta property="og:description" content="test" />
 		<meta property="og:image" content={large} />
 
 		<!-- Twitter Meta Tags -->
