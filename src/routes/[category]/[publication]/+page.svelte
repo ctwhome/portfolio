@@ -4,7 +4,7 @@
 	import { page } from '$app/stores';
 
 	export let data;
-	const { post, media, date, tags, categories, nextPost, previousPost, excerpt } = data;
+	const { post, media, date, tags, categories, nextPost, previousPost, yoast_head } = data;
 
 	let large = media?.media_details?.sizes?.large?.source_url || media?.source_url;
 	let title = post?.title?.rendered;
@@ -45,27 +45,8 @@
 </script>
 
 <svelte:head>
-	{#if post}
-		<!-- HTML Meta Tags -->
-		<title>{title}</title>
-		<meta name="description" content={excerpt} />
-
-		<!-- Facebook Meta Tags -->
-		<meta property="og:url" content={$page.url.toString()} />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={excerpt} />
-		<meta property="og:image" content={large} />
-
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:card" content={large} />
-		<meta property="twitter:domain" content="ctwhome.com" />
-		<meta property="twitter:url" content={$page.url.toString()} />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={excerpt} />
-		<meta name="twitter:image" content={large} />
-
-		<!-- other meta tags -->
+	{#if yoast_head}
+		{@html yoast_head}
 	{/if}
 </svelte:head>
 
