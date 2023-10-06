@@ -1,3 +1,7 @@
+// Redirect page removing the trailing slash
+export const trailingSlash = 'never';
+
+// Load the post data
 export async function load({ params }) {
 	let post = null;
 	let previousPost = null;
@@ -6,8 +10,7 @@ export async function load({ params }) {
 	let date = null;
 	let categories = null;
 	let tags = null;
-	let excerpt = null;
-
+	let yoast_head = null;
 	const URL = `https://portfolio.ctwhome.com/wp-json/wp/v2`;
 	const id = params.publication;
 	const response = await fetch(`${URL}/posts?slug=${id}`);
@@ -22,10 +25,6 @@ export async function load({ params }) {
 			month: 'long',
 			day: 'numeric'
 		});
-		excerpt = post.excerpt.rendered
-			.replace(/<\/?[^>]+(>|$)/g, '') // Remove HTML tags
-			.replace(/&#[0-9]+;/g, ''); // Remove HTML entities in the format &#xxxx;
-
 		const [
 			mediaResponse,
 			categoriesResponse,
@@ -50,9 +49,19 @@ export async function load({ params }) {
 
 		const nextPostData = await nextPostResponse.json();
 		nextPost = nextPostData[0];
+
+		yoast_head = post.yoast_head;
 	} else {
 		console.error('Failed to fetch post');
 	}
-
-	return { post, media, date, categories, tags, nextPost, previousPost, excerpt };
+	return {
+		post,
+		media,
+		date,
+		categories,
+		tags,
+		nextPost,
+		previousPost,
+		yoast_head
+	};
 }
