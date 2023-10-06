@@ -30,7 +30,6 @@
 			<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
 			<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
 				{#each posts[year] as post}
-					<pre>{JSON.stringify(post?.categories, null, 2)}</pre>
 					<a
 						data-sveltekit-preload-data="hover"
 						href={'/' + post.categories[0].slug + '/' + post.slug}
