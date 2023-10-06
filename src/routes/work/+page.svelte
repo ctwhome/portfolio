@@ -19,7 +19,6 @@
 
 <!-- <pre>{JSON.stringify(posts, null, 2)}</pre> -->
 <!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
-
 <main class="mx-auto max-w-[900px] px-4">
 	<h1 class="text-2xl sm:text-4xl font-bold">
 		Latest Work ({count})
@@ -31,9 +30,10 @@
 			<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
 			<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
 				{#each posts[year] as post}
+					<pre>{JSON.stringify(post?.categories, null, 2)}</pre>
 					<a
 						data-sveltekit-preload-data="hover"
-						href={'/' + post.categories[0].name + '/' + post.slug}
+						href={'/' + post.categories[0].slug + '/' + post.slug}
 						class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
 					>
 						<div class="flex-none">
