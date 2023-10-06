@@ -3,6 +3,8 @@
 	// import svelteTilt from 'vanilla-tilt-svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import VanillaTilt from 'vanilla-tilt';
+	export let data;
+	const { yoast_head } = data;
 
 	// let plants = [];
 	let products = [];
@@ -50,10 +52,11 @@
 	});
 </script>
 
-<head>
-	<title>Ctw Portfolio</title>
-</head>
-
+<svelte:head>
+	{#if yoast_head}
+		{@html yoast_head}
+	{/if}
+</svelte:head>
 <div>
 	<div class="first-fold pt-6">
 		<div class="container m-auto px-6">

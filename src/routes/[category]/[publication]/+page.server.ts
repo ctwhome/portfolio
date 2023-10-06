@@ -1,4 +1,5 @@
 // Redirect page removing the trailing slash
+import { replaceURL } from '$lib/utils/repace-url-for-seo.js';
 export const trailingSlash = 'never';
 
 // Load the post data
@@ -50,7 +51,7 @@ export async function load({ params }) {
 		const nextPostData = await nextPostResponse.json();
 		nextPost = nextPostData[0];
 
-		yoast_head = post.yoast_head;
+		yoast_head = replaceURL(post.yoast_head, categories[0].slug);
 	} else {
 		console.error('Failed to fetch post');
 	}
