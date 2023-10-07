@@ -5,8 +5,9 @@ export const trailingSlash = 'never';
 // Load the post data
 export async function load({ params }) {
 	let post = null;
-	let previousPost = null;
-	let nextPost = null;
+	// const previousPost = null;
+	let next_prev = null;
+	// const nextPost = null;
 	let media = null;
 	let date = null;
 	let categories = null;
@@ -30,14 +31,16 @@ export async function load({ params }) {
 			mediaResponse,
 			categoriesResponse,
 			tagsResponse,
-			previousPostResponse,
-			nextPostResponse
+			next_prev_response
+			// previousPostResponse,
+			// nextPostResponse
 		] = await Promise.all([
 			fetch(`${URL}/media/${post.featured_media}`),
 			fetch(`${URL}/categories?post=${post.id}`),
 			fetch(`${URL}/tags?post=${post.id}`),
-			fetch(`${URL}/posts?per_page=1&order=asc&orderby=date&after=${post.date}`),
-			fetch(`${URL}/posts?per_page=1&order=desc&orderby=date&before=${post.date}`)
+			fetch(`https://portfolio.ctwhome.com/wp-json/myplugin/v1/next_prev/${post.id}`)
+			// fetch(`${URL}/posts?per_page=1&order=asc&orderby=date&after=${post.date}`),
+			// fetch(`${URL}/posts?per_page=1&order=desc&orderby=date&before=${post.date}`)
 		]);
 
 		media = await mediaResponse.json();
@@ -45,11 +48,11 @@ export async function load({ params }) {
 
 		tags = await tagsResponse.json();
 
-		const previousPostData = await previousPostResponse.json();
-		previousPost = previousPostData[0];
+		next_prev = await next_prev_response.json();
+		console.log('🎹 next_prevData', next_prev);
 
-		const nextPostData = await nextPostResponse.json();
-		nextPost = nextPostData[0];
+		// const nextPostData = await nextPostResponse.json();
+		// nextPost = nextPostData[0];
 
 		yoast_head = replaceURL(post.yoast_head, categories[0].slug);
 	} else {
@@ -61,8 +64,9 @@ export async function load({ params }) {
 		date,
 		categories,
 		tags,
-		nextPost,
-		previousPost,
+		next_prev,
+		// nextPost,
+		// previousPost,
 		yoast_head
 	};
 }
