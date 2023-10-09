@@ -2,7 +2,7 @@
 	// import { lazyLoad } from '$lib/actions/lazy-load.js';
 	import { onMount } from 'svelte';
 	export let data;
-	const { posts, count } = data;
+	const { posts, count, tags, categories } = data;
 
 	onMount(() => {
 		// Get all image elements on the page
@@ -17,15 +17,45 @@
 	});
 </script>
 
-<!-- <pre>{JSON.stringify(posts, null, 2)}</pre> -->
-<!-- <pre>{JSON.stringify(posts[3].post, null, 2)}</pre> -->
 <main class="mx-auto max-w-[900px] px-4">
 	<h1 class="text-2xl sm:text-4xl font-bold">
 		Latest Work ({count})
 	</h1>
+
 	{#if !data}
 		<p>Loading...</p>
 	{:else}
+		<div class="grid grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
+			<div>
+				<div class="text-sm mb-2">Categories</div>
+				<div class="flex flex-wrap gap-2">
+					{#each categories as categorie}
+						<!-- daisyui chips -->
+						<a class="">
+							<button class="btn btn-sm">
+								{categorie.name}
+								<div class="badge">{categorie.count}</div>
+							</button>
+						</a>
+					{/each}
+				</div>
+			</div>
+			<div>
+				<div class="text-sm mb-2">Tags</div>
+				<div class="flex flex-wrap gap-2">
+					{#each tags as tag}
+						<!-- daisyui chips -->
+						<a class="">
+							<button class="btn btn-xs">
+								{tag.name}
+								<div class="badge">{tag.count}</div>
+							</button>
+						</a>
+					{/each}
+				</div>
+			</div>
+		</div>
+
 		{#each Object.keys(posts).sort().reverse() as year}
 			<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
 			<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
