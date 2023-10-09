@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn{
+    text-transform: none;
+  }
+}
+
 :root {
 	--text: #212121;
 	--bg: #e5e5e5;

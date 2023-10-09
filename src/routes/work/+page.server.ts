@@ -26,22 +26,36 @@ function groupPostsByYear(posts) {
 }
 
 export async function load({ params }) {
-	let posts = [];
+	const CATEGORIES_URL =
+		'https://portfolio.ctwhome.com/wp-json/wp/v2/categories?_fields=id,name,count';
+	const TAGS_URL = 'https://portfolio.ctwhome.com/wp-json/wp/v2/tags?_fields=id,name,count';
+	const CUSTOM_POSTS_LIST_URL = 'https://portfolio.ctwhome.com/wp-json/custom/v1/posts';
 
-	// Using Custom Endpoint inside WP
-	const url = 'https://portfolio.ctwhome.com/wp-json/custom/v1/posts';
-	const response = await fetch(url);
+	const [postsResponse, tagsResponse, categoriesResponse] = await Promise.all([
+		fetch(CUSTOM_POSTS_LIST_URL),
+		fetch(TAGS_URL),
+		fetch(CATEGORIES_URL)
+	]);
 
-	if (response.ok) {
-		const data = await response.json();
-		posts = data.map((post) => {
-			return { post };
-		});
-	} else {
+	if (!postsResponse.ok) {
 		console.error('Failed to fetch posts');
+		return;
 	}
 
-	return { posts: groupPostsByYear(posts), count: posts.length };
+	const [postsData, tagsData, categoriesData] = await Promise.all([
+		postsResponse.json(),
+		tagsResponse.json(),
+		categoriesResponse.json()
+	]);
+
+	const posts = postsData.map((post) => ({ post }));
+
+	return {
+		posts: groupPostsByYear(posts),
+		count: posts.length,
+		tags: tagsData,
+		categories: categoriesData
+	};
 }
 
 // let posts = [];

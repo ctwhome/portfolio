@@ -49,7 +49,6 @@ export async function load({ params }) {
 		tags = await tagsResponse.json();
 
 		next_prev = await next_prev_response.json();
-		console.log('🎹 next_prevData', next_prev);
 
 		// const nextPostData = await nextPostResponse.json();
 		// nextPost = nextPostData[0];
