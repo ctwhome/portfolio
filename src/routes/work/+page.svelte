@@ -136,7 +136,7 @@
 								{/if}
 							</div>
 							<div class="px-3 pb-3">
-								<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{post.post_title}</h2>
+								<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.post_title}</h2>
 
 								<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
 									{@html post.excerpt}
