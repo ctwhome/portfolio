@@ -4,7 +4,7 @@
 	// import { Link } from 'svelte-routing';
 	// import { get } from 'svelte/store';
 	// import { tilt } from '../../stores/tilt.js';
-	import menuItems from '$lib/models/menu-itmes.js';
+	// import menuItems from '$lib/models/menu-itmes.js';
 	import DaisyUIThemeSwitcher from '$lib/components/DaisyUIThemeSwitcher.svelte';
 </script>
 
@@ -49,14 +49,8 @@
 
 			<!-- menu-->
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
-				{#each menuItems as item}
-					<a
-						class="text-base-content text-opacity-80 hove:text-opacity-100 menu-link font-medium font-title text-md hover:text-primary transition"
-						href={item.path}
-					>
-						{item.title}
-					</a>
-				{/each}
+				<a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a>
+				<a class="menu-link" href="/work"> <span class="hidden sm:inline">Latest </span>Work </a>
 			</div>
 
 			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />
@@ -70,6 +64,10 @@
 </nav>
  -->
 <style lang="postcss">
+	.menu-link {
+		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium hover:text-primary transition;
+	}
+
 	.menu-link.active {
 		@apply text-primary;
 		/*transform:  scale(0.9, 0.9);*/
