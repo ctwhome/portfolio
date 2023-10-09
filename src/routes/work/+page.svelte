@@ -59,9 +59,7 @@
 			Latest Work ({count})
 		</h1>
 		{#if hasFilters}
-			<button on:click={() => (hasFilters = false)} class="btn btn-sm btn-primary"
-				>Clear Filers</button
-			>
+			<button on:click={clearFilters} class="btn btn-sm btn-primary">Clear Filers</button>
 		{/if}
 	</div>
 
