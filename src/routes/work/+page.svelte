@@ -8,6 +8,25 @@
 	const filteredPosts = writable({ ...posts }); // initialize with all posts
 	let hasFilters = false;
 
+	let filteredCategories = categories;
+	let filteredTags = tags;
+
+	function updateFilteredCategoriesAndTags(filteredPosts) {
+		const allCategories = new Set();
+		const allTags = new Set();
+
+		for (let year in filteredPosts) {
+			for (let post of filteredPosts[year]) {
+				post.categories.forEach((category) => allCategories.add(category.id));
+				if (post.tags) {
+					post.tags.forEach((tag) => allTags.add(tag.id));
+				}
+			}
+		}
+
+		filteredCategories = categories.filter((category) => allCategories.has(category.id));
+		filteredTags = tags.filter((tag) => allTags.has(tag.id));
+	}
 	onMount(() => {
 		// Get all image elements on the page
 
@@ -22,8 +41,10 @@
 	});
 
 	function clearFilters() {
-		hasFilters = false;
-		filteredPosts.set({ ...posts });
+		filteredPosts.set({ ...posts }); // reset posts filter
+		filteredCategories = categories; // reset category filter
+		filteredTags = tags; // reset tags filter
+		hasFilters = false; // update the hasFilters flag
 	}
 
 	function filterByCategory(categoryId) {
@@ -37,6 +58,7 @@
 			);
 		}
 		filteredPosts.set(newFilteredPosts); // update the store
+		updateFilteredCategoriesAndTags(newFilteredPosts);
 	}
 
 	function filterByTag(tagId) {
@@ -50,6 +72,7 @@
 			);
 		}
 		filteredPosts.set(newFilteredPosts); // update the store
+		updateFilteredCategoriesAndTags(newFilteredPosts);
 	}
 </script>
 
@@ -70,11 +93,11 @@
 			<div>
 				<div class="text-sm mb-2">Categories</div>
 				<div class="flex flex-wrap gap-2">
-					{#each categories as categorie}
+					{#each filteredCategories as category}
 						<!-- daisyui chips -->
-						<button on:click={() => filterByCategory(categorie.id)} class="btn btn-sm">
-							{categorie.name}
-							<div class="badge">{categorie.count}</div>
+						<button on:click={() => filterByCategory(category.id)} class="btn btn-sm">
+							{category.name}
+							<div class="badge">{category.count}</div>
 						</button>
 					{/each}
 				</div>
@@ -82,7 +105,7 @@
 			<div>
 				<div class="text-sm mb-2">Tags</div>
 				<div class="flex flex-wrap gap-2">
-					{#each tags as tag}
+					{#each filteredTags as tag}
 						<!-- daisyui chips -->
 						<button on:click={() => filterByTag(tag.id)} class="btn btn-xs">
 							{tag.name}
