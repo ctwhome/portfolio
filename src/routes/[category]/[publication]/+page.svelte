@@ -69,7 +69,10 @@
 			{/each}
 		</p>
 		<!-- Profile picture -->
-		<div class="flex items-center gap-3">
+		<a
+			href="/about"
+			class="flex items-center gap-3 decoration-transparent hover:decoration-primary"
+		>
 			<img
 				width="60"
 				height="60"
@@ -81,7 +84,7 @@
 				<div class="font-bold">J. Gonzalez - Ctw</div>
 				<div>Product Designer & Research Software Engineer</div>
 			</div>
-		</div>
+		</a>
 
 		{#if media}
 			<img
