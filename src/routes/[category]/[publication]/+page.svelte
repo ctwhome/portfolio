@@ -11,6 +11,8 @@
 	let content = post?.content?.rendered;
 
 	let tiltCover;
+	let fullPage;
+
 	onMount(async () => {
 		const tiltOtions = {
 			max: 25,
@@ -29,19 +31,41 @@
 
 		// Get all image elements on the page
 		const allImages = document.querySelectorAll('img');
-
-		// Loop through each image and prevent dragging
 		allImages.forEach((img) => {
 			img.addEventListener('dragstart', function (event) {
 				event.preventDefault();
 			});
 		});
+
+		const contentImages = document.querySelectorAll('#content img');
+		// Loop through each image and prevent dragging
+		contentImages.forEach((img) => {
+			// img.style.cursor = 'zoom-in';
+			img.className = 'cursor-zoom-in hover:scale-110 transition duration-[300ms] rounded-lg';
+			img.addEventListener('click', function () {
+				fullPage.style.backgroundImage = 'url(' + img.src + ')';
+				fullPage.style.display = 'block';
+			});
+		});
+
+		// getPics();
 	});
 
 	onDestroy(() => {
 		// Cleanup if needed
 		// VanillaTilt.destroy(tiltElement);
 	});
+	function getPics() {
+		const imgs = document.querySelectorAll('#content img');
+		const fullPage = document.querySelector('#fullpage');
+
+		imgs.forEach((img) => {
+			img.addEventListener('click', function () {
+				fullPage.style.backgroundImage = 'url(' + img.src + ')';
+				fullPage.style.display = 'block';
+			});
+		});
+	}
 </script>
 
 <svelte:head>
@@ -75,6 +99,7 @@
 		>
 			<img
 				width="60"
+				id="cover"
 				height="60"
 				class="mask mask-hexagon my-2"
 				src={ctwhomeProfile}
@@ -95,7 +120,9 @@
 			/>
 		{/if}
 
-		{@html content}
+		<div id="content">
+			{@html content}
+		</div>
 	{/if}
 </div>
 {#if next_prev}
@@ -162,3 +189,20 @@
 		Improve this page
 	</a>
 </div>
+
+<div id="fullpage" bind:this={fullPage} onclick="this.style.display='none';" />
+
+<style>
+	#fullpage {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-size: contain;
+		background-repeat: no-repeat no-repeat;
+		background-position: center center;
+		background-color: black;
+	}
+</style>
