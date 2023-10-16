@@ -175,7 +175,7 @@
 
 <div class="container mx-auto">
 	<a
-		href={`https://portfolio.ctwhome.com/wp-admin/post.php?post=&{post.id}&action=edit`}
+		href={`https://portfolio.ctwhome.com/wp-admin/post.php?post=${post.id}&action=edit`}
 		rel="nofollow"
 		title="Edit post"
 		class="flex gap-2 items-center no-underline hover:underline hover:decoration-primary opacity-70"
