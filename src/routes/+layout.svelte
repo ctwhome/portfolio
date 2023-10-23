@@ -2,7 +2,10 @@
 	import '$lib/assets/css/app.css';
 	import FooterMain from '$lib/components/footerMain.svelte';
 	import Header from '$lib/components/Header.svelte';
+	import Analytics from '$lib/components/Analytics.svelte';
 </script>
+
+<Analytics />
 
 <div class="flex flex-col h-screen">
 	<!-- <header-main /> -->
