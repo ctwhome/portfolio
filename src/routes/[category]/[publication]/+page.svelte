@@ -190,7 +190,8 @@
 	</a>
 </div>
 
-<div id="fullpage" bind:this={fullPage} onclick="this.style.display='none';" />
+<div id="fullpage" bind:this={fullPage} on:click={() => (fullPage.style.display = 'none')} />
+
 
 <style>
 	#fullpage {
