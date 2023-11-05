@@ -129,103 +129,112 @@
 	}
 </script>
 
-<div class="my-4 px-4 flex gap-2 flex-wrap absolute">
-	<button class="btn btn-sm" on:click={() => animateCameraTo({ x: 5, y: 5, z: 2 })}
-		>Position 1</button
-	>
-	<button class="btn btn-sm" on:click={() => animateCameraTo({ x: -5, y: 5, z: -5 })}
-		>Position 2</button
-	>
-	<button class="btn btn-sm" on:click={() => animateCameraTo({ x: 0, y: 10, z: 2 })}
-		>Position 3</button
-	>
-	<button class="btn btn-sm" on:click={changeColor}>Change Cube Color</button>
-	<!-- <label
+<div class="absolute -top-28 -left-24 sm:top-0 sm:left-0 pointer-events-none">
+	<div class="my-4 mt-28 px-4 flex flex-wrap gap-2 scale-[0.6] sm:scale-100 w-full">
+		<button class="btn btn-sm" on:click={() => animateCameraTo({ x: 5, y: 5, z: 2 })}
+			>Position 1</button
+		>
+		<button class="btn btn-sm" on:click={() => animateCameraTo({ x: -5, y: 5, z: -5 })}
+			>Position 2</button
+		>
+		<button class="btn btn-sm" on:click={() => animateCameraTo({ x: 0, y: 10, z: 2 })}
+			>Position 3</button
+		>
+		<button class="btn btn-sm" on:click={changeColor}>Change Cube Color</button>
+		<!-- <label
 		><input
 			type="checkbox"
 			on:change={(cameraControls.verticalDragToForward = this.checked)}
 		/>vertical drag to move forward</label
 	> -->
-	<!-- <label> -->
-	<!-- <input type="checkbox" bind:checked={cameraControls.dollyToCursor} />dolly to cursor -->
-	<!-- </label> -->
-	<!-- <br /> -->
-	<!-- <label> -->
-	<!-- <input type="checkbox" bind:checked={cameraControls.dollyDragInverted} />dolly drag inverted -->
-	<!-- </label> -->
-	<!-- <br /> -->
-	<!-- <br /> -->
-	<button
-		class="btn btn-sm"
-		on:click={() => cameraControls.rotate(45 * THREE.MathUtils.DEG2RAD, 0, true)}
-		>rotate theta 45deg</button
-	>
-	<button
-		class="btn btn-sm"
-		on:click={() => cameraControls.rotate(-90 * THREE.MathUtils.DEG2RAD, 0, true)}
-		>rotate theta -90deg</button
-	>
-	<button
-		class="btn btn-sm"
-		on:click={() => cameraControls.rotate(360 * THREE.MathUtils.DEG2RAD, 0, true)}
-		>rotate theta 360deg</button
-	>
-	<button
-		class="btn btn-sm"
-		on:click={() => cameraControls.rotate(0, 20 * THREE.MathUtils.DEG2RAD, true)}
-		>rotate phi 20deg</button
-	>
+		<!-- <label> -->
+		<!-- <input type="checkbox" bind:checked={cameraControls.dollyToCursor} />dolly to cursor -->
+		<!-- </label> -->
+		<!-- <br /> -->
+		<!-- <label> -->
+		<!-- <input type="checkbox" bind:checked={cameraControls.dollyDragInverted} />dolly drag inverted -->
+		<!-- </label> -->
+		<!-- <br /> -->
+		<!-- <br /> -->
+		<button
+			class="btn btn-sm"
+			on:click={() => cameraControls.rotate(45 * THREE.MathUtils.DEG2RAD, 0, true)}
+			>rotate theta 45deg</button
+		>
+		<button
+			class="btn btn-sm"
+			on:click={() => cameraControls.rotate(-90 * THREE.MathUtils.DEG2RAD, 0, true)}
+			>rotate theta -90deg</button
+		>
+		<button
+			class="btn btn-sm"
+			on:click={() => cameraControls.rotate(360 * THREE.MathUtils.DEG2RAD, 0, true)}
+			>rotate theta 360deg</button
+		>
+		<button
+			class="btn btn-sm"
+			on:click={() => cameraControls.rotate(0, 20 * THREE.MathUtils.DEG2RAD, true)}
+			>rotate phi 20deg</button
+		>
 
-	<button class="btn btn-sm" on:click={() => cameraControls.truck(1, 0, true)}>
-		truck( 1, 0 )
-	</button>
-	<button class="btn btn-sm" on:click={() => cameraControls.truck(0, 1, true)}>
-		truck( 0, 1 )
-	</button>
-	<button class="btn btn-sm" on:click={() => cameraControls.truck(-1, -1, true)}>
-		truck( -1, -1 )
-	</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.truck(1, 0, true)}>
+			truck( 1, 0 )
+		</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.truck(0, 1, true)}>
+			truck( 0, 1 )
+		</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.truck(-1, -1, true)}>
+			truck( -1, -1 )
+		</button>
 
-	<button class="btn btn-sm" on:click={() => cameraControls.dolly(1, true)}>dolly 1</button>
-	<button class="btn btn-sm" on:click={() => cameraControls.dolly(-1, true)}>dolly -1</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.dolly(1, true)}>dolly 1</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.dolly(-1, true)}>dolly -1</button>
 
-	<button class="btn btn-sm" on:click={() => cameraControls.zoom(camera.zoom / 2, true)}
-		>zoom `camera.zoom / 2`</button
-	>
-	<button class="btn btn-sm" on:click={() => cameraControls.zoom(-camera.zoom / 2, true)}
-		>zoom `- camera.zoom / 2`</button
-	>
+		<button class="btn btn-sm" on:click={() => cameraControls.zoom(camera.zoom / 2, true)}
+			>zoom `camera.zoom / 2`</button
+		>
+		<button class="btn btn-sm" on:click={() => cameraControls.zoom(-camera.zoom / 2, true)}
+			>zoom `- camera.zoom / 2`</button
+		>
 
-	<button class="btn btn-sm" on:click={() => cameraControls.moveTo(3, 5, 2, true)}>
-		move to( 3, 5, 2 )</button
-	>
-	<!-- <button class="btn btn-sm" on:click={()=> cameraControls.fitToBox(mesh, true)}>fit to the bounding box of the mesh</button -->
+		<button class="btn btn-sm" on:click={() => cameraControls.moveTo(3, 5, 2, true)}>
+			move to( 3, 5, 2 )</button
+		>
+		<!-- <button class="btn btn-sm" on:click={()=> cameraControls.fitToBox(mesh, true)}>fit to the bounding box of the mesh</button -->
 
-	<button class="btn btn-sm" on:click={() => cameraControls.setPosition(-5, 2, 1, true)}
-		>move to ( -5, 2, 1 )</button
-	>
-	<button class="btn btn-sm" on:click={() => cameraControls.setTarget(3, 0, -3, true)}
-		>look at ( 3, 0, -3 )</button
-	>
-	<button class="btn btn-sm" on:click={() => cameraControls.setLookAt(1, 2, 3, 1, 1, 0, true)}
-		>move to ( 1, 2, 3 ), look at ( 1, 1, 0 )</button
-	>
+		<button class="btn btn-sm" on:click={() => cameraControls.setPosition(-5, 2, 1, true)}
+			>move to ( -5, 2, 1 )</button
+		>
+		<button class="btn btn-sm" on:click={() => cameraControls.setTarget(3, 0, -3, true)}
+			>look at ( 3, 0, -3 )</button
+		>
+		<button class="btn btn-sm" on:click={() => cameraControls.setLookAt(1, 2, 3, 1, 1, 0, true)}
+			>move to ( 1, 2, 3 ), look at ( 1, 1, 0 )</button
+		>
 
-	<button
-		on:click={() =>
-			cameraControls.lerpLookAt(-2, 0, 0, 1, 1, 0, 0, 2, 5, -1, 0, 0, Math.random(), true)}
-	>
-		movee between ( -2, 0, 0 ) -> ( 1, 1, 0 ) and ( 0, 2, 5 ) -> ( -1, 0, 0 )
-	</button>
+		<button
+			class="btn btn-sm"
+			on:click={() =>
+				cameraControls.lerpLookAt(-2, 0, 0, 1, 1, 0, 0, 2, 5, -1, 0, 0, Math.random(), true)}
+		>
+			move between ( -2, 0, 0 ) -> ( 1, 1, 0 ) and ( 0, 2, 5 ) -> ( -1, 0, 0 )
+		</button>
 
-	<button class="btn btn-sm" on:click={() => cameraControls.reset(true)}>reset</button>
-	<button class="btn btn-sm" on:click={() => cameraControls.saveState()}>saveState</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.reset(true)}>reset</button>
+		<button class="btn btn-sm" on:click={() => cameraControls.saveState()}>saveState</button>
 
-	<button class="btn btn-sm" on:click={() => (cameraControls.enabled = false)}
-		>disable mouse/touch controls</button
-	>
-	<button class="btn btn-sm" on:click={() => (cameraControls.enabled = true)}
-		>enable mouse/touch controls</button
-	>
+		<button class="btn btn-sm" on:click={() => (cameraControls.enabled = false)}
+			>disable mouse/touch controls</button
+		>
+		<button class="btn btn-sm" on:click={() => (cameraControls.enabled = true)}
+			>enable mouse/touch controls</button
+		>
+	</div>
 </div>
 <canvas class="w-full h-[400px] -mt-20" bind:this={canvas} />
+
+<style>
+	.btn {
+		pointer-events: auto;
+	}
+</style>
