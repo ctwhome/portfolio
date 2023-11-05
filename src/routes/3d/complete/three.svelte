@@ -5,7 +5,7 @@
 
 	CameraControls.install({ THREE: THREE });
 
-	let canvas;
+	let canvas: HTMLCanvasElement;
 	let cameraControls;
 
 	const geometry = new THREE.BoxGeometry(1, 1, 1);

@@ -9,5 +9,13 @@
 				href="/nebula/index.html">Nebula</a
 			>
 		</li>
+		<li>
+			<a
+				class="hover:text-primary"
+				data-sveltekit-preload-data=""
+				data-sveltekit-reload
+				href="/nebula/index.html">World Dots</a
+			>
+		</li>
 	</ul>
 </div>
