@@ -43,7 +43,7 @@
 				<img
 					src="$lib/assets/images/logo.svg"
 					alt="Logo asset"
-					class="w-full aspect-4 sm:aspect-3"
+					class="max-w-[180px] h-auto aspect-4 sm:aspect-3"
 				/>
 			</a>
 
