@@ -40,6 +40,30 @@
 				</div>
 			</div>
 		</a>
+		<!-- Orthographic camera with pan an zoom -->
+		<a href="/3d/paint">
+			<div
+				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
+				<figure>
+					<img
+						src="https://cdn.dribbble.com/users/281953/screenshots/14185638/media/cee0cae52e27109df7eeaeb281e65911.gif"
+						alt="3D example"
+						class="filter -hue-rotate-90"
+					/>
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">ThreeJS Camera Controls</h2>
+					<p>Orthographic camera with pan an zoom</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+							Open
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
 	</div>
 
 	<h2 class="mt-10 text-lg">3D Examples</h2>
