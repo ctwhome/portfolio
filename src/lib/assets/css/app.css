@@ -5,15 +5,25 @@
 @tailwind utilities;
 
 @layer components {
-  .btn{
-    text-transform: none;
-  }
+	.btn {
+		text-transform: none;
+	}
+
+	.btn a {
+		@apply no-underline;
+	}
+
+	button {
+		@apply btn;
+
+	}
 }
 
 :root {
 	--text: #212121;
 	--bg: #e5e5e5;
 }
+
 .ctw-button {
 	/*@apply bg-gradient-to-br from-yellow-500 via-red-500 to-teal-500;*/
 }
@@ -22,6 +32,7 @@
 html {
 	margin-left: calc(100vw - 100%);
 }
+
 body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
 		'Open Sans', 'Helvetica Neue', sans-serif;
@@ -39,10 +50,16 @@ body {
 .fade-enter-active {
 	transition: opacity 0.5s;
 }
+
 .fade-leave-active {
 	/* transition: opacity .1s; */
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+	{
 	opacity: 0;
 }
 
