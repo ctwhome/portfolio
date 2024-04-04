@@ -3,8 +3,6 @@
 	// import svelteTilt from 'vanilla-tilt-svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import VanillaTilt from 'vanilla-tilt';
-	export let data;
-	const { yoast_head } = data;
 
 	// let plants = [];
 	let products = [];
@@ -52,11 +50,7 @@
 	});
 </script>
 
-<svelte:head>
-	{#if yoast_head}
-		{@html yoast_head}
-	{/if}
-</svelte:head>
+<svelte:head></svelte:head>
 <div>
 	<div class="first-fold pt-6">
 		<div class="container m-auto px-6">
@@ -290,8 +284,16 @@
 	}
 
 	.title {
-		font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-			Roboto, 'Helvetica Neue', Arial, sans-serif;
+		font-family:
+			'Quicksand',
+			'Source Sans Pro',
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			'Helvetica Neue',
+			Arial,
+			sans-serif;
 		display: block;
 		font-weight: 300;
 		font-size: 100px;

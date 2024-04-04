@@ -1,10 +1,14 @@
-<script>
+<script lang="ts">
 	// import { lazyLoad } from '$lib/actions/lazy-load.js';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	export let data;
-	const { posts, count, tags, categories } = data;
+	// const { posts, count, tags, categories } = data;
+	let posts = [{}];
+	let count = 0;
+	let tags = [{ id: 0, name: 'No tags', count: 0 }];
+	let categories = [{ id: 0, name: 'No categories', count: 0 }];
 	const filteredPosts = writable({ ...posts }); // initialize with all posts
 	let hasFilters = false;
 
@@ -86,74 +90,70 @@
 		{/if}
 	</div>
 
-	{#if !data}
-		<p>Loading...</p>
-	{:else}
-		<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
-			<div>
-				<div class="text-sm mb-2">Categories</div>
-				<div class="flex flex-wrap gap-2">
-					{#each filteredCategories as category}
-						<!-- daisyui chips -->
-						<button on:click={() => filterByCategory(category.id)} class="btn btn-sm">
-							{category.name}
-							<div class="badge">{category.count}</div>
-						</button>
-					{/each}
-				</div>
-			</div>
-			<div>
-				<div class="text-sm mb-2">Tags</div>
-				<div class="flex flex-wrap gap-2">
-					{#each filteredTags as tag}
-						<!-- daisyui chips -->
-						<button on:click={() => filterByTag(tag.id)} class="btn btn-xs">
-							{tag.name}
-							<div class="badge">{tag.count}</div>
-						</button>
-					{/each}
-				</div>
+	<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
+		<div>
+			<div class="text-sm mb-2">Categories</div>
+			<div class="flex flex-wrap gap-2">
+				{#each filteredCategories as category}
+					<!-- daisyui chips -->
+					<button on:click={() => filterByCategory(category.id)} class="btn btn-sm">
+						{category.name}
+						<div class="badge">{category.count}</div>
+					</button>
+				{/each}
 			</div>
 		</div>
-		{#each Object.keys($filteredPosts).sort().reverse() as year}
-			{#if $filteredPosts[year].length > 0}
-				<!-- Check if there are posts for this year -->
-				<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
-				<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
-					{#each $filteredPosts[year] as post}
-						<a
-							data-sveltekit-preload-data="hover"
-							href={'/' + post.categories[0].slug + '/' + post.slug}
-							class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
-						>
-							<div class="flex-none">
-								{#if post.media_url}
-									<img
-										class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
-										src={post.media_url}
-										alt={post.post_title}
-									/>
-								{/if}
-							</div>
-							<div class="px-3 pb-3">
-								<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.post_title}</h2>
+		<div>
+			<div class="text-sm mb-2">Tags</div>
+			<div class="flex flex-wrap gap-2">
+				{#each filteredTags as tag}
+					<!-- daisyui chips -->
+					<button on:click={() => filterByTag(tag.id)} class="btn btn-xs">
+						{tag.name}
+						<div class="badge">{tag.count}</div>
+					</button>
+				{/each}
+			</div>
+		</div>
+	</div>
+	{#each Object.keys($filteredPosts).sort().reverse() as year}
+		{#if $filteredPosts[year].length > 0}
+			<!-- Check if there are posts for this year -->
+			<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
+			<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
+				{#each $filteredPosts[year] as post}
+					<a
+						data-sveltekit-preload-data="hover"
+						href={'/' + post.categories[0].slug + '/' + post.slug}
+						class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
+					>
+						<div class="flex-none">
+							{#if post.media_url}
+								<img
+									class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
+									src={post.media_url}
+									alt={post.post_title}
+								/>
+							{/if}
+						</div>
+						<div class="px-3 pb-3">
+							<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.post_title}</h2>
 
-								<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
-									{@html post.excerpt}
-								</div>
+							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+								{@html post.excerpt}
+							</div>
 
-								<div class="flex gap-3 mt-2 opacity-40 text-sm">
-									<div class="flex flex-wrap gap-3">
-										{#each post.categories as categorie}
-											<div>{categorie.name}</div>
-										{/each}
-									</div>
+							<div class="flex gap-3 mt-2 opacity-40 text-sm">
+								<div class="flex flex-wrap gap-3">
+									{#each post.categories as categorie}
+										<div>{categorie.name}</div>
+									{/each}
 								</div>
 							</div>
-						</a>
-					{/each}
-				</ul>
-			{/if}
-		{/each}
-	{/if}
+						</div>
+					</a>
+				{/each}
+			</ul>
+		{/if}
+	{/each}
 </main>
