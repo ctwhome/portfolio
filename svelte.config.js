@@ -5,6 +5,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { importAssets } from 'svelte-preprocess-import-assets';
 import { mdsvex } from "mdsvex";
 
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
@@ -14,6 +15,14 @@ const config = {
 		importAssets(),
 		mdsvex({
 			extensions: ['.md', '.svx'],
+			layout: {
+				_: "/src/layouts/default.svelte", // Default layout for markdown files
+				blog: "/src/layouts/blog.svelte",
+
+
+				// project: "./path/to/article/layout.svelte",
+				// _: "./path/to/fallback/layout.svelte"
+			}
 		}),
 	],
 	extensions: ['.svelte', '.md', '.svx'],

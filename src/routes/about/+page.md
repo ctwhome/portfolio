@@ -1,5 +1,13 @@
+---
+layout: blog
+---
+<script>
+  import TiltImage from '$lib/components/TiltImage.svelte'
+</script>
+
 Hello! I’m J. Gonzalez, a seasoned Digital Product Designer and Web Engineer with over 15 years of experience in the field. Currently, I lead various projects as a Research Software Engineer at The Netherlands eScience Center.
 
+<TiltImage src="/images/about.webp"/>
 
 🔍 What I Do:
 I’m a proponent of cutting-edge technologies, specializing in SvelteKit, Vite, ThreeJS, and BabylonJS, among others. My work focuses on crafting visually compelling and scientifically robust digital platforms. From corporate branding to 3D point cloud navigation systems for museums, I create seamless digital experiences that bring visions to life.
