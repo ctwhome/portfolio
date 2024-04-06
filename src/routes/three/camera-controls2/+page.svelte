@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { initScene, camera, renderer, setCameraView, cameraControls } from './initScene.ts';
+	import { initScene, camera, renderer, setCameraView, cameraControls } from './initScene.js';
 
 	let canvas: HTMLCanvasElement;
 	let cameraNear = 0.01;

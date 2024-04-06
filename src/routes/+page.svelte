@@ -69,7 +69,7 @@
 						Product Designer & Research Software Engineer <br class="hidden sm:inline" /> at
 						<a
 							class="text-blue-300 glow"
-							href="https://esciencecenter.nl"
+							href="https://www.esciencecenter.nl/team/jesus-garcia-gonzalez-msc"
 							target="_blank"
 							rel="noopener">The Netherlands eScience Center</a
 						>
@@ -223,7 +223,7 @@
 	</div>
 	<div class="container mx-auto mt-10">
 		<a class="hover:text-primary" href="work">See Latest work</a> |
-		<a class="hover:text-primary" href="3d">3D Experiments</a> |
+		<a class="hover:text-primary" href="three">3D Experiments</a> |
 		<a class="hover:text-primary" href="about">About</a>
 	</div>
 </div>

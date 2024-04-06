@@ -18,7 +18,7 @@
 	<h2 class="mt-10 text-lg">Playground</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<!-- Camera Controls -->
-		<a href="/3d/camera-controls">
+		<a href="/three/camera-controls">
 			<div
 				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
@@ -41,7 +41,7 @@
 			</div>
 		</a>
 		<!-- Orthographic camera with pan an zoom -->
-		<a href="/3d/paint">
+		<a href="/three/paint">
 			<div
 				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
@@ -91,11 +91,10 @@
 		</a>
 
 		<!-- 3D Word Dots -->
-		<a href="/3d/world-dots/index.html">
+		<!-- <a href="/3d/world-dots/index.html">
 			<div
 				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
-				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
 					<img src={world} alt="3D example" />
 				</figure>
@@ -109,6 +108,6 @@
 					</div>
 				</div>
 			</div>
-		</a>
+		</a> -->
 	</div>
 </div>
