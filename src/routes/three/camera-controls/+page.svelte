@@ -9,7 +9,7 @@
 	let cameraControls;
 
 	const geometry = new THREE.BoxGeometry(1, 1, 1);
-	const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+	const material = new THREE.MeshBasicMaterial({ color: 0x00ffff });
 	const cube = new THREE.Mesh(geometry, material);
 	let targetPosition = null; // To store the target position for the camera
 

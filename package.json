@@ -42,7 +42,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"camera-controls": "^2.8.3",
 		"theme-change": "^2.5.0",
+		"three": "^0.163.0",
 		"vanilla-tilt": "^1.8.1"
 	}
 }
