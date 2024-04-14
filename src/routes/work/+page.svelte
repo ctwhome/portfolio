@@ -1,19 +1,64 @@
 <script lang="ts">
 	// import { lazyLoad } from '$lib/actions/lazy-load.js';
-	import { onMount } from 'svelte';
+	import { SvelteComponent, onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
-	export let data;
+	type Glob = { default: SvelteComponent; metadata: Record<string, any> };
+	// Gets the metadata of the mdfile directly
+	const posts = Object.values(import.meta.glob<Glob>('$lib/content/**/*.md', { eager: true }));
+
+	// Merge and remove duplicates and empty tags
+	let tags: { name: string; count: number }[] = [];
+	posts.map((post) => {
+		post?.metadata?.tags.forEach((tag) => {
+			const index = tags.findIndex((t) => t.name === tag);
+			if (index === -1) {
+				tags.push({ name: tag, count: 1 });
+			} else {
+				tags[index].count++;
+			}
+		});
+	});
+
+	let categories: { name: string; count: number }[] = [];
+	posts.map((post) => {
+		if (!post?.metadata?.type) return;
+		const index = categories.findIndex((t) => t.name === post?.metadata?.type);
+		if (index === -1) {
+			categories.push({ name: post?.metadata?.type, count: 1 });
+		} else {
+			categories[index].count++;
+		}
+	});
+
+	//
+	//
+	// TODO: Filter posts by category and tag
+	// TODO: CONTINUE HERE, FILTERING POSTS BY CATEGORY AND TAG
+	// TODO: AND SHOW the list of publications
+	//
+	//
+
 	// const { posts, count, tags, categories } = data;
-	let posts = [{}];
+	// let posts = [{}];
 	let count = 0;
-	let tags = [{ id: 0, name: 'No tags', count: 0 }];
-	let categories = [{ id: 0, name: 'No categories', count: 0 }];
+	// let tags = [{ id: 0, name: 'No tags', count: 0 }];
 	const filteredPosts = writable({ ...posts }); // initialize with all posts
 	let hasFilters = false;
 
 	let filteredCategories = categories;
 	let filteredTags = tags;
+
+	onMount(() => {
+		// Get all image elements on the page
+		const allImages = document.querySelectorAll('img');
+		// Loop through each image and prevent dragging
+		allImages.forEach((img) => {
+			img.addEventListener('dragstart', function (event) {
+				event.preventDefault();
+			});
+		});
+	});
 
 	function updateFilteredCategoriesAndTags(filteredPosts) {
 		const allCategories = new Set();
@@ -31,18 +76,6 @@
 		filteredCategories = categories.filter((category) => allCategories.has(category.id));
 		filteredTags = tags.filter((tag) => allTags.has(tag.id));
 	}
-	onMount(() => {
-		// Get all image elements on the page
-
-		const allImages = document.querySelectorAll('img');
-
-		// Loop through each image and prevent dragging
-		allImages.forEach((img) => {
-			img.addEventListener('dragstart', function (event) {
-				event.preventDefault();
-			});
-		});
-	});
 
 	function clearFilters() {
 		filteredPosts.set({ ...posts }); // reset posts filter
@@ -90,6 +123,7 @@
 		{/if}
 	</div>
 
+	<!-- FILTERS PANEL -->
 	<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
 		<div>
 			<div class="text-sm mb-2">Categories</div>
@@ -97,7 +131,7 @@
 				{#each filteredCategories as category}
 					<!-- daisyui chips -->
 					<button on:click={() => filterByCategory(category.id)} class="btn btn-sm">
-						{category.name}
+						{category?.name}
 						<div class="badge">{category.count}</div>
 					</button>
 				{/each}
@@ -109,13 +143,31 @@
 				{#each filteredTags as tag}
 					<!-- daisyui chips -->
 					<button on:click={() => filterByTag(tag.id)} class="btn btn-xs">
-						{tag.name}
-						<div class="badge">{tag.count}</div>
+						{tag?.name}
+						<div class="badge">{tag?.count}</div>
 					</button>
 				{/each}
 			</div>
 		</div>
 	</div>
+
+	<!-- POSTS -->
+
+	<!-- {#each posts as { metadata: { title, slug } }}
+		<div class="mt-2">
+			<a data-sveltekit-prefetch class="hover:underline" href="blog/{slug}">{title}</a>
+		</div>
+	{/each} -->
+
+	<!-- {#if content}
+		{#each content as [path, module]}
+			<div>
+				<h1>{module.metadata.title}</h1>
+				<p>{module.metadata.description}</p>
+			</div>
+		{/each}
+	{/if} -->
+	<pre>{JSON.stringify(posts, null, 2)}</pre>
 	{#each Object.keys($filteredPosts).sort().reverse() as year}
 		{#if $filteredPosts[year].length > 0}
 			<!-- Check if there are posts for this year -->

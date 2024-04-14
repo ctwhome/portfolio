@@ -2,7 +2,10 @@
 description: A description here?
 title: Project 2
 date: 2024-01-02
-tags: yes, no, hola, hola
+tags:
+  - yes
+  - hola
+type: project
 ---
 
 <script>
