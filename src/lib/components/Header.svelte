@@ -50,7 +50,7 @@
 			<!-- menu-->
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
 				<a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a>
-				<a class="menu-link" href="/three">3D</a>
+				<a class="menu-link" href="/lab">Lab</a>
 				<a class="menu-link" href="/work"> <span class="hidden sm:inline">Latest </span>Work </a>
 			</div>
 

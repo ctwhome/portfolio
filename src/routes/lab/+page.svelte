@@ -2,6 +2,11 @@
 	import cube3d from './camera-controls/3d-cube.gif';
 	import nebula from './nebula.gif';
 	import world from './world.gif';
+
+	// Icons
+	import CarbonBot from '~icons/carbon/bot';
+	import IconAccountBox from '~icons/mdi/account-box';
+	import CarbonFingerprintRecognition from '~icons/carbon/fingerprint-recognition';
 </script>
 
 <div class="container mx-auto p-3">
@@ -15,10 +20,30 @@
 		the third dimension together!
 	</p>
 
-	<h2 class="mt-10 text-lg">Playground</h2>
+	<h2 class="mt-10 text-2xl font-bold">3D Playground</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+		<!-- Nebula  -->
+		<a href="/3d/nebula/index.html" data-sveltekit-preload-data data-sveltekit-reload>
+			<div
+				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
+				<figure>
+					<img src={nebula} alt="3D example" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">3D Nebula</h2>
+					<p>And artistic representation of a space Nebula</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+							Open
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
 		<!-- Camera Controls -->
-		<a href="/three/camera-controls">
+		<a href="/lab/camera-controls">
 			<div
 				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
@@ -41,7 +66,7 @@
 			</div>
 		</a>
 		<!-- Orthographic camera with pan an zoom -->
-		<a href="/three/paint">
+		<a href="/lab/three-camera-controls">
 			<div
 				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
@@ -66,48 +91,41 @@
 		</a>
 	</div>
 
-	<h2 class="mt-10 text-lg">3D Examples</h2>
-
+	<!-- 3D Word Dots -->
+	<!-- <a href="/3d/world-dots/index.html">
+			<div
+			class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+			<figure>
+				<img src={world} alt="3D example" />
+			</figure>
+			<div class="card-body">
+				<h2 class="card-title">Animated World Dots</h2>
+				<p>ThreeJS world dots with location labels</p>
+				<div class="card-actions justify-end">
+					<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+						Open
+					</button>
+				</div>
+			</div>
+		</div>
+	</a> -->
+	<h2 class="mt-10 text-2xl font-bold">Svelte Components</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-		<!-- Nebula  -->
-		<a href="/3d/nebula/index.html" data-sveltekit-preload-data data-sveltekit-reload>
-			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
-			>
-				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
-				<figure>
-					<img src={nebula} alt="3D example" />
-				</figure>
-				<div class="card-body">
-					<h2 class="card-title">3D Nebula</h2>
-					<p>And artistic representation of a space Nebula</p>
-					<div class="card-actions justify-end">
-						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
-							Open
-						</button>
-					</div>
-				</div>
+		<div>
+			<div>
+				🤹 Any icon sets ~150 popular sets with over 200,000 icons, logos, emojis, etc. <br />
+				Powered by Iconify. with auto install. Using Iconify and
+				<a href="https://icones.js.org/">Icones App</a> to find a place icons.
 			</div>
-		</a>
+			<div class="flex">
+				<CarbonBot class="text-primary text-2xl" />
+				<CarbonFingerprintRecognition class="text-secondary text-2xl" />
+				<IconAccountBox class="text-content text-2xl" />
+			</div>
+		</div>
+		<!-- Autocomplete -->
 
-		<!-- 3D Word Dots -->
-		<!-- <a href="/3d/world-dots/index.html">
-			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
-			>
-				<figure>
-					<img src={world} alt="3D example" />
-				</figure>
-				<div class="card-body">
-					<h2 class="card-title">Animated World Dots</h2>
-					<p>ThreeJS world dots with location labels</p>
-					<div class="card-actions justify-end">
-						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
-							Open
-						</button>
-					</div>
-				</div>
-			</div>
-		</a> -->
+		<!-- <Autocomplete /> -->
 	</div>
 </div>
