@@ -5,7 +5,7 @@
 	// import { get } from 'svelte/store';
 	// import { tilt } from '../../stores/tilt.js';
 	// import menuItems from '$lib/models/menu-itmes.js';
-	import DaisyUIThemeSwitcher from '$lib/components/DaisyUIThemeSwitcher.svelte';
+	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
 </script>
 
 <nav class="bien-nav mb-10">
@@ -38,7 +38,7 @@
 		</div>
 		<!--Desktop Header-->
 
-		<header class="flex items-center">
+		<header class="flex items-center gap-3">
 			<a class="flex-initial mr-3 my-1" href="/">
 				<img
 					src="$lib/assets/images/logo.svg"

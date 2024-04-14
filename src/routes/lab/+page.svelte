@@ -1,5 +1,6 @@
 <script>
 	import cube3d from './camera-controls/3d-cube.gif';
+	import wordpress from './wordpress.webp';
 	import nebula from './nebula.gif';
 	import world from './world.gif';
 
@@ -7,18 +8,46 @@
 	import CarbonBot from '~icons/carbon/bot';
 	import IconAccountBox from '~icons/mdi/account-box';
 	import CarbonFingerprintRecognition from '~icons/carbon/fingerprint-recognition';
+	import Carousel from '$lib/components/ui/Carousel.svelte';
+	import Autocomplete from '$lib/components/ui/Autocomplete.svelte';
+	import LoginButton from '$lib/components/Login/LoginButton.svelte';
+	import NativeFileApi from '$lib/components/ui/NativeFileApi.svelte';
 </script>
 
 <div class="container mx-auto p-3">
-	<h1 class="text-2xl font-bold">3D Work - Examples and Playground</h1>
+	<h1 class="text-2xl font-bold">Toolkits & Playground LAB</h1>
 	<!-- These are my 3D work, playgrounds, and code snippets. -->
 	<p class="prose mt-4">
-		This is my digital sandbox where I sculpt, stitch, and bring pixels to life. Think of this space
-		as a gallery-meets-playground, where my 3D creations frolic in the wild. From quirky code
-		snippets to full-blown digital dioramas, it's all about crafting visuals that pop out of your
-		screen and (almost) into your lap. So, take a peek, have a play, and let's revel in the art of
-		the third dimension together!
+		This is my digital sandbox and toolkit where I sculpt, stitch, and bring pixels to life. So,
+		take a peek, have a play, and let me know what you think. I'm always looking for new ways to
+		push the boundaries.
 	</p>
+
+	<h2 class="mt-10 text-2xl font-bold">Framework</h2>
+	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+		<a href="/lab/wordpress">
+			<div
+				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+				<figure>
+					<img src={wordpress} alt="3D example" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">Headless WordPress CMS</h2>
+					<p>Portfolio implementation with complete renderization from WordPress as a CMS</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+							Open
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
+
+		<!-- Autocomplete -->
+
+		<!-- <Autocomplete /> -->
+	</div>
 
 	<h2 class="mt-10 text-2xl font-bold">3D Playground</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
@@ -79,7 +108,7 @@
 					/>
 				</figure>
 				<div class="card-body">
-					<h2 class="card-title">ThreeJS Camera Controls</h2>
+					<h2 class="card-title">Orthographic Camera</h2>
 					<p>Orthographic camera with pan an zoom</p>
 					<div class="card-actions justify-end">
 						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
@@ -110,6 +139,7 @@
 			</div>
 		</div>
 	</a> -->
+
 	<h2 class="mt-10 text-2xl font-bold">Svelte Components</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<div>
@@ -124,8 +154,13 @@
 				<IconAccountBox class="text-content text-2xl" />
 			</div>
 		</div>
-		<!-- Autocomplete -->
+		<Autocomplete />
+		<Carousel />
+		<div>
+			Login Button with social providers
+			<LoginButton />
+		</div>
 
-		<!-- <Autocomplete /> -->
+		<NativeFileApi />
 	</div>
 </div>
