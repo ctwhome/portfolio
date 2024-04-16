@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build && jampack ./build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -13,10 +13,13 @@
 		"postbuild": "vite build --mode preview"
 	},
 	"devDependencies": {
+		"@divriots/jampack": "^0.23.4",
 		"@iconify-json/carbon": "^1.1.31",
 		"@iconify-json/mdi": "^1.1.64",
 		"@sveltejs/adapter-auto": "^3.2.0",
+		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/adapter-vercel": "^5.2.0",
+		"@sveltejs/enhanced-img": "^0.2.0",
 		"@sveltejs/kit": "^2.5.5",
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
@@ -33,6 +36,7 @@
 		"eslint-plugin-svelte": "^2.35.1",
 		"idb": "^8.0.0",
 		"mdsvex": "^0.11.0",
+		"mdsvex-relative-images": "^1.0.3",
 		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
 		"prettier-plugin-svelte": "^3.2.2",
