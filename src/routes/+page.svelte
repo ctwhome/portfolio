@@ -223,7 +223,7 @@
 	</div>
 	<div class="container mx-auto mt-10">
 		<a class="hover:text-primary" href="work">See Latest work</a> |
-		<a class="hover:text-primary" href="three">3D Experiments</a> |
+		<!-- <a class="hover:text-primary" href="three">3D Experiments</a> | -->
 		<a class="hover:text-primary" href="about">About</a>
 	</div>
 </div>
