@@ -6,21 +6,19 @@
 	type Glob = { default: SvelteComponent; metadata: Record<string, any> };
 
 	// Gets the metadata of the mdfile directly
-	const posts = Object.entries(import.meta.glob<Glob>('./**/*.md', { eager: true }));
+	const posts = Object.entries(import.meta.glob<Glob>('./**/*.md', { eager: true })).filter(
+		([path, { metadata }]) => metadata.published
+	);
 	const filteredPosts = writable(posts); // initialize with all posts
 
 	let hasFilters = false;
 
 	// Get post images
-	// Import images eagerly
-	const imageImports = import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif}', {
-		eager: true
-	});
-	// Convert to array of URLs
-	const images = Object.values(imageImports).map((mod) => mod.default);
-	console.log(images);
-	// get images index where the path contains 'blog-1/image.avif'
-	console.log(images.findIndex((image) => image.includes('blog-2/image.avif')));
+	const imagesArray = Object.values(
+		import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif}', {
+			eager: true
+		})
+	).map((mod) => mod.default);
 
 	// Merge and remove duplicates and empty tags
 	let globalTags: { name: string; count: number }[] = [];
@@ -34,6 +32,12 @@
 			}
 		});
 	});
+
+	function getImageIndex(cover: string) {
+		return imagesArray.findIndex((url) =>
+			new RegExp(`${cover.split('.')[0]}(\\.[^.]+)?\\.${cover.split('.')[1]}$`).test(url)
+		);
+	}
 
 	onMount(() => {
 		// Get all image elements on the page
@@ -105,9 +109,7 @@
 					<div class="flex-none">
 						<img
 							class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
-							src={images[
-								images.findIndex((image) => image.includes(path.split('/')[1] + '/' + cover))
-							] || `https://source.unsplash.com/random/150`}
+							src={imagesArray[getImageIndex(cover)] || `https://source.unsplash.com/random/150`}
 							alt={title}
 						/>
 					</div>
