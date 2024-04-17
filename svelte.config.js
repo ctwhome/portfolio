@@ -1,5 +1,7 @@
 // import adapter from '@sveltejs/adapter-auto';
+import path from 'path';
 import adapter from '@sveltejs/adapter-vercel';
+
 // import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { importAssets } from 'svelte-preprocess-import-assets';
@@ -34,7 +36,15 @@ const config = {
 			{
 				fallback: '200.html' // may differ from host to host
 			}
-		)
+		),
+
+		alias: {
+			// these are the aliases and paths to them
+			$api: path.resolve('./src/api'),
+			$components: path.resolve('./src/lib/components'),
+			$assets: path.resolve('./src/assets'),
+			$content: path.resolve('./src/content')
+		}
 	}
 };
 

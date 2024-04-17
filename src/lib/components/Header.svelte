@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	// import SocialIcons from './SocialIcons.svelte';
 	// import HeaderResponsiveMenu from './HeaderResponsiveMenu.svelte';
 	// import { Link } from 'svelte-routing';
@@ -46,12 +47,14 @@
 					class="max-w-[180px] h-auto aspect-4 sm:aspect-3 no-drag select-none"
 				/>
 			</a>
-
 			<!-- menu-->
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
-				<a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a>
-				<a class="menu-link" href="/lab">Lab</a>
-				<a class="menu-link" href="/work"> <span class="hidden sm:inline">Latest </span>Work </a>
+				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
+				<a class="menu-link" class:active={$page.route.id === '/posts'} href="/posts">Blog</a>
+				<a class="menu-link" class:active={$page.route.id === '/work'} href="/work">
+					<span class="hidden">Latest </span>Work
+				</a>
+				<a class="menu-link" class:active={$page.route.id === '/lab'} href="/lab">Lab</a>
 			</div>
 
 			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />
@@ -66,7 +69,7 @@
  -->
 <style lang="postcss">
 	.menu-link {
-		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium hover:text-primary transition;
+		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium hover:text-primary transition hover:text-secondary;
 	}
 
 	.menu-link.active {

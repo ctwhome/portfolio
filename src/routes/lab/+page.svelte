@@ -18,12 +18,11 @@
 	<h1 class="text-2xl font-bold">Toolkits & Playground LAB</h1>
 	<!-- These are my 3D work, playgrounds, and code snippets. -->
 	<p class="prose mt-4">
-		This is my digital sandbox and toolkit where I sculpt, stitch, and bring pixels to life. So,
-		take a peek, have a play, and let me know what you think. I'm always looking for new ways to
-		push the boundaries.
+		This is my digital sandbox and toolkit where I sculpt, stitch, and bring pixels to life. Have a
+		play and let me know what you think. I'm always looking for new ways to push the boundaries.
 	</p>
 
-	<h2 class="mt-10 text-2xl font-bold">Framework</h2>
+	<h2 class="mt-20 text-2xl font-bold">Framework</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<a href="/lab/wordpress">
 			<div
@@ -49,7 +48,7 @@
 		<!-- <Autocomplete /> -->
 	</div>
 
-	<h2 class="mt-10 text-2xl font-bold">3D Playground</h2>
+	<h2 class="mt-20 text-2xl font-bold">3D Playground</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<!-- Nebula  -->
 		<a href="/3d/nebula/index.html" data-sveltekit-preload-data data-sveltekit-reload>
@@ -140,7 +139,19 @@
 		</div>
 	</a> -->
 
-	<h2 class="mt-10 text-2xl font-bold">Svelte Components</h2>
+	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
+	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
+		<Carousel />
+		<NativeFileApi />
+		<Autocomplete />
+		<div>
+			Login Button with social providers
+			<div class="mb-4" />
+			<LoginButton />
+		</div>
+	</div>
+
+	<h2 class="mt-20 text-2xl font-bold">Tools and Libraries included here</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<div>
 			<div>
@@ -154,13 +165,5 @@
 				<IconAccountBox class="text-content text-2xl" />
 			</div>
 		</div>
-		<Autocomplete />
-		<Carousel />
-		<div>
-			Login Button with social providers
-			<LoginButton />
-		</div>
-
-		<NativeFileApi />
 	</div>
 </div>
