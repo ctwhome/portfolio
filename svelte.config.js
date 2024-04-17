@@ -21,6 +21,7 @@ const config = {
 			layout: {
 				_: "/src/layouts/default.svelte", // Default layout for markdown files
 				blog: "/src/layouts/blog.svelte",
+				project: "/src/layouts/project.svelte",
 
 
 				// project: "./path/to/article/layout.svelte",

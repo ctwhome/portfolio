@@ -7,7 +7,7 @@
 	//! this is very hacky, but only way for now to get the metadata of the md file directly
 	//! The reason is that the metadata is not available in the layout file so we have to get it from the glob and filter by the current route
 	//! This is a workaround until we have a better solution coming from MDSveX
-	const posts = import.meta.glob('/src/routes/posts/**/*.md', { eager: true });
+	const posts = import.meta.glob('/src/routes/work/**/*.md', { eager: true });
 	const postIndex = Object.keys(posts).findIndex((post) => post.includes($page.route.id));
 	const post = Object.entries(posts)[postIndex];
 
@@ -18,7 +18,7 @@
 	//! Again, very hacky, i need to get all images in the folder and then filter by the current post.
 	//
 	const imagesArray = Object.values(
-		import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif}', {
+		import.meta.glob('/src/routes/work/**/*.{webp,jpg,png,avif}', {
 			eager: true
 		})
 	).map((mod) => mod.default); // Convert to array of URLs
