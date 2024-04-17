@@ -36,7 +36,7 @@
 
 	<p class="text-sm">
 		<!-- {#each categories as category} -->
-		<span class="mx-1">{metadata.type}</span>
+		<span class="mx-1 capitalize">{metadata.type}</span>
 		<!-- {/each} -->
 		-
 		{new Date(metadata.date).toLocaleDateString('en-NL', {
