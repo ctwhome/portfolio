@@ -3,7 +3,9 @@
 	import VanillaTilt from 'vanilla-tilt';
 	let tiltImage: HTMLElement | HTMLElement[];
 
-	export let src = '$lib/assets/images/ctw-jess-profile.jpg';
+	// export let src = '$lib/assets/images/ctw-jess-profile.jpg';
+	// const module = import('$lib/assets/images/ctw-jess-profile.jpg');
+	// const module = import(src);
 	onMount(async () => {
 		const tiltOtions = {
 			max: 25,
@@ -23,13 +25,14 @@
 </script>
 
 <div
-	class="md:w-5/12 order-2"
+	class="order-2"
 	bind:this={tiltImage}
 	style=" transform: scale(1) perspective(1040px) rotateY(-31deg) rotateX(2deg);"
 >
-	<img
-		{src}
+	<!-- <img
+		src={image?.default}
 		class="tilt rounded pointer-events-none h-[450px] w-full object-cover"
 		alt="Jesse Ctw Profile"
-	/>
+	/> -->
+	<slot />
 </div>

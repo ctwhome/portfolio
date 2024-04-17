@@ -1,5 +1,5 @@
 ---
-layout: blog
+# layout: blog
 ---
 <script>
   import TiltImage from '$lib/components/TiltImage.svelte'
