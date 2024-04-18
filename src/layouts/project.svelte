@@ -18,7 +18,7 @@
 	//! Again, very hacky, i need to get all images in the folder and then filter by the current post.
 	//
 	const imagesArray = Object.values(
-		import.meta.glob('/src/routes/work/**/*.{webp,jpg,png,avif}', {
+		import.meta.glob('/src/routes/work/**/*.{webp,jpg,png,avif,gif}', {
 			eager: true
 		})
 	).map((mod) => mod.default); // Convert to array of URLs

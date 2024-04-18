@@ -7,7 +7,7 @@
 
 	// Gets the metadata of the mdfile directly
 	const posts = Object.entries(import.meta.glob<Glob>('./**/*.md', { eager: true })).filter(
-		([path, { metadata }]) => metadata.published
+		([path, { metadata }]) => metadata?.published
 	);
 	const filteredPosts = writable(posts); // initialize with all posts
 
@@ -15,7 +15,7 @@
 
 	// Get post images
 	const imagesArray = Object.values(
-		import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif}', {
+		import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif,gif}', {
 			eager: true
 		})
 	).map((mod) => mod.default);
@@ -33,9 +33,9 @@
 		});
 	});
 
-	function getImageIndex(cover: string) {
+	function getImageIndex(coverImage: string) {
 		return imagesArray.findIndex((url) =>
-			new RegExp(`${cover.split('.')[0]}(\\.[^.]+)?\\.${cover.split('.')[1]}$`).test(url)
+			new RegExp(`${coverImage?.split('.')[1]}(\\.[^.]+)?\\.${coverImage?.split('.')[2]}$`).test(url)
 		);
 	}
 
@@ -89,7 +89,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each globalTags as { name, count }}
 					<!-- daisyui chips -->
-					<button on:click={() => filterByTag(name)} class="capitalize btn btn-xs">
+					<button on:click={() => filterByTag(name)} class="btn btn-xs">
 						{name}
 						<div class="badge">{count}</div>
 					</button>
@@ -99,7 +99,7 @@
 	</div>
 
 	<div class="mt-10">
-		{#each $filteredPosts as [path, { metadata: { title, description, cover, type, tags } }]}
+		{#each $filteredPosts as [path, { metadata: { title, description, coverImage, type, tags } }]}
 			<div>
 				<a
 					data-sveltekit-preload-data="hover"
@@ -109,7 +109,8 @@
 					<div class="flex-none">
 						<img
 							class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
-							src={imagesArray[getImageIndex(cover)] || `https://source.unsplash.com/random/150`}
+							src={imagesArray[getImageIndex(coverImage)] ||
+								`https://source.unsplash.com/random/150`}
 							alt={title}
 						/>
 					</div>
@@ -118,14 +119,16 @@
 							{@html title}
 						</h2>
 
-						<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
-							{@html description}
-						</div>
+						{#if description}
+							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+								{@html description}
+							</div>
+						{/if}
 
 						<div class="flex gap-3 mt-2 opacity-40 text-sm">
 							<div class="flex flex-wrap gap-3">
 								{#each tags as tag}
-									<div class="capitalize">{tag}</div>
+									<div class="">{tag}</div>
 								{/each}
 							</div>
 						</div>
