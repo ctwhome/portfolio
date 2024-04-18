@@ -52,10 +52,10 @@
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
 				<a class="menu-link" class:active={$page.route.id?.includes('/posts')} href="/posts">Blog</a
 				>
-				<a class="menu-link" class:active={$page.route.id.includes('/work')} href="/work">
+				<a class="menu-link" class:active={$page.route.id?.includes('/work')} href="/work">
 					<span class="hidden">Latest </span>Work
 				</a>
-				<a class="menu-link" class:active={$page.route.id.includes('/lab')} href="/lab">Lab</a>
+				<a class="menu-link" class:active={$page.route.id?.includes('/lab')} href="/lab">Lab</a>
 			</div>
 
 			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />

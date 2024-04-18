@@ -18,13 +18,13 @@
 	//! Again, very hacky, i need to get all images in the folder and then filter by the current post.
 	//
 	const imagesArray = Object.values(
-		import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif}', {
+		import.meta.glob('/src/routes/posts/**/*.{webp,jpg,png,avif,gif}', {
 			eager: true
 		})
 	).map((mod) => mod.default); // Convert to array of URLs
 	const imageIndex = imagesArray.findIndex((url) =>
 		new RegExp(
-			`${metadata.cover?.split('.')[0]}(\\.[^.]+)?\\.${metadata.cover?.split('.')[1]}$`
+			`${metadata.coverImage?.split('.')[1]}(\\.[^.]+)?\\.${metadata.coverImage?.split('.')[2]}$`
 		).test(url)
 	);
 </script>
@@ -55,8 +55,7 @@
 	</p>
 
 	<ProfilePicture />
-
-	{#if metadata.cover && metadata.displayCover}
+	{#if metadata.coverImage && metadata.displayCover}
 		<TiltImage>
 			<img
 				src={imagesArray[imageIndex]}

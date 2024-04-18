@@ -15,7 +15,7 @@
 
 	// Get project images
 	const imagesArray = Object.values(
-		import.meta.glob('/src/routes/work/**/*.{webp,jpg,png,avif}', {
+		import.meta.glob('/src/routes/work/**/*.{webp,jpg,png,avif,gif}', {
 			eager: true
 		})
 	).map((mod) => mod.default);
