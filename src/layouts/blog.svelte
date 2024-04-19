@@ -22,12 +22,47 @@
 			eager: true
 		})
 	).map((mod) => mod.default); // Convert to array of URLs
+
+	// if dev, remove the /src from the path
+	console.log('🎹 ', import.meta.env.DEV);
+	if (import.meta.env.DEV) {
+		// imagesArray = imagesArray.map((url) => url.replace('/src', ''));
+	}
+
 	const imageIndex = imagesArray.findIndex((url) =>
 		new RegExp(
 			`${metadata.coverImage?.split('.')[1]}(\\.[^.]+)?\\.${metadata.coverImage?.split('.')[2]}$`
 		).test(url)
 	);
+
+	// generated open-graph image for sharing on social media.
+	// see https://og-image.vercel.app/ for more options.
+	const ogImage = `https://og-image.vercel.app/**${encodeURIComponent(
+		data.post.title
+	)}**?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fhyper-color-logo.svg`;
 </script>
+
+<!-- TODO WIP get og data in place -->
+<svelte:head>
+	<title>{data.post.title} - {name}</title>
+	<meta name="description" content={data.post.preview.text} />
+	<meta name="author" content={name} />
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content={url} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={data.post.title} />
+	<meta property="og:description" content={data.post.preview.text} />
+	<meta property="og:image" content={ogImage} />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content={website} />
+	<meta property="twitter:url" content={url} />
+	<meta name="twitter:title" content={data.post.title} />
+	<meta name="twitter:description" content={data.post.preview.text} />
+	<meta name="twitter:image" content={ogImage} />
+</svelte:head>
 
 <div class="mx-auto prose py-10 px-3">
 	<h1 class="text-4xl font-bold mb-5">
