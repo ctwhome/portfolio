@@ -6,7 +6,7 @@ import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { importAssets } from 'svelte-preprocess-import-assets';
 import { mdsvex } from "mdsvex";
-import relativeImages from "mdsvex-relative-images";
+import mdsvexConfig from './mdsvex.config.js'
 
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -16,21 +16,26 @@ const config = {
 	preprocess: [
 		vitePreprocess(),
 		importAssets(),
-		mdsvex({
-			extensions: ['.md', '.svx'],
-			layout: {
-				_: "/src/layouts/default.svelte", // Default layout for markdown files
-				blog: "/src/layouts/blog.svelte",
-				project: "/src/layouts/project.svelte",
+		mdsvex(mdsvexConfig),
+		// mdsvex({
+		// 	extensions: ['.md', '.svx'],
+		// 	layout: {
+		// 		_: "/src/layouts/default.svelte", // Default layout for markdown files
+		// 		blog: "/src/layouts/blog.svelte",
+		// 		project: "/src/layouts/project.svelte",
 
 
-				// project: "./path/to/article/layout.svelte",
-				// _: "./path/to/fallback/layout.svelte"
-			},
-			remarkPlugins: [relativeImages],
-		}),
+		// 		// project: "./path/to/article/layout.svelte",
+		// 		// _: "./path/to/fallback/layout.svelte"
+		// 	},
+		// 	remarkPlugins: [relativeImages],
+		// }),
 	],
-	extensions: ['.svelte', '.md', '.svx'],
+	// extensions: ['.svelte', '.md', '.svx'],
+	extensions: [
+		'.svelte',
+		...mdsvexConfig.extensions
+	],
 	kit: {
 		// https://kit.svelte.dev/docs/adapter-static
 		adapter: adapter(
