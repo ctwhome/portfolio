@@ -4,7 +4,7 @@ coverImage: images/cover.avif
 type: blog
 ---
 <script>
-  import Timeline from '$lib/components/timeline.svelte'
+  import Timeline from '../../lib/components/timeline.svelte'
 
 </script>
 
