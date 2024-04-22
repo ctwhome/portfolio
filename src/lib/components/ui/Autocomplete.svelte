@@ -62,8 +62,8 @@
 </script>
 
 <div>
-	<div class="text-lg mb-4">
-		Input search with auto complete, defer and keyboard navigation. WIP.
+	<div class="text-sm mb-4">
+		Input search with auto complete, defer and keyboard navigatio (WIP).
 	</div>
 	<div class="relative">
 		<input

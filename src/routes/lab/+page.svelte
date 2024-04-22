@@ -12,6 +12,7 @@
 	import Autocomplete from '$lib/components/ui/Autocomplete.svelte';
 	import LoginButton from '$lib/components/Login/LoginButton.svelte';
 	import NativeFileApi from '$lib/components/ui/NativeFileApi.svelte';
+	import TimeLine from '$components/TimeLine.svelte';
 </script>
 
 <div class="container mx-auto p-3">
@@ -141,10 +142,20 @@
 
 	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
-		<Carousel />
-		<NativeFileApi />
-		<Autocomplete />
-		<div>
+		<div class="border border-base-300 p-2 rounded">
+			<Carousel />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			<NativeFileApi />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			<Autocomplete />
+		</div>
+
+		<div class="border border-base-300 p-2 rounded">
+			<TimeLine />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
 			Login Button with social providers
 			<div class="mb-4" />
 			<LoginButton />
@@ -153,13 +164,14 @@
 
 	<h2 class="mt-20 text-2xl font-bold">Tools and Libraries included here</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-		<div>
-			<div>
-				🤹 Any icon sets ~150 popular sets with over 200,000 icons, logos, emojis, etc. <br />
-				Powered by Iconify. with auto install. Using Iconify and
+		<!-- Icons -->
+		<div class="border border-base-300 p-2 rounded">
+			<div class="text-sm">
+				🤹 Any icon sets ~150 sets with over 200,000 icons, logos, emojis, etc. <br />
+				Powered by Iconify, with auto install. Using Iconify and
 				<a href="https://icones.js.org/">Icones App</a> to find a place icons.
 			</div>
-			<div class="flex">
+			<div class="flex mt-4">
 				<CarbonBot class="text-primary text-2xl" />
 				<CarbonFingerprintRecognition class="text-secondary text-2xl" />
 				<IconAccountBox class="text-content text-2xl" />
