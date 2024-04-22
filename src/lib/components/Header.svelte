@@ -73,7 +73,7 @@
  -->
 <style lang="postcss">
 	.menu-link {
-		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium hover:text-primary transition hover:text-secondary;
+		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium transition hover:text-secondary;
 	}
 
 	.menu-link.active {
