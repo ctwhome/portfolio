@@ -1,5 +1,10 @@
 // import adapter from '@sveltejs/adapter-auto';
 import path from 'path';
+import { fileURLToPath } from 'url';
+// Convert URL to path for current module
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+
 import adapter from '@sveltejs/adapter-vercel';
 
 // import adapter from '@sveltejs/adapter-static';
@@ -46,10 +51,10 @@ const config = {
 
 		alias: {
 			// these are the aliases and paths to them
-			$api: path.resolve('./src/api'),
-			$components: path.resolve('./src/lib/components'),
-			$assets: path.resolve('./src/assets'),
-			$content: path.resolve('./src/content')
+			$api: path.resolve(__dirname, 'src/api'),
+			$components: path.resolve(__dirname, 'src/lib/components'),
+			$assets: path.resolve(__dirname, 'src/assets'),
+			$content: path.resolve(__dirname, 'src/content')
 		}
 	}
 };
