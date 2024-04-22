@@ -50,6 +50,9 @@
 			<!-- menu-->
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
+				<a class="menu-link" class:active={$page.route.id?.includes('/blog')} href="/blog"
+					>New Blog (WIP)</a
+				>
 				<a class="menu-link" class:active={$page.route.id?.includes('/posts')} href="/posts">Blog</a
 				>
 				<a class="menu-link" class:active={$page.route.id?.includes('/work')} href="/work">

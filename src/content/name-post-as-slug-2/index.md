@@ -12,3 +12,6 @@ type: blog
 Content of the post 2 hkj what is this. and why it doens't work!
 
 ## heading 2
+
+Let's try something new?
+![](./images/new.avif)
