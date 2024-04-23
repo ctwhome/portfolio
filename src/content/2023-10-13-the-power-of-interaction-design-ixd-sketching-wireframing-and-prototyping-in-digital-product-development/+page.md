@@ -1,14 +1,14 @@
 ---
-title: "The Power of Interaction Design (IxD) Sketching, Wireframing, and Prototyping in Digital Product Development"
-date: "2023-10-13"
+title: The Power of Interaction Design (IxD) Sketching, Wireframing, and Prototyping in Digital Product Development
+date: 2023-10-13
 categories:
-  - "blog"
+  - Blog
 tags:
-  - "design"
-  - "infographic"
-  - "interaction-design"
-  - "research"
-coverImage: "OIG.jpg"
+  - Design
+  - Infographic
+  - Interaction-design
+  - Research
+coverImage: images/OIG.jpg
 ---
 
 When developing any type of application, and especially those that will involve user interaction, clarity of vision and iterative refinement are key. Here's where **sketching**, **wireframing**, and **prototyping** come to the forefront.

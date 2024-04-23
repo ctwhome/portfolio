@@ -124,9 +124,11 @@
 							{@html post.metadata.title}
 						</h2>
 
-						<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
-							{@html post.metadata.description}
-						</div>
+						{#if post.metadata.description}
+							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+								{@html post.metadata.description}
+							</div>
+						{/if}
 
 						<div class="flex gap-3 mt-2 opacity-40 text-sm">
 							<div class="flex flex-wrap gap-3">

@@ -1,12 +1,12 @@
 ---
-title: "VPS Home Server with Docker Compose, reverse proxy, and Automatic SSL"
-date: "2023-07-11"
+title: VPS Home Server with Docker Compose, reverse proxy, and Automatic SSL
+date: 2023-07-11
 categories:
-  - "project"
+  - Project
 tags:
-  - "backend"
-  - "development-experience"
-coverImage: "6cfb3d14-38c8-4d8d-8ac3-6e75f52e4a1d-scaled.jpg"
+  - Backend
+  - DX
+coverImage: images/6cfb3d14-38c8-4d8d-8ac3-6e75f52e4a1d-scaled.jpg
 ---
 
 Configuration for home server with reverse proxy and docker-compose

@@ -23,7 +23,10 @@ for (const path in content) {
   });
 }
 // filter out the TEMPLATE and content folder
-const posts = filtered.filter(filteredPost => !filteredPost.slug.includes('TEMPLATE')).filter(filteredPost => !filteredPost.slug.includes('content'))
+const posts = filtered
+  .filter(filteredPost => !filteredPost.slug.includes('TEMPLATE'))
+  .filter(filteredPost => !filteredPost.slug.includes('content'))
+  .sort((a, b) => new Date(b.metadata.date) - new Date(a.metadata.date));
 
 
 export { content, posts }

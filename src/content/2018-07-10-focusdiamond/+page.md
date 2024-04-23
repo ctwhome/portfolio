@@ -1,12 +1,12 @@
 ---
-title: "FocusDiamond"
-date: "2018-07-10"
+title: FocusDiamond
+date: 2018-07-10
 categories:
-  - "project"
+  - Project
 tags:
-  - "application"
-  - "productivity"
-coverImage: "1_YtpHen1W6CIR3kyHT-SaYg.jpg"
+  - Web
+  - Productivity
+coverImage: images/1_YtpHen1W6CIR3kyHT-SaYg.jpg
 ---
 
 Table of Contents

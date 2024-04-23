@@ -1,27 +1,25 @@
 ---
-title: "LeapLearn"
-date: "2013-07-11"
+title: LeapLearn
+date: 2013-07-1
 categories:
-  - "project"
+  - Project
 tags:
-  - "3d-visualization"
-  - "full-stack"
-  - "javascript"
-  - "threejs"
-  - "web-application"
-coverImage: "leaplearn-cover.jpg"
+  - 3D-visualization
+  - JavaScript
+  - Threejs
+  - Web
+coverImage: images/leaplearn-cover.jpg
 ---
 <script>
-  import lite-youtube from 'lite-youtube'
+  	import Youtube from "svelte-youtube-embed";
 </script>
 
 Read the white paper here
 
-<lite-youtube videoid="ogfYd705cRs" playlabel="Play: Keynote (Google I/O '18)"></lite-youtube>
+<Youtube id="OGSSvLnMwTc" />
 
 
-[Paper.pdf]('./leaplearn_garcia_gonzalez.pdf)
+<!-- [Paper.pdf]('./leaplearn_garcia_gonzalez.pdf) -->
 
-![](https://youtu.be/OGSSvLnMwTc)
 
-![](./images/Foreground.webp)
+![](./images/foreground.webp)

@@ -3,7 +3,6 @@
 // https://kit.svelte.dev/docs/page-options#prerender-troubleshooting
 import { content } from '$content/content';
 export function entries(): { slug: string | undefined }[] {
-  const allPostFiles = import.meta.glob('$content/**/*.md', { eager: true });
   const slugs = [];
 
   for (const path in content) {

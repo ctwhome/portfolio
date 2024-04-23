@@ -14,6 +14,6 @@
 	/>
 	<div>
 		<div class="font-bold">J. Gonzalez - Ctw</div>
-		<div>Product Designer & Research Software Engineer</div>
+		<div class="opacity-60">Product Designer & Research Software Engineer</div>
 	</div>
 </a>

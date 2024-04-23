@@ -1,11 +1,11 @@
 ---
-title: "Beginning to understand the Regular Expressions in JavaScript"
-date: "2018-09-11"
+title: Beginning to understand the Regular Expressions in JavaScript
+date: 2018-09-11
 categories:
-  - "blog"
+  - Blog
 tags:
-  - "computer-science"
-coverImage: "129032492-b941fca2-ea99-44ba-803b-03158d6be03c.jpg"
+  - JavaScript
+coverImage: images/129032492-b941fca2-ea99-44ba-803b-03158d6be03c.jpg
 ---
 
 According to Marijn Haverbeke, who wrote [Eloquent JavaScript](http://eloquentjavascript.net/), the regular expression can be described as a quote by Jamie Zawinski:
