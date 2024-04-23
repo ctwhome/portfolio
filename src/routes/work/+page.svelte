@@ -2,7 +2,8 @@
 	import { page } from '$app/stores';
 	import { content, posts } from '$content/content';
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
+	import { get, writable } from 'svelte/store';
+	import { goto } from '$app/navigation';
 	// import { lazyLoad } from '$lib/actions/lazy-load.js';
 
 	const filteredPosts = writable(posts); // initialize with all projects
@@ -15,21 +16,34 @@
 	let globalTags: { name: string; count: number }[] = [];
 	let globalCategories: { name: string; count: number }[] = [];
 
-	posts.map((post) => {
-		post.metadata?.tags?.forEach((tag) => {
-			let index = globalTags.findIndex((t) => t.name === tag);
-			index === -1 ? globalTags.push({ name: tag, count: 1 }) : globalTags[index].count++;
-		});
+	function updateCounters() {
+		globalTags = [];
+		globalCategories = [];
 
-		post.metadata?.categories?.forEach((category) => {
-			let index = globalCategories.findIndex((t) => t.name === category);
-			index === -1
-				? globalCategories.push({ name: category, count: 1 })
-				: globalCategories[index].count++;
-		});
-	});
+		$filteredPosts.map((post) => {
+			post.metadata?.tags?.forEach((tag) => {
+				let index = globalTags.findIndex((t) => t.name === tag);
+				index === -1 ? globalTags.push({ name: tag, count: 1 }) : globalTags[index].count++;
+			});
 
+			post.metadata?.categories?.forEach((category) => {
+				let index = globalCategories.findIndex((t) => t.name === category);
+				index === -1
+					? globalCategories.push({ name: category, count: 1 })
+					: globalCategories[index].count++;
+			});
+		});
+	}
+
+	// if any searchParmas change, update the filters
+	$: if (!$page.url.searchParams.get('category')) {
+		setFilters();
+	}
+	$: if ($page.url.searchParams.get('category')) {
+		setFilters();
+	}
 	onMount(() => {
+		setFilters();
 		// Get all image elements on the page
 		const allImages = document.querySelectorAll('img');
 		// Loop through each image and prevent dragging
@@ -40,33 +54,59 @@
 		});
 	});
 
+	function setFilters() {
+		$filteredPosts = posts;
+
+		hasFilters = false;
+		if ($page.url.searchParams.get('category')) {
+			filterByCategory($page.url.searchParams.get('category'));
+		} else if ($page.url.searchParams.get('tag')) {
+			filterByTag($page.url.searchParams.get('tag'));
+		}
+		updateCounters();
+	}
+
 	// TODO: Fix this
 	function clearFilters() {
+		goto('/work');
 		hasFilters = false;
 		filteredPosts.set(posts);
 	}
 	function filterByCategory(categoryName) {
 		hasFilters = true;
-		const filtered = posts.filter(([path, { metadata }]) =>
-			metadata.categories.includes(categoryName)
-		);
+		// set url params to category
+		goto(`?category=${encodeURIComponent(categoryName)}`);
+		const filtered = posts.filter(({ metadata }) => metadata?.categories?.includes(categoryName));
 		filteredPosts.set(filtered);
 	}
 
 	function filterByTag(tagName) {
 		hasFilters = true;
-		const filtered = Object.entries(content).filter(([path, { metadata }]) =>
-			metadata.tags.includes(tagName)
-		);
+		// set url params to tag
+		goto(`?tag=${encodeURIComponent(tagName)}`);
+		const filtered = posts.filter(({ metadata }) => metadata?.tags?.includes(tagName));
 		filteredPosts.set(filtered);
 	}
 </script>
 
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
-		<h1 class="text-2xl sm:text-4xl font-bold">Blog Posts ({$filteredPosts.length})</h1>
+		<h1 class="text-2xl sm:text-4xl font-bold">
+			{#if $page.url.searchParams.get('category') === 'Blog'}
+				Blog Posts
+			{:else if $page.url.searchParams.get('category')}
+				Work Projects
+			{:else if $page.url.searchParams.get('tag')}
+				{$page.url.searchParams.get('tag')}
+			{:else}
+				All Work
+			{/if}
+			({$filteredPosts.length})
+		</h1>
 		{#if hasFilters}
-			<button on:click={clearFilters} class="btn btn-sm btn-primary">Clear Filers</button>
+			<button on:click={clearFilters} class="btn btn-sm btn-primary"
+				>Clear Filers ({$filteredPosts.length})</button
+			>
 		{/if}
 	</div>
 
@@ -77,7 +117,11 @@
 			<div class="flex flex-wrap gap-2">
 				{#each globalCategories as { name, count }}
 					<!-- daisyui chips -->
-					<button on:click={() => filterByCategory(name)} class="btn btn-xs">
+					<button
+						on:click={() => filterByCategory(name)}
+						class="btn btn-xs"
+						class:btn-primary={$page.url.searchParams.get('category') === name}
+					>
 						{name}
 						<div class="badge">{count}</div>
 					</button>
@@ -89,7 +133,11 @@
 			<div class="flex flex-wrap gap-2">
 				{#each globalTags as { name, count }}
 					<!-- daisyui chips -->
-					<button on:click={() => filterByTag(name)} class=" btn btn-xs">
+					<button
+						on:click={() => filterByTag(name)}
+						class="btn btn-xs"
+						class:btn-primary={$page.url.searchParams.get('tag') === name}
+					>
 						{name}
 						<div class="badge">{count}</div>
 					</button>
@@ -100,11 +148,11 @@
 
 	<div class="mt-10">
 		<!-- {#each posts as [path, { metadata: { title, description, cover, categories, type, tags } }]} -->
-		{#each posts as post}
+		{#each $filteredPosts as post}
 			<div>
 				<a
 					data-sveltekit-preload-data="hover"
-					href={'/blog/' + post.slug}
+					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
 					class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
 				>
 					<div class="flex-none">
