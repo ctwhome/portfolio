@@ -22,4 +22,4 @@ Read the white paper here
 <!-- [Paper.pdf]('./leaplearn_garcia_gonzalez.pdf) -->
 
 
-![](./images/foreground.webp)
+![](./images/Foreground.webp)
