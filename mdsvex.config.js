@@ -10,15 +10,19 @@ export default {
     dashes: 'oldschool'
   },
   layout: {
-    _: "/src/layouts/default.svelte", // Default layout for markdown files
-    blog: "/src/layouts/blog.svelte",
-    project: "/src/layouts/project.svelte",
+    _: "/src/markdown-layouts/default.svelte", // Default layout for markdown files
+    blog: "/src/markdown-layouts/blog.svelte",
+    project: "/src/markdown-layouts/project.svelte",
 
 
     // project: "./path/to/article/layout.svelte",
     // _: "./path/to/fallback/layout.svelte"
   },
-  remarkPlugins: [videos, relativeImages, headings],
+  remarkPlugins: [
+    videos,
+    relativeImages,
+    headings
+  ],
   rehypePlugins: [
     slugPlugin,
     [

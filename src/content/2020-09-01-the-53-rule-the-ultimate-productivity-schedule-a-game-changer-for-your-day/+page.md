@@ -1,9 +1,10 @@
 ---
-title: "The 5:3 Rule: The Ultimate Productivity Schedule: A Game-Changer for Your Day!"
-date: "2020-09-01"
+title: The 5:3 Rule - The Ultimate Productivity Schedule
+description:  A Game-Changer for Your Day!
+date: 2020-09-01
 categories:
-  - "blog"
-coverImage: "image-13.png"
+  - Blog
+coverImage: images/image-13.png
 ---
 
 Ever feel like there aren't enough hours in the day? Between juggling work, making sure you're eating something healthier than instant noodles, keeping up with your social life, and trying to remember if you fed the cat, life can get overwhelming! But what if I told you there's a technique that can help you squeeze more juice out of your day? Well, keep reading, because I've got a game-changer for you!

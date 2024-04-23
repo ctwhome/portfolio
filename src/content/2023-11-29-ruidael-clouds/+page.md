@@ -1,12 +1,12 @@
 ---
-title: "Ruidael Clouds (In Progress)"
+title: "Ruidael Clouds - 3D Zarr Visualizer"
 date: "2023-11-29"
 categories:
-  - "project"
+  - "Project"
 tags:
-  - "3d-visualization"
-  - "escience-center"
-coverImage: "DALL·E-2023-11-29-11.07.13-A-breathtaking-sky-scene-showcasing-clouds-half-of-which-are-depicted-with-ultra-realistic-detail-while-the-other-half-seamlessly-transitions-into-a.png"
+  - 3D-visualization
+  - eScience-center
+coverImage: images/cover.png
 ---
 
 A dynamic 3D volumetric rendering on the Web for large data.

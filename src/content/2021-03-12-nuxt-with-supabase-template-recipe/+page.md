@@ -1,14 +1,13 @@
 ---
-title: "Nuxt with Supabase template recipe"
-date: "2021-03-12"
+title: Nuxt with Supabase template recipe
+date: 2021-03-12
 categories:
-  - "project"
+  - Project
 tags:
-  - "nuxtjs"
-  - "supabase"
-  - "web"
-  - "web-recipe"
-coverImage: "1_W7eF0tSg_y2LltTxRMFQ4A.png"
+  - NuxtJS
+  - Supabase
+  - Web
+coverImage: images/1_W7eF0tSg_y2LltTxRMFQ4A.png
 ---
 
 I built a Nuxt-supabase ready-to-use template and I wanted to write a postmortem about what I have learned in making this repository recipe.

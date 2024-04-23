@@ -1,14 +1,14 @@
 ---
-title: "Pioneering the Power of PWAs  (Dev Prototype with AR)"
-date: "2017-07-13"
+title: Pioneering the Power of PWAs  (Dev Prototype with AR)
+date: 2017-07-13
 categories:
-  - "project"
+  - Project
 tags:
-  - "design"
-  - "extended-reality"
-  - "infographic"
-  - "research"
-coverImage: "exact-2.png"
+  - Design
+  - XR
+  - Infographic
+  - Research
+coverImage: images/exact-2.png
 ---
 
 In 2017, I introduced a groundbreaking prototype to our company – an avant-garde Progressive Web App (PWA) that capitalized on the full might of the technology, freshly introduced back then. A masterful blend of cutting-edge tech and responsive design, this prototype served as a beacon, showcasing the enormous potential of PWAs.

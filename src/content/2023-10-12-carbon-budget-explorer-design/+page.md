@@ -1,16 +1,17 @@
 ---
-title: "Carbon Budget Explorer [Design]"
-date: "2023-10-12"
+title: Carbon Budget Explorer [Design]
+date: 2023-10-12
 categories:
-  - "project"
+  - Project
 tags:
-  - "branding"
-  - "climate-change"
-  - "design"
-  - "escience-center"
-  - "redesign"
-coverImage: "Frame-6.jpg"
+  - Branding
+  - Climate-change
+  - Design
+  - eScience-center
+  - Redesign
+coverImage: images/Frame-6.jpg
 ---
+
 
 **Role:** UI/UX Designer and Logo Creator
 **Objective:** Enhance user experience with a specific focus on policymakers, ensuring clarity and simplicity without compromising on essential data and context.

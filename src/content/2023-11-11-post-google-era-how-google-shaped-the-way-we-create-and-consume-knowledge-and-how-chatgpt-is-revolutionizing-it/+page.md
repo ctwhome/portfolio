@@ -1,12 +1,13 @@
 ---
-title: "Post Google Era: How Google Shaped the Way We Create and Consume Knowledge, and How ChatGPT is Revolutionizing It"
-date: "2023-11-11"
-categories: 
-  - "blog"
-tags: 
-  - "thoughts"
-coverImage: "DALL·E-2023-11-11-09.39.41-A-minimalistic-design-with-the-ChatGPT-logo-prominently-displayed-in-the-foreground-and-the-Google-logo-subtly-positioned-in-the-background-slightly.png"
+title: Post Google Era - LLMs as a search engine
+date: 2023-11-11
+categories:
+  - Blog
+tags:
+  - Thoughts
+coverImage: images/cover.png
 ---
+## How Google Shaped the Way We Create and Consume Knowledge, and How ChatGPT is Revolutionizing It
 
 In the age of Google, knowledge has become more accessible than ever before. With just a few clicks, we can find answers to almost any question we have. However, there have been unintended consequences to this convenience. Google's dominance in shaping the way we create and consume knowledge has led to some drawbacks that are now being addressed by ChatGPT.
 
