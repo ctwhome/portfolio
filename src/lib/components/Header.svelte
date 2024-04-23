@@ -50,14 +50,26 @@
 			<!-- menu-->
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
-				<a class="menu-link" class:active={$page.route.id?.includes('/blog')} href="/blog">
-					Latest Work
-				</a>
-				<!-- <a class="menu-link" class:active={$page.route.id?.includes('/posts')} href="/posts">Blog</a
+				<a
+					class="menu-link"
+					class:active={$page.url.searchParams.get('category') === 'Blog'}
+					href="/work?category=Blog"
 				>
-				<a class="menu-link" class:active={$page.route.id?.includes('/work')} href="/work">
-					<span class="hidden">Latest </span>Work
-				</a> -->
+					Blog
+				</a>
+				<a
+					class="menu-link"
+					class:active={$page.url.searchParams.get('category') === 'Project'}
+					href="/work?category=Project">Projects</a
+				>
+				<a
+					class="menu-link"
+					class:active={$page.route.id?.includes('/work') &&
+						!$page.url.searchParams.get('category')}
+					href="/work"
+				>
+					<span class="hidden sm:inline">Latest </span>Work
+				</a>
 				<a class="menu-link" class:active={$page.route.id?.includes('/lab')} href="/lab">Lab</a>
 			</div>
 
