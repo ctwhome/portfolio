@@ -6,6 +6,7 @@
 	--scrollbarThumb: hsl(var(--b3));
 	--scrollbarThumbHover: hsl(var(--b2));
 }
+
 /* Scrollbar colors*/
 /* width */
 ::-webkit-scrollbar {

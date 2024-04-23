@@ -1,37 +1,51 @@
-<script>
-	// import { lazyLoad } from '$lib/actions/lazy-load.js';
+<script lang="ts">
+	import { page } from '$app/stores';
+	import { content, posts } from '$content/content';
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
+	import { get, writable } from 'svelte/store';
+	import { goto } from '$app/navigation';
+	// import { lazyLoad } from '$lib/actions/lazy-load.js';
 
-	export let data;
-	const { posts, count, tags, categories } = data;
-	const filteredPosts = writable({ ...posts }); // initialize with all posts
+	const filteredPosts = writable(posts); // initialize with all projects
+
 	let hasFilters = false;
 
-	let filteredCategories = categories;
-	let filteredTags = tags;
+	//
+	// Merge and remove duplicates and empty tags
+	//
+	let globalTags: { name: string; count: number }[] = [];
+	let globalCategories: { name: string; count: number }[] = [];
 
-	function updateFilteredCategoriesAndTags(filteredPosts) {
-		const allCategories = new Set();
-		const allTags = new Set();
+	function updateCounters() {
+		globalTags = [];
+		globalCategories = [];
 
-		for (let year in filteredPosts) {
-			for (let post of filteredPosts[year]) {
-				post.categories.forEach((category) => allCategories.add(category.id));
-				if (post.tags) {
-					post.tags.forEach((tag) => allTags.add(tag.id));
-				}
-			}
-		}
+		$filteredPosts.map((post) => {
+			post.metadata?.tags?.forEach((tag) => {
+				let index = globalTags.findIndex((t) => t.name === tag);
+				index === -1 ? globalTags.push({ name: tag, count: 1 }) : globalTags[index].count++;
+			});
 
-		filteredCategories = categories.filter((category) => allCategories.has(category.id));
-		filteredTags = tags.filter((tag) => allTags.has(tag.id));
+			post.metadata?.categories?.forEach((category) => {
+				let index = globalCategories.findIndex((t) => t.name === category);
+				index === -1
+					? globalCategories.push({ name: category, count: 1 })
+					: globalCategories[index].count++;
+			});
+		});
+	}
+
+	// if any searchParmas change, update the filters
+	$: if (!$page.url.searchParams.get('category')) {
+		setFilters();
+	}
+	$: if ($page.url.searchParams.get('category')) {
+		setFilters();
 	}
 	onMount(() => {
+		setFilters();
 		// Get all image elements on the page
-
 		const allImages = document.querySelectorAll('img');
-
 		// Loop through each image and prevent dragging
 		allImages.forEach((img) => {
 			img.addEventListener('dragstart', function (event) {
@@ -40,120 +54,147 @@
 		});
 	});
 
+	function setFilters() {
+		$filteredPosts = posts;
+
+		hasFilters = false;
+		if ($page.url.searchParams.get('category')) {
+			filterByCategory($page.url.searchParams.get('category'));
+		} else if ($page.url.searchParams.get('tag')) {
+			filterByTag($page.url.searchParams.get('tag'));
+		}
+		updateCounters();
+	}
+
+	// TODO: Fix this
 	function clearFilters() {
-		filteredPosts.set({ ...posts }); // reset posts filter
-		filteredCategories = categories; // reset category filter
-		filteredTags = tags; // reset tags filter
-		hasFilters = false; // update the hasFilters flag
+		goto('/work');
+		hasFilters = false;
+		filteredPosts.set(posts);
+	}
+	function filterByCategory(categoryName) {
+		hasFilters = true;
+		// set url params to category
+		goto(`?category=${encodeURIComponent(categoryName)}`);
+		const filtered = posts.filter(({ metadata }) => metadata?.categories?.includes(categoryName));
+		filteredPosts.set(filtered);
 	}
 
-	function filterByCategory(categoryId) {
-		// reset the store to the original posts
-		clearFilters();
+	function filterByTag(tagName) {
 		hasFilters = true;
-		const newFilteredPosts = {};
-		for (let year in $filteredPosts) {
-			newFilteredPosts[year] = $filteredPosts[year].filter((post) =>
-				post.categories.some((category) => category.id === categoryId)
-			);
-		}
-		filteredPosts.set(newFilteredPosts); // update the store
-		updateFilteredCategoriesAndTags(newFilteredPosts);
-	}
-
-	function filterByTag(tagId) {
-		// reset the store to the original posts
-		clearFilters();
-		hasFilters = true;
-		const newFilteredPosts = {};
-		for (let year in $filteredPosts) {
-			newFilteredPosts[year] = $filteredPosts[year].filter(
-				(post) => post.tags && post.tags.some((tag) => tag.id === tagId)
-			);
-		}
-		filteredPosts.set(newFilteredPosts); // update the store
-		updateFilteredCategoriesAndTags(newFilteredPosts);
+		// set url params to tag
+		goto(`?tag=${encodeURIComponent(tagName)}`);
+		const filtered = posts.filter(({ metadata }) => metadata?.tags?.includes(tagName));
+		filteredPosts.set(filtered);
 	}
 </script>
 
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
-			Latest Work ({count})
+			{#if $page.url.searchParams.get('category') === 'Blog'}
+				Blog Posts
+			{:else if $page.url.searchParams.get('category')}
+				Work Projects
+			{:else if $page.url.searchParams.get('tag')}
+				{$page.url.searchParams.get('tag')}
+			{:else}
+				All Work
+			{/if}
+			({$filteredPosts.length})
 		</h1>
 		{#if hasFilters}
-			<button on:click={clearFilters} class="btn btn-sm btn-primary">Clear Filers</button>
+			<button on:click={clearFilters} class="btn btn-sm btn-primary"
+				>Clear Filers ({$filteredPosts.length})</button
+			>
 		{/if}
 	</div>
 
-	{#if !data}
-		<p>Loading...</p>
-	{:else}
-		<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
-			<div>
-				<div class="text-sm mb-2">Categories</div>
-				<div class="flex flex-wrap gap-2">
-					{#each filteredCategories as category}
-						<!-- daisyui chips -->
-						<button on:click={() => filterByCategory(category.id)} class="btn btn-sm">
-							{category.name}
-							<div class="badge">{category.count}</div>
-						</button>
-					{/each}
-				</div>
-			</div>
-			<div>
-				<div class="text-sm mb-2">Tags</div>
-				<div class="flex flex-wrap gap-2">
-					{#each filteredTags as tag}
-						<!-- daisyui chips -->
-						<button on:click={() => filterByTag(tag.id)} class="btn btn-xs">
-							{tag.name}
-							<div class="badge">{tag.count}</div>
-						</button>
-					{/each}
-				</div>
+	<!-- FILTERS PANEL -->
+	<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
+		<div>
+			<div class="text-sm mb-2">Categories</div>
+			<div class="flex flex-wrap gap-2">
+				{#each globalCategories as { name, count }}
+					<!-- daisyui chips -->
+					<button
+						on:click={() => filterByCategory(name)}
+						class="btn btn-xs"
+						class:btn-primary={$page.url.searchParams.get('category') === name}
+					>
+						{name}
+						<div class="badge">{count}</div>
+					</button>
+				{/each}
 			</div>
 		</div>
-		{#each Object.keys($filteredPosts).sort().reverse() as year}
-			{#if $filteredPosts[year].length > 0}
-				<!-- Check if there are posts for this year -->
-				<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
-				<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
-					{#each $filteredPosts[year] as post}
-						<a
-							data-sveltekit-preload-data="hover"
-							href={'/' + post.categories[0].slug + '/' + post.slug}
-							class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
-						>
-							<div class="flex-none">
-								{#if post.media_url}
-									<img
-										class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
-										src={post.media_url}
-										alt={post.post_title}
-									/>
+		<div>
+			<div class="text-sm mb-2">Tags</div>
+			<div class="flex flex-wrap gap-2">
+				{#each globalTags as { name, count }}
+					<!-- daisyui chips -->
+					<button
+						on:click={() => filterByTag(name)}
+						class="btn btn-xs"
+						class:btn-primary={$page.url.searchParams.get('tag') === name}
+					>
+						{name}
+						<div class="badge">{count}</div>
+					</button>
+				{/each}
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-10">
+		<!-- {#each posts as [path, { metadata: { title, description, cover, categories, type, tags } }]} -->
+		{#each $filteredPosts as post}
+			<div>
+				<a
+					data-sveltekit-preload-data="hover"
+					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
+					class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
+				>
+					<div class="flex-none">
+						{#if post.metadata.coverImage}
+							<img
+								class="w-20 h-20 object-cover rounded"
+								src={post.metadata.coverImage &&
+									`/content/${post.slug}/${post.metadata.coverImage}`}
+								alt={post.slug}
+							/>
+						{:else}
+							<div class="w-20 h-20 bg-base-200"></div>
+						{/if}
+					</div>
+					<div class="px-3 pb-3">
+						<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">
+							{@html post.metadata.title}
+						</h2>
+
+						{#if post.metadata.description}
+							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+								{@html post.metadata.description}
+							</div>
+						{/if}
+
+						<div class="flex gap-3 mt-2 opacity-40 text-sm">
+							<div class="flex flex-wrap gap-3">
+								{#if post.metadata.categories}
+									{#each post.metadata.categories as category}
+										<div class="">{category}</div>
+									{/each}
+								{/if}
+								{#if post.metadata.tags}
+									{#each post.metadata.tags as tag}
+										<div class="">{tag}</div>
+									{/each}
 								{/if}
 							</div>
-							<div class="px-3 pb-3">
-								<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.post_title}</h2>
-
-								<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
-									{@html post.excerpt}
-								</div>
-
-								<div class="flex gap-3 mt-2 opacity-40 text-sm">
-									<div class="flex flex-wrap gap-3">
-										{#each post.categories as categorie}
-											<div>{categorie.name}</div>
-										{/each}
-									</div>
-								</div>
-							</div>
-						</a>
-					{/each}
-				</ul>
-			{/if}
+						</div>
+					</div>
+				</a>
+			</div>
 		{/each}
-	{/if}
+	</div>
 </main>
