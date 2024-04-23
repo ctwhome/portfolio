@@ -53,6 +53,13 @@
 	</TiltImage>
 
 	<svelte:component this={post.default} />
+
+	<a
+		target="_blank"
+		class="opacity-80"
+		href={`https://github.com/ctwhome/portfolio/tree/main/src/content/${$page.params.slug}`}
+		>Edit this page</a
+	>
 </div>
 
 <!-- {coverImagePath} -->

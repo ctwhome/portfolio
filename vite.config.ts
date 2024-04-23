@@ -7,8 +7,6 @@ import VitePluginRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 
-// import copyImagesPlugin from './vitePlugins/vite-plugin-copy-images';
-
 export default defineConfig({
 	plugins: [
 		enhancedImages(),
@@ -21,7 +19,6 @@ export default defineConfig({
 			compiler: 'svelte',
 			autoInstall: true,
 		}),
-		// copyImagesPlugin()
 	],
 	// optimizeDeps: {
 	// 	disabled: true,
