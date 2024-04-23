@@ -3,8 +3,6 @@
 	// import svelteTilt from 'vanilla-tilt-svelte';
 	import { onMount, onDestroy } from 'svelte';
 	import VanillaTilt from 'vanilla-tilt';
-	export let data;
-	const { yoast_head } = data;
 
 	// let plants = [];
 	let products = [];
@@ -52,11 +50,7 @@
 	});
 </script>
 
-<svelte:head>
-	{#if yoast_head}
-		{@html yoast_head}
-	{/if}
-</svelte:head>
+<svelte:head></svelte:head>
 <div>
 	<div class="first-fold pt-6">
 		<div class="container m-auto px-6">
@@ -75,7 +69,7 @@
 						Product Designer & Research Software Engineer <br class="hidden sm:inline" /> at
 						<a
 							class="text-blue-300 glow"
-							href="https://esciencecenter.nl"
+							href="https://www.esciencecenter.nl/team/jesus-garcia-gonzalez-msc"
 							target="_blank"
 							rel="noopener">The Netherlands eScience Center</a
 						>
@@ -229,7 +223,7 @@
 	</div>
 	<div class="container mx-auto mt-10">
 		<a class="hover:text-primary" href="work">See Latest work</a> |
-		<a class="hover:text-primary" href="3d">3D Experiments</a> |
+		<!-- <a class="hover:text-primary" href="three">3D Experiments</a> | -->
 		<a class="hover:text-primary" href="about">About</a>
 	</div>
 </div>
@@ -290,8 +284,16 @@
 	}
 
 	.title {
-		font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-			Roboto, 'Helvetica Neue', Arial, sans-serif;
+		font-family:
+			'Quicksand',
+			'Source Sans Pro',
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			'Helvetica Neue',
+			Arial,
+			sans-serif;
 		display: block;
 		font-weight: 300;
 		font-size: 100px;

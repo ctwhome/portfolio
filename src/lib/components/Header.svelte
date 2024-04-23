@@ -1,11 +1,12 @@
 <script>
+	import { page } from '$app/stores';
 	// import SocialIcons from './SocialIcons.svelte';
 	// import HeaderResponsiveMenu from './HeaderResponsiveMenu.svelte';
 	// import { Link } from 'svelte-routing';
 	// import { get } from 'svelte/store';
 	// import { tilt } from '../../stores/tilt.js';
 	// import menuItems from '$lib/models/menu-itmes.js';
-	import DaisyUIThemeSwitcher from '$lib/components/DaisyUIThemeSwitcher.svelte';
+	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
 </script>
 
 <nav class="bien-nav mb-10">
@@ -38,20 +39,38 @@
 		</div>
 		<!--Desktop Header-->
 
-		<header class="flex items-center">
-			<a data-sveltekit-preload-data="hover" class="flex-initial mr-3 my-1" href="/">
+		<header class="flex items-center gap-3">
+			<a class="flex-initial mr-3 my-1" href="/">
 				<img
 					src="$lib/assets/images/logo.svg"
 					alt="Logo asset"
-					class="max-w-[180px] h-auto aspect-4 sm:aspect-3"
+					class="max-w-[180px] h-auto aspect-4 sm:aspect-3 no-drag select-none"
 				/>
 			</a>
-
 			<!-- menu-->
 			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
-				<a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a>
-				<a class="menu-link" href="/3d">3D</a>
-				<a class="menu-link" href="/work"> <span class="hidden sm:inline">Latest </span>Work </a>
+				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
+				<a
+					class="menu-link"
+					class:active={$page.url.searchParams.get('category') === 'Blog'}
+					href="/work?category=Blog"
+				>
+					Blog
+				</a>
+				<a
+					class="menu-link"
+					class:active={$page.url.searchParams.get('category') === 'Project'}
+					href="/work?category=Project">Projects</a
+				>
+				<a
+					class="menu-link"
+					class:active={$page.route.id?.includes('/work') &&
+						!$page.url.searchParams.get('category')}
+					href="/work"
+				>
+					<span class="hidden sm:inline">Latest </span>Work
+				</a>
+				<a class="menu-link" class:active={$page.route.id?.includes('/lab')} href="/lab">Lab</a>
 			</div>
 
 			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />
@@ -66,7 +85,7 @@
  -->
 <style lang="postcss">
 	.menu-link {
-		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium hover:text-primary transition;
+		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium transition hover:text-secondary;
 	}
 
 	.menu-link.active {

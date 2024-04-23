@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts,md}'],
 	theme: {
 		extend: {}
 	},
@@ -8,7 +8,6 @@ export default {
 		require('daisyui'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/forms'),
-		require('@tailwindcss/aspect-ratio'),
 		require('@tailwindcss/container-queries')
 	],
 	daisyui: {
@@ -37,27 +36,35 @@ export default {
 					error: '#ff5724'
 				}
 			},
-			'light',
-			'dark',
-			'cupcake',
-			'bumblebee',
-			'emerald',
-			'corporate',
-			'synthwave',
-			'retro',
-			'cyberpunk',
-			'valentine',
-			'halloween',
-			'garden',
-			'forest',
-			'aqua',
-			'lofi',
-			'pastel',
-			'fantasy',
-			'wireframe',
-			'black',
-			'luxury',
-			'dracula'
+		"dark",
+    "light",
+    "night",
+    "cupcake",
+    "bumblebee",
+    "emerald",
+    "corporate",
+    "synthwave",
+    "retro",
+    "cyberpunk",
+    "valentine",
+    "halloween",
+    "garden",
+    "forest",
+    "aqua",
+    "lofi",
+    "pastel",
+    "fantasy",
+    "wireframe",
+    "black",
+    "luxury",
+    "dracula",
+    "cmyk",
+    "autumn",
+    "business",
+    "acid",
+    "lemonade",
+    "coffee",
+    "winter",
 		]
 	}
 };
