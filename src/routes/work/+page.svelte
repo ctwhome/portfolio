@@ -73,6 +73,10 @@
 		filteredPosts.set(posts);
 	}
 	function filterByCategory(categoryName) {
+		if (hasFilters && $page.url.searchParams.get('category') === categoryName) {
+			clearFilters();
+			return;
+		}
 		hasFilters = true;
 		// set url params to category
 		goto(`?category=${encodeURIComponent(categoryName)}`);
@@ -81,6 +85,11 @@
 	}
 
 	function filterByTag(tagName) {
+		if (hasFilters && $page.url.searchParams.get('tag') === tagName) {
+			clearFilters();
+			return;
+		}
+
 		hasFilters = true;
 		// set url params to tag
 		goto(`?tag=${encodeURIComponent(tagName)}`);
@@ -89,6 +98,7 @@
 	}
 </script>
 
+{hasFilters}
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
