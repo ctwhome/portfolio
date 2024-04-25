@@ -3,7 +3,6 @@
 import { browser } from '$app/environment'
 import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
-import readingTime from 'reading-time/lib/reading-time.js'
 
 // we require some server-side APIs to parse all metadata
 if (browser) {
@@ -55,8 +54,6 @@ export const content = Object.entries(import.meta.glob<Glob>('/src/work/**/*.md'
         text: preview.structuredText ?? preview.toString()
       },
 
-      // get estimated reading time for the post
-      readingTime: readingTime(html.structuredText).text
     }
   })
   // sort by date

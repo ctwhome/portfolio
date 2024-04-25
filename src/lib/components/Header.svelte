@@ -6,6 +6,7 @@
 	// import { get } from 'svelte/store';
 	// import { tilt } from '../../stores/tilt.js';
 	// import menuItems from '$lib/models/menu-itmes.js';
+	import logo from '$lib/assets/images/logo.svg';
 	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
 </script>
 
@@ -42,7 +43,7 @@
 		<header class="flex items-center gap-3">
 			<a class="flex-initial mr-3 my-1" href="/">
 				<img
-					src="$lib/assets/images/logo.svg"
+					src={logo}
 					alt="Logo asset"
 					class="max-w-[180px] h-auto aspect-4 sm:aspect-3 no-drag select-none"
 				/>
