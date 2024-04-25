@@ -39,8 +39,8 @@
 			in:fade
 			src={item.url}
 			alt={item.description}
-			width={400}
-			height={300}
+			width="100%"
+			height="100%"
 			on:click={() => nextImage()}
 		/>
 	{/each}
