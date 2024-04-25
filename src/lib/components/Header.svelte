@@ -8,6 +8,7 @@
 	// import menuItems from '$lib/models/menu-itmes.js';
 	import logo from '$lib/assets/images/logo.svg';
 	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
+	let active = 'Latest Work';
 </script>
 
 <nav class="bien-nav mb-10">
@@ -49,7 +50,55 @@
 				/>
 			</a>
 			<!-- menu-->
-			<div class="z-10 flex-1 flex space-x-4 lg:space-x-8 w-full justify-end">
+			<!-- Mobile -->
+
+			<div class="z-10 dropdown flex justify-end flex-1 sm:hidden">
+				<div tabindex="0" role="button" class="btn m-1">{active}</div>
+				<ul
+					tabindex="0"
+					class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+				>
+					<li>
+						<a
+							class="menu-link"
+							on:click={() => (active = 'Blog')}
+							class:active={$page.url.searchParams.get('category') === 'Blog'}
+							href="/work?category=Blog"
+						>
+							Blog
+						</a>
+					</li>
+					<li>
+						<a
+							class="menu-link"
+							class:active={$page.url.searchParams.get('category') === 'Project'}
+							on:click={() => (active = 'Projects')}
+							href="/work?category=Project">Projects</a
+						>
+					</li>
+					<li>
+						<a
+							class="menu-link"
+							on:click={() => (active = 'Latest Work')}
+							class:active={$page.route.id?.includes('/work') &&
+								!$page.url.searchParams.get('category')}
+							href="/work"
+						>
+							Latest Work
+						</a>
+					</li>
+					<li>
+						<a
+							class="menu-link"
+							class:active={$page.route.id?.includes('/lab')}
+							href="/lab"
+							on:click={() => (active = 'Lab')}>Lab</a
+						>
+					</li>
+				</ul>
+			</div>
+			<!-- Desktop -->
+			<div class="z-10 flex-1 space-x-4 lg:space-x-8 w-full justify-end hidden sm:flex">
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
 				<a
 					class="menu-link"
