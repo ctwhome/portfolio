@@ -1,6 +1,10 @@
 <script>
+	import ProfilePicture from '$components/ProfilePicture.svelte';
 	// import StatusEnum from '$lib/models/status-enum.js';
 	// import svelteTilt from 'vanilla-tilt-svelte';
+	import profileImage from '$lib/assets/images/ctw-jess-profile.jpg';
+	import producDesignImage from '$lib/assets/images/product-design.svg';
+	import engineeringImage from '$lib/assets/images/web.svg';
 	import { onMount, onDestroy } from 'svelte';
 	import VanillaTilt from 'vanilla-tilt';
 
@@ -82,7 +86,7 @@
 					style=" transform: scale(1) perspective(1040px) rotateY(-31deg) rotateX(2deg);"
 				>
 					<img
-						src="$lib/assets/images/ctw-jess-profile.jpg"
+						src={profileImage}
 						class="tilt rounded pointer-events-none h-[450px] w-full object-cover"
 						alt="Jesse Ctw Profile"
 					/>
@@ -153,7 +157,7 @@
 				<!-- <a href="/product-design"> -->
 				<img
 					class="w-full transition duration-500 border-opacity-0 hover:border-opacity-100 border-b-4 border-primary"
-					src="$lib/assets/images/product-design.svg"
+					src={producDesignImage}
 					alt="UX Button"
 				/>
 				<!-- </a> -->
@@ -191,8 +195,8 @@
             transition duration-500
             border-opacity-0 hover:border-opacity-100 border-b-4 border-primary
             "
-					src="$lib/assets/images/web.svg"
-					alt="UX Button"
+					src={engineeringImage}
+					alt="engineering Button"
 				/>
 				<!-- </a> -->
 			</div>

@@ -160,6 +160,11 @@
 			<div class="mb-4" />
 			<LoginButton />
 		</div>
+
+		<div class="border border-base-300 p-2 rounded">
+			Example Markdown pages with interactive components
+			<a href="/lab/mdsvex" class="btn mt-4">MDsveX Full Example</a>
+		</div>
 	</div>
 
 	<h2 class="mt-20 text-2xl font-bold">Tools and Libraries included here</h2>

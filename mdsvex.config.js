@@ -1,8 +1,15 @@
 import { visit } from 'unist-util-visit'
+
 import autolinkHeadings from 'rehype-autolink-headings'
 import slugPlugin from 'rehype-slug'
+
 import relativeImages from 'mdsvex-relative-images'
-import remarkHeadings from '@vcarl/remark-headings'
+// import remarkHeadings from '@vcarl/remark-headings'
+import remarkExternalLinks from 'remark-external-links';
+import readingTime from 'remark-reading-time';
+
+// import remarkToc from 'remark-toc'
+
 
 export default {
   extensions: ['.svx', '.md'],
@@ -13,23 +20,21 @@ export default {
     _: "/src/markdown-layouts/default.svelte", // Default layout for markdown files
     blog: "/src/markdown-layouts/blog.svelte",
     project: "/src/markdown-layouts/project.svelte",
-
-
-    // project: "./path/to/article/layout.svelte",
-    // _: "./path/to/fallback/layout.svelte"
   },
   remarkPlugins: [
     videos,
     relativeImages,
-    headings
+    // remarkToc,
+    // headings,
+    // adds a `readingTime` frontmatter attribute
+		readingTime,
+    // external links open in a new tab
+		[remarkExternalLinks, { target: '_blank', rel: 'noopener' }],
   ],
   rehypePlugins: [
     slugPlugin,
     [
-      autolinkHeadings,
-      {
-        behavior: 'wrap'
-      }
+      autolinkHeadings, { behavior: 'wrap' }
     ]
   ]
 }
@@ -61,20 +66,20 @@ function videos() {
 /**
  * Parses headings and includes the result in metadata
  */
-function headings() {
-  return function transformer(tree, vfile) {
-    // run remark-headings plugin
-    remarkHeadings()(tree, vfile)
+// function headings() {
+//   return function transformer(tree, vfile) {
+//     // run remark-headings plugin
+//     remarkHeadings()(tree, vfile)
 
-    // include the headings data in mdsvex frontmatter
-    vfile.data.fm ??= {}
-    vfile.data.fm.headings = vfile.data.headings.map((heading) => ({
-      ...heading,
-      // slugify heading.value
-      id: heading.value
-        .toLowerCase()
-        .replace(/\s/g, '-')
-        .replace(/[^a-z0-9-]/g, '')
-    }))
-  }
-}
+//     // include the headings data in mdsvex frontmatter
+//     vfile.data.fm ??= {}
+//     vfile.data.fm.headings = vfile.data.headings.map((heading) => ({
+//       ...heading,
+//       // slugify heading.value
+//       id: heading.value
+//         .toLowerCase()
+//         .replace(/\s/g, '-')
+//         .replace(/[^a-z0-9-]/g, '')
+//     }))
+//   }
+// }
