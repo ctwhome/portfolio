@@ -7,6 +7,7 @@
 	// import { lazyLoad } from '$lib/actions/lazy-load.js';
 
 	const filteredPosts = writable(posts); // initialize with all projects
+	let filteredPostsByYear = [];
 
 	let hasFilters = false;
 
@@ -55,9 +56,25 @@
 	});
 
 	function setFilters() {
+		// group by year
 		$filteredPosts = posts;
+		Object.entries(posts).map(([path, post]) => {
+			const year = new Date(post.metadata.date).getFullYear();
+			if (!filteredPostsByYear[year]) filteredPostsByYear[year] = [];
+			filteredPostsByYear[year].push(post);
+		});
+		console.log('🎹 filteredPosts', filteredPostsByYear);
+
+		// $filteredPosts = filteredPosts;
+		// .reduce((acc, post) => {
+		// 	const year = new Date(post[1].metadata.date).getFullYear();
+		// 	if (!acc[year]) acc[year] = [];
+		// 	acc[year].push(post);
+		// 	return acc;
+		// }, {});
 
 		hasFilters = false;
+
 		if ($page.url.searchParams.get('category')) {
 			filterByCategory($page.url.searchParams.get('category'));
 		} else if ($page.url.searchParams.get('tag')) {
@@ -98,7 +115,6 @@
 	}
 </script>
 
-{hasFilters}
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
@@ -158,53 +174,135 @@
 
 	<div class="mt-10">
 		<!-- {#each posts as [path, { metadata: { title, description, cover, categories, type, tags } }]} -->
+
+		<!-- {#each Object.keys(filteredPostsByYear).sort().reverse() as year}
+			{#if $filteredPosts[year].length > 0}
+				<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
+				<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
+					{#each $filteredPosts[year] as post}
+						<a
+							data-sveltekit-preload-data="hover"
+							href={'/' + post.categories[0].slug + '/' + post.slug}
+							class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
+						>
+							<div class="flex-none">
+								{#if post.media_url}
+									<img
+										class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
+										src={post.media_url}
+										alt={post.post_title}
+									/>
+								{/if}
+							</div>
+							<div class="px-3 pb-3">
+								<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.post_title}</h2>
+
+								<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+									{@html post.excerpt}
+								</div>
+
+								<div class="flex gap-3 mt-2 opacity-40 text-sm">
+									<div class="flex flex-wrap gap-3">
+										{#each post.categories as categorie}
+											<div>{categorie.name}</div>
+										{/each}
+									</div>
+								</div>
+							</div>
+						</a>
+					{/each}
+				</ul>
+			{/if}
+		{/each} -->
+
+		<!-- <ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10"></ul> -->
 		{#each $filteredPosts as post}
-			<div>
-				<a
-					data-sveltekit-preload-data="hover"
-					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
-					class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
-				>
-					<div class="flex-none">
-						{#if post.metadata.coverImage}
-							<img
-								class="w-20 h-20 object-cover rounded"
-								src={post.metadata.coverImage &&
-									`/content/${post.slug}/${post.metadata.coverImage}`}
-								alt={post.slug}
-							/>
-						{:else}
-							<div class="w-20 h-20 bg-base-200"></div>
-						{/if}
-					</div>
-					<div class="px-3 pb-3">
-						<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">
-							{@html post.metadata.title}
-						</h2>
+			<h2 class="text-xl font-bold mt-8 opacity-80">
+				{new Date(post.metadata.date).getFullYear()}
+			</h2>
+			<!-- <a
+				data-sveltekit-preload-data="hover"
+				href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
+				class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10"
+			>
+				<div class="flex-none">
+					{#if post.metadata.coverImage}
+						<img
+							class="w-20 h-20 object-cover rounded"
+							src={post.metadata.coverImage && `/content/${post.slug}/${post.metadata.coverImage}`}
+							alt={post.slug}
+						/>
+					{:else}
+						<div class="w-20 h-20 bg-base-200"></div>
+					{/if}
+				</div>
+				<div class="px-3 pb-3">
+					<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">
+						{@html post.metadata.title}
+					</h2>
 
-						{#if post.metadata.description}
-							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
-								{@html post.metadata.description}
-							</div>
-						{/if}
+					{#if post.metadata.description}
+						<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+							{@html post.metadata.description}
+						</div>
+					{/if}
 
-						<div class="flex gap-3 mt-2 opacity-40 text-sm">
-							<div class="flex flex-wrap gap-3">
-								{#if post.metadata.categories}
-									{#each post.metadata.categories as category}
-										<div class="">{category}</div>
-									{/each}
-								{/if}
-								{#if post.metadata.tags}
-									{#each post.metadata.tags as tag}
-										<div class="">{tag}</div>
-									{/each}
-								{/if}
-							</div>
+					<div class="flex gap-3 mt-2 opacity-40 text-sm">
+						<div class="flex flex-wrap gap-3">
+							{#if post.metadata.categories}
+								{#each post.metadata.categories as category}
+									<div class="">{category}</div>
+								{/each}
+							{/if}
+							{#if post.metadata.tags}
+								{#each post.metadata.tags as tag}
+									<div class="">{tag}</div>
+								{/each}
+							{/if}
 						</div>
 					</div>
-				</a>
-			</div>
+				</div>
+			</a>
+ -->
+			<a
+				data-sveltekit-preload-data="hover"
+				href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
+				class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
+			>
+				<div class="flex-none">
+					{#if post.metadata.coverImage}
+						<img
+							class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
+							src={post.metadata.coverImage && `/content/${post.slug}/${post.metadata.coverImage}`}
+							alt={post.slug}
+						/>
+					{/if}
+				</div>
+				<div class="px-3 pb-3">
+					<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.metadata.title}</h2>
+
+					{#if post.metadata.description}
+						<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+							{@html post.metadata.description}
+						</div>
+					{/if}
+
+					<div class="flex gap-3 mt-2 opacity-40 text-sm">
+						<div class="flex flex-wrap gap-3">
+							{#if post.metadata.categories}
+								{#each post.metadata.categories as category}
+									<div class="">{category}</div>
+								{/each}
+							{/if}
+							{#if post.metadata.tags}
+								{#each post.metadata.tags as tag}
+									<div class="">{tag}</div>
+								{/each}
+							{/if}
+						</div>
+					</div>
+				</div>
+			</a>
 		{/each}
 	</div>
 </main>

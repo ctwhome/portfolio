@@ -23,30 +23,31 @@
 		play and let me know what you think. I'm always looking for new ways to push the boundaries.
 	</p>
 
-	<h2 class="mt-20 text-2xl font-bold">Framework</h2>
-	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
-		<a href="/lab/wordpress">
-			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
-			>
-				<figure>
-					<img src={wordpress} alt="3D example" />
-				</figure>
-				<div class="card-body">
-					<h2 class="card-title">Headless WordPress CMS</h2>
-					<p>Portfolio implementation with complete renderization from WordPress as a CMS</p>
-					<div class="card-actions justify-end">
-						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
-							Open
-						</button>
-					</div>
-				</div>
-			</div>
-		</a>
+	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
+	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
+		<div class="border border-base-300 p-2 rounded">
+			<Carousel />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			<NativeFileApi />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			<Autocomplete />
+		</div>
 
-		<!-- Autocomplete -->
+		<div class="border border-base-300 p-2 rounded">
+			<TimeLine />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			Login Button with social providers
+			<div class="mb-4" />
+			<LoginButton />
+		</div>
 
-		<!-- <Autocomplete /> -->
+		<div class="border border-base-300 p-2 rounded">
+			Example Markdown pages with interactive components
+			<a href="/lab/mdsvex" class="btn mt-4">MDsveX Full Example</a>
+		</div>
 	</div>
 
 	<h2 class="mt-20 text-2xl font-bold">3D Playground</h2>
@@ -140,33 +141,6 @@
 		</div>
 	</a> -->
 
-	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
-	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
-		<div class="border border-base-300 p-2 rounded">
-			<Carousel />
-		</div>
-		<div class="border border-base-300 p-2 rounded">
-			<NativeFileApi />
-		</div>
-		<div class="border border-base-300 p-2 rounded">
-			<Autocomplete />
-		</div>
-
-		<div class="border border-base-300 p-2 rounded">
-			<TimeLine />
-		</div>
-		<div class="border border-base-300 p-2 rounded">
-			Login Button with social providers
-			<div class="mb-4" />
-			<LoginButton />
-		</div>
-
-		<div class="border border-base-300 p-2 rounded">
-			Example Markdown pages with interactive components
-			<a href="/lab/mdsvex" class="btn mt-4">MDsveX Full Example</a>
-		</div>
-	</div>
-
 	<h2 class="mt-20 text-2xl font-bold">Tools and Libraries included here</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<!-- Icons -->
@@ -182,5 +156,27 @@
 				<IconAccountBox class="text-content text-2xl" />
 			</div>
 		</div>
+	</div>
+
+	<h2 class="mt-20 text-2xl font-bold">Framework</h2>
+	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
+		<a href="/lab/wordpress">
+			<div
+				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+				<figure>
+					<img src={wordpress} alt="3D example" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">Headless WordPress CMS</h2>
+					<p>Portfolio implementation with complete renderization from WordPress as a CMS</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+							Open
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
 	</div>
 </div>
