@@ -1,17 +1,14 @@
 ---
-published: false  ### DO NOT FORGET TO PUBLISH
-
-title: Template
-description: A description here?
+published: true
+title: Title Template
+description: Description
 date: 2024-01-01
-cover: ./images/image.avif
-displayCover: true  # False to only show the cover in the list
+cover: ./images/cover.avif
+displayCover: true
 tags:
-  - Tag 1
-  - Tag 2
-
-layout: blog
-type: blog
+  - Tag
+layout: blog | project
+type: blog | project
 ---
 
 # Copy this template

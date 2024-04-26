@@ -8,8 +8,8 @@ tags:
   - eScience-center
 coverImage: images/cover.png
 ---
-
 A dynamic 3D volumetric rendering on the Web for large data.
+this is it?
 
 Created in collaboration with the Ruisdael Observatory at the technical university TUDelft (The Netherlands) Jesus Garcia Gonzalez (The Netherlands eScience Center), and Gijsh van den Oord (The Netherlands eScience Center), Louise Nuijens (TU Delft). Fredrik Jansson (TU Delft)
 
