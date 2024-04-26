@@ -1,4 +1,5 @@
 ---
+published: true
 title: Nuxt with Supabase template recipe
 date: 2021-03-12
 categories:
@@ -8,6 +9,7 @@ tags:
   - Supabase
   - Web
 coverImage: images/1_W7eF0tSg_y2LltTxRMFQ4A.png
+displayCover: true
 ---
 
 I built a Nuxt-supabase ready-to-use template and I wanted to write a postmortem about what I have learned in making this repository recipe.

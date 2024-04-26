@@ -1,4 +1,5 @@
 ---
+published: true
 title: Carbon Budget Explorer [Design]
 date: 2023-10-12
 categories:
@@ -10,6 +11,7 @@ tags:
   - eScience-center
   - Redesign
 coverImage: images/Frame-6.jpg
+displayCover: true
 ---
 
 

@@ -1,4 +1,5 @@
 ---
+published: true
 title: Webpack problem with source maps mapping in Chrome DevTools - Fixed
 date: 2018-03-11
 categories:
@@ -6,6 +7,7 @@ categories:
 tags:
   - DX
 coverImage: images/webpack-problem.png
+displayCover: true
 ---
 
 > This blogpost was written in 2018! it has rained a lot since then, especially in the JavasScript world. If might be helpful for you if you are still using Webpack, but hint you should move to Vite as soon as you can.

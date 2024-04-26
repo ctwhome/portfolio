@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Ruidael Clouds - 3D Zarr Visualizer"
 date: "2023-11-29"
 categories:
@@ -7,6 +8,7 @@ tags:
   - 3D-visualization
   - eScience-center
 coverImage: images/cover.png
+displayCover: true
 ---
 A dynamic 3D volumetric rendering on the Web for large data.
 this is it?

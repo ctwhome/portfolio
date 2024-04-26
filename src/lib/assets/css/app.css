@@ -7,3 +7,7 @@
 pre code {
   @apply text-base font-mono !important;
 }
+
+a[target="_blank"] {
+  @apply underline;
+}
