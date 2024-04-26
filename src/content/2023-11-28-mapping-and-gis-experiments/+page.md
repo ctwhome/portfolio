@@ -1,4 +1,5 @@
 ---
+published: true
 title: Mapping and GIS Experiments
 date: 2023-11-28
 categories:

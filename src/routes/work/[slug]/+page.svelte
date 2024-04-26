@@ -12,54 +12,72 @@
 		(path) => path.split('/').at(-2) === $page.params.slug
 	);
 	const post = content[postPath];
-</script>
 
-<Analytics />
+	console.log('🎹 post.metadata', post.metadata);
 
-<div class="max-w-3xl mx-auto px-3">
-	<h1 class="mt-6 font-bold text-3xl sm:text-5xl">{@html post.metadata.title}</h1>
-
-	<p class="text-sm mt-4 opacity-60">
-		{#each post?.metadata?.categories as category}
-			<span class="mx-1">{category}</span>
-		{/each}
-		-
-		{new Date(post?.metadata?.date).toLocaleDateString('en-NL', {
+	let details =
+		post.metadata.categories.map((category) => `${category}`).join(' ') +
+		' - ' +
+		post.metadata.tags.map((tag) => `${tag}`).join(' ') +
+		'  · ' +
+		new Date(post?.metadata?.date).toLocaleDateString('en-NL', {
 			year: 'numeric',
 			month: 'long',
 			day: 'numeric'
-		})}
+		});
+</script>
 
-		{#if post?.metadata?.tags?.length > 0}
+<Analytics />
+{#if post?.metadata?.displayCover}
+	<TiltImage>
+		<div class="aspect-[4/3] sm:aspect-[20/5] -mt-10 mb-10 sm:mb-20">
+			<img
+				class="object-cover h-full w-full mx-auto rounded mb-10"
+				src={`/content/${$page.params.slug}/${post.metadata.coverImage}`}
+				alt={post.slug}
+			/>
+		</div>
+	</TiltImage>
+{/if}
+
+<div class="max-w-5xl mx-auto px-3">
+	<div class="max-w-3xl mx-auto px-3">
+		<h1 class="mt-6 font-bold text-3xl sm:text-5xl">{@html post.metadata.title}</h1>
+
+		{#if post.metadata.description}
+			<p class="mt-4 text-lg opacity-80">{post.metadata.description}</p>
+		{/if}
+
+		<!-- <p class="text-sm mt-4 opacity-60">
+			{#each post?.metadata?.categories as category}
+				<span class="mx-1">{category}</span>
+			{/each}
 			|
 			{#each post?.metadata?.tags as tag}
 				<span class="mx-1">{tag}</span>
 			{/each}
-		{/if}
-	</p>
+			-
+			{new Date(post?.metadata?.date).toLocaleDateString('en-NL', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			})}
+		</p> -->
 
-	<div class="mt-6 mb-12">
-		<ProfilePicture />
+		<div class="mt-10 mb-12">
+			<ProfilePicture subtitle={details} />
+		</div>
 	</div>
-</div>
-<div class="max-w-5xl mx-auto px-3">
-	<TiltImage>
-		<img
-			class="object-cover rounded mx-auto"
-			src={post?.metadata?.coverImage &&
-				`/content/${$page.params.slug}/${post.metadata.coverImage}`}
-			alt={post.slug}
-		/>
-	</TiltImage>
 
 	<svelte:component this={post.default} />
 
 	<a
 		target="_blank"
-		class="opacity-80"
+		class="opacity-80 block mt-32 hover:text-primary"
 		href={`https://github.com/ctwhome/portfolio/tree/main/src/content/${$page.params.slug}`}
-		>Edit this page</a
 	>
+		Edit this page
+	</a>
 </div>
 
 <!-- {coverImagePath} -->

@@ -1,9 +1,13 @@
 ---
+published: true
 title: Prevention is the New Medicine 3.0
 date: 2023-09-17
 categories:
   - Blog
+tags:
+  - Health
 coverImage: images/7ty-unbr4mo.jpg
+displayCover: true
 ---
 
 For centuries, traditional medicine has been a reactionary field, focusing primarily on curing illnesses and alleviating symptoms. While this approach has saved countless lives, we are now entering an era where prevention is becoming the new medicine. Thanks to the book "Outlive, by Peter Atia", who inspired me write this post.
