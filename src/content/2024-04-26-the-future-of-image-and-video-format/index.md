@@ -19,7 +19,7 @@ For many years, Big tech has been competing with delivering the most efficient w
 
 **AVIF**, based on the AV1 video codec, serves as a formidable challenger to well-established image formats like JPEG and PNG. It provides better compression and supports a wider color gamut, high dynamic range (HDR), and progressive rendering, which are crucial for modern web applications that demand high-quality visual experiences.
 
-AVIF handles HRD, 10 bits color depth, transparency, and animation:
+AVIF handles HDR, 10 bits color depth, transparency, and animation:
 ![](./images/comparison.avif)
 *Courtesy of https://www.blue-dot.io/avif-speed-quality-benchmark/, check it there for more details and comparisons*
 
