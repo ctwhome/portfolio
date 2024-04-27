@@ -23,12 +23,10 @@ Everything comes installed for a speedy staring with examples. Simply remove wha
 - [ ] 🚀 PWA
   - [ ] Offline mode, new content available prompt
 
-
 - [ ] ⚡️ Site performance optimization and Web Core Vitals
 - [ ] 💿 Database connections with endpoints
 - [ ] 🗺️ Translation engine with [i18next](https://github.com/i18next/i18next)
-- [ ] 🔐 Login with [Auth.js](https://authjs.dev/)
-
+- [ ] 🔐 Login with [Auth.js](https://authjs.dev/) 
 
 - [ ] 🕺 Page transition animation API
 - [x] ✨ All [Iconify](https://iconify.design/) on-demand with [unplugin Icons](https://github.com/unplugin/unplugin-icons) - +100.000 SVG icons completely customizable (use [icones](https://icones.js.org) to find icons)
@@ -41,9 +39,9 @@ Everything comes installed for a speedy staring with examples. Simply remove wha
 
 ### Custom features and Examples
 - [x] ✍️ Blog with [MDsveX](https://github.com/pngwn/MDsveX)
-  - [ ] New structure with isolated content instead of the routing (root/content)
-  - [ ] Relative images
-  - [ ] Automatic Assets optimization
+  - [x] Structure with isolated content instead of the routing (root/content)
+  - [x] Relative images
+  - [ ] Automatic Assets optimization (jampack)
   - [ ] Reading Time
   - [ ] ToC
   - [ ] OG Tags and SEO Optimization with Svelte
@@ -56,7 +54,7 @@ Everything comes installed for a speedy staring with examples. Simply remove wha
 
 
 ### Components
-- [x] Tiny gallery for scelte
+- [x] Tiny gallery for svelte
 - [x] Login with modal component
 - [x] Autocomplete input field
 
@@ -70,14 +68,11 @@ Everything comes installed for a speedy staring with examples. Simply remove wha
   - [x] privacy policy.md
   - [ ] sitemap.xml
 
-
-
 ## Motivation and Personal opinion
-I use the same technologies in my web applications. SvelteKit is awesome, and developing with it is a pleasure. I use this repository as an example and as best practices to follow for all my applications. My motivation for keeping it updated is that, at the end of the day, this repository also serves as my official portfolio showcase. If you find it interesting and use any of the ideas seen here, please give it some credit in your applications as well.
+I use the same technologies in my web applications. SvelteKit is awesome, and developing with it is a pleasure. I use this repository as a showcase, resources and best practices to follow for all my applications. My motivation for keeping it updated is that, at the end of the day, this repository also serves as my official portfolio. If you find it interesting and use any of the ideas seen here, please give it some credit in your applications as well.
 
 
 ## Installation and running locally
-
 ```bash
 npx degit ctwhome/portfolio <directory-name>
 cd  <directory-name> && pnpm install
@@ -85,9 +80,7 @@ pnpm dev
 ```
 
 ## Updating fork
-
 1.  Add remote from the original repository in your forked repository:
-
 ```shell
 git remote add upstream git://github.com/ctwhome/portfolio.git
 git fetch upstream
