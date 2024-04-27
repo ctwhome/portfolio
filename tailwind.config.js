@@ -7,16 +7,21 @@ export default {
 		extend: {
 			typography: {
         DEFAULT: {
-          css: {
+					css: {
+						table: {
+							width: '100%',
+							overflowX: 'auto',
+						},
+
             a: {
 							textDecoration: 'none',
               '&:hover': {
                 textDecoration: 'underline',
-              },
-            },
-        },
-        },
-        },
+            	  },
+          	  },
+        		},
+      		},
+      	},
 		}
 	},
 	plugins: [
