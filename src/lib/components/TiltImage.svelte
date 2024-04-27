@@ -8,10 +8,10 @@
 	// const module = import(src);
 	onMount(async () => {
 		const tiltOtions = {
-			max: 25,
+			max: 4,
 			perspective: 1000,
 			scale: 1.05,
-			speed: 2000,
+			speed: 1000,
 			transition: true,
 			axis: null,
 			reset: true,

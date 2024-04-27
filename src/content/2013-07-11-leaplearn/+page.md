@@ -1,4 +1,5 @@
 ---
+published: true
 title: LeapLearn
 date: 2013-07-1
 categories:
@@ -9,17 +10,15 @@ tags:
   - Threejs
   - Web
 coverImage: images/leaplearn-cover.jpg
+displayCover: true
 ---
 <script>
   	import Youtube from "svelte-youtube-embed";
 </script>
 
-Read the white paper here
+Read the [white paper here](/content/2013-07-11-leaplearn/leaplearn_garcia_gonzalez.pdf)
 
 <Youtube id="OGSSvLnMwTc" />
-
-
-<!-- [Paper.pdf]('./leaplearn_garcia_gonzalez.pdf) -->
 
 
 ![](./images/Foreground.webp)

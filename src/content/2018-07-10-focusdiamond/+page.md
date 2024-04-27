@@ -1,4 +1,5 @@
 ---
+published: true
 title: FocusDiamond
 date: 2018-07-10
 categories:
@@ -7,6 +8,7 @@ tags:
   - Web
   - Productivity
 coverImage: images/1_YtpHen1W6CIR3kyHT-SaYg.jpg
+displayCover: true
 ---
 
 Table of Contents

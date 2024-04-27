@@ -1,4 +1,5 @@
 ---
+published: true
 title: Post Google Era - LLMs as a search engine
 date: 2023-11-11
 categories:
@@ -6,6 +7,7 @@ categories:
 tags:
   - Thoughts
 coverImage: images/cover.png
+displayCover: false
 ---
 ## How Google Shaped the Way We Create and Consume Knowledge, and How ChatGPT is Revolutionizing It
 
