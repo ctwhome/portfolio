@@ -3,12 +3,14 @@ published: true
 title: FEDMix Image Analysis
 description: Standalone medical image analysis
 date: 2021-07-05
-cover: images/cover.avif
+tags:
+  - Health
+categories:
+  - Project
+coverImage: images/cover.avif
 displayCover: false
-tags: 
-layout: blog | project
-type: blog | project
 ---
+
 Eshmun is part of the FEDMix project: Fusible evolutionary deep neural network mixture learning. See the[ project's page](https://www.esciencecenter.nl/projects/fedmix/)   and [Repository](https://github.com/FEDMix/eshmun)
 
 ![image](https://user-images.githubusercontent.com/4195550/123606584-53f20600-d7fd-11eb-8a19-b34b459d00ef.png)
