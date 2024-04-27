@@ -7,3 +7,36 @@
 pre code {
   @apply text-base font-mono !important;
 }
+
+a[target="_blank"] {
+  @apply underline;
+}
+
+
+/* Target tables within prose to make them scrollable */
+.prose {
+  overflow-x: auto;
+  /* Allows horizontal scrolling on the prose container */
+}
+
+.prose table {
+  min-width: 100%;
+  /* Ensures tables are not less than the width of their container */
+  display: block;
+  /* Changes table display from table to block to work with overflow */
+  white-space: nowrap;
+  /* Prevents wrapping within the table cells */
+
+}
+
+.prose table td,
+.prose table th {
+  white-space: normal;
+  /* Allows text to wrap within the cell */
+  word-wrap: break-word;
+  /* Breaks long words if necessary to fit within the cell */
+  min-width: 120px;
+  /* Ensures a minimum width for smaller content */
+  max-width: 250px;
+  /* Limits the width to prevent extremely wide cells */
+}

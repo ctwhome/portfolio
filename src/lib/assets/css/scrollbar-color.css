@@ -1,13 +1,3 @@
-/* Import with  */
-/* @import './scrollbar-color.css';  */
-
-:root {
-	--scrollbarTrack: hsl(var(--b1));
-	--scrollbarThumb: hsl(var(--b3));
-	--scrollbarThumbHover: hsl(var(--b2));
-}
-
-/* Scrollbar colors*/
 /* width */
 ::-webkit-scrollbar {
 	width: 8px;
@@ -15,16 +5,17 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: var(--scrollbarTrack);
+	@apply bg-base-100;
+	border-radius: 2px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: var(--scrollbarThumb);
-	border-radius: 3px;
+	@apply bg-base-300 bg-opacity-50;
+	border-radius: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--scrollbarThumbHover);
+	@apply bg-base-300;
 }

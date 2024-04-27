@@ -1,4 +1,5 @@
 ---
+published: true
 title: NL-RSE Website - Do you write software for your research?
 date: 2021-06-10
 categories:
@@ -8,6 +9,7 @@ tags:
   - Web
   - Wireframe
 coverImage: images/Frame-13-1.jpg
+displayCover: true
 ---
 
 This website is a new structure and content redesign for the Netherlands Group of Research Software Engineers website. In collaboration with Lieke de Boer and the people from the NL-RSE, I have made a completely new portal where the community can find everything related to the Research Sofware engineers group in the Netherlands. 
