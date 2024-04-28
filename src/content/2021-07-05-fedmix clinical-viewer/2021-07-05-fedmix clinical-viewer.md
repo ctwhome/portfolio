@@ -1,7 +1,7 @@
 ---
 published: true
-title: FEDMix Image Analysis
-description: Standalone medical image analysis
+title: FEDMix MedicalImage Analysis
+description: Standalone medical annotation and image analysis
 date: 2021-07-05
 tags:
   - Health
