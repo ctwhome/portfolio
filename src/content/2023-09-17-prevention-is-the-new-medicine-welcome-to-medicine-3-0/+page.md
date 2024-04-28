@@ -3,7 +3,7 @@ published: true
 title: Prevention is the New Medicine 3.0
 date: 2023-09-17
 categories:
-  - Blog
+  - Digital Garden
 tags:
   - Health
 coverImage: images/7ty-unbr4mo.jpg

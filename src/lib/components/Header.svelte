@@ -9,6 +9,34 @@
 	import logo from '$lib/assets/images/logo.svg';
 	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
 	let active = 'Latest Work';
+
+	const links = [
+		{
+			title: 'Blog',
+			path: '/work?category=Blog',
+			displayTitle: 'Wen Eng Blog'
+		},
+		{
+			title: 'Projects',
+			path: '/work?category=Project',
+			displayTitle: 'Projects'
+		},
+		{
+			title: 'Digital Garden',
+			path: '/work?category=Digital Garden',
+			displayTitle: 'Digital Garden'
+		},
+		{
+			title: 'Latest Work',
+			path: '/work',
+			displayTitle: 'Latest Work'
+		},
+		{
+			title: 'Lab',
+			path: '/lab',
+			displayTitle: 'Lab'
+		}
+	];
 </script>
 
 <nav class="bien-nav mb-10">
@@ -32,13 +60,13 @@
     </div>
     <SocialIcons class="mt-32 pl-6" />
   </HeaderResponsiveMenu> -->
-		<div class="mt-4 flex flex-wrap justify-center items-center">
-			<!-- {#each menu.items as item (item.path)}
+		<!-- <div class="mt-4 flex flex-wrap justify-center items-center"> -->
+		<!-- {#each menu.items as item (item.path)}
     <Link class="menu-link font-medium  text-sm sm:text-lg hover:text-primary transition" href={item.path}>
       {{ item.title }}
     </Link>
     {/each} -->
-		</div>
+		<!-- </div> -->
 		<!--Desktop Header-->
 
 		<header class="flex items-center gap-3">
@@ -54,73 +82,38 @@
 
 			<div class="z-10 dropdown flex justify-end flex-1 sm:hidden">
 				<div tabindex="0" role="button" class="btn m-1">{active}</div>
+				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
 					class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
 				>
-					<li>
-						<a
-							class="menu-link"
-							on:click={() => (active = 'Blog')}
-							class:active={$page.url.searchParams.get('category') === 'Blog'}
-							href="/work?category=Blog"
-						>
-							Blog
-						</a>
-					</li>
-					<li>
-						<a
-							class="menu-link"
-							class:active={$page.url.searchParams.get('category') === 'Project'}
-							on:click={() => (active = 'Projects')}
-							href="/work?category=Project">Projects</a
-						>
-					</li>
-					<li>
-						<a
-							class="menu-link"
-							on:click={() => (active = 'Latest Work')}
-							class:active={$page.route.id?.includes('/work') &&
-								!$page.url.searchParams.get('category')}
-							href="/work"
-						>
-							Latest Work
-						</a>
-					</li>
-					<li>
-						<a
-							class="menu-link"
-							class:active={$page.route.id?.includes('/lab')}
-							href="/lab"
-							on:click={() => (active = 'Lab')}>Lab</a
-						>
-					</li>
+					{#each links as link}
+						<li>
+							<a
+								class="menu-link"
+								on:click={() => (active = link.title)}
+								class:active={$page.url.searchParams.get('category') === link.title}
+								href={link.path}
+							>
+								{link.displayTitle}
+							</a>
+						</li>
+					{/each}
 				</ul>
 			</div>
 			<!-- Desktop -->
 			<div class="z-10 flex-1 space-x-4 lg:space-x-8 w-full justify-end hidden sm:flex">
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
-				<a
-					class="menu-link"
-					class:active={$page.url.searchParams.get('category') === 'Blog'}
-					href="/work?category=Blog"
-				>
-					Blog
-				</a>
-				<a
-					class="menu-link"
-					class:active={$page.url.searchParams.get('category') === 'Project'}
-					href="/work?category=Project">Projects</a
-				>
-				<a
-					class="menu-link"
-					class:active={$page.route.id?.includes('/work') &&
-						!$page.url.searchParams.get('category')}
-					href="/work"
-				>
-					<span class="hidden sm:inline">Latest </span>Work
-				</a>
-				<a class="menu-link" class:active={$page.route.id?.includes('/lab')} href="/lab">Lab</a>
+				{#each links as link}
+					<a
+						class="menu-link"
+						on:click={() => (active = link.title)}
+						class:active={$page.url.searchParams.get('category') === link.title}
+						href={link.path}
+					>
+						{link.displayTitle}
+					</a>
+				{/each}
 			</div>
 
 			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />

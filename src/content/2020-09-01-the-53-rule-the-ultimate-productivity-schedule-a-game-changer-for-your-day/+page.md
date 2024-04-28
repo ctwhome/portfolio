@@ -4,7 +4,7 @@ title: The 5:3 Rule - The Ultimate Productivity Schedule
 description: A Game-Changer for the Day!
 date: 2020-09-01
 categories:
-  - Blog
+  - Digital Garden
 tags:
  - Productivity
 coverImage: images/image-13.png

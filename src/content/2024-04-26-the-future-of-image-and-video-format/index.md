@@ -3,8 +3,8 @@ published: true
 title: AVIF and AV1 formats are the future of internet media assets
 description: "The Future of AV1 and AVIF: Pioneering the Next Generation of Video and Image Formats"
 date: 2024-01-01
-cover: images/cover.avif
-displayCover: false
+coverImage: images/cover.avif
+displayCover: true
 tags:
   - Web
 categories:
