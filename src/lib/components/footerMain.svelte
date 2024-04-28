@@ -52,7 +52,8 @@
 				And ultimately, <strong>Technology</strong> should empower people.
 			</div>
 		</div>
-		<div class="flex mx-auto sm:mr-0 mt-10">
+		<div class="flex mx-auto sm:mr-0 mt-10 gap-10 items-center">
+			<a href="/work" class="hover:text-primary opacity-70 hover:opacity-100">Latest work</a>
 			<Socialicons />
 			<!-- todo -->
 		</div>

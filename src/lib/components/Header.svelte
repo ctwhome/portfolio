@@ -12,25 +12,25 @@
 
 	const links = [
 		{
-			title: 'Blog',
-			path: '/work?category=Blog',
-			displayTitle: 'Wen Eng Blog'
-		},
-		{
 			title: 'Projects',
 			path: '/work?category=Project',
 			displayTitle: 'Projects'
+		},
+		{
+			title: 'Blog',
+			path: '/work?category=Blog',
+			displayTitle: 'Engineering Blog'
 		},
 		{
 			title: 'Digital Garden',
 			path: '/work?category=Digital Garden',
 			displayTitle: 'Digital Garden'
 		},
-		{
-			title: 'Latest Work',
-			path: '/work',
-			displayTitle: 'Latest Work'
-		},
+		// {
+		// 	title: 'Latest Work',
+		// 	path: '/work',
+		// 	displayTitle: 'Latest Work'
+		// },
 		{
 			title: 'Lab',
 			path: '/lab',
@@ -42,7 +42,7 @@
 <nav class="bien-nav mb-10">
 	<div class="bien-glass" />
 	<div class="bien-glass-edge" />
-	<div class="relative container mx-auto -mt-4 py-2">
+	<div class="relative container mx-auto py-2">
 		<!--Mobile header -->
 		<!--      Inside the sidebar-->
 		<!-- <HeaderResponsiveMenu ref="menu" class="relative">
@@ -70,12 +70,8 @@
 		<!--Desktop Header-->
 
 		<header class="flex items-center gap-3">
-			<a class="flex-initial mr-3 my-1" href="/">
-				<img
-					src={logo}
-					alt="Logo asset"
-					class="max-w-[180px] h-auto aspect-4 sm:aspect-3 no-drag select-none"
-				/>
+			<a class="flex-initial mr-3" href="/">
+				<img src={logo} alt="Logo asset" class="max-w-[180px] h-auto no-drag select-none" />
 			</a>
 			<!-- menu-->
 			<!-- Mobile -->
