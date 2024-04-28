@@ -3,7 +3,7 @@ published: true
 title: Post Google Era - LLMs as a search engine
 date: 2023-11-11
 categories:
-  - Blog
+  - Digital Garden
 tags:
   - Thoughts
 coverImage: images/cover.png
