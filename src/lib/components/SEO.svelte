@@ -1,14 +1,9 @@
 <script>
-	import { readEnv } from '$lib/utils/util';
+	import { siteSettings } from '$lib/siteSettings';
 
-	let siteData = {
-		title: 'Ctwhome - Portfolio',
-		desc: 'Web Engineering - Projects and Portfolio of J. Gonzalez',
-		card: '/images/default.jpg'
-	};
-	export let title = siteData.title;
-	export let desc = siteData.desc;
-	export let img = siteData.card;
+	export let title = siteSettings.title;
+	export let desc = siteSettings.description;
+	export let img = siteSettings.image;
 </script>
 
 <svelte:head>
@@ -17,9 +12,9 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={desc} />
-	<meta name="twitter:image" content={readEnv('VITE_ROOT') + img} />
+	<meta name="twitter:image" content={siteSettings.baseUrl + img} />
 	<meta name="twitter:image:alt" content={title} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={desc} />
-	<meta property="og:image" content={readEnv('VITE_ROOT') + img} />
+	<meta property="og:image" content={siteSettings.baseUrl + img} />
 </svelte:head>
