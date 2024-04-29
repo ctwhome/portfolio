@@ -6,7 +6,7 @@ categories:
   - Project
 tags:
   - Branding
-  - Climate-change
+  - Climate Change
   - Design
   - eScience-center
   - Redesign
