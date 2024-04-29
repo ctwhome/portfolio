@@ -7,7 +7,7 @@ categories:
 tags:
   - 3D-visualization
   - eScience-center
-coverImage: images/cover.png
+coverImage: images/cover.avif
 displayCover: true
 ---
 A dynamic 3D volumetric rendering on the Web for large data.
@@ -19,7 +19,7 @@ This is a project where we are trying to pull the data from the observatory and 
 
 Measuring the clouds with different instruments (Radars, Anthenas)
 
-![](./images/image-7.png)
+![](./images/image-7.avif)
 
 ## Technical challenges
 
