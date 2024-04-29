@@ -1,7 +1,7 @@
 ---
 published: true
-title: AVIF and AV1 formats are the future of internet media assets
-description: "The Future of AV1 and AVIF: Pioneering the Next Generation of Video and Image Formats"
+title: AVIF and AV1 are the prenset and future of image and video format
+description: "For once the Big tech got together to create the USB-C like of the video and image formats"
 date: 2024-01-01
 coverImage: images/cover.avif
 displayCover: true
@@ -11,11 +11,12 @@ categories:
   - Blog
 type: blog
 ---
-It’s like all the big tech companies got together and decided to be friends, just to make our memes and movies even better. So, let’s jump in and see what all the fuss is about! 🎬📷
 
 I had to write about this topic out of excitement. This example stands out as one of those rare occasions where major companies—particularly in big tech—set aside their usual focus on proprietary formats and patterns to collaborate for the greater good.
 
-For once, and since 2015, the non-profit consortium called [Alliance for Open Media](https://en.wikipedia.org/wiki/Alliance_for_Open_Media) formed by  [Amazon](https://en.wikipedia.org/wiki/Amazon.com "Amazon.com"), [Apple](https://en.wikipedia.org/wiki/Apple_Inc. "Apple Inc."), [ARM](https://en.wikipedia.org/wiki/Arm_Holdings "Arm Holdings"), [Cisco](https://en.wikipedia.org/wiki/Cisco "Cisco"), [Facebook](https://en.wikipedia.org/wiki/Facebook "Facebook"), [Google](https://en.wikipedia.org/wiki/Google "Google"), [Huawei](https://en.wikipedia.org/wiki/Huawei "Huawei"), [Intel](https://en.wikipedia.org/wiki/Intel "Intel"), [Microsoft](https://en.wikipedia.org/wiki/Microsoft "Microsoft"), [Mozilla](https://en.wikipedia.org/wiki/Mozilla_Corporation "Mozilla Corporation"), [Netflix](https://en.wikipedia.org/wiki/Netflix "Netflix"), [Nvidia](https://en.wikipedia.org/wiki/Nvidia "Nvidia"), [Samsung Electronics](https://en.wikipedia.org/wiki/Samsung_Electronics "Samsung Electronics") and [Tencent](https://en.wikipedia.org/wiki/Tencent "Tencent"), is creating open royalty-free multimedia formats for video (AV1) and imaging (AVIF) as a successor for [VP9](https://en.wikipedia.org/wiki/VP9) (developed by only Google and not adopted widely) and [HEVC](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) (known as H.265, covered by patents, and using it typically requires the payment of licensing fees).
+> JPG and PNG, or MP4 and MOV will be part of the past.
+
+Since 2015, the non-profit consortium called **Alliance for Open Media**, formed by Amazon, Apple, ARM, Cisco, Facebook, Google, Huawei, Intel, Microsoft, Mozilla, Netflix, Nvidia, Samsung Electronics, and Tencent, has created open royalty-free multimedia formats for video (AV1) and imaging (AVIF) as a successor for VP9 (developed by only Google and not adopted widely) and HEVC (known as H.265, covered by patents, and using it typically requires the payment of licensing fees).
 
 When it comes to images, we're all familiar with JPEG, PNG, and GIF. WebP, a newer format developed by Google, has gained significant traction over the past few years. However, our ever-evolving need for higher resolutions and quicker transfer speeds calls for an even more advanced solution. Enter AV1: a modern, open format championed by the industry's heavyweights. Free to use and designed to meet contemporary demands, AV1 is poised to do for media what USB-C did for the messy world of cables—streamline and standardize.
 
