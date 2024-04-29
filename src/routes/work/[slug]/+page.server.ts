@@ -1,4 +1,4 @@
-
+export const prerender = 'auto';
 // This function is used to get all posts in place for pre-rendering
 // https://kit.svelte.dev/docs/page-options#prerender-troubleshooting
 import { content } from '$content/content';
@@ -20,4 +20,3 @@ export function entries(): { slug: string | undefined }[] {
 }
 
 // Make the posts pre-rendered
-export const prerender = true;

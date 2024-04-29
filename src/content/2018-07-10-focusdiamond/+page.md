@@ -85,7 +85,7 @@ A working day of pure 5.5 hours of work dedication in a journey of 7 hours inclu
 
 And the third, and only recommended for those moments of real working pressure. \*\*The Black Diamond. \*\*A rare color for the diamonds in nature, and in my opinion a rare way of working, but really efficient. That said, say goodbye to the rest of your life during these hard sessions of working. It is so energy-consuming that your brain won’t be ready for more until you get a good sleep of at least 8 hours.
 
-![Time table summary Diamond Productivity Method](images/1*AH_dPUT23RtkN4OHqLt7tg.png)
+![Time table summary Diamond Productivity Method](./images/table1.png)
 
 ## [](https://ctwhome.com/#why-timers-of-55-minutes-and-55-seconds)Why timers of 55 minutes and 55 seconds
 

@@ -17,4 +17,7 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={desc} />
 	<meta property="og:image" content={siteSettings.baseUrl + img} />
+	<meta property="og:image:alt" content={title} />
+	<meta property="og:url" content={siteSettings.baseUrl} />
+	<meta property="og:type" content="article" />
 </svelte:head>
