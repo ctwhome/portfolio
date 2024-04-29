@@ -52,6 +52,7 @@
 		<meta property="og:description" content={post.metadata?.description} />
 		<meta
 			property="og:image"
+			itemprop="image"
 			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
 		/>
 
@@ -63,6 +64,7 @@
 		<meta name="twitter:description" content={post.metadata?.description} />
 		<meta
 			name="twitter:image"
+			itemprop="image"
 			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
 		/>
 	{/if}
