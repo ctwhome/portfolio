@@ -1,8 +1,8 @@
 ---
 published: true
-title: AVIF and AV1 are the prenset and future of image and video format
+title: "AVIF and AV1 are the prenset & future of images and videos"
 description: "For once the Big tech got together to create the USB-C like of the video and image formats"
-date: 2024-01-01
+date: 2024-04-29
 coverImage: images/cover.avif
 displayCover: true
 tags:
@@ -26,7 +26,7 @@ The AV1 (AOMedia Video 1) format is an open, royalty-free video coding format de
 
 **AV1** offers significant advantages in terms of compression efficiency, which can reduce bandwidth usage by as much as 30-50% compared to H.264, and about 20% compared to VP9, without sacrificing quality. This makes it particularly appealing for streaming high-resolution video on the internet.
 
-**AVIF**, based on the AV1 video codec, serves as a formidable challenger to well-established image formats like JPEG and PNG. It provides better compression and supports a wider color gamut, 10 bits color depth (up to. 1024 shades for each primary color = 1Billion colors vs 16M for 8 bit), high dynamic range (HDR), transparency, animation, and progressive rendering, which are crucial for modern web applications that demand high-quality visual experiences.
+At the other side of the table, **AVIF**, based on the AV1 video codec, serves as a formidable challenger to well-established image formats like JPEG and PNG. It offers better compression and supports a wider color gamut, 10-bit color depth (up to 1024 shades for each primary color = 1 billion colors vs. 16 million for 8-bit), high dynamic range (HDR), transparency, animation, and progressive rendering, which are crucial for modern web applications that demand high-quality visual experiences.
 
 ![](./images/comparison.avif)
 *Courtesy of https://www.blue-dot.io/avif-speed-quality-benchmark/, check it there for more details and comparisons*
