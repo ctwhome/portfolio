@@ -1,7 +1,7 @@
 ---
 published: true
 title: "AVIF and AV1 are the prenset & future of images and videos"
-description: "For once the Big tech got together to create the USB-C like of the video and image formats"
+description: "For once, the Big Tech got together to create the USB-C like of the video and image formats"
 date: 2024-04-29
 coverImage: images/cover.avif
 displayCover: true
