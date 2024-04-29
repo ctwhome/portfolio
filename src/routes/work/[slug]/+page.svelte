@@ -6,6 +6,7 @@
 	import TiltImage from '$components/TiltImage.svelte';
 	import { content } from '$content/content';
 	import ProfilePicture from '$components/ProfilePicture.svelte';
+	import SEO from '$components/SEO.svelte';
 
 	// Find the specific post for the current slug
 	const postPath = Object.keys(content).find(
@@ -38,36 +39,11 @@
 	</TiltImage>
 {/if}
 
-<!-- Svelte Head for OG images, title description... -->
-<svelte:head>
-	{#if post?.metadata}
-		<!-- HTML Meta Tags -->
-		<title>{post.metadata.title}</title>
-		<meta name="description" content={post.metadata.description} />
-
-		<!-- Open Graph Meta Tags for Facebook and others -->
-		<meta property="og:site_name" content="Ctwhome.com" />
-		<meta property="og:url" content={`https://ctwhome.com/work/${$page.params.slug}`} />
-		<meta property="og:type" content="article" />
-		<meta property="og:title" content={post.metadata.title} />
-		<meta property="og:description" content={post.metadata.description} />
-		<meta
-			property="og:image"
-			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
-		/>
-
-		<!-- Twitter Meta Tags -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content="ctwhome.com" />
-		<meta property="twitter:url" content={`https://ctwhome.com/work/${$page.params.slug}`} />
-		<meta name="twitter:title" content={post.metadata.title} />
-		<meta name="twitter:description" content={post.metadata.description} />
-		<meta
-			name="twitter:image"
-			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
-		/>
-	{/if}
-</svelte:head>
+<SEO
+	title={post.metadata.title}
+	desc={post.metadata.description}
+	img={`/content/${$page.params.slug}/${post.metadata.coverImage}`}
+/>
 
 <div class="max-w-5xl mx-auto px-3">
 	<div class="max-w-3xl mx-auto px-3">
