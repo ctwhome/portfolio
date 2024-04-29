@@ -10,6 +10,7 @@ tags:
   - Design
   - eScience-center
   - Redesign
+  - Logo
 coverImage: images/Frame-6.jpg
 displayCover: true
 ---
