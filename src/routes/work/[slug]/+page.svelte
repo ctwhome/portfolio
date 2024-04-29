@@ -13,8 +13,6 @@
 	);
 	const post = content[postPath];
 
-	console.log('🎹 post.metadata', post.metadata);
-
 	let details =
 		post.metadata.categories.map((category) => `${category}`).join(' ') +
 		' - ' +
@@ -43,22 +41,33 @@
 <!-- Svete Head for OG images, title description... -->
 <svelte:head>
 	{#if post?.metadata}
-		<meta
-			property="og:image"
-			content={`/content/${$page.params.slug}/${post.metadata.coverImage}`}
-		/>
-		<meta property="og:title" content={post.metadata.title} />
-		<meta property="og:description" content={post.metadata.description} />
+		<!-- HTML Meta Tags -->
+		<title>{post.metadata.title}</title>
+		<meta name="description" content="description" />
+
+		<!-- Facebook Meta Tags -->
 		<meta property="og:url" content={`https://ctwhome.com/work/${$page.params.slug}`} />
 		<meta property="og:type" content="article" />
-		<meta property="article:published_time" content={post.metadata.date} />
-		<meta property="article:author" content="https://ctwhome.com" />
-		<meta property="article:section" content={post.metadata.categories} />
-		<meta property="article:tag" content={post.metadata.tags} />
+		<meta property="og:title" content={post.metadata.title} />
+		<meta property="og:description" content={post.metadata?.description} />
+		<meta
+			property="og:image"
+			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
+		/>
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="ctwhome.com" />
+		<meta property="twitter:url" content={`https://ctwhome.com/work/${$page.params.slug}`} />
+		<meta name="twitter:title" content={post.metadata.title} />
+		<meta name="twitter:description" content={post.metadata?.description} />
+		<meta
+			name="twitter:image"
+			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
+		/>
 	{/if}
 </svelte:head>
 
-{post?.metadata?.coverImage}
 <div class="max-w-5xl mx-auto px-3">
 	<div class="max-w-3xl mx-auto px-3">
 		<h1 class="mt-6 font-bold text-3xl sm:text-5xl">{@html post.metadata.title}</h1>
