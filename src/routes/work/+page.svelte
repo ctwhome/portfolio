@@ -131,7 +131,7 @@
 	<!-- FILTERS PANEL -->
 	<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
 		<div>
-			<div class="text-sm mb-2">Categories</div>
+			<!-- <div class="text-sm mb-2">Categories</div> -->
 			<div class="flex flex-wrap gap-2">
 				{#each globalCategories as { name, count }}
 					<!-- daisyui chips -->
@@ -147,8 +147,25 @@
 			</div>
 		</div>
 		<div>
-			<div class="text-sm mb-2">Tags</div>
+			<!-- <div class="text-sm mb-2">Tags</div> -->
+
 			<div class="flex flex-wrap gap-2">
+				<div class="dropdown">
+					<div tabindex="0" role="button" class="btn btn-xs m-1">Tags</div>
+					<ul
+						tabindex="0"
+						class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+					>
+						{#each globalTags as { name, count }}
+							<li class:btn-primary={$page.url.searchParams.get('tag') === name}>
+								<a on:click={() => filterByTag(name)} class=""
+									>{name}
+									<div class="badge">{count}</div></a
+								>
+							</li>
+						{/each}
+					</ul>
+				</div>
 				{#each globalTags as { name, count }}
 					<!-- daisyui chips -->
 					<button
