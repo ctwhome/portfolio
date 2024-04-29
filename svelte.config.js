@@ -29,8 +29,8 @@ const config = {
 		// importAssets(),
 		mdsvex(mdsvexConfig),
 		// mdsvex({
-			// extensions: ['.md', '.svx'],
-			// 	layout: {
+		// extensions: ['.md', '.svx'],
+		// 	layout: {
 		// 		_: "/src/layouts/default.svelte", // Default layout for markdown files
 		// 		blog: "/src/layouts/blog.svelte",
 		// 		project: "/src/layouts/project.svelte",

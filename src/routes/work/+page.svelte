@@ -43,16 +43,20 @@
 			});
 		});
 	}
+	let activeCategory = '';
+	let activeTag = '';
 
 	// if any searchParmas change, update the filters
-	$: if (!$page.url.searchParams.get('category')) {
+	$: if (!activeCategory) {
 		setFilters();
 	}
-	$: if ($page.url.searchParams.get('category')) {
+	$: if (activeCategory) {
 		setFilters();
 	}
 
 	onMount(() => {
+		activeCategory = $page.url.searchParams.get('category') || '';
+		activeTag = $page.url.searchParams.get('tag') || '';
 		setFilters();
 		// Get all image elements on the page
 		const allImages = document.querySelectorAll('img');
@@ -67,10 +71,10 @@
 	function setFilters() {
 		hasFilters = false;
 
-		if ($page.url.searchParams.get('category')) {
-			filterByCategory($page.url.searchParams.get('category'));
-		} else if ($page.url.searchParams.get('tag')) {
-			filterByTag($page.url.searchParams.get('tag'));
+		if (activeCategory) {
+			filterByCategory(activeCategory);
+		} else if (activeTag) {
+			filterByTag(activeTag);
 		}
 		updateCounters();
 	}
@@ -82,7 +86,7 @@
 		filteredPosts.set(posts);
 	}
 	function filterByCategory(categoryName) {
-		if (hasFilters && $page.url.searchParams.get('category') === categoryName) {
+		if (hasFilters && activeCategory === categoryName) {
 			clearFilters();
 			return;
 		}
@@ -94,7 +98,7 @@
 	}
 
 	function filterByTag(tagName) {
-		if (hasFilters && $page.url.searchParams.get('tag') === tagName) {
+		if (hasFilters && activeTag === tagName) {
 			clearFilters();
 			return;
 		}
@@ -110,12 +114,12 @@
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
-			{#if $page.url.searchParams.get('category') === 'Blog'}
+			{#if activeCategory === 'Blog'}
 				Blog Posts
-			{:else if $page.url.searchParams.get('category')}
+			{:else if activeCategory}
 				Work Projects
-			{:else if $page.url.searchParams.get('tag')}
-				{$page.url.searchParams.get('tag')}
+			{:else if activeTag}
+				{activeTag}
 			{:else}
 				All Work
 			{/if}
@@ -138,7 +142,7 @@
 					<button
 						on:click={() => filterByCategory(name)}
 						class="btn btn-xs"
-						class:btn-primary={$page.url.searchParams.get('category') === name}
+						class:btn-primary={activeCategory === name}
 					>
 						{name}
 						<div class="badge">{count}</div>
@@ -157,7 +161,7 @@
 						class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
 					>
 						{#each globalTags as { name, count }}
-							<li class:btn-primary={$page.url.searchParams.get('tag') === name}>
+							<li class:btn-primary={activeTag === name}>
 								<a on:click={() => filterByTag(name)} class=""
 									>{name}
 									<div class="badge">{count}</div></a
@@ -171,7 +175,7 @@
 					<button
 						on:click={() => filterByTag(name)}
 						class="btn btn-xs"
-						class:btn-primary={$page.url.searchParams.get('tag') === name}
+						class:btn-primary={activeTag === name}
 					>
 						{name}
 						<div class="badge">{count}</div>

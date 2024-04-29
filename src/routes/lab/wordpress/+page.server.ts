@@ -1,6 +1,3 @@
-export const prerender = false;
-
-
 function groupPostsByYear(posts) {
 	// Sort the posts by their Unix timestamp in descending order
 	posts.sort((a, b) => b.post.unix_timestamp - a.post.unix_timestamp);

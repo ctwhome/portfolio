@@ -15,9 +15,9 @@
 	const post = content[postPath];
 
 	let details =
-		post.metadata.categories.map((category) => `${category}`).join(' ') +
+		post.metadata?.categories.map((category) => `${category}`).join(' ') +
 		' - ' +
-		post.metadata.tags.map((tag) => `${tag}`).join(' ') +
+		post.metadata?.tags.map((tag) => `${tag}`).join(' ') +
 		'  · ' +
 		new Date(post?.metadata?.date).toLocaleDateString('en-NL', {
 			year: 'numeric',
@@ -40,17 +40,17 @@
 {/if}
 
 <SEO
-	title={post.metadata.title}
-	desc={post.metadata.description}
-	img={`/content/${$page.params.slug}/${post.metadata.coverImage}`}
+	title={post?.metadata?.title}
+	desc={post?.metadata?.description}
+	img={`/content/${$page.params.slug}/${post?.metadata?.coverImage}`}
 />
 
 <div class="max-w-5xl mx-auto px-3">
 	<div class="max-w-3xl mx-auto px-3">
-		<h1 class="mt-6 font-bold text-3xl sm:text-5xl">{@html post.metadata.title}</h1>
+		<h1 class="mt-6 font-bold text-3xl sm:text-5xl">{@html post.metadata?.title}</h1>
 
-		{#if post.metadata.description}
-			<p class="mt-4 text-lg opacity-80">{post.metadata.description}</p>
+		{#if post?.metadata?.description}
+			<p class="mt-4 text-lg opacity-80">{post?.metadata?.description}</p>
 		{/if}
 
 		<!-- <p class="text-sm mt-4 opacity-60">

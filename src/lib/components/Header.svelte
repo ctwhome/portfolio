@@ -8,7 +8,16 @@
 	// import menuItems from '$lib/models/menu-itmes.js';
 	import logo from '$lib/assets/images/logo.svg';
 	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
+	import { onMount } from 'svelte';
 	let active = 'Latest Work';
+
+	let activeCategory = '';
+	let activeTag = '';
+
+	onMount(() => {
+		activeCategory = $page.url.searchParams.get('category') || '';
+		activeTag = $page.url.searchParams.get('tag') || '';
+	});
 
 	const links = [
 		{
@@ -88,7 +97,7 @@
 							<a
 								class="menu-link"
 								on:click={() => (active = link.title)}
-								class:active={$page.url.searchParams.get('category') === link.title}
+								class:active={activeCategory === link.title}
 								href={link.path}
 							>
 								{link.displayTitle}
@@ -104,7 +113,7 @@
 					<a
 						class="menu-link"
 						on:click={() => (active = link.title)}
-						class:active={$page.url.searchParams.get('category') === link.title}
+						class:active={activeCategory === link.title}
 						href={link.path}
 					>
 						{link.displayTitle}
