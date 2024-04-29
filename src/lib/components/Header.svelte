@@ -1,5 +1,7 @@
 <script>
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
+
 	// import SocialIcons from './SocialIcons.svelte';
 	// import HeaderResponsiveMenu from './HeaderResponsiveMenu.svelte';
 	// import { Link } from 'svelte-routing';
@@ -14,6 +16,12 @@
 	let activeCategory = '';
 	let activeTag = '';
 
+	$: {
+		if (browser) {
+			activeCategory = $page.url.searchParams.get('category');
+			activeTag = $page.url.searchParams.get('tag');
+		}
+	}
 	onMount(() => {
 		activeCategory = $page.url.searchParams.get('category') || '';
 		activeTag = $page.url.searchParams.get('tag') || '';
@@ -21,7 +29,7 @@
 
 	const links = [
 		{
-			title: 'Projects',
+			title: 'Project',
 			path: '/work?category=Project',
 			displayTitle: 'Projects'
 		},
