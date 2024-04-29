@@ -38,21 +38,21 @@
 	</TiltImage>
 {/if}
 
-<!-- Svete Head for OG images, title description... -->
+<!-- Svelte Head for OG images, title description... -->
 <svelte:head>
 	{#if post?.metadata}
 		<!-- HTML Meta Tags -->
 		<title>{post.metadata.title}</title>
-		<meta name="description" content="description" />
+		<meta name="description" content={post.metadata.description} />
 
-		<!-- Facebook Meta Tags -->
+		<!-- Open Graph Meta Tags for Facebook and others -->
+		<meta property="og:site_name" content="Ctwhome.com" />
 		<meta property="og:url" content={`https://ctwhome.com/work/${$page.params.slug}`} />
 		<meta property="og:type" content="article" />
 		<meta property="og:title" content={post.metadata.title} />
-		<meta property="og:description" content={post.metadata?.description} />
+		<meta property="og:description" content={post.metadata.description} />
 		<meta
 			property="og:image"
-			itemprop="image"
 			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
 		/>
 
@@ -61,10 +61,9 @@
 		<meta property="twitter:domain" content="ctwhome.com" />
 		<meta property="twitter:url" content={`https://ctwhome.com/work/${$page.params.slug}`} />
 		<meta name="twitter:title" content={post.metadata.title} />
-		<meta name="twitter:description" content={post.metadata?.description} />
+		<meta name="twitter:description" content={post.metadata.description} />
 		<meta
 			name="twitter:image"
-			itemprop="image"
 			content={`https://ctwhome.com/content/${$page.params.slug}/${post.metadata.coverImage}`}
 		/>
 	{/if}
