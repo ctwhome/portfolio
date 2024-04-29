@@ -6,8 +6,10 @@ export function entries(): { slug: string | undefined }[] {
   const slugs = [];
 
   for (const path in content) {
+    let slug = path.split('/').at(-2);  // Get folder name as slug
+    if (slug === 'TEMPLATE') continue;  // Skip the folder name
     slugs.push({
-      slug: path.split('/').at(-2), // Get folder name as slug
+      slug,
     });
   }
 

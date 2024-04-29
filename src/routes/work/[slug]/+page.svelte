@@ -50,7 +50,7 @@
 		<h1 class="mt-6 font-bold text-3xl sm:text-5xl">{@html post.metadata?.title}</h1>
 
 		{#if post?.metadata?.description}
-			<p class="mt-4 text-lg opacity-80">{post?.metadata?.description}</p>
+			<p class="mt-4 text-lg opacity-80">{@html post?.metadata?.description}</p>
 		{/if}
 
 		<!-- <p class="text-sm mt-4 opacity-60">
