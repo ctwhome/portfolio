@@ -4,8 +4,13 @@
 	import { onMount } from 'svelte';
 	import { derived, get, writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 
 	const filteredPosts = writable(posts); // Store for displaying posts, changes based on filters
+	// let activeCategory: '' | null = null;
+	// let activeTag: '' | null = null;
+	const activeCategory = writable('' || null);
+	const activeTag = writable('' || null);
 
 	// Derived store to group posts by year based on filtered posts
 	const postsByYear = derived(filteredPosts, ($filteredPosts) => {
@@ -18,7 +23,6 @@
 	});
 
 	let hasFilters = false;
-
 	//
 	// Merge and remove duplicates and empty tags
 	//
@@ -43,20 +47,16 @@
 			});
 		});
 	}
-	let activeCategory = '';
-	let activeTag = '';
-
-	// if any searchParmas change, update the filters
-	$: if (!activeCategory) {
-		setFilters();
-	}
-	$: if (activeCategory) {
-		setFilters();
+	// Reactive statement that runs only in the browser
+	$: {
+		if (browser) {
+			$activeCategory = $page.url.searchParams.get('category');
+			$activeTag = $page.url.searchParams.get('tag');
+			setFilters();
+		}
 	}
 
 	onMount(() => {
-		activeCategory = $page.url.searchParams.get('category') || '';
-		activeTag = $page.url.searchParams.get('tag') || '';
 		setFilters();
 		// Get all image elements on the page
 		const allImages = document.querySelectorAll('img');
@@ -71,10 +71,12 @@
 	function setFilters() {
 		hasFilters = false;
 
-		if (activeCategory) {
-			filterByCategory(activeCategory);
-		} else if (activeTag) {
-			filterByTag(activeTag);
+		if ($activeCategory) {
+			filterByCategory($activeCategory);
+		} else if ($activeTag) {
+			filterByTag($activeTag);
+		} else {
+			filteredPosts.set(posts);
 		}
 		updateCounters();
 	}
@@ -84,13 +86,17 @@
 		goto('/work');
 		hasFilters = false;
 		filteredPosts.set(posts);
+		$activeCategory = '';
+		$activeTag = '';
 	}
 	function filterByCategory(categoryName) {
-		if (hasFilters && activeCategory === categoryName) {
+		if (hasFilters && $activeCategory === categoryName) {
 			clearFilters();
 			return;
 		}
 		hasFilters = true;
+		// set active category
+		$activeCategory = categoryName;
 		// set url params to category
 		goto(`?category=${encodeURIComponent(categoryName)}`);
 		const filtered = posts.filter(({ metadata }) => metadata?.categories?.includes(categoryName));
@@ -98,11 +104,12 @@
 	}
 
 	function filterByTag(tagName) {
-		if (hasFilters && activeTag === tagName) {
+		if (hasFilters && $activeTag === tagName) {
 			clearFilters();
 			return;
 		}
 
+		$activeTag = tagName;
 		hasFilters = true;
 		// set url params to tag
 		goto(`?tag=${encodeURIComponent(tagName)}`);
@@ -111,15 +118,16 @@
 	}
 </script>
 
+{$activeCategory} - {$activeTag}
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
-			{#if activeCategory === 'Blog'}
+			{#if $activeCategory === 'Blog'}
 				Blog Posts
-			{:else if activeCategory}
+			{:else if $activeCategory}
 				Work Projects
-			{:else if activeTag}
-				{activeTag}
+			{:else if $activeTag}
+				{$activeTag}
 			{:else}
 				All Work
 			{/if}
@@ -142,7 +150,7 @@
 					<button
 						on:click={() => filterByCategory(name)}
 						class="btn btn-xs"
-						class:btn-primary={activeCategory === name}
+						class:btn-primary={$activeCategory === name}
 					>
 						{name}
 						<div class="badge">{count}</div>
@@ -161,7 +169,7 @@
 						class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
 					>
 						{#each globalTags as { name, count }}
-							<li class:btn-primary={activeTag === name}>
+							<li class:btn-primary={$activeTag === name}>
 								<a on:click={() => filterByTag(name)} class=""
 									>{name}
 									<div class="badge">{count}</div></a
@@ -175,7 +183,7 @@
 					<button
 						on:click={() => filterByTag(name)}
 						class="btn btn-xs"
-						class:btn-primary={activeTag === name}
+						class:btn-primary={$activeTag === name}
 					>
 						{name}
 						<div class="badge">{count}</div>
