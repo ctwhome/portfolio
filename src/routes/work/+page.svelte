@@ -108,7 +108,6 @@
 			clearFilters();
 			return;
 		}
-
 		$activeTag = tagName;
 		hasFilters = true;
 		// set url params to tag
@@ -118,7 +117,6 @@
 	}
 </script>
 
-{$activeCategory} - {$activeTag}
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
@@ -142,54 +140,60 @@
 
 	<!-- FILTERS PANEL -->
 	<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
-		<div>
-			<!-- <div class="text-sm mb-2">Categories</div> -->
-			<div class="flex flex-wrap gap-2">
-				{#each globalCategories as { name, count }}
-					<!-- daisyui chips -->
-					<button
-						on:click={() => filterByCategory(name)}
-						class="btn btn-xs"
-						class:btn-primary={$activeCategory === name}
-					>
-						{name}
-						<div class="badge">{count}</div>
-					</button>
-				{/each}
-			</div>
+		<!-- <div class="text-sm mb-2">Categories</div> -->
+		<div class="flex flex-wrap gap-2 items-center">
+			{#each globalCategories as { name, count }}
+				<!-- daisyui chips -->
+				<button
+					on:click={() => filterByCategory(name)}
+					class="btn btn-xs"
+					class:btn-primary={$activeCategory === name}
+				>
+					{name}
+					<div class="badge">{count}</div>
+				</button>
+			{/each}
 		</div>
+
 		<div>
 			<!-- <div class="text-sm mb-2">Tags</div> -->
-
-			<div class="flex flex-wrap gap-2">
-				<div class="dropdown">
-					<div tabindex="0" role="button" class="btn btn-xs m-1">Tags</div>
-					<ul
-						tabindex="0"
-						class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-					>
-						{#each globalTags as { name, count }}
-							<li class:btn-primary={$activeTag === name}>
-								<a on:click={() => filterByTag(name)} class=""
-									>{name}
-									<div class="badge">{count}</div></a
-								>
-							</li>
-						{/each}
-					</ul>
+			{#if globalTags.length > 0}
+				<div class="flex flex-wrap gap-2">
+					<div class="dropdown">
+						<div tabindex="0" role="button" class="btn btn-xs m-1" class:btn-primary={!!$activeTag}>
+							{$activeTag || 'Tags'}
+							<div class="badge">
+								{globalTags[globalTags.findIndex((t) => t.name === $activeTag)]?.count ||
+									globalTags.length}
+							</div>
+						</div>
+						<ul
+							tabindex="0"
+							class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+						>
+							{#each globalTags as { name, count }}
+								<li>
+									<a on:click={() => filterByTag(name)} class:active={$activeTag === name}
+										>{name}
+										<div class="badge">{count}</div></a
+									>
+								</li>
+							{/each}
+						</ul>
+					</div>
+					<!-- {#each globalTags as { name, count }}
+						daisyui chips
+						<button
+							on:click={() => filterByTag(name)}
+							class="btn btn-xs"
+							class:btn-primary={$activeTag === name}
+						>
+							{name}
+							<div class="badge">{count}</div>
+						</button>
+					{/each} -->
 				</div>
-				{#each globalTags as { name, count }}
-					<!-- daisyui chips -->
-					<button
-						on:click={() => filterByTag(name)}
-						class="btn btn-xs"
-						class:btn-primary={$activeTag === name}
-					>
-						{name}
-						<div class="badge">{count}</div>
-					</button>
-				{/each}
-			</div>
+			{/if}
 		</div>
 	</div>
 
