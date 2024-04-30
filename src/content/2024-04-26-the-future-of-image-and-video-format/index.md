@@ -21,7 +21,7 @@ Since 2015, the non-profit consortium called **Alliance for Open Media**, formed
 When it comes to images, we're all familiar with JPEG, PNG, and GIF, our ever-evolving need for higher resolutions and quicker transfer speeds calls for an even more advanced solution. 
 
 The next comparison between the two images shows a reduction of 98% of file size (with compression of 50%). You can judge the quality from the slider:
-<div class="diff aspect-[154/100]">
+<div class="diff aspect-[2048/1335]">
   <div class="diff-item-1">
     <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/avif.avif" />
   </div>
