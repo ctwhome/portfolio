@@ -21,7 +21,7 @@ Since 2015, the non-profit consortium called **Alliance for Open Media**, formed
 When it comes to images, we're all familiar with JPEG, PNG, and GIF, our ever-evolving need for higher resolutions and quicker transfer speeds calls for an even more advanced solution. 
 
 The next comparison between the two images shows a reduction of 98% of file size (with compression of 50%). You can judge the quality from the slider:
-<div class="diff aspect-[3/2]">
+<div class="diff aspect-[154/100]">
   <div class="diff-item-1">
     <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/avif.avif" />
   </div>
@@ -30,7 +30,9 @@ The next comparison between the two images shows a reduction of 98% of file size
   </div>
   <div class="diff-resizer"></div>
 </div>
+
 [Museum of New Zealand Te Papa Tongarewa](https://unsplash.com/@tepapa) via [@tepapa](https://unsplash.com/@tepapa)
+
 Enter AV1: a modern, open format championed by the industry's heavyweights. Free to use and designed to meet contemporary demands, AV1 is poised to do for media what USB-C did for the messy world of cables—streamline and standardize.
 ## The AV1 and AVIF formats
 The AV1 (AOMedia Video 1) format is an open, royalty-free video coding format designed for video transmissions over the Internet.
