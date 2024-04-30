@@ -68,7 +68,7 @@ Many modules on npm can handle these code snippets very well.
 ## Adoption and Ecosystem
 The integration of AV1 and AVIF across tech platforms is **now available** and expanding, thanks to support from leading companies and hardware manufacturers:
 
-#### Browser support
+### Browser support
 
 |                                         | Browsers                                                                                   |
 | --------------------------------------- | ------------------------------------------------------------------------------------------ |
