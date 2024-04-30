@@ -24,17 +24,14 @@ The next comparison between the two images shows a reduction of 98% of file size
 
 <div class="diff aspect-[16/9]">
   <div class="diff-item-1">
-    <img alt="daisy" src="./images/jpg.jpg" />
+    <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/jpg.jpg" />
   </div>
   <div class="diff-item-2">
-    <img alt="daisy" src="./images/avif.avif" />
+    <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/avif.avif" />
   </div>
   <div class="diff-resizer"></div>
 </div>
-
-
-
-Hit the road to explore how these new formats offer significant improvements in speed and efficiency compared to older ones.
+*[Museum of New Zealand Te Papa Tongarewa](https://unsplash.com/@tepapa) via [@tepapa](https://unsplash.com/@tepapa)*
 ## The AV1 and AVIF formats
 The AV1 (AOMedia Video 1) format is an open, royalty-free video coding format designed for video transmissions over the Internet.
 
@@ -67,12 +64,18 @@ For that reason, it might be still important to offer backups to jpg and png for
 Many modules on npm can handle these code snippets very well.
 
 ## Adoption and Ecosystem
-The integration of AV1 and AVIF across tech platforms is expanding, thanks to support from leading companies and hardware manufacturers:
+The integration of AV1 and AVIF across tech platforms is **now available** and expanding, thanks to support from leading companies and hardware manufacturers:
 
-| Feature                                 | Browsers                                           | Smartphone Chips                                                            | Intel processors                                     | Apple Silicone                                        | ADM                       | Nvidia                           |
-| --------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------- | ------------------------- | -------------------------------- |
-| AV1 Video Decoding & AVIF Image Support | Chrome(125), Edge(123), Firefox(126), Safari(17.5) | Qualcomm (Snapdragon 888), Samsung Exynos (2100), MediaTek (Dimensity 1000) | 11th Gen Intel CPUs (Decoding)<br>Arc GPU (Encoding) | Apple M1/M2 chips (Decode)<br>Apple M3 chips (encode) | Radeon RX 7000 (encoding) | GeForce RTX 40 series (encoding) |
+#### Browser support
 
+|                                         | Browsers                                                                                   |
+| --------------------------------------- | ------------------------------------------------------------------------------------------ |
+| AV1 Video Decoding & AVIF Image Support | Chrome(125), Edge(123), Firefox(126), Safari(17.5) [caniuse.com](https://caniuse.com/avif) |
+
+### Hardware support
+| Intel processors                                     | Apple Silicone                                        | ADM                       | Nvidia                           | Smartphone                                                                  |
+| ---------------------------------------------------- | ----------------------------------------------------- | ------------------------- | -------------------------------- | --------------------------------------------------------------------------- |
+| 11th Gen Intel CPUs (Decoding)<br>Arc GPU (Encoding) | Apple M1/M2 chips (Decode)<br>Apple M3 chips (encode) | Radeon RX 7000 (encoding) | GeForce RTX 40 series (encoding) | Qualcomm (Snapdragon 888), Samsung Exynos (2100), MediaTek (Dimensity 1000) |
 
 ## Special tools to optimize assets
 - [jampack.js](https://divriots.com/blog/introducing-jampack/)  A post-processing tool designed to optimize static websites after they are built (also image optimization using [Sharp](https://sharp.pixelplumbing.com/)), enhancing user experience and Core Web Vitals scores.
