@@ -23,10 +23,10 @@ When it comes to images, we're all familiar with JPEG, PNG, and GIF. WebP, a new
 The next comparison between the two images shows a reduction of 98% of file size (with compression of 50%). You can judge the quality from the slider:
 <div class="diff">
   <div class="diff-item-1">
-    <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/jpg.jpg" />
+    <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/avif.avif" />
   </div>
   <div class="diff-item-2">
-    <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/avif.avif" />
+    <img alt="daisy" src="https://ctwhome.com/content/2024-04-26-the-future-of-image-and-video-format/images/jpg.jpg" />
   </div>
   <div class="diff-resizer"></div>
 </div>
