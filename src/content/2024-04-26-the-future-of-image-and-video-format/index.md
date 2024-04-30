@@ -20,6 +20,20 @@ Since 2015, the non-profit consortium called **Alliance for Open Media**, formed
 
 When it comes to images, we're all familiar with JPEG, PNG, and GIF. WebP, a newer format developed by Google, has gained significant traction over the past few years. However, our ever-evolving need for higher resolutions and quicker transfer speeds calls for an even more advanced solution. Enter AV1: a modern, open format championed by the industry's heavyweights. Free to use and designed to meet contemporary demands, AV1 is poised to do for media what USB-C did for the messy world of cables—streamline and standardize.
 
+The next comparison between the two images shows a reduction of 98% of file size (with compression of 50%). You can judge the quality from the slider:
+
+<div class="diff aspect-[16/9]">
+  <div class="diff-item-1">
+    <img alt="daisy" src="./images/jpg.jpg" />
+  </div>
+  <div class="diff-item-2">
+    <img alt="daisy" src="./images/avif.avif" />
+  </div>
+  <div class="diff-resizer"></div>
+</div>
+
+
+
 Hit the road to explore how these new formats offer significant improvements in speed and efficiency compared to older ones.
 ## The AV1 and AVIF formats
 The AV1 (AOMedia Video 1) format is an open, royalty-free video coding format designed for video transmissions over the Internet.
