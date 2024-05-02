@@ -3,7 +3,8 @@
 	import wordpress from './wordpress.webp';
 	import nebula from './nebula.gif';
 	import world from './world.gif';
-
+	import gis from './gis/images/maps-cover.webp';
+	import mdsvex from './mdsvex/mdsvex.avif';
 	// Icons
 	import CarbonBot from '~icons/carbon/bot';
 	import IconAccountBox from '~icons/mdi/account-box';
@@ -55,7 +56,7 @@
 		<!-- Nebula  -->
 		<a href="/3d/nebula/index.html" data-sveltekit-preload-data data-sveltekit-reload>
 			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+				class="card bg-base-200 bg-opacity-50 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -63,7 +64,7 @@
 				</figure>
 				<div class="card-body">
 					<h2 class="card-title">3D Nebula</h2>
-					<p>And artistic representation of a space Nebula</p>
+					<p class="line-clamp-2">And artistic representation of a space Nebula</p>
 					<div class="card-actions justify-end">
 						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
 							Open
@@ -75,7 +76,7 @@
 		<!-- Camera Controls -->
 		<a href="/lab/camera-controls">
 			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+				class="card bg-base-200 bg-opacity-50 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -86,7 +87,7 @@
 				</figure>
 				<div class="card-body">
 					<h2 class="card-title">ThreeJS Camera Controls</h2>
-					<p>Running app with ThreeJS and Advance Camera Controls</p>
+					<p class="line-clamp-2">Running app with ThreeJS and Advance Camera Controls</p>
 					<div class="card-actions justify-end">
 						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
 							Open
@@ -98,7 +99,7 @@
 		<!-- Orthographic camera with pan an zoom -->
 		<a href="/lab/three-camera-controls">
 			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+				class="card bg-base-200 bg-opacity-50 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -110,7 +111,7 @@
 				</figure>
 				<div class="card-body">
 					<h2 class="card-title">Orthographic Camera</h2>
-					<p>Orthographic camera with pan an zoom</p>
+					<p class="line-clamp-2">Orthographic camera with pan an zoom</p>
 					<div class="card-actions justify-end">
 						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
 							Open
@@ -162,14 +163,54 @@
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
 		<a href="/lab/wordpress">
 			<div
-				class="card bg-base-200 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+				class="card bg-base-200 bg-opacity-50 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
 			>
 				<figure>
-					<img src={wordpress} alt="3D example" />
+					<img src={wordpress} class="aspect-video object-cover" alt="3D example" />
 				</figure>
 				<div class="card-body">
 					<h2 class="card-title">Headless WordPress CMS</h2>
-					<p>Portfolio implementation with complete renderization from WordPress as a CMS</p>
+					<p class="text-sm line-clamp-2">
+						Portfolio implementation with complete renderization from WordPress as a CMS
+					</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+							Open
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
+
+		<a href="/lab/gis">
+			<div
+				class="card bg-base-200 bg-opacity-50 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+				<figure>
+					<img src={gis} class="aspect-video object-cover" alt="GIS Example" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">GIS Experiments</h2>
+					<p class="text-sm line-clamp-2">Mapping and GIS</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
+							Open
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
+
+		<a href="/lab/mdsvex">
+			<div
+				class="card bg-base-200 bg-opacity-50 shadow hover:shadow-2xl border border-transparent hover:border-primary transition"
+			>
+				<figure>
+					<img src={mdsvex} class="aspect-video object-cover" alt="GIS Example" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">MDsveX</h2>
+					<p class="text-sm line-clamp-2">Full example with custom components</p>
 					<div class="card-actions justify-end">
 						<button class="btn btn-outline" data-sveltekit-reload data-sveltekit-preload-data>
 							Open

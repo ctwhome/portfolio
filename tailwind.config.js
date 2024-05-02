@@ -36,7 +36,7 @@ export default {
 				ctw: {
 					primary: '#ffb83d',
 					'primary-focus': '#db8b00',
-					'primary-content': '#ffffff',
+					'primary-content': 'black',
 					secondary: '#5e9c91',
 					'secondary-focus': '#3e655f',
 					'secondary-content': '#FFFFFF',

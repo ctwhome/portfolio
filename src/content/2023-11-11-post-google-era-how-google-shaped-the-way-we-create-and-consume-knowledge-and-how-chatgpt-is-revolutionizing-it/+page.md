@@ -7,7 +7,7 @@ categories:
 tags:
   - Thoughts
 coverImage: images/cover.png
-displayCover: false
+displayCover: true
 ---
 ## How Google Shaped the Way We Create and Consume Knowledge, and How ChatGPT is Revolutionizing It
 
