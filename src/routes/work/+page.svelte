@@ -121,15 +121,17 @@
 	<div class="flex justify-between">
 		<h1 class="text-2xl sm:text-4xl font-bold">
 			{#if $activeCategory === 'Blog'}
-				Blog Posts
-			{:else if $activeCategory}
+				Engineering Blog
+			{:else if $activeCategory === 'Project'}
 				Work Projects
+			{:else if $activeCategory === 'Digital Garden'}
+				🌱 Digital Garden
 			{:else if $activeTag}
 				{$activeTag}
 			{:else}
 				All Work
 			{/if}
-			({$filteredPosts.length})
+			<sup class="opacity-80 text-sm -top-[1.1rem]">({$filteredPosts.length})</sup>
 		</h1>
 		{#if hasFilters}
 			<button on:click={clearFilters} class="btn btn-sm btn-primary"
