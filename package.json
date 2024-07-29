@@ -66,10 +66,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/sortablejs": "^1.15.8",
 		"camera-controls": "^2.8.5",
 		"date-fns": "^3.6.0",
 		"lite-youtube-embed": "^0.3.2",
 		"node-html-parser": "^6.1.13",
+		"sortablejs": "^1.15.2",
 		"svelte-persisted-store": "^0.11.0",
 		"theme-change": "^2.5.0",
 		"three": "^0.167.0",
