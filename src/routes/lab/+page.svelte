@@ -14,6 +14,7 @@
 	import LoginButton from '$lib/components/Login/LoginButton.svelte';
 	import NativeFileApi from '$lib/components/ui/NativeFileApi.svelte';
 	import TimeLine from '$components/TimeLine.svelte';
+	import Sortable from '$components/sortable/Sortable.svelte';
 </script>
 
 <div class="container mx-auto p-3">
@@ -23,6 +24,8 @@
 		This is my digital sandbox and toolkit where I sculpt, stitch, and bring pixels to life. Have a
 		play and let me know what you think. I'm always looking for new ways to push the boundaries.
 	</p>
+	<br />
+	<p>All examples are made with standard HTML API's and Svelte and TailwindCSS (DaisyUI)</p>
 
 	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
@@ -48,6 +51,10 @@
 		<div class="border border-base-300 p-2 rounded">
 			Example Markdown pages with interactive components
 			<a href="/lab/mdsvex" class="btn mt-4">MDsveX Full Example</a>
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			Drag and drop with SortableJS
+			<Sortable />
 		</div>
 	</div>
 
