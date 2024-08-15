@@ -15,6 +15,7 @@
 	import NativeFileApi from '$lib/components/ui/NativeFileApi.svelte';
 	import TimeLine from '$components/TimeLine.svelte';
 	import Sortable from '$components/sortable/Sortable.svelte';
+	import Todos from '$components/supabase/Todos.svelte';
 </script>
 
 <div class="container mx-auto p-3">
@@ -55,6 +56,10 @@
 		<div class="border border-base-300 p-2 rounded">
 			Drag and drop with SortableJS
 			<Sortable />
+		</div>
+		<div class="border border-base-300 p-2 rounded">
+			Supabase DB Todos
+			<Todos />
 		</div>
 	</div>
 
