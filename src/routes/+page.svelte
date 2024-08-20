@@ -63,12 +63,12 @@
 					<h1 class="text-3xl md:text-5xl font-bold font-title">J. G. Gonzalez</h1>
 
 					<p class="mt-10 text-2xl md:text-3xl lg:text-4xl font-serif">
-						I create experiences weaving together strong <span class="ctw-text-gradient"></span>
+						I create experiences weaving together strong <span class="ctw-text-gradient">
 							design aesthetics
 						</span>
 						with
 						<span class="ctw-text-gradient-green">technical engineering</span>
-						 know-how.
+						know-how.
 					</p>
 					<p class="mt-10 text-lg md:text-xl opacity-80">
 						Product Designer & Research Software Engineer <br class="hidden sm:inline" />
@@ -102,7 +102,7 @@
 	<div class="container mx-auto">
 		<h2 class="text-lg md:text-3xl font-bold font-title">
 			Take my <span class="line-through opacity-50">word</span>
-			 work for it!
+			work for it!
 		</h2>
 	</div>
 
