@@ -8,6 +8,10 @@
 
 <Analytics />
 
+<svelte:head>
+	<title>Ctwhome Portfolio</title>
+</svelte:head>
+
 <div class="flex flex-col h-screen">
 	<!-- <header-main /> -->
 	<Header />
