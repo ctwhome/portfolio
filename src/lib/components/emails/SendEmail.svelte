@@ -43,7 +43,7 @@
 		placeholder="Email"
 		class="input input-sm input-bordered w-full mt-2"
 	/>
-	{#if !success}
+	{#if success}
 		<p class="flex gap-2 justify-center mt-3 px-4">
 			<IcRoundCheck class="text-success " /> Email sent!
 		</p>
