@@ -24,6 +24,7 @@
 		"@iconify-json/ph": "^1.1.14",
 		"@iconify-json/streamline": "^1.1.9",
 		"@sveltejs/adapter-auto": "^3.2.4",
+		"@sveltejs/adapter-node": "^5.2.2",
 		"@sveltejs/adapter-static": "^3.0.4",
 		"@sveltejs/adapter-vercel": "^5.4.3",
 		"@sveltejs/enhanced-img": "^0.3.3",
