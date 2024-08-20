@@ -2,7 +2,7 @@
 	import ProfilePicture from '$components/ProfilePicture.svelte';
 	// import StatusEnum from '$lib/models/status-enum.js';
 	// import svelteTilt from 'vanilla-tilt-svelte';
-	import profileImage from '$lib/assets/images/ctw-jess-profile.jpg';
+	import profileImage from '$lib/assets/images/ctw-jess-profile.avif';
 	import producDesignImage from '$lib/assets/images/product-design.svg';
 	import engineeringImage from '$lib/assets/images/web.svg';
 	import { onMount, onDestroy } from 'svelte';
@@ -63,20 +63,24 @@
 					<h1 class="text-3xl md:text-5xl font-bold font-title">J. G. Gonzalez</h1>
 
 					<p class="mt-10 text-2xl md:text-3xl lg:text-4xl font-serif">
-						I create experiences weaving together strong <span class="ctw-text-gradient"
-							>design aesthetics</span
-						>
+						I create experiences weaving together strong <span class="ctw-text-gradient"></span>
+							design aesthetics
+						</span>
 						with
-						<span class="ctw-text-gradient-green"> technical engineering</span> know-how.
+						<span class="ctw-text-gradient-green">technical engineering</span>
+						 know-how.
 					</p>
 					<p class="mt-10 text-lg md:text-xl opacity-80">
-						Product Designer & Research Software Engineer <br class="hidden sm:inline" /> at
+						Product Designer & Research Software Engineer <br class="hidden sm:inline" />
+						at
 						<a
 							class="text-blue-300 glow"
 							href="https://www.esciencecenter.nl/team/jesus-garcia-gonzalez-msc"
 							target="_blank"
-							rel="noopener">The Netherlands eScience Center</a
+							rel="noopener"
 						>
+							The Netherlands eScience Center
+						</a>
 					</p>
 				</div>
 
@@ -97,7 +101,8 @@
 
 	<div class="container mx-auto">
 		<h2 class="text-lg md:text-3xl font-bold font-title">
-			Take my <span class="line-through opacity-50">word</span> work for it!
+			Take my <span class="line-through opacity-50">word</span>
+			 work for it!
 		</h2>
 	</div>
 
@@ -226,7 +231,8 @@
 		<!-- </div> -->
 	</div>
 	<div class="container mx-auto mt-10">
-		<a class="hover:text-primary" href="work">See Latest work</a> |
+		<a class="hover:text-primary" href="work">See Latest work</a>
+		|
 		<!-- <a class="hover:text-primary" href="three">3D Experiments</a> | -->
 		<a class="hover:text-primary" href="about">About</a>
 	</div>
