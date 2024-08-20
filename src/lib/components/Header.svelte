@@ -56,7 +56,7 @@
 	];
 </script>
 
-<nav class="bien-nav mb-10">
+<nav class="bien-nav mb-10 px-2">
 	<div class="bien-glass" />
 	<div class="bien-glass-edge" />
 	<div class="relative container mx-auto py-2">

@@ -134,9 +134,9 @@
 			<sup class="opacity-80 text-sm -top-[1.1rem]">({$filteredPosts.length})</sup>
 		</h1>
 		{#if hasFilters}
-			<button on:click={clearFilters} class="btn btn-sm btn-primary"
-				>Clear Filers ({$filteredPosts.length})</button
-			>
+			<button on:click={clearFilters} class="btn btn-sm btn-primary">
+				Clear Filers ({$filteredPosts.length})
+			</button>
 		{/if}
 	</div>
 
@@ -175,10 +175,10 @@
 						>
 							{#each globalTags as { name, count }}
 								<li>
-									<a on:click={() => filterByTag(name)} class:active={$activeTag === name}
-										>{name}
-										<div class="badge">{count}</div></a
-									>
+									<a on:click={() => filterByTag(name)} class:active={$activeTag === name}>
+										{name}
+										<div class="badge">{count}</div>
+									</a>
 								</li>
 							{/each}
 						</ul>
@@ -203,17 +203,17 @@
 		<h2 class="text-xl font-bold mt-8 opacity-60">
 			{year}
 		</h2>
-		<div class="grid grid-cols-2 sm:grid-cols-1 gap-7 mt-10">
+		<div class="grid grid-cols-2 sm:grid-cols-3 gap-7 mt-10">
 			{#each $postsByYear[year] as post}
 				<a
 					data-sveltekit-preload-data="hover"
 					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
-					class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 bg-opacity-50 sm:bg-inherit sm:p-4"
+					class="flex flex-col gap-4 rounded-lg hover:bg-base-200 hover:bg-opacity-70 transition bg-base-200 bg-opacity-50"
 				>
 					<div class="flex-none">
 						{#if post.metadata.coverImage}
 							<img
-								class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
+								class=" aspect-[5/3] object-cover rounded-lg rounded-b-none"
 								src={post.metadata.coverImage &&
 									`/content/${post.slug}/${post.metadata.coverImage}`}
 								alt={post.slug}
@@ -222,7 +222,6 @@
 					</div>
 					<div class="px-3 pb-3">
 						<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.metadata.title}</h2>
-
 						{#if post.metadata.description}
 							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
 								{@html post.metadata.description}
