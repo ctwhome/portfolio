@@ -2,6 +2,9 @@
 	"name": "my-app",
 	"version": "0.0.1",
 	"private": true,
+	"engines": {
+		"node": "22"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -16,6 +19,7 @@
 		"@divriots/jampack": "^0.25.0",
 		"@iconify-json/carbon": "^1.1.37",
 		"@iconify-json/fa6-solid": "^1.1.24",
+		"@iconify-json/ic": "^1.1.18",
 		"@iconify-json/mdi": "^1.1.68",
 		"@iconify-json/ph": "^1.1.14",
 		"@iconify-json/streamline": "^1.1.9",

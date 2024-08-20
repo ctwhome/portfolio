@@ -16,6 +16,7 @@
 	import TimeLine from '$components/TimeLine.svelte';
 	import Sortable from '$components/sortable/Sortable.svelte';
 	import Todos from '$components/supabase/Todos.svelte';
+	import SendEmail from '$lib/components/emails/SendEmail.svelte';
 </script>
 
 <div class="container mx-auto p-3">
@@ -58,8 +59,14 @@
 			<Sortable />
 		</div>
 		<div class="border border-base-300 p-2 rounded">
-			Supabase DB Todos
+			DB Todos with Postgres
 			<Todos />
+		</div>
+
+		<!-- in put name and email and sent PUT /endpoints/email -->
+		<div class="border border-base-300 p-2 rounded">
+			<p class="mb-4">Send Email</p>
+			<SendEmail />
 		</div>
 	</div>
 
@@ -161,7 +168,8 @@
 			<div class="text-sm">
 				🤹 Any icon sets ~150 sets with over 200,000 icons, logos, emojis, etc. <br />
 				Powered by Iconify, with auto install. Using Iconify and
-				<a href="https://icones.js.org/">Icones App</a> to find a place icons.
+				<a href="https://icones.js.org/">Icones App</a>
+				to find a place icons.
 			</div>
 			<div class="flex mt-4">
 				<CarbonBot class="text-primary text-2xl" />
