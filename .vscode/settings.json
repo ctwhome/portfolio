@@ -9,5 +9,8 @@
 	},
 	"eslint.validate": [
 		"javascript"
-	]
+	],
+	"[sql]": {
+    "editor.formatOnSave": false
+  },
 }
