@@ -51,7 +51,8 @@ const config = {
 		// https://kit.svelte.dev/docs/adapter-static
 		adapter: adapter(
 			{
-				fallback: '200.html' // may differ from host to host
+				fallback: '200.html', // may differ from host to host,
+				runtime: 'edge'       // for vercel to run in the edges close to the orgin requests
 			}
 		),
 
