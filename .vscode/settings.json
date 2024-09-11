@@ -1,4 +1,5 @@
 {
+	"window.title": "🟡 Portfolio - ${activeEditorShort}",
 	"eslint.workingDirectories": [
 		{
 			"mode": "auto"
