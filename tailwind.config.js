@@ -28,7 +28,8 @@ export default {
 		require('daisyui'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/forms'),
-		require('@tailwindcss/container-queries')
+		require('@tailwindcss/container-queries'),
+		require('tailwindcss-animate'),
 	],
 	daisyui: {
 		themes: [
