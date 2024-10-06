@@ -5,11 +5,13 @@ date: 2024-10-06
 categories:
   - Project
 tags:
-  - 3D-visualization
+  - WearOS
   - eScience-center
 coverImage: images/cover.jpg
 displayCover: true
+layout: project
 ---
+
 # Bridging Life Sciences and Social Sciences: SmartPlay
 
 **SmartPlay** is an exciting innovation that sits at the intersection of **life sciences** and **social sciences and humanities**. As a WearOS app designed for children, SmartPlay offers a unique way to measure and understand play behaviors by collecting real-time data using advanced wearable technology. In collaboration with developmental psychology and human-media interaction experts, this project stands as a testament to the value of cross-disciplinary approaches to solve complex research challenges.
@@ -53,11 +55,11 @@ SmartPlay encourages researchers to move beyond isolated methods of data collect
 
 ![](./images/dashboard.gif)
 
+
 ### Contribute and Collaborate
 The success of SmartPlay depends on collaboration across disciplines. We invite **researchers, engineers, educators**, and **psychologists** to join us in expanding the impact of this project. Together, we can push the boundaries of what technology, life sciences, and social sciences can achieve.
 
-For more information, download the [user manual](./INSTALL.md), try the app by [downloading the APK](./releases), or visualize the data through our [online dashboard](https://ctwhome.github.io/SmartPlay).
+For more information, check the [user manual](https://github.com/ctwhome/SmartPlay/blob/main/INSTALL.md), try the app by [downloading the APK](https://github.com/ctwhome/SmartPlay/blob/main/releases), or visualize the data through our [online dashboard](https://ctwhome.github.io/SmartPlay).
 
----
+
 **SmartPlay** is a prime example of how **technology** can be developed with a **purposeful design** that is accessible, ethical, and impactful across domains. It not only serves life sciences with its quantitative data collection but also caters to social sciences and humanities by maintaining the depth of human experience—bringing together the best of both worlds.
-

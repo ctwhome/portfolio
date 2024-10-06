@@ -14,11 +14,11 @@
 	);
 	const post = content[postPath];
 
-	let categories = post.metadata?.categories.map((category) => `${category}`).join(' ');
+	let categories = post?.metadata?.categories.map((category) => `${category}`).join(' ');
 	let details =
 		// post.metadata?.categories.map((category) => `${category}`).join(' ') +
 		// ' - ' +
-		post.metadata?.tags.map((tag) => `${tag}`).join(' ') +
+		post?.metadata?.tags.map((tag) => `${tag}`).join(' ') +
 		'  · ' +
 		new Date(post?.metadata?.date).toLocaleDateString('en-NL', {
 			year: 'numeric',
@@ -51,7 +51,7 @@
 			</span>
 		</div>
 
-		<h1 class="mt-4 font-black text-3xl sm:text-4xl">{@html post.metadata?.title}</h1>
+		<h1 class="mt-4 font-black text-3xl sm:text-4xl">{@html post?.metadata?.title}</h1>
 
 		{#if post?.metadata?.description}
 			<p class="mt-4 text-lg opacity-80">
@@ -65,7 +65,7 @@
 					<div class="aspect-[16/9] sm:scale-110">
 						<img
 							class="object-cover h-full w-full mx-auto rounded-xl outline-offset-8 outline-base-200 outline mb-10"
-							src={`/content/${$page.params.slug}/${post.metadata.coverImage}`}
+							src={`/content/${$page.params.slug}/${post?.metadata?.coverImage}`}
 							alt={post.slug}
 						/>
 					</div>
