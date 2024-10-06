@@ -20,3 +20,16 @@ type: blog
 
 > The images NEED to be inside the `./images/` folder to work
 > All image name MUST be unique!
+> The cover image has a aspect ratio of 16:9
+
+
+## Images with captions
+
+```markdown
+<figure>
+ <img src="./images/revolution.avif" alt="A descriptive alt text">
+    <figcaption>
+    The 19th-century Industrial Revolution birthed factories and specialized workers.
+    </figcaption>
+</figure>
+```
