@@ -43,6 +43,9 @@
 					{#if categories === 'Digital Garden'}
 						🌱
 					{/if}
+					{#if categories === 'Blog'}
+						Engineering
+					{/if}
 					{categories}
 				</a>
 			</span>
