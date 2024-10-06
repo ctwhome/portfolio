@@ -40,6 +40,9 @@
 		<div class=" font-extrabold">
 			<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
 				<a href={`/work?category=${categories}`}>
+					{#if categories === 'Digital Garden'}
+						🌱
+					{/if}
 					{categories}
 				</a>
 			</span>
