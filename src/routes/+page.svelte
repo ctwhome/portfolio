@@ -45,8 +45,11 @@
 					draggable="false"
 					src="/images/profile.avif"
 					class="hidden sm:block rounded pointer-events-none w-full object-cover
-							sm:object-[0px,-200px] sm:h-[350px]
-							lg:object-[0px,-450px] lg:h-[500px]
+					object-center
+							 sm:h-[350px]
+						   md:h-[350px]
+						   lg:h-[400px]
+							 xl:h-[500px]
 							select-none
 							"
 					alt="Jesse Ctw Profile"
@@ -55,10 +58,11 @@
 		</div>
 	</div>
 
-	<div class="container mx-auto px-4 -mt-6 sm:mt-16 lg:mt-20">
+	<div class="container mx-auto px-4 -mt-6 sm:mt-16 xl:mt-20">
 		<h2
-			class="text-[5rem] sm:text-[6rem] lg:text-[15rem]
-						 leading-[3.5rem] sm:leading-[3.8rem] lg:leading-[10rem]
+			class="text-[5rem] sm:text-[6rem] lg:text-[9rem] xl:text-[12rem] 2xl:text-[15rem]
+						 leading-[3.5rem] sm:leading-[3.8rem] lg:leading-[6rem] xl:leading-[8rem] 2xl:leading-[10rem]
+
 						font-bold font-title text-center"
 		>
 			Take my <span class="line-through opacity-50">word</span>
