@@ -58,14 +58,6 @@
 
 	onMount(() => {
 		setFilters();
-		// Get all image elements on the page
-		const allImages = document.querySelectorAll('img');
-		// Loop through each image and prevent dragging
-		allImages.forEach((img) => {
-			img.addEventListener('dragstart', function (event) {
-				event.preventDefault();
-			});
-		});
 	});
 
 	function setFilters() {
@@ -213,7 +205,8 @@
 					<div class="flex-none">
 						{#if post.metadata.coverImage}
 							<img
-								class=" aspect-[5/3] object-cover rounded-lg rounded-b-none"
+								draggable="false"
+								class="aspect-[5/3] object-cover rounded-lg rounded-b-none"
 								src={post.metadata.coverImage &&
 									`/content/${post.slug}/${post.metadata.coverImage}`}
 								alt={post.slug}

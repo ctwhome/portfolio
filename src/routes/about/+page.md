@@ -11,7 +11,7 @@
 Hello! I’m J. Gonzalez, a seasoned Digital Product Designer and Web Engineer with over 15 years of experience in the field. Currently, I lead various projects as a Research Software Engineer at The Netherlands eScience Center and create my own digital tools and applications.
 
 <TiltContent >
-  <img src="/images/profile.avif" class="tilt rounded pointer-events-none h-[450px] w-full object-cover" alt="Ctw Profile" />
+  <img draggable="false" src="/images/profile.avif" class="tilt rounded pointer-events-none h-[450px] w-full object-cover" alt="Ctw Profile" />
 </TiltContent>
 
 🔍 What I Do:

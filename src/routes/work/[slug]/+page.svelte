@@ -64,7 +64,8 @@
 				<TiltImage>
 					<div class="aspect-[16/9] sm:scale-110">
 						<img
-							class="object-cover h-full w-full mx-auto rounded-xl outline-offset-8 outline-base-200 outline mb-10"
+							draggable="false"
+							class="object-cover h-full w-full mx-auto rounded-xl outline-offset-8 outline-base-200 outline mb-10 select-none"
 							src={`/content/${$page.params.slug}/${post?.metadata?.coverImage}`}
 							alt={post.slug}
 						/>

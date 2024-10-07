@@ -69,9 +69,10 @@
 		<header class="flex items-center gap-3">
 			<a class="flex-initial mr-3" href="/">
 				<img
+					draggable="false"
 					src={logo}
 					alt="Logo asset"
-					class="max-w-[8rem] sm:max-w-[10rem] h-auto no-drag select-none"
+					class="max-w-[8rem] sm:max-w-[10rem] h-auto select-none"
 				/>
 			</a>
 			<!-- menu-->
