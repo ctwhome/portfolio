@@ -3,9 +3,9 @@
 	import VanillaTilt from 'vanilla-tilt';
 	let tiltImage: HTMLElement | HTMLElement[];
 
-	// export let src = '$lib/assets/images/ctw-jess-profile.jpg';
-	// const module = import('$lib/assets/images/ctw-jess-profile.jpg');
-	// const module = import(src);
+	let className = undefined; // class is a reserved keyword in JS, with initialization
+	export { className as class };
+
 	onMount(async () => {
 		const tiltOtions = {
 			max: 4,
@@ -25,7 +25,7 @@
 </script>
 
 <div
-	class="order-2"
+	class={'order-2 ' + className}
 	bind:this={tiltImage}
 	style=" transform: scale(1) perspective(1040px) rotateY(-31deg) rotateX(2deg);"
 >

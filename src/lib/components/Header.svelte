@@ -52,6 +52,11 @@
 			title: 'Lab',
 			path: '/lab',
 			displayTitle: 'Lab'
+		},
+		{
+			title: 'About',
+			path: '/about',
+			displayTitle: 'About me'
 		}
 	];
 </script>
@@ -60,40 +65,19 @@
 	<div class="bien-glass" />
 	<div class="bien-glass-edge" />
 	<div class="relative container mx-auto py-2">
-		<!--Mobile header -->
-		<!--      Inside the sidebar-->
-		<!-- <HeaderResponsiveMenu ref="menu" class="relative">
-    <div class="p-6">
-      <Link href="/" on:click|native={() => $refs.menu.close()}>
-        <img src="$lib/assets/images/logo.svg" class="mx-3 mt-1" width="100%" height="100%" alt="Logo Ctwhome website">
-      </Link>
-      <div class="mt-10 ">
-        {#each menu.items as item (item.path)}
-        <Link class="menu-link sm:text-lg  hover:text-primary transition" href={item.path} on:click|native={() => $refs.menu.close()}>
-          {{ item.title }}
-        </Link>
-        {/each}
-      </div>
-    </div>
-    <SocialIcons class="mt-32 pl-6" />
-  </HeaderResponsiveMenu> -->
-		<!-- <div class="mt-4 flex flex-wrap justify-center items-center"> -->
-		<!-- {#each menu.items as item (item.path)}
-    <Link class="menu-link font-medium  text-sm sm:text-lg hover:text-primary transition" href={item.path}>
-      {{ item.title }}
-    </Link>
-    {/each} -->
-		<!-- </div> -->
 		<!--Desktop Header-->
-
 		<header class="flex items-center gap-3">
 			<a class="flex-initial mr-3" href="/">
-				<img src={logo} alt="Logo asset" class="max-w-[180px] h-auto no-drag select-none" />
+				<img
+					src={logo}
+					alt="Logo asset"
+					class="max-w-[8rem] sm:max-w-[10rem] h-auto no-drag select-none"
+				/>
 			</a>
 			<!-- menu-->
-			<!-- Mobile -->
 
-			<div class="z-10 dropdown flex justify-end flex-1 sm:hidden">
+			<!-- Mobile -->
+			<div class="z-10 dropdown flex justify-end flex-1 lg:hidden">
 				<div tabindex="0" role="button" class="btn m-1">{active}</div>
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
@@ -115,7 +99,7 @@
 				</ul>
 			</div>
 			<!-- Desktop -->
-			<div class="z-10 flex-1 space-x-4 lg:space-x-8 w-full justify-end hidden sm:flex">
+			<div class="z-10 flex-1 space-x-4 lg:space-x-8 w-full justify-end hidden lg:flex">
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
 				{#each links as link}
 					<a
