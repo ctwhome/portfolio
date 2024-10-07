@@ -3,7 +3,7 @@
 	import '$lib/assets/css/app.css';
 	import Analytics from '$lib/components/Analytics.svelte';
 
-	import TiltImage from '$components/TiltImage.svelte';
+	import TiltImage from '$components/TiltContent.svelte';
 	import { content } from '$content/content';
 	import ProfilePicture from '$components/ProfilePicture.svelte';
 	import SEO from '$components/SEO.svelte';

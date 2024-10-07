@@ -17,6 +17,7 @@
 	import Sortable from '$components/sortable/Sortable.svelte';
 	import Todos from '$components/supabase/Todos.svelte';
 	import SendEmail from '$lib/components/emails/SendEmail.svelte';
+	import TiltContent from '$components/TiltContent.svelte';
 </script>
 
 <div class="container mx-auto p-3">
@@ -68,6 +69,12 @@
 			<p class="mb-4">Send Email</p>
 			<SendEmail />
 		</div>
+		<TiltContent>
+			<div class="border border-base-300 p-2 rounded">
+				<p class="mb-4">Tilting Content</p>
+				<div class="text-xl h-32">Block</div>
+			</div>
+		</TiltContent>
 	</div>
 
 	<h2 class="mt-20 text-2xl font-bold">3D Playground</h2>
