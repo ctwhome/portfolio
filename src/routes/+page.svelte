@@ -68,7 +68,7 @@
 	</div>
 
 	<div
-		class="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 mt-6 sm:mt-12 lg:mt-32"
+		class="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-2 gap-x-4 sm:gap-x-8 lg:gap-x-12 mt-6 sm:mt-12 lg:mt-32"
 	>
 		{#each posts as post}
 			{@const currentYear = new Date(post.metadata.date).getUTCFullYear()}
