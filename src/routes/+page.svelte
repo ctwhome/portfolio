@@ -1,14 +1,20 @@
-<script>
+<script lang="ts">
 	import ProfilePicture from '$components/ProfilePicture.svelte';
-	// import StatusEnum from '$lib/models/status-enum.js';
-	// import svelteTilt from 'vanilla-tilt-svelte';
-	// import profileImage from '$lib/assets/images/ctw-jess-profile.avif';
-	// import producDesignImage from '$lib/assets/images/product-design.svg';
-	// import engineeringImage from '$lib/assets/images/web.svg';
 	import { onMount, onDestroy } from 'svelte';
 	import TiltContent from '$lib/components/TiltContent.svelte';
 
 	import { posts } from '$content/content';
+
+	let lastDisplayedYear: number | null = null;
+
+	function shouldDisplayYear(currentYear: number): boolean {
+		if (currentYear !== lastDisplayedYear) {
+			lastDisplayedYear = currentYear;
+			return true;
+		}
+		return false;
+	}
+
 	onMount(async () => {});
 
 	onDestroy(() => {
@@ -29,7 +35,7 @@
 					<span class="ctw-text-gradient-green font-serif font-bold">technical engineering</span>
 					know-how.
 				</p>
-				<TiltContent class=" order-1">
+				<TiltContent class="order-1">
 					<ProfilePicture subtitle="Product Designer & Research Software Engineer" />
 				</TiltContent>
 			</div>
@@ -65,9 +71,12 @@
 		class="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 mt-6 sm:mt-12 lg:mt-32"
 	>
 		{#each posts as post}
-			<div>
+			{@const currentYear = new Date(post.metadata.date).getUTCFullYear()}
+			<div class="grid grid-rows-[3.5rem_1fr]">
 				<h2 class="text-xl font-bold mt-8 opacity-60">
-					{new Date(post.metadata.date).getUTCFullYear()}
+					{#if shouldDisplayYear(currentYear)}
+						{currentYear}
+					{/if}
 				</h2>
 				<a
 					data-sveltekit-preload-data="hover"
@@ -85,8 +94,10 @@
 							/>
 						{/if}
 					</div>
-					<div class="px-3 pb-3">
-						<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.metadata.title}</h2>
+					<div class="flex flex-col px-3 pb-3 h-full">
+						<h2 class="text-ld flex-1 line-clamp-3 sm:text-2xl font-bold">
+							{@html post.metadata.title}
+						</h2>
 						<!-- {#if post.metadata.description}
 							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
 								{@html post.metadata.description}
@@ -111,7 +122,6 @@
 				</a>
 			</div>
 		{/each}
-		<!-- <pre>{JSON.stringify(posts, null, 2)}</pre> -->
 	</div>
 </div>
 
