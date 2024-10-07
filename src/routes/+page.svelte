@@ -1,14 +1,14 @@
 <script>
 	import ProfilePicture from '$components/ProfilePicture.svelte';
-	import TiltImage from '$components/TiltContent.svelte';
 	// import StatusEnum from '$lib/models/status-enum.js';
 	// import svelteTilt from 'vanilla-tilt-svelte';
-	import profileImage from '$lib/assets/images/ctw-jess-profile.avif';
-	import producDesignImage from '$lib/assets/images/product-design.svg';
-	import engineeringImage from '$lib/assets/images/web.svg';
+	// import profileImage from '$lib/assets/images/ctw-jess-profile.avif';
+	// import producDesignImage from '$lib/assets/images/product-design.svg';
+	// import engineeringImage from '$lib/assets/images/web.svg';
 	import { onMount, onDestroy } from 'svelte';
 	import TiltContent from '$lib/components/TiltContent.svelte';
 
+	import { posts } from '$content/content';
 	onMount(async () => {});
 
 	onDestroy(() => {
@@ -36,10 +36,12 @@
 
 			<TiltContent>
 				<img
+					draggable="false"
 					src="/images/profile.avif"
 					class="hidden sm:block rounded pointer-events-none w-full object-cover
 							sm:object-[0px,-200px] sm:h-[350px]
 							lg:object-[0px,-450px] lg:h-[500px]
+							select-none
 							"
 					alt="Jesse Ctw Profile"
 				/>
@@ -47,7 +49,7 @@
 		</div>
 	</div>
 
-	<div class="container mx-auto px-4 -mt-6 sm:mt-12 lg:mt-20">
+	<div class="container mx-auto px-4 -mt-6 sm:mt-16 lg:mt-20">
 		<h2
 			class="text-[5rem] sm:text-[6rem] lg:text-[15rem]
 						 leading-[3.5rem] sm:leading-[3.8rem] lg:leading-[10rem]
@@ -57,6 +59,59 @@
 			<span class="">WORK</span>
 			for it!
 		</h2>
+	</div>
+
+	<div
+		class="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 mt-6 sm:mt-12 lg:mt-32"
+	>
+		{#each posts as post}
+			<div>
+				<h2 class="text-xl font-bold mt-8 opacity-60">
+					{new Date(post.metadata.date).getUTCFullYear()}
+				</h2>
+				<a
+					data-sveltekit-preload-data="hover"
+					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
+					class="flex flex-col gap-4 rounded-lg hover:bg-base-200/50 transition bg-base-200/30 my-4"
+				>
+					<div class="flex-none">
+						{#if post.metadata.coverImage}
+							<img
+								draggable="false"
+								class="aspect-[5/3] object-cover rounded-lg rounded-b-none"
+								src={post.metadata.coverImage &&
+									`/content/${post.slug}/${post.metadata.coverImage}`}
+								alt={post.slug}
+							/>
+						{/if}
+					</div>
+					<div class="px-3 pb-3">
+						<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.metadata.title}</h2>
+						<!-- {#if post.metadata.description}
+							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+								{@html post.metadata.description}
+							</div>
+						{/if} -->
+
+						<div class="flex gap-3 mt-2 opacity-40 text-sm">
+							<div class="flex flex-wrap gap-3">
+								{#if post.metadata.categories}
+									{#each post.metadata.categories as category}
+										<div class="">{category}</div>
+									{/each}
+								{/if}
+								<!-- {#if post.metadata.tags}
+						{#each post.metadata.tags as tag}
+						<div class="">{tag}</div>
+						{/each}
+						{/if} -->
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		{/each}
+		<!-- <pre>{JSON.stringify(posts, null, 2)}</pre> -->
 	</div>
 </div>
 

@@ -15,6 +15,7 @@
 		class="mask mask-hexagon my-2"
 		src={ctwhomeProfile}
 		alt="J. Gonzalez Ctwhome profile picture"
+		draggable="false"
 	/>
 	<div>
 		<div class="font-bold">J. Gonzalez - Ctw</div>
