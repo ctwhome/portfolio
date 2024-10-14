@@ -26,7 +26,7 @@ Everything comes installed for a speedy staring with examples. Simply remove wha
 - [ ] ⚡️ Site performance optimization and Web Core Vitals
 - [ ] 💿 Database connections with endpoints
 - [ ] 🗺️ Translation engine with [i18next](https://github.com/i18next/i18next)
-- [ ] 🔐 Login with [Auth.js](https://authjs.dev/) 
+- [ ] 🔐 Login with [Auth.js](https://authjs.dev/)
 
 - [ ] 🕺 Page transition animation API
 - [x] ✨ All [Iconify](https://iconify.design/) on-demand with [unplugin Icons](https://github.com/unplugin/unplugin-icons) - +100.000 SVG icons completely customizable (use [icones](https://icones.js.org) to find icons)
@@ -91,7 +91,7 @@ git fetch upstream
 Start the development server on [http://localhost:5173](http://localhost:5173)
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 
@@ -100,6 +100,6 @@ yarn dev
 Build the application for production:
 
 ```bash
-yarn build
+pnpm build
 ```
 
