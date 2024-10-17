@@ -64,7 +64,8 @@
 	});
 </script>
 
-<div class="gallery">
+<!-- Do not show the gallery thumbnails when the gallery is not full screen. -->
+<!-- <div class="gallery">
 	{#each images as image, index}
 		<img
 			draggable="false"
@@ -82,7 +83,7 @@
 			class="gallery-item"
 		/>
 	{/each}
-</div>
+</div> -->
 
 {#if isOpen}
 	<div class="fullscreen-gallery" on:click={closeGallery}>
@@ -101,20 +102,22 @@
 				<video draggable="false" src={currentMedia} controls />
 			{/if}
 		</div>
-		<div class="thumbnails" on:click|stopPropagation>
-			{#each [...images, ...videos] as media, index}
-				<div
-					class="thumbnail"
-					class:active={index === currentIndex}
-					on:click={() => (currentIndex = index)}
-				>
-					{#if index < images.length}
-						<img draggable="false" src={media} alt="Thumbnail" />
-					{:else}
-						<video draggable="false" src={media} />
-					{/if}
-				</div>
-			{/each}
+		<div class="thumbnails-container">
+			<div class="thumbnails" on:click|stopPropagation>
+				{#each [...images, ...videos] as media, index}
+					<div
+						class="thumbnail"
+						class:active={index === currentIndex}
+						on:click={() => (currentIndex = index)}
+					>
+						{#if index < images.length}
+							<img draggable="false" src={media} alt="Thumbnail" />
+						{:else}
+							<video draggable="false" src={media} />
+						{/if}
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 {/if}
@@ -143,33 +146,43 @@
 		background-color: rgba(0, 0, 0, 0.9);
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		z-index: 1000;
 	}
 
 	.media-container {
-		max-width: 90%;
-		max-height: 80%;
-		margin-bottom: 20px;
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
 		touch-action: pan-y;
 	}
 
 	.media-container img,
 	.media-container video {
 		max-width: 100%;
-		max-height: 100%;
+		max-height: calc(100vh - 120px); /* Adjust based on thumbnails height */
 		object-fit: contain;
+	}
+
+	.thumbnails-container {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10px 0;
 	}
 
 	.thumbnails {
 		display: flex;
 		gap: 10px;
 		overflow-x: auto;
-		max-width: 90%;
-		padding: 10px;
-		background-color: rgba(0, 0, 0, 0.5);
-		border-radius: 5px;
+		max-width: 100%;
+		padding: 0 10px;
+		justify-content: center;
 	}
 
 	.thumbnail {
@@ -202,6 +215,7 @@
 		font-size: 24px;
 		padding: 10px;
 		cursor: pointer;
+		z-index: 1001;
 	}
 
 	.prev {

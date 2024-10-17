@@ -13,7 +13,7 @@ categories:
   - Blog
   - Project
   - Digital Garden
-layout: blog | project
+# layout: custom    # default to default.layout
 ---
 ### Copy this template
 

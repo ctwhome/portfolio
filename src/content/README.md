@@ -12,13 +12,17 @@ tags:
   - tag 1
   - tag 2
 
-layout: blog
+# layout: default || custom
 type: blog
 ```
 
 ## Very important notes
 
 > The images NEED to be inside the `./images/` folder to work
+```
+![Alt text](./images/image.avif)
+```
+
 > All image name MUST be unique!
 > The cover image has a aspect ratio of 16:9
 
