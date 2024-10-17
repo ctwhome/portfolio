@@ -1,33 +1,37 @@
-<script lang="ts">
+<script>
 	import Gallery from '$lib/components/Gallery.svelte';
 	import { onMount } from 'svelte';
 
-	let images: string[] = [];
-	let videos: string[] = [];
-	let galleryComponent: Gallery;
+	let images = /** @type {string[]} */ ([]);
+	let videos = /** @type {string[]} */ ([]);
+	let galleryComponent = /** @type {Gallery | null} */ (null);
 
 	onMount(() => {
 		// Find all images and videos in the content
 		const content = document.querySelector('.prose');
 		if (content) {
-			images = Array.from(content.querySelectorAll('img')).map((img) => img.src);
-			videos = Array.from(content.querySelectorAll('video')).map((video) => video.src);
+			images = Array.from(content.querySelectorAll('img')).map(
+				(img) => /** @type {HTMLImageElement} */ (img).src
+			);
+			videos = Array.from(content.querySelectorAll('video')).map(
+				(video) => /** @type {HTMLVideoElement} */ (video).src
+			);
 
 			// Add click event listeners to images
 			content.querySelectorAll('img').forEach((img, index) => {
-				img.style.cursor = 'pointer';
+				/** @type {HTMLImageElement} */ (img).style.cursor = 'pointer';
 				img.addEventListener('click', (e) => {
 					e.preventDefault();
-					galleryComponent.openGallery(index);
+					if (galleryComponent) galleryComponent.openGallery(index);
 				});
 			});
 
 			// Add click event listeners to videos
 			content.querySelectorAll('video').forEach((video, index) => {
-				video.style.cursor = 'pointer';
+				/** @type {HTMLVideoElement} */ (video).style.cursor = 'pointer';
 				video.addEventListener('click', (e) => {
 					e.preventDefault();
-					galleryComponent.openGallery(images.length + index);
+					if (galleryComponent) galleryComponent.openGallery(images.length + index);
 				});
 			});
 		}

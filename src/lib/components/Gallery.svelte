@@ -66,10 +66,21 @@
 
 <div class="gallery">
 	{#each images as image, index}
-		<img src={image} alt="Gallery image" on:click={() => openGallery(index)} class="gallery-item" />
+		<img
+			draggable="false"
+			src={image}
+			alt="Gallery image"
+			on:click={() => openGallery(index)}
+			class="gallery-item"
+		/>
 	{/each}
 	{#each videos as video, index}
-		<video src={video} on:click={() => openGallery(images.length + index)} class="gallery-item" />
+		<video
+			draggable="false"
+			src={video}
+			on:click={() => openGallery(images.length + index)}
+			class="gallery-item"
+		/>
 	{/each}
 </div>
 
@@ -85,9 +96,9 @@
 			on:touchend={handleTouchEnd}
 		>
 			{#if isImage}
-				<img src={currentMedia} alt="Fullscreen image" />
+				<img draggable="false" src={currentMedia} alt="Fullscreen image" />
 			{:else}
-				<video src={currentMedia} controls />
+				<video draggable="false" src={currentMedia} controls />
 			{/if}
 		</div>
 		<div class="thumbnails" on:click|stopPropagation>
@@ -98,9 +109,9 @@
 					on:click={() => (currentIndex = index)}
 				>
 					{#if index < images.length}
-						<img src={media} alt="Thumbnail" />
+						<img draggable="false" src={media} alt="Thumbnail" />
 					{:else}
-						<video src={media} />
+						<video draggable="false" src={media} />
 					{/if}
 				</div>
 			{/each}

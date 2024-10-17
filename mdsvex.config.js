@@ -1,15 +1,10 @@
 import { visit } from 'unist-util-visit'
-
 import autolinkHeadings from 'rehype-autolink-headings'
 import slugPlugin from 'rehype-slug'
-
 import relativeImages from 'mdsvex-relative-images'
-// import remarkHeadings from '@vcarl/remark-headings'
 import remarkExternalLinks from 'remark-external-links';
 import readingTime from 'remark-reading-time';
-
-// import remarkToc from 'remark-toc'
-
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 export default {
   extensions: ['.svx', '.md'],
@@ -17,31 +12,25 @@ export default {
     dashes: 'oldschool'
   },
   layout: {
-    _: "/src/markdown-layouts/default.svelte", // Default layout for markdown files
+    _: "/src/markdown-layouts/default.svelte",
     blog: "/src/markdown-layouts/blog.svelte",
     project: "/src/markdown-layouts/project.svelte",
   },
   remarkPlugins: [
     videos,
     relativeImages,
-    // remarkToc,
-    // headings,
-    // adds a `readingTime` frontmatter attribute
-		readingTime,
-    // external links open in a new tab
-		[remarkExternalLinks, { target: '_blank', rel: 'noopener' }],
+    readingTime,
+    [remarkExternalLinks, { target: '_blank', rel: 'noopener' }],
   ],
   rehypePlugins: [
     slugPlugin,
-    [
-      autolinkHeadings, { behavior: 'wrap' }
-    ]
+    [autolinkHeadings, { behavior: 'wrap' }]
+  ],
+  preprocess: [
+    vitePreprocess(),
   ]
 }
 
-/**
- * Adds support to video files in markdown image links
- */
 function videos() {
   const extensions = ['mp4', 'webm']
   return function transformer(tree) {
@@ -62,24 +51,3 @@ function videos() {
     })
   }
 }
-
-/**
- * Parses headings and includes the result in metadata
- */
-// function headings() {
-//   return function transformer(tree, vfile) {
-//     // run remark-headings plugin
-//     remarkHeadings()(tree, vfile)
-
-//     // include the headings data in mdsvex frontmatter
-//     vfile.data.fm ??= {}
-//     vfile.data.fm.headings = vfile.data.headings.map((heading) => ({
-//       ...heading,
-//       // slugify heading.value
-//       id: heading.value
-//         .toLowerCase()
-//         .replace(/\s/g, '-')
-//         .replace(/[^a-z0-9-]/g, '')
-//     }))
-//   }
-// }
