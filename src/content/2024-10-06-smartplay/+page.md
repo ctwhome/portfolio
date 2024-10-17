@@ -9,7 +9,6 @@ tags:
   - eScience-center
 coverImage: images/cover.jpg
 displayCover: true
-layout: project
 ---
 
 # Bridging Life Sciences and Social Sciences: SmartPlay

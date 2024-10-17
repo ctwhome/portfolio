@@ -1,5 +1,5 @@
-<!-- DEFAULT Layout 🩻🩻🩻🩻🩻🩻 -->
-
-<div class="mx-auto prose sm:prose-lg px-3">
+<!-- CUSTOM Project Layout  -->
+<!-- NOT IN USED AT THE MOMENT -->
+<div class="prose mx-auto px-3 sm:prose-lg">
 	<slot />
 </div>

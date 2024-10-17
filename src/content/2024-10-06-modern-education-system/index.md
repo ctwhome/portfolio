@@ -11,7 +11,6 @@ categories:
   - Digital Garden
 tags:
   - Thoughts
-layout: blog
 ---
 **TL;DR**
 
