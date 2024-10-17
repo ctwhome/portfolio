@@ -1,7 +1,7 @@
 ---
 published: true
-title: "AVIF and AV1 are the prenset & future of images and videos"
-description: "For once, the Big Tech got together to create the USB-C like of the video and image formats"
+title: AVIF and AV1 are the present and future of images and videos
+description: For once, the Big Tech got together to create the USB-C like of the video and image formats
 date: 2024-04-29
 coverImage: images/cover.avif
 displayCover: true
@@ -18,7 +18,7 @@ I had to write about this topic out of excitement. This example stands out as on
 
 Since 2015, the non-profit consortium called **Alliance for Open Media**, formed by Amazon, Apple, ARM, Cisco, Facebook, Google, Huawei, Intel, Microsoft, Mozilla, Netflix, Nvidia, Samsung Electronics, and Tencent, has created open royalty-free multimedia formats for video (AV1) and imaging (AVIF) as a successor for VP9 (developed by only Google and not adopted widely) and HEVC (known as H.265, covered by patents, and using it typically requires the payment of licensing fees).
 
-When it comes to images, we're all familiar with JPEG, PNG, and GIF, our ever-evolving need for higher resolutions and quicker transfer speeds calls for an even more advanced solution. 
+When it comes to images, we're all familiar with JPEG, PNG, and GIF, our ever-evolving need for higher resolutions and quicker transfer speeds calls for an even more advanced solution.
 
 The next comparison between the two images shows a reduction of 98% of file size (with compression of 50%). You can judge the quality from the slider:
 <div class="diff aspect-[2048/1335]">
