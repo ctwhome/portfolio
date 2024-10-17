@@ -7,6 +7,8 @@
 	let currentIndex = 0;
 	let isOpen = false;
 	let mediaElements: HTMLElement[];
+	let touchStartX = 0;
+	let touchEndX = 0;
 
 	$: currentMedia = [...images, ...videos][currentIndex];
 	$: isImage = currentIndex < images.length;
@@ -36,6 +38,24 @@
 		if (event.key === 'Escape') closeGallery();
 	}
 
+	function handleTouchStart(event: TouchEvent) {
+		touchStartX = event.touches[0].clientX;
+	}
+
+	function handleTouchMove(event: TouchEvent) {
+		touchEndX = event.touches[0].clientX;
+	}
+
+	function handleTouchEnd() {
+		if (touchStartX - touchEndX > 50) {
+			next();
+		} else if (touchEndX - touchStartX > 50) {
+			prev();
+		}
+		touchStartX = 0;
+		touchEndX = 0;
+	}
+
 	onMount(() => {
 		document.addEventListener('keydown', handleKeydown);
 		return () => {
@@ -45,19 +65,25 @@
 </script>
 
 <div class="gallery">
-	<!-- {#each images as image, index}
+	{#each images as image, index}
 		<img src={image} alt="Gallery image" on:click={() => openGallery(index)} class="gallery-item" />
 	{/each}
 	{#each videos as video, index}
 		<video src={video} on:click={() => openGallery(images.length + index)} class="gallery-item" />
-	{/each} -->
+	{/each}
 </div>
 
 {#if isOpen}
 	<div class="fullscreen-gallery" on:click={closeGallery}>
 		<button class="nav-button prev" on:click|stopPropagation={prev}>&#8592;</button>
 		<button class="nav-button next" on:click|stopPropagation={next}>&#8594;</button>
-		<div class="media-container" on:click|stopPropagation>
+		<div
+			class="media-container"
+			on:click|stopPropagation
+			on:touchstart={handleTouchStart}
+			on:touchmove={handleTouchMove}
+			on:touchend={handleTouchEnd}
+		>
 			{#if isImage}
 				<img src={currentMedia} alt="Fullscreen image" />
 			{:else}
@@ -115,6 +141,7 @@
 		max-width: 90%;
 		max-height: 80%;
 		margin-bottom: 20px;
+		touch-action: pan-y;
 	}
 
 	.media-container img,
@@ -172,5 +199,11 @@
 
 	.next {
 		right: 20px;
+	}
+
+	@media (max-width: 768px) {
+		.nav-button {
+			display: none;
+		}
 	}
 </style>
