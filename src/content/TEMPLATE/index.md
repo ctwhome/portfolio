@@ -12,6 +12,7 @@ tags:
 categories:
   - Blog
   - Project
+  - Digital Garden
 layout: blog | project
 ---
 ### Copy this template
