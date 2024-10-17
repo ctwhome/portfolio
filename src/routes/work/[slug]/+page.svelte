@@ -32,12 +32,12 @@
 	const post: Post | null = postPath ? (content as Record<string, Post>)[postPath] : null;
 
 	let categories =
-		post?.metadata.categories.map((category: string) => `${category}`).join(' ') ?? '';
+		post?.metadata?.categories.map((category: string) => `${category}`).join(' ') ?? '';
 	let details =
-		(post?.metadata.tags.map((tag: string) => `${tag}`).join(' ') ?? '') +
+		(post?.metadata?.tags.map((tag: string) => `${tag}`).join(' ') ?? '') +
 		'  · ' +
-		(post?.metadata.date
-			? new Date(post.metadata.date).toLocaleDateString('en-NL', {
+		(post?.metadata?.date
+			? new Date(post.metadata?.date).toLocaleDateString('en-NL', {
 					year: 'numeric',
 					month: 'long',
 					day: 'numeric'
@@ -59,7 +59,7 @@
 			);
 
 			// Add cover image to the beginning of the images array
-			const coverImage = `/content/${$page.params.slug}/${post?.metadata.coverImage ?? ''}`;
+			const coverImage = `/content/${$page.params.slug}/${post?.metadata?.coverImage ?? ''}`;
 			images = [coverImage, ...images];
 		}
 	});
@@ -78,9 +78,9 @@
 <Analytics />
 
 <SEO
-	title={post?.metadata.title ?? ''}
-	desc={post?.metadata.description ?? ''}
-	img={`/content/${$page.params.slug}/${post?.metadata.coverImage ?? ''}`}
+	title={post?.metadata?.title ?? ''}
+	desc={post?.metadata?.description ?? ''}
+	img={`/content/${$page.params.slug}/${post?.metadata?.coverImage ?? ''}`}
 />
 
 <div class="mx-auto max-w-5xl px-3 sm:mt-14">
@@ -99,22 +99,22 @@
 			</span>
 		</div>
 
-		<h1 class="mt-4 text-3xl font-black sm:text-4xl">{@html post?.metadata.title ?? ''}</h1>
+		<h1 class="mt-4 text-3xl font-black sm:text-4xl">{@html post?.metadata?.title ?? ''}</h1>
 
-		{#if post?.metadata.description}
+		{#if post?.metadata?.description}
 			<p class="mt-4 text-lg opacity-80">
-				{@html post.metadata.description}
+				{@html post.metadata?.description}
 			</p>
 		{/if}
 
-		{#if post?.metadata.displayCover}
+		{#if post?.metadata?.displayCover}
 			<div class="mt-10 sm:mt-14">
 				<TiltImage on:click={openGalleryWithCover}>
 					<div class="aspect-[16/9] sm:scale-110">
 						<img
 							draggable="false"
 							class="mx-auto mb-10 h-full w-full cursor-pointer select-none rounded-xl object-cover outline outline-offset-8 outline-base-200"
-							src={`/content/${$page.params.slug}/${post.metadata.coverImage}`}
+							src={`/content/${$page.params.slug}/${post.metadata?.coverImage}`}
 							alt={post.slug ?? ''}
 						/>
 					</div>

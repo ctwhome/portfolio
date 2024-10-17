@@ -4,7 +4,6 @@ import slugPlugin from 'rehype-slug'
 import relativeImages from 'mdsvex-relative-images'
 import remarkExternalLinks from 'remark-external-links';
 import readingTime from 'remark-reading-time';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 export default {
   extensions: ['.svx', '.md'],
@@ -25,9 +24,6 @@ export default {
   rehypePlugins: [
     slugPlugin,
     [autolinkHeadings, { behavior: 'wrap' }]
-  ],
-  preprocess: [
-    vitePreprocess(),
   ]
 }
 
