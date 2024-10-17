@@ -21,17 +21,12 @@ The priority relies on Peter Attia calling the 4 horses, plus what I consider im
 - **Sleep** (8 hours of high quality)
 - **Sports** (Strength training and HIIT)
 - **Diet** (Plant-based, SOS free)
-- Mental health
-  - No stress
-  - Relativize
-  - Prioritize the important things
-  - Gratitude
-  - Clean up and maintain relations (Marie Kondo for relations)
+- **Mental health** (No stress, Relativize, Prioritize the important things, Practice gratitude, Clean up and maintain relations -Marie Kondo for relations- 
 
-What I still need to work on:
-- A morning routine
+### What I still need to work on:
+- A morning routine.
 - A reading corner, outside of my office work desk?
-- An evening routine
+- An evening wind-down routine
 
 
 ![books](./images/blueprint.excalidraw.png)

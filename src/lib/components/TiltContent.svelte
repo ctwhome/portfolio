@@ -1,10 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, createEventDispatcher } from 'svelte';
 	import VanillaTilt from 'vanilla-tilt';
+
 	let tiltImage: HTMLElement | HTMLElement[];
 
 	let className = undefined; // class is a reserved keyword in JS, with initialization
 	export { className as class };
+
+	const dispatch = createEventDispatcher();
+
+	function handleClick(event: MouseEvent) {
+		dispatch('click', event);
+	}
 
 	onMount(async () => {
 		const tiltOtions = {
@@ -27,12 +34,8 @@
 <div
 	class={'order-2 ' + className}
 	bind:this={tiltImage}
-	style=" transform: scale(1) perspective(1040px) rotateY(-31deg) rotateX(2deg);"
+	on:click={handleClick}
+	style="transform: scale(1) perspective(1040px) rotateY(-31deg) rotateX(2deg); cursor: pointer;"
 >
-	<!-- <img
-		src={image?.default}
-		class="tilt rounded pointer-events-none h-[450px] w-full object-cover"
-		alt="Jesse Ctw Profile"
-	/> -->
 	<slot />
 </div>

@@ -14,6 +14,8 @@
 	$: isImage = currentIndex < images.length;
 
 	export function openGallery(index: number) {
+		if (isOpen) return;
+
 		currentIndex = index;
 		isOpen = true;
 	}
@@ -87,6 +89,7 @@
 
 {#if isOpen}
 	<div class="fullscreen-gallery" on:click={closeGallery}>
+		<button class="close-button z-50" on:click|stopPropagation={closeGallery}>✕</button>
 		<button class="nav-button prev" on:click|stopPropagation={prev}>&#8592;</button>
 		<button class="nav-button next" on:click|stopPropagation={next}>&#8594;</button>
 		<div
@@ -172,7 +175,7 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
+		@apply bg-black/50;
 		padding: 10px 0;
 	}
 
@@ -210,7 +213,7 @@
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		background: rgba(255, 255, 255, 0.5);
+		@apply rounded bg-base-200;
 		border: none;
 		font-size: 24px;
 		padding: 10px;
@@ -224,6 +227,24 @@
 
 	.next {
 		right: 20px;
+	}
+
+	.close-button {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		border: none;
+		@apply bg-base-200;
+		font-size: 24px;
+		padding: 10px;
+		cursor: pointer;
+		z-index: 1002;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
 	}
 
 	@media (max-width: 768px) {

@@ -61,29 +61,29 @@
 	];
 </script>
 
-<nav class="bien-nav mb-10 px-2">
+<nav class="bien-nav z-10 mb-10 px-2">
 	<div class="bien-glass" />
 	<div class="bien-glass-edge" />
-	<div class="relative container mx-auto py-2">
+	<div class="container relative mx-auto py-2">
 		<!--Desktop Header-->
 		<header class="flex items-center gap-3">
-			<a class="flex-initial mr-3" href="/">
+			<a class="mr-3 flex-initial" href="/">
 				<img
 					draggable="false"
 					src={logo}
 					alt="Logo asset"
-					class="max-w-[8rem] sm:max-w-[10rem] h-auto select-none"
+					class="h-auto max-w-[8rem] select-none sm:max-w-[10rem]"
 				/>
 			</a>
 			<!-- menu-->
 
 			<!-- Mobile -->
-			<div class="z-10 dropdown flex justify-end flex-1 lg:hidden">
+			<div class="dropdown z-10 flex flex-1 justify-end lg:hidden">
 				<div tabindex="0" role="button" class="btn m-1">{active}</div>
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
-					class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+					class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
 				>
 					{#each links as link}
 						<li>
@@ -100,7 +100,7 @@
 				</ul>
 			</div>
 			<!-- Desktop -->
-			<div class="z-10 flex-1 space-x-4 lg:space-x-8 w-full justify-end hidden lg:flex">
+			<div class="z-10 hidden w-full flex-1 justify-end space-x-4 lg:flex lg:space-x-8">
 				<!-- <a class="menu-link" href="/about">About <span class="hidden sm:inline">me</span></a> -->
 				{#each links as link}
 					<a
@@ -126,7 +126,7 @@
  -->
 <style lang="postcss">
 	.menu-link {
-		@apply text-base-content text-opacity-80 hover:text-opacity-100 font-medium transition hover:text-secondary;
+		@apply font-medium text-base-content text-opacity-80 transition hover:text-secondary hover:text-opacity-100;
 	}
 
 	.menu-link.active {
@@ -136,7 +136,6 @@
 
 	/* Frosted navigation header */
 	nav {
-		z-index: 10000;
 		position: sticky;
 		left: 0;
 		right: 0;
