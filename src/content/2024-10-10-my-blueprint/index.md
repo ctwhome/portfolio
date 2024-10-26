@@ -2,7 +2,7 @@
 published: true
 title: Blueprint
 description: Inspired by Brian Johnson's blueprint
-date: 2024-01-01
+date: 2024-10-01
 coverImage: images/cover.avif
 displayCover: true
 tags:
