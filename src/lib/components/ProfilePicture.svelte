@@ -5,8 +5,8 @@
 
 <!-- Profile picture -->
 <a
-	href="/about"
-	class="flex items-center gap-3 decoration-transparent hover:decoration-primary border border-base-200 p-2 rounded-lg"
+	href="/"
+	class="flex items-center gap-3 rounded-lg border border-base-200 p-2 decoration-transparent hover:decoration-primary"
 >
 	<img
 		id="cover"
@@ -19,6 +19,6 @@
 	/>
 	<div>
 		<div class="font-bold">J. Gonzalez - Ctw</div>
-		<div class="opacity-60 text-sm">{subtitle}</div>
+		<div class="text-sm opacity-60">{subtitle}</div>
 	</div>
 </a>
