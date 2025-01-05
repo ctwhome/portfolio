@@ -71,10 +71,11 @@
   },
   "type": "module",
   "dependencies": {
-    "ctw-kit": "^1.0.31",
     "@supabase/supabase-js": "^2.47.10",
     "@types/sortablejs": "^1.15.8",
+    "@vercel/speed-insights": "^1.1.0",
     "camera-controls": "^2.9.0",
+    "ctw-kit": "^1.0.31",
     "date-fns": "^4.1.0",
     "lite-youtube-embed": "^0.3.3",
     "node-html-parser": "^7.0.1",
