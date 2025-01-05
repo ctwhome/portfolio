@@ -1,6 +1,4 @@
-![image](https://github.com/user-attachments/assets/ac5a8c47-e877-4d6f-b65a-f86a7cd40222)
 # ctw-kit
-
 
 Custom components and utilities for Svelte and TailwindCSS (DaisyUI)
 
@@ -12,13 +10,35 @@ bun add ctw-kit
 npm install ctw-kit
 ```
 
+## Prerequisites
+
+This library requires the following peer dependencies to be installed and configured in your application:
+
+```bash
+bun add -d tailwindcss daisyui
+# or
+npm install -D tailwindcss daisyui
+```
+
+Make sure to configure TailwindCSS and DaisyUI in your application's `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/ctw-kit/**/*.{html,js,svelte,ts}'],
+  plugins: [require('daisyui')],
+}
+```
+
 ## Components
 
 - [x] [SEO](src/lib/components/SEO/README.md) - SEO meta tags management including Open Graph and Twitter cards
-- [ ] 
-
-## Utilities
-- [x]
+- [x] Carousel - A customizable carousel component
+- [x] Emails - Email sending component using Resend
+- [x] Feedback - User feedback collection component
+- [x] Hello - Simple greeting component
+- [x] ThemeChange - Theme switcher component for DaisyUI
+- [x] TiltContent - Tilt effect component using vanilla-tilt
 
 ## Development
 
@@ -33,12 +53,7 @@ cd ctw-kit
 bun install
 ```
 
-3. Start development server
-```bash
-bun run dev
-```
-
-4. Build the package
+3. Build the package
 ```bash
 bun run build
 ```

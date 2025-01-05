@@ -1,121 +1,82 @@
-# Feedback Button Component
+# Feedback Component
 
-A self-contained feedback button component that collects user feedback and sends it via email using Resend.
+A customizable feedback button component that collects user feedback and sends it via email using Resend.
 
 ## Features
 
-- Collects and formats user feedback
-- Sends formatted HTML emails using Resend (server-side)
-- Shows toast notifications using svelte-french-toast
-- Collects browser information automatically
-- Optional user information support
-- Styled with DaisyUI
-- All dependencies included (no need to install Resend or svelte-french-toast separately)
-
-## Setup
-
-### 1. Environment Configuration
-
-Add your Resend API key to `.env`:
-```env
-RESEND_API_KEY=your_resend_api_key_here
-```
-
-### 2. Server Endpoint Setup
-
-Create a server endpoint at `/routes/api/feedback/+server.ts`:
-
-```typescript
-import { Resend } from 'resend';
-import { json, type RequestHandler } from '@sveltejs/kit';
-import { RESEND_API_KEY } from '$env/static/private';
-
-const resend = new Resend(RESEND_API_KEY);
-
-interface FeedbackRequest {
-  emailContent: string;
-}
-
-export const POST = (async ({ request }) => {
-  try {
-    const { emailContent } = await request.json() as FeedbackRequest;
-
-    const data = await resend.emails.send({
-      from: 'Feedback <onboarding@resend.dev>', // Or your verified domain
-      to: 'your-email@example.com', // Replace with your email
-      subject: 'Feedback from website',
-      html: emailContent
-    });
-
-    return json({ success: true, message: 'Feedback sent successfully', data });
-  } catch (error) {
-    console.error('Error sending feedback:', error);
-    return json(
-      { success: false, message: 'Failed to send feedback', error },
-      { status: 500 }
-    );
-  }
-}) satisfies RequestHandler;
-```
-
-Important notes about the server endpoint:
-- Replace 'your-email@example.com' with your email address
-- The 'from' address can be customized if you have a verified domain in Resend
-- The endpoint expects HTML content in the request body
-- Returns a JSON response with success/error information
-
-### 3. TypeScript Setup
-
-Add svelte-french-toast types to your `app.d.ts`:
-```typescript
-/// <reference types="svelte-french-toast" />
-```
+- Modal-based feedback form
+- Collects browser and system information
+- Optional user information display
+- Email notifications using Resend
+- Toast notifications for user feedback
+- DaisyUI styling
 
 ## Usage
 
 ```svelte
 <script>
-  import { FeedbackButton } from '$lib/components/feedback';
+  import { FeedbackButton } from 'ctw-kit';
 
-  // Basic usage
+  // Configure email settings
+  const emailConfig = {
+    apiKey: 'your-resend-api-key',
+    from: 'Feedback <feedback@yourdomain.com>',
+    to: 'you@yourdomain.com'
+  };
+
+  // Optional user information
   const userInfo = {
-    id: "user123",
-    name: "John Doe",
-    email: "john@example.com",
-    photoURL: "https://example.com/photo.jpg"
+    id: 'user123',
+    name: 'John Doe',
+    email: 'john@example.com',
+    photoURL: 'https://example.com/photo.jpg'
   };
 </script>
 
-<FeedbackButton {userInfo} />
+<FeedbackButton
+  emailConfig={emailConfig}
+  userInfo={userInfo}
+  showButton={true}
+/>
 ```
 
-The component will:
-- Show a feedback button that opens a modal when clicked
-- Collect the user's feedback
-- Format it into a nice HTML email with user and browser information
-- Send it server-side using Resend
-- Show toast notifications for loading/success/error states
+## Props
 
-## Server Response Format
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| emailConfig | `EmailConfig` | required | Configuration for email sending using Resend |
+| userInfo | `Object \| null` | `null` | Optional user information to include in feedback |
+| showButton | `boolean` | `true` | Whether to show the feedback button |
 
-The server endpoint returns responses in this format:
+### EmailConfig Type
 
-Success:
 ```typescript
-{
-  success: true,
-  message: 'Feedback sent successfully',
-  data: ResendAPIResponse
+interface EmailConfig {
+  apiKey: string;  // Your Resend API key
+  from: string;    // Sender email address
+  to: string;      // Recipient email address
 }
 ```
 
-Error:
+### UserInfo Type
+
 ```typescript
-{
-  success: false,
-  message: 'Failed to send feedback',
-  error: ErrorDetails
+interface UserInfo {
+  id?: string;
+  name?: string;
+  email?: string;
+  photoURL?: string;
 }
 ```
 
-All email sending is handled server-side to keep the Resend API key secure. The component includes all necessary dependencies (Resend and svelte-french-toast) so you don't need to install them separately.
+## Styling
+
+The component uses DaisyUI classes for styling. You can customize the appearance by modifying your DaisyUI theme or overriding the following classes:
+
+- `btn` - Button styling
+- `btn-sm` - Small button size
+- `btn-ghost` - Ghost button style (when modal is closed)
+- `btn-secondary` - Secondary button style (when modal is open)
+- `modal` - Modal container
+- `modal-box` - Modal content box
+- `textarea` - Feedback input field
