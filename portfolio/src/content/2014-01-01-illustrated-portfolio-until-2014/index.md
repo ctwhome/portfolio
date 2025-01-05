@@ -24,5 +24,5 @@ categories:
 <a target="_blank" href="https://ctwhome.com/content/2014-01-01-illustrated-portfolio-until-2014/images/Illustrated_Portfolio_UX_Jesus_Garcia_en_2014.pdf">
   <button class="btn btn-primary mt-5">
   Download PDF
-  <button>
+  </button>
 </a>
