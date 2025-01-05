@@ -94,6 +94,24 @@ Start the development server on [http://localhost:5173](http://localhost:5173)
 pnpm dev
 ```
 
+## CTW-Kit Development
+
+This project uses ctw-kit, a custom component library. The setup is configured to handle both development and production environments automatically:
+
+### Development Mode
+- Uses the local ctw-kit source directly from your repository
+- Changes to ctw-kit source are immediately reflected in the portfolio project
+- No additional setup needed - just run `bun run dev` as normal
+- Vite handles the source files directly through path aliasing
+
+### Production Mode (Vercel)
+- Automatically uses the published npm package (ctw-kit)
+- No additional setup needed
+- Ensures stable, versioned dependencies in production
+
+The configuration uses Vite's conditional alias to switch between environments:
+- In development: Points to local ctw-kit source (`../ctw-kit/src/lib`)
+- In production: Uses the npm package version (`ctw-kit`)
 
 ## Production
 
@@ -102,4 +120,3 @@ Build the application for production:
 ```bash
 pnpm build
 ```
-
