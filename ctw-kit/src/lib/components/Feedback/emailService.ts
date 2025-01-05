@@ -1,30 +1,44 @@
-import { Resend } from 'resend';
+export interface EmailService {
+  sendEmail(options: SendEmailOptions): Promise<SendEmailResult>;
+}
 
-export interface EmailConfig {
-  apiKey: string;
+export interface SendEmailOptions {
   from: string;
   to: string;
+  subject: string;
+  content: string;
+}
+
+export interface SendEmailResult {
+  success: boolean;
+  message: string;
+  data?: unknown;
+  error?: unknown;
 }
 
 export interface SendFeedbackOptions {
   emailContent: string;
-  config: EmailConfig;
+  emailService: EmailService;
+  from: string;
+  to: string;
 }
 
-export async function sendFeedback({ emailContent, config }: SendFeedbackOptions) {
+export async function sendFeedback({ emailContent, emailService, from, to }: SendFeedbackOptions): Promise<SendEmailResult> {
   try {
-    const resend = new Resend(config.apiKey);
-
-    const data = await resend.emails.send({
-      from: config.from,
-      to: config.to,
+    const result = await emailService.sendEmail({
+      from,
+      to,
       subject: 'Feedback from website',
-      html: emailContent
+      content: emailContent
     });
 
-    return { success: true, message: 'Feedback sent successfully', data };
+    return result;
   } catch (error) {
     console.error('Error sending feedback:', error);
-    return { success: false, message: 'Failed to send feedback', error };
+    return {
+      success: false,
+      message: 'Failed to send feedback',
+      error
+    };
   }
 }

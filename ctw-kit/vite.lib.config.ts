@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 import Icons from 'unplugin-icons/vite';
@@ -9,7 +10,9 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [
-    svelte(),
+    svelte({
+      preprocess: vitePreprocess()
+    }),
     Icons({
       compiler: 'svelte',
       autoInstall: true
