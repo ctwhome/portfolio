@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+.env
+.env.*
+!.env.example
+.svelte-kit
+package
+.vscode
+*.log
+.pnpm-debug.log*
+.bun
