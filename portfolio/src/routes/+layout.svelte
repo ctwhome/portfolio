@@ -4,6 +4,8 @@
 	import FooterMain from '$lib/components/footerMain.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Analytics from '$lib/components/Analytics.svelte';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	injectSpeedInsights();
 </script>
 
 <Analytics />
@@ -12,7 +14,7 @@
 	<title>Ctwhome Portfolio</title>
 </svelte:head>
 
-<div class="flex flex-col h-screen">
+<div class="flex h-screen flex-col">
 	<!-- <header-main /> -->
 	<Header />
 	<div class="flex-1">
