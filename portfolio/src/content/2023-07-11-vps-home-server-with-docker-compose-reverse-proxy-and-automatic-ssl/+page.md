@@ -15,7 +15,7 @@ Configuration for home server with reverse proxy and docker-compose
 
 Github Repo:
 
-### [](https://github.com/ctwhome/server/blob/main/README.md#installation)Installation
+### Installation
 
 Docker and docker compose must be installed and running.
 
@@ -79,7 +79,7 @@ volumes:
 
 ### Adding new services to the host
 
-It is important for the reverse-proxy `pass VIRTUAL_HOST and LETSENCRYPT_HOST`
+It is important for the reverse-proxy `pass VIRTUAL_HOST and LETSENCRYPT_HOST`
 
 ```
 environment:
@@ -96,4 +96,4 @@ networks:
     external: true
 ```
 
-Increasing the size limit for nginex\_proxy upload size follow this [nginx-proxy/nginx-proxy#690 (comment)](https://github.com/nginx-proxy/nginx-proxy/issues/690#issuecomment-1405169132)
+Increasing the size limit for nginex\_proxy upload size follow this [nginx-proxy/nginx-proxy#690 (comment)](https://github.com/nginx-proxy/nginx-proxy/issues/690#issuecomment-1405169132)
