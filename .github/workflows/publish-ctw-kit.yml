@@ -1,4 +1,4 @@
-name: Release and Publish CTW Kit
+name: ctw-kit
 
 on:
   push:
