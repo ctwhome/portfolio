@@ -1,13 +1,12 @@
 <script lang="ts">
-	import {
-		// Hello,
-		// Carousel,
-		TiltContent
-		// ThemeChange,
-		// SendEmail,
-		// FeedbackButton,
-		// SEO
-	} from 'ctw-kit';
+	import {} from // Hello,
+	// Carousel,
+	// TiltContent
+	// ThemeChange,
+	// SendEmail,
+	// FeedbackButton,
+	// SEO
+	'ctw-kit';
 	// import type { SiteSettings } from 'ctw-kit';
 	import IconMail from '~icons/ph/envelope-simple-fill';
 	import IconHeart from '~icons/ph/heart-fill';
@@ -30,7 +29,7 @@
 
 <!-- <SEO {siteSettings} /> -->
 
-<div class="min-h-screen bg-base-100 p-8">
+<div class="bg-base-100 min-h-screen p-8">
 	<div class="mx-auto max-w-4xl space-y-8">
 		<div class="flex items-center justify-between">
 			<h1 class="text-3xl font-bold">CTW Kit Component Demo</h1>
@@ -58,7 +57,7 @@
 				<div class="mt-4 text-sm opacity-70">
 					<p>Import icons using:</p>
 					<pre
-						class="mt-1 rounded bg-base-300 p-2">import IconName from '~icons/ph/icon-name';</pre>
+						class="bg-base-300 mt-1 rounded p-2">import IconName from '~icons/ph/icon-name';</pre>
 				</div>
 			</div>
 		</div>
@@ -84,7 +83,7 @@
 		</div>
 
 		<!-- TiltContent Component -->
-		<div class="card bg-base-200 shadow-xl">
+		<!-- <div class="card bg-base-200 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title mb-4">TiltContent Component</h2>
 				<div class="grid grid-cols-2 gap-4">
@@ -96,7 +95,7 @@
 					</TiltContent>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- Feedback Component -->
 		<div class="card bg-base-200 shadow-xl">
