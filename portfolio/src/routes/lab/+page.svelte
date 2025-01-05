@@ -15,7 +15,6 @@
 	import NativeFileApi from '$lib/components/ui/NativeFileApi.svelte';
 	import TimeLine from '$components/TimeLine.svelte';
 	import Sortable from '$components/sortable/Sortable.svelte';
-	import Todos from '$components/supabase/Todos.svelte';
 	import SendEmail from '$lib/components/emails/SendEmail.svelte';
 	import TiltContent from '$components/TiltContent.svelte';
 </script>
@@ -32,7 +31,7 @@
 
 	<h2 class="mt-20 text-2xl font-bold">Ctw-kit</h2>
 	Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
-	<span class=" rounded-lg bg-base-200 p-2">
+	<span class=" bg-base-200 rounded-lg p-2">
 		<code class="language-bash">bun add ctw-kit</code>
 	</span>
 	<div class="mt-4">
@@ -41,45 +40,41 @@
 
 	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
 	<div class="mt-10 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-4">
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			<Carousel />
 		</div>
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			<NativeFileApi />
 		</div>
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			<Autocomplete />
 		</div>
 
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			<TimeLine />
 		</div>
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			Login Button with social providers
 			<div class="mb-4" />
 			<LoginButton />
 		</div>
 
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			Example Markdown pages with interactive components
 			<a href="/lab/mdsvex" class="btn mt-4">MDsveX Full Example</a>
 		</div>
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			Drag and drop with SortableJS
 			<Sortable />
 		</div>
-		<div class="rounded border border-base-300 p-2">
-			DB Todos with Postgres
-			<Todos />
-		</div>
 
 		<!-- in put name and email and sent PUT /endpoints/email -->
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			<p class="mb-4">Send Email</p>
 			<SendEmail />
 		</div>
 		<TiltContent>
-			<div class="rounded border border-base-300 p-2">
+			<div class="border-base-300 rounded border p-2">
 				<p class="mb-4">Tilting Content</p>
 				<div class="h-32 text-xl">Block</div>
 			</div>
@@ -91,7 +86,7 @@
 		<!-- Nebula  -->
 		<a href="/3d/nebula/index.html" data-sveltekit-preload-data data-sveltekit-reload>
 			<div
-				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
+				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -111,7 +106,7 @@
 		<!-- Camera Controls -->
 		<a href="/lab/camera-controls">
 			<div
-				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
+				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -134,7 +129,7 @@
 		<!-- Orthographic camera with pan an zoom -->
 		<a href="/lab/three-camera-controls">
 			<div
-				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
+				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -180,7 +175,7 @@
 	<h2 class="mt-20 text-2xl font-bold">Tools and Libraries included here</h2>
 	<div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 		<!-- Icons -->
-		<div class="rounded border border-base-300 p-2">
+		<div class="border-base-300 rounded border p-2">
 			<div class="text-sm">
 				🤹 Any icon sets ~150 sets with over 200,000 icons, logos, emojis, etc. <br />
 				Powered by Iconify, with auto install. Using Iconify and
@@ -188,8 +183,8 @@
 				to find a place icons.
 			</div>
 			<div class="mt-4 flex">
-				<CarbonBot class="text-2xl text-primary" />
-				<CarbonFingerprintRecognition class="text-2xl text-secondary" />
+				<CarbonBot class="text-primary text-2xl" />
+				<CarbonFingerprintRecognition class="text-secondary text-2xl" />
 				<IconAccountBox class="text-content text-2xl" />
 			</div>
 		</div>
@@ -199,7 +194,7 @@
 	<div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 		<a href="/lab/wordpress">
 			<div
-				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
+				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
 				<figure>
 					<img src={wordpress} class="aspect-video object-cover" alt="3D example" />
@@ -220,7 +215,7 @@
 
 		<a href="/lab/gis">
 			<div
-				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
+				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
 				<figure>
 					<img src={gis} class="aspect-video object-cover" alt="GIS Example" />
@@ -239,7 +234,7 @@
 
 		<a href="/lab/mdsvex">
 			<div
-				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
+				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
 				<figure>
 					<img src={mdsvex} class="aspect-video object-cover" alt="GIS Example" />
