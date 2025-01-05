@@ -35,8 +35,8 @@ jobs:
           npm version patch --no-git-tag-version
           NEW_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
-          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          echo "name=$PACKAGE_NAME" >> $GITHUB_OUTPUT
+          echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
+          echo "name=${PACKAGE_NAME}" >> "$GITHUB_OUTPUT"
 
           # Check if new version already exists
           if npm view $PACKAGE_NAME@$NEW_VERSION version >/dev/null 2>&1; then
@@ -62,16 +62,22 @@ jobs:
             exit 1
           fi
 
+      - name: Setup GitHub CLI
+        run: |
+          type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && sudo apt update \
+          && sudo apt install gh -y
+
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        with:
-          tag_name: ${{ steps.bump-version.outputs.new_version }}
-          release_name: Release ${{ steps.bump-version.outputs.new_version }}
-          draft: false
-          prerelease: false
+        run: |
+          gh release create ${{ steps.bump-version.outputs.new_version }} \
+            --title "Release ${{ steps.bump-version.outputs.new_version }}" \
+            --generate-notes
 
       - uses: oven-sh/setup-bun@v1
         with:

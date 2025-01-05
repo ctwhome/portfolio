@@ -29,7 +29,6 @@
     "daisyui": "^4.0.0"
   },
   "dependencies": {
-    "resend": "^4.0.1",
     "svelte-french-toast": "^1.2.0",
     "theme-change": "^2.5.0",
     "vanilla-tilt": "^1.8.1"
