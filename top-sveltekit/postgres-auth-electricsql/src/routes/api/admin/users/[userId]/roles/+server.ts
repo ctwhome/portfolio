@@ -1,6 +1,6 @@
 import { json, error } from '@sveltejs/kit';
 import { pool } from '$lib/db/db';
-import { getUserRole } from '$lib/server/gatekeeper';
+import { Role } from '$lib/types';
 import type { RequestEvent } from './$types';
 
 export async function PUT({ locals, params, request }: RequestEvent) {
@@ -9,8 +9,8 @@ export async function PUT({ locals, params, request }: RequestEvent) {
     throw error(401, 'Unauthorized');
   }
 
-  const role = await getUserRole(session.user.id);
-  if (role !== 'admin') {
+  const userRole = session.user.roles?.[0];
+  if (userRole !== Role.ADMIN) {
     throw error(403, 'Forbidden');
   }
 
@@ -28,7 +28,7 @@ export async function PUT({ locals, params, request }: RequestEvent) {
     } else if (action === 'remove') {
       await pool.query(
         'UPDATE users SET role = $1 WHERE id = $2',
-        ['user', userId]
+        [Role.USER, userId]
       );
     }
 

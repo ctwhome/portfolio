@@ -14,7 +14,7 @@ export const handle = sequence(handleAuth, protectRoute());
 /*
 export const protectAdminRoutes: Handle = async ({ event, resolve }) => {
   if (event.url.pathname.startsWith('/admin')) {
-    return protectRoute('admin')({ event, resolve });
+    return protectRoute(Role.ADMIN)({ event, resolve });
   }
   return resolve(event);
 };
