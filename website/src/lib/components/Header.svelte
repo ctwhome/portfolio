@@ -29,15 +29,15 @@
 
 	const links = [
 		{
-			title: 'Project',
+			title: 'Work',
 			path: '/work?category=Project',
-			displayTitle: 'Projects'
+			displayTitle: 'Work'
 		},
-		{
-			title: 'Blog',
-			path: '/work?category=Blog',
-			displayTitle: 'Engineering Blog'
-		},
+		// {
+		// 	title: 'Blog',
+		// 	path: '/work?category=Blog',
+		// 	displayTitle: 'Engineering Blog'
+		// },
 		{
 			title: 'Digital Garden',
 			path: '/work?category=Digital Garden',
@@ -49,9 +49,9 @@
 		// 	displayTitle: 'Latest Work'
 		// },
 		{
-			title: 'Lab',
-			path: '/lab',
-			displayTitle: 'Lab'
+			title: 'Toolkits',
+			path: '/toolkits',
+			displayTitle: 'Toolkits'
 		},
 		{
 			title: 'About',
@@ -83,7 +83,7 @@
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
-					class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
+					class="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow"
 				>
 					{#each links as link}
 						<li>
@@ -126,7 +126,7 @@
  -->
 <style lang="postcss">
 	.menu-link {
-		@apply font-medium text-base-content text-opacity-80 transition hover:text-secondary hover:text-opacity-100;
+		@apply text-base-content hover:text-secondary font-medium text-opacity-80 transition hover:text-opacity-100;
 	}
 
 	.menu-link.active {

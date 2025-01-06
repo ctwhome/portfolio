@@ -61,7 +61,7 @@
 
 		<div class="border-base-300 rounded border p-2">
 			Example Markdown pages with interactive components
-			<a href="/lab/mdsvex" class="btn mt-4">MDsveX Full Example</a>
+			<a href="/toolkits/mdsvex" class="btn mt-4">MDsveX Full Example</a>
 		</div>
 		<div class="border-base-300 rounded border p-2">
 			Drag and drop with SortableJS
@@ -104,7 +104,7 @@
 			</div>
 		</a>
 		<!-- Camera Controls -->
-		<a href="/lab/camera-controls">
+		<a href="/toolkits/camera-controls">
 			<div
 				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
@@ -127,7 +127,7 @@
 			</div>
 		</a>
 		<!-- Orthographic camera with pan an zoom -->
-		<a href="/lab/three-camera-controls">
+		<a href="/toolkits/three-camera-controls">
 			<div
 				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
@@ -192,7 +192,7 @@
 
 	<h2 class="mt-20 text-2xl font-bold">Framework</h2>
 	<div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-		<a href="/lab/wordpress">
+		<a href="/toolkits/wordpress">
 			<div
 				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
@@ -213,7 +213,7 @@
 			</div>
 		</a>
 
-		<a href="/lab/gis">
+		<a href="/toolkits/gis">
 			<div
 				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
@@ -232,7 +232,7 @@
 			</div>
 		</a>
 
-		<a href="/lab/mdsvex">
+		<a href="/toolkits/mdsvex">
 			<div
 				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
 			>
