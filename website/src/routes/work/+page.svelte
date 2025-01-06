@@ -111,7 +111,7 @@
 
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
-		<h1 class="text-2xl sm:text-4xl font-bold">
+		<h1 class="text-2xl font-bold sm:text-4xl">
 			{#if $activeCategory === 'Blog'}
 				Engineering Blog
 			{:else if $activeCategory === 'Project'}
@@ -123,7 +123,7 @@
 			{:else}
 				All Work
 			{/if}
-			<sup class="opacity-80 text-sm -top-[1.1rem]">({$filteredPosts.length})</sup>
+			<sup class="-top-[1.1rem] text-sm opacity-80">({$filteredPosts.length})</sup>
 		</h1>
 		{#if hasFilters}
 			<button on:click={clearFilters} class="btn btn-sm btn-primary">
@@ -133,9 +133,9 @@
 	</div>
 
 	<!-- FILTERS PANEL -->
-	<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
+	<div class="bg-base-300 mt-10 grid gap-4 rounded-lg bg-opacity-20 p-4 sm:grid-cols-2">
 		<!-- <div class="text-sm mb-2">Categories</div> -->
-		<div class="flex flex-wrap gap-2 items-center">
+		<div class="flex flex-wrap items-center gap-2">
 			{#each globalCategories as { name, count }}
 				<!-- daisyui chips -->
 				<button
@@ -163,7 +163,7 @@
 						</div>
 						<ul
 							tabindex="0"
-							class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+							class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
 						>
 							{#each globalTags as { name, count }}
 								<li>
@@ -192,21 +192,21 @@
 	</div>
 
 	{#each Object.keys($postsByYear).reverse() as year}
-		<h2 class="text-xl font-bold mt-8 opacity-60">
+		<h2 class="mt-8 text-xl font-bold opacity-60">
 			{year}
 		</h2>
-		<div class="grid grid-cols-2 sm:grid-cols-3 gap-7 mt-10">
+		<div class="mt-10 grid grid-cols-2 gap-7 sm:grid-cols-3">
 			{#each $postsByYear[year] as post}
 				<a
 					data-sveltekit-preload-data="hover"
 					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
-					class="flex flex-col gap-4 rounded-lg hover:bg-base-200 hover:bg-opacity-70 transition bg-base-200 bg-opacity-50"
+					class="hover:bg-base-200 bg-base-200 flex flex-col gap-4 rounded-lg bg-opacity-50 transition hover:bg-opacity-70"
 				>
 					<div class="flex-none">
 						{#if post.metadata.coverImage}
 							<img
 								draggable="false"
-								class="aspect-[5/3] object-cover rounded-lg rounded-b-none"
+								class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
 								src={post.metadata.coverImage &&
 									`/content/${post.slug}/${post.metadata.coverImage}`}
 								alt={post.slug}
@@ -214,14 +214,14 @@
 						{/if}
 					</div>
 					<div class="px-3 pb-3">
-						<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.metadata.title}</h2>
+						<h2 class="text-ld line-clamp-3 font-bold sm:text-2xl">{@html post.metadata.title}</h2>
 						{#if post.metadata.description}
-							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+							<div class="prose sm:leading-auto mt-2 line-clamp-3 text-sm leading-5">
 								{@html post.metadata.description}
 							</div>
 						{/if}
 
-						<div class="flex gap-3 mt-2 opacity-40 text-sm">
+						<div class="mt-2 flex gap-3 text-sm opacity-40">
 							<div class="flex flex-wrap gap-3">
 								{#if post.metadata.categories}
 									{#each post.metadata.categories as category}

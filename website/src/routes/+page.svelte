@@ -4,6 +4,7 @@
 	import TiltContent from '$lib/components/TiltContent.svelte';
 
 	import { posts } from '$content/content';
+	import MyApps from './LandingPageComponents/MyApps.svelte';
 
 	let lastDisplayedYear: number | null = null;
 
@@ -24,10 +25,10 @@
 
 <svelte:head></svelte:head>
 <div class="first-fold sm:pt-6">
-	<div class="max-w-screen-xl m-auto px-6">
-		<div class="grid sm:grid-cols-2 gap-20">
-			<div class="flex flex-col gap-10 sm:gap-10 sm:mt-10 sm:mt-5">
-				<p class="text-2xl sm:text-3xl lg:text-5xl order-2 sm:order-1">
+	<div class="m-auto max-w-screen-xl px-6">
+		<div class="grid gap-20 sm:grid-cols-2">
+			<div class="flex flex-col gap-10 sm:mt-5 sm:gap-10">
+				<p class="order-2 text-2xl sm:order-1 sm:text-3xl lg:text-5xl">
 					I create experiences weaving strong <span class="ctw-text-gradient font-serif font-bold">
 						design aesthetics
 					</span>
@@ -44,88 +45,95 @@
 				<img
 					draggable="false"
 					src="/images/profile.avif"
-					class="hidden sm:block rounded pointer-events-none w-full object-cover
+					class="pointer-events-none hidden w-full select-none rounded object-cover
 					object-center
-							 sm:h-[350px]
+							 sm:block
+						   sm:h-[350px]
 						   md:h-[350px]
-						   lg:h-[400px]
-							 xl:h-[500px]
-							select-none
+							 lg:h-[400px]
+							xl:h-[500px]
 							"
-					alt="Jesse Ctw Profile"
+					alt="Jes Ctw Profile"
 				/>
 			</TiltContent>
 		</div>
 	</div>
 
-	<div class="container mx-auto px-4 -mt-6 sm:mt-16 xl:mt-20">
+	<div class="container mx-auto -mt-6 px-4 sm:mt-16 xl:mt-20">
 		<h2
-			class="text-[5rem] sm:text-[6rem] lg:text-[9rem] xl:text-[12rem] 2xl:text-[15rem]
-						 leading-[3.5rem] sm:leading-[3.8rem] lg:leading-[6rem] xl:leading-[8rem] 2xl:leading-[10rem]
+			class="font-title text-center text-[5rem] font-bold leading-[3.5rem]
+						 sm:text-[6rem] sm:leading-[3.8rem] lg:text-[9rem] lg:leading-[6rem] xl:text-[12rem]
 
-						font-bold font-title text-center"
+						xl:leading-[8rem] 2xl:text-[15rem] 2xl:leading-[10rem]"
 		>
-			Take my <span class="line-through opacity-50">word</span>
-			<span class="">WORK</span>
+			Take my <span class="line-through opacity-40">word</span>
+			<span class="ctw-text-gradient font-black">WORK</span>
 			for it!
 		</h2>
 	</div>
 
-	<div
-		class="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-2 gap-x-4 sm:gap-x-8 lg:gap-x-12 mt-6 sm:mt-12 lg:mt-32"
-	>
-		{#each posts as post}
-			{@const currentYear = new Date(post.metadata.date).getUTCFullYear()}
-			<div class="grid grid-rows-[3.5rem_1fr]">
-				<h2 class="text-xl font-bold mt-8 opacity-60">
-					{#if shouldDisplayYear(currentYear)}
-						{currentYear}
-					{/if}
-				</h2>
-				<a
-					data-sveltekit-preload-data="hover"
-					href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
-					class="flex flex-col gap-4 rounded-lg hover:bg-base-200/50 transition bg-base-200/30 my-4"
-				>
-					<div class="flex-none">
-						{#if post.metadata.coverImage}
-							<img
-								draggable="false"
-								class="aspect-[5/3] object-cover rounded-lg rounded-b-none"
-								src={post.metadata.coverImage &&
-									`/content/${post.slug}/${post.metadata.coverImage}`}
-								alt={post.slug}
-							/>
+	<div class="container mx-auto mt-6 px-4 sm:mt-12 lg:mt-32">
+		<h2 class="mb-8 mt-20 text-4xl font-bold opacity-60 sm:mt-28">Apps</h2>
+		<MyApps />
+
+		<h2 class="mb-4 mt-20 text-4xl font-bold opacity-60">Projects</h2>
+
+		<div
+			class="grid grid-cols-2 gap-x-4 gap-y-2 px-4 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-12"
+		>
+			{#each posts as post}
+				{@const currentYear = new Date(post.metadata.date).getUTCFullYear()}
+				<div class="grid grid-rows-[3.5rem_1fr]">
+					<h2 class="mt-8 text-xl font-bold opacity-60">
+						{#if shouldDisplayYear(currentYear)}
+							{currentYear}
 						{/if}
-					</div>
-					<div class="flex flex-col px-3 pb-3 h-full">
-						<h2 class="text-ld flex-1 line-clamp-3 sm:text-2xl font-bold">
-							{@html post.metadata.title}
-						</h2>
-						<!-- {#if post.metadata.description}
+					</h2>
+					<a
+						data-sveltekit-preload-data="hover"
+						href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
+						class="hover:bg-base-200/50 bg-base-200/30 my-4 flex flex-col gap-4 rounded-lg transition"
+					>
+						<div class="flex-none">
+							{#if post.metadata.coverImage}
+								<img
+									draggable="false"
+									class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
+									src={post.metadata.coverImage &&
+										`/content/${post.slug}/${post.metadata.coverImage}`}
+									alt={post.slug}
+								/>
+							{/if}
+						</div>
+						<div class="flex h-full flex-col px-3 pb-3">
+							<h2 class="text-ld line-clamp-3 flex-1 font-bold sm:text-2xl">
+								{@html post.metadata.title}
+							</h2>
+							<!-- {#if post.metadata.description}
 							<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
 								{@html post.metadata.description}
 							</div>
 						{/if} -->
 
-						<div class="flex gap-3 mt-2 opacity-40 text-sm">
-							<div class="flex flex-wrap gap-3">
-								{#if post.metadata.categories}
-									{#each post.metadata.categories as category}
-										<div class="">{category}</div>
-									{/each}
-								{/if}
-								<!-- {#if post.metadata.tags}
+							<div class="mt-2 flex gap-3 text-sm opacity-40">
+								<div class="flex flex-wrap gap-3">
+									{#if post.metadata.categories}
+										{#each post.metadata.categories as category}
+											<div class="">{category}</div>
+										{/each}
+									{/if}
+									<!-- {#if post.metadata.tags}
 						{#each post.metadata.tags as tag}
 						<div class="">{tag}</div>
 						{/each}
 						{/if} -->
+								</div>
 							</div>
 						</div>
-					</div>
-				</a>
-			</div>
-		{/each}
+					</a>
+				</div>
+			{/each}
+		</div>
 	</div>
 </div>
 
