@@ -47,7 +47,7 @@
 			<a
 				href={app.url}
 				target="_blank"
-				class="card block aspect-[5/3] bg-red-900 bg-cover p-4 !no-underline"
+				class="card block aspect-[5/3] bg-cover p-4 !no-underline"
 				style="background-image: url({app.image})"
 			>
 				<!-- First element content -->

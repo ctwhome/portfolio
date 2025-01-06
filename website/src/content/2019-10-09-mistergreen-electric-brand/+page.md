@@ -7,7 +7,7 @@ categories:
 tags:
   - Branding
   - Web
-coverImage: images/mistergreen.png
+coverImage: images/mistergreen.avif
 displayCover: true
 ---
 

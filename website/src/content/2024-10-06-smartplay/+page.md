@@ -7,7 +7,7 @@ categories:
 tags:
   - WearOS
   - eScience-center
-coverImage: images/cover.jpg
+coverImage: images/cover.avif
 displayCover: true
 ---
 

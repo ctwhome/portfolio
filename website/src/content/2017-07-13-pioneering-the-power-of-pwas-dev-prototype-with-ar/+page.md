@@ -9,7 +9,7 @@ tags:
   - XR
   - Infographic
   - Research
-coverImage: images/exact-2.png
+coverImage: images/exact-2.avif
 displayCover: true
 ---
 
