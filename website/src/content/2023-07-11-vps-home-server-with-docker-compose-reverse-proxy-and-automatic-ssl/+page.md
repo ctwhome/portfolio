@@ -3,7 +3,7 @@ published: true
 title: VPS Home Server with Docker Compose, reverse proxy, and Automatic SSL
 date: 2023-07-11
 categories:
-  - Project
+  - Blog
 tags:
   - Backend
   - DX
