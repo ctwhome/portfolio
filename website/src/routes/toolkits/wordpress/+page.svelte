@@ -78,7 +78,7 @@
 
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
-		<h1 class="text-2xl sm:text-4xl font-bold">
+		<h1 class="text-2xl font-bold sm:text-4xl">
 			Latest Work ({count})
 		</h1>
 		{#if hasFilters}
@@ -89,9 +89,9 @@
 	{#if !data}
 		<p>Loading...</p>
 	{:else}
-		<div class="grid sm:grid-cols-2 mt-10 bg-base-300 bg-opacity-20 p-4 gap-4 rounded-lg">
+		<div class="bg-base-300 mt-10 grid gap-4 rounded-lg bg-opacity-20 p-4 sm:grid-cols-2">
 			<div>
-				<div class="text-sm mb-2">Categories</div>
+				<div class="mb-2 text-sm">Categories</div>
 				<div class="flex flex-wrap gap-2">
 					{#each filteredCategories as category}
 						<!-- daisyui chips -->
@@ -103,7 +103,7 @@
 				</div>
 			</div>
 			<div>
-				<div class="text-sm mb-2">Tags</div>
+				<div class="mb-2 text-sm">Tags</div>
 				<div class="flex flex-wrap gap-2">
 					{#each filteredTags as tag}
 						<!-- daisyui chips -->
@@ -118,31 +118,31 @@
 		{#each Object.keys($filteredPosts).sort().reverse() as year}
 			{#if $filteredPosts[year].length > 0}
 				<!-- Check if there are posts for this year -->
-				<h2 class="text-xl font-bold mt-8 opacity-80">{year}</h2>
-				<ul class="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:gap-5 mt-10">
+				<h2 class="mt-8 text-xl font-bold opacity-80">{year}</h2>
+				<ul class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-1 sm:gap-5">
 					{#each $filteredPosts[year] as post}
 						<a
 							data-sveltekit-preload-data="hover"
-							href={'/lab/wordpress/' + post.categories[0].slug + '/' + post.slug}
-							class="flex flex-col sm:flex-row gap-4 rounded hover:bg-base-200 transition bg-base-200 sm:bg-inherit sm:p-4"
+							href={'/toolkits/wordpress/' + post.categories[0].slug + '/' + post.slug}
+							class="hover:bg-base-200 bg-base-200 flex flex-col gap-4 rounded transition sm:flex-row sm:bg-inherit sm:p-4"
 						>
 							<div class="flex-none">
 								{#if post.media_url}
 									<img
-										class="w-full sm:w-[150px] aspect-[5/3] object-cover rounded rounded-b-none sm:rounded-b-md"
+										class="aspect-[5/3] w-full rounded rounded-b-none object-cover sm:w-[150px] sm:rounded-b-md"
 										src={post.media_url}
 										alt={post.post_title}
 									/>
 								{/if}
 							</div>
 							<div class="px-3 pb-3">
-								<h2 class="text-ld line-clamp-3 sm:text-2xl font-bold">{@html post.post_title}</h2>
+								<h2 class="text-ld line-clamp-3 font-bold sm:text-2xl">{@html post.post_title}</h2>
 
-								<div class="prose line-clamp-3 mt-2 leading-5 sm:leading-auto text-sm">
+								<div class="prose sm:leading-auto mt-2 line-clamp-3 text-sm leading-5">
 									{@html post.excerpt}
 								</div>
 
-								<div class="flex gap-3 mt-2 opacity-40 text-sm">
+								<div class="mt-2 flex gap-3 text-sm opacity-40">
 									<div class="flex flex-wrap gap-3">
 										{#each post.categories as categorie}
 											<div>{categorie.name}</div>
