@@ -30,7 +30,7 @@
 	const links = [
 		{
 			title: 'Work',
-			path: '/work?category=Project',
+			path: '/work?category=Project%2CResearch+Project',
 			displayTitle: 'Work'
 		},
 		// {
@@ -40,7 +40,7 @@
 		// },
 		{
 			title: 'Digital Garden',
-			path: '/work?category=Digital Garden',
+			path: '/work?category=Digital+Garden%2CBlog',
 			displayTitle: 'Digital Garden'
 		},
 		// {
