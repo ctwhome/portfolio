@@ -84,7 +84,9 @@
 		<h2 class="mb-4 mt-20 text-4xl font-bold opacity-60">Projects</h2>
 		<PostsGrid {posts} {shouldDisplayYear} />
 
-		<div class="btn btn-primary btn-lg ml-4 mt-10">See all work ({allPosts.length})</div>
+		<a href="/work?category=Project%2CResearch+Project" class="btn btn-primary btn-lg ml-4 mt-10">
+			See all work ({allPosts.length})
+		</a>
 	</div>
 </div>
 
