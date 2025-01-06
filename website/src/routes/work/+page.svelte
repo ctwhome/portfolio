@@ -9,8 +9,8 @@
 	const filteredPosts = writable(posts); // Store for displaying posts, changes based on filters
 	// let activeCategory: '' | null = null;
 	// let activeTag: '' | null = null;
-	const activeCategory = writable('' || null);
-	const activeTag = writable('' || null);
+	const activeCategories = writable<string[]>([]);
+	const activeTags = writable<string[]>([]);
 
 	// Derived store to group posts by year based on filtered posts
 	// Track displayed years
@@ -42,48 +42,59 @@
 	let globalTags: { name: string; count: number }[] = [];
 	let globalCategories: { name: string; count: number }[] = [];
 
-	function updateCounters() {
-		globalTags = [];
-		globalCategories = [];
+	// Initialize all available categories and tags with their total counts
+	const initializeFilters = () => {
+		const categoryCountMap = new Map<string, number>();
+		const tagCountMap = new Map<string, number>();
 
-		$filteredPosts.map((post) => {
-			post.metadata?.tags?.forEach((tag) => {
-				let index = globalTags.findIndex((t) => t.name === tag);
-				index === -1 ? globalTags.push({ name: tag, count: 1 }) : globalTags[index].count++;
-			});
-
+		posts.forEach((post) => {
+			// Count categories
 			post.metadata?.categories?.forEach((category) => {
-				let index = globalCategories.findIndex((t) => t.name === category);
-				index === -1
-					? globalCategories.push({ name: category, count: 1 })
-					: globalCategories[index].count++;
+				categoryCountMap.set(category, (categoryCountMap.get(category) || 0) + 1);
+			});
+			// Count tags
+			post.metadata?.tags?.forEach((tag) => {
+				tagCountMap.set(tag, (tagCountMap.get(tag) || 0) + 1);
 			});
 		});
-	}
+
+		globalCategories = Array.from(categoryCountMap.entries()).map(([name, count]) => ({
+			name,
+			count
+		}));
+		globalTags = Array.from(tagCountMap.entries()).map(([name, count]) => ({
+			name,
+			count
+		}));
+	};
+
+	// No need for updateCounters anymore since we're keeping static counts
+
 	// Reactive statement that runs only in the browser
 	$: {
 		if (browser) {
-			$activeCategory = $page.url.searchParams.get('category');
-			$activeTag = $page.url.searchParams.get('tag');
+			const categoryParam = $page.url.searchParams.get('category');
+			const tagParam = $page.url.searchParams.get('tag');
+
+			$activeCategories = categoryParam ? categoryParam.split(',') : [];
+			$activeTags = tagParam ? tagParam.split(',') : [];
 			setFilters();
 		}
 	}
 
 	onMount(() => {
+		initializeFilters();
 		setFilters();
 	});
 
 	function setFilters() {
 		hasFilters = false;
 
-		if ($activeCategory) {
-			filterByCategory($activeCategory);
-		} else if ($activeTag) {
-			filterByTag($activeTag);
+		if ($activeCategories.length > 0 || $activeTags.length > 0) {
+			applyFilters();
 		} else {
 			filteredPosts.set(posts);
 		}
-		updateCounters();
 	}
 
 	// TODO: Fix this
@@ -91,48 +102,77 @@
 		goto('/work');
 		hasFilters = false;
 		filteredPosts.set(posts);
-		$activeCategory = '';
-		$activeTag = '';
-	}
-	function filterByCategory(categoryName) {
-		if (hasFilters && $activeCategory === categoryName) {
-			clearFilters();
-			return;
-		}
-		hasFilters = true;
-		// set active category
-		$activeCategory = categoryName;
-		// set url params to category
-		goto(`?category=${encodeURIComponent(categoryName)}`);
-		const filtered = posts.filter(({ metadata }) => metadata?.categories?.includes(categoryName));
-		filteredPosts.set(filtered);
+		$activeCategories = [];
+		$activeTags = [];
 	}
 
-	function filterByTag(tagName) {
-		if (hasFilters && $activeTag === tagName) {
-			clearFilters();
+	function toggleCategory(categoryName: string) {
+		const index = $activeCategories.indexOf(categoryName);
+		if (index === -1) {
+			$activeCategories = [...$activeCategories, categoryName];
+		} else {
+			$activeCategories = $activeCategories.filter((c) => c !== categoryName);
+		}
+		applyFilters();
+	}
+
+	function toggleTag(tagName: string) {
+		const index = $activeTags.indexOf(tagName);
+		if (index === -1) {
+			$activeTags = [...$activeTags, tagName];
+		} else {
+			$activeTags = $activeTags.filter((t) => t !== tagName);
+		}
+		applyFilters();
+	}
+
+	function applyFilters() {
+		hasFilters = $activeCategories.length > 0 || $activeTags.length > 0;
+
+		if (!hasFilters) {
+			filteredPosts.set(posts);
+			goto('/work');
 			return;
 		}
-		$activeTag = tagName;
-		hasFilters = true;
-		// set url params to tag
-		goto(`?tag=${encodeURIComponent(tagName)}`);
-		const filtered = posts.filter(({ metadata }) => metadata?.tags?.includes(tagName));
+
+		let filtered = posts;
+
+		if ($activeCategories.length > 0) {
+			filtered = filtered.filter(({ metadata }) =>
+				metadata?.categories?.some((category) => $activeCategories.includes(category))
+			);
+		}
+
+		if ($activeTags.length > 0) {
+			filtered = filtered.filter(({ metadata }) =>
+				metadata?.tags?.some((tag) => $activeTags.includes(tag))
+			);
+		}
+
 		filteredPosts.set(filtered);
+
+		const params = new URLSearchParams();
+		if ($activeCategories.length > 0) {
+			params.set('category', $activeCategories.join(','));
+		}
+		if ($activeTags.length > 0) {
+			params.set('tag', $activeTags.join(','));
+		}
+		goto(`?${params.toString()}`);
 	}
 </script>
 
 <main class="mx-auto max-w-[900px] px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-bold sm:text-4xl">
-			{#if $activeCategory === 'Blog'}
+			{#if $activeCategories.includes('Blog') || $activeTags.includes('Blog')}
 				Engineering Blog
-			{:else if $activeCategory === 'Project'}
+			{:else if $activeCategories.includes('Project')}
 				Work Projects
-			{:else if $activeCategory === 'Digital Garden'}
+			{:else if $activeCategories.includes('Digital Garden')}
 				🌱 Digital Garden
-			{:else if $activeTag}
-				{$activeTag}
+			{:else if $activeTags.length > 0}
+				{$activeTags.filter((tag) => tag !== 'Blog').join(', ')}
 			{:else}
 				All Work
 			{/if}
@@ -147,60 +187,44 @@
 
 	<!-- FILTERS PANEL -->
 	<div class="bg-base-300 mt-10 grid gap-4 rounded-lg bg-opacity-20 p-4 sm:grid-cols-2">
-		<!-- <div class="text-sm mb-2">Categories</div> -->
 		<div class="flex flex-wrap items-center gap-2">
 			{#each globalCategories as { name, count }}
-				<!-- daisyui chips -->
 				<button
-					on:click={() => filterByCategory(name)}
+					on:click={() => toggleCategory(name)}
 					class="btn btn-xs"
-					class:btn-primary={$activeCategory === name}
+					class:btn-primary={$activeCategories.includes(name)}
 				>
-					{name}
+					{name === 'Blog' ? 'Engineering Blog' : name}
 					<div class="badge">{count}</div>
 				</button>
 			{/each}
 		</div>
 
-		<div>
-			<!-- <div class="text-sm mb-2">Tags</div> -->
-			{#if globalTags.length > 0}
-				<div class="flex flex-wrap gap-2">
-					<div class="dropdown">
-						<div tabindex="0" role="button" class="btn btn-xs m-1" class:btn-primary={!!$activeTag}>
-							{$activeTag || 'Tags'}
-							<div class="badge">
-								{globalTags[globalTags.findIndex((t) => t.name === $activeTag)]?.count ||
-									globalTags.length}
-							</div>
-						</div>
-						<ul
-							tabindex="0"
-							class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-						>
-							{#each globalTags as { name, count }}
-								<li>
-									<a on:click={() => filterByTag(name)} class:active={$activeTag === name}>
-										{name}
-										<div class="badge">{count}</div>
-									</a>
-								</li>
-							{/each}
-						</ul>
-					</div>
-					<!-- {#each globalTags as { name, count }}
-						daisyui chips
+		<div class="dropdown">
+			<div
+				tabindex="0"
+				role="button"
+				class="btn btn-xs m-1"
+				class:btn-primary={$activeTags.length > 0}
+			>
+				{$activeTags.length ? `${$activeTags.length} selected` : 'Tags'}
+				<div class="badge">{globalTags.length}</div>
+			</div>
+			<ul tabindex="0" class="dropdown-content menu rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
+				{#each globalTags as { name, count }}
+					<li>
 						<button
-							on:click={() => filterByTag(name)}
-							class="btn btn-xs"
-							class:btn-primary={$activeTag === name}
+							class="hover:bg-base-200 flex justify-between"
+							class:bg-primary={$activeTags.includes(name)}
+							class:text-primary-content={$activeTags.includes(name)}
+							on:click={() => toggleTag(name)}
 						>
 							{name}
 							<div class="badge">{count}</div>
 						</button>
-					{/each} -->
-				</div>
-			{/if}
+					</li>
+				{/each}
+			</ul>
 		</div>
 	</div>
 
