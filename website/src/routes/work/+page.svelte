@@ -166,7 +166,7 @@
 	}
 </script>
 
-<main class="mx-auto max-w-[900px] px-4">
+<main class="container mx-auto px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-bold sm:text-4xl">
 			{#if $activeCategories.includes('Blog') || $activeTags.includes('Blog')}
@@ -232,7 +232,7 @@
 		</div>
 	</div>
 
-	<div class="grid grid-cols-2 gap-7 sm:grid-cols-3">
+	<div class="grid grid-cols-2 gap-7 md:grid-cols-3 lg:grid-cols-4">
 		{#each Object.keys($postsByYear).reverse() as year}
 			{#each $postsByYear[year] as post}
 				<div class="grid grid-rows-[3.5rem_1fr]">
