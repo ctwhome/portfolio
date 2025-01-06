@@ -4,23 +4,17 @@ import Credentials from "@auth/sveltekit/providers/credentials";
 import PostgresAdapter from "@auth/pg-adapter";
 import { pool } from "$lib/db/db";
 import { getUserRoles } from "$lib/server/gatekeeper";
-import type { Credentials as CredentialsType, CustomUser, CustomSession } from "./app";
+import type { CustomSession } from "./app";
 import bcrypt from 'bcrypt';
 import Resend from "@auth/sveltekit/providers/resend";
-
-interface DbUser {
-  id: number;
-  email: string;
-  password: string;
-  name?: string | null;
-  image?: string | null;
-}
 
 export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
   trustHost: true,
   adapter: PostgresAdapter(pool),
   secret: process.env.AUTH_SECRET,
-  debug: true,
+  session: {
+    strategy: "jwt"
+  },
   providers: [
     Resend({
       from: "top-sveltekit@ctwhome.com",
@@ -30,44 +24,39 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
     Credentials({
       name: 'Credentials',
       async authorize(credentials) {
-        if (!credentials || !('email' in credentials) || !('password' in credentials)) {
-          return null;
-        }
-
         const { email, password } = credentials as { email: string; password: string };
-        const result = await pool.query<DbUser>('SELECT * FROM users WHERE email = $1', [email]);
-        const user = result.rows[0];
+        if (!email || !password) return null;
 
-        if (user && typeof password === 'string') {
-          const isValid = await bcrypt.compare(password, user.password);
-          if (isValid) {
-            return {
-              id: user.id.toString(),
-              email: user.email,
-              name: user.name || null,
-              image: user.image || null
-            };
-          }
-        }
-        return null;
+        const user = (await pool.query('SELECT * FROM users WHERE email = $1', [email])).rows[0];
+        if (!user || !await bcrypt.compare(password, user.password)) return null;
+
+        return {
+          id: user.id.toString(),
+          email: user.email,
+          name: user.name || null,
+          image: user.image || null
+        };
       }
     })
   ],
   callbacks: {
-    async session({ session, user }) {
-      const customSession = session as CustomSession;
-
-      if (customSession.user && user) {
-        customSession.user.id = user.id;
-        customSession.user.email = user.email;
-        customSession.user.image = user.image;
-
-        // Get user roles directly in session callback
-        const roles = await getUserRoles(user.id);
-        customSession.user.roles = roles;
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
       }
+      return token;
+    },
+    async session({ session, token }) {
+      if (!session?.user || !token) return session;
 
-      return customSession;
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id as string,
+          roles: await getUserRoles(token.id as string)
+        }
+      } as CustomSession;
     }
   }
 });
