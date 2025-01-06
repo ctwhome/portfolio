@@ -2,26 +2,15 @@ import type { LayoutServerLoad } from "./$types"
 import { redirect } from '@sveltejs/kit';
 
 export const load: LayoutServerLoad = async (event) => {
-  // const session = await event.locals.auth();
-  //
-  // redirections if needed, but must return the session for the app to work.
+  const session = await event.locals.auth();
 
-  /* if (session?.user?.id) {
-    if (event.url.pathname === '/') {
-      throw redirect(302, '/profile');
-    }
+  // Add redirections if needed
+  if (!session?.user && event.url.pathname === '/profile') {
+    throw redirect(302, '/');
   }
-  else {
-    if (event.url.pathname === '/profile') {
-      throw redirect(302, '/');
-    }
-  } */
-
 
   return {
-    //! Returning the seesion is important to make sure the user the app is authenticated and make it available to the rest of the app
-    //! https://authjs.dev/reference/sveltekit#managing-the-session
-    // session
+    session
   }
 }
 // export const prerender = true

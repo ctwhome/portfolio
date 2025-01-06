@@ -13,40 +13,12 @@
 		const data = await response.json();
 		apiKey = data.apiKey || '';
 	});
-
-	async function saveApiKey() {
-		// Save the API key to the server
-		const response = await fetch('/api/user/api-key', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ apiKey })
-		});
-
-		if (response.ok) {
-			alert('API key saved successfully');
-		} else {
-			alert('Failed to save API key');
-		}
-	}
 </script>
 
 <div class="container mx-auto">
 	{#if $page.data.session}
 		<UserInfo />
-
-		<div class="join mt-6">
-			<input
-				type="text"
-				class="input input-bordered join-item"
-				name="apiKey"
-				id="apiKey"
-				bind:value={apiKey}
-				placeholder="Enter your OpenAI API key"
-			/>
-			<button class="btn join-item" onclick={saveApiKey}>Save</button>
-		</div>
+		<pre>{JSON.stringify($page.data.session, null, 2)}</pre>
 	{:else}
 		Not logged in
 	{/if}

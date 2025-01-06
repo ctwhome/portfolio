@@ -2,6 +2,7 @@
 	import PhKeyBold from '~icons/ph/key-bold';
 	import { signIn } from '@auth/sveltekit/client';
 	import { goto } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 
 	interface SignInResult {
 		ok?: boolean;
@@ -19,29 +20,25 @@
 		try {
 			console.log('Attempting sign in with:', { email });
 
-			const result = (await signIn('credentials', {
+			// Close the modal before sign in
+			const modalCheckbox = document.getElementById('login-modal') as HTMLInputElement;
+			if (modalCheckbox) {
+				modalCheckbox.checked = false;
+			}
+
+			// Let SvelteKit Auth handle the redirect and session update
+			const result = await signIn('credentials', {
 				email,
 				password,
-				redirect: false,
+				redirect: true,
 				callbackUrl: '/profile'
-			})) as SignInResult;
+			});
 
-			console.log('Sign in result:', result);
-
-			// Check if the result indicates an error
+			// This code won't run due to redirect, but kept for error cases
 			if (!result?.ok) {
 				error = 'Invalid email or password';
 				return;
 			}
-
-			// If login successful, redirect to profile
-			error = '';
-			success = 'Login successful! Redirecting...';
-
-			// Add a small delay before redirect to show the success message
-			setTimeout(async () => {
-				await goto('/profile', { replaceState: true });
-			}, 1000);
 		} catch (e) {
 			error = 'An error occurred during sign in';
 			console.error('Sign in error:', e);
@@ -49,7 +46,7 @@
 	}
 </script>
 
-<form class="rounded-box border border-base-300 p-3" on:submit|preventDefault={handleEmailSignIn}>
+<form class="rounded-box border-base-300 border p-3" on:submit|preventDefault={handleEmailSignIn}>
 	<div class="form-control">
 		<input
 			bind:value={email}
