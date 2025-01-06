@@ -13,6 +13,28 @@
 	let users: User[] = [];
 	let loading = true;
 	let error: string | null = null;
+	let availableRoles = ['user', 'admin'];
+
+	async function updateUserRole(userId: number, role: string, currentRoles: string[]) {
+		try {
+			const response = await fetch(`/api/admin/users/${userId}/roles`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ role, action: currentRoles.includes(role) ? 'remove' : 'add' })
+			});
+
+			if (!response.ok) throw new Error('Failed to update user role');
+
+			// Refresh user list
+			const usersResponse = await fetch('/api/admin/users');
+			if (!usersResponse.ok) throw new Error('Failed to fetch users');
+			users = await usersResponse.json();
+		} catch (e: unknown) {
+			error = e instanceof Error ? e.message : 'An unknown error occurred';
+		}
+	}
 
 	onMount(async () => {
 		try {
@@ -62,11 +84,34 @@
 							</td>
 							<td>{user.email}</td>
 							<td>
-								<div class="flex flex-wrap gap-1">
-									{#each user.roles.filter(Boolean) as role}
-										<div class="badge badge-outline">{role}</div>
+								<select
+									class="select select-bordered w-full max-w-xs"
+									value={user.roles[0] || 'user'}
+									on:change={async (e) => {
+										const newRole = e.currentTarget.value;
+										const currentRole = user.roles[0] || 'user';
+
+										try {
+											if (newRole === 'user') {
+												// Just remove admin role, no need to add 'user'
+												if (currentRole === 'admin') {
+													await updateUserRole(user.id, 'admin', user.roles);
+												}
+											} else {
+												// Adding admin role
+												await updateUserRole(user.id, newRole, []);
+											}
+										} catch (err) {
+											// Revert select value on error
+											e.currentTarget.value = currentRole;
+											error = err instanceof Error ? err.message : 'Failed to update role';
+										}
+									}}
+								>
+									{#each availableRoles as role}
+										<option value={role}>{role}</option>
 									{/each}
-								</div>
+								</select>
 							</td>
 						</tr>
 					{/each}
