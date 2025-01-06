@@ -3,7 +3,7 @@ published: true
 title: Nuxt with Supabase template recipe
 date: 2021-03-12
 categories:
-  - Project
+  - Blog
 tags:
   - NuxtJS
   - Supabase

@@ -3,7 +3,7 @@ published: true
 title: FocusDiamond
 date: 2018-07-10
 categories:
-  - Project
+  - Blog
 tags:
   - Web
   - Productivity

@@ -3,7 +3,7 @@ published: true
 title: Pioneering the Power of PWAs  (Dev Prototype with AR)
 date: 2017-07-13
 categories:
-  - Project
+  - Research Project
 tags:
   - Design
   - XR

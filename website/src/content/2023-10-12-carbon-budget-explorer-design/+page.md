@@ -3,7 +3,7 @@ published: true
 title: Carbon Budget Explorer [Design]
 date: 2023-10-12
 categories:
-  - Project
+  - Research Project
 tags:
   - Branding
   - Climate Change

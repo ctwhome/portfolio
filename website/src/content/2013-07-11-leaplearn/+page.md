@@ -3,7 +3,7 @@ published: true
 title: LeapLearn
 date: 2013-07-1
 categories:
-  - Project
+  - Research Project
 tags:
   - 3D-visualization
   - JavaScript

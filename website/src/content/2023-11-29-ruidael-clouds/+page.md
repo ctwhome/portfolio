@@ -3,7 +3,7 @@ published: true
 title: "Ruidael Clouds - 3D Zarr Visualizer"
 date: "2023-11-29"
 categories:
-  - "Project"
+  - Research Project
 tags:
   - 3D-visualization
   - eScience-center

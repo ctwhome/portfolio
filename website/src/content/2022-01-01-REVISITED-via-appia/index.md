@@ -8,7 +8,7 @@ displayCover: true
 tags:
   - 3D-visualization
 categories:
-  - Project
+  - Research Project
 layout:
 ---
 
