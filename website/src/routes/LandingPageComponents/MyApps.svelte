@@ -49,6 +49,7 @@
 				target="_blank"
 				class="card block aspect-[5/3] bg-cover p-4 !no-underline"
 				style="background-image: url({app.image})"
+				aria-label={app.name}
 			>
 				<!-- First element content -->
 				<!-- <p class="">{app.name}</p>
