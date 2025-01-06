@@ -3,7 +3,6 @@ import Google from "@auth/sveltekit/providers/google";
 import Credentials from "@auth/sveltekit/providers/credentials";
 import PostgresAdapter from "@auth/pg-adapter";
 import { pool } from "$lib/db/db";
-import { getUserRole } from "$lib/server/gatekeeper";
 import type { CustomSession } from "./app";
 import bcrypt from 'bcrypt';
 import Resend from "@auth/sveltekit/providers/resend";
@@ -42,7 +41,10 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        // Get user data including role on initial sign in
+        const userData = (await pool.query('SELECT id, role FROM users WHERE id = $1', [user.id])).rows[0];
+        token.id = userData.id;
+        token.role = userData.role || 'user';
       }
       return token;
     },
@@ -54,7 +56,7 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
         user: {
           ...session.user,
           id: token.id as string,
-          roles: [await getUserRole(token.id as string)]
+          roles: [token.role as string] // Use role from JWT token
         }
       } as CustomSession;
     }

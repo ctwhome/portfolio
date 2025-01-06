@@ -1,6 +1,6 @@
 import { json, error } from '@sveltejs/kit';
 import { pool } from '$lib/db/db';
-import { getUserRole } from '$lib/server/gatekeeper';
+import { Role } from '$lib/types';
 import type { RequestEvent } from './$types';
 
 export async function GET({ locals }: RequestEvent) {
@@ -9,8 +9,8 @@ export async function GET({ locals }: RequestEvent) {
     throw error(401, 'Unauthorized');
   }
 
-  const role = await getUserRole(session.user.id);
-  if (role !== 'admin') {
+  const userRole = session.user.roles?.[0];
+  if (userRole !== Role.ADMIN) {
     throw error(403, 'Forbidden');
   }
 

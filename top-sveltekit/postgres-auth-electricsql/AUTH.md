@@ -2,7 +2,7 @@
 
 ## Overview
 
-The authentication system in this SvelteKit application uses [@auth/sveltekit](https://authjs.dev/reference/sveltekit) (Auth.js) with multiple authentication providers, PostgreSQL for user data storage, and role-based access control (RBAC). The system is designed to be secure, flexible, and maintainable.
+The authentication system in this SvelteKit application uses [@auth/sveltekit](https://authjs.dev/reference/sveltekit) (Auth.js) with multiple authentication providers, PostgreSQL for user data storage, and a simplified role-based access control (RBAC). The system is designed to be secure, efficient, and maintainable.
 
 ## Authentication Flow
 
@@ -20,7 +20,7 @@ The authentication system in this SvelteKit application uses [@auth/sveltekit](h
 
 3. **Session Management**:
    - JWT (JSON Web Tokens) are used to manage sessions
-   - The session contains user information and roles
+   - The session contains user information and role
    - Sessions are automatically handled by @auth/sveltekit
 
 ## Authentication Providers
@@ -59,133 +59,132 @@ Credentials({
 
 ## Database Integration
 
-The system uses PostgreSQL for user data storage:
+The system uses PostgreSQL for user data storage with a simplified schema:
 
-1. **PostgreSQL Adapter**:
-```typescript
-adapter: PostgresAdapter(pool)
+1. **User Table Structure**:
+```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  email VARCHAR(255) UNIQUE,
+  password VARCHAR(255),
+  "emailVerified" TIMESTAMPTZ,
+  image TEXT,
+  role VARCHAR(50)  -- Single role per user
+);
 ```
-- Handles user data persistence
-- Manages sessions
-- Stores authentication-related data
 
-2. **User Data Structure**:
-- ID (unique identifier)
-- Email
-- Password (hashed)
-- Name (optional)
-- Image (optional)
+2. **Role Management**:
+- Each user has a single role (admin or user)
+- Role is stored directly in the users table
+- Automatic role assignment through database triggers
 
 ## Role-Based Access Control (RBAC)
 
-1. **Role Assignment**:
-- Roles are fetched during session creation
-- Stored in the session for easy access
-- Used for authorization checks
+1. **Type-Safe Role System**:
+```typescript
+// In lib/types.ts
+export enum Role {
+  USER = 'user',
+  ADMIN = 'admin'
+}
+```
+- Type-safe role definitions
+- Shared between client and server
+- Prevents typos and invalid role values
 
-2. **Route Protection**:
+2. **Role Assignment**:
+```sql
+-- Automatic admin role assignment
+CREATE OR REPLACE FUNCTION assign_admin_role()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.email = 'ctw@ctwhome.com' THEN
+    NEW.role := 'admin';
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+3. **Route Protection**:
 ```typescript
 // In hooks.server.ts
 export const handle = sequence(handleAuth, protectRoute());
+
+// Protect admin routes
+if (event.url.pathname.startsWith('/admin')) {
+  return protectRoute(Role.ADMIN)({ event, resolve });
+}
 ```
-- Routes can be protected based on roles
-- Middleware checks user permissions
-- Flexible role requirements per route
 
 ## JWT and Session Handling
 
-1. **JWT Strategy**:
+1. **JWT Strategy with Role**:
 ```typescript
-session: {
-  strategy: "jwt"
-}
-```
-- Required for Credentials provider
-- Manages session state
-- Securely transfers user data
-
-2. **JWT Callback**:
-```typescript
-async jwt({ token, user }) {
-  if (user) {
-    token.id = user.id;
+callbacks: {
+  async jwt({ token, user }) {
+    if (user) {
+      const userData = await pool.query('SELECT id, role FROM users WHERE id = $1', [user.id]);
+      token.id = userData.id;
+      token.role = userData.role || Role.USER;
+    }
+    return token;
   }
-  return token;
 }
 ```
-- Customizes JWT payload
-- Adds user ID to token
-- Called during token creation/update
+- Stores role in JWT token
+- Avoids database queries for role checks
+- Efficient session management
 
-3. **Session Callback**:
+2. **Session Enhancement**:
 ```typescript
 async session({ session, token }) {
-  // Enhance session with user data and roles
   return {
     ...session,
     user: {
       ...session.user,
-      id: token.id,
-      roles: await getUserRoles(token.id)
+      id: token.id as string,
+      roles: [token.role as Role] // Role from JWT token
     }
   };
 }
 ```
-- Customizes session data
-- Adds user roles
-- Called for each request
+
+## Client-Side Role Usage
+
+1. **Type-Safe Role Checks**:
+```typescript
+// In components
+import { Role } from '$lib/types';
+
+if (userRole === Role.ADMIN) {
+  // Show admin features
+}
+```
+
+2. **Role Selection**:
+```typescript
+let availableRoles = [Role.USER, Role.ADMIN];
+
+<select value={user.roles[0] || Role.USER}>
+  {#each availableRoles as role}
+    <option value={role}>{role}</option>
+  {/each}
+</select>
+```
 
 ## Security Considerations
 
-1. **Password Security**:
-- Passwords are hashed using bcrypt
-- Never stored in plain text
-- Secure comparison for validation
+1. **Role Security**:
+- Roles stored in database and JWT
+- Server-side validation for all role changes
+- Type-safe role handling prevents errors
 
 2. **JWT Security**:
-- Signed with a secret key
-- Prevents tampering
-- Short-lived tokens
-
-3. **Environment Variables**:
-- Sensitive data stored in .env
-- Not committed to version control
-- Required for production
-
-## Usage Examples
-
-1. **Protecting a Route**:
-```typescript
-// Protect admin routes
-export const protectAdminRoutes: Handle = async ({ event, resolve }) => {
-  if (event.url.pathname.startsWith('/admin')) {
-    return protectRoute('admin')({ event, resolve });
-  }
-  return resolve(event);
-};
-```
-
-2. **Accessing User Data in Routes**:
-```typescript
-// In a +page.server.ts file
-export const load = async ({ locals }) => {
-  const session = await locals.getSession();
-  if (!session?.user) {
-    throw redirect(307, '/auth/signin');
-  }
-  return {
-    user: session.user
-  };
-};
-```
-
-3. **Using Role-Based Access**:
-```typescript
-// In a component
-{#if $page.data.session?.user?.roles?.includes('admin')}
-  <AdminPanel />
-{/if}
-```
+- Roles included in signed tokens
+- Cannot be tampered with
+- Validated on server
 
 ## Environment Setup
 
@@ -200,4 +199,9 @@ DATABASE_URL=your-postgres-connection-string
 
 ## Conclusion
 
-This authentication system provides a secure, flexible, and feature-rich solution for user authentication and authorization. It leverages industry-standard practices and tools while maintaining simplicity and extensibility.
+This authentication system provides a secure and efficient solution with:
+- Simplified role management (single role per user)
+- Type-safe role handling
+- Efficient JWT-based session management
+- Clear separation of client and server concerns
+- Maintainable and scalable design

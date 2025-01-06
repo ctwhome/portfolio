@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 	import UserCircle from '~icons/heroicons/user-circle';
 
 	interface User {
@@ -13,7 +12,8 @@
 	let users: User[] = [];
 	let loading = true;
 	let error: string | null = null;
-	let availableRoles = ['user', 'admin'];
+	import { Role } from '$lib/types';
+	let availableRoles = [Role.USER, Role.ADMIN];
 
 	async function updateUserRole(userId: number, role: string, currentRoles: string[]) {
 		try {
@@ -86,16 +86,16 @@
 							<td>
 								<select
 									class="select select-bordered w-full max-w-xs"
-									value={user.roles[0] || 'user'}
+									value={user.roles[0] || Role.USER}
 									on:change={async (e) => {
 										const newRole = e.currentTarget.value;
 										const currentRole = user.roles[0] || 'user';
 
 										try {
-											if (newRole === 'user') {
+											if (newRole === Role.USER) {
 												// Just remove admin role, no need to add 'user'
-												if (currentRole === 'admin') {
-													await updateUserRole(user.id, 'admin', user.roles);
+												if (currentRole === Role.ADMIN) {
+													await updateUserRole(user.id, Role.ADMIN, user.roles);
 												}
 											} else {
 												// Adding admin role
