@@ -6,7 +6,7 @@ date: 2021-07-05
 tags:
   - Health
 categories:
-  - Project
+  - Research Project
 coverImage: images/cover.avif
 displayCover: false
 ---

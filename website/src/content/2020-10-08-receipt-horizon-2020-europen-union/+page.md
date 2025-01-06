@@ -3,7 +3,7 @@ published: true
 title: Receipt -  Horizon 2020 Europen Union
 date: 2020-10-08
 categories:
-  - Project
+  - Research Project
 tags:
   - 3D-visualization
   - eScience-center

@@ -4,7 +4,7 @@
 
 	let tiltImage: HTMLElement | HTMLElement[];
 
-	let className = undefined; // class is a reserved keyword in JS, with initialization
+	let className = ''; // class is a reserved keyword in JS, with initialization
 	export { className as class };
 
 	const dispatch = createEventDispatcher();

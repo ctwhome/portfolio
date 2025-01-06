@@ -3,7 +3,7 @@ published: true
 title: SmartPlay - Android Wear OS Application
 date: 2024-10-06
 categories:
-  - Project
+  - Research Project
 tags:
   - WearOS
   - eScience-center
