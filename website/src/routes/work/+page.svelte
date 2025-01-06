@@ -24,11 +24,15 @@
 		return false;
 	}
 
+	interface PostsByYear {
+		[key: string]: typeof posts;
+	}
+
 	const postsByYear = derived(filteredPosts, ($filteredPosts) => {
 		// Reset displayed years when posts are filtered
 		displayedYears = new Set();
-		return $filteredPosts.reduce((acc, post) => {
-			const year = new Date(post.metadata.date).getFullYear();
+		return $filteredPosts.reduce<PostsByYear>((acc, post) => {
+			const year = new Date(post.metadata.date).getFullYear().toString();
 			if (!acc[year]) acc[year] = [];
 			acc[year].push(post);
 			return acc;
@@ -49,11 +53,11 @@
 
 		posts.forEach((post) => {
 			// Count categories
-			post.metadata?.categories?.forEach((category) => {
+			post.metadata?.categories?.forEach((category: string) => {
 				categoryCountMap.set(category, (categoryCountMap.get(category) || 0) + 1);
 			});
 			// Count tags
-			post.metadata?.tags?.forEach((tag) => {
+			post.metadata?.tags?.forEach((tag: string) => {
 				tagCountMap.set(tag, (tagCountMap.get(tag) || 0) + 1);
 			});
 		});
@@ -99,14 +103,14 @@
 
 	// TODO: Fix this
 	function clearFilters() {
-		goto('/work');
+		goto('/work', { replaceState: true });
 		hasFilters = false;
 		filteredPosts.set(posts);
 		$activeCategories = [];
 		$activeTags = [];
 	}
 
-	function toggleCategory(categoryName: string) {
+	function toggleCategory(categoryName: string): void {
 		const index = $activeCategories.indexOf(categoryName);
 		if (index === -1) {
 			$activeCategories = [...$activeCategories, categoryName];
@@ -116,7 +120,7 @@
 		applyFilters();
 	}
 
-	function toggleTag(tagName: string) {
+	function toggleTag(tagName: string): void {
 		const index = $activeTags.indexOf(tagName);
 		if (index === -1) {
 			$activeTags = [...$activeTags, tagName];
@@ -131,7 +135,7 @@
 
 		if (!hasFilters) {
 			filteredPosts.set(posts);
-			goto('/work');
+			goto('/work', { replaceState: true });
 			return;
 		}
 
@@ -139,13 +143,13 @@
 
 		if ($activeCategories.length > 0) {
 			filtered = filtered.filter(({ metadata }) =>
-				metadata?.categories?.some((category) => $activeCategories.includes(category))
+				metadata?.categories?.some((category: string) => $activeCategories.includes(category))
 			);
 		}
 
 		if ($activeTags.length > 0) {
 			filtered = filtered.filter(({ metadata }) =>
-				metadata?.tags?.some((tag) => $activeTags.includes(tag))
+				metadata?.tags?.some((tag: string) => $activeTags.includes(tag))
 			);
 		}
 
@@ -158,7 +162,7 @@
 		if ($activeTags.length > 0) {
 			params.set('tag', $activeTags.join(','));
 		}
-		goto(`?${params.toString()}`);
+		goto(`?${params.toString()}`, { replaceState: true });
 	}
 </script>
 
@@ -239,7 +243,7 @@
 					</h2>
 					<a
 						data-sveltekit-preload-data="hover"
-						href={'/work/' + post.slug + '?category=' + post.metadata.categories[0]}
+						href={'/work/' + post.slug}
 						class="hover:bg-base-200 bg-base-200 my-4 flex flex-col gap-4 rounded-lg bg-opacity-50 transition hover:bg-opacity-70"
 					>
 						<div class="flex-none">
