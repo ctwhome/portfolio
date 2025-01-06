@@ -8,13 +8,16 @@ interface UserRole {
 
 // Function to get user roles
 export async function getUserRoles(userId: string | number): Promise<string[]> {
+  console.log('Getting roles for user:', userId);
   const result = await pool.query<UserRole>(`
         SELECT r.name
         FROM roles r
         JOIN user_roles ur ON r.id = ur.role_id
         WHERE ur.user_id = $1
     `, [userId]);
-  return result.rows.map((row: UserRole) => row.name);
+  const roles = result.rows.map((row: UserRole) => row.name);
+  console.log('Roles found:', roles);
+  return roles;
 }
 
 // Function to check if user has required role

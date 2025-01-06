@@ -10,7 +10,7 @@
 			<div
 				tabindex="0"
 				role="button"
-				class="flex h-12 w-12 items-center justify-center rounded-full transition hover:bg-base-200 active:scale-95"
+				class="hover:bg-base-200 flex h-12 w-12 items-center justify-center rounded-full transition active:scale-95"
 			>
 				<img
 					alt="User avatar"
@@ -19,10 +19,16 @@
 					referrerpolicy="no-referrer"
 				/>
 			</div>
-			<ul tabindex="0" class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
+			<ul tabindex="0" class="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
 				<li class="flex gap-2">
 					<a href="/profile" class="flex items-center gap-2">Profile</a>
 				</li>
+				{#if $page.data.session?.user?.roles?.includes('admin')}
+					<li class="flex gap-2">
+						<a href="/admin" class="flex items-center gap-2">Admin Panel</a>
+					</li>
+				{/if}
+				<div class="divider my-0"></div>
 				<form action="/auth/signout" method="POST">
 					<li class="flex gap-2">
 						<button type="submit" class="items-center gap-2">Logout</button>

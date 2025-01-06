@@ -21,7 +21,7 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
   trustHost: true,
   adapter: PostgresAdapter(pool),
   secret: process.env.AUTH_SECRET,
-  debug: false,
+  debug: true,
   session: {
     strategy: "jwt"
   },
@@ -60,15 +60,24 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
     })
   ],
   callbacks: {
-    async session({ session, user }) {
+    async jwt({ token, user, account, profile }) {
+      console.log('JWT callback:', { token, user });
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
       const customSession = session as CustomSession;
-      if (customSession.user && user) {
-        const customUser = user as CustomUser;
-        customSession.user.id = customUser.id;
-        customSession.user.email = customUser.email || null;
+      console.log('Session callback - token:', token);
+      if (customSession.user && token) {
+        customSession.user.id = token.id as string;
+        customSession.user.email = token.email || null;
 
         // Get user roles (if none exist, gatekeeper will treat as regular user)
-        customSession.user.roles = await getUserRoles(customUser.id);
+        const roles = await getUserRoles(token.id as string);
+        console.log('User roles fetched:', { userId: token.id, roles });
+        customSession.user.roles = roles;
       }
       return customSession;
     },
