@@ -10,7 +10,7 @@ tags:
   - Web
   - Research
   - Climate Change
-coverImage: images/image-2.png
+coverImage: images/image-2.avif
 displayCover: true
 ---
 

@@ -7,7 +7,7 @@ categories:
 tags:
   - Design
   - Web
-coverImage: images/cover.jpg
+coverImage: images/cover.avif
 displayCover: true
 ---
 
