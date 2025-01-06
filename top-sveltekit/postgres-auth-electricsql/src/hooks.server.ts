@@ -1,22 +1,24 @@
 // https://kit.svelte.dev/docs/hooks
-import { env } from '$env/dynamic/private';
 import { sequence } from '@sveltejs/kit/hooks';
 import type { Handle } from '@sveltejs/kit';
 import { handleAuth } from "./auth";
-import { pool } from "$lib/db/db";
+import { protectRoute } from '$lib/server/gatekeeper';
 
-// Initialize the database connection
-// console.log('🎹 DATABASE_URL', env.DATABASE_URL, env.DB_USER);
+// Sequence of middleware to run
+// 1. handleAuth - Handles authentication from @auth
+// 2. protectRoute - Our gatekeeper for RBAC (no role required by default)
+export const handle = sequence(handleAuth, protectRoute());
 
-// Set the app.user_id in the database to enable row level security
-const setAppUser: Handle = async ({ event, resolve }) => {
-  const session = await event.locals.getSession();
-  if (session?.user?.id) {
-    await pool.query('SELECT set_app_user($1)', [session.user.id]);
-  } else {
-    await pool.query('SELECT set_app_user(NULL)');
+// Example of how to protect specific routes with roles:
+// You can create additional middleware for specific routes like this:
+/*
+export const protectAdminRoutes: Handle = async ({ event, resolve }) => {
+  if (event.url.pathname.startsWith('/admin')) {
+    return protectRoute('admin')({ event, resolve });
   }
   return resolve(event);
-}
+};
 
-export const handle = sequence(handleAuth, setAppUser);
+// Then add it to the sequence:
+export const handle = sequence(handleAuth, protectRoute(), protectAdminRoutes);
+*/
