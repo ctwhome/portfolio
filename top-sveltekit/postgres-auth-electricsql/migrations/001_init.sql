@@ -7,14 +7,8 @@ CREATE TABLE users (
   email VARCHAR(255) UNIQUE,
   password VARCHAR(255),
   "emailVerified" TIMESTAMPTZ,
-  image TEXT
-);
-
-CREATE TABLE sessions (
-  id SERIAL PRIMARY KEY,
-  "userId" INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  expires TIMESTAMPTZ NOT NULL,
-  "sessionToken" VARCHAR(255) NOT NULL UNIQUE
+  image TEXT,
+  role VARCHAR(50)
 );
 
 CREATE TABLE verification_token (
@@ -40,23 +34,6 @@ CREATE TABLE accounts (
   UNIQUE("provider", "providerAccountId")
 );
 
--- Create roles tables
-CREATE TABLE roles (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(50) UNIQUE NOT NULL DEFAULT 'user',
-  description TEXT
-);
-
-CREATE TABLE user_roles (
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
-  PRIMARY KEY (user_id, role_id)
-);
-
--- Insert default roles
-INSERT INTO roles (name, description) VALUES
-('admin', 'Administrator with full access');
-
 -- Insert sample admin user (password: password)
 INSERT INTO users (name, email, password, "emailVerified", image) VALUES
 ('Alice Doe', 'alice@ctwhome.com', '$2a$12$qZNxIFh/Yayqshdz.3ZH2Oy2uORW/MqDS9NlfkIZsm6xnK5ZtCyJG', '2023-10-10', 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'),
@@ -64,21 +41,40 @@ INSERT INTO users (name, email, password, "emailVerified", image) VALUES
 
 
 -- Assign admin role
-INSERT INTO user_roles (user_id, role_id)
-SELECT u.id, r.id
-FROM users u, roles r
-WHERE u.email = 'alice@ctwhome.com' AND r.name = 'admin';
+UPDATE users
+SET role = 'admin'
+WHERE email = 'alice@ctwhome.com';
+
+-- Auto-assign admin role to specific Google user
+CREATE OR REPLACE FUNCTION assign_admin_role()
+RETURNS TRIGGER AS $$
+BEGIN
+  RAISE NOTICE 'Trigger function called for email: %', NEW.email;
+
+  IF NEW.email = 'ctw@ctwhome.com' THEN
+    RAISE NOTICE 'Setting admin role for ctw@ctwhome.com';
+    NEW.role = 'admin';  -- Using = instead of :=
+  ELSE
+    RAISE NOTICE 'Setting default user role';
+    NEW.role = COALESCE(NEW.role, 'user');  -- Only set user if role is null
+  END IF;
+
+  RAISE NOTICE 'Final role value: %', NEW.role;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER auto_assign_admin_role
+BEFORE INSERT ON users
+FOR EACH ROW
+EXECUTE FUNCTION assign_admin_role();
 
 -- Create indexes
-CREATE INDEX sessions_token_idx ON sessions ("sessionToken");
 CREATE INDEX users_email_idx ON users (email);
 CREATE INDEX accounts_user_id_idx ON accounts ("userId");
 CREATE INDEX accounts_provider_id_idx ON accounts ("providerAccountId");
 
 -- Down Migration
-DROP TABLE user_roles;
-DROP TABLE roles;
 DROP TABLE accounts;
-DROP TABLE sessions;
 DROP TABLE users;
 DROP TABLE verification_token;

@@ -3,7 +3,7 @@ import Google from "@auth/sveltekit/providers/google";
 import Credentials from "@auth/sveltekit/providers/credentials";
 import PostgresAdapter from "@auth/pg-adapter";
 import { pool } from "$lib/db/db";
-import { getUserRoles } from "$lib/server/gatekeeper";
+import { getUserRole } from "$lib/server/gatekeeper";
 import type { CustomSession } from "./app";
 import bcrypt from 'bcrypt';
 import Resend from "@auth/sveltekit/providers/resend";
@@ -54,7 +54,7 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
         user: {
           ...session.user,
           id: token.id as string,
-          roles: await getUserRoles(token.id as string)
+          roles: [await getUserRole(token.id as string)]
         }
       } as CustomSession;
     }

@@ -1,6 +1,6 @@
 import { json, error } from '@sveltejs/kit';
 import { pool } from '$lib/db/db';
-import { getUserRoles } from '$lib/server/gatekeeper';
+import { getUserRole } from '$lib/server/gatekeeper';
 import type { RequestEvent } from './$types';
 
 export async function PUT({ locals, params, request }: RequestEvent) {
@@ -9,48 +9,35 @@ export async function PUT({ locals, params, request }: RequestEvent) {
     throw error(401, 'Unauthorized');
   }
 
-  const roles = await getUserRoles(session.user.id);
-  if (!roles.includes('admin')) {
+  const role = await getUserRole(session.user.id);
+  if (role !== 'admin') {
     throw error(403, 'Forbidden');
   }
 
-  const { role, action } = await request.json();
   const userId = params.userId;
+  const { role: newRole, action } = await request.json();
+  console.log('Updating role:', { userId, newRole, action });
 
   try {
+    // Update the user's role
     if (action === 'add') {
-      // First get the role_id
-      const roleResult = await pool.query(
-        'SELECT id FROM roles WHERE name = $1',
-        [role]
-      );
-
-      if (roleResult.rows.length === 0) {
-        throw error(400, 'Invalid role');
-      }
-
-      const roleId = roleResult.rows[0].id;
-
-      // Check if the role assignment already exists
-      const existingRole = await pool.query(
-        'SELECT 1 FROM user_roles WHERE user_id = $1 AND role_id = $2',
-        [userId, roleId]
-      );
-
-      if (existingRole.rows.length === 0) {
-        // Add the role
-        await pool.query(
-          'INSERT INTO user_roles (user_id, role_id) VALUES ($1, $2)',
-          [userId, roleId]
-        );
-      }
-    } else if (action === 'remove') {
-      // Remove the role
       await pool.query(
-        'DELETE FROM user_roles WHERE user_id = $1 AND role_id = (SELECT id FROM roles WHERE name = $2)',
-        [userId, role]
+        'UPDATE users SET role = $1 WHERE id = $2',
+        [newRole, userId]
+      );
+    } else if (action === 'remove') {
+      await pool.query(
+        'UPDATE users SET role = $1 WHERE id = $2',
+        ['user', userId]
       );
     }
+
+    // Log the result
+    const updatedUser = await pool.query(
+      'SELECT id, email, role FROM users WHERE id = $1',
+      [userId]
+    );
+    console.log('Updated user:', updatedUser.rows[0]);
 
     return json({ success: true });
   } catch (err) {
