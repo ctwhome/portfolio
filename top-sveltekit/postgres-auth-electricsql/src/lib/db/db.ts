@@ -4,15 +4,11 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 export const pool = new Pool({
-  host: env.DB_HOST,          // Database host
-  port: Number(env.DB_PORT),  // Database port, default to 5432
-  user: env.DB_USER,          // Database user
-  password: env.DB_PASSWORD,  // Database user's password
-  database: env.DB_NAME,      // Database name
-  ssl: env.DB_SSL === 'true', // Optional: set to 'true' if SSL is required
-  max: env.MAX_CLIENTS,       // Max number of clients in the pool
-  idleTimeoutMillis: env.IDLE_TIMEOUT_MILLIS, // How long a client is allowed to remain idle before being closed
-  connectionTimeoutMillis: env.CONNECTION_TIMEOUT_MILLIS
+  connectionString: env.DATABASE_URL,
+  ssl: env.DB_SSL === 'true',
+  max: Number(env.MAX_CLIENTS) || 20,
+  idleTimeoutMillis: Number(env.IDLE_TIMEOUT_MILLIS) || 30000,
+  connectionTimeoutMillis: Number(env.CONNECTION_TIMEOUT_MILLIS) || 2000
 });
 
 // Utility function to query the database
