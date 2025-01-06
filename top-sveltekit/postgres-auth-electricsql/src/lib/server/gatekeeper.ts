@@ -2,22 +2,17 @@ import type { Handle } from '@sveltejs/kit';
 import { pool } from '$lib/db/db';
 import { error } from '@sveltejs/kit';
 
-interface UserRole {
-  name: string;
-}
-
-// Function to get user roles
-export async function getUserRoles(userId: string | number): Promise<string[]> {
-  console.log('Getting roles for user:', userId);
-  const result = await pool.query<UserRole>(`
-        SELECT r.name
-        FROM roles r
-        JOIN user_roles ur ON r.id = ur.role_id
-        WHERE ur.user_id = $1
-    `, [userId]);
-  const roles = result.rows.map((row: UserRole) => row.name);
-  console.log('Roles found:', roles);
-  return roles;
+// Function to get user role
+export async function getUserRole(userId: string | number): Promise<string> {
+  console.log('Getting role for user:', userId);
+  const result = await pool.query(`
+    SELECT role
+    FROM users
+    WHERE id = $1
+  `, [userId]);
+  const role = result.rows[0]?.role || 'user';
+  console.log('Role found:', role);
+  return role;
 }
 
 // Function to check if user has required role
@@ -27,11 +22,11 @@ export async function hasRole(userId: string | number, requiredRole: string): Pr
     return true;
   }
 
-  const roles = await getUserRoles(userId);
-  return roles.includes(requiredRole);
+  const role = await getUserRole(userId);
+  return role === requiredRole;
 }
 
-// Middleware to protect routes based on roles
+// Middleware to protect routes based on role
 export const protectRoute = (requiredRole?: string): Handle => {
   return async ({ event, resolve }) => {
     const session = await event.locals.getSession();
@@ -50,11 +45,11 @@ export const protectRoute = (requiredRole?: string): Handle => {
       }
     }
 
-    // Add roles to locals for use in routes
+    // Add role to locals for use in routes
     if (userId) {
-      const roles = await getUserRoles(userId);
-      // If user has no explicit roles, treat them as a regular user
-      event.locals.roles = roles.length > 0 ? roles : ['user'];
+      const role = await getUserRole(userId);
+      // Keep roles as an array for backward compatibility
+      event.locals.roles = [role];
     }
 
     return resolve(event);
