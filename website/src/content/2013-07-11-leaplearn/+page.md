@@ -9,7 +9,7 @@ tags:
   - JavaScript
   - Threejs
   - Web
-coverImage: images/leaplearn-cover.jpg
+coverImage: images/leaplearn-cover.avif
 displayCover: true
 ---
 <script>

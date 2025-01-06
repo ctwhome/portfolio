@@ -11,7 +11,7 @@ tags:
   - eScience-center
   - Redesign
   - Logo
-coverImage: images/Frame-6.jpg
+coverImage: images/Frame-6.avif
 displayCover: true
 ---
 
