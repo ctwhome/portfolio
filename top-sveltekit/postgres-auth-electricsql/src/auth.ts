@@ -15,6 +15,7 @@ interface DbUser {
   email: string;
   password: string;
   name?: string | null;
+  image?: string | null;
 }
 
 export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
@@ -49,7 +50,8 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
             const authUser: CustomUser = {
               id: user.id.toString(),
               email: user.email,
-              name: user.name || null
+              name: user.name || null,
+              image: user.image || null
             };
             return authUser;
           }
@@ -73,6 +75,7 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
       if (customSession.user && token) {
         customSession.user.id = token.id as string;
         customSession.user.email = token.email || null;
+        customSession.user.image = token.picture || null;  // Auth.js stores image URL in picture field
 
         // Get user roles (if none exist, gatekeeper will treat as regular user)
         const roles = await getUserRoles(token.id as string);

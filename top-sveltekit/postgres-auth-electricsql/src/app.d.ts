@@ -5,6 +5,7 @@ interface CustomUser extends Omit<User, 'email'> {
 	id: string;
 	email: string | null | undefined;
 	name?: string | null;
+	image?: string | null;
 	roles?: string[];
 }
 

@@ -15,8 +15,15 @@
 				<img
 					alt="User avatar"
 					class="h-8 w-8 cursor-pointer rounded-full"
-					src={$page.data?.session?.user?.image ?? '/images/avatar.webp'}
+					src={$page.data?.session?.user?.image ?? '/images/profile.avif'}
 					referrerpolicy="no-referrer"
+					on:error={(e: Event) => {
+						if (e.target instanceof HTMLImageElement) {
+							console.error('Image failed to load:', e.target.src);
+							e.target.onerror = null; // Prevent infinite loop
+							e.target.src = '/images/profile.avif';
+						}
+					}}
 				/>
 			</div>
 			<ul tabindex="0" class="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
