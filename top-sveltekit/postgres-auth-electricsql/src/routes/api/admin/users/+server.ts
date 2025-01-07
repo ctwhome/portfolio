@@ -15,7 +15,6 @@ export async function GET({ locals }: RequestEvent) {
   }
 
   try {
-    console.log('Fetching users from database...');
     const result = await pool.query(`
       SELECT
         id,
@@ -26,10 +25,8 @@ export async function GET({ locals }: RequestEvent) {
       ORDER BY id
     `);
 
-    console.log('Users fetched:', result.rows);
     return json(result.rows);
   } catch (err) {
-    console.error('Error fetching users:', err);
     throw error(500, 'Failed to fetch users');
   }
 }

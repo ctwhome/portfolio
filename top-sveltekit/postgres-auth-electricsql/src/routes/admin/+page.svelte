@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import UserCircle from '~icons/heroicons/user-circle';
+	import ShieldCheck from '~icons/heroicons/shield-check';
 
 	interface User {
 		id: number;
@@ -65,7 +66,7 @@
 		</div>
 	{:else}
 		<div class="overflow-x-auto">
-			<table class="table-zebra table w-full">
+			<table class="table w-full">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -80,38 +81,60 @@
 							<td>{user.id}</td>
 							<td class="flex items-center gap-2">
 								<UserCircle class="h-6 w-6" />
-								{user.name || 'No name'}
+								<span class:font-medium={user.roles.includes(Role.ADMIN)}>
+									{user.name || 'No name'}
+								</span>
+								{#if user.roles.includes(Role.ADMIN)}
+									<span class="badge badge-primary badge-sm">Admin</span>
+								{/if}
 							</td>
 							<td>{user.email}</td>
-							<td>
-								<select
-									class="select select-bordered w-full max-w-xs"
-									value={user.roles[0] || Role.USER}
-									on:change={async (e) => {
-										const newRole = e.currentTarget.value;
-										const currentRole = user.roles[0] || 'user';
+							<td class="min-w-[200px]">
+								<div class="flex items-center gap-2">
+									<select
+										class="select w-full max-w-xs {user.roles.includes(Role.ADMIN)
+											? 'select-primary font-medium'
+											: 'select-bordered'}"
+										value={user.roles[0] || Role.USER}
+										on:change={async (e) => {
+											const newRole = e.currentTarget.value;
+											const currentRole = user.roles[0] || 'user';
 
-										try {
-											if (newRole === Role.USER) {
-												// Just remove admin role, no need to add 'user'
-												if (currentRole === Role.ADMIN) {
-													await updateUserRole(user.id, Role.ADMIN, user.roles);
+											try {
+												if (newRole === Role.USER) {
+													// Just remove admin role, no need to add 'user'
+													if (currentRole === Role.ADMIN) {
+														await updateUserRole(user.id, Role.ADMIN, user.roles);
+													}
+												} else {
+													// Adding admin role
+													await updateUserRole(user.id, newRole, []);
 												}
-											} else {
-												// Adding admin role
-												await updateUserRole(user.id, newRole, []);
+											} catch (err) {
+												// Revert select value on error
+												e.currentTarget.value = currentRole;
+												error = err instanceof Error ? err.message : 'Failed to update role';
 											}
-										} catch (err) {
-											// Revert select value on error
-											e.currentTarget.value = currentRole;
-											error = err instanceof Error ? err.message : 'Failed to update role';
-										}
-									}}
-								>
-									{#each availableRoles as role}
-										<option value={role}>{role}</option>
-									{/each}
-								</select>
+										}}
+									>
+										{#each availableRoles as role}
+											<option value={role}>
+												{role}
+											</option>
+										{/each}
+									</select>
+									<div class="flex-shrink-0">
+										{#if user.roles.includes(Role.ADMIN)}
+											<div class="tooltip tooltip-left" data-tip="Admin user">
+												<ShieldCheck class="text-primary h-5 w-5" />
+											</div>
+										{:else}
+											<div class="tooltip tooltip-left" data-tip="Regular user">
+												<UserCircle class="text-base-content/70 h-5 w-5" />
+											</div>
+										{/if}
+									</div>
+								</div>
 							</td>
 						</tr>
 					{/each}
