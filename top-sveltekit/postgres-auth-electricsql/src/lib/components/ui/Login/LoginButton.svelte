@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import LoginForm from './LoginForm.svelte';
+	import { Role } from '$lib/types';
 </script>
 
 <div>
@@ -30,9 +31,14 @@
 				<li class="flex gap-2">
 					<a href="/profile" class="flex items-center gap-2">Profile</a>
 				</li>
-				{#if $page.data.session?.user?.roles?.includes('admin')}
+				{#if $page.data.session?.user?.roles?.includes(Role.ADMIN)}
 					<li class="flex gap-2">
-						<a href="/admin" class="flex items-center gap-2">Admin Panel</a>
+						<a
+							href="/admin"
+							class="text-primary hover:text-primary-focus flex items-center gap-2 font-medium"
+						>
+							<span class="bg-primary/10 rounded-md p-1">Admin Panel</span>
+						</a>
 					</li>
 				{/if}
 				<div class="divider my-0"></div>
