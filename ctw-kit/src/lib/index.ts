@@ -6,6 +6,7 @@ export { default as TiltContent } from './components/TiltContent/TiltContent.sve
 export { default as ThemeChange } from './components/ThemeChange/ThemeChange.svelte';
 export { default as SendEmail } from './components/Emails/SendEmail.svelte';
 export { default as FeedbackButton } from './components/Feedback/FeedbackButton.svelte';
+export { default as Toggle } from './components/Toggle/Toggle.svelte';
 
 // Types
 export type { SiteSettings } from './types/types';
