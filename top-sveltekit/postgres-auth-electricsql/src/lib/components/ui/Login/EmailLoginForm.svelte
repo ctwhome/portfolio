@@ -3,6 +3,7 @@
 	import { signIn } from '@auth/sveltekit/client';
 	import { goto } from '$app/navigation';
 	import { invalidateAll } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	interface SignInResult {
 		ok?: boolean;
@@ -31,7 +32,7 @@
 				email,
 				password,
 				redirect: true,
-				callbackUrl: '/profile'
+				callbackUrl: $page.url.pathname
 			});
 
 			// This code won't run due to redirect, but kept for error cases

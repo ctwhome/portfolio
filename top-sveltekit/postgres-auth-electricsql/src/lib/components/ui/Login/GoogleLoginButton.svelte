@@ -1,11 +1,12 @@
 <script lang="ts">
 	import BiGoogle from '~icons/bi/google';
 	import { signIn } from '@auth/sveltekit/client';
+	import { page } from '$app/stores';
 
 	async function handleGoogleSignIn() {
 		try {
 			await signIn('google', {
-				callbackUrl: '/profile',
+				callbackUrl: $page.url.pathname,
 				redirect: true
 			});
 		} catch (error) {
