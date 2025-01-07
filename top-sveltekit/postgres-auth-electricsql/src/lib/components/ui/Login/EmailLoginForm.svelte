@@ -1,33 +1,30 @@
 <script lang="ts">
 	import PhKeyBold from '~icons/ph/key-bold';
 	import { signIn } from '@auth/sveltekit/client';
-	import { goto } from '$app/navigation';
-	import { invalidateAll } from '$app/navigation';
 	import { page } from '$app/stores';
-
-	interface SignInResult {
-		ok?: boolean;
-		error?: string;
-		url?: string;
-		status?: number;
-	}
+	import { closeLoginModal, getAuthErrorMessage, validateEmail } from './utils';
 
 	let email = $state('');
 	let password = $state('');
 	let error = $state('');
-	let success = $state('');
+	let isLoading = $state(false);
 
 	async function handleEmailSignIn() {
+		error = '';
+		isLoading = true;
+
+		// Validate email
+		const emailError = validateEmail(email);
+		if (emailError) {
+			error = emailError;
+			isLoading = false;
+			return;
+		}
+
 		try {
-			console.log('Attempting sign in with:', { email });
+			// Close modal before redirecting
+			closeLoginModal();
 
-			// Close the modal before sign in
-			const modalCheckbox = document.getElementById('login-modal') as HTMLInputElement;
-			if (modalCheckbox) {
-				modalCheckbox.checked = false;
-			}
-
-			// Let SvelteKit Auth handle the redirect and session update
 			const result = await signIn('credentials', {
 				email,
 				password,
@@ -35,51 +32,65 @@
 				callbackUrl: $page.url.pathname
 			});
 
-			// This code won't run due to redirect, but kept for error cases
 			if (!result?.ok) {
 				error = 'Invalid email or password';
+				isLoading = false;
 				return;
 			}
 		} catch (e) {
-			error = 'An error occurred during sign in';
+			error = getAuthErrorMessage(e);
 			console.error('Sign in error:', e);
+			isLoading = false;
 		}
 	}
 </script>
 
-<form class="rounded-box border-base-300 border p-3" on:submit|preventDefault={handleEmailSignIn}>
-	<div class="form-control">
-		<input
-			bind:value={email}
-			type="email"
-			placeholder="Enter your email"
-			class="input input-bordered"
-			required
-			autocomplete="email"
-		/>
+<form
+	class="rounded-box border-base-300 border p-3"
+	on:submit|preventDefault={handleEmailSignIn}
+	aria-label="Email login form"
+>
+	<div class="space-y-3">
+		<div class="form-control">
+			<label for="email" class="sr-only">Email</label>
+			<input
+				id="email"
+				bind:value={email}
+				type="email"
+				placeholder="Enter your email"
+				class="input input-bordered"
+				required
+				autocomplete="email"
+				disabled={isLoading}
+			/>
+		</div>
+
+		<div class="form-control">
+			<label for="password" class="sr-only">Password</label>
+			<input
+				id="password"
+				bind:value={password}
+				type="password"
+				placeholder="Enter your password"
+				class="input input-bordered"
+				required
+				autocomplete="current-password"
+				disabled={isLoading}
+			/>
+		</div>
+
+		{#if error}
+			<div class="alert alert-error" role="alert">{error}</div>
+		{/if}
+
+		<button
+			type="submit"
+			class="btn btn-outline btn-secondary w-full"
+			disabled={isLoading}
+			aria-busy={isLoading}
+		>
+			<PhKeyBold class="size-5" />
+			{isLoading ? 'Signing in...' : 'Sign in with Email'}
+		</button>
 	</div>
-
-	<div class="form-control mt-3">
-		<input
-			bind:value={password}
-			type="password"
-			placeholder="Enter your password"
-			class="input input-bordered"
-			required
-			autocomplete="current-password"
-		/>
-	</div>
-
-	{#if error}
-		<div class="alert alert-error mt-2">{error}</div>
-	{/if}
-
-	{#if success}
-		<div class="alert alert-success mt-2">{success}</div>
-	{/if}
-
-	<button type="submit" class="btn btn-outline btn-secondary mt-3 w-full">
-		<PhKeyBold class="size-5" />
-		Sign in with Email
-	</button>
 </form>
