@@ -84,6 +84,12 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
         const userData = (await pool.query('SELECT id, role FROM users WHERE id = $1', [user.id])).rows[0];
         token.id = userData.id;
         token.role = userData.role || 'user';
+
+        // Add SurrealDB required fields
+        token.exp = Math.floor(Date.now() / 1000) + (60 * 60 * 24); // 24 hours from now
+        token.ac = 'auth_jwt'; // The name we'll use in DEFINE ACCESS
+        token.ns = 'kit'; // Our namespace
+        token.db = 'surrealdb'; // Our database
       }
       return token;
     },
