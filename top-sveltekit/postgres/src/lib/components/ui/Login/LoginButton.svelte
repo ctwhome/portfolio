@@ -11,11 +11,12 @@
 			<div
 				tabindex="0"
 				role="button"
-				class="hover:bg-base-200 flex h-12 w-12 items-center justify-center rounded-full transition active:scale-95"
+				class="flex h-12 w-12 items-center justify-center rounded-full transition hover:bg-base-200 active:scale-95"
 			>
 				<img
 					alt="User avatar"
-					class="h-8 w-8 cursor-pointer rounded-full"
+					class="size-8 cursor-pointer rounded-full ring-primary ring-offset-2 ring-offset-base-100"
+					class:ring-2={$page.data.session?.user?.roles?.includes(Role.ADMIN)}
 					src={$page.data?.session?.user?.image ?? '/images/profile.avif'}
 					referrerpolicy="no-referrer"
 					on:error={(e: Event) => {
@@ -27,7 +28,7 @@
 					}}
 				/>
 			</div>
-			<ul tabindex="0" class="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
+			<ul tabindex="0" class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
 				<li class="flex gap-2">
 					<a href="/profile" class="flex items-center gap-2">Profile</a>
 				</li>
@@ -35,9 +36,9 @@
 					<li class="flex gap-2">
 						<a
 							href="/admin"
-							class="text-primary hover:text-primary-focus flex items-center gap-2 font-medium"
+							class="hover:text-primary-focus flex items-center gap-2 font-medium text-primary"
 						>
-							<span class="bg-primary/10 rounded-md p-1">Admin Panel</span>
+							<span class="rounded-md bg-primary/10 p-1">Admin Panel</span>
 						</a>
 					</li>
 				{/if}
