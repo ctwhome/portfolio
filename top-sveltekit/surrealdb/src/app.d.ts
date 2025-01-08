@@ -10,9 +10,10 @@ interface CustomUser extends Omit<User, 'email'> {
 	roles?: Role[];  // Use Role enum instead of string[]
 }
 
-// Extend the Session type to include our custom user
+// Extend the Session type to include our custom user and token
 interface CustomSession extends Omit<Session, 'user'> {
 	user: CustomUser;
+	token?: string;  // Add token property for JWT
 }
 
 // Define credentials type for auth
@@ -29,6 +30,9 @@ declare global {
 		}
 		interface PageData {
 			session: CustomSession | null;
+			user?: CustomUser & {
+				token?: string;
+			};
 		}
 		// interface Error {}
 		// interface Platform {}
