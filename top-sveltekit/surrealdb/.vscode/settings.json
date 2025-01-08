@@ -1,5 +1,5 @@
 {
-	"window.title": "📙 Top Sveltekit Posgres - ${activeEditorShort}",
+	"window.title": "🟣 Top Sveltekit Surreal - ${activeEditorShort}",
 	"eslint.workingDirectories": [
 		{
 			"mode": "auto"
