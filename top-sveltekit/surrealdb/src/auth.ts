@@ -16,42 +16,9 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
     strategy: "jwt",
     // maxAge: 30 * 24 * 60 * 60, // 30 days
   },
+  // Use default JWT handling
   jwt: {
-    // Prevent JWT encryption by using pass-through encode/decode
-    encode: ({ token, secret = process.env.AUTH_SECRET }) => {
-      if (!token) return '';
-
-      // Create a standard JWT format with HS256 signing
-      const header = { alg: 'HS256', typ: 'JWT' };
-      const base64Header = Buffer.from(JSON.stringify(header)).toString('base64url');
-      const base64Payload = Buffer.from(JSON.stringify(token)).toString('base64url');
-
-      // Create signature
-      const signature = createHmac('sha256', secret?.toString() || '')
-        .update(`${base64Header}.${base64Payload}`)
-        .digest('base64url');
-
-      return `${base64Header}.${base64Payload}.${signature}`;
-    },
-    decode: async ({ token, secret = process.env.AUTH_SECRET }) => {
-      if (!token) return {};
-      try {
-        const [headerB64, payloadB64, signature] = token.split('.');
-
-        // Verify signature
-        const expectedSignature = createHmac('sha256', secret?.toString() || '')
-          .update(`${headerB64}.${payloadB64}`)
-          .digest('base64url');
-
-        if (signature !== expectedSignature) {
-          throw new Error('Invalid signature');
-        }
-
-        return JSON.parse(Buffer.from(payloadB64, 'base64url').toString());
-      } catch {
-        return {};
-      }
-    },
+    maxAge: 24 * 60 * 60, // 24 hours
   },
   providers: [
     Resend({
@@ -62,18 +29,26 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
     Credentials({
       name: 'Credentials',
       async authorize(credentials) {
-        const { email, password } = credentials as { email: string; password: string };
-        if (!email || !password) return null;
+        try {
+          const { email, password } = credentials as { email: string; password: string };
+          if (!email || !password) return null;
 
-        const user = (await pool.query('SELECT * FROM users WHERE email = $1', [email])).rows[0];
-        if (!user || !await bcrypt.compare(password, user.password)) return null;
+          const user = (await pool.query('SELECT * FROM users WHERE email = $1', [email])).rows[0];
+          if (!user) return null;
 
-        return {
-          id: user.id.toString(),
-          email: user.email,
-          name: user.name || null,
-          image: user.image || null
-        };
+          const isValid = await bcrypt.compare(password, user.password);
+          if (!isValid) return null;
+
+          return {
+            id: user.id.toString(),
+            email: user.email,
+            name: user.name || null,
+            image: user.image || null
+          };
+        } catch (error) {
+          console.error('Credentials authorize error:', error);
+          return null;
+        }
       }
     })
   ],
