@@ -22,24 +22,27 @@
 		}
 
 		try {
+			console.log('Attempting sign in for:', email);
+
+			// Close modal before attempting sign in to prevent UI issues
+			closeLoginModal();
+
 			const result = await signIn('credentials', {
 				email,
 				password,
-				redirect: false // Don't redirect automatically
+				redirect: true,
+				callbackUrl: $page.url.pathname
 			});
 
-			if (!result?.ok) {
-				error = result?.error || 'Invalid email or password';
+			// This code will only run if redirect is prevented
+			if (result && !result.ok) {
+				console.error('Sign in failed:', result);
+				error = result.error || 'Invalid email or password';
 				isLoading = false;
-				return;
 			}
-
-			// Only close modal and redirect on success
-			closeLoginModal();
-			window.location.href = $page.url.pathname;
 		} catch (e) {
+			console.error('Sign in exception:', e);
 			error = getAuthErrorMessage(e);
-			console.error('Sign in error:', e);
 			isLoading = false;
 		}
 	}
