@@ -4,8 +4,7 @@ nixPkgs = [
     'gcc',
     'glib',
     'pkg-config',
-    'vips',
-    'libvips'
+    'vips'
 ]
 
 [phases.install]
