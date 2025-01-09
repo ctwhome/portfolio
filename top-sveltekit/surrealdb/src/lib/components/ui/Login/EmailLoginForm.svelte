@@ -22,21 +22,21 @@
 		}
 
 		try {
-			// Close modal before redirecting
-			closeLoginModal();
-
 			const result = await signIn('credentials', {
 				email,
 				password,
-				redirect: true,
-				callbackUrl: $page.url.pathname
+				redirect: false // Don't redirect automatically
 			});
 
 			if (!result?.ok) {
-				error = 'Invalid email or password';
+				error = result?.error || 'Invalid email or password';
 				isLoading = false;
 				return;
 			}
+
+			// Only close modal and redirect on success
+			closeLoginModal();
+			window.location.href = $page.url.pathname;
 		} catch (e) {
 			error = getAuthErrorMessage(e);
 			console.error('Sign in error:', e);
@@ -46,7 +46,7 @@
 </script>
 
 <form
-	class="rounded-box border-base-300 border p-3"
+	class="rounded-box border border-base-300 p-3"
 	on:submit|preventDefault={handleEmailSignIn}
 	aria-label="Email login form"
 >
