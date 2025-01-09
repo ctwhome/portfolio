@@ -4,11 +4,12 @@ nixPkgs = [
     'gcc',
     'glib',
     'pkg-config',
-    'vips'
+    'vips',
+    'stdenv.cc.cc.lib'
 ]
 
 [phases.install]
-cmds = ['bun install --no-optional']
+cmds = ['bun install --include=optional']
 
 [phases.build]
 cmds = ['bun run build']
