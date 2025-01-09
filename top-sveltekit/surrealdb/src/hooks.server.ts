@@ -4,19 +4,34 @@ import type { Handle } from '@sveltejs/kit';
 import { handleAuth } from "./auth";
 import { protectRoute } from '$lib/server/gatekeeper';
 
-// Handle CORS and auth middleware
+// Handle CORS for auth routes
 const handleCORS: Handle = async ({ event, resolve }) => {
-  // Skip CORS for non-auth routes
+  // Only apply to auth routes
   if (!event.url.pathname.startsWith('/auth')) {
     return resolve(event);
   }
 
-  // Add CORS headers for auth routes
+  // Handle preflight requests
+  if (event.request.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': event.request.headers.get('origin') || '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-auth-return-redirect',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Max-Age': '3600'
+      }
+    });
+  }
+
+  // Handle actual request
   const response = await resolve(event);
-  response.headers.set('Access-Control-Allow-Origin', 'https://top-sveltekit.ctwhome.com');
-  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-  response.headers.set('Access-Control-Allow-Credentials', 'true');
+  const origin = event.request.headers.get('origin');
+  if (origin) {
+    response.headers.set('Access-Control-Allow-Origin', origin);
+    response.headers.set('Access-Control-Allow-Credentials', 'true');
+  }
 
   return response;
 };
