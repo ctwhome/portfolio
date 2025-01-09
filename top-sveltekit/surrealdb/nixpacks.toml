@@ -2,7 +2,6 @@
 nixPkgs = ['bun']
 
 [phases.install]
-aptPkgs = ['libstdc++6', 'build-essential']
 cmds = ['bun install']
 
 [phases.build]
