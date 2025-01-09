@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "start": "bun ./build/index.js",
     "preview": "vite preview",
     "migrate": "bun -r dotenv/config node-pg-migrate --dotenv-path=.env.local",
     "migrate:production": "node-pg-migrate",
