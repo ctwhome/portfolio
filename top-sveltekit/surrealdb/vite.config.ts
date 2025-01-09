@@ -1,25 +1,18 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import { enhancedImages } from '@sveltejs/enhanced-img';
 import Icons from 'unplugin-icons/vite'
-
 import VitePluginRestart from 'vite-plugin-restart';
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
-
-export default defineConfig({
+const config = {
 	plugins: [
-		enhancedImages(),
-
-		VitePluginRestart({ restart: ['./content/**'] }),
-		viteStaticCopy({ targets: [{ src: './src/lib/content/*', dest: './content/' }] }),
-
 		sveltekit(),
 		Icons({
 			compiler: 'svelte',
 		}),
+		VitePluginRestart({ restart: ['./content/**'] }) as any,
+		viteStaticCopy({ targets: [{ src: './src/lib/content/*', dest: './content/' }] }) as any,
 	],
-	// optimizeDeps: {
-	// 	disabled: true,
-	// },
-});
+};
+
+export default defineConfig(config);
