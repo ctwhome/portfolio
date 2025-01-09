@@ -4,7 +4,7 @@ import Credentials from "@auth/sveltekit/providers/credentials";
 import PostgresAdapter from "@auth/pg-adapter";
 import { pool } from "$lib/db/db";
 import type { CustomSession } from "./app";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import Resend from "@auth/sveltekit/providers/resend";
 import { createHmac } from 'crypto';
 
