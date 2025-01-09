@@ -5,13 +5,15 @@ nixPkgs = [
     'glib',
     'pkg-config',
     'vips',
-    'stdenv'
+    'stdenv',
+    'gnused'
 ]
 
 [phases.install]
+aptPkgs = ['libstdc++6', 'build-essential']
 cmds = [
-    'apt-get update && apt-get install -y libstdc++6',
     'bun install --include=optional',
+    'rm -rf node_modules/sharp',
     'bun add sharp@latest --platform=linux --arch=arm64'
 ]
 
