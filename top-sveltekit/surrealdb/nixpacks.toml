@@ -5,11 +5,15 @@ nixPkgs = [
     'glib',
     'pkg-config',
     'vips',
-    'stdenv.cc.cc.lib'
+    'stdenv'
 ]
 
 [phases.install]
-cmds = ['bun install --include=optional']
+cmds = [
+    'apt-get update && apt-get install -y libstdc++6',
+    'bun install --include=optional',
+    'bun add sharp@latest --platform=linux --arch=arm64'
+]
 
 [phases.build]
 cmds = ['bun run build']
