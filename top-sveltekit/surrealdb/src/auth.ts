@@ -9,16 +9,17 @@ import Resend from "@auth/sveltekit/providers/resend";
 import { createHmac } from 'crypto';
 
 export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
-  trustHost: true,
   adapter: PostgresAdapter(pool),
   secret: process.env.AUTH_SECRET,
+  trustHost: true,
+  debug: true, // Enable debug logging
   session: {
     strategy: "jwt",
-    // maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
-  // Use default JWT handling
-  jwt: {
     maxAge: 24 * 60 * 60, // 24 hours
+  },
+  pages: {
+    signIn: '/auth/login',
+    error: '/auth/login', // Error code passed in query string as ?error=
   },
   providers: [
     Resend({
@@ -31,14 +32,24 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
       async authorize(credentials) {
         try {
           const { email, password } = credentials as { email: string; password: string };
-          if (!email || !password) return null;
+          if (!email || !password) {
+            console.log('Missing email or password');
+            return null;
+          }
 
           const user = (await pool.query('SELECT * FROM users WHERE email = $1', [email])).rows[0];
-          if (!user) return null;
+          if (!user) {
+            console.log('User not found:', email);
+            return null;
+          }
 
           const isValid = await bcrypt.compare(password, user.password);
-          if (!isValid) return null;
+          if (!isValid) {
+            console.log('Invalid password for user:', email);
+            return null;
+          }
 
+          console.log('Authentication successful for user:', email);
           return {
             id: user.id.toString(),
             email: user.email,
@@ -55,16 +66,22 @@ export const { handle: handleAuth, signIn, signOut } = SvelteKitAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        // Get user data including role on initial sign in
-        const userData = (await pool.query('SELECT id, role FROM users WHERE id = $1', [user.id])).rows[0];
-        token.id = userData.id;
-        token.role = userData.role || 'user';
+        try {
+          // Get user data including role on initial sign in
+          const userData = (await pool.query('SELECT id, role FROM users WHERE id = $1', [user.id])).rows[0];
+          if (!userData) {
+            console.error('User data not found:', user.id);
+            return token;
+          }
 
-        // Add SurrealDB required fields
-        token.exp = Math.floor(Date.now() / 1000) + (60 * 60 * 24); // 24 hours from now
-        token.ac = 'auth_jwt'; // The name we'll use in DEFINE ACCESS
-        token.ns = 'kit'; // Our namespace
-        token.db = 'surrealdb'; // Our database
+          token.id = userData.id;
+          token.role = userData.role || 'user';
+          token.ac = 'auth_jwt'; // The name we'll use in DEFINE ACCESS
+          token.ns = 'kit'; // Our namespace
+          token.db = 'surrealdb'; // Our database
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
       }
       return token;
     },
