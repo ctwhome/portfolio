@@ -1,21 +1,8 @@
 [phases.setup]
-nixPkgs = [
-    'bun',
-    'gcc',
-    'glib',
-    'pkg-config',
-    'vips',
-    'stdenv',
-    'gnused'
-]
+nixPkgs = ['bun']
 
 [phases.install]
-aptPkgs = ['libstdc++6', 'build-essential']
-cmds = [
-    'bun install --include=optional',
-    'rm -rf node_modules/sharp',
-    'bun add sharp@latest --platform=linux --arch=arm64'
-]
+cmds = ['bun install']
 
 [phases.build]
 cmds = ['bun run build']
