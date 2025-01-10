@@ -6,11 +6,7 @@ A Svelte component for managing SEO meta tags including Open Graph and Twitter c
 
 ```svelte
 <script lang="ts">
-  import { SEO } from 'ctw-kit';
-  import { siteSettings } from './your-settings';
-
-  // All props are optional and will fall back to siteSettings values
-  // Only siteSettings is required
+  import { SEO, type SiteSettings } from 'ctw-kit';
 </script>
 
 <SEO
@@ -20,9 +16,6 @@ A Svelte component for managing SEO meta tags including Open Graph and Twitter c
     image: "/path/to/default-image.jpg",
     baseUrl: "https://your-site.com"
   }}
-  title="Optional Page Title"
-  desc="Optional Page Description"
-  img="/optional-page-image.jpg"
 />
 ```
 

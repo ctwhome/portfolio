@@ -1,11 +1,4 @@
 <script lang="ts">
-  interface $$Props {
-    title?: string;
-    desc?: string;
-    img?: string;
-    siteSettings: SiteSettings;
-  }
-
   interface SiteSettings {
     title: string;
     description: string;
