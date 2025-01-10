@@ -18,7 +18,12 @@ export default defineConfig(({ mode }) => ({
 	plugins: [
 		enhancedImages(),
 
-		VitePluginRestart({ restart: ['./content/**'] }),
+		VitePluginRestart({
+			restart: [
+				'./content/**',
+				'../ctw-kit/src/lib/**/*.svelte'
+			]
+		}),
 		viteStaticCopy({ targets: [{ src: './src/content/*', dest: './content/' }] }),
 
 		sveltekit(),
@@ -27,6 +32,12 @@ export default defineConfig(({ mode }) => ({
 			autoInstall: true,
 		}),
 	],
+	server: {
+		fs: {
+			// Allow serving files from parent directories
+			allow: ['..', '../..']
+		}
+	},
 	// optimizeDeps: {
 	// 	disabled: true,
 	// },
