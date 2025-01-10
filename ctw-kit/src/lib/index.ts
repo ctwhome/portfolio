@@ -9,7 +9,7 @@ export { default as FeedbackButton } from './components/Feedback/FeedbackButton.
 export { default as Toggle } from './components/Toggle/Toggle.svelte';
 
 // Types
-export type { SiteSettings } from './types/types';
+export type { SiteSettings } from './components/SEO/types';
 export type { EmailConfig, SendFeedbackOptions } from './components/Feedback/emailService';
 
 // Utilities

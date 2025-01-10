@@ -1,10 +1,5 @@
 <script lang="ts">
-  interface SiteSettings {
-    title: string;
-    description: string;
-    image: string;
-    baseUrl: string;
-  }
+  import type { SiteSettings } from "./types";
 
   export let siteSettings: SiteSettings;
   export let title = siteSettings.title;
