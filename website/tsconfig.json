@@ -10,11 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler",
-		"types": ["svelte", "unplugin-icons/types/svelte"],
-		"baseUrl": "..",
-		"paths": {
-			"$ctw/*": ["../ctw-kit/src/lib/*"]
-		}
+		"types": ["svelte", "unplugin-icons/types/svelte"]
 	},
 	"include": [
 		".svelte-kit/ambient.d.ts",
