@@ -2,6 +2,9 @@
 
 Custom components and utilities for Svelte and TailwindCSS (DaisyUI)
 
+![image](https://github.com/user-attachments/assets/5075818e-2b37-4db5-a4a5-ebd0a36c6bde)
+
+
 ## Installation
 
 ```bash
