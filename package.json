@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-monorepo",
+  "private": true,
+  "workspaces": [
+    "ctw-kit",
+    "website"
+  ]
+}
