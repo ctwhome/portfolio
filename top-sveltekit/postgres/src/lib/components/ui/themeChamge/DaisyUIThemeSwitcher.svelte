@@ -4,7 +4,6 @@
 	import { themeChange } from 'theme-change';
 
 	let { class: className = undefined } = $props();
-	
 
 	onMount(() => {
 		themeChange(false);
@@ -40,29 +39,29 @@
 		</svg>
 	</div>
 	<div
-		class="z-10 dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl"
+		class="dropdown-content top-px z-10 h-[70vh] max-h-96 w-52 overflow-y-auto rounded-b-box rounded-t-box bg-base-200 text-base-content shadow-2xl"
 	>
 		<div class="grid grid-cols-1 gap-3 p-3" tabIndex="0">
 			{#each themes as theme}
 				<div
-					class="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2"
+					class="overflow-hidden rounded-lg outline outline-2 outline-offset-2 outline-base-content"
 					data-set-theme={theme.id}
 					data-act-class="outline"
 				>
 					<div
 						data-theme={theme.id}
-						class="bg-base-100 text-base-content w-full cursor-pointer font-sans"
+						class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
 					>
 						<div class="grid grid-cols-5 grid-rows-3">
-							<div class="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
+							<div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
 								<div class="flex-grow text-sm font-bold">
 									{theme.id}
 								</div>
 								<div class="flex flex-shrink-0 flex-wrap gap-1">
-									<div class="bg-primary w-2 rounded"></div>
-									<div class="bg-secondary w-2 rounded"></div>
-									<div class="bg-accent w-2 rounded"></div>
-									<div class="bg-neutral w-2 rounded"></div>
+									<div class="w-2 rounded bg-primary"></div>
+									<div class="w-2 rounded bg-secondary"></div>
+									<div class="w-2 rounded bg-accent"></div>
+									<div class="w-2 rounded bg-neutral"></div>
 								</div>
 							</div>
 						</div>

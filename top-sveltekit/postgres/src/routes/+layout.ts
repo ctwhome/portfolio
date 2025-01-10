@@ -1,3 +1,4 @@
-export const prerender = false
+// ssr false will still enable endpoints.
 
+export const prerender = false
 export const ssr = true;
