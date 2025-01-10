@@ -1,4 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from 'daisyui'
+import typography from '@tailwindcss/typography'
+import forms from '@tailwindcss/forms'
+import containerQueries from '@tailwindcss/container-queries'
+
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts,md}'],
 	theme: {
@@ -23,15 +28,14 @@ export default {
 		}
 	},
 	plugins: [
-		require('daisyui'),
-		require('@tailwindcss/typography'),
-		require('@tailwindcss/forms'),
-		require('@tailwindcss/container-queries')
+		daisyui,
+		typography,
+		forms,
+		containerQueries
 	],
 	daisyui: {
 		themes: [
 			{
-
 			ctw: {
 						primary: '#ffb83d',
 						'primary-focus': '#db8b00',
