@@ -96,7 +96,7 @@
 											? 'select-primary font-medium'
 											: 'select-bordered'}"
 										value={user.roles[0] || Role.USER}
-										on:change={async (e) => {
+										onchange={async (e) => {
 											const newRole = e.currentTarget.value;
 											const currentRole = user.roles[0] || 'user';
 
@@ -126,11 +126,11 @@
 									<div class="flex-shrink-0">
 										{#if user.roles.includes(Role.ADMIN)}
 											<div class="tooltip tooltip-left" data-tip="Admin user">
-												<ShieldCheck class="text-primary h-5 w-5" />
+												<ShieldCheck class="h-5 w-5 text-primary" />
 											</div>
 										{:else}
 											<div class="tooltip tooltip-left" data-tip="Regular user">
-												<UserCircle class="text-base-content/70 h-5 w-5" />
+												<UserCircle class="h-5 w-5 text-base-content/70" />
 											</div>
 										{/if}
 									</div>

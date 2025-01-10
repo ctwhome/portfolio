@@ -32,7 +32,7 @@
 				<button
 					type="button"
 					class="link link-primary ml-2"
-					on:click={() => (isRegistering = false)}
+					onclick={(e) => (isRegistering = false)}
 				>
 					Sign in
 				</button>
@@ -41,7 +41,7 @@
 				<button
 					type="button"
 					class="link link-primary ml-2"
-					on:click={() => (isRegistering = true)}
+					onclick={(e) => (isRegistering = true)}
 				>
 					Create one
 				</button>

@@ -5,6 +5,7 @@
 		rel="noopener"
 		href="https://www.linkedin.com/in/ctwhome/"
 		title="LinkedIn"
+		aria-label="Visit my LinkedIn profile"
 	>
 		<svg width="26" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -19,6 +20,7 @@
 		rel="noopener"
 		href="https://www.behance.net/ctwhome"
 		title="Behance"
+		aria-label="Visit my Behance portfolio"
 	>
 		<svg width="26" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -33,6 +35,7 @@
 		rel="noopener"
 		href="https://github.com/ctwhome"
 		title="GitHub"
+		aria-label="Visit my GitHub profile"
 	>
 		<svg width="26" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -47,6 +50,7 @@
 		rel="noopener"
 		href="https://twitter.com/ctwhome"
 		title="X / Twitter"
+		aria-label="Visit my X / Twitter profile"
 	>
 		<svg xmlns="http://www.w3.org/2000/svg" width="28" height="32" viewBox="0 0 24 24">
 			<path
@@ -59,9 +63,9 @@
 
 <style lang="postcss">
 	.rotate-icon {
-		@apply transition transform hover:rotate-12 hover:translate-x-1 focus:scale-y-100;
+		@apply transform transition hover:translate-x-1 hover:rotate-12 focus:scale-y-100;
 	}
 	.scale-icon {
-		@apply transition transform hover:scale-125 focus:scale-90;
+		@apply transform transition hover:scale-125 focus:scale-90;
 	}
 </style>

@@ -82,8 +82,11 @@
 </script>
 
 <form
-	class="rounded-box border-base-300 border p-3"
-	on:submit|preventDefault={handleRegister}
+	class="rounded-box border border-base-300 p-3"
+	onsubmit={(e) => {
+		e.preventDefault();
+		handleRegister();
+	}}
 	aria-label="Registration form"
 >
 	<div class="space-y-3">
