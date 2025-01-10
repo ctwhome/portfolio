@@ -1,12 +1,14 @@
 <script lang="ts">
-	import Hello from '$ctw/components/Hello/Hello.svelte';
-	import Carousel from '$ctw/components/Carousel/Carousel.svelte';
-	import TiltContent from '$ctw/components/TiltContent/TiltContent.svelte';
-	import ThemeChange from '$ctw/components/ThemeChange/ThemeChange.svelte';
-	import SendEmail from '$ctw/components/Emails/SendEmail.svelte';
-	import FeedbackButton from '$ctw/components/Feedback/FeedbackButton.svelte';
-	import SEO from '$ctw/components/SEO/SEO.svelte';
-	import type SiteSettings from '$ctw/components/SEO/SEO.svelte';
+	import {
+		Hello,
+		Carousel,
+		TiltContent,
+		ThemeChange,
+		SendEmail,
+		FeedbackButton,
+		SEO,
+		type SiteSettings
+	} from 'ctw-kit';
 
 	import IconMail from '~icons/ph/envelope-simple-fill';
 	import IconHeart from '~icons/ph/heart-fill';
