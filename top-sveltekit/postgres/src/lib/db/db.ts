@@ -4,7 +4,11 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 export const pool = new Pool({
-  connectionString: env.DATABASE_URL,
+  host: env.DB_HOST,
+  port: Number(env.DB_PORT) || 5432,
+  user: env.DB_USER,
+  password: env.DB_PASSWORD,
+  database: env.DB_NAME,
   ssl: env.DB_SSL === 'true',
   max: Number(env.MAX_CLIENTS) || 20,
   idleTimeoutMillis: Number(env.IDLE_TIMEOUT_MILLIS) || 30000,
@@ -39,13 +43,15 @@ export async function sql(text: string, params?: any[]) {
     const result = await query(text, params);
     return result.rows;
   }
-  catch (error) {
-    console.error('SQL function error:', error.message);
-    console.error('For query:', text);
+  catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('SQL function error:', error.message);
+      console.error('For query:', text);
 
-    if (error.message.includes('not extensible')) {
-      console.error('Object not extensible error. Params:', params);
-      console.error('Query text:', text);
+      if (error.message.includes('not extensible')) {
+        console.error('Object not extensible error. Params:', params);
+        console.error('Query text:', text);
+      }
     }
     throw error; // Re-throw the error to be handled by the caller
   }
