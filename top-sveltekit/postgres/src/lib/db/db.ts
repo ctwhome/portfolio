@@ -1,19 +1,42 @@
-// src/lib/db.ts
-import { env } from "$env/dynamic/private"
+import {
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+  DB_SSL,
+  MAX_CLIENTS,
+  IDLE_TIMEOUT_MILLIS,
+  CONNECTION_TIMEOUT_MILLIS
+} from "$env/static/private"
+import {
+  PUBLIC_DB_HOST,
+  PUBLIC_DB_PORT,
+  PUBLIC_DB_USER,
+  PUBLIC_DB_PASSWORD,
+  PUBLIC_DB_NAME
+} from "$env/static/public"
 import pkg from 'pg';
 const { Pool } = pkg;
+import { dev } from '$app/environment';
 
+
+// Configure database connection based on environment
 export const pool = new Pool({
-  host: env.DB_HOST,
-  port: Number(env.DB_PORT) || 5432,
-  user: env.DB_USER,
-  password: env.DB_PASSWORD,
-  database: env.DB_NAME,
-  ssl: env.DB_SSL === 'true',
-  max: Number(env.MAX_CLIENTS) || 20,
-  idleTimeoutMillis: Number(env.IDLE_TIMEOUT_MILLIS) || 30000,
-  connectionTimeoutMillis: Number(env.CONNECTION_TIMEOUT_MILLIS) || 2000
+  host: dev ? PUBLIC_DB_HOST : DB_HOST,
+  port: dev ? Number(PUBLIC_DB_PORT) : Number(DB_PORT) || 5432,
+  user: dev ? PUBLIC_DB_USER : DB_USER,
+  password: dev ? PUBLIC_DB_PASSWORD : DB_PASSWORD,
+  database: dev ? PUBLIC_DB_NAME : DB_NAME,
+  ssl: dev ? false : DB_SSL === 'true',
+  max: Number(MAX_CLIENTS) || 20,
+  idleTimeoutMillis: Number(IDLE_TIMEOUT_MILLIS) || 30000,
+  connectionTimeoutMillis: Number(CONNECTION_TIMEOUT_MILLIS) || 2000
 });
+
+// Log which environment we're using
+console.log(`Database connected in ${dev ? 'development' : 'production'} mode`);
+
 
 // Utility function to query the database
 export const query = (text: string, params?: any[]) => {
@@ -27,32 +50,3 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
-
-// Utility function to query the database
-// using Parameterized queries, to avoid SQL injection
-// read more here: https://node-postgres.com/features/queries
-/**
- *
- * @param text SQL query
- * @param params Parameters to be passed to the query
- * @param auth Auth object from locals.auth()
- * @returns json response
- */
-export async function sql(text: string, params?: any[]) {
-  try {
-    const result = await query(text, params);
-    return result.rows;
-  }
-  catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error('SQL function error:', error.message);
-      console.error('For query:', text);
-
-      if (error.message.includes('not extensible')) {
-        console.error('Object not extensible error. Params:', params);
-        console.error('Query text:', text);
-      }
-    }
-    throw error; // Re-throw the error to be handled by the caller
-  }
-};

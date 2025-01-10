@@ -7,6 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="manifest" href="%sveltekit.assets%/manifest.json" />
 	<meta name="theme-color" content="#000000" />
+	<script>
+		// Immediately set theme from localStorage to prevent flash
+		document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'ctw');
+	</script>
 	%sveltekit.head%
 </head>
 
