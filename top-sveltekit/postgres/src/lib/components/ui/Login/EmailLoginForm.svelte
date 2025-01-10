@@ -46,8 +46,11 @@
 </script>
 
 <form
-	class="rounded-box border-base-300 border p-3"
-	on:submit|preventDefault={handleEmailSignIn}
+	class="rounded-box border border-base-300 p-3"
+	onsubmit={(e) => {
+		e.preventDefault();
+		handleEmailSignIn();
+	}}
 	aria-label="Email login form"
 >
 	<div class="space-y-3">

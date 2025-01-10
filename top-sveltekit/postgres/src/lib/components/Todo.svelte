@@ -30,7 +30,13 @@
 </script>
 
 <div class="mx-auto w-full max-w-2xl p-4">
-	<form on:submit|preventDefault={handleSubmit} class="mb-6 flex gap-2">
+	<form
+		onsubmit={(e) => {
+			e.preventDefault();
+			handleSubmit();
+		}}
+		class="mb-6 flex gap-2"
+	>
 		<input
 			type="text"
 			bind:value={newTodoTitle}
@@ -61,14 +67,18 @@
 							<input
 								type="checkbox"
 								checked={todo.completed}
-								on:change={() => handleToggle(todo.id, todo.completed)}
+								onchange={() => handleToggle(todo.id, todo.completed)}
 								class="checkbox"
 							/>
 							<span class:line-through={todo.completed}>
 								{todo.title}
 							</span>
 						</div>
-						<button on:click={() => handleDelete(todo.id)} class="btn btn-ghost btn-sm text-error">
+						<button
+							type="button"
+							onclick={() => handleDelete(todo.id)}
+							class="btn btn-ghost btn-sm text-error"
+						>
 							<DeleteIcon class="h-5 w-5" />
 						</button>
 					</div>

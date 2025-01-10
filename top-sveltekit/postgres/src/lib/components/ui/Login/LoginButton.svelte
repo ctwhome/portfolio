@@ -8,9 +8,10 @@
 	<!-- Logged in -->
 	{#if $page.data.session}
 		<div class="dropdown dropdown-end">
-			<div
-				tabindex="0"
-				role="button"
+			<button
+				type="button"
+				aria-haspopup="true"
+				aria-expanded="false"
 				class="flex h-12 w-12 items-center justify-center rounded-full transition hover:bg-base-200 active:scale-95"
 			>
 				<img
@@ -27,8 +28,8 @@
 						}
 					}}
 				/>
-			</div>
-			<ul tabindex="0" class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
+			</button>
+			<ul class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow" role="menu">
 				<li class="flex gap-2">
 					<a href="/profile" class="flex items-center gap-2">Profile</a>
 				</li>

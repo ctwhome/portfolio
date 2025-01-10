@@ -30,7 +30,7 @@
 	<button
 		type="button"
 		class="btn btn-primary w-full"
-		on:click={handleGoogleSignIn}
+		onclick={handleGoogleSignIn}
 		disabled={isLoading}
 		aria-busy={isLoading}
 		aria-label="Sign in with Google"

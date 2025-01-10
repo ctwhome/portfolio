@@ -103,7 +103,13 @@
 
 	<!-- Clickable area to close menu when open -->
 	{#if $isMenuOpen}
-		<div class="z-45 fixed inset-0 sm:hidden" onclick={closeMenu}></div>
+		<button
+			type="button"
+			class="z-45 fixed inset-0 cursor-default bg-transparent sm:hidden"
+			onclick={closeMenu}
+			onkeydown={(e) => e.key === 'Escape' && closeMenu()}
+			aria-label="Close menu"
+		></button>
 	{/if}
 </div>
 

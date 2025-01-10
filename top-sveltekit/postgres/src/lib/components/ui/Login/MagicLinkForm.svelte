@@ -36,7 +36,10 @@
 
 <form
 	class="rounded-box border border-base-300 p-3"
-	on:submit|preventDefault={handleMagicLinkSignIn}
+	onsubmit={(e) => {
+		e.preventDefault();
+		handleMagicLinkSignIn();
+	}}
 >
 	{#if magicLinkSent}
 		<div class="alert alert-success">Magic link sent! Please check your email.</div>
