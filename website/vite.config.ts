@@ -10,9 +10,7 @@ import path from 'path';
 export default defineConfig(({ mode }) => ({
 	resolve: {
 		alias: {
-			'ctw-kit': mode === 'development'
-				? path.resolve(__dirname, '../ctw-kit/src/lib')
-				: 'ctw-kit'
+			'ctw-kit': path.resolve(__dirname, '../ctw-kit/src/lib')
 		}
 	},
 	plugins: [

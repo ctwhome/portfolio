@@ -29,6 +29,12 @@
 	<br />
 	<p>All examples are made with standard HTML API's and Svelte and TailwindCSS (DaisyUI)</p>
 
+	<h2 class="mt-20 text-2xl font-bold">📙Top Svelte Kit</h2>
+	Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
+	<div class="mt-4">
+		<a class="btn" target="_blank" href="https://postgres.ctwhome.com">Postgres Template</a>
+	</div>
+
 	<h2 class="mt-20 text-2xl font-bold">Ctw-kit</h2>
 	Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
 	<span class=" bg-base-200 rounded-lg p-2">
