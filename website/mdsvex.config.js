@@ -10,11 +10,7 @@ export default {
   smartypants: {
     dashes: 'oldschool'
   },
-  layout: {
-    _: "/src/markdown-layouts/default.svelte",
-    // blog: "/src/markdown-layouts/blog.svelte",
-    // project: "/src/markdown-layouts/project.svelte",
-  },
+  layout: false,
   remarkPlugins: [
     videos,
     relativeImages,

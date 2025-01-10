@@ -1,13 +1,13 @@
 <script lang="ts">
-	import {} from // Hello,
-	// Carousel,
-	// TiltContent
-	// ThemeChange,
-	// SendEmail,
-	// FeedbackButton,
-	// SEO
-	'ctw-kit';
-	// import type { SiteSettings } from 'ctw-kit';
+	import Hello from '$ctw/components/Hello/Hello.svelte';
+	import Carousel from '$ctw/components/Carousel/Carousel.svelte';
+	import TiltContent from '$ctw/components/TiltContent/TiltContent.svelte';
+	import ThemeChange from '$ctw/components/ThemeChange/ThemeChange.svelte';
+	import SendEmail from '$ctw/components/Emails/SendEmail.svelte';
+	import FeedbackButton from '$ctw/components/Feedback/FeedbackButton.svelte';
+	import SEO from '$ctw/components/SEO/SEO.svelte';
+	import type SiteSettings from '$ctw/components/SEO/SEO.svelte';
+
 	import IconMail from '~icons/ph/envelope-simple-fill';
 	import IconHeart from '~icons/ph/heart-fill';
 	import IconStar from '~icons/ph/star-fill';
@@ -23,17 +23,17 @@
 		title: 'CTW Kit Demo',
 		description: 'Demo page for CTW Kit components',
 		image: '/favicon.png',
-		baseUrl: 'https://ctw-kit.vercel.app'
+		baseUrl: 'https://ctwhome.com'
 	};
 </script>
 
-<!-- <SEO {siteSettings} /> -->
+<SEO {siteSettings} />
 
 <div class="bg-base-100 min-h-screen p-8">
 	<div class="mx-auto max-w-4xl space-y-8">
 		<div class="flex items-center justify-between">
 			<h1 class="text-3xl font-bold">CTW Kit Component Demo</h1>
-			<!-- <ThemeChange /> -->
+			<ThemeChange />
 		</div>
 
 		<!-- Icons Demo -->
@@ -67,9 +67,9 @@
 			<div class="card-body">
 				<h2 class="card-title mb-4">Hello Component</h2>
 				<div class="space-y-4">
-					<!-- <Hello name="World" /> -->
-					<!-- <Hello name="SvelteKit" /> -->
-					<!-- <Hello name="Developer" /> -->
+					<Hello name="World" />
+					<Hello name="SvelteKit" />
+					<Hello name="Developer" />
 				</div>
 			</div>
 		</div>
@@ -78,31 +78,31 @@
 		<div class="card bg-base-200 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title mb-4">Carousel Component</h2>
-				<!-- <Carousel /> -->
+				<Carousel />
 			</div>
 		</div>
 
 		<!-- TiltContent Component -->
-		<!-- <div class="card bg-base-200 shadow-xl">
+		<div class="card bg-base-200 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title mb-4">TiltContent Component</h2>
 				<div class="grid grid-cols-2 gap-4">
 					<TiltContent>
-						<div class="card bg-primary p-8 text-center text-primary-content">Hover me!</div>
+						<div class="card bg-primary text-primary-content p-8 text-center">Hover me!</div>
 					</TiltContent>
 					<TiltContent>
-						<div class="card bg-secondary p-8 text-center text-secondary-content">Me too!</div>
+						<div class="card bg-secondary text-secondary-content p-8 text-center">Me too!</div>
 					</TiltContent>
 				</div>
 			</div>
-		</div> -->
+		</div>
 
 		<!-- Feedback Component -->
 		<div class="card bg-base-200 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title mb-4">Feedback Component</h2>
 				<div class="flex items-center gap-4">
-					<!-- <FeedbackButton {userInfo} /> -->
+					<FeedbackButton {userInfo} />
 					<p class="text-sm opacity-70">Click to open feedback modal</p>
 				</div>
 			</div>
@@ -112,7 +112,7 @@
 		<div class="card bg-base-200 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title mb-4">SendEmail Component</h2>
-				<!-- <SendEmail /> -->
+				<SendEmail />
 			</div>
 		</div>
 
