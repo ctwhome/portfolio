@@ -20,11 +20,12 @@
 				href={'/work/' +
 					post.slug +
 					(post.metadata?.categories?.[0] ? '?category=' + post.metadata.categories[0] : '')}
-				class="hover:bg-base-200/50 bg-base-200/30 my-4 flex flex-col gap-4 rounded-lg transition"
+				class="my-4 flex flex-col gap-4 rounded-lg bg-base-200/30 transition hover:bg-base-200/50"
 			>
 				<div class="flex-none">
 					{#if post.metadata.coverImage}
 						<img
+							loading="lazy"
 							draggable="false"
 							class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
 							src={post.metadata.coverImage}
