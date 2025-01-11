@@ -1,34 +1,20 @@
-import { posts } from '$content/content';
 import { derived, writable } from 'svelte/store';
-
-// Pre-calculate global categories and tags once
-const globalCategories = Array.from(
-  new Set(posts.flatMap(post => post.metadata?.categories || []))
-).map(name => ({
-  name,
-  count: posts.filter(post => post.metadata?.categories?.includes(name)).length
-}));
-
-const globalTags = Array.from(
-  new Set(posts.flatMap(post => post.metadata?.tags || []))
-).map(name => ({
-  name,
-  count: posts.filter(post => post.metadata?.tags?.includes(name)).length
-}));
+import type { Post } from '$content/content';
 
 function createWorkStore() {
+  const posts = writable<Post[]>([]);
   const activeCategories = writable<string[]>([]);
   const activeTags = writable<string[]>([]);
 
   // Derive filtered posts automatically when filters change
   const filteredPosts = derived(
-    [activeCategories, activeTags],
-    ([$activeCategories, $activeTags]) => {
+    [posts, activeCategories, activeTags],
+    ([$posts, $activeCategories, $activeTags]) => {
       if ($activeCategories.length === 0 && $activeTags.length === 0) {
-        return posts;
+        return $posts;
       }
 
-      return posts.filter(post => {
+      return $posts.filter(post => {
         const matchesCategories = $activeCategories.length === 0 ||
           $activeCategories.some(category => post.metadata?.categories?.includes(category));
 
@@ -40,14 +26,36 @@ function createWorkStore() {
     }
   );
 
-  // Derive hasFilters state
+  // Derive global categories and tags from posts
+  const globalCategories = derived(posts, $posts =>
+    Array.from(
+      new Set($posts.flatMap(post => post.metadata?.categories || []))
+    ).map(name => ({
+      name,
+      count: $posts.filter(post => post.metadata?.categories?.includes(name)).length
+    }))
+  );
+
+  const globalTags = derived(posts, $posts =>
+    Array.from(
+      new Set($posts.flatMap(post => post.metadata?.tags || []))
+    ).map(name => ({
+      name,
+      count: $posts.filter(post => post.metadata?.tags?.includes(name)).length
+    }))
+  );
+
   const hasFilters = derived(
     [activeCategories, activeTags],
     ([$activeCategories, $activeTags]) =>
       $activeCategories.length > 0 || $activeTags.length > 0
   );
 
-  function initializeFilters(categories: string[], tags: string[]) {
+  function setPosts(newPosts: Post[]) {
+    posts.set(newPosts);
+  }
+
+  function setFilters(categories: string[], tags: string[]) {
     activeCategories.set(categories);
     activeTags.set(tags);
   }
@@ -73,28 +81,26 @@ function createWorkStore() {
     activeTags.set([]);
   }
 
-  function getUrlSearchParams($activeCategories: string[], $activeTags: string[]): string {
+  function getSearchParams(categories: string[], tags: string[]): string {
     const params = new URLSearchParams();
-
-    if ($activeCategories.length) params.set('category', $activeCategories.join(','));
-    if ($activeTags.length) params.set('tag', $activeTags.join(','));
-
-    const searchParams = params.toString();
-    return searchParams ? `?${searchParams}` : '';
+    if (categories.length) params.set('category', categories.join(','));
+    if (tags.length) params.set('tag', tags.join(','));
+    return params.toString() ? `?${params.toString()}` : '';
   }
 
   return {
-    activeCategories,
-    activeTags,
+    setPosts,
+    setFilters,
     filteredPosts,
     hasFilters,
     globalCategories,
     globalTags,
-    initializeFilters,
+    activeCategories,
+    activeTags,
     toggleCategory,
     toggleTag,
     clearFilters,
-    getUrlSearchParams
+    getSearchParams
   };
 }
 
