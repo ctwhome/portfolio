@@ -1,33 +1,47 @@
-//
-// This file help to get all the content from the markdown files in the content
-// folder. It is used in the server.ts file in the blog folder to
-// get all the content for pre - rendering.
-//
+export interface PostMetadata {
+  title: string;
+  date: string;
+  description?: string;
+  coverImage?: string | null;
+  categories?: string[];
+  tags?: string[];
+  [key: string]: any;
+}
 
+export interface Post {
+  metadata: PostMetadata;
+  slug: string;
+  prevPost: Post | null;
+  nextPost: Post | null;
+}
 
-// import { get } from "svelte/store"
-const content = import.meta.glob('$content/**/*.md', { eager: true })
-const filtered = [];
+export interface ContentModule {
+  metadata: PostMetadata;
+}
+
+const content: Record<string, ContentModule> = import.meta.glob('$content/**/*.md', { eager: true });
+const filtered: Post[] = [];
 
 for (const path in content) {
-  const { metadata } = content[path];
-  // Assuming that the MDsveX transformed content includes a `.toString()` method to get raw Markdown
-  // If not, you might need to adjust this depending on what `content` actually includes
-  // const markdown = rawContent.toString();
+  const module = content[path] as ContentModule;
+  if (!module || !module.metadata) continue;
 
+  const slug = path.split('/').at(-2) || '';
   filtered.push({
-    metadata,
-    slug: path.split('/').at(-2), // Get folder name as slug
+    metadata: {
+      ...module.metadata,
+      coverImage: module.metadata.coverImage ? `/content/${slug}/${module.metadata.coverImage}` : null
+    },
+    slug, // Get folder name as slug
     prevPost: null, // TODO: Implement
     nextPost: null  // TODO: Implement
   });
 }
 // filter out the TEMPLATE and content folder
-const posts = filtered
+const posts: Post[] = filtered
   .filter(filteredPost => !filteredPost.slug.includes('TEMPLATE'))
   .filter(filteredPost => !filteredPost.slug.includes('content'))
-  .sort((a, b) => new Date(b.metadata.date) - new Date(a.metadata.date));
+  .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
 
 
 export { content, posts }
-
