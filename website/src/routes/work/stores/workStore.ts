@@ -1,134 +1,87 @@
 import { posts } from '$content/content';
 import { derived, writable } from 'svelte/store';
 
+// Pre-calculate global categories and tags once
+const globalCategories = Array.from(
+  new Set(posts.flatMap(post => post.metadata?.categories || []))
+).map(name => ({
+  name,
+  count: posts.filter(post => post.metadata?.categories?.includes(name)).length
+}));
+
+const globalTags = Array.from(
+  new Set(posts.flatMap(post => post.metadata?.tags || []))
+).map(name => ({
+  name,
+  count: posts.filter(post => post.metadata?.tags?.includes(name)).length
+}));
+
 function createWorkStore() {
   const activeCategories = writable<string[]>([]);
   const activeTags = writable<string[]>([]);
-  const filteredPosts = writable(posts);
-  const hasFilters = writable(false);
 
-  // Initialize global categories and tags
-  const globalCategories = posts.reduce((acc, post) => {
-    post.metadata?.categories?.forEach((category: string) => {
-      const existing = acc.find(c => c.name === category);
-      if (existing) {
-        existing.count++;
-      } else {
-        acc.push({ name: category, count: 1 });
+  // Derive filtered posts automatically when filters change
+  const filteredPosts = derived(
+    [activeCategories, activeTags],
+    ([$activeCategories, $activeTags]) => {
+      if ($activeCategories.length === 0 && $activeTags.length === 0) {
+        return posts;
       }
-    });
-    return acc;
-  }, [] as { name: string; count: number }[]);
 
-  const globalTags = posts.reduce((acc, post) => {
-    post.metadata?.tags?.forEach((tag: string) => {
-      const existing = acc.find(t => t.name === tag);
-      if (existing) {
-        existing.count++;
-      } else {
-        acc.push({ name: tag, count: 1 });
-      }
-    });
-    return acc;
-  }, [] as { name: string; count: number }[]);
+      return posts.filter(post => {
+        const matchesCategories = $activeCategories.length === 0 ||
+          $activeCategories.some(category => post.metadata?.categories?.includes(category));
 
-  function setFiltersFromParams(categoryParam: string | null, tagParam: string | null) {
-    activeCategories.set(categoryParam ? categoryParam.split(',') : []);
-    activeTags.set(tagParam ? tagParam.split(',') : []);
-    updateFilteredPosts();
+        const matchesTags = $activeTags.length === 0 ||
+          $activeTags.some(tag => post.metadata?.tags?.includes(tag));
+
+        return matchesCategories && matchesTags;
+      });
+    }
+  );
+
+  // Derive hasFilters state
+  const hasFilters = derived(
+    [activeCategories, activeTags],
+    ([$activeCategories, $activeTags]) =>
+      $activeCategories.length > 0 || $activeTags.length > 0
+  );
+
+  function initializeFilters(categories: string[], tags: string[]) {
+    activeCategories.set(categories);
+    activeTags.set(tags);
   }
 
   function toggleCategory(categoryName: string) {
-    activeCategories.update($activeCategories => {
-      const index = $activeCategories.indexOf(categoryName);
-      if (index === -1) {
-        return [...$activeCategories, categoryName];
-      }
-      return $activeCategories.filter(c => c !== categoryName);
-    });
-    updateFilteredPosts();
+    activeCategories.update($categories =>
+      $categories.includes(categoryName)
+        ? $categories.filter(c => c !== categoryName)
+        : [...$categories, categoryName]
+    );
   }
 
   function toggleTag(tagName: string) {
-    activeTags.update($activeTags => {
-      const index = $activeTags.indexOf(tagName);
-      if (index === -1) {
-        return [...$activeTags, tagName];
-      }
-      return $activeTags.filter(t => t !== tagName);
-    });
-    updateFilteredPosts();
+    activeTags.update($tags =>
+      $tags.includes(tagName)
+        ? $tags.filter(t => t !== tagName)
+        : [...$tags, tagName]
+    );
   }
 
   function clearFilters() {
     activeCategories.set([]);
     activeTags.set([]);
-    hasFilters.set(false);
-    filteredPosts.set(posts);
   }
 
-  const updateFilteredPosts = () => {
-    let currentCategories: string[] = [];
-    let currentTags: string[] = [];
-
-    const unsubscribeCategories = activeCategories.subscribe(value => {
-      currentCategories = value;
-    });
-    const unsubscribeTags = activeTags.subscribe(value => {
-      currentTags = value;
-    });
-
-    hasFilters.set(currentCategories.length > 0 || currentTags.length > 0);
-
-    if (!currentCategories.length && !currentTags.length) {
-      filteredPosts.set(posts);
-      unsubscribeCategories();
-      unsubscribeTags();
-      return;
-    }
-
-    let filtered = posts;
-
-    if (currentCategories.length > 0) {
-      filtered = filtered.filter(({ metadata }) =>
-        metadata?.categories?.some((category: string) => currentCategories.includes(category))
-      );
-    }
-
-    if (currentTags.length > 0) {
-      filtered = filtered.filter(({ metadata }) =>
-        metadata?.tags?.some((tag: string) => currentTags.includes(tag))
-      );
-    }
-
-    filteredPosts.set(filtered);
-    unsubscribeCategories();
-    unsubscribeTags();
-  };
-
-  const getUrlParams = (): URLSearchParams => {
+  function getUrlSearchParams($activeCategories: string[], $activeTags: string[]): string {
     const params = new URLSearchParams();
-    let currentCategories: string[] = [];
-    let currentTags: string[] = [];
 
-    const unsubscribeCategories = activeCategories.subscribe(value => {
-      currentCategories = value;
-    });
-    const unsubscribeTags = activeTags.subscribe(value => {
-      currentTags = value;
-    });
+    if ($activeCategories.length) params.set('category', $activeCategories.join(','));
+    if ($activeTags.length) params.set('tag', $activeTags.join(','));
 
-    if (currentCategories.length > 0) {
-      params.set('category', currentCategories.join(','));
-    }
-    if (currentTags.length > 0) {
-      params.set('tag', currentTags.join(','));
-    }
-
-    unsubscribeCategories();
-    unsubscribeTags();
-    return params;
-  };
+    const searchParams = params.toString();
+    return searchParams ? `?${searchParams}` : '';
+  }
 
   return {
     activeCategories,
@@ -137,11 +90,11 @@ function createWorkStore() {
     hasFilters,
     globalCategories,
     globalTags,
-    setFiltersFromParams,
+    initializeFilters,
     toggleCategory,
     toggleTag,
     clearFilters,
-    getUrlParams
+    getUrlSearchParams
   };
 }
 
