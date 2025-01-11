@@ -72,15 +72,9 @@ function createWorkStore() {
     activeTags.set(tags);
   }
 
-  // Make categories act like tabs - only one active at a time
+  // Set exactly one category active
   function toggleCategory(categoryName: string) {
-    activeCategories.update($categories => {
-      if ($categories.includes(categoryName)) {
-        return []; // Deselect if clicking active category
-      }
-      return [categoryName]; // Select only this category
-    });
-    // Clear tags when changing category
+    activeCategories.set([categoryName]);
     activeTags.set([]);
   }
 
