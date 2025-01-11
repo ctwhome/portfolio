@@ -5,6 +5,7 @@
 	import { workStore } from './stores/workStore';
 	import FiltersPanel from './components/FiltersPanel.svelte';
 	import PostsGrid from './components/PostsGrid.svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
 
@@ -16,12 +17,12 @@
 	const filteredPosts = workStore.filteredPosts;
 	const hasFilters = workStore.hasFilters;
 
-	// Update filters when URL changes
-	$: {
+	// Handle URL parameters only after mounting on client
+	onMount(() => {
 		const categoryParam = $page.url.searchParams.get('category');
 		const tagParam = $page.url.searchParams.get('tag');
 		workStore.setFilters(categoryParam?.split(',') || [], tagParam?.split(',') || []);
-	}
+	});
 
 	// Update URL when filters change (client-side only)
 	$: if (browser) {
