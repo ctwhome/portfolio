@@ -46,6 +46,7 @@
 					<div class="flex-none">
 						{#if post.metadata.coverImage}
 							<img
+								loading="lazy"
 								draggable="false"
 								class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
 								src={post.metadata.coverImage}
