@@ -1,3 +1,15 @@
-// This configuration only prerenders the homepage (/)
-// Other routes need their own prerender configuration if needed
-export const prerender = "auto";
+import type { PageLoad } from './$types';
+
+export const prerender = true;
+
+export const load: PageLoad = async ({ url }) => {
+  const categoryParam = url.searchParams.get('category');
+  const tagParam = url.searchParams.get('tag');
+
+  return {
+    initialFilters: {
+      categories: categoryParam?.split(',') || [],
+      tags: tagParam?.split(',') || []
+    }
+  };
+};

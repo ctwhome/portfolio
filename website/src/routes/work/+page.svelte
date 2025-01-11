@@ -6,27 +6,34 @@
 	import FiltersPanel from './components/FiltersPanel.svelte';
 	import PostsGrid from './components/PostsGrid.svelte';
 
+	export let data;
+
 	const activeCategories = workStore.activeCategories;
 	const activeTags = workStore.activeTags;
 	const filteredPosts = workStore.filteredPosts;
 	const hasFilters = workStore.hasFilters;
 
-	// Handle URL parameters
-	$: if (browser) {
+	// Initialize store with SSR data and update when URL params change
+	$: {
 		const categoryParam = $page.url.searchParams.get('category');
 		const tagParam = $page.url.searchParams.get('tag');
-		workStore.setFiltersFromParams(categoryParam, tagParam);
+		workStore.initializeFilters(categoryParam?.split(',') || [], tagParam?.split(',') || []);
+	}
+
+	// Update URL when filters change (client-side only)
+	$: if (browser) {
+		const currentParams = $page.url.searchParams.toString();
+		const newParams = workStore.getUrlSearchParams($activeCategories, $activeTags);
+		if (currentParams !== newParams.slice(1)) { // slice(1) removes the leading '?'
+			goto(`/work${newParams}`, { replaceState: true });
+		}
 	}
 
 	function clearFilters() {
 		workStore.clearFilters();
-		goto('/work', { replaceState: true });
-	}
-
-	// Update URL when filters change
-	$: if (browser && ($activeCategories.length > 0 || $activeTags.length > 0)) {
-		const params = workStore.getUrlParams();
-		goto(`?${params.toString()}`, { replaceState: true });
+		if (browser) {
+			goto('/work', { replaceState: true });
+		}
 	}
 </script>
 
