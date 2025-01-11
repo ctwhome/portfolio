@@ -8,24 +8,29 @@
 
 	export let data;
 
+	// Initialize store with prerendered posts
+	workStore.setPosts(data.posts);
+
 	const activeCategories = workStore.activeCategories;
 	const activeTags = workStore.activeTags;
 	const filteredPosts = workStore.filteredPosts;
 	const hasFilters = workStore.hasFilters;
 
-	// Initialize store with SSR data and update when URL params change
+	// Update filters when URL changes
 	$: {
 		const categoryParam = $page.url.searchParams.get('category');
 		const tagParam = $page.url.searchParams.get('tag');
-		workStore.initializeFilters(categoryParam?.split(',') || [], tagParam?.split(',') || []);
+		workStore.setFilters(categoryParam?.split(',') || [], tagParam?.split(',') || []);
 	}
 
 	// Update URL when filters change (client-side only)
 	$: if (browser) {
-		const currentParams = $page.url.searchParams.toString();
-		const newParams = workStore.getUrlSearchParams($activeCategories, $activeTags);
-		if (currentParams !== newParams.slice(1)) { // slice(1) removes the leading '?'
-			goto(`/work${newParams}`, { replaceState: true });
+		const searchParams = workStore.getSearchParams($activeCategories, $activeTags);
+		const currentUrl = $page.url.pathname + $page.url.search;
+		const newUrl = `/work${searchParams}`;
+
+		if (currentUrl !== newUrl) {
+			goto(newUrl, { replaceState: true });
 		}
 	}
 
