@@ -183,14 +183,14 @@
 			<sup class="-top-[1.1rem] text-sm opacity-80">({$filteredPosts.length})</sup>
 		</h1>
 		{#if hasFilters}
-			<button on:click={clearFilters} class="btn btn-sm btn-primary">
+			<button on:click={clearFilters} class="btn btn-primary btn-sm">
 				Clear Filers ({$filteredPosts.length})
 			</button>
 		{/if}
 	</div>
 
 	<!-- FILTERS PANEL -->
-	<div class="bg-base-300 mt-10 grid gap-4 rounded-lg bg-opacity-20 p-4 sm:grid-cols-2">
+	<div class="mt-10 grid gap-4 rounded-lg bg-base-300 bg-opacity-20 p-4 sm:grid-cols-2">
 		<div class="flex flex-wrap items-center gap-2">
 			{#each globalCategories as { name, count }}
 				<button
@@ -214,11 +214,11 @@
 				{$activeTags.length ? `${$activeTags.length} selected` : 'Tags'}
 				<div class="badge">{globalTags.length}</div>
 			</div>
-			<ul tabindex="0" class="dropdown-content menu rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
+			<ul tabindex="0" class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
 				{#each globalTags as { name, count }}
 					<li>
 						<button
-							class="hover:bg-base-200 flex justify-between"
+							class="flex justify-between hover:bg-base-200"
 							class:bg-primary={$activeTags.includes(name)}
 							class:text-primary-content={$activeTags.includes(name)}
 							on:click={() => toggleTag(name)}
@@ -244,7 +244,7 @@
 					<a
 						data-sveltekit-preload-data="hover"
 						href={'/work/' + post.slug}
-						class="hover:bg-base-200 bg-base-200 my-4 flex flex-col gap-4 rounded-lg bg-opacity-50 transition hover:bg-opacity-70"
+						class="my-4 flex flex-col gap-4 rounded-lg bg-base-200 bg-opacity-50 transition hover:bg-base-200 hover:bg-opacity-70"
 					>
 						<div class="flex-none">
 							{#if post.metadata.coverImage}
@@ -261,7 +261,7 @@
 								{@html post.metadata.title}
 							</h2>
 							{#if post.metadata.description}
-								<div class="prose sm:leading-auto mt-2 line-clamp-3 text-sm leading-5">
+								<div class="sm:leading-auto prose mt-2 line-clamp-3 text-sm leading-5">
 									{@html post.metadata.description}
 								</div>
 							{/if}
