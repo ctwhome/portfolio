@@ -251,8 +251,7 @@
 								<img
 									draggable="false"
 									class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
-									src={post.metadata.coverImage &&
-										`/content/${post.slug}/${post.metadata.coverImage}`}
+									src={post.metadata.coverImage}
 									alt={post.slug}
 								/>
 							{/if}

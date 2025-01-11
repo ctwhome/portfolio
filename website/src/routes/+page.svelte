@@ -8,8 +8,9 @@
 	import PostsGrid from './LandingPageComponents/PostsGrid.svelte';
 
 	const projectCategories = ['Project', 'Research Project'];
-	const posts = allPosts.filter((post) =>
-		post.metadata.categories?.some((category) => projectCategories.includes(category))
+	const posts = allPosts.filter(
+		(post) =>
+			post.metadata?.categories?.some((category) => projectCategories.includes(category)) ?? false
 	);
 
 	let lastDisplayedYear: number | null = null;
