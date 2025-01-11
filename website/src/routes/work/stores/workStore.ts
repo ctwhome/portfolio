@@ -36,13 +36,25 @@ function createWorkStore() {
     }))
   );
 
-  const globalTags = derived(posts, $posts =>
-    Array.from(
-      new Set($posts.flatMap(post => post.metadata?.tags || []))
-    ).map(name => ({
-      name,
-      count: $posts.filter(post => post.metadata?.tags?.includes(name)).length
-    }))
+  // Update tag counts based on active category
+  const globalTags = derived(
+    [posts, activeCategories],
+    ([$posts, $activeCategories]) => {
+      // Filter posts by active category first
+      const filteredPosts = $activeCategories.length === 0
+        ? $posts
+        : $posts.filter(post =>
+          $activeCategories.some(category => post.metadata?.categories?.includes(category))
+        );
+
+      // Get tags only from filtered posts
+      return Array.from(
+        new Set(filteredPosts.flatMap(post => post.metadata?.tags || []))
+      ).map(name => ({
+        name,
+        count: filteredPosts.filter(post => post.metadata?.tags?.includes(name)).length
+      }));
+    }
   );
 
   const hasFilters = derived(
@@ -60,14 +72,19 @@ function createWorkStore() {
     activeTags.set(tags);
   }
 
+  // Make categories act like tabs - only one active at a time
   function toggleCategory(categoryName: string) {
-    activeCategories.update($categories =>
-      $categories.includes(categoryName)
-        ? $categories.filter(c => c !== categoryName)
-        : [...$categories, categoryName]
-    );
+    activeCategories.update($categories => {
+      if ($categories.includes(categoryName)) {
+        return []; // Deselect if clicking active category
+      }
+      return [categoryName]; // Select only this category
+    });
+    // Clear tags when changing category
+    activeTags.set([]);
   }
 
+  // Tags remain multi-select
   function toggleTag(tagName: string) {
     activeTags.update($tags =>
       $tags.includes(tagName)

@@ -41,22 +41,29 @@
 			goto('/work', { replaceState: true });
 		}
 	}
+
+	// Get page title based on active category
+	$: pageTitle = (() => {
+		const category = $activeCategories[0];
+		switch (category) {
+			case 'Digital Garden':
+				return '🌱 Digital Garden';
+			case 'Blog':
+				return 'Engineering Blog';
+			case 'Project':
+				return 'Projects';
+			case 'Research Project':
+				return 'Research Projects';
+			default:
+				return category || 'All Work';
+		}
+	})();
 </script>
 
 <main class="container mx-auto px-4">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-bold sm:text-4xl">
-			{#if $activeCategories.includes('Blog') || $activeTags.includes('Blog')}
-				Engineering Blog
-			{:else if $activeCategories.includes('Project')}
-				Work Projects
-			{:else if $activeCategories.includes('Digital Garden')}
-				🌱 Digital Garden
-			{:else if $activeTags.length > 0}
-				{$activeTags.filter((tag) => tag !== 'Blog').join(', ')}
-			{:else}
-				All Work
-			{/if}
+			{pageTitle}
 			<sup class="-top-[1.1rem] text-sm opacity-80">({$filteredPosts.length})</sup>
 		</h1>
 		{#if $hasFilters}
