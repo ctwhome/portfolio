@@ -17,12 +17,12 @@
 	const filteredPosts = workStore.filteredPosts;
 	const hasFilters = workStore.hasFilters;
 
-	// Handle URL parameters only after mounting on client
-	onMount(() => {
+	// Update filters whenever URL changes
+	$: if (browser) {
 		const categoryParam = $page.url.searchParams.get('category');
 		const tagParam = $page.url.searchParams.get('tag');
 		workStore.setFilters(categoryParam?.split(',') || [], tagParam?.split(',') || []);
-	});
+	}
 
 	// Update URL when filters change (client-side only)
 	$: if (browser) {
