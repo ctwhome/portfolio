@@ -34,8 +34,13 @@
 <div class="bg-base-100 min-h-screen p-8">
 	<div class="mx-auto max-w-4xl space-y-8">
 		<div class="flex items-center justify-between">
-			<h1 class="text-3xl font-bold">CTW Kit Component Demo</h1>
+			<h1 class="text-3xl font-bold">CTW Kit Component and Utilities Librabry</h1>
 			<ThemeChange />
+		</div>
+
+		<div class=" mt-4">
+			This is a collection of components and utilities for Svelte and TailwindCSS (DaisyUI):
+			<span class="bg-base-200 whitespace-nowrap rounded p-2">bun add ctw-kit</span>
 		</div>
 
 		<!-- Icons Demo -->
