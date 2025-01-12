@@ -26,25 +26,38 @@
 		This is my digital sandbox and toolkit where I sculpt, stitch, and bring pixels to life. Have a
 		play and let me know what you think. I'm always looking for new ways to push the boundaries.
 	</p>
-	<br />
-	<p>All examples are made with standard HTML API's and Svelte and TailwindCSS (DaisyUI)</p>
 
-	<h2 class="mt-20 text-2xl font-bold">📙Top Svelte Kit</h2>
-	Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
-	<div class="mt-4">
-		<a class="btn" target="_blank" href="https://postgres.ctwhome.com">Postgres Template</a>
-	</div>
+	<div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+		<div class="border-base-300 rounded border p-4">
+			<h2 class="text-2xl font-bold">📙 Top Svelte Kit</h2>
+			Full stack SvelteKit template for several databases and frameworks:
+			<div class="mt-4">
+				<a
+					class="btn btn-primary !no-underline"
+					target="_blank"
+					href="https://postgres.ctwhome.com"
+				>
+					Postgres Template
+				</a>
+			</div>
+		</div>
 
-	<h2 class="mt-20 text-2xl font-bold">Ctw-kit</h2>
-	Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
-	<span class=" bg-base-200 rounded-lg p-2">
-		<code class="language-bash">bun add ctw-kit</code>
-	</span>
-	<div class="mt-4">
-		<a class="btn" href="/ctw-kit">Ctw-kit Components</a>
+		<div class="border-base-300 rounded border p-4">
+			<h2 class="text-2xl font-bold">Ctw-kit</h2>
+			Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
+			<span class="bg-base-200 language-bash text-primary whitespace-nowrap rounded-lg p-2">
+				bun add ctw-kit
+			</span>
+			<div class="mt-4">
+				<a class="btn btn-primary !no-underline" href="/ctw-kit">Ctw-kit Components</a>
+			</div>
+		</div>
 	</div>
 
 	<h2 class="mt-20 text-2xl font-bold">Svelte Components</h2>
+	<p class="opacity-80">
+		All examples are made with standard HTML API's and Svelte and TailwindCSS (DaisyUI)
+	</p>
 	<div class="mt-10 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-4">
 		<div class="border-base-300 rounded border p-2">
 			<Carousel />
