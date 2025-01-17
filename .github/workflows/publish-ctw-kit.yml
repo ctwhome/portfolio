@@ -15,10 +15,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: cd ctw-kit && bun install
+        run: cd ctw-kit && bun install && bun add -d semver
 
       - name: Bump version
-        run: cd ctw-kit && bun x npm version patch --no-git-tag-version
+        run: cd ctw-kit && bun run version:patch
 
       - name: Build
         run: cd ctw-kit && bun run build

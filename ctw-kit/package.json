@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "build": "vite build -c vite.lib.config.ts",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "bun run build",
+    "version:patch": "node -e \"import { readFileSync, writeFileSync } from 'fs'; import { inc } from 'semver'; const p = JSON.parse(readFileSync('./package.json')); p.version = inc(p.version, 'patch'); writeFileSync('package.json', JSON.stringify(p,null,2)+'\n')\""
   },
   "peerDependencies": {
     "svelte": "^4.0.0",
