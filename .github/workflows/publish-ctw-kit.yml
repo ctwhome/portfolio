@@ -32,6 +32,9 @@ jobs:
       - name: Bump version
         id: bump-version
         run: |
+          # Temporarily ignore workspaces
+          echo "workspaces=false" > .npmrc
+
           npm version patch --no-git-tag-version
           NEW_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
@@ -43,6 +46,9 @@ jobs:
             echo "Version $NEW_VERSION already exists in npm registry for package $PACKAGE_NAME"
             exit 1
           fi
+
+          # Clean up temporary .npmrc
+          rm .npmrc
 
       - name: Commit version bump
         run: |
