@@ -1,6 +1,6 @@
 {
   "name": "ctw-kit",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "Custom components and utilities for Svelte and TailwindCSS (DaisyUI)",
   "type": "module",
   "main": "./dist/index.js",
