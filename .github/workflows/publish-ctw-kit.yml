@@ -32,10 +32,10 @@ jobs:
       - name: Bump version
         id: bump-version
         run: |
-          # Remove workspace protocol before version bump
-          sed -i 's/"workspace:\*"/"*"/g' package.json
+          # Disable workspace features
+          npm config set workspaces false
 
-          npm version patch --no-git-tag-version
+          npm version patch --no-git-tag-version --no-workspaces
           NEW_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -82,9 +82,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # Remove workspace protocol from package.json
-          sed -i 's/"workspace:\*"/"*"/g' package.json
-          bun install
+          bun install --no-workspace
 
       - name: Build
         run: bun run build
