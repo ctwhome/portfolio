@@ -9,7 +9,8 @@
 	// import { tilt } from '../../stores/tilt.js';
 	// import menuItems from '$lib/models/menu-itmes.js';
 	import logo from '$lib/assets/images/logo.svg';
-	import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
+	import { ThemeChange } from 'ctw-kit';
+	// import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
 	import { onMount } from 'svelte';
 	let active = 'Latest Work';
 
@@ -114,7 +115,7 @@
 				{/each}
 			</div>
 
-			<DaisyUIThemeSwitcher class="z-50 ml-auto sm:ml-14 " />
+			<ThemeChange class="z-50 ml-auto sm:ml-14 " />
 		</header>
 	</div>
 </nav>
