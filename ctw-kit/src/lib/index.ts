@@ -9,9 +9,15 @@ export { default as FeedbackButton } from './components/Feedback/FeedbackButton.
 export { default as Toggle } from './components/Toggle/Toggle.svelte';
 
 // Types
-export type { SiteSettings } from './components/SEO';
-export type { SendFeedbackOptions } from './components/Feedback/emailService';
-export type { ToggleProps } from './components/Toggle';
+export type { SiteSettings } from './components/SEO/types';
+export type { SendFeedbackOptions, EmailService, SendEmailOptions, SendEmailResult } from './components/Feedback/emailService';
+export type { ToggleProps } from './components/Toggle/types';
+export type { GalleryItem, CarouselProps } from './components/Carousel/types';
+export type { EmailFormData, SendEmailProps } from './components/Emails/types';
+export type { UserInfo, BrowserInfo, FeedbackButtonProps, FeedbackResponse } from './components/Feedback/types';
+export type { HelloProps } from './components/Hello/types';
+export type { Theme, ThemeChangeProps } from './components/ThemeChange/types';
+export type { TiltOptions, TiltContentProps, TiltEvents } from './components/TiltContent/types';
 
 // Utilities
 export { sendFeedback } from './components/Feedback/emailService';

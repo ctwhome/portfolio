@@ -1,15 +1,14 @@
 <script lang="ts">
 	import { onMount, createEventDispatcher } from "svelte";
 	import VanillaTilt from "vanilla-tilt";
+	import type { TiltOptions, TiltContentProps, TiltEvents } from "./types";
 
 	let tiltImage: HTMLElement | HTMLElement[];
 
-	let className = undefined; // class is a reserved keyword in JS, with initialization
+	let className: TiltContentProps["class"] = undefined;
 	export { className as class };
 
-	const dispatch = createEventDispatcher<{
-		click: MouseEvent | KeyboardEvent;
-	}>();
+	const dispatch = createEventDispatcher<TiltEvents>();
 
 	function handleClick(event: MouseEvent | KeyboardEvent) {
 		dispatch("click", event);
@@ -23,7 +22,7 @@
 	}
 
 	onMount(async () => {
-		const tiltOtions = {
+		const tiltOtions: TiltOptions = {
 			max: 4,
 			perspective: 1000,
 			scale: 2.05,
