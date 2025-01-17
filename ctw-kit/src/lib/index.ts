@@ -9,8 +9,9 @@ export { default as FeedbackButton } from './components/Feedback/FeedbackButton.
 export { default as Toggle } from './components/Toggle/Toggle.svelte';
 
 // Types
-export type { SiteSettings } from './components/SEO/types';
-export type { EmailConfig, SendFeedbackOptions } from './components/Feedback/emailService';
+export type { SiteSettings } from './components/SEO';
+export type { SendFeedbackOptions } from './components/Feedback/emailService';
+export type { ToggleProps } from './components/Toggle';
 
 // Utilities
 export { sendFeedback } from './components/Feedback/emailService';

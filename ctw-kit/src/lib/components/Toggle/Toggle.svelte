@@ -1,21 +1,17 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+	import { type ToggleProps } from ".";
 
-	interface Props {
-		checked?: boolean;
-		label?: string | undefined;
-		class?: any;
-	}
-
-	export let checked = false;
-	export let label = undefined;
-	export let className = undefined;
+	let {
+		checked = false,
+		label = undefined,
+		className = undefined,
+		onChange,
+	} = $props() as ToggleProps;
 
 	function handleChange(event: Event) {
 		const target = event.target as HTMLInputElement;
 		checked = target.checked;
-		dispatch('change', { checked });
+		onChange?.({ checked });
 	}
 </script>
 
@@ -23,7 +19,12 @@
 	{#if label}
 		<span class="text-sm">{label}</span>
 	{/if}
-	<input type="checkbox" class={'toggle ' + className} {checked} on:change={handleChange} />
+	<input
+		type="checkbox"
+		class={"toggle " + className}
+		{checked}
+		onchange={handleChange}
+	/>
 </label>
 
 <style>
@@ -60,15 +61,8 @@
 	.toggle:hover {
 		background-color: currentColor;
 	}
-	.toggle:checked,
-	.toggle[aria-checked='true'] {
-		background-image: none;
-		--handleoffsetcalculator: var(--handleoffset);
-		--tw-text-opacity: 1;
-		color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
-	}
-	.toggle:checked,
-	.toggle[aria-checked='true'] {
+
+	.toggle:checked {
 		background-image: none;
 		--handleoffsetcalculator: var(--handleoffset);
 		--tw-text-opacity: 1;
@@ -87,10 +81,15 @@
 	.toggle:disabled {
 		cursor: not-allowed;
 		--tw-border-opacity: 1;
-		border-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-border-opacity)));
+		border-color: var(
+			--fallback-bc,
+			oklch(var(--bc) / var(--tw-border-opacity))
+		);
 		background-color: transparent;
 		opacity: 0.3;
-		--togglehandleborder: 0 0 0 3px var(--fallback-bc, oklch(var(--bc) / 1)) inset,
-			var(--handleoffsetcalculator) 0 0 3px var(--fallback-bc, oklch(var(--bc) / 1)) inset;
+		--togglehandleborder: 0 0 0 3px var(--fallback-bc, oklch(var(--bc) / 1))
+				inset,
+			var(--handleoffsetcalculator) 0 0 3px
+				var(--fallback-bc, oklch(var(--bc) / 1)) inset;
 	}
 </style>

@@ -7,6 +7,7 @@
 		SendEmail,
 		FeedbackButton,
 		SEO,
+		Toggle,
 		type SiteSettings
 	} from 'ctw-kit';
 
@@ -43,6 +44,51 @@
 			<span class="bg-base-200 whitespace-nowrap rounded p-2">bun add ctw-kit</span>
 		</div>
 
+		<!-- Toggle Component -->
+		<div class="card bg-base-200 shadow-xl">
+			<div class="card-body">
+				<h2 class="card-title mb-4">Toggle Component</h2>
+				<div class="space-y-4">
+					<div class="flex gap-4">
+						<div>
+							<p class="mb-2 text-sm font-medium">Basic Toggle:</p>
+							<Toggle />
+						</div>
+
+						<div>
+							<p class="mb-2 text-sm font-medium">Toggle with Label:</p>
+							<Toggle label="Enable notifications" />
+						</div>
+
+						<div>
+							<p class="mb-2 text-sm font-medium">Controlled Toggle:</p>
+							<Toggle
+								checked={true}
+								onChange={(event: { checked: boolean }) => {
+									console.log('Toggle changed:', event.checked);
+								}}
+							/>
+						</div>
+
+						<div>
+							<p class="mb-2 text-sm font-medium">Custom Styled Toggle:</p>
+							<Toggle className="toggle-primary" label="Primary color" />
+						</div>
+					</div>
+
+					<div class="mt-4 text-sm opacity-70">
+						<p>Usage example:</p>
+						<pre class="bg-base-300 mt-1 rounded p-2">{`<Toggle
+  checked={true}
+  label="Enable notifications"
+  className="toggle-primary"
+  onChange={(event: { checked: boolean }) => console.log('Toggle changed:', event.checked)}
+/>`}</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Icons Demo -->
 		<div class="card bg-base-200 shadow-xl">
 			<div class="card-body">
@@ -75,8 +121,6 @@
 				<h2 class="card-title mb-4">Hello Component</h2>
 				<div class="space-y-4">
 					<Hello name="World" />
-					<Hello name="SvelteKit" />
-					<Hello name="Developer" />
 				</div>
 			</div>
 		</div>
