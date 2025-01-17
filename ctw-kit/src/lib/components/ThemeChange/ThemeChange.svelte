@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import themes from "./themes.json";
-	import { themeChange } from "theme-change";
 	import type { Theme, ThemeChangeProps } from "./types";
 
 	let className: ThemeChangeProps["class"] = undefined;
@@ -9,8 +8,16 @@
 
 	const themes_data: Theme[] = themes;
 
+	function setTheme(themeId: string) {
+		document.documentElement.setAttribute("data-theme", themeId);
+		localStorage.setItem("theme", themeId);
+	}
+
 	onMount(() => {
-		themeChange(false);
+		const savedTheme = localStorage.getItem("theme");
+		if (savedTheme) {
+			setTheme(savedTheme);
+		}
 	});
 </script>
 
@@ -55,6 +62,10 @@
 					<div
 						data-theme={theme.id}
 						class="bg-base-100 text-base-content w-full cursor-pointer font-sans"
+						on:click={() => setTheme(theme.id)}
+						on:keydown={(e) => e.key === "Enter" && setTheme(theme.id)}
+						role="button"
+						tabindex="0"
 					>
 						<div class="grid grid-cols-5 grid-rows-3">
 							<div
