@@ -1,4 +1,5 @@
 # CTW Monorepo
+[![ctw-kit](https://github.com/ctwhome/portfolio/actions/workflows/publish-ctw-kit.yml/badge.svg?branch=main)](https://github.com/ctwhome/portfolio/actions/workflows/publish-ctw-kit.yml)
 
 This monorepo contains multiple projects built with SvelteKit and modern web technologies, including a component library, project templates, and a portfolio website.
 
