@@ -26,7 +26,7 @@
 		const tiltOtions = {
 			max: 4,
 			perspective: 1000,
-			scale: 1.05,
+			scale: 2.05,
 			speed: 1000,
 			transition: true,
 			axis: null,
