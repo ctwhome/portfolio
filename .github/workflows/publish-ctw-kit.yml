@@ -32,10 +32,11 @@ jobs:
       - name: Bump version
         id: bump-version
         run: |
-          # Temporarily ignore workspaces
-          echo "workspaces=false" > .npmrc
-
-          npm version patch --no-git-tag-version
+          # Temporarily rename root package.json
+          cd ../ && mv package.json package.json.bak
+          cd ctw-kit && npm version patch --no-git-tag-version
+          cd ../ && mv package.json.bak package.json
+          cd ctw-kit
           NEW_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
           echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
@@ -46,9 +47,6 @@ jobs:
             echo "Version $NEW_VERSION already exists in npm registry for package $PACKAGE_NAME"
             exit 1
           fi
-
-          # Clean up temporary .npmrc
-          rm .npmrc
 
       - name: Commit version bump
         run: |
@@ -99,11 +97,31 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          if ! npm publish --access public 2>&1 | grep -q "EOTP"; then
-            echo "Package published successfully"
-          else
+          # Temporarily rename root package.json
+          cd ../ && mv package.json package.json.bak
+          cd ctw-kit
+
+          # Publish and capture output
+          OUTPUT=$(npm publish --access public 2>&1)
+          PUBLISH_STATUS=$?
+
+          # Always restore package.json
+          cd ../ && mv package.json.bak package.json
+          cd ctw-kit
+
+          # Check for 2FA error
+          if echo "$OUTPUT" | grep -q "EOTP"; then
             echo "Error: npm requires 2FA. Please check your npm account settings:"
             echo "1. Go to npmjs.com → Profile Settings → Authentication & Authorization"
             echo "2. Under 'Two-Factor Authentication', ensure it's not set to 'Required for all operations'"
+            exit 1
+          fi
+
+          # Check general publish status
+          if [ $PUBLISH_STATUS -eq 0 ]; then
+            echo "Package published successfully"
+          else
+            echo "Failed to publish package:"
+            echo "$OUTPUT"
             exit 1
           fi
