@@ -32,22 +32,17 @@ jobs:
       - name: Bump version
         id: bump-version
         run: |
-          # Temporarily rename root package.json
-          cd ../ && mv package.json package.json.bak
-          cd ctw-kit && npm version patch --no-git-tag-version
-          cd ../ && mv package.json.bak package.json
-          cd ctw-kit
+          npm version patch --no-git-tag-version
           NEW_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
-          echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
-          echo "name=${PACKAGE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "name=$PACKAGE_NAME" >> $GITHUB_OUTPUT
 
           # Check if new version already exists
           if npm view $PACKAGE_NAME@$NEW_VERSION version >/dev/null 2>&1; then
             echo "Version $NEW_VERSION already exists in npm registry for package $PACKAGE_NAME"
             exit 1
           fi
-
 
       - name: Commit version bump
         run: |
@@ -67,22 +62,16 @@ jobs:
             exit 1
           fi
 
-      - name: Setup GitHub CLI
-        run: |
-          type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-          && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-          && sudo apt update \
-          && sudo apt install gh -y
-
       - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          gh release create ${{ steps.bump-version.outputs.new_version }} \
-            --title "Release ${{ steps.bump-version.outputs.new_version }}" \
-            --generate-notes
+        with:
+          tag_name: ${{ steps.bump-version.outputs.new_version }}
+          release_name: Release ${{ steps.bump-version.outputs.new_version }}
+          draft: false
+          prerelease: false
 
       - uses: oven-sh/setup-bun@v1
         with:
@@ -98,31 +87,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # Temporarily rename root package.json
-          cd ../ && mv package.json package.json.bak
-          cd ctw-kit
-
-          # Publish and capture output
-          OUTPUT=$(npm publish --access public 2>&1)
-          PUBLISH_STATUS=$?
-
-          # Always restore package.json
-          cd ../ && mv package.json.bak package.json
-          cd ctw-kit
-
-          # Check for 2FA error
-          if echo "$OUTPUT" | grep -q "EOTP"; then
+          if ! npm publish --access public 2>&1 | grep -q "EOTP"; then
+            echo "Package published successfully"
+          else
             echo "Error: npm requires 2FA. Please check your npm account settings:"
             echo "1. Go to npmjs.com → Profile Settings → Authentication & Authorization"
             echo "2. Under 'Two-Factor Authentication', ensure it's not set to 'Required for all operations'"
-            exit 1
-          fi
-
-          # Check general publish status
-          if [ $PUBLISH_STATUS -eq 0 ]; then
-            echo "Package published successfully"
-          else
-            echo "Failed to publish package:"
-            echo "$OUTPUT"
             exit 1
           fi
