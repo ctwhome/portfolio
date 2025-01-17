@@ -32,10 +32,13 @@ jobs:
       - name: Bump version
         id: bump-version
         run: |
-          # Disable workspace features
-          npm config set workspaces false
+          # Temporarily modify root package.json to remove workspace config
+          cd ..
+          cp package.json package.json.backup
+          jq 'del(.workspaces)' package.json > temp.json && mv temp.json package.json
+          cd ctw-kit
 
-          npm version patch --no-git-tag-version --no-workspaces
+          npm version patch --no-git-tag-version
           NEW_VERSION=$(node -p "require('./package.json').version")
           PACKAGE_NAME=$(node -p "require('./package.json').name")
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -49,6 +52,11 @@ jobs:
 
       - name: Commit version bump
         run: |
+          # Restore root package.json
+          cd ..
+          mv package.json.backup package.json
+          cd ctw-kit
+
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add package.json
@@ -82,7 +90,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          bun install --no-workspace
+          cd ..
+          cp package.json package.json.backup
+          jq 'del(.workspaces)' package.json > temp.json && mv temp.json package.json
+          cd ctw-kit
+
+          bun install
+
+          # Restore root package.json
+          cd ..
+          mv package.json.backup package.json
+          cd ctw-kit
 
       - name: Build
         run: bun run build
