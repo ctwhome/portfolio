@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import toast from "svelte-french-toast";
-	import { sendFeedback, type EmailConfig } from "./emailService";
+	import { sendFeedback, type EmailService } from "./emailService";
+	import type {
+		UserInfo,
+		BrowserInfo,
+		FeedbackButtonProps,
+		FeedbackResponse,
+	} from "./types";
 
 	export let showButton = true;
-	export let userInfo: {
-		id?: string;
-		name?: string;
-		email?: string;
-		photoURL?: string;
-	} | null = null;
-	export let emailConfig: EmailConfig;
+	export let userInfo: UserInfo | null = null;
+	export let emailService: EmailService;
+	export let from: string;
+	export let to: string;
 
 	let textarea: HTMLTextAreaElement;
 	let modal: HTMLDialogElement;
@@ -63,7 +66,7 @@
 		return { browser, os };
 	}
 
-	function getBrowserInfo() {
+	function getBrowserInfo(): BrowserInfo {
 		const { browser, os } = parseUserAgent(navigator.userAgent);
 		return {
 			browser,
@@ -118,7 +121,12 @@
 		const loadingToast = toast.loading("Sending feedback...");
 
 		try {
-			const result = await sendFeedback({ emailContent, config: emailConfig });
+			const result = await sendFeedback({
+				emailContent,
+				emailService,
+				from,
+				to,
+			});
 
 			if (result.success) {
 				toast.success("Feedback sent successfully", {

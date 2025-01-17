@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
 	import { fade } from "svelte/transition";
+	import type { GalleryItem, CarouselProps } from "./types";
 
-	const gallery_items = [
+	export let items: GalleryItem[] = [
 		{
 			url: "https://picsum.photos/id/237/400/300",
 			description: "Dog",
@@ -16,17 +17,17 @@
 		},
 	];
 
-	let currentSlideItem = 0;
+	let currentSlideItem = 0; // Initialize as number directly since we know it's always defined
 
 	const nextImage = () => {
-		currentSlideItem = (currentSlideItem + 1) % gallery_items.length;
+		currentSlideItem = (currentSlideItem + 1) % items.length;
 	};
 
 	const prevImage = () => {
 		if (currentSlideItem != 0) {
-			currentSlideItem = (currentSlideItem - 1) % gallery_items.length;
+			currentSlideItem = (currentSlideItem - 1) % items.length;
 		} else {
-			currentSlideItem = gallery_items.length - 1;
+			currentSlideItem = items.length - 1;
 		}
 	};
 </script>
@@ -34,7 +35,7 @@
 <div>
 	<h3 class="text-xl mt-3">Image Carousel</h3>
 	<div class="relative">
-		{#each [gallery_items[currentSlideItem]] as item (currentSlideItem)}
+		{#each [items[currentSlideItem]] as item (currentSlideItem)}
 			<img
 				in:fade
 				src={item.url}
@@ -59,7 +60,7 @@
 		</button>
 	</div>
 	<div class="carousel-buttons flex gap-1 mt-2">
-		{#each gallery_items as item, i (i)}
+		{#each items as item, i (i)}
 			<button
 				class="p-0 {currentSlideItem === i ? 'ring-2 ring-primary' : ''}"
 				on:click={() => (currentSlideItem = i)}

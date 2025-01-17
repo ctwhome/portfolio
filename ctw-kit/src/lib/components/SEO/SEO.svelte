@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type SiteSettings } from ".";
+  import type { SiteSettings } from "./types.js";
 
   export let siteSettings: SiteSettings;
   export let title = siteSettings.title;

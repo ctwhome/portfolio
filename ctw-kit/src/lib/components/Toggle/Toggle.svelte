@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type ToggleProps } from ".";
+	import type { ToggleProps } from "./types.js";
 
 	let {
 		checked = false,

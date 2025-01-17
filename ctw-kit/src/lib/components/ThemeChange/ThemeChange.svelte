@@ -1,17 +1,20 @@
-<script>
-	import { onMount } from 'svelte';
-	import themes from './themes.json';
-	import { themeChange } from 'theme-change';
+<script lang="ts">
+	import { onMount } from "svelte";
+	import themes from "./themes.json";
+	import { themeChange } from "theme-change";
+	import type { Theme, ThemeChangeProps } from "./types";
 
-	let className = undefined; // class is a reserved keyword in JS, with initialization
+	let className: ThemeChangeProps["class"] = undefined;
 	export { className as class };
+
+	const themes_data: Theme[] = themes;
 
 	onMount(() => {
 		themeChange(false);
 	});
 </script>
 
-<div title="Change Theme" class={'dropdown dropdown-end flex-none' + className}>
+<div title="Change Theme" class={"dropdown dropdown-end flex-none" + className}>
 	<div tabIndex="0" class="btn gap-1 normal-case">
 		<svg
 			width="20"
@@ -43,7 +46,7 @@
 		class="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px z-10 h-[70vh] max-h-96 w-52 overflow-y-auto shadow-2xl"
 	>
 		<div class="grid grid-cols-1 gap-3 p-3" tabIndex="0">
-			{#each themes as theme}
+			{#each themes_data as theme}
 				<div
 					class="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2"
 					data-set-theme={theme.id}
@@ -54,7 +57,9 @@
 						class="bg-base-100 text-base-content w-full cursor-pointer font-sans"
 					>
 						<div class="grid grid-cols-5 grid-rows-3">
-							<div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
+							<div
+								class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3"
+							>
 								<div class="flex-grow text-sm font-bold">
 									{theme.id}
 								</div>
