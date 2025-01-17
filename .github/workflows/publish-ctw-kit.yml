@@ -48,6 +48,7 @@ jobs:
             exit 1
           fi
 
+
       - name: Commit version bump
         run: |
           git config --local user.email "action@github.com"
