@@ -31,11 +31,13 @@
 </script>
 
 <svelte:head></svelte:head>
-<div class="first-fold sm:pt-6">
+<div class="first-fold animate-fade-in sm:pt-6">
 	<div class="m-auto max-w-screen-xl px-6">
 		<div class="grid gap-20 sm:grid-cols-2">
-			<div class="flex flex-col gap-10 sm:mt-5 sm:gap-10">
-				<p class="order-2 text-2xl sm:order-1 sm:text-3xl lg:text-5xl">
+			<div class="animate-slide-up flex flex-col gap-10 sm:mt-5 sm:gap-10">
+				<p
+					class="hover:glow-text order-2 text-2xl transition-all duration-300 sm:order-1 sm:text-3xl lg:text-5xl"
+				>
 					I create experiences weaving strong <span class="ctw-text-gradient font-serif font-bold">
 						design aesthetics
 					</span>
@@ -66,11 +68,11 @@
 		</div>
 	</div>
 
-	<div class="container mx-auto -mt-6 px-4 sm:mt-16 xl:mt-20">
+	<div class="animate-fade-in-up container mx-auto -mt-6 px-4 sm:mt-16 xl:mt-20">
 		<h2
-			class="font-title text-center text-[5rem] font-bold leading-[3.5rem]
-						 sm:text-[6rem] sm:leading-[3.8rem] lg:text-[9rem] lg:leading-[6rem] xl:text-[12rem]
-						 xl:leading-[8rem] 2xl:text-[15rem] 2xl:leading-[10rem]"
+			class="font-title glow-text-strong text-center text-[5rem] font-bold leading-[3.5rem]
+						 transition-transform duration-700 sm:text-[6rem] sm:leading-[3.8rem]
+						 lg:text-[9rem] lg:leading-[6rem] xl:text-[12rem] xl:leading-[8rem] 2xl:text-[15rem] 2xl:leading-[10rem]"
 		>
 			Take my <span class="line-through opacity-40">word</span>
 			<span class="ctw-text-gradient font-black">WORK</span>
@@ -78,8 +80,12 @@
 		</h2>
 	</div>
 
-	<div class="container mx-auto mt-6 px-4 sm:mt-12 lg:mt-32">
-		<h2 class="mb-8 mt-20 text-4xl font-bold opacity-60 sm:mt-28">Apps</h2>
+	<div class="animate-fade-in-delayed container mx-auto mt-6 px-4 sm:mt-12 lg:mt-32">
+		<h2
+			class="hover:glow-text mb-8 mt-20 text-4xl font-bold opacity-60 transition-all duration-300 sm:mt-28"
+		>
+			Apps
+		</h2>
 		<MyApps />
 
 		<h2 class="mb-4 mt-20 text-4xl font-bold opacity-60">Projects</h2>
@@ -92,33 +98,91 @@
 </div>
 
 <style>
-	.glow {
-		transition: text-shadow 200ms ease;
-		text-shadow: 0px 0px 4px white;
+	@keyframes glow-pulse {
+		0%,
+		100% {
+			text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+		}
+		50% {
+			text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+		}
 	}
 
-	.glow:hover {
-		text-shadow: 0px 0px 4px white;
+	.glow-text {
+		text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+	}
+
+	.glow-text:hover {
+		text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+	}
+
+	.glow-text-strong {
+		animation: glow-pulse 3s infinite;
+		text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes slide-up {
+		from {
+			transform: translateY(20px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	.animate-fade-in {
+		animation: fade-in 1s ease-out;
+	}
+
+	.animate-slide-up {
+		animation: slide-up 1s ease-out;
+	}
+
+	.animate-fade-in-up {
+		animation: slide-up 1.2s ease-out;
+	}
+
+	.animate-fade-in-delayed {
+		animation: fade-in 1s ease-out 0.5s both;
 	}
 
 	.ctw-text-gradient {
-		background: -webkit-linear-gradient(
-			110deg,
-			/*#456563 24.71%,*/ /*#5A877E 37.34%,*/ #fdc343 51.57%,
-			#e99877 67.46% /*#A4574E 85.7%*/
-		);
+		background: -webkit-linear-gradient(110deg, #fdc343 51.57%, #e99877 67.46%, #fdc343 85.7%);
+		background-size: 200% auto;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		animation: gradient-shift 4s ease infinite;
+	}
+
+	@keyframes gradient-shift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
 	.ctw-text-gradient-green {
-		background: -webkit-linear-gradient(
-			110deg,
-			/*#456563 24.71%,*/ #5a877e 37.34%,
-			/*#FDC343 51.57%,*/ #e99877 67.46% /*#A4574E 85.7%*/
-		);
+		background: -webkit-linear-gradient(110deg, #5a877e 37.34%, #e99877 67.46%, #5a877e 97.46%);
+		background-size: 200% auto;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		animation: gradient-shift 4s ease infinite;
 	}
 
 	.ctw-logo {
