@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Post } from '$content/content';
+	import { animateOnScroll } from '$lib/actions/animate-on-scroll';
 	export let posts: Post[];
 	export let shouldDisplayYear: (year: number) => boolean;
 </script>
@@ -7,9 +8,9 @@
 <div
 	class="grid grid-cols-2 gap-x-4 gap-y-2 px-4 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-12"
 >
-	{#each posts as post}
+	{#each posts as post, i}
 		{@const currentYear = new Date(post.metadata?.date || new Date()).getUTCFullYear()}
-		<div class="grid grid-rows-[3.5rem_1fr]">
+		<div class="grid grid-rows-[3.5rem_1fr] will-change-transform" use:animateOnScroll>
 			<h2 class="mt-8 text-xl font-bold opacity-60">
 				{#if shouldDisplayYear(currentYear)}
 					{currentYear}
@@ -20,14 +21,14 @@
 				href={'/work/' +
 					post.slug +
 					(post.metadata?.categories?.[0] ? '?category=' + post.metadata.categories[0] : '')}
-				class="my-4 flex flex-col gap-4 rounded-lg bg-base-200/30 transition hover:bg-base-200/50"
+				class="bg-base-200/30 hover:bg-base-200/50 my-4 flex flex-col gap-4 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
 			>
-				<div class="flex-none">
+				<div class="flex-none overflow-hidden rounded-lg rounded-b-none">
 					{#if post.metadata.coverImage}
 						<img
 							loading="lazy"
 							draggable="false"
-							class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
+							class="aspect-[5/3] w-full object-cover transition-transform duration-700 hover:scale-110"
 							src={post.metadata.coverImage}
 							alt={post.slug}
 						/>
@@ -52,3 +53,10 @@
 		</div>
 	{/each}
 </div>
+
+<style>
+	/* Smooth image zoom animation */
+	.overflow-hidden {
+		transition: transform 0.3s ease-in-out;
+	}
+</style>
