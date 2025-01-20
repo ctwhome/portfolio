@@ -3,7 +3,7 @@
 
 	const MEASUREMENT_ID = 'G-DHQ2TX1XM1';
 	$: {
-		if (typeof gtag !== 'undefined') {
+		if (typeof gtag !== 'undefined' && $page?.url?.pathname) {
 			gtag('config', 'G-DHQ2TX1XM1', {
 				page_title: document.title,
 				page_path: $page.url.pathname

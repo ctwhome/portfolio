@@ -5,39 +5,102 @@
 	import Briefcase from '~icons/lucide/briefcase';
 	import Wallet from '~icons/lucide/wallet';
 	import Users from '~icons/lucide/users';
+	import Brain from '~icons/lucide/brain';
+	import Workflow from '~icons/lucide/git-branch';
 </script>
 
-<div class="from-base-300 via-base-200 to-base-100 min-h-screen bg-gradient-to-b">
+<div class="min-h-screen">
 	<!-- Hero Section -->
-	<section class="hero min-h-[60vh] bg-gradient-to-r backdrop-blur">
-		<div class="hero-content text-center">
-			<div class="max-w-3xl">
-				<h1
-					class="from-primary to-secondary animate-gradient mb-8 bg-gradient-to-r bg-clip-text text-5xl font-bold text-transparent"
+	<div class="animate-fade-in container mx-auto -mt-6 px-4 sm:mt-16 xl:mt-20">
+		<h1
+			class="font-title glow-text-strong text-center text-[5rem] font-bold leading-[3.5rem]
+						 transition-transform duration-700 sm:text-[6rem] sm:leading-[3.8rem]
+						 lg:text-[9rem] lg:leading-[6rem] xl:text-[12rem] xl:leading-[8rem] 2xl:text-[15rem] 2xl:leading-[10rem]"
+		>
+			<span class="ctw-text-gradient font-black">Enterprise</span>
+			Quality,
+			<br />
+			<span class="ctw-text-gradient-green font-black">Boutique</span>
+			Pricing
+		</h1>
+		<p class="mt-8 text-center text-xl opacity-80">
+			With 15 years of experience delivering full-stack applications from concept to production
+			using cutting-edge technologies like SvelteKit, ThreeJS, and BabylonJS, I offer the same
+			quality as large agencies but without the overhead costs. Get enterprise-grade solutions at
+			boutique prices, backed by AI expertise and proven methodologies.
+		</p>
+		<div class="mt-8 text-center">
+			<a href="#compare" class="btn btn-primary btn-lg">See the Difference</a>
+		</div>
+	</div>
+
+	<!-- Why Choose Me Section -->
+	<section class="py-20">
+		<div class="container mx-auto px-4">
+			<h2 class="glow-text mb-16 text-center text-4xl font-bold opacity-60">Why Choose Me?</h2>
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+				<div
+					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
 				>
-					Enterprise Quality, Boutique Pricing
-				</h1>
-				<p class="mb-8 text-xl">
-					With 15 years of experience delivering full-stack applications from concept to production,
-					I offer the same quality as large agencies but without the overhead costs. Get
-					enterprise-grade solutions at boutique prices.
-				</p>
-				<a href="#compare" class="btn btn-primary btn-lg">See the Difference</a>
+					<div class="card-body">
+						<Briefcase class="mb-4 h-12 w-12" />
+						<h3 class="card-title">15 Years Experience</h3>
+						<p>
+							Extensive experience in delivering successful digital products across various
+							industries.
+						</p>
+					</div>
+				</div>
+				<div
+					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+				>
+					<div class="card-body">
+						<Wallet class="mb-4 h-12 w-12" />
+						<h3 class="card-title">Cost Effective</h3>
+						<p>Lower overhead means better rates without compromising on quality.</p>
+					</div>
+				</div>
+				<div
+					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+				>
+					<div class="card-body">
+						<Users class="mb-4 h-12 w-12" />
+						<h3 class="card-title">Direct Communication</h3>
+						<p>Work directly with the developer, no account managers or middlemen.</p>
+					</div>
+				</div>
+				<div
+					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+				>
+					<div class="card-body">
+						<Brain class="mb-4 h-12 w-12" />
+						<h3 class="card-title">AI & Research Background</h3>
+						<p>
+							Masters in AI and extensive research in human-computer interaction to deliver smarter
+							solutions.
+						</p>
+					</div>
+				</div>
+				<div
+					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+				>
+					<div class="card-body">
+						<Workflow class="mb-4 h-12 w-12" />
+						<h3 class="card-title">Proven Methodology</h3>
+						<p>
+							Design Thinking and Agile Kanban processes ensure efficient, user-centered
+							development.
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Comprehensive Service Pricing -->
-	<section
-		id="compare"
-		class="from-primary/5 via-secondary/5 to-accent/5 mt-20 bg-gradient-to-r py-20"
-	>
+	<section id="compare" class="mt-20 py-20">
 		<div class="container mx-auto px-4">
-			<h2
-				class="from-primary to-secondary mb-16 bg-gradient-to-r bg-clip-text text-center text-4xl font-bold text-transparent"
-			>
-				Service Pricing
-			</h2>
+			<h2 class="glow-text mb-16 text-center text-4xl font-bold opacity-60">Service Pricing</h2>
 			<div class="overflow-x-auto">
 				<div
 					class="glass rounded-box border-primary/20 from-base-100/50 to-base-300/50 mx-auto max-w-4xl border bg-gradient-to-br p-8 shadow-lg backdrop-blur transition-all duration-300 hover:shadow-2xl"
@@ -45,7 +108,7 @@
 					<table
 						class="[&_tr:hover]:bg-primary/5 table w-full [&_tr]:transition-colors [&_tr]:duration-200"
 					>
-						<thead class="from-primary/20 to-secondary/20 bg-gradient-to-r">
+						<thead>
 							<tr>
 								<th class="text-lg font-bold">Service</th>
 								<th class="text-primary text-lg font-bold">My Price</th>
@@ -263,55 +326,10 @@
 		</div>
 	</section>
 
-	<!-- Why Choose Me Section -->
-	<section class="from-base-200 to-base-300 bg-gradient-to-b py-20">
-		<div class="container mx-auto px-4">
-			<h2
-				class="from-primary to-secondary mb-16 bg-gradient-to-r bg-clip-text text-center text-4xl font-bold text-transparent"
-			>
-				Why Choose Me?
-			</h2>
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-				<div
-					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-				>
-					<div class="card-body">
-						<Briefcase class="mb-4 h-12 w-12" />
-						<h3 class="card-title">15 Years Experience</h3>
-						<p>
-							Extensive experience in delivering successful digital products across various
-							industries.
-						</p>
-					</div>
-				</div>
-				<div
-					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-				>
-					<div class="card-body">
-						<Wallet class="mb-4 h-12 w-12" />
-						<h3 class="card-title">Cost Effective</h3>
-						<p>Lower overhead means better rates without compromising on quality.</p>
-					</div>
-				</div>
-				<div
-					class="card glass border-primary/20 from-base-100/50 to-base-300/50 hover:border-secondary/20 border bg-gradient-to-br shadow-xl backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-				>
-					<div class="card-body">
-						<Users class="mb-4 h-12 w-12" />
-						<h3 class="card-title">Direct Communication</h3>
-						<p>Work directly with the developer, no account managers or middlemen.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- CTA Section -->
-	<section class="from-primary via-secondary to-accent text-primary-content bg-gradient-to-r py-20">
-		<div
-			class="glass rounded-box border-primary/20 from-base-100/50 to-base-300/50 container mx-auto border bg-gradient-to-br p-12 px-4 text-center backdrop-blur"
-		>
-			<h2 class="mb-8 animate-pulse text-4xl font-bold">Ready to Start Your Project?</h2>
+	<section class="py-20">
+		<div class="container mx-auto px-4 text-center">
+			<h2 class="glow-text-strong mb-8 text-4xl font-bold">Ready to Start Your Project?</h2>
 			<p class="mb-8 text-xl">
 				Get enterprise quality at boutique prices. Let's discuss your project today.
 			</p>
@@ -324,3 +342,69 @@
 		</div>
 	</section>
 </div>
+
+<style>
+	@keyframes glow-pulse {
+		0%,
+		100% {
+			text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+		}
+		50% {
+			text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+		}
+	}
+
+	.glow-text {
+		text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+	}
+
+	.glow-text:hover {
+		text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+	}
+
+	.glow-text-strong {
+		animation: glow-pulse 3s infinite;
+		text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.animate-fade-in {
+		animation: fade-in 1s ease-out;
+	}
+
+	.ctw-text-gradient {
+		background: -webkit-linear-gradient(110deg, #fdc343 51.57%, #e99877 67.46%, #fdc343 85.7%);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: gradient-shift 4s ease infinite;
+	}
+
+	.ctw-text-gradient-green {
+		background: -webkit-linear-gradient(110deg, #5a877e 37.34%, #e99877 67.46%, #5a877e 97.46%);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: gradient-shift 4s ease infinite;
+	}
+
+	@keyframes gradient-shift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+</style>

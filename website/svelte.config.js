@@ -8,10 +8,7 @@ import mdsvexConfig from './mdsvex.config.js'
 const config = {
 	preprocess: [
 		vitePreprocess(),
-		mdsvex({
-			...mdsvexConfig,
-			extension: ['.svelte', '.svx', '.md'],
-		}),
+		mdsvex(mdsvexConfig),
 	],
 	extensions: ['.svelte', ...mdsvexConfig.extensions],
 	kit: {
