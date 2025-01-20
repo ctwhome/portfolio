@@ -17,15 +17,15 @@
 						 transition-transform duration-700 sm:text-[6rem] sm:leading-[3.8rem]
 						 lg:text-[9rem] lg:leading-[6rem] xl:text-[12rem] xl:leading-[8rem] 2xl:text-[15rem] 2xl:leading-[10rem]"
 		>
-			<span class="ctw-text-gradient font-black">Enterprise</span>
-			Quality,
+			<span class="ctw-text-gradient font-black">AI-Powered</span>
+			Engineering,
 			<br />
-			<span class="ctw-text-gradient-green font-black">Boutique</span>
-			Pricing
+			<span class="ctw-text-gradient-green font-black">Modern</span>
+			Solutions
 		</h1>
 		<p class="mt-8 text-center text-xl opacity-80">
-			Delivering enterprise-grade digital solutions with the personal attention of a boutique
-			studio. Get the expertise you need without the agency overhead.
+			Delivering cutting-edge digital solutions powered by AI and modern engineering practices. Get
+			enterprise-level innovation with boutique-level attention.
 		</p>
 		<div class="mt-8 text-center">
 			<a href="#compare" class="btn btn-primary btn-lg">See the Difference</a>
@@ -329,7 +329,7 @@
 		<div class="container mx-auto px-4 text-center">
 			<h2 class="glow-text-strong mb-8 text-4xl font-bold">Ready to Start Your Project?</h2>
 			<p class="mb-8 text-xl">
-				Get enterprise quality at boutique prices. Let's discuss your project today.
+				Get AI-powered engineering excellence with personalized attention. Let's innovate together.
 			</p>
 			<a
 				href="/contact"
