@@ -11,29 +11,38 @@
 
 <div class="min-h-screen">
 	<!-- Hero Section -->
-	<div class="animate-fade-in container mx-auto -mt-6 px-4 sm:mt-16 xl:mt-20">
+	<div class="animate-fade-in container mx-auto -mt-2 px-4 sm:mt-16 xl:mt-20">
 		<h1
-			class="font-title glow-text-strong text-center text-[5rem] font-bold leading-[3.5rem]
-						 transition-transform duration-700 sm:text-[6rem] sm:leading-[3.8rem]
-						 lg:text-[9rem] lg:leading-[6rem] xl:text-[12rem] xl:leading-[8rem] 2xl:text-[15rem] 2xl:leading-[10rem]"
+			class="font-title glow-text-strong
+			text-center text-[3.5rem] font-bold
+			leading-[2.5rem]
+						 transition-transform duration-700
+						 sm:text-[6rem] sm:leading-[3.8rem]
+						 lg:text-[9rem] lg:leading-[6rem]
+						 xl:text-[12rem] xl:leading-[8rem]
+						 2xl:text-[15rem] 2xl:leading-[10rem]"
 		>
-			<span class="ctw-text-gradient font-black">AI-Powered</span>
-			Engineering,
+			Smart
 			<br />
-			<span class="ctw-text-gradient-green font-black">Modern</span>
-			Solutions
+			<span class="ctw-text-gradient font-black">Engineering</span>
+			<br />
+			Intuitive
+			<br />
+			<span class="ctw-text-gradient-green font-black">Design</span>
 		</h1>
-		<p class="mt-8 text-center text-xl opacity-80">
-			Delivering cutting-edge digital solutions powered by AI and modern engineering practices. Get
-			enterprise-level innovation with boutique-level attention.
-		</p>
+		<div class="mt-12 text-center text-xl opacity-80 sm:mt-20 sm:text-2xl">
+			Powered by AI and modern engineering practices, we can deliver cutting-edge digital solutions
+			together.
+			<div class="my-3"></div>
+			Get enterprise innovation with boutique-level attention.
+		</div>
 		<div class="mt-8 text-center">
 			<a href="#compare" class="btn btn-primary btn-lg">See the Difference</a>
 		</div>
 	</div>
 
 	<!-- Why Choose Me Section -->
-	<section class="py-20">
+	<section class="py-16">
 		<div class="container mx-auto px-4">
 			<h2 class="glow-text mb-16 text-center text-4xl font-bold opacity-60">Why Choose Me?</h2>
 			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
