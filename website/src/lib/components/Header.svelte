@@ -56,7 +56,7 @@
 		},
 		{
 			title: 'About',
-			path: '/about',
+			path: '/pricing',
 			displayTitle: 'About me'
 		}
 	];
