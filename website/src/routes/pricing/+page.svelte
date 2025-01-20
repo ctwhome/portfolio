@@ -24,10 +24,8 @@
 			Pricing
 		</h1>
 		<p class="mt-8 text-center text-xl opacity-80">
-			With 15 years of experience delivering full-stack applications from concept to production
-			using cutting-edge technologies like SvelteKit, ThreeJS, and BabylonJS, I offer the same
-			quality as large agencies but without the overhead costs. Get enterprise-grade solutions at
-			boutique prices, backed by AI expertise and proven methodologies.
+			Delivering enterprise-grade digital solutions with the personal attention of a boutique
+			studio. Get the expertise you need without the agency overhead.
 		</p>
 		<div class="mt-8 text-center">
 			<a href="#compare" class="btn btn-primary btn-lg">See the Difference</a>
@@ -344,6 +342,10 @@
 </div>
 
 <style>
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+
 	@keyframes glow-pulse {
 		0%,
 		100% {
