@@ -135,7 +135,7 @@
 	<a
 		target="_blank"
 		class="mt-32 block text-right opacity-80 hover:text-primary"
-		href={`https://github.com/ctwhome/portfolio/tree/main/src/content/${$page.params.slug}`}
+		href={`https://github.com/ctwhome/portfolio/tree/main/website/src/content/${$page.params.slug}`}
 	>
 		Edit this page
 	</a>
