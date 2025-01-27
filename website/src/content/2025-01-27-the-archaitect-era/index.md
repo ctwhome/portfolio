@@ -1,6 +1,6 @@
 ---
 published: true
-title: The Archaitect Era
+title: The Arch-ai-tect Era
 description: Sorry for the "era" word, I meant months.
 date: 2025-01-27
 coverImage: images/archaitecht.excalidraw.png
