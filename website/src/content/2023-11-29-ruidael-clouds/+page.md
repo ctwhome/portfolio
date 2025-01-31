@@ -18,6 +18,9 @@ This is a project where we are trying to pull data from the observatory and proc
 
 Measuring the clouds with different instruments (radars, antennas).
 
+Github Code: https://github.com/NLeSC/zarrviz
+Project Website: https://ruisdael.ctwhome.com 
+
 ![](./images/image-7.avif)
 
 ## Technical challenges
