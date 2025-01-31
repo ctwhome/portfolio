@@ -20,7 +20,7 @@ an immersive platform where users can delve into a variety of map and GIS functi
 <a target="_blank" href="https://gis-lab-maps.vercel.app/examples/3d_buildings">
 <button class="btn btn-primary">Application Demo</button>
 </a>
-<a target="_blank" href="https://gis-lab-maps.vercel.app/examples/3d_buildings">
+<a target="_blank" href="https://github.com/ctwhome/gis-lab">
 <button class="btn ">GitHub Repository </button>
 </a>
 </div>
