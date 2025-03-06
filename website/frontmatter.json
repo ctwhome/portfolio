@@ -42,6 +42,21 @@
           "title": "Categories",
           "name": "categories",
           "type": "categories"
+        },
+        {
+          "title": "published",
+          "name": "published",
+          "type": "boolean"
+        },
+        {
+          "title": "coverImage",
+          "name": "coverImage",
+          "type": "image"
+        },
+        {
+          "title": "displayCover",
+          "name": "displayCover",
+          "type": "boolean"
         }
       ]
     }
