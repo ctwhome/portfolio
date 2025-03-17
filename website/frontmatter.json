@@ -46,11 +46,6 @@
   ],
   "frontMatter.framework.id": "other",
   "frontMatter.content.publicFolder": "",
-  "frontMatter.content.pageFolders": [
-    {
-      "title": "content",
-      "path": "[[workspace]]/src/content"
-    }
-  ],
+  "frontMatter.content.pageFolders": [],
   "frontMatter.git.enabled": true
 }
