@@ -7,12 +7,12 @@ date: 2025-05-30
 
 coverImage: cover.avif
 displayCover: true
+tags: []
 categories:
   - Digital Garden
 # layout: custom    # default to default.layout
 ---
-
-The man who kill Jesus (the name) 
+The man who killed Jesus (the name) 
 
 🚨 I’m Not Jesus Anymore. Call Me Jesse.
 
