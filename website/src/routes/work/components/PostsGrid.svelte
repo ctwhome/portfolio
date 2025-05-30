@@ -43,12 +43,12 @@
 					href={'/work/' + post.slug}
 					class="my-4 flex flex-col gap-4 rounded-lg bg-base-200 bg-opacity-50 transition hover:bg-base-200 hover:bg-opacity-70"
 				>
-					<div class="flex-none">
+					<div class="aspect-[5/3] flex-none overflow-hidden rounded-lg rounded-b-none bg-base-200">
 						{#if post.metadata.coverImage}
 							<img
 								loading="lazy"
 								draggable="false"
-								class="aspect-[5/3] rounded-lg rounded-b-none object-cover"
+								class="h-full w-full object-cover"
 								src={post.metadata.coverImage}
 								alt={post.slug}
 							/>
