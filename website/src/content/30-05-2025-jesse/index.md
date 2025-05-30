@@ -1,3 +1,17 @@
+---
+published: true
+title: Jesse G. 
+description: I go by Jesse Gonzalez now. 
+
+date: 2025-05-30
+
+coverImage: images/cover.avif
+displayCover: true
+categories:
+  - Digital Garden
+# layout: custom    # default to default.layout
+---
+
 The man who kill Jesus (the name) 
 
 🚨 I’m Not Jesus Anymore. Call Me Jesse.
