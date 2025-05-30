@@ -21,14 +21,14 @@
 				href={'/work/' +
 					post.slug +
 					(post.metadata?.categories?.[0] ? '?category=' + post.metadata.categories[0] : '')}
-				class="bg-base-200/30 hover:bg-base-200/50 my-4 flex flex-col gap-4 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+				class="my-4 flex flex-col gap-4 rounded-lg bg-base-200/30 transition-all duration-300 hover:scale-[1.02] hover:bg-base-200/50 hover:shadow-lg"
 			>
-				<div class="flex-none overflow-hidden rounded-lg rounded-b-none">
+				<div class="aspect-[5/3] flex-none overflow-hidden rounded-lg rounded-b-none bg-base-200">
 					{#if post.metadata.coverImage}
 						<img
 							loading="lazy"
 							draggable="false"
-							class="aspect-[5/3] w-full object-cover transition-transform duration-700 hover:scale-110"
+							class="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
 							src={post.metadata.coverImage}
 							alt={post.slug}
 						/>
