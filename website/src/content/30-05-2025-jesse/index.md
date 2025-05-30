@@ -5,7 +5,7 @@ description: I go by Jesse Gonzalez now.
 
 date: 2025-05-30
 
-coverImage: images/cover.avif
+coverImage: cover.avif
 displayCover: true
 categories:
   - Digital Garden
