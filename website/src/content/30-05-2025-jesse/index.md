@@ -21,15 +21,11 @@ But somewhere along the way — specifically the moment I crossed a border — t
 
 Every meeting. Every Zoom. Every coffee with a stranger.
 
-> “Wait… like Jesus?”
-
->“Are you really named after God?”
-
->“Should I pray to you?”
-
->“Where’s your beard?”
-
->“Do you walk on water too?”
+> “Wait… like Jesus?” 
+>“Are you really named after God?”  
+>“Should I pray to you?”  
+>“Where’s your beard?”  
+>“Do you walk on water too?”  
 
 
 No. No, Karen, I don’t.
