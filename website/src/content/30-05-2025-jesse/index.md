@@ -1,7 +1,7 @@
 ---
 published: true
-title: Jesse G. 
-description: I go by Jesse Gonzalez now. 
+title: Call me Jesse. 
+description: The man who killed Jesus (the name) 
 
 date: 2025-05-30
 
@@ -12,9 +12,8 @@ categories:
   - Digital Garden
 # layout: custom    # default to default.layout
 ---
-The man who killed Jesus (the name) 
 
-🚨 I’m Not Jesus Anymore. Call Me Jesse.
+I go by Jesse Gonzalez now
 
 Let’s get one thing straight:
 My name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
