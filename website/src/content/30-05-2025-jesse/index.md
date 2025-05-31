@@ -13,19 +13,22 @@ categories:
 # layout: custom    # default to default.layout
 ---
 
-I go by Jesse Gonzalez now
+I go by Jesse Gonzalez now. 
 
-Let’s get one thing straight:
-My name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
+Let’s get one thing straigh. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
 
 But somewhere along the way — specifically the moment I crossed a border — that name stopped being a name and turned into a icebreaker sideshow.
 
 Every meeting. Every Zoom. Every coffee with a stranger.
 
 > “Wait… like Jesus?”
+
 >“Are you really named after God?”
+
 >“Should I pray to you?”
+
 >“Where’s your beard?”
+
 >“Do you walk on water too?”
 
 
@@ -35,11 +38,7 @@ I write TypeScript. I’m a product designer and Researcher. I build research so
 
 ### ✈️ Moving from Spain to the Netherlands: Culture shock, name edition
 
-When I moved to Amsterdam I knew life would change.
-
-Language? Sure. Weather? Obviously.
-
-But my name turning into a daily comedy bit? Didn’t see that one coming.
+When I moved to Amsterdam I knew life would change. Language? Sure. Weather? Obviously. But my name turning into a daily comedy bit? Didn’t see that one coming.
 
 In Spain, my nickname was “Curi” — a sweet, short version of a larger 3 generations family name. Friends, family, core crew only.
 But here? No one gets it. I’d get more recognition introducing myself as “Wi-Fi Not Detected.”
@@ -53,53 +52,41 @@ If my name was now a liability, I had to choose something people could say witho
 So I explored:
 
 
-🔸 Jes Gonzalez
+**🔸 Jes Gonzalez**
 
-Sounds like a UI element that didn’t load properly.
-
-With pros being closer to my real name, no Jesus jokes, short and kinda cool. BUT, 
+Sounds like a UI element that didn’t load properly. With pros being closer to my real name, no Jesus jokes, short and kinda cool. BUT, 
 
 - People think it’s short for Jessica
-
 - Still gets weird look
-
 - Doesn’t feel natural out loud
 
 
-🔸 Jex Gonzalez
+**🔸 Jex Gonzalez**
 
-Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center.
-
-
-It is unique as hell, Google SEO loves it and it has a total brand control, but
+Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It is unique as hell, Google SEO loves it and it has a total brand control, but:
 
 - Do I want to explain that every time instead of Jesus now?
-
 - Slightly too try-hard for someone who just wants to build things and sleep well.
 
 
-🔸 J.G. Gonzalez
+**🔸 J.G. Gonzalez**
 
 Very author-y. Might use this if I start writing sci-fi. Mysterious, cool. Works for serious stuff. But, 
 
 - Not friendly
-
 - No one knows how to say it out loud
-
 - Am I writing manifestos or building productivity apps?
 
 
 
 ---
 
-✅ And finally: Jesse Gonzalez
+✅ And finally: **Jesse Gonzalez**
 
 Pros:
 
 - People actually know how to say it.
-
 - No God jokes.
-
 - Real name in many cultures.
 
 Still feels close to “Jesús” but without the divine baggage.
@@ -122,15 +109,24 @@ No sermon. No sandals. Just me, my code, my tools, my kid, and my magnesium pill
 tl;dr
 
 Yo — 🎤 
+
 I’m not Jesus, stop that prayer,
+
 I don't float, I climb the stairs.
+
 No robe with beard, no holy flair. 
+
 Just code, matcha, and ergonomic chairs.
 
+
 You want a name that works? Then yes:
+
 It’s Jesse G, no need to guess.
+
 No more gospel, no more stress,
+
 Just Jesse Gonzalez — say it, bless. 
+
 
 ---
 
