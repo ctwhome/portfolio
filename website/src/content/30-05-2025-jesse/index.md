@@ -85,9 +85,7 @@ Pros:
 - No God jokes.
 - Real name in many cultures.
 
-Still feels close to “Jesús” but without the divine baggage.
-
-Feels like me — but cleaned up for international airspace.
+Still feels close to “Jesús” but without the divine baggage. Feels like me — but cleaned up for international airspace.
 
 It’s kind of plain though and I might meet another Jesse someday and feel weird about it.
 
@@ -106,23 +104,15 @@ tl;dr
 
 Yo — 🎤 
 
-I’m not Jesus, stop that prayer,
-
-I don't float, I climb the stairs.
-
-No robe with beard, no holy flair. 
-
+I’m not Jesus, stop that prayer,  
+I don't float, I climb the stairs. 
+No robe with beard, no holy flair.   
 Just code, matcha, and ergonomic chairs.
 
-
-You want a name that works? Then yes:
-
-It’s Jesse G, no need to guess.
-
-No more gospel, no more stress,
-
+You want a name that works? Then yes:  
+It’s Jesse G, no need to guess.  
+No more gospel, no more stress,  
 Just Jesse Gonzalez — say it, bless. 
-
 
 ---
 
