@@ -18,7 +18,7 @@
 		draggable="false"
 	/>
 	<div>
-		<div class="font-bold">J. Gonzalez - Ctw</div>
+		<div class="font-bold">Jesse Gonzalez - Ctw</div>
 		<div class="text-sm opacity-60">{subtitle}</div>
 	</div>
 </a>
