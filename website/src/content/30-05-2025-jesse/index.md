@@ -105,7 +105,7 @@ tl;dr
 Yo — 🎤 
 
 I’m not Jesus, stop that prayer,  
-I don't float, I climb the stairs. 
+I don't float, I climb the stairs.   
 No robe with beard, no holy flair.   
 Just code, matcha, and ergonomic chairs.
 
