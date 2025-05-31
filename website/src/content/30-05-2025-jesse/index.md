@@ -32,7 +32,7 @@ No. No, Karen, I don’t.
 I write TypeScript. I’m a product designer and Researcher. I build research software tools. I clean up toddler puke at 2AM and drink magnesium like a 90-year-old biohacker. There is nothing divine going on here.
 
 
-### ✈️ Moving from Spain to the Netherlands: Culture shock, name edition
+### Moving from Spain to the Netherlands: Culture shock, name edition
 
 When I moved to Amsterdam I knew life would change. Language? Sure. Weather? Obviously. But my name turning into a daily comedy bit? Didn’t see that one coming.
 
@@ -41,14 +41,14 @@ But here? No one gets it. I’d get more recognition introducing myself as “Wi
 
 So yeah, that died too.
 
-### 🧠 I considered rebranding. Fully. Like a company does.
+### I considered rebranding. Fully. Like a company does.
 
 If my name was now a liability, I had to choose something people could say without giggling or breaking into theology class.
 
 So I explored:
 
 
-**🔸 Jes Gonzalez**
+**Jes Gonzalez**
 
 Sounds like a UI element that didn’t load properly. With pros being closer to my real name, no Jesus jokes, short and kinda cool. BUT, 
 
@@ -57,7 +57,7 @@ Sounds like a UI element that didn’t load properly. With pros being closer to 
 - Doesn’t feel natural out loud
 
 
-**🔸 Jex Gonzalez**
+**Jex Gonzalez**
 
 Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It is unique as hell, Google SEO loves it and it has a total brand control, but:
 
@@ -65,7 +65,7 @@ Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It i
 - Slightly too try-hard for someone who just wants to build things and sleep well.
 
 
-**🔸 J.G. Gonzalez**
+**J.G. Gonzalez**
 
 Very author-y. Might use this if I start writing sci-fi. Mysterious, cool. Works for serious stuff. But, 
 
@@ -77,9 +77,7 @@ Very author-y. Might use this if I start writing sci-fi. Mysterious, cool. Works
 
 ---
 
-✅ And finally: **Jesse Gonzalez**
-
-Pros:
+And finally: **Jesse Gonzalez**
 
 - People actually know how to say it.
 - No God jokes.
