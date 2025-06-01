@@ -17,7 +17,7 @@ I go by Jesse Gonzalez now.
 
 Let’s get one thing straigh. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
 
-But somewhere along the way — specifically the moment I crossed a border — that name stopped being a name and turned into a icebreaker sideshow.
+But somewhere along the way — specifically the moment I crossed a border — that name stopped being a name and turned into an icebreaker sideshow.
 
 Every meeting. Every Zoom. Every coffee with a stranger.
 
