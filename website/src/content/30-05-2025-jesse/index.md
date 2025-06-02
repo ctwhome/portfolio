@@ -1,7 +1,7 @@
 ---
 published: true
-title: Call me Jesse. 
-description: The man who killed Jesus (the name) 
+title: Call Me Jesse
+description: The Man Who Killed Jesus (the Name)
 
 date: 2025-05-30
 
@@ -15,33 +15,33 @@ categories:
 
 I go by Jesse Gonzalez now. 
 
-Let’s get one thing straigh. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
+Let’s get one thing straight. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
 
 But somewhere along the way — specifically the moment I crossed a border — that name stopped being a name and turned into an icebreaker sideshow.
 
 Every meeting. Every Zoom. Every coffee with a stranger.
 
-> “Wait… like Jesus?” 
+>“Wait… like Jesus?”  
 >“Are you really named after God?”  
 >“Should I pray to you?”  
 >“Where’s your beard?”  
 >“Do you walk on water too?”  
 
 
-No. No, Karen, I don’t.
-I write TypeScript. I’m a product designer and Researcher. I build research software tools. I clean up toddler puke at 2AM and drink magnesium like a 90-year-old biohacker. There is nothing divine going on here.
+No. No, my new friend, I don’t.
+I write TypeScript. I’m a product designer and Researcher. I build research software tools, clean up toddler puke at 2 AM and drink magnesium like a 90-year-old biohacker. There is nothing divine going on here.
 
 
-### Moving from Spain to the Netherlands: Culture shock, name edition
+### Moving from Spain to the Netherlands: Culture Shock, Name Edition
 
 When I moved to Amsterdam I knew life would change. Language? Sure. Weather? Obviously. But my name turning into a daily comedy bit? Didn’t see that one coming.
 
-In Spain, my nickname was “Curi” — a sweet, short version of a larger 3 generations family name. Friends, family, core crew only.
+In Spain my nickname is “Curi” — a sweet, short version of a larger three-generation family name. For friends and core crew only.
 But here? No one gets it. I’d get more recognition introducing myself as “Wi-Fi Not Detected.”
 
 So yeah, that died too.
 
-### I considered rebranding. Fully. Like a company does.
+### I Considered a Full Rebranding, Like a Company Does
 
 If my name was now a liability, I had to choose something people could say without giggling or breaking into theology class.
 
@@ -53,13 +53,13 @@ So I explored:
 Sounds like a UI element that didn’t load properly. With pros being closer to my real name, no Jesus jokes, short and kinda cool. BUT, 
 
 - People think it’s short for Jessica
-- Still gets weird look
+- Still gets weird looks
 - Doesn’t feel natural out loud
 
 
 **Jex Gonzalez**
 
-Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It is unique as hell, Google SEO loves it and it has a total brand control, but:
+Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It is unique as hell, Google SEO loves it and it has total brand control, but:
 
 - Do I want to explain that every time instead of Jesus now?
 - Slightly too try-hard for someone who just wants to build things and sleep well.
@@ -67,7 +67,7 @@ Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It i
 
 **J.G. Gonzalez**
 
-Very author-y. Might use this if I start writing sci-fi. Mysterious, cool. Works for serious stuff. But, 
+Very author-y. Might use this if I start writing sci-fi. Mysterious, cool. Works for serious stuff. But again: 
 
 - Not friendly
 - No one knows how to say it out loud
@@ -87,7 +87,7 @@ Still feels close to “Jesús” but without the divine baggage. Feels like me 
 
 It’s kind of plain though and I might meet another Jesse someday and feel weird about it.
 
-So yeah. It’s Jesse now. People might pronounce it Jess-eh (Dutch way) or Jess-ie (international) and that's oke to me. 
+So yeah. It’s Jesse now. People might pronounce it Jess-eh (Dutch way) or Jess-ie (international) and that's okay with me. 
 
 If you know me from back in Spain and still call me Curi — don’t stop. You’re family. That name is sacred.
 
@@ -98,7 +98,7 @@ No sermon. No sandals. Just me, my code, my tools, my kid, and my magnesium pill
 
 ---
 
-tl;dr
+**tl;dr**
 
 Yo — 🎤 
 
@@ -114,5 +114,5 @@ Just Jesse Gonzalez — say it, bless.
 
 ---
 
- jessegonzalez.dev / ctwhome.com
+jessegonzalez.dev / ctwhome.com
 
