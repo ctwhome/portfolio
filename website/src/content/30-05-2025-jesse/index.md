@@ -28,7 +28,7 @@ Every meeting. Every Zoom. Every coffee with a stranger.
 >“Do you walk on water too?
 
 
-No. No, Sofie, I don’t.  
+No. No, Steve, I don’t.  
 
 I write TypeScript. I’m a product designer and researcher. I build research software tools with lots of colors, clean up toddler puke at 2 AM and drink magnesium like a 90-year-old biohacker. There is nothing divine going on here.
 
