@@ -13,13 +13,6 @@ categories:
 # layout: custom    # default to default.layout
 ---
 
-# Elli you found me! 🌼
-"Dors avec confiance, la nuit devient amie,
-Écoute le doux chant de sa mélodie." Vctor Hugo. 
-
-Te amo. 
-
----
 
 I go by Jesse Gonzalez now. 
 
