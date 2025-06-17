@@ -13,6 +13,14 @@ categories:
 # layout: custom    # default to default.layout
 ---
 
+# Elli you found me! 🌼
+"Dors avec confiance, la nuit devient amie,
+Écoute le doux chant de sa mélodie." Vctor Hugo. 
+
+Te amo. 
+
+---
+
 I go by Jesse Gonzalez now. 
 
 Let’s get one thing straight. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
