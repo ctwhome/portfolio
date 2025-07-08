@@ -4,7 +4,7 @@ title: The Problem of Media Noise and Why I Built oncemag.com
 description: How a Research Software Engineer decided to apply Design Thinking to the doomscrolling epidemic
 date: 2025-07-08
 coverImage: 
-displayCover: true
+displayCover: false
 tags:
   - Media
   - Digital Wellness
