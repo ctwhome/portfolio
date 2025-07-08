@@ -15,10 +15,10 @@
 			url: 'https://notidian.com'
 		},
 		{
-			name: 'Health30',
-			description: 'This is my app',
-			image: '/images/health30.avif',
-			url: 'https://health30.app'
+			name: 'NextHuman',
+			description: 'Health journal and tracker',
+			image: '/images/nexthuman.avif',
+			url: 'https://nexthuman.app'
 		},
 		{
 			name: 'ValorList',
