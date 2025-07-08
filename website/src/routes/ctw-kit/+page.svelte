@@ -8,6 +8,7 @@
 		FeedbackButton,
 		SEO,
 		Toggle,
+		Pre,
 		type SiteSettings
 	} from 'ctw-kit';
 
@@ -44,6 +45,41 @@
 			<span class="bg-base-200 whitespace-nowrap rounded p-2">bun add ctw-kit</span>
 		</div>
 
+		=
+
+		<Pre
+			data={{
+				name: 'John Doe',
+				age: 30,
+				address: {
+					street: '123 Main St',
+					city: 'New York',
+					coordinates: { lat: 40.7128, lng: -74.006 }
+				},
+				hobbies: ['reading', 'coding', 'traveling'],
+				active: true
+			}}
+			title="User Profile"
+		/>
+
+		<!-- With custom styling -->
+		<Pre
+			data={{
+				name: 'John Doe',
+				age: 30,
+				address: {
+					street: '123 Main St',
+					city: 'New York',
+					coordinates: { lat: 40.7128, lng: -74.006 }
+				},
+				hobbies: ['reading', 'coding', 'traveling'],
+				active: true
+			}}
+			title="API Response"
+			copyButtonText="Copy JSON"
+			height="h-64"
+			className="shadow-lg"
+		/>
 		<!-- Toggle Component -->
 		<div class="card bg-base-200 shadow-xl">
 			<div class="card-body">

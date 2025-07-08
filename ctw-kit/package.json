@@ -30,6 +30,8 @@
     "daisyui": "^4.0.0"
   },
   "dependencies": {
+    "@textea/json-viewer": "^4.0.1",
+    "highlight.js": "^11.11.1",
     "svelte-french-toast": "^1.2.0",
     "vanilla-tilt": "^1.8.1"
   },

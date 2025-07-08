@@ -7,6 +7,7 @@ export { default as ThemeChange } from './components/ThemeChange/ThemeChange.sve
 export { default as SendEmail } from './components/Emails/SendEmail.svelte';
 export { default as FeedbackButton } from './components/Feedback/FeedbackButton.svelte';
 export { default as Toggle } from './components/Toggle/Toggle.svelte';
+export { default as Pre } from './components/Pre/Pre.svelte';
 
 // Types
 export type { SiteSettings } from './components/SEO/types';
@@ -18,6 +19,7 @@ export type { UserInfo, BrowserInfo, FeedbackButtonProps, FeedbackResponse } fro
 export type { HelloProps } from './components/Hello/types';
 export type { Theme, ThemeChangeProps } from './components/ThemeChange/types';
 export type { TiltOptions, TiltContentProps, TiltEvents } from './components/TiltContent/types';
+export type { PreProps } from './components/Pre/types';
 
 // Utilities
 export { sendFeedback } from './components/Feedback/emailService';
