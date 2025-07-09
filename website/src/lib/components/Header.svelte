@@ -34,15 +34,15 @@
 			path: '/work?category=Project%2CResearch+Project',
 			displayTitle: 'Work'
 		},
-		// {
-		// 	title: 'Blog',
-		// 	path: '/work?category=Blog',
-		// 	displayTitle: 'Engineering Blog'
-		// },
 		{
 			title: 'Digital Garden',
-			path: '/work?category=Digital+Garden%2CBlog',
+			path: '/work?category=Digital+Garden',
 			displayTitle: 'Digital Garden'
+		},
+		{
+			title: 'Blog',
+			path: '/work?category=Blog',
+			displayTitle: 'Engineering Blog'
 		},
 		// {
 		// 	title: 'Latest Work',
@@ -84,7 +84,7 @@
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
-					class="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow"
+					class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
 				>
 					{#each links as link}
 						<li>
@@ -127,7 +127,7 @@
  -->
 <style lang="postcss">
 	.menu-link {
-		@apply text-base-content hover:text-secondary font-medium text-opacity-80 transition hover:text-opacity-100;
+		@apply font-medium text-base-content text-opacity-80 transition hover:text-secondary hover:text-opacity-100;
 	}
 
 	.menu-link.active {

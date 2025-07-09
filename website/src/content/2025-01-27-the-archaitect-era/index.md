@@ -5,8 +5,8 @@ description: Sorry for the "era" word, I meant months.
 date: 2025-01-27
 coverImage: images/archaitecht.excalidraw.png
 displayCover: true
+maturity: seeding
 tags:
-  - Tag
 categories:
   - Digital Garden
 ---

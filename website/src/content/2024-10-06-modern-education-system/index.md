@@ -8,6 +8,7 @@ updated: 2025-01-09
 
 coverImage: images/cover.avif
 displayCover: true
+maturity: growing
 categories:
   - Digital Garden
 tags:
@@ -30,7 +31,7 @@ The modern educational system faces a critical juncture with AI's rise. While 86
    - [Learn by Doing, Not by Delegating](#1-learn-by-doing-not-by-delegating)
    - [Revolutionary Assessment: Test Like the Real World](#2-revolutionary-assessment-test-like-the-real-world)
    - [Teaching AI Literacy and Critical Evaluation](#3-teaching-ai-literacy-and-critical-evaluation)
-   - [A Glimpse of What's Possible](#a-glimpse-of-whats-possible)
+   - [A Glimpse of What&#39;s Possible](#a-glimpse-of-whats-possible)
 5. [The Path Forward: Critical but Optimistic](#the-path-forward-critical-but-optimistic)
 6. [References](#references)
 
@@ -49,20 +50,19 @@ The modern educational system has its roots in the Industrial Revolution of the 
 
 According to historian David Tyack in *The One Best System: A History of American Urban Education* (1974), the primary goal of education during this period was to create efficient workers who could fit into the hierarchical structures of industrial organizations. This system was effective for its time, producing generations of workers equipped with the skills necessary for industrial production.
 
-
 ## The AI Education Crisis: Problems We Must Face
 
 Today's educational landscape reveals a troubling paradox. While AI democratizes access to information, it's creating a generation of passive learners. Recent data shows that 86% of university students and nearly half of high school students regularly use AI tools, with concerning consequences.
 
 ### The Three Core Problems
 
-**1. Not Using AI as a Learning Tool**  
+**1. Not Using AI as a Learning Tool**
 A Spanish teacher in Oklahoma discovered a student had submitted AI-generated homework—complete with the chatbot's closing line: "I hope this is helpful to you." The student couldn't even read what they submitted. This isn't learning; it's outsourcing thinking entirely.
 
-**2. Not Reading What Is Generated**  
+**2. Not Reading What Is Generated**
 75% of students report they'll continue using AI even if banned. But many submit AI work without reading it, missing errors, inappropriate content, or even obvious AI signatures. They're becoming dependent on outputs they don't understand. It's like ordering food in a foreign language using Google Translate and being surprised when you get sheep's eyeballs instead of the pasta you thought you ordered.
 
-**3. The Fact-Checking Crisis**  
+**3. The Fact-Checking Crisis**
 AI hallucinations are rampant. Students have written that "Moses got chocolate stains out of t-shirts" and cited non-existent sources. The White House's Make America Healthy Again report contained AI-fabricated citations. If our highest institutions can't fact-check AI, how can we expect students to? More critically—how do we even teach fact-checking in an era of convincing AI fabrications? It's like teaching someone to spot fake designer bags when the counterfeits are made in the same factory as the originals.
 
 ### The Deeper Crisis: Loss of Struggle and Grit
@@ -70,6 +70,7 @@ AI hallucinations are rampant. Students have written that "Moses got chocolate s
 Perhaps most concerning is what one teacher observed: "The amount of time students are inclined to work on something that challenges them has become much shorter." Students who once wrestled with concepts for days now give up within minutes, immediately turning to AI.
 
 This isn't just about academic performance—it's about character formation. When we outsource struggle to AI, we lose:
+
 - The confidence that comes from solving difficult problems (like the pride of finally assembling IKEA furniture without leftover pieces)
 - The mental resilience built through persistence (the same grit that got you through Dark Souls)
 - The deep understanding that only emerges through genuine effort (the difference between watching cooking shows and actually burning your first pancake)
@@ -77,7 +78,7 @@ This isn't just about academic performance—it's about character formation. Whe
 
 As Professor Robert Gell argues, using AI to complete assignments is "like going to the gym and asking a robot to lift weights for you." But it's worse—it's more like using steroids. You get immediate results but become dependent, and when the enhancement is gone, you're left weaker than before. Or like using an electric bike for the Tour de France—sure, you'll finish first, but you'll be disqualified and still can't climb a flight of stairs without wheezing.
 
- <figure>
+<figure>
  <img src="./images/corning.avif" alt="Ability to React Quickly to Changes">
     <figcaption>
     Ability to React Quickly to Changes, <a target="_blank" href="https://www.youtube.com/watch?v=jZkHpNnXLB0">Corning</a>
@@ -110,6 +111,7 @@ The solution isn't to ban AI—that ship has sailed. Instead, we must fundamenta
 ### 1. Learn by Doing, Not by Delegating
 
 Critical thinking develops through active engagement, not passive consumption. Students must:
+
 - **Experiment actively**: Build, test, fail, and iterate
 - **Record learning in their own words**: Summarize concepts personally, not through AI
 - **Create visual representations**: Sketching and diagramming cement understanding in ways text cannot
@@ -121,6 +123,7 @@ Visual note-taking is particularly powerful. When you sketch a concept, you must
 Our current exam system is fundamentally broken. Why do we test students without access to tools they'll use daily in their careers? It's like "testing a football player without shoes, on mud, with blind eyes"—that's not how they'll actually play.
 
 Instead, exams should:
+
 - - **Allow all tools**: Personal notes, computers, AI assistants (just like Batman doesn't fight crime without his utility belt)
 - **Test synthesis and application**: Can you use these tools to solve novel problems? (Like MacGyver with a smartphone)
 - **Evaluate critical thinking**: Can you identify when AI is wrong? Can you improve its output? (Basically, can you be AI's editor, not its copy-paste intern?)
@@ -131,6 +134,7 @@ Some educators are already adapting. Statistics professor Ben Pythri moved all w
 ### 3. Teaching AI Literacy and Critical Evaluation
 
 We must teach students:
+
 - **How AI works**: Understanding helps identify limitations
 - **When to use AI**: As a collaborator, not a replacement for thinking
 - **How to fact-check**: Cross-reference sources, verify citations, question plausible-sounding nonsense
@@ -144,14 +148,13 @@ Interestingly, a 2024 survey found that 65% of teachers who received comprehensi
 
 But here's the critical addition: You can't become a chess queen by having AI play for you. You become one by understanding the entire board, using AI as one tool among many, and maintaining the human capacities AI cannot replicate—creativity, empathy, ethical reasoning, and the ability to find meaning in struggle.
 
-
 ### A Glimpse of What's Possible
 
 Some experimental schools are showing promise. They compress core subjects into two AI-assisted hours daily, then spend the rest of the day on life skills: solving Rubik's cubes, assembling furniture, running a mile, learning juggling. Their standardized test scores remain in the 90th percentile, but students also develop grit, physical skills, and real-world competencies. It's like learning to cook by both reading recipes AND actually setting off the smoke alarm a few times—you need both theory and practice.
 
 This isn't about replacing teachers with AI—it's about using AI to enhance human potential while preserving what makes us human.
 
- <figure>
+<figure>
  <img src="./images/future.avif" alt="Merge of AI and Human Thinkers.">
     <figcaption>
     Merge of AI and Human Thinkers.
@@ -167,6 +170,7 @@ But crises create opportunities for transformation.
 The comparison to calculators is instructive. When calculators emerged, many feared they'd destroy mathematical thinking. Instead, they freed us to tackle more complex problems. The key was learning when and how to use them appropriately. Nobody does long division at the grocery store anymore, but we still need to know if that "Buy 2 Get 1 Free" deal is actually saving us money or just making us buy more stuff we don't need.
 
 AI can follow a similar path—if we're intentional. It can be:
+
 - A thought partner that challenges our ideas (like a friend who actually read the book for book club)
 - A research assistant that helps us find (and verify) information (think Hermione Granger, but in your pocket)
 - A creative collaborator that expands our thinking (your brainstorming buddy who never judges your weird ideas)
@@ -180,14 +184,12 @@ The choice is ours. But we must choose actively, critically, and soon. Because t
 
 And that future depends entirely on how we respond to this crisis today.
 
-
- <figure>
+<figure>
  <img src="./images/transition.avif" alt="Moving from pawns to queens.">
     <figcaption>
       Moving from pawns to queens.
     </figcaption>
 </figure>
-
 
 ---
 
