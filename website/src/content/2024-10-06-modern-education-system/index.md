@@ -3,7 +3,8 @@ published: true
 title: Rethinking Education in the Age of AI
 description:  Educational institutions are often bound by rigid curricula, bureaucratic inertia, and a reluctance to deviate from established methods. This lag in adaptation leaves graduates ill-prepared for the rapidly changing job market.
 
-date: 2025-01-09
+date: 2024-10-06
+updated: 2025-01-09
 
 coverImage: images/cover.avif
 displayCover: true
