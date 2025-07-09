@@ -4,7 +4,7 @@ export const siteSettings = {
   baseUrl: 'https://ctwhome.com',
   twitterHandle: '@ctwhome',
   facebookAppId: '1234567890',
-  image: '/images/og-image.jpg',
+  image: '/images/og-image.svg',
   imageAlt: 'My site image',
   siteName: 'My Site',
   siteLocale: 'en_US',

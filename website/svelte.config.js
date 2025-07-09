@@ -18,7 +18,7 @@ const config = {
 		}),
 		alias: {
 			$api: path.resolve('./src/api'),
-			$components: path.resolve('./src/lib/components'),
+			$components: path.resolve('./src/components'),
 			$assets: path.resolve('./src/assets'),
 			$content: path.resolve('./src/content'),
 			$ctw: path.resolve('../ctw-kit/src/lib')
