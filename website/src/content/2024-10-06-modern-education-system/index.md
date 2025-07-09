@@ -191,7 +191,7 @@ And that future depends entirely on how we respond to this crisis today.
 
 ---
 
-**References**
+## References
 
 - Tyack, D. (1974). *The One Best System: A History of American Urban Education*. Harvard University Press.
 - World Economic Forum. (2023). *The Future of Jobs Report 2023*. Retrieved from [https://www.weforum.org/reports/the-future-of-jobs-report-2023](https://www.weforum.org/reports/the-future-of-jobs-report-2023)
