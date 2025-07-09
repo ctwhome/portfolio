@@ -5,13 +5,11 @@ description: Inspired by Brian Johnson's blueprint
 date: 2024-10-01
 coverImage: images/cover.avif
 displayCover: true
-maturity: seeding
+maturity: growing
 tags:
-  - Tag
 categories:
   - Digital Garden
 ---
-
 My blueprint consists of several things I've tested and learned about myself over the years. I believe I've reached a significant point.
 
 The priority relies on Peter Attia calling the 4 horses, plus what I consider important for each one of them. All of them have the same priority:
@@ -22,19 +20,16 @@ The priority relies on Peter Attia calling the 4 horses, plus what I consider im
 - **Mental health** (No stress, Relativize, Prioritize the important things, Practice gratitude, Clean up and maintain relations -Marie Kondo for relations-
 
 ### What I still need to work on:
+
 - A morning routine.
 - A reading corner, outside of my office work desk?
 - An evening wind-down routine
 
-
 ![books](./images/blueprint.excalidraw.png)
-
 
 Inspiring Books:
 
 ![books](./images/books.excalidraw.png)
-
-
 
 ## About productivity and well being
 

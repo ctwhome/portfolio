@@ -7,7 +7,6 @@ coverImage: images/archaitecht.excalidraw.png
 displayCover: true
 maturity: seeding
 tags:
-  - Tag
 categories:
   - Digital Garden
 ---

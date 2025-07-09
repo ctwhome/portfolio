@@ -75,6 +75,8 @@
 	</div>
 
 	<FiltersPanel />
-	<MaturityLegend />
+	{#if $activeCategories.includes('Digital Garden')}
+		<MaturityLegend />
+	{/if}
 	<PostsGrid />
 </main>
