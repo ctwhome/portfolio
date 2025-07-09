@@ -64,18 +64,34 @@
 							</div>
 						{/if}
 
-						<div class="mt-2 flex gap-3 text-sm opacity-40">
-							<div class="flex flex-wrap gap-3">
-								{#if post.metadata.categories}
-									{#each post.metadata.categories as category}
-										<div class="">{category}</div>
-									{/each}
-								{/if}
-								{#if post.metadata.tags}
-									{#each post.metadata.tags as tag}
-										<div class="">{tag}</div>
-									{/each}
-								{/if}
+						<div class="mt-2 flex flex-col gap-2">
+							{#if post.metadata.maturity && post.metadata.categories?.includes('Digital Garden')}
+								<div class="flex items-center gap-1 text-sm">
+									<span class="text-base">
+										{#if post.metadata.maturity === 'seeding'}
+											🌱
+										{:else if post.metadata.maturity === 'growing'}
+											🌿
+										{:else if post.metadata.maturity === 'mature'}
+											🌳
+										{/if}
+									</span>
+									<span class="capitalize opacity-60">{post.metadata.maturity}</span>
+								</div>
+							{/if}
+							<div class="flex gap-3 text-sm opacity-40">
+								<div class="flex flex-wrap gap-3">
+									{#if post.metadata.categories}
+										{#each post.metadata.categories as category}
+											<div class="">{category}</div>
+										{/each}
+									{/if}
+									{#if post.metadata.tags}
+										{#each post.metadata.tags as tag}
+											<div class="">{tag}</div>
+										{/each}
+									{/if}
+								</div>
 							</div>
 						</div>
 					</div>

@@ -8,6 +8,7 @@ updated: 2025-01-09
 
 coverImage: images/cover.avif
 displayCover: true
+maturity: mature
 categories:
   - Digital Garden
 tags:

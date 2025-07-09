@@ -7,6 +7,7 @@ date: 2025-05-30
 
 coverImage: cover.avif
 displayCover: true
+maturity: seeding
 tags: []
 categories:
   - Digital Garden

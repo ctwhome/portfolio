@@ -5,6 +5,7 @@ description: How a Research Software Engineer decided to apply Design Thinking t
 date: 2025-07-08
 coverImage: 
 displayCover: false
+maturity: seeding
 tags:
   - Media
   - Digital Wellness

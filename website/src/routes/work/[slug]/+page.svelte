@@ -7,6 +7,7 @@
 	import { content } from '$content/content';
 	import ProfilePicture from '$components/ProfilePicture.svelte';
 	import SEO from '$components/SEO.svelte';
+	import GardenDates from '$components/GardenDates.svelte';
 	import { onMount } from 'svelte';
 
 	interface PostMetadata {
@@ -125,6 +126,14 @@
 		<div class="mt-10 sm:mt-20">
 			<ProfilePicture subtitle={details} />
 		</div>
+		
+		{#if post?.metadata?.categories?.includes('Digital Garden')}
+			<GardenDates 
+				createdDate={post.metadata.date}
+				updatedDate={post.metadata.updated}
+				maturity={post.metadata.maturity}
+			/>
+		{/if}
 	</div>
 
 	<div class="mt-10"></div>
