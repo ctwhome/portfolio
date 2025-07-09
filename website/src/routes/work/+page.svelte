@@ -5,6 +5,7 @@
 	import { workStore } from './stores/workStore';
 	import FiltersPanel from './components/FiltersPanel.svelte';
 	import PostsGrid from './components/PostsGrid.svelte';
+	import MaturityLegend from './components/MaturityLegend.svelte';
 	import { onMount } from 'svelte';
 
 	export let data;
@@ -74,5 +75,6 @@
 	</div>
 
 	<FiltersPanel />
+	<MaturityLegend />
 	<PostsGrid />
 </main>
