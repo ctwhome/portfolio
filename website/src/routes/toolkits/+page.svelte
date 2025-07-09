@@ -13,8 +13,8 @@
 	import Autocomplete from '$lib/components/ui/Autocomplete.svelte';
 	import LoginButton from '$lib/components/Login/LoginButton.svelte';
 	import NativeFileApi from '$lib/components/ui/NativeFileApi.svelte';
-	import TimeLine from '$components/TimeLine.svelte';
-	import Sortable from '$components/sortable/Sortable.svelte';
+	import TimeLine from '$lib/components/TimeLine.svelte';
+	import Sortable from '$lib/components/sortable/Sortable.svelte';
 	import SendEmail from '$lib/components/emails/SendEmail.svelte';
 	import TiltContent from '$components/TiltContent.svelte';
 </script>
