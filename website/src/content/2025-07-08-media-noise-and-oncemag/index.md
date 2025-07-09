@@ -1,16 +1,14 @@
 ---
 published: true
-title: The Problem of Media Noise and Why I Built oncemag.com
-description: How a Research Software Engineer decided to apply Design Thinking to the doomscrolling epidemic
+title: The Problem of Media Noise
+description: Applying Design Thinking to the doomscrolling epidemic
 date: 2025-07-08
-coverImage: 
-displayCover: false
+coverImage: images/oncemag.avif
+displayCover: true
+maturity: seeding
 tags:
   - Media
   - Digital Wellness
-  - Product Development
-  - Information Diet
-  - Design Thinking
 categories:
   - Digital Garden
 ---
@@ -58,7 +56,7 @@ As someone who looks at everyday activities seeking optimization opportunities, 
 
 ## The Bigger Vision: A Platform for Critical Thinking
 
-But here's the thing - oncemag is just the beginning. My plans go beyond a weekly magazine. I'm building towards something bigger: a platform for critical thinking that includes in-depth researched living topics, timeline visualizations that teach us where we come from and where we're going. 
+But here's the thing - oncemag is just the beginning. My plans go beyond a weekly magazine. I'm building towards something bigger: a platform for critical thinking that includes in-depth researched living topics, timeline visualizations that teach us where we come from and where we're going.
 
 Imagine interactive timelines that don't just show events but reveal patterns. Deep dives into topics that matter, researched with the rigor of academia but presented with the accessibility of your favorite podcast. Visual storytelling that makes complex ideas digestible without dumbing them down.
 
