@@ -32,9 +32,9 @@
 	const post: Post | null = postPath ? (content as Record<string, Post>)[postPath] : null;
 
 	let categories =
-		post?.metadata?.categories.map((category: string) => `${category}`).join(' ') ?? '';
+		post?.metadata?.categories?.map((category: string) => `${category}`).join(' ') ?? '';
 	let details =
-		(post?.metadata?.tags.map((tag: string) => `${tag}`).join(' ') ?? '') +
+		(post?.metadata?.tags?.map((tag: string) => `${tag}`).join(' ') ?? '') +
 		'  · ' +
 		(post?.metadata?.date
 			? new Date(post.metadata?.date).toLocaleDateString('en-NL', {
