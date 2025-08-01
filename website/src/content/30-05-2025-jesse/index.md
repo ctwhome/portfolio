@@ -95,15 +95,17 @@ No sermon. No sandals. Just me, my code, my tools, my kid, and my magnesium pill
 
 Yo — 🎤
 
-I’m not Jesus, stop that prayer,
-I don't float, I climb the stairs.
-No robe with beard, no holy flair.
-Just code, matcha, and ergonomic chairs.
+I’m not Jesus, stop that prayer, 
+I don't float, I climb the stairs. 
+No robe with beard, no holy flair. 
+Just code, matcha, and ergonomic chairs. 
 
-You want a name that works? Then yes:
-It’s Jesse G, no need to guess.
-No more gospel, no more stress,
-Just Jesse Gonzalez — say it, bless.
+
+You want a name that works? Then yes:  
+It’s Jesse G, no need to guess. 
+No more gospel, no more stress, 
+Just Jesse Gonzalez — say it, bless. 
+
 
 ---
 
