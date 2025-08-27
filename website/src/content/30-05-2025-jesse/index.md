@@ -23,13 +23,13 @@ But somewhere along the way — specifically the moment I crossed a border — t
 
 Every meeting. Every Zoom. Every coffee with a stranger.
 
-> Wait… like Jesus?”
-> “Are you really named after God?”
-> “Should I pray to you?”
-> “Where’s your beard?”
-> “Do you walk on water too?
+> Wait… like Jesus?”  
+> “Are you really named after God?”  
+> “Should I pray to you?”  
+> “Where’s your beard?”  
+> “Do you walk on water too?  
 
-No. No, Steve, I don’t.
+No, Piet, I don’t.
 
 I write TypeScript. I’m a product designer and researcher. I build research software tools with lots of colors, clean up toddler puke at 2 AM and drink magnesium like a 90-year-old biohacker. There is nothing divine going on here.
 
@@ -83,7 +83,7 @@ Still feels close to “Jesús” but without the divine baggage. Feels like me 
 
 It’s kind of plain though and I might meet another Jesse someday and feel weird about it.
 
-So yeah. It’s Jesse now. People might pronounce it Jess-eh (Dutch way) or Jess-ie (international) and that's okay with me.
+So yeah. It’s Jesse now. People might pronounce it Jess-ie (very international) and that's cool with me, let's see how it holds.
 
 If you know me from back in Spain and still call me Curi — don’t stop. You’re family. That name is sacred.
 
@@ -107,7 +107,6 @@ You want a name that works? Then yes:
 It’s Jesse G, no need to guess.  
 No more gospel, no more stress,  
 Just Jesse Gonzalez — say it, bless.  
-
 
 ---
 
