@@ -9,6 +9,7 @@
 	import CarbonBot from '~icons/carbon/bot';
 	import IconAccountBox from '~icons/mdi/account-box';
 	import CarbonFingerprintRecognition from '~icons/carbon/fingerprint-recognition';
+	import CarbonLogoGithub from '~icons/carbon/logo-github';
 	import Carousel from '$lib/components/ui/Carousel.svelte';
 	import Autocomplete from '$lib/components/ui/Autocomplete.svelte';
 	import LoginButton from '$lib/components/Login/LoginButton.svelte';
@@ -28,24 +29,32 @@
 	</p>
 
 	<div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-		<div class="border-base-300 rounded border p-4">
+		<div class="rounded border border-base-300 p-4">
 			<h2 class="text-2xl font-bold">📙 Top Svelte Kit</h2>
 			Full stack SvelteKit template for several databases and frameworks:
-			<div class="mt-4">
+			<div class="mt-4 flex gap-4">
+				<a
+					class="btn btn-outline !no-underline"
+					target="_blank"
+					href="https://github.com/ctwhome/top-frameworks"
+				>
+					<CarbonLogoGithub class="mr-2" />
+					Full Stack Templates
+				</a>
 				<a
 					class="btn btn-primary !no-underline"
 					target="_blank"
-					href="https://postgres.ctwhome.com"
+					href="https://top-svelte.vercel.app"
 				>
-					Postgres Template
+					Top Svelte Demo
 				</a>
 			</div>
 		</div>
 
-		<div class="border-base-300 rounded border p-4">
+		<div class="rounded border border-base-300 p-4">
 			<h2 class="text-2xl font-bold">Ctw-kit</h2>
 			Components and utilities for Svelte and TailwindCSS (DaisyUI) npm:
-			<span class="bg-base-200 language-bash text-primary whitespace-nowrap rounded-lg p-2">
+			<span class="language-bash whitespace-nowrap rounded-lg bg-base-200 p-2 text-primary">
 				bun add ctw-kit
 			</span>
 			<div class="mt-4">
@@ -59,41 +68,41 @@
 		All examples are made with standard HTML API's and Svelte and TailwindCSS (DaisyUI)
 	</p>
 	<div class="mt-10 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-4">
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			<Carousel />
 		</div>
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			<NativeFileApi />
 		</div>
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			<Autocomplete />
 		</div>
 
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			<TimeLine />
 		</div>
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			Login Button with social providers
 			<div class="mb-4" />
 			<LoginButton />
 		</div>
 
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			Example Markdown pages with interactive components
 			<a href="/toolkits/mdsvex" class="btn mt-4">MDsveX Full Example</a>
 		</div>
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			Drag and drop with SortableJS
 			<Sortable />
 		</div>
 
 		<!-- in put name and email and sent PUT /endpoints/email -->
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			<p class="mb-4">Send Email</p>
 			<SendEmail />
 		</div>
 		<TiltContent>
-			<div class="border-base-300 rounded border p-2">
+			<div class="rounded border border-base-300 p-2">
 				<p class="mb-4">Tilting Content</p>
 				<div class="h-32 text-xl">Block</div>
 			</div>
@@ -105,7 +114,7 @@
 		<!-- Nebula  -->
 		<a href="/3d/nebula/index.html" data-sveltekit-preload-data data-sveltekit-reload>
 			<div
-				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
+				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -125,7 +134,7 @@
 		<!-- Camera Controls -->
 		<a href="/toolkits/camera-controls">
 			<div
-				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
+				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -148,7 +157,7 @@
 		<!-- Orthographic camera with pan an zoom -->
 		<a href="/toolkits/three-camera-controls">
 			<div
-				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
+				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
 			>
 				<!-- <figure><img src="/images/3d-cube.gif" alt="3D example" /></figure> -->
 				<figure>
@@ -194,7 +203,7 @@
 	<h2 class="mt-20 text-2xl font-bold">Tools and Libraries included here</h2>
 	<div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 		<!-- Icons -->
-		<div class="border-base-300 rounded border p-2">
+		<div class="rounded border border-base-300 p-2">
 			<div class="text-sm">
 				🤹 Any icon sets ~150 sets with over 200,000 icons, logos, emojis, etc. <br />
 				Powered by Iconify, with auto install. Using Iconify and
@@ -202,8 +211,8 @@
 				to find a place icons.
 			</div>
 			<div class="mt-4 flex">
-				<CarbonBot class="text-primary text-2xl" />
-				<CarbonFingerprintRecognition class="text-secondary text-2xl" />
+				<CarbonBot class="text-2xl text-primary" />
+				<CarbonFingerprintRecognition class="text-2xl text-secondary" />
 				<IconAccountBox class="text-content text-2xl" />
 			</div>
 		</div>
@@ -213,7 +222,7 @@
 	<div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 		<a href="/toolkits/wordpress">
 			<div
-				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
+				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
 			>
 				<figure>
 					<img src={wordpress} class="aspect-video object-cover" alt="3D example" />
@@ -234,7 +243,7 @@
 
 		<a href="/toolkits/gis">
 			<div
-				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
+				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
 			>
 				<figure>
 					<img src={gis} class="aspect-video object-cover" alt="GIS Example" />
@@ -253,7 +262,7 @@
 
 		<a href="/toolkits/mdsvex">
 			<div
-				class="card bg-base-200 hover:border-primary border border-transparent bg-opacity-50 shadow transition hover:shadow-2xl"
+				class="card border border-transparent bg-base-200 bg-opacity-50 shadow transition hover:border-primary hover:shadow-2xl"
 			>
 				<figure>
 					<img src={mdsvex} class="aspect-video object-cover" alt="GIS Example" />
