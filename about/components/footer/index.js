@@ -74,6 +74,11 @@ export const Footer = () => {
           Get in touch
         </Button>
       </div>
+      <div className={s.buildYourOwn}>
+        <Link href="/form" className={cn(s.buildLink, 'p-s')}>
+          ✨ Create your own portfolio like this
+        </Link>
+      </div>
     </footer>
   )
 }
