@@ -5,8 +5,8 @@ import { Button } from 'components/button'
 import { Card } from 'components/card'
 import { Title } from 'components/intro'
 import { ListItem } from 'components/list-item'
-import { projects } from 'content/projects'
 import { useScroll } from 'hooks/use-scroll'
+import { usePortfolioData } from 'hooks/use-portfolio-data'
 import { Layout } from 'layouts/default'
 import { button, useControls } from 'leva'
 import { clamp, mapRange } from 'lib/maths'
@@ -60,6 +60,7 @@ if (typeof window !== 'undefined') {
 }
 
 export default function Home() {
+  const { profile, skills, projects } = usePortfolioData()
   const [hasScrolled, setHasScrolled] = useState()
   const zoomRef = useRef(null)
   const [zoomWrapperRectRef, zoomWrapperRect] = useRect()
@@ -396,10 +397,10 @@ export default function Home() {
               <span className="contrast">eScience Center</span>
             </h2>
             <h2 className={cn(s.enter, 'h3 vh')}>
-              Meet <br /> Jesse Gonzalez
+              Meet <br /> {profile.name}
             </h2>
             <h2 className={cn(s.second, 'h1 vh')}>
-              Research Software Engineer
+              {profile.title}
             </h2>
           </div>
         </div>
@@ -407,17 +408,11 @@ export default function Home() {
       <section className={cn('theme-light', s.featuring)} ref={whiteRectRef}>
         <div className={s.inner}>
           <div className={cn('layout-block', s.intro)}>
-            <p className="p-l">
-              For more than 15 years, including nearly six at the eScience Center,
-              I've turned complex research ideas into elegant, sustainable digital
-              tools that make science more accessible, usable, and humane. I combine
-              technical expertise with design thinking to deliver long-term value
-              for the research community.
-            </p>
+            <p className="p-l">{profile.bio}</p>
           </div>
         </div>
         <section ref={featuresRectRef}>
-          <FeatureCards />
+          <FeatureCards skills={skills} />
         </section>
       </section>
       <section
