@@ -399,15 +399,15 @@ export default function Home() {
             <h2 className={cn(s.enter, 'h3 vh')}>
               Meet <br /> {profile.name}
             </h2>
-            <h2 className={cn(s.second, 'h1 vh')}>
-              {profile.title}
-            </h2>
+            <h2 className={cn(s.second, 'h1 vh')}>{profile.title}</h2>
           </div>
         </div>
       </section>
       <section className={cn('theme-light', s.featuring)} ref={whiteRectRef}>
         <div className={s.inner}>
           <div className={cn('layout-block', s.intro)}>
+            <h2 className="h2">{profile.name}</h2>
+            <h3 className="h4">{profile.title}</h3>
             <p className="p-l">{profile.bio}</p>
           </div>
         </div>
