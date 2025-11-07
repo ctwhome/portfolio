@@ -123,4 +123,44 @@
       margin-top: mobile-vw(24px);
     }
   }
+
+  .buildYourOwn {
+    width: 100%;
+    text-align: center;
+    padding: mobile-vw(32px) 0 mobile-vw(20px);
+    margin-top: mobile-vw(20px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    @include desktop {
+      padding: desktop-vw(40px) 0 desktop-vw(20px);
+      margin-top: desktop-vw(40px);
+    }
+
+    .buildLink {
+      display: inline-block;
+      padding: mobile-vw(12px) mobile-vw(24px);
+      background: var(--orange);
+      color: white;
+      border-radius: mobile-vw(8px);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+
+      @include desktop {
+        padding: desktop-vw(14px) desktop-vw(32px);
+        border-radius: desktop-vw(8px);
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
+        opacity: 0.95;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
 }
