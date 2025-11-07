@@ -28,12 +28,7 @@ export const Footer = () => {
           & open to <span className="hide-on-desktop">&nbsp;</span> new <br />{' '}
           opportunities
         </p>
-        <Button
-          className={s.cta}
-          arrow
-          icon={<GitHub />}
-          href={social.github}
-        >
+        <Button className={s.cta} arrow icon={<GitHub />} href={social.github}>
           Get in touch
         </Button>
       </div>
