@@ -15,7 +15,7 @@ const AppearTitle = dynamic(
 
 import s from './feature-cards.module.scss'
 
-const cards = [
+const defaultCards = [
   { text: '15+ years making science accessible & beautiful' },
   {
     text: (
@@ -37,7 +37,8 @@ const cards = [
   },
 ]
 
-export const FeatureCards = () => {
+export const FeatureCards = ({ skills = defaultCards }) => {
+  const cards = skills
   const element = useRef()
   const [setRef, rect] = useRect()
   const { height: windowHeight } = useWindowSize()
