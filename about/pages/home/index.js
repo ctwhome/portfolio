@@ -214,9 +214,9 @@ export default function Home() {
     <Layout
       theme={theme}
       seo={{
-        title: 'Jesse Gonzalez – Portfolio',
+        title: 'Netherlands eScience Center – Portfolio',
         description:
-          'Portfolio and professional showcase.',
+          'Empowering researchers through innovative, open, and sustainable research software.',
       }}
       className={s.home}
     >
@@ -230,11 +230,11 @@ export default function Home() {
           {/* <SFDR className={cn(s.icon, introOut && s.show)} /> */}
           <span className={cn(s.sub)}>
             <HeroTextIn introOut={introOut}>
-              <h2 className={cn('h3', s.subtitle)}>Smooth Scroll</h2>
+              <h2 className={cn('h3', s.subtitle)}>Research Software Excellence</h2>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
               <h2 className={cn('p-xs', s.tm)}>
-                <span>©</span> {new Date().getFullYear()} darkroom.engineering
+                <span>©</span> {new Date().getFullYear()} Netherlands eScience Center
               </h2>
             </HeroTextIn>
           </span>
@@ -260,30 +260,30 @@ export default function Home() {
           </div>
           <h1 className={cn(s.description, 'p-s')}>
             <HeroTextIn introOut={introOut}>
-              <p className="p-s">A smooth scroll library</p>
+              <p className="p-s">Empowering researchers through</p>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
-              <p className="p-s">fresh out of darkroom.engineering</p>
+              <p className="p-s">innovative, open, and sustainable</p>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
-              <p className="p-s">website designed by Studio Freight</p>
+              <p className="p-s">research software</p>
             </HeroTextIn>
           </h1>
           <Button
             className={cn(s.cta, s.documentation, introOut && s.in)}
             arrow
             icon={<GitHub />}
-            href="https://github.com/darkroomengineering/lenis/blob/main/README.md"
+            href="https://research-software-directory.org"
           >
-            documentation
+            Research Software Directory
           </Button>
           <Button
             className={cn(s.cta, s.sponsor, introOut && s.in)}
             arrow
             icon={<Sponsor />}
-            href="https://github.com/sponsors/darkroomengineering"
+            href="https://www.esciencecenter.nl/projects/"
           >
-            become a sponsor
+            Our Projects
           </Button>
         </div>
       </section>
@@ -291,49 +291,46 @@ export default function Home() {
       <section className={s.why} data-lenis-scroll-snap-align="start">
         <div className="layout-grid">
           <h2 className={cn(s.sticky, 'h2')}>
-            <AppearTitle>Why smooth scroll?</AppearTitle>
+            <AppearTitle>Why We Do It</AppearTitle>
           </h2>
           <aside className={s.features} ref={whyRectRef}>
             <div className={s.feature}>
+              <h3 className={cn(s.title, 'h4')}>
+                Our Vision
+              </h3>
               <p className="p">
-                We’ve heard all the reasons to not use smooth scroll. It feels
-                hacky. It’s inaccessible. It’s not performant. It’s
-                over-engineered. And historically, those were all true. But we
-                like to imagine things as they could be, then build them. So,
-                why should you use smooth scroll?
+                A robust, digitally skilled research community where all researchers
+                can harness advanced digital technologies to answer curiosity-driven
+                questions, keeping the Netherlands at the forefront of international science.
               </p>
             </div>
             <div className={s.feature}>
               <h3 className={cn(s.title, 'h4')}>
-                Create more immersive interfaces
+                Our Mission
               </h3>
               <p className="p">
-                Unlock the creative potential and impact of your web
-                experiences. Smoothing the scroll pulls users into the flow of
-                the experience that feels so substantial that they forget
-                they’re navigating a web page.
+                Enabling digitally enhanced research and empowering researchers
+                through innovative research software and knowledge sharing.
               </p>
             </div>
             <div className={s.feature}>
               <h3 className={cn(s.title, 'h4')}>
-                Normalize all your user inputs
+                Accelerating Innovation
               </h3>
               <p className="p">
-                Give all your users the same (dope) experience whether they’re
-                using trackpads, mouse wheels, or otherwise. With smooth scroll,
-                you control how silky, heavy, or responsive the experience
-                should be — no matter the input. Magic!
+                The pace of digital innovation is accelerating. Researchers need
+                access, skills, and trusted tools to keep up. High-quality, sustainable
+                software is fundamental to reproducible science.
               </p>
             </div>
             <div className={s.feature}>
               <h3 className={cn(s.title, 'h4')}>
-                Make your animations flawless
+                Building Digital Leadership
               </h3>
               <p className="p">
-                Synchronization with native scroll is not reliable. Those jumps
-                and delays with scroll-linked animations are caused by
-                multi-threading, where modern browsers run animations/effects
-                asynchronously with the scroll. Smooth scroll fixes this.
+                Building a digitally skilled research community ensures long-term
+                scientific leadership for the Netherlands and drives innovation in
+                Dutch and European science policy.
               </p>
             </div>
           </aside>
@@ -344,30 +341,17 @@ export default function Home() {
           <div className={s.highlight} data-lenis-scroll-snap-align="start">
             <Parallax speed={-0.5}>
               <p className="h2">
-                <AppearTitle>Rethinking smooth scroll</AppearTitle>
+                <AppearTitle>What We Do</AppearTitle>
               </p>
             </Parallax>
           </div>
           <div className={s.comparison}>
             <Parallax speed={0.5}>
               <p className="p">
-                We have to give props to libraries like{' '}
-                <Link
-                  className="contrast semi-bold"
-                  href="https://github.com/locomotivemtl/locomotive-scroll"
-                >
-                  Locomotive Scroll
-                </Link>{' '}
-                and{' '}
-                <Link
-                  className="contrast semi-bold"
-                  href="https://greensock.com/docs/v3/Plugins/ScrollSmoother"
-                >
-                  GSAP ScrollSmoother
-                </Link>
-                . They’re well built and well documented – and we’ve used them a
-                lot. But they still have issues that keep them from being
-                bulletproof.
+                We empower researchers across all disciplines through the development
+                of innovative, open, and sustainable research software. We bridge
+                science and technology, bringing advanced digital tools — from AI to
+                high-performance computing — to research in every domain.
               </p>
             </Parallax>
           </div>
@@ -377,27 +361,27 @@ export default function Home() {
             <Card
               className={s.card}
               number="01"
-              text="Loss of performance budget due to using CSS transforms"
+              text="Software Quality — Building robust, maintainable, and FAIR research software"
             />
             <Card
               className={s.card}
               number="02"
-              text="Inaccessibility from no page search support and native scrollbar"
+              text="Artificial Intelligence — Advancing research through machine learning and responsible AI"
             />
             <Card
               className={s.card}
               number="03"
-              text="Non-negligible import costs (12.1kb - 24.34kb gzipped)"
+              text="Analytics — Transforming data into insights with advanced analytical methods"
             />
             <Card
               className={s.card}
               number="04"
-              text="Limited animation systems for complex, scroll-based animations"
+              text="Data Processing — Handling complex data workflows from edge to cloud"
             />
             <Card
               className={s.card}
               number="05"
-              text="Erasing native APIs like Intersection-Observer, CSS Sticky, etc."
+              text="Computing — Leveraging heterogeneous architectures and high-performance computing"
             />
           </HorizontalSlides>
         </div>
@@ -412,13 +396,13 @@ export default function Home() {
         <div className={s.inner}>
           <div className={s.zoom}>
             <h2 className={cn(s.first, 'h1 vh')}>
-              so we built <br />
-              <span className="contrast">web scrolling</span>
+              The Netherlands <br />
+              <span className="contrast">eScience Center</span>
             </h2>
             <h2 className={cn(s.enter, 'h3 vh')}>
-              Enter <br /> Jesse Gonzalez
+              Meet <br /> [Your Name]
             </h2>
-            <h2 className={cn(s.second, 'h1 vh')}>As it should be</h2>
+            <h2 className={cn(s.second, 'h1 vh')}>Research Software Engineer</h2>
           </div>
         </div>
       </section>
@@ -426,8 +410,9 @@ export default function Home() {
         <div className={s.inner}>
           <div className={cn('layout-block', s.intro)}>
             <p className="p-l">
-              Jesse Gonzalez is a professional dedicated to creating exceptional
-              experiences and delivering high-quality solutions that make an impact.
+              As a Research Software Engineer at the Netherlands eScience Center, I collaborate
+              with researchers to build innovative digital solutions that advance both their
+              disciplines and the state of digital research itself.
             </p>
           </div>
         </div>

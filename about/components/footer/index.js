@@ -21,14 +21,14 @@ export const Footer = () => {
           </p>
         </div> */}
         <p className={cn(s['last-line'], 'h1')}>
-          & open to <span className="hide-on-desktop">&nbsp;</span> new{' '}
-          <br /> opportunities
+          & open to <span className="hide-on-desktop">&nbsp;</span> new <br />{' '}
+          opportunities
         </p>
         <Button
           className={s.cta}
           arrow
           icon={<GitHub />}
-          href="#contact"
+          href="https://github.com/ctwhome"
         >
           Get in touch
         </Button>
@@ -50,28 +50,22 @@ export const Footer = () => {
         <div className={s.links}>
           <Link
             className={cn(s.link, 'p-xs')}
-            href="https://twitter.com/darkroomdevs"
+            href="https://twitter.com/ctwhome"
           >
-            Twitter
+            X
           </Link>
           <Link
             className={cn(s.link, 'p-xs')}
-            href="https://github.com/darkroomengineering"
+            href="https://github.com/ctwhome"
           >
             GitHub
           </Link>
-          <Link
-            className={cn(s.link, 'p-xs')}
-            href="https://darkroom.engineering/"
-          >
+          <Link className={cn(s.link, 'p-xs')} href="https://ctwhome.com">
             Website
-          </Link>
-          <Link className={cn(s.link, 'p-xs')} href="https://studiofreight.com">
-            Designed by Studio Freight
           </Link>
         </div>
         <p className={cn('p-xs', s.tm)}>
-          <span>©</span> {new Date().getFullYear()} darkroom.engineering
+          <span>©</span> {new Date().getFullYear()} Jesse Gonzalez
         </p>
         <Button
           className={cn(s.cta, 'hide-on-desktop')}
