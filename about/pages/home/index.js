@@ -78,7 +78,7 @@ export default function Home() {
       }),
       start: button(() => {
         lenis.start()
-      }),
+      })
     }),
     [lenis]
   )
@@ -97,7 +97,7 @@ export default function Home() {
       }),
       forceScrollTo: button(() => {
         lenis.scrollTo(30000, { force: true })
-      }),
+      })
     }),
     [lenis]
   )
@@ -156,7 +156,7 @@ export default function Home() {
     addThreshold({ id: 'why-start', value: top })
     addThreshold({
       id: 'why-end',
-      value: top + whyRect.height,
+      value: top + whyRect.height
     })
   }, [whyRect])
 
@@ -166,7 +166,7 @@ export default function Home() {
     addThreshold({ id: 'cards-end', value: top + cardsRect.height })
     addThreshold({
       id: 'red-end',
-      value: top + cardsRect.height + windowHeight,
+      value: top + cardsRect.height + windowHeight
     })
   }, [cardsRect])
 
@@ -202,7 +202,7 @@ export default function Home() {
 
   const [visible, setIsVisible] = useState(false)
   const intersection = useIntersection(inUseRef, {
-    threshold: 0.2,
+    threshold: 0.2
   })
   useEffect(() => {
     if (intersection?.isIntersecting) {
@@ -216,7 +216,7 @@ export default function Home() {
       seo={{
         title: 'Netherlands eScience Center – Portfolio',
         description:
-          'Empowering researchers through innovative, open, and sustainable research software.',
+          'Empowering researchers through innovative, open, and sustainable research software.'
       }}
       className={s.home}
     >
@@ -230,11 +230,14 @@ export default function Home() {
           {/* <SFDR className={cn(s.icon, introOut && s.show)} /> */}
           <span className={cn(s.sub)}>
             <HeroTextIn introOut={introOut}>
-              <h2 className={cn('h3', s.subtitle)}>Research Software Excellence</h2>
+              <h2 className={cn('h3', s.subtitle)}>
+                Research Software Excellence
+              </h2>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
               <h2 className={cn('p-xs', s.tm)}>
-                <span>©</span> {new Date().getFullYear()} Netherlands eScience Center
+                <span>©</span> {new Date().getFullYear()} Netherlands eScience
+                Center
               </h2>
             </HeroTextIn>
           </span>
@@ -295,42 +298,35 @@ export default function Home() {
           </h2>
           <aside className={s.features} ref={whyRectRef}>
             <div className={s.feature}>
-              <h3 className={cn(s.title, 'h4')}>
-                Our Vision
-              </h3>
+              <h3 className={cn(s.title, 'h4')}>Our Vision</h3>
               <p className="p">
-                A robust, digitally skilled research community where all researchers
-                can harness advanced digital technologies to answer curiosity-driven
-                questions, keeping the Netherlands at the forefront of international science.
+                A robust, digitally skilled research community where all
+                researchers can harness advanced digital technologies to answer
+                curiosity-driven questions, keeping the Netherlands at the
+                forefront of international science.
               </p>
             </div>
             <div className={s.feature}>
-              <h3 className={cn(s.title, 'h4')}>
-                Our Mission
-              </h3>
+              <h3 className={cn(s.title, 'h4')}>Our Mission</h3>
               <p className="p">
                 Enabling digitally enhanced research and empowering researchers
                 through innovative research software and knowledge sharing.
               </p>
             </div>
             <div className={s.feature}>
-              <h3 className={cn(s.title, 'h4')}>
-                Accelerating Innovation
-              </h3>
+              <h3 className={cn(s.title, 'h4')}>Accelerating Innovation</h3>
               <p className="p">
                 The pace of digital innovation is accelerating. Researchers need
-                access, skills, and trusted tools to keep up. High-quality, sustainable
-                software is fundamental to reproducible science.
+                access, skills, and trusted tools to keep up. High-quality,
+                sustainable software is fundamental to reproducible science.
               </p>
             </div>
             <div className={s.feature}>
-              <h3 className={cn(s.title, 'h4')}>
-                Building Digital Leadership
-              </h3>
+              <h3 className={cn(s.title, 'h4')}>Building Digital Leadership</h3>
               <p className="p">
-                Building a digitally skilled research community ensures long-term
-                scientific leadership for the Netherlands and drives innovation in
-                Dutch and European science policy.
+                Building a digitally skilled research community ensures
+                long-term scientific leadership for the Netherlands and drives
+                innovation in Dutch and European science policy.
               </p>
             </div>
           </aside>
@@ -348,10 +344,11 @@ export default function Home() {
           <div className={s.comparison}>
             <Parallax speed={0.5}>
               <p className="p">
-                We empower researchers across all disciplines through the development
-                of innovative, open, and sustainable research software. We bridge
-                science and technology, bringing advanced digital tools — from AI to
-                high-performance computing — to research in every domain.
+                We empower researchers across all disciplines through the
+                development of innovative, open, and sustainable research
+                software. We bridge science and technology, bringing advanced
+                digital tools — from AI to high-performance computing — to
+                research in every domain.
               </p>
             </Parallax>
           </div>
@@ -400,9 +397,11 @@ export default function Home() {
               <span className="contrast">eScience Center</span>
             </h2>
             <h2 className={cn(s.enter, 'h3 vh')}>
-              Meet <br /> [Your Name]
+              Meet <br /> Jesse Gonzalez
             </h2>
-            <h2 className={cn(s.second, 'h1 vh')}>Research Software Engineer</h2>
+            <h2 className={cn(s.second, 'h1 vh')}>
+              Research Software Engineer
+            </h2>
           </div>
         </div>
       </section>
@@ -410,9 +409,10 @@ export default function Home() {
         <div className={s.inner}>
           <div className={cn('layout-block', s.intro)}>
             <p className="p-l">
-              As a Research Software Engineer at the Netherlands eScience Center, I collaborate
-              with researchers to build innovative digital solutions that advance both their
-              disciplines and the state of digital research itself.
+              As a Research Software Engineer at the Netherlands eScience
+              Center, I collaborate with researchers to build innovative digital
+              solutions that advance both their disciplines and the state of
+              digital research itself.
             </p>
           </div>
         </div>
@@ -460,7 +460,7 @@ export default function Home() {
 export async function getStaticProps() {
   return {
     props: {
-      id: 'home',
-    }, // will be passed to the page component as props
+      id: 'home'
+    } // will be passed to the page component as props
   }
 }
