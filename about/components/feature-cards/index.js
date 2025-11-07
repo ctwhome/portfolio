@@ -16,24 +16,24 @@ const AppearTitle = dynamic(
 import s from './feature-cards.module.scss'
 
 const cards = [
-  { text: 'Collaborative design with researchers' },
+  { text: '15+ years making science accessible & beautiful' },
   {
     text: (
       <>
-        Open Science <br /> & FAIR Principles
+        Engineer who designs, <br /> designer who codes
       </>
     ),
   },
-  { text: 'Building sustainable research software' },
-  { text: 'Training & knowledge sharing' },
+  { text: 'Led flagship projects: Via Appia, RSD, FAIVOR, CollAIte' },
+  { text: 'Full-stack to 3D/VR: from Android to GIS' },
   {
-    text: <>GENERALIZATION & REUSE</>,
+    text: <>QUALITY & RELIABILITY — IT JUST WORKS</>,
   },
-  { text: 'Proactive R&D in emerging tech' },
-  { text: 'Community engagement & networking' },
-  { text: 'Supporting 100+ collaborative projects' },
+  { text: 'UX SIG founder, mentor, community builder' },
+  { text: 'SvelteKit, Rust, C++, Tauri, Supabase, Firebase' },
+  { text: 'Creating reusable frameworks (Full Stack Recipes)' },
   {
-    text: 'Software Carpentry workshops',
+    text: 'FAIR software advocate & visual storyteller',
   },
 ]
 

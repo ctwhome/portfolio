@@ -409,10 +409,11 @@ export default function Home() {
         <div className={s.inner}>
           <div className={cn('layout-block', s.intro)}>
             <p className="p-l">
-              As a Research Software Engineer at the Netherlands eScience
-              Center, I collaborate with researchers to build innovative digital
-              solutions that advance both their disciplines and the state of
-              digital research itself.
+              For more than 15 years, including nearly six at the eScience Center,
+              I've turned complex research ideas into elegant, sustainable digital
+              tools that make science more accessible, usable, and humane. I combine
+              technical expertise with design thinking to deliver long-term value
+              for the research community.
             </p>
           </div>
         </div>
