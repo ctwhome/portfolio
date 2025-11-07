@@ -1,7 +1,7 @@
 {
-  "name": "Lenis",
-  "short_name": "Lenis Smooth Scroll",
-  "description": "How smooth scroll should be.",
+  "name": "NLeSC Portfolio",
+  "short_name": "NLeSC Portfolio",
+  "description": "NLeSC Portfolio",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -16,7 +16,7 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#ff98a2",
+  "theme_color": "#00ACDC",
   "background_color": "#efefef",
   "start_url": "/",
   "scope": ".",
