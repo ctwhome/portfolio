@@ -1,27 +1,27 @@
 export const projects = [
   {
-    title: 'Deso',
-    source: 'Studio Freight',
-    href: 'https://deso.com',
+    title: 'Research Software Directory',
+    source: 'eScience Center',
+    href: 'https://research-software-directory.org',
   },
   {
-    title: 'Sculpting Harmony',
-    source: 'Resn',
-    href: 'https://gehry.getty.edu/',
+    title: 'Project Alpha',
+    source: 'AI & Machine Learning',
+    href: '#',
   },
   {
-    title: 'Superpower',
-    source: '',
-    href: 'https://superpower.com/',
+    title: 'Data Analytics Platform',
+    source: 'Data Processing',
+    href: '#',
   },
   {
-    title: 'Daylight Computer',
-    source: 'Basement Studio',
-    href: 'https://daylightcomputer.com/',
+    title: 'FAIR Software Tools',
+    source: 'Software Quality',
+    href: '#',
   },
   {
-    title: 'Lifeworld by Olafur Eliasson',
-    source: '',
-    href: 'https://lifeworld.wetransfer.com/',
+    title: 'HPC Computing Framework',
+    source: 'Advanced Computing',
+    href: '#',
   },
 ]

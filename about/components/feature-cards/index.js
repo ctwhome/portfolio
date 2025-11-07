@@ -16,25 +16,24 @@ const AppearTitle = dynamic(
 import s from './feature-cards.module.scss'
 
 const cards = [
-  { text: 'Run scroll in the main thread' },
-
+  { text: 'Collaborative design with researchers' },
   {
     text: (
       <>
-        Lightweight <br /> (under 4kb)
+        Open Science <br /> & FAIR Principles
       </>
     ),
   },
-  { text: `Made for ${new Date().getFullYear()}+` },
-  { text: 'Bring your own animation library' },
+  { text: 'Building sustainable research software' },
+  { text: 'Training & knowledge sharing' },
   {
-    text: <>CONTROL THE SCROLL EASING DURATION</>,
+    text: <>GENERALIZATION & REUSE</>,
   },
-  { text: 'Use any element as scroller' },
-  { text: 'Enjoy horizontal + vertical support' },
-  { text: 'Feel free to use “position: sticky” again' },
+  { text: 'Proactive R&D in emerging tech' },
+  { text: 'Community engagement & networking' },
+  { text: 'Supporting 100+ collaborative projects' },
   {
-    text: 'touch support',
+    text: 'Software Carpentry workshops',
   },
 ]
 
@@ -73,9 +72,9 @@ export const FeatureCards = () => {
         <aside className={s.title}>
           <p className="h3">
             <AppearTitle>
-              Bringing
+              How I
               <br />
-              <span className="grey">the heat</span>
+              <span className="grey">contribute</span>
             </AppearTitle>
           </p>
         </aside>
