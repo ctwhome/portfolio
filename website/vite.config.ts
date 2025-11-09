@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
 				'../ctw-kit/src/lib/**/*.svelte'
 			]
 		}),
-		viteStaticCopy({ targets: [{ src: './src/content/*', dest: './content/' }] }),
+		viteStaticCopy({ targets: [{ src: './src/content', dest: './' }] }),
 
 		sveltekit(),
 		Icons({
