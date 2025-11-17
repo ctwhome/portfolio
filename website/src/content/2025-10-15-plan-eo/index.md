@@ -18,6 +18,8 @@ categories:
 
 # Geospatial Data Visualization with COGTIFF, MapLibre, and Svelte
 
+<a href="https://mine-dd.github.io/dashboard" target="_blank" class="btn btn-primary my-3">Open application</a>
+
 Geospatial data visualization in academic research faces a constant challenge: building efficient, scalable solutions with limited budgets. Earlier iterations of this project considered private, server-dependent mapping solutions. They offered robust functionality but came with significant complexity and costs. The project initially used Shiny R to render maps, which worked well for vector data (points, lines) but struggled with raster datasets like satellite imagery or elevation models. The result was slow performance and poor integration between data types.
 
 Traditional geospatial visualization comes with trade-offs. Private solutions offer features but lock you into expensive infrastructure and proprietary systems. Shiny R is popular in academic workflows, but it struggled here. It handled vector data well enough, but adding large raster datasets proved cumbersome. Maps either loaded slowly or couldn't properly integrate raster and vector layers together.
