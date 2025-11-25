@@ -1,0 +1,15 @@
+{
+  "window.title": "🌠 Visual Portfolio - ${activeEditorShort}",
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript"],
+  "[sql]": {
+    "editor.formatOnSave": false
+  }
+}

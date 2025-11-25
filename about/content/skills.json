@@ -1,13 +1,13 @@
 {
   "skills": [
-    { "text": "15+ years making science accessible & beautiful" },
+    { "text": "17+ years making science accessible & beautiful" },
     { "text": "Engineer who designs, designer who codes" },
-    { "text": "Led flagship projects: Via Appia, RSD, FAIVOR, CollAIte" },
+    { "text": "Led flagship projects: Via Appia, RSD, FAIVOR, COLLaiTE, Mine-DD" },
     { "text": "Full-stack to 3D/VR: from Android to GIS" },
     { "text": "QUALITY & RELIABILITY — IT JUST WORKS" },
     { "text": "UX SIG founder, mentor, community builder" },
-    { "text": "SvelteKit, Rust, C++, Tauri, Supabase, Firebase" },
-    { "text": "Creating reusable frameworks (Full Stack Recipes)" },
+    { "text": "Design Thinking & Agile advocate" },
+    { "text": "Full Stack Recipes creator (115+ GitHub stars)" },
     { "text": "FAIR software advocate & visual storyteller" }
   ]
 }
