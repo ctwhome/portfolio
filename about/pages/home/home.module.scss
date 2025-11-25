@@ -370,7 +370,7 @@ $intro-duration: 2050ms;
   height: 400vh;
 
   @include desktop {
-    height: 500vh;
+    height: 600vh;
   }
 
   .inner {
@@ -422,14 +422,14 @@ $intro-duration: 2050ms;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-54.2%, -50%) scale(calc((var(--progress1) * 18.2)));
+    transform: translate(-54.2%, -50%) scale(calc(0.5 + (var(--progress1) * 17.7)));
     transform-origin: 50% calc(50% - (var(--progress1) * 27%));
-    opacity: calc(var(--progress1) * 2);
+    opacity: calc(0.3 + var(--progress1) * 0.7);
     text-align: center;
     // will-change: transform;
 
     @include desktop {
-      transform: translate(-50%, -50%) scale(calc((var(--progress1) * 8.5)));
+      transform: translate(-50%, -50%) scale(calc(0.5 + (var(--progress1) * 8)));
       transform-origin: 50% calc(50% - (var(--progress1) * 25%));
     }
   }
