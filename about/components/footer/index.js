@@ -16,7 +16,7 @@ export const Footer = () => {
       <div className={cn(s.top, 'layout-grid hide-on-mobile')}>
         <p className={cn(s['first-line'], 'h1')}>
           Let's <br />
-          <span className="contrast">Connect</span>
+          <span className="contrast">Collaborate</span>
         </p>
         {/* <div className={s['shameless-plug']}>
           <p className="h4">Studio Freight</p>
@@ -25,8 +25,8 @@ export const Footer = () => {
           </p>
         </div> */}
         <p className={cn(s['last-line'], 'h1')}>
-          & open to <span className="hide-on-desktop">&nbsp;</span> new <br />{' '}
-          opportunities
+          & advance <span className="hide-on-desktop">&nbsp;</span> your <br />{' '}
+          research together
         </p>
         <Button className={s.cta} arrow icon={<GitHub />} href={social.github}>
           Get in touch
@@ -41,8 +41,8 @@ export const Footer = () => {
         </div> */}
         <p className={cn(s['first-line'], 'h1')}>
           Let's <br />
-          <span className="contrast">Connect</span>
-          <br /> & open to <br /> new opportunities
+          <span className="contrast">Collaborate</span>
+          <br /> & advance <br /> your research
         </p>
       </div>
       <div className={s.bottom}>
