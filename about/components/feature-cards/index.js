@@ -22,19 +22,19 @@ const defaultCards = [
       <>
         Engineer who designs, <br /> designer who codes
       </>
-    ),
+    )
   },
   { text: 'Led flagship projects: Via Appia, RSD, FAIVOR, CollAIte' },
   { text: 'Full-stack to 3D/VR: from Android to GIS' },
   {
-    text: <>QUALITY & RELIABILITY — IT JUST WORKS</>,
+    text: <>QUALITY & RELIABILITY — IT JUST WORKS</>
   },
   { text: 'UX SIG founder, mentor, community builder' },
   { text: 'SvelteKit, Rust, C++, Tauri, Supabase, Firebase' },
   { text: 'Creating reusable frameworks (Full Stack Recipes)' },
   {
-    text: 'FAIR software advocate & visual storyteller',
-  },
+    text: 'FAIR software advocate & visual storyteller'
+  }
 ]
 
 export const FeatureCards = ({ skills = defaultCards }) => {
@@ -98,7 +98,11 @@ export const FeatureCards = ({ skills = defaultCards }) => {
 const SingleCard = ({ text, number, index, current }) => {
   return (
     <div className={cn(s.card, current && s.current)} style={{ '--i': index }}>
-      <Card background="rgba(239, 239, 239, 0.8)" number={number} text={text} />
+      <Card
+        background="rgba(239, 239, 239, 0.97)"
+        number={number}
+        text={text}
+      />
     </div>
   )
 }
