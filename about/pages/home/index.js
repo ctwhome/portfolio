@@ -223,7 +223,6 @@ export default function Home() {
       <div className={s.canvas}>
         <WebGL />
       </div>
-
       <section className={s.hero}>
         <div className="layout-grid-inner">
           <Title className={s.title} />
@@ -290,7 +289,6 @@ export default function Home() {
           </Button>
         </div>
       </section>
-
       <section className={s.why} data-lenis-scroll-snap-align="start">
         <div className="layout-grid">
           <h2 className={cn(s.sticky, 'h2')}>
@@ -407,8 +405,12 @@ export default function Home() {
         <div className={s.inner}>
           <div className={cn('layout-block', s.intro)}>
             <h2 className="h2">{profile.name}</h2>
-            <h3 className="h4">{profile.title}</h3>
-            <p className="p-l">{profile.bio}</p>
+            <h3 className="h4" style={{ marginTop: '10px' }}>
+              {profile.title}
+            </h3>
+            <p className="p-l" style={{ marginTop: '60px' }}>
+              {profile.bio}
+            </p>
           </div>
         </div>
         <section ref={featuresRectRef}>

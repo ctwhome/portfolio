@@ -60,7 +60,7 @@ export const HorizontalSlides = ({ children }) => {
       ref={wrapperRectRef}
       style={
         elementRect && isMobile === false
-          ? { height: elementRect.width + 'px' }
+          ? { height: elementRect.width * 1.5 + 'px' }
           : {}
       }
     >

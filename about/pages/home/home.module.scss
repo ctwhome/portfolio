@@ -367,10 +367,10 @@ $intro-duration: 2050ms;
   position: relative;
 
   color: var(--white);
-  height: 200vh;
+  height: 400vh;
 
   @include desktop {
-    height: 300vh;
+    height: 500vh;
   }
 
   .inner {
@@ -438,6 +438,7 @@ $intro-duration: 2050ms;
 .featuring {
   position: relative;
   padding-bottom: mobile-vw(160px);
+  padding-top: 50vh;
   color: var(--theme-secondary);
 
   &::before {
@@ -468,7 +469,10 @@ $intro-duration: 2050ms;
   }
 
   .intro {
+    position: sticky;
+    top: 0;
     padding-bottom: mobile-vw(160px);
+    background-color: var(--theme-primary);
 
     @include desktop {
       padding-bottom: desktop-vw(440px);
@@ -478,6 +482,7 @@ $intro-duration: 2050ms;
 
 .in-use {
   padding-bottom: mobile-vw(160px);
+  padding-top: 50vh;
   // background-color: var(--theme-primary);
   color: var(--theme-secondary);
 
@@ -487,6 +492,10 @@ $intro-duration: 2050ms;
 
   .title {
     grid-column: 1 / -1;
+    position: sticky;
+    top: 20vh;
+    align-self: start;
+
     @include desktop {
       grid-column: 1 / span 5;
     }
