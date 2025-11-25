@@ -126,7 +126,7 @@ export default function Home() {
     const progress = clamp(0, mapRange(start, end, scroll, 0, 1), 1)
     const center = 0.6
     const progress1 = clamp(0, mapRange(0, center, progress, 0, 1), 1)
-    const progress2 = clamp(0, mapRange(center - 0.055, 1, progress, 0, 1), 1)
+    const progress2 = clamp(0, mapRange(center + 0.1, 1, progress, 0, 1), 1)
     setTheme(progress2 === 1 ? 'light' : 'dark')
 
     zoomRef.current.style.setProperty('--progress1', progress1)
