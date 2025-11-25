@@ -29,12 +29,14 @@
   background: rgba(0, 0, 0, 0.03);
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
+  max-height: 120px;
+  overflow-y: auto;
 
   code {
     word-break: break-all;
     color: var(--black);
     font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 12px;
   }
 }
 
