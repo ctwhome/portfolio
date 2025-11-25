@@ -367,10 +367,10 @@ $intro-duration: 2050ms;
   position: relative;
 
   color: var(--white);
-  height: 500vh;
+  height: 200vh;
 
   @include desktop {
-    height: 1000vh;
+    height: 300vh;
   }
 
   .inner {

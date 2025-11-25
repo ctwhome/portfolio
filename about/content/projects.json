@@ -1,29 +1,49 @@
 {
   "projects": [
     {
+      "title": "FAIVOR",
+      "source": "FAIR AI Validation Platform",
+      "href": "https://research-software-directory.org/projects/faivor"
+    },
+    {
+      "title": "COLLaiTE / Collens",
+      "source": "Manuscript Collation Tool",
+      "href": "https://collaite.github.io/collens"
+    },
+    {
+      "title": "Via Appia Revisited",
+      "source": "3D/VR Museum Experience",
+      "href": "https://via-appia.netlify.app/"
+    },
+    {
+      "title": "MINE-DD / PLAN-EO",
+      "source": "Climate & Health Dashboard",
+      "href": "https://mine-dd.github.io/dashboard"
+    },
+    {
       "title": "Research Software Directory",
-      "source": "eScience Center",
+      "source": "Platform & Visual Identity",
       "href": "https://research-software-directory.org"
     },
     {
-      "title": "Project Alpha",
-      "source": "AI & Machine Learning",
-      "href": "#"
+      "title": "Ruisdael on Display",
+      "source": "3D Weather Visualization",
+      "href": "https://ruisdael.ctwhome.com/"
     },
     {
-      "title": "Data Analytics Platform",
-      "source": "Data Processing",
-      "href": "#"
+      "title": "SmartPlay",
+      "source": "Android WearOS Research App",
+      "href": "https://ctwhome.github.io/SmartPlay"
     },
     {
-      "title": "FAIR Software Tools",
-      "source": "Software Quality",
-      "href": "#"
+      "title": "Dynamic 3D / Pure3D",
+      "source": "3D Research Infrastructure",
+      "href": "https://research-software-directory.org/projects/dynamic3d"
     },
     {
-      "title": "HPC Computing Framework",
-      "source": "Advanced Computing",
-      "href": "#"
+      "title": "Data Storytelling",
+      "source": "Visual Communication",
+      "href": "https://research-software-directory.org/projects/data-storytelling"
     }
   ]
 }

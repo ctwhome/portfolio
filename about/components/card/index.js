@@ -13,10 +13,16 @@ export const Card = ({
       className={cn(className, s.wrapper, inverted && s.inverted)}
       style={{ '--background': background }}
     >
-      {number && (
-        <p className={s.number}>{number.toString().padStart(2, '0')}</p>
-      )}
-      {text && <p className={s.text}>{text}</p>}
+      {/* Blur layer - stationary, only fades */}
+      <div className={s.blurLayer} />
+
+      {/* Content layer - can be positioned on top */}
+      <div className={s.contentLayer}>
+        {number && (
+          <p className={s.number}>{number.toString().padStart(2, '0')}</p>
+        )}
+        {text && <p className={s.text}>{text}</p>}
+      </div>
     </div>
   )
 }

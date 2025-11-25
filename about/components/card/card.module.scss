@@ -1,56 +1,82 @@
 @import 'styles/_functions';
 
 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  position: relative;
   color: var(--theme-secondary);
-  border: 1px solid;
   aspect-ratio: 1 / 1;
-  padding: mobile-vw(24px);
   width: mobile-vw(343px);
-  background-color: var(--background);
-  backdrop-filter: blur(5px);
 
   &.inverted {
     color: var(--theme-primary);
-    background-color: var(--theme-secondary);
+
+    .blurLayer {
+      background-color: var(--theme-secondary);
+    }
   }
 
   @include desktop {
     width: columns(4);
+  }
+}
+
+// Blur layer - never transforms, only fades
+.blurLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid;
+  z-index: 0;
+}
+
+// Content layer - sits on top
+.contentLayer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: mobile-vw(24px);
+  z-index: 1;
+
+  @include desktop {
     padding: desktop-vw(24px);
   }
+}
 
-  .number {
-    color: var(--theme-contrast);
-    // font-stretch: condensed;
-    // font-weight: 900;
-    line-height: 90%;
-    // letter-spacing: -0.02em;
-    font-size: mobile-vw(56px);
+.number {
+  color: var(--theme-contrast);
+  // font-stretch: condensed;
+  // font-weight: 900;
+  line-height: 90%;
+  // letter-spacing: -0.02em;
+  font-size: mobile-vw(56px);
 
-    @include desktop {
-      font-size: desktop-vw(96px);
-    }
+  @include desktop {
+    font-size: desktop-vw(96px);
+  }
+}
+
+.text {
+  font-family: var(--font-panchang);
+  font-weight: 700;
+  text-transform: uppercase;
+  // font-stretch: expanded;
+  line-height: 100%;
+  // letter-spacing: -0.01em;
+  font-size: mobile-vw(20px);
+
+  @include desktop {
+    font-size: desktop-vw(28px);
   }
 
-  .text {
-    font-family: var(--font-panchang);
-    font-weight: 700;
-    text-transform: uppercase;
-    // font-stretch: expanded;
-    line-height: 100%;
-    // letter-spacing: -0.01em;
-    font-size: mobile-vw(20px);
-
-    @include desktop {
-      font-size: desktop-vw(28px);
-    }
-
-    span {
-      font-stretch: normal;
-      font-weight: 600;
-    }
+  span {
+    font-stretch: normal;
+    font-weight: 600;
   }
 }
