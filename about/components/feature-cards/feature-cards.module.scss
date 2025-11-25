@@ -1,7 +1,7 @@
 @import 'styles/_functions';
 
 .features {
-  height: 1600vh;
+  height: 800vh;
 
   @include desktop {
     min-height: desktop-vw(1310px);
