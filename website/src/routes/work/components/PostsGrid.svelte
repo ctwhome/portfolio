@@ -43,7 +43,7 @@
 					href={post.metadata.externalUrl || '/work/' + post.slug}
 					target={post.metadata.externalUrl ? '_blank' : undefined}
 					rel={post.metadata.externalUrl ? 'noopener noreferrer' : undefined}
-					class="my-4 flex flex-col gap-4 rounded-lg bg-base-200 bg-opacity-50 transition hover:bg-base-200 hover:bg-opacity-70"
+					class="my-4 flex flex-col gap-4 rounded-lg bg-base-200 bg-opacity-50 no-underline transition hover:bg-base-200 hover:bg-opacity-70"
 				>
 					<div class="aspect-[5/3] flex-none overflow-hidden rounded-lg rounded-b-none bg-base-200">
 						{#if post.metadata.coverImage}
