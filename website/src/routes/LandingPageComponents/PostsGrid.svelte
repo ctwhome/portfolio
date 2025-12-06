@@ -17,11 +17,13 @@
 				{/if}
 			</h2>
 			<a
-				data-sveltekit-preload-data="hover"
-				href={'/work/' +
-					post.slug +
-					(post.metadata?.categories?.[0] ? '?category=' + post.metadata.categories[0] : '')}
-				class="my-4 flex flex-col gap-4 rounded-lg bg-base-200/30 transition-all duration-300 hover:scale-[1.02] hover:bg-base-200/50 hover:shadow-lg"
+				href={post.metadata.externalUrl ||
+					'/work/' +
+						post.slug +
+						(post.metadata?.categories?.[0] ? '?category=' + post.metadata.categories[0] : '')}
+				target={post.metadata.externalUrl ? '_blank' : null}
+				rel={post.metadata.externalUrl ? 'noopener noreferrer' : null}
+				class="my-4 flex flex-col gap-4 rounded-lg bg-base-200/30 !no-underline transition-all duration-300 hover:scale-[1.02] hover:bg-base-200/50 hover:shadow-lg"
 			>
 				<div class="aspect-[5/3] flex-none overflow-hidden rounded-lg rounded-b-none bg-base-200">
 					{#if post.metadata.coverImage}

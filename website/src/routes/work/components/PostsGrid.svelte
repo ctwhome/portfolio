@@ -39,11 +39,10 @@
 					{/if}
 				</h2>
 				<a
-					data-sveltekit-preload-data={post.metadata.externalUrl ? 'off' : 'hover'}
-					href={post.metadata.externalUrl || '/work/' + post.slug}
-					target={post.metadata.externalUrl ? '_blank' : undefined}
-					rel={post.metadata.externalUrl ? 'noopener noreferrer' : undefined}
-					class="my-4 flex flex-col gap-4 rounded-lg bg-base-200 bg-opacity-50 no-underline transition hover:bg-base-200 hover:bg-opacity-70"
+					href={post.metadata.externalUrl ? post.metadata.externalUrl : '/work/' + post.slug}
+					target={post.metadata.externalUrl ? '_blank' : null}
+					rel={post.metadata.externalUrl ? 'noopener noreferrer' : null}
+					class="my-4 flex flex-col gap-4 rounded-lg bg-base-200 bg-opacity-50 !no-underline transition hover:bg-base-200 hover:bg-opacity-70"
 				>
 					<div class="aspect-[5/3] flex-none overflow-hidden rounded-lg rounded-b-none bg-base-200">
 						{#if post.metadata.coverImage}
@@ -79,15 +78,6 @@
 										{/if}
 									</span>
 									<span class="capitalize opacity-60">{post.metadata.maturity}</span>
-								</div>
-							{/if}
-							{#if post.metadata.externalUrl}
-								<div class="flex items-center gap-1 text-sm opacity-60">
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-										<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-										<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-									</svg>
-									<span>External</span>
 								</div>
 							{/if}
 							<div class="flex gap-3 text-sm opacity-40">
