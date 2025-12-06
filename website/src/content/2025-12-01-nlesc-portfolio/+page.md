@@ -1,8 +1,8 @@
 ---
 published: true
-title: Netherlands eScience Center - Research Software Excellence Platform
-date: 2024-01-01
-description: A portfolio platform empowering researchers through innovative, open, and sustainable research software at the Netherlands eScience Center.
+title: Netherlands eScience Center
+date: 2025-12-01
+description: Interactive portfolio platform empowering researchers through innovative, open, and sustainable research software.
 coverImage: images/cover.avif
 categories:
   - Research Project
