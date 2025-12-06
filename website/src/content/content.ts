@@ -5,6 +5,7 @@ export interface PostMetadata {
   coverImage?: string | null;
   categories?: string[];
   tags?: string[];
+  externalUrl?: string;
   [key: string]: any;
 }
 
