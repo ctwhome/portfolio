@@ -72,9 +72,9 @@
         CTW<span class="text-yellow-400">.</span>studio
       </a>
       <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
         <a href="#work" class="text-sm text-gray-400 hover:text-white transition-colors">Work</a>
         <a href="#products" class="text-sm text-gray-400 hover:text-white transition-colors">Products</a>
-        <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
         <a href="#about" class="text-sm text-gray-400 hover:text-white transition-colors">About</a>
         <a href="#contact"
           class="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-yellow-300 transition-colors">
@@ -119,26 +119,85 @@
           Start a Project
         </a>
       </div>
+
+      <!-- Trusted By - in first fold -->
+      <div class="mt-16 pt-12 border-t border-white/10">
+        <p class="text-sm text-gray-500 text-center mb-6 uppercase tracking-wider">Trusted by leading research
+          institutions</p>
+        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50">
+          <span class="text-sm md:text-base font-medium">Netherlands eScience Center</span>
+          <span class="text-sm md:text-base font-medium">KNAW</span>
+          <span class="text-sm md:text-base font-medium">TU Delft</span>
+          <span class="text-sm md:text-base font-medium">University of Virginia</span>
+          <span class="text-sm md:text-base font-medium">University of Amsterdam</span>
+          <span class="text-sm md:text-base font-medium">Maastricht University</span>
+          <span class="text-sm md:text-base font-medium">Horizon Europe</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Trusted By / Clients -->
-  <section class="py-16 border-y border-white/10">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="text-sm text-gray-500 text-center mb-8 uppercase tracking-wider">Trusted by leading research
-        institutions</p>
-      <div class="flex flex-wrap items-center justify-center gap-12 opacity-60">
-        <span class="text-lg font-medium">Netherlands eScience Center</span>
-        <span class="text-lg font-medium">KNAW</span>
-        <span class="text-lg font-medium">TU Delft</span>
-        <span class="text-lg font-medium">University of Virginia</span>
-        <span class="text-lg font-medium">University of Amsterdam</span>
+  <!-- Services Section -->
+  <section id="services" class="py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-yellow-400 text-sm font-medium uppercase tracking-wider mb-4">Services</p>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Research software<br>
+            <span class="text-gray-500">consulting</span>
+          </h2>
+          <p class="text-xl text-gray-400 mb-8">
+            Partnering with funded research projects to build robust, scalable software that advances scientific
+            discovery.
+          </p>
+          <a href="#contact"
+            class="inline-flex items-center bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition-colors">
+            Discuss a Project
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+            <h3 class="font-semibold mb-2">Data Infrastructure & Scalable Pipelines</h3>
+            <p class="text-gray-400 text-sm">Building robust data architectures that handle research-scale datasets
+              efficiently.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+            <h3 class="font-semibold mb-2">Machine Learning Deployment & MLOps</h3>
+            <p class="text-gray-400 text-sm">From model development to production deployment with proper validation and
+              monitoring.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+            <h3 class="font-semibold mb-2">Interactive Visualization & 3D/VR</h3>
+            <p class="text-gray-400 text-sm">Making complex data accessible through compelling visual experiences.</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+            <h3 class="font-semibold mb-2">Research Platform Development</h3>
+            <p class="text-gray-400 text-sm">Custom platforms that enable collaboration and accelerate research
+              workflows.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-16 border-t border-white/10">
+        <p class="text-sm text-gray-500 mb-4">Domains of expertise</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Health & Life Sciences</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Climate Science</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Digital Humanities</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Cultural Heritage</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Research Computing</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Work Section -->
-  <section id="work" class="py-32 px-6">
+  <section id="work" class="py-32 px-6 bg-white/[0.02]">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16">
         <p class="text-yellow-400 text-sm font-medium uppercase tracking-wider mb-4">Selected Work</p>
@@ -327,65 +386,6 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-32 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <p class="text-yellow-400 text-sm font-medium uppercase tracking-wider mb-4">Services</p>
-          <h2 class="text-4xl md:text-5xl font-bold mb-6">
-            Research software<br>
-            <span class="text-gray-500">consulting</span>
-          </h2>
-          <p class="text-xl text-gray-400 mb-8">
-            Partnering with funded research projects to build robust, scalable software that advances scientific
-            discovery.
-          </p>
-          <a href="#contact"
-            class="inline-flex items-center bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition-colors">
-            Discuss a Project
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-
-        <div class="space-y-6">
-          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
-            <h3 class="font-semibold mb-2">Data Infrastructure & Scalable Pipelines</h3>
-            <p class="text-gray-400 text-sm">Building robust data architectures that handle research-scale datasets
-              efficiently.</p>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
-            <h3 class="font-semibold mb-2">Machine Learning Deployment & MLOps</h3>
-            <p class="text-gray-400 text-sm">From model development to production deployment with proper validation and
-              monitoring.</p>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
-            <h3 class="font-semibold mb-2">Interactive Visualization & 3D/VR</h3>
-            <p class="text-gray-400 text-sm">Making complex data accessible through compelling visual experiences.</p>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
-            <h3 class="font-semibold mb-2">Research Platform Development</h3>
-            <p class="text-gray-400 text-sm">Custom platforms that enable collaboration and accelerate research
-              workflows.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-16 pt-16 border-t border-white/10">
-        <p class="text-sm text-gray-500 mb-4">Domains of expertise</p>
-        <div class="flex flex-wrap gap-3">
-          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Health & Life Sciences</span>
-          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Climate Science</span>
-          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Digital Humanities</span>
-          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Cultural Heritage</span>
-          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Research Computing</span>
         </div>
       </div>
     </div>
