@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd jessegonzalez.dev && bun run build",
+  "outputDirectory": "jessegonzalez.dev/.svelte-kit/output",
+  "installCommand": "bun install",
+  "framework": "sveltekit"
+}
