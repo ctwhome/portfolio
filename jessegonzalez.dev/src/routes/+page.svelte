@@ -46,7 +46,7 @@
 					know-how.
 				</p>
 				<TiltContent class="order-1">
-					<ProfilePicture subtitle="Product Designer & Research Software Engineer" />
+					<ProfilePicture subtitle="Building, learning, sharing" />
 				</TiltContent>
 			</div>
 
@@ -62,7 +62,7 @@
 							 lg:h-[400px]
 							xl:h-[500px]
 							"
-					alt="Jes Ctw Profile"
+					alt="Jesse Gonzalez Profile"
 				/>
 			</TiltContent>
 		</div>
