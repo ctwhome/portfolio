@@ -60,14 +60,56 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(250, 204, 21, 0.1);
     }
+
+    /* Frosted glass navigation */
+    .frost-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+
+    .frost-glass {
+      position: absolute;
+      inset: 0;
+      --extended-by: 100px;
+      bottom: calc(-1 * var(--extended-by));
+      --filter: blur(30px);
+      -webkit-backdrop-filter: var(--filter);
+      backdrop-filter: var(--filter);
+      pointer-events: none;
+      --cutoff: calc(100% - var(--extended-by));
+      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
+      mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
+    }
+
+    .frost-glass-edge {
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      --extended-by: 80px;
+      --offset: 20px;
+      --thickness: 2px;
+      height: calc(var(--extended-by) + var(--offset));
+      top: calc(100% - var(--offset) + var(--thickness));
+      --filter: blur(90px) saturate(160%) brightness(1.3);
+      -webkit-backdrop-filter: var(--filter);
+      backdrop-filter: var(--filter);
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
+      mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
+    }
   </style>
 </head>
 
 <body class="bg-black text-white antialiased">
 
   <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+  <nav class="frost-nav z-50">
+    <div class="frost-glass"></div>
+    <div class="frost-glass-edge"></div>
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between relative">
       <a href="#" class="text-xl font-bold tracking-tight">
         CTW<span class="text-yellow-400">.</span>studio
       </a>
