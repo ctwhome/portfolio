@@ -1,19 +1,10 @@
 <script>
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-
-	// import SocialIcons from './SocialIcons.svelte';
-	// import HeaderResponsiveMenu from './HeaderResponsiveMenu.svelte';
-	// import { Link } from 'svelte-routing';
-	// import { get } from 'svelte/store';
-	// import { tilt } from '../../stores/tilt.js';
-	// import menuItems from '$lib/models/menu-itmes.js';
-	import logo from '$lib/assets/images/logo.svg';
 	import { ThemeChange } from 'ctw-kit';
-	// import DaisyUIThemeSwitcher from '$lib/components/themeChamge/DaisyUIThemeSwitcher.svelte';
 	import { onMount } from 'svelte';
-	let active = 'Latest Work';
 
+	let active = 'Work';
 	let activeCategory = '';
 	let activeTag = '';
 
@@ -31,24 +22,19 @@
 	const links = [
 		{
 			title: 'Work',
-			path: '/work?category=Project%2CResearch+Project',
+			path: '/work?category=Project',
 			displayTitle: 'Work'
 		},
 		{
 			title: 'Digital Garden',
 			path: '/work?category=Digital+Garden',
-			displayTitle: 'Digital Garden'
+			displayTitle: 'Garden'
 		},
 		{
 			title: 'Blog',
 			path: '/work?category=Blog',
-			displayTitle: 'Engineering Blog'
+			displayTitle: 'Blog'
 		},
-		// {
-		// 	title: 'Latest Work',
-		// 	path: '/work',
-		// 	displayTitle: 'Latest Work'
-		// },
 		{
 			title: 'Toolkits',
 			path: '/toolkits',
@@ -56,8 +42,8 @@
 		},
 		{
 			title: 'About',
-			path: '/pricing',
-			displayTitle: 'About me'
+			path: '/about',
+			displayTitle: 'About'
 		}
 	];
 </script>
@@ -68,13 +54,10 @@
 	<div class="container relative mx-auto py-2">
 		<!--Desktop Header-->
 		<header class="flex items-center gap-3">
-			<a class="mr-3 flex-initial" href="/">
-				<img
-					draggable="false"
-					src={logo}
-					alt="Logo asset"
-					class="h-auto max-w-[8rem] select-none sm:max-w-[10rem]"
-				/>
+			<a class="mr-3 flex-initial group" href="/">
+				<span class="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
+					Jesse<span class="text-primary">.</span>Gonzalez
+				</span>
 			</a>
 			<!-- menu-->
 
@@ -98,6 +81,16 @@
 							</a>
 						</li>
 					{/each}
+					<li class="mt-2 pt-2 border-t border-base-200">
+						<a
+							href="https://ctw.studio"
+							target="_blank"
+							rel="noopener"
+							class="btn btn-sm btn-primary !no-underline"
+						>
+							CTW Studio
+						</a>
+					</li>
 				</ul>
 			</div>
 			<!-- Desktop -->
@@ -113,9 +106,17 @@
 						{link.displayTitle}
 					</a>
 				{/each}
+				<a
+					href="https://ctw.studio"
+					target="_blank"
+					rel="noopener"
+					class="btn btn-sm btn-primary !no-underline"
+				>
+					CTW Studio
+				</a>
 			</div>
 
-			<ThemeChange class="z-50 ml-auto sm:ml-14 " />
+			<ThemeChange class="z-50 ml-auto sm:ml-4" />
 		</header>
 	</div>
 </nav>

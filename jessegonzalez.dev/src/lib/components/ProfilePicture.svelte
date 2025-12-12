@@ -1,12 +1,12 @@
 <script>
 	import ctwhomeProfile from '$lib/assets/images/ctwhome-profile.webp';
-	
-	export let subtitle = 'Product Designer & Research Software Engineer';
+
+	export let subtitle = 'Building, learning, sharing';
 	export let isDigitalGarden = false;
 	export let createdDate = '';
 	export let updatedDate = '';
 	export let maturity = '';
-	
+
 	function formatDate(dateString) {
 		return new Date(dateString).toLocaleDateString('en-NL', {
 			year: 'numeric',
@@ -14,9 +14,9 @@
 			day: 'numeric'
 		});
 	}
-	
-	$: displaySubtitle = isDigitalGarden && maturity ? 
-		`${maturity === 'seeding' ? '🌱' : maturity === 'growing' ? '🌿' : '🌳'} ${maturity} · planted ${formatDate(createdDate)}${updatedDate && updatedDate !== createdDate ? ` · updated ${formatDate(updatedDate)}` : ''}` : 
+
+	$: displaySubtitle = isDigitalGarden && maturity ?
+		`${maturity === 'seeding' ? '🌱' : maturity === 'growing' ? '🌿' : '🌳'} ${maturity} · planted ${formatDate(createdDate)}${updatedDate && updatedDate !== createdDate ? ` · updated ${formatDate(updatedDate)}` : ''}` :
 		subtitle;
 </script>
 
@@ -32,11 +32,11 @@
 			height="40"
 			class="mask mask-hexagon my-2"
 			src={ctwhomeProfile}
-			alt="J. Gonzalez Ctwhome profile picture"
+			alt="Jesse Gonzalez profile picture"
 			draggable="false"
 		/>
 		<div>
-			<div class="font-bold">Jesse Gonzalez - Ctw</div>
+			<div class="font-bold">Jesse Gonzalez</div>
 			<div class="text-sm opacity-60">{displaySubtitle}</div>
 		</div>
 	</a>
