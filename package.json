@@ -3,7 +3,6 @@
   "private": true,
   "workspaces": [
     "ctw-kit",
-    "jessegonzalez.dev",
-    "ctw.studio"
+    "jessegonzalez.dev"
   ]
 }
