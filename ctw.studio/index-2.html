@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTW Studio – Applied Research Software</title>
+  <meta name="description"
+    content="CTW Studio designs research software systems that pair academic rigor with cultural-grade design." />
+
+  <meta property="og:title" content="CTW Studio – Applied Research Software">
+  <meta property="og:description"
+    content="A research software practice combining scientific method, systems engineering, and narrative design." />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ctw.studio">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coal: '#050505',
+            chalk: '#f6f5f0',
+            ember: '#f7b500',
+            dusk: '#0d0d0d'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #030303;
+      color: #f2f1ec;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(247, 181, 0, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 0%, rgba(125, 108, 255, 0.07), transparent 35%);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Crect width="200" height="200" fill="none"/%3E%3Ccircle cx="1" cy="1" r="1" fill="%23ffffff08"/%3E%3C/svg%3E');
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .frost-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(3, 3, 3, 0.55);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), rgba(255, 255, 255, 0));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .tag {
+      letter-spacing: 0.25em;
+      font-size: 0.65rem;
+    }
+
+    .hero-panel {
+      background: rgba(10, 10, 10, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(3, 3, 3, 0.85));
+    }
+
+    .hero-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .scroll-card {
+      background: rgba(8, 8, 8, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 2rem;
+      transition: transform 0.2s ease, border 0.2s ease;
+    }
+
+    .scroll-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(247, 181, 0, 0.5);
+    }
+
+    .horizontal-gallery {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
+      gap: 3rem;
+    }
+
+    .horizontal-gallery::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .horizontal-gallery::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+    }
+
+    .project-card {
+      min-width: 420px;
+      scroll-snap-align: start;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(6, 6, 6, 0.75);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-cover {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .project-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .project-card:hover .project-cover img {
+      transform: scale(1.05);
+    }
+
+    .project-body {
+      padding: 2rem;
+    }
+
+    .method-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .method-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .contact-card {
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(247, 181, 0, 0.12), rgba(10, 10, 10, 0.9));
+    }
+
+    @media (max-width: 768px) {
+      .hero-panel {
+        height: 380px;
+      }
+
+      .project-card {
+        min-width: 340px;
+      }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <nav class="frost-nav">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+        <a href="#studio" class="nav-link">Studio</a>
+        <a href="#scrollytelling" class="nav-link">Practice</a>
+        <a href="#work" class="nav-link">Projects</a>
+        <a href="#approach" class="nav-link">Methods</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="mailto:hello@ctw.studio"
+        class="hidden md:inline-flex items-center gap-2 px-4 py-2 border border-white/20 rounded-full text-sm">hello@ctw.studio</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="studio" class="relative min-h-screen px-6 pt-32 pb-16">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.3fr_0.9fr] gap-16 items-end">
+        <div>
+          <p class="tag uppercase text-xs text-gray-400 mb-6">Applied research studio</p>
+          <h1 class="text-5xl md:text-6xl lg:text-[4.5rem] font-semibold leading-[1.05] tracking-tight mb-10">
+            Software as a scholarly apparatus and a cultural object.
+          </h1>
+          <p class="text-xl text-gray-300 mb-10 max-w-2xl">
+            CTW Studio is an Amsterdam-based engineering practice designing data-intensive systems, research tooling,
+            and critical interfaces for universities, cultural institutions, and public-interest collaborations. We build
+            infrastructure with academic rigor and art direction worthy of exhibition.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#work"
+              class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-amber-400 text-black font-semibold">
+              Explore current commissions
+            </a>
+            <a href="#approach"
+              class="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white/20 text-sm uppercase tracking-widest">
+              Read our practice notes
+            </a>
+          </div>
+          <div class="mt-12 grid md:grid-cols-3 gap-6 text-sm text-gray-400">
+            <div>
+              <p class="text-3xl font-semibold text-white">17+</p>
+              <p>years crafting research platforms</p>
+            </div>
+            <div>
+              <p class="text-3xl font-semibold text-white">12</p>
+              <p>nations represented in current collaborations</p>
+            </div>
+            <div>
+              <p class="text-3xl font-semibold text-white">4</p>
+              <p>ongoing Horizon Europe programmes</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-panel h-[520px]">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80"
+            alt="Studio research imagery" loading="lazy">
+          <div class="absolute bottom-0 inset-x-0 p-8">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-200">Fieldwork lab notes</span>
+              <span class="text-amber-300">Live documentation →</span>
+            </div>
+            <p class="text-xl font-semibold text-white mt-3">Observing how scientists, curators, and civic partners
+              co-author knowledge through software.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scrollytelling" class="relative px-6 py-32 border-y border-white/10">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-16">
+        <div class="space-y-6 lg:sticky lg:top-28 self-start">
+          <p class="tag uppercase text-xs text-gray-400">Scrollytelling dossier</p>
+          <h2 class="text-4xl md:text-5xl font-semibold">How we escort research ideas into public life.</h2>
+          <p class="text-lg text-gray-300">
+            Every engagement is approached as a long-form study. We stay embedded with PIs, archivists, clinicians,
+            and civic technologists across multiple time zones. The notes below capture the arc most collaborations
+            follow—each chapter a checkpoint for accountability.
+          </p>
+        </div>
+        <div class="space-y-8">
+          <article class="scroll-card">
+            <p class="uppercase tracking-[0.4em] text-xs text-gray-400 mb-4">Orientation</p>
+            <h3 class="text-2xl font-semibold mb-3">Cartography & critical reading</h3>
+            <p class="text-gray-300">We map datasets, institutional constraints, and scholarly intent. Workshops blend
+              ethnographic interviews with architecture reviews so hypotheses and infrastructure decisions are co-authored
+              with the research collective.</p>
+          </article>
+          <article class="scroll-card">
+            <p class="uppercase tracking-[0.4em] text-xs text-gray-400 mb-4">Field systems</p>
+            <h3 class="text-2xl font-semibold mb-3">Prototyping as publication</h3>
+            <p class="text-gray-300">Rapid instruments—computational notebooks, VR scenography, participatory data
+              portals—are released to the cohort. We seek critique from advisory boards and design historians long before
+              code freezes.</p>
+          </article>
+          <article class="scroll-card">
+            <p class="uppercase tracking-[0.4em] text-xs text-gray-400 mb-4">Operations</p>
+            <h3 class="text-2xl font-semibold mb-3">Production & care</h3>
+            <p class="text-gray-300">Systems harden through reproducible pipelines, peer-reviewed security, and rituals for
+              governance. Institutional partners receive stewardship playbooks—documentation written for both engineers and
+              archivists.</p>
+          </article>
+          <article class="scroll-card">
+            <p class="uppercase tracking-[0.4em] text-xs text-gray-400 mb-4">Continuum</p>
+            <h3 class="text-2xl font-semibold mb-3">Culture-making</h3>
+            <p class="text-gray-300">Launch is framed as scholarship. Exhibitions, symposium demos, and open-source releases
+              turn software into a public artifact with citation-ready provenance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="py-32 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div>
+            <p class="tag uppercase text-xs text-gray-400">Studio projects</p>
+            <h2 class="text-4xl md:text-5xl font-semibold">Large-format work in progress</h2>
+          </div>
+          <div class="text-gray-400 text-sm max-w-md">
+            Horizontal scroll reveals active dossiers: dense imagery, technical stacks, and the policy questions guiding
+            each build. Swipe / drag to move through the gallery.
+          </div>
+        </div>
+        <div class="horizontal-gallery flex">
+          <article class="project-card">
+            <div class="project-cover">
+              <img src="https://images.unsplash.com/photo-1482192597420-4817fdd7e8b0?auto=format&fit=crop&w=1200&q=80"
+                alt="Atmospheric observatory visualization" loading="lazy">
+            </div>
+            <div class="project-body">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">
+                <span>Atmospheric science</span>
+                <span>3D pipelines</span>
+              </div>
+              <h3 class="text-2xl font-semibold mb-3">Ruisdael Observatory Platform</h3>
+              <p class="text-gray-300 mb-6">Custom WebGPU renderers, HPC ingestion, and a curatorial interface that lets
+                climatologists narrate terabyte-scale sky scans to policy audiences.</p>
+              <div class="flex items-center justify-between text-sm text-gray-400">
+                <span>Lead: Netherlands eScience Center</span>
+                <span class="text-amber-300">Case folio →</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-cover">
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80"
+                alt="Surgical imaging" loading="lazy">
+            </div>
+            <div class="project-body">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">
+                <span>Clinical ML</span>
+                <span>Validation</span>
+              </div>
+              <h3 class="text-2xl font-semibold mb-3">FAIVOR Trust Framework</h3>
+              <p class="text-gray-300 mb-6">A suite of FAIR-compliant validation services that shepherds medical ML models
+                from experiment notebooks into properly governed hospital deployments.</p>
+              <div class="flex items-center justify-between text-sm text-gray-400">
+                <span>With: University of Virginia</span>
+                <span class="text-amber-300">In review →</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-cover">
+              <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+                alt="Geospatial data" loading="lazy">
+            </div>
+            <div class="project-body">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">
+                <span>Climate-health GIS</span>
+                <span>Participatory data</span>
+              </div>
+              <h3 class="text-2xl font-semibold mb-3">Mine-DD Living Atlas</h3>
+              <p class="text-gray-300 mb-6">Federates remote sensing, epidemiology, and oral histories so frontline
+                communities can argue for interventions with the same evidence researchers publish.</p>
+              <div class="flex items-center justify-between text-sm text-gray-400">
+                <span>With: Maastricht + TU Delft</span>
+                <span class="text-amber-300">Field release →</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-cover">
+              <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80"
+                alt="Cultural heritage" loading="lazy">
+            </div>
+            <div class="project-body">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-gray-400 mb-4">
+                <span>Digital humanities</span>
+                <span>Immersive media</span>
+              </div>
+              <h3 class="text-2xl font-semibold mb-3">Via Appia Immersion</h3>
+              <p class="text-gray-300 mb-6">A horizontal narrative walk blending LiDAR scans, speculative fiction, and
+                museum pedagogy. Designed for both in-situ visitors and online scholars.</p>
+              <div class="flex items-center justify-between text-sm text-gray-400">
+                <span>With: KNAW + Italian cultural fund</span>
+                <span class="text-amber-300">Experience →</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="px-6 pb-32">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16">
+        <div>
+          <p class="tag uppercase text-xs text-gray-400">Research methodology</p>
+          <h2 class="text-4xl md:text-5xl font-semibold mb-6">Practice log</h2>
+          <p class="text-lg text-gray-300 mb-10">
+            Our studio borrows equally from lab protocol and editorial design. Engagements are calibrated through
+            recurring seminars where we surface risks, cite relevant literature, and choose narratives for dissemination.
+          </p>
+          <div class="method-row">
+            <div class="text-gray-400 text-sm uppercase tracking-[0.3em]">Study design</div>
+            <div>
+              <p class="text-xl font-semibold">Applied ethnography + systems architecture</p>
+              <p class="text-gray-300">Notebooks, reference models, and computational governance diagrams produced as peer-reviewable artefacts.</p>
+            </div>
+          </div>
+          <div class="method-row">
+            <div class="text-gray-400 text-sm uppercase tracking-[0.3em]">Implementation</div>
+            <div>
+              <p class="text-xl font-semibold">Type-safe pipelines & sensory interfaces</p>
+              <p class="text-gray-300">Our stack spans Python, Typescript, NVidia GPU workflows, and GLSL for large-format interaction.</p>
+            </div>
+          </div>
+          <div class="method-row">
+            <div class="text-gray-400 text-sm uppercase tracking-[0.3em]">Publishing</div>
+            <div>
+              <p class="text-xl font-semibold">Documentation as literature review</p>
+              <p class="text-gray-300">Each release accompanies white papers, stewardship manuals, and exhibition-ready imagery.</p>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-10">
+          <div class="rounded-3xl border border-white/10 p-10">
+            <p class="text-sm uppercase tracking-[0.4em] text-gray-400 mb-4">Selected partners</p>
+            <div class="grid grid-cols-2 gap-4 text-lg text-gray-200">
+              <span>Netherlands eScience Center</span>
+              <span>Huygens Institute (KNAW)</span>
+              <span>University of Virginia</span>
+              <span>Horizon Europe Consortia</span>
+              <span>Maastricht University</span>
+              <span>University of Amsterdam</span>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-white/10 p-10">
+            <p class="text-sm uppercase tracking-[0.4em] text-gray-400 mb-4">Field notes</p>
+            <blockquote class="text-xl text-gray-200 leading-relaxed">
+              “Jesse has been instrumental and decisive. CTW Studio translated our research stack into a sensorial
+              platform that policy makers finally understand.”
+            </blockquote>
+            <p class="text-gray-400 text-sm mt-4">— Josh Colston, University of Virginia</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="px-6 pb-32">
+      <div class="max-w-5xl mx-auto contact-card p-12 lg:p-16 text-center">
+        <p class="tag uppercase text-xs text-gray-900">Commission window</p>
+        <h2 class="text-4xl md:text-5xl font-semibold text-[#1b1200] mb-6">We engage with funded research chairs,
+          museums, and public-interest labs.</h2>
+        <p class="text-lg text-[#1b1200] max-w-3xl mx-auto mb-10">
+          Introduce us to your grant narrative, draft syllabus, or curatorial brief. We reply with a study plan,
+          references, and an outline of how CTW Studio would share authorship.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="mailto:hello@ctw.studio"
+            class="bg-black text-white px-8 py-4 rounded-full font-semibold">hello@ctw.studio</a>
+          <a href="https://linkedin.com/in/ctwhome" target="_blank"
+            class="border border-black px-8 py-4 rounded-full font-semibold text-black">LinkedIn</a>
+        </div>
+        <p class="text-sm text-[#3a2b09]">Amsterdam · working globally · currently booking projects for 2025–2026.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-6 py-10 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="text-sm text-gray-400">CTW Studio — Software for research and society</span>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="https://jessegonzalez.dev" target="_blank" class="hover:text-white">jessegonzalez.dev</a>
+        <a href="https://github.com/ctwhome" target="_blank" class="hover:text-white">GitHub</a>
+        <span>© 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
