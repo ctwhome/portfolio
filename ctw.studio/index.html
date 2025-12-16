@@ -135,6 +135,20 @@
       border-color: rgba(247, 181, 0, 0.4);
     }
 
+    .scroll-card-light {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: transform 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .scroll-card-light:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
     .horizontal-gallery {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -152,6 +166,14 @@
       border-radius: 999px;
     }
 
+    .bg-chalk .horizontal-gallery::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .projects-gallery {
+      padding-left: max(1.5rem, calc(50vw - 34.5rem));
+    }
+
     .project-card {
       min-width: 400px;
       scroll-snap-align: start;
@@ -167,6 +189,33 @@
     .project-card:hover {
       border-color: rgba(247, 181, 0, 0.4);
       transform: translateY(-4px);
+    }
+
+    /* Light theme project cards */
+    .bg-chalk .project-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-chalk .project-card:hover {
+      border-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-chalk .project-body {
+      color: #050505;
+    }
+
+    .bg-chalk .project-body .text-gray-300 {
+      color: #525252;
+    }
+
+    .bg-chalk .project-body .text-gray-400 {
+      color: #737373;
+    }
+
+    .bg-chalk .project-body .text-amber-400 {
+      color: #d97706;
     }
 
     .project-cover {
@@ -229,7 +278,7 @@
       }
     }
 
-    /* Three.js Blueprint Canvas */
+    /* Three.js Blueprint Canvas - on top with blend mode */
     #blueprint-canvas {
       position: fixed;
       top: 0;
@@ -237,15 +286,20 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 0;
+      z-index: 5;
+      mix-blend-mode: screen;
     }
 
-    /* Ensure content is above canvas */
-    nav,
-    main,
-    footer {
+    /* Content elements above the canvas lines */
+    .bento-card,
+    .scroll-card,
+    .scroll-card-light,
+    .project-card,
+    .quote-card,
+    .contact-card,
+    section > div {
       position: relative;
-      z-index: 1;
+      z-index: 10;
     }
   </style>
 </head>
@@ -465,7 +519,7 @@
     </section>
 
     <!-- Products -->
-    <section class="py-32 px-6 border-t border-white/10">
+    <section class="py-32 px-6 bg-zinc-900/80">
       <div class="max-w-6xl mx-auto">
         <p class="tag uppercase text-amber-400 mb-3">Products</p>
         <h2 class="text-3xl md:text-4xl font-semibold mb-4">Tools we're building</h2>
@@ -473,7 +527,7 @@
 
         <div class="grid md:grid-cols-3 gap-6">
           <!-- IdeasDiamond -->
-          <article class="p-8 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col">
+          <article class="p-8 rounded-2xl border border-white/10 bg-white/[0.03] flex flex-col">
             <div class="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center mb-8">
               <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -490,7 +544,7 @@
           </article>
 
           <!-- Notidian -->
-          <article class="p-8 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col">
+          <article class="p-8 rounded-2xl border border-white/10 bg-white/[0.03] flex flex-col">
             <div class="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center mb-8">
               <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -507,7 +561,7 @@
           </article>
 
           <!-- NextHuman -->
-          <article class="p-8 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col">
+          <article class="p-8 rounded-2xl border border-white/10 bg-white/[0.03] flex flex-col">
             <div class="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center mb-8">
               <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -526,8 +580,8 @@
     </section>
 
     <!-- Projects Gallery -->
-    <section id="work" class="py-32 px-6">
-      <div class="max-w-6xl mx-auto">
+    <section id="work" class="py-32 bg-zinc-900/80">
+      <div class="max-w-6xl mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
             <p class="tag uppercase text-gray-400 mb-3">Projects</p>
@@ -535,8 +589,9 @@
           </div>
 
         </div>
+      </div>
 
-        <div class="horizontal-gallery flex">
+      <div class="horizontal-gallery projects-gallery flex pr-6">
 
           <!-- Ruisdael -->
           <a href="https://ruisdael.ctwhome.com/" target="_blank" class="project-card">
@@ -688,14 +743,13 @@
             </div>
           </a>
 
-        </div>
+      </div>
 
-        <div class="mt-8 text-center">
-          <a href="https://jessegonzalez.dev/work" target="_blank"
-            class="text-sm text-gray-400 hover:text-white transition-colors">
-            View complete portfolio at jessegonzalez.dev →
-          </a>
-        </div>
+      <div class="max-w-6xl mx-auto px-6 mt-8 text-center">
+        <a href="https://jessegonzalez.dev/work" target="_blank"
+          class="text-sm text-gray-400 hover:text-white transition-colors">
+          View complete portfolio at jessegonzalez.dev →
+        </a>
       </div>
     </section>
 
@@ -979,7 +1033,7 @@
             entry.target.classList.add('animated');
 
             // Animate scroll cards
-            if (entry.target.classList.contains('scroll-card')) {
+            if (entry.target.classList.contains('scroll-card') || entry.target.classList.contains('scroll-card-light')) {
               anime({
                 targets: entry.target,
                 opacity: [0, 1],
@@ -1004,7 +1058,7 @@
       }, observerOptions);
 
       // Observe scroll cards and quote cards
-      document.querySelectorAll('.scroll-card, .quote-card').forEach(el => {
+      document.querySelectorAll('.scroll-card, .scroll-card-light, .quote-card').forEach(el => {
         el.style.opacity = '0';
         observer.observe(el);
       });
