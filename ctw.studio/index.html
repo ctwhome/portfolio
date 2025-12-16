@@ -297,7 +297,7 @@
     .project-card,
     .quote-card,
     .contact-card,
-    section > div {
+    section>div {
       position: relative;
       z-index: 10;
     }
@@ -353,7 +353,8 @@
               class="hero-desc inline-flex items-center gap-2 bg-amber-400 text-black px-6 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors opacity-0">
               Get in touch
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                </path>
               </svg>
             </a>
           </div>
@@ -491,28 +492,57 @@
         </div>
 
         <div class="space-y-6">
-          <article class="scroll-card">
-            <h3 class="text-lg font-semibold mb-2">Research Data Infrastructure</h3>
-            <p class="text-gray-400">FAIR-compliant data pipelines and architectures for reproducible research at scale.
-            </p>
+          <article class="scroll-card relative overflow-hidden">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+            </svg>
+            <div class="relative pl-8">
+              <h3 class="text-lg font-semibold mb-2">Research Data Infrastructure</h3>
+              <p class="text-gray-400">FAIR-compliant data pipelines and architectures for reproducible research at
+                scale.</p>
+            </div>
           </article>
 
-          <article class="scroll-card">
-            <h3 class="text-lg font-semibold mb-2">ML Systems & Responsible AI</h3>
-            <p class="text-gray-400">Validated, explainable ML systems with proper governance for research and clinical
-              contexts.</p>
+          <article class="scroll-card relative overflow-hidden">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <circle cx="12" cy="8" r="2" stroke-width="1.25" />
+            </svg>
+            <div class="relative pl-8">
+              <h3 class="text-lg font-semibold mb-2">ML Systems & Responsible AI</h3>
+              <p class="text-gray-400">Validated, explainable ML systems with proper governance for research and
+                clinical contexts.</p>
+            </div>
           </article>
 
-          <article class="scroll-card">
-            <h3 class="text-lg font-semibold mb-2">Scientific Visualization & Digital Exhibits</h3>
-            <p class="text-gray-400">Interactive visualizations, 3D environments, and museum-ready digital experiences.
-            </p>
+          <article class="scroll-card relative overflow-hidden">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+            </svg>
+            <div class="relative pl-8">
+              <h3 class="text-lg font-semibold mb-2">Scientific Visualization & Digital Exhibits</h3>
+              <p class="text-gray-400">Interactive visualizations, 3D environments, and museum-ready digital
+                experiences.</p>
+            </div>
           </article>
 
-          <article class="scroll-card">
-            <h3 class="text-lg font-semibold mb-2">Collaborative Research Platforms</h3>
-            <p class="text-gray-400">Open-source tools and platforms that support distributed research teams and
-              long-term scholarship.</p>
+          <article class="scroll-card relative overflow-hidden">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+            <div class="relative pl-8">
+              <h3 class="text-lg font-semibold mb-2">Collaborative Research Platforms</h3>
+              <p class="text-gray-400">Open-source tools and platforms that support distributed research teams and
+                long-term scholarship.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -593,155 +623,155 @@
 
       <div class="horizontal-gallery projects-gallery flex pr-6">
 
-          <!-- Ruisdael -->
-          <a href="https://ruisdael.ctwhome.com/" target="_blank" class="project-card">
-            <div class="project-cover">
-              <div class="project-cover-gradient bg-gradient-to-br from-cyan-500/30 to-blue-600/20">
-                <span class="text-8xl font-bold text-white/10">R</span>
-              </div>
+        <!-- Ruisdael -->
+        <a href="https://ruisdael.ctwhome.com/" target="_blank" class="project-card">
+          <div class="project-cover">
+            <div class="project-cover-gradient bg-gradient-to-br from-cyan-500/30 to-blue-600/20">
+              <span class="text-8xl font-bold text-white/10">R</span>
             </div>
-            <div class="project-body">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-                <span>Climate science</span>
-                <span>·</span>
-                <span>3D pipelines</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Ruisdael Observatory</h3>
-              <p class="text-gray-300 text-sm mb-4 flex-1">
-                Real-time volumetric atmospheric visualization. 512³ voxel datasets rendered via WebGL
-                with custom GLSL ray-marching. Zarr streaming, adaptive LOD.
-              </p>
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>KNMI · eScience Center</span>
-                <span class="text-amber-400">View platform →</span>
-              </div>
+          </div>
+          <div class="project-body">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+              <span>Climate science</span>
+              <span>·</span>
+              <span>3D pipelines</span>
             </div>
-          </a>
+            <h3 class="text-xl font-semibold mb-2">Ruisdael Observatory</h3>
+            <p class="text-gray-300 text-sm mb-4 flex-1">
+              Real-time volumetric atmospheric visualization. 512³ voxel datasets rendered via WebGL
+              with custom GLSL ray-marching. Zarr streaming, adaptive LOD.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>KNMI · eScience Center</span>
+              <span class="text-amber-400">View platform →</span>
+            </div>
+          </div>
+        </a>
 
-          <!-- FAIVOR -->
-          <a href="https://research-software-directory.org/projects/faivor" target="_blank" class="project-card">
-            <div class="project-cover">
-              <div class="project-cover-gradient bg-gradient-to-br from-emerald-500/30 to-teal-600/20">
-                <span class="text-8xl font-bold text-white/10">F</span>
-              </div>
+        <!-- FAIVOR -->
+        <a href="https://research-software-directory.org/projects/faivor" target="_blank" class="project-card">
+          <div class="project-cover">
+            <div class="project-cover-gradient bg-gradient-to-br from-emerald-500/30 to-teal-600/20">
+              <span class="text-8xl font-bold text-white/10">F</span>
             </div>
-            <div class="project-body">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-                <span>Healthcare AI</span>
-                <span>·</span>
-                <span>MLOps</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">FAIVOR</h3>
-              <p class="text-gray-300 text-sm mb-4 flex-1">
-                FAIR validation platform shepherding medical ML models from notebooks into governed
-                hospital deployments. Quality, fairness, and explainability checks.
-              </p>
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>Maastricht University</span>
-                <span class="text-amber-400">In review →</span>
-              </div>
+          </div>
+          <div class="project-body">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+              <span>Healthcare AI</span>
+              <span>·</span>
+              <span>MLOps</span>
             </div>
-          </a>
+            <h3 class="text-xl font-semibold mb-2">FAIVOR</h3>
+            <p class="text-gray-300 text-sm mb-4 flex-1">
+              FAIR validation platform shepherding medical ML models from notebooks into governed
+              hospital deployments. Quality, fairness, and explainability checks.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Maastricht University</span>
+              <span class="text-amber-400">In review →</span>
+            </div>
+          </div>
+        </a>
 
-          <!-- Mine-DD -->
-          <a href="https://mine-dd.github.io/dashboard" target="_blank" class="project-card">
-            <div class="project-cover">
-              <div class="project-cover-gradient bg-gradient-to-br from-amber-500/30 to-orange-600/20">
-                <span class="text-8xl font-bold text-white/10">M</span>
-              </div>
+        <!-- Mine-DD -->
+        <a href="https://mine-dd.github.io/dashboard" target="_blank" class="project-card">
+          <div class="project-cover">
+            <div class="project-cover-gradient bg-gradient-to-br from-amber-500/30 to-orange-600/20">
+              <span class="text-8xl font-bold text-white/10">M</span>
             </div>
-            <div class="project-body">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-                <span>Climate-health</span>
-                <span>·</span>
-                <span>GIS</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Mine-DD Living Atlas</h3>
-              <p class="text-gray-300 text-sm mb-4 flex-1">
-                Federates remote sensing, epidemiology, and community data. COG-TIFF streaming,
-                MapLibre visualization connecting climate patterns to disease outcomes.
-              </p>
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>University of Virginia</span>
-                <span class="text-amber-400">Field release →</span>
-              </div>
+          </div>
+          <div class="project-body">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+              <span>Climate-health</span>
+              <span>·</span>
+              <span>GIS</span>
             </div>
-          </a>
+            <h3 class="text-xl font-semibold mb-2">Mine-DD Living Atlas</h3>
+            <p class="text-gray-300 text-sm mb-4 flex-1">
+              Federates remote sensing, epidemiology, and community data. COG-TIFF streaming,
+              MapLibre visualization connecting climate patterns to disease outcomes.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>University of Virginia</span>
+              <span class="text-amber-400">Field release →</span>
+            </div>
+          </div>
+        </a>
 
-          <!-- Via Appia -->
-          <a href="https://via-appia.netlify.app/" target="_blank" class="project-card">
-            <div class="project-cover">
-              <div class="project-cover-gradient bg-gradient-to-br from-rose-500/30 to-pink-600/20">
-                <span class="text-8xl font-bold text-white/10">V</span>
-              </div>
+        <!-- Via Appia -->
+        <a href="https://via-appia.netlify.app/" target="_blank" class="project-card">
+          <div class="project-cover">
+            <div class="project-cover-gradient bg-gradient-to-br from-rose-500/30 to-pink-600/20">
+              <span class="text-8xl font-bold text-white/10">V</span>
             </div>
-            <div class="project-body">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-                <span>Digital humanities</span>
-                <span>·</span>
-                <span>VR</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Via Appia Immersion</h3>
-              <p class="text-gray-300 text-sm mb-4 flex-1">
-                3D/VR museum installation. Point cloud visualization comparing 19th-century artwork
-                with modern archaeological captures. Permanent exhibition at Valkhof Museum.
-              </p>
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>KNAW · Valkhof Museum</span>
-                <span class="text-amber-400">Experience →</span>
-              </div>
+          </div>
+          <div class="project-body">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+              <span>Digital humanities</span>
+              <span>·</span>
+              <span>VR</span>
             </div>
-          </a>
+            <h3 class="text-xl font-semibold mb-2">Via Appia Immersion</h3>
+            <p class="text-gray-300 text-sm mb-4 flex-1">
+              3D/VR museum installation. Point cloud visualization comparing 19th-century artwork
+              with modern archaeological captures. Permanent exhibition at Valkhof Museum.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>KNAW · Valkhof Museum</span>
+              <span class="text-amber-400">Experience →</span>
+            </div>
+          </div>
+        </a>
 
-          <!-- COLLaiTE -->
-          <a href="https://collaite.github.io/collens" target="_blank" class="project-card">
-            <div class="project-cover">
-              <div class="project-cover-gradient bg-gradient-to-br from-violet-500/30 to-purple-600/20">
-                <span class="text-8xl font-bold text-white/10">C</span>
-              </div>
+        <!-- COLLaiTE -->
+        <a href="https://collaite.github.io/collens" target="_blank" class="project-card">
+          <div class="project-cover">
+            <div class="project-cover-gradient bg-gradient-to-br from-violet-500/30 to-purple-600/20">
+              <span class="text-8xl font-bold text-white/10">C</span>
             </div>
-            <div class="project-body">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-                <span>Textual scholarship</span>
-                <span>·</span>
-                <span>TEI</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">COLLaiTE / Collens</h3>
-              <p class="text-gray-300 text-sm mb-4 flex-1">
-                Browser-based manuscript collation for textual scholarship. TEI XML processing,
-                offline-first. Led to formation of international VIDIT working group.
-              </p>
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>Huygens Institute (KNAW)</span>
-                <span class="text-amber-400">Try tool →</span>
-              </div>
+          </div>
+          <div class="project-body">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+              <span>Textual scholarship</span>
+              <span>·</span>
+              <span>TEI</span>
             </div>
-          </a>
+            <h3 class="text-xl font-semibold mb-2">COLLaiTE / Collens</h3>
+            <p class="text-gray-300 text-sm mb-4 flex-1">
+              Browser-based manuscript collation for textual scholarship. TEI XML processing,
+              offline-first. Led to formation of international VIDIT working group.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Huygens Institute (KNAW)</span>
+              <span class="text-amber-400">Try tool →</span>
+            </div>
+          </div>
+        </a>
 
-          <!-- Dynamic 3D -->
-          <a href="https://research-software-directory.org/projects/dynamic3d" target="_blank" class="project-card">
-            <div class="project-cover">
-              <div class="project-cover-gradient bg-gradient-to-br from-indigo-500/30 to-blue-600/20">
-                <span class="text-7xl font-bold text-white/10">3D</span>
-              </div>
+        <!-- Dynamic 3D -->
+        <a href="https://research-software-directory.org/projects/dynamic3d" target="_blank" class="project-card">
+          <div class="project-cover">
+            <div class="project-cover-gradient bg-gradient-to-br from-indigo-500/30 to-blue-600/20">
+              <span class="text-7xl font-bold text-white/10">3D</span>
             </div>
-            <div class="project-body">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-                <span>3D infrastructure</span>
-                <span>·</span>
-                <span>Open source</span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Dynamic 3D / Pure3D</h3>
-              <p class="text-gray-300 text-sm mb-4 flex-1">
-                Modern 3D research infrastructure replacing a failed €200K platform. Contributing to
-                Smithsonian's Voyager viewer—dynamic lighting, annotation API extensions.
-              </p>
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>KNAW · Smithsonian</span>
-                <span class="text-amber-400">Case study →</span>
-              </div>
+          </div>
+          <div class="project-body">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+              <span>3D infrastructure</span>
+              <span>·</span>
+              <span>Open source</span>
             </div>
-          </a>
+            <h3 class="text-xl font-semibold mb-2">Dynamic 3D / Pure3D</h3>
+            <p class="text-gray-300 text-sm mb-4 flex-1">
+              Modern 3D research infrastructure replacing a failed €200K platform. Contributing to
+              Smithsonian's Voyager viewer—dynamic lighting, annotation API extensions.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>KNAW · Smithsonian</span>
+              <span class="text-amber-400">Case study →</span>
+            </div>
+          </div>
+        </a>
 
       </div>
 
