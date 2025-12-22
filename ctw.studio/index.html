@@ -290,6 +290,34 @@
       }
     }
 
+    /* Pillar cards - accordion */
+    .pillar-card {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .pillar-expanded {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+
+    .pillar-card.open .pillar-expanded {
+      max-height: 150px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+
+    .pillar-toggle {
+      transition: transform 0.3s ease;
+    }
+
+    .pillar-card.open .pillar-toggle {
+      transform: rotate(180deg);
+    }
+
     /* Three.js Blueprint Canvas - on top with blend mode */
     #blueprint-canvas {
       position: fixed;
@@ -616,6 +644,115 @@
               <h3 class="text-lg font-semibold mb-2">Collaborative Research Platforms</h3>
               <p class="text-gray-400">Open-source tools and platforms that support distributed research teams and
                 long-term scholarship.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section id="how-we-work" class="px-6 py-24">
+      <div class="max-w-6xl mx-auto">
+        <p class="tag uppercase text-amber-400 mb-3">Our Process</p>
+        <h2 class="text-3xl md:text-4xl font-semibold mb-4">Working closely with</h2>
+        <p class="text-3xl md:text-4xl font-semibold text-amber-400 mb-12">research teams</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Planning -->
+          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <path d="M8 14h.01"/>
+              <path d="M12 14h.01"/>
+              <path d="M16 14h.01"/>
+              <path d="M8 18h.01"/>
+              <path d="M12 18h.01"/>
+            </svg>
+            <div class="relative pl-8">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Planning</h3>
+                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <p class="text-gray-300 mt-2">Research goals drive technical strategy</p>
+              <div class="pillar-expanded">
+                <p class="text-gray-400 text-sm">We start with your grant narrative and scientific objectives. Collaborative roadmapping ensures every technical decision serves the research.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Visibility -->
+          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <div class="relative pl-8">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Visibility</h3>
+                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <p class="text-gray-300 mt-2">Transparency at every stage</p>
+              <div class="pillar-expanded">
+                <p class="text-gray-400 text-sm">Regular demos, shared documentation, and open communication. You always know where the project stands and what's next.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Implementation -->
+          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 12a9 9 0 0 1-9 9"/>
+              <path d="M3 12a9 9 0 0 1 9-9"/>
+              <path d="M12 3v3"/>
+              <path d="M12 18v3"/>
+              <path d="M3 12h3"/>
+              <path d="M18 12h3"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <div class="relative pl-8">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Implementation</h3>
+                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <p class="text-gray-300 mt-2">Design thinking, iterative delivery</p>
+              <div class="pillar-expanded">
+                <p class="text-gray-400 text-sm">Prototypes before polish. We build, test, and refine with your team—solutions shaped by real researcher feedback.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sustainability -->
+          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
+            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
+              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M12 22v-7"/>
+              <path d="M9 22h6"/>
+              <path d="M12 15a7 7 0 0 0 7-7c0-3.5-2.5-5-5-7-2.5 2-5 3.5-5 7a7 7 0 0 0 3 5.75"/>
+              <path d="M12 15a7 7 0 0 1-3-5.75"/>
+            </svg>
+            <div class="relative pl-8">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Sustainability</h3>
+                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <p class="text-gray-300 mt-2">Built to outlast the grant</p>
+              <div class="pillar-expanded">
+                <p class="text-gray-400 text-sm">Open source by default, documentation-first, knowledge transfer. Software that serves the community long after the project ends.</p>
+              </div>
             </div>
           </article>
         </div>
