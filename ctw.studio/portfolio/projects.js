@@ -26,8 +26,8 @@ The goal: an interactive platform to study time-lapses between measured cloud po
     gallery: [
       { type: 'image', src: 'projects/ruisdael-observatory/cover.avif', caption: 'Volumetric cloud rendering in the browser' },
       { type: 'image', src: 'projects/ruisdael-observatory/gallery-1.avif', caption: '3D atmospheric visualization with real-time data' },
-      { type: 'pair', src: 'projects/ruisdael-observatory/gallery-2.png', src2: 'projects/ruisdael-observatory/gallery-3.png', caption: 'Cloud point processing pipeline and data transformation' },
-      { type: 'image', src: 'projects/ruisdael-observatory/gallery-4.png', caption: 'Map integration with volumetric cloud overlay' }
+      { type: 'pair', src: 'projects/ruisdael-observatory/gallery-2.avif', src2: 'projects/ruisdael-observatory/gallery-3.avif', caption: 'Cloud point processing pipeline and data transformation' },
+      { type: 'image', src: 'projects/ruisdael-observatory/gallery-4.avif', caption: 'Map integration with volumetric cloud overlay' }
     ]
   },
   {
@@ -50,10 +50,10 @@ Built with NuxtJS, ThreeJS, PotreeJS, and a Git-based content management system 
     gallery: [
       { type: 'video', src: 'projects/via-appia/intro.mp4', caption: 'Interactive journey through the Via Appia' },
       { type: 'image', src: 'projects/via-appia/cover.avif', caption: 'Point cloud visualization of the Appian Way' },
-      { type: 'image', src: 'projects/via-appia/gallery-1.png', caption: 'Historical photos matched with modern photographs' },
-      { type: 'pair', src: 'projects/via-appia/gallery-2.png', src2: 'projects/via-appia/gallery-4.png', caption: 'Technology stack and content management architecture' },
-      { type: 'image', src: 'projects/via-appia/gallery-3.png', caption: 'Story pages mapping images to 3D viewpoints' },
-      { type: 'pair', src: 'projects/via-appia/gallery-5.png', src2: 'projects/via-appia/gallery-6.png', caption: 'Camera path animations and museum installation' }
+      { type: 'image', src: 'projects/via-appia/gallery-1.avif', caption: 'Historical photos matched with modern photographs' },
+      { type: 'pair', src: 'projects/via-appia/gallery-2.avif', src2: 'projects/via-appia/gallery-4.avif', caption: 'Technology stack and content management architecture' },
+      { type: 'image', src: 'projects/via-appia/gallery-3.avif', caption: 'Story pages mapping images to 3D viewpoints' },
+      { type: 'pair', src: 'projects/via-appia/gallery-5.avif', src2: 'projects/via-appia/gallery-6.avif', caption: 'Camera path animations and museum installation' }
     ]
   },
   {
@@ -153,8 +153,8 @@ The redesign introduced a new logotype, simplified information architecture, and
     institution: 'Netherlands eScience Center',
     gallery: [
       { type: 'image', src: 'projects/carbon-budget-explorer/cover.avif', caption: 'Redesigned Carbon Budget Explorer interface' },
-      { type: 'image', src: 'projects/carbon-budget-explorer/gallery-1.png', caption: 'Before and after — UI transformation' },
-      { type: 'image', src: 'projects/carbon-budget-explorer/gallery-2.png', caption: 'Detailed design specifications and component library' }
+      { type: 'image', src: 'projects/carbon-budget-explorer/gallery-1.avif', caption: 'Before and after — UI transformation' },
+      { type: 'image', src: 'projects/carbon-budget-explorer/gallery-2.avif', caption: 'Detailed design specifications and component library' }
     ]
   },
   {
@@ -278,9 +278,9 @@ The visual identity blends a modern aesthetic with a green narrative, paired wit
     institution: null,
     gallery: [
       { type: 'image', src: 'projects/mistergreen/cover.avif', caption: 'MisterGreen Electric brand identity' },
-      { type: 'image', src: 'projects/mistergreen/gallery-1.png', caption: 'Complete branding system — logo, typography, color palette' },
-      { type: 'pair', src: 'projects/mistergreen/gallery-3.png', src2: 'projects/mistergreen/gallery-2.png', caption: 'Platform design and component system' },
-      { type: 'image', src: 'projects/mistergreen/gallery-4.jpg', caption: 'Easter campaign — seasonal marketing activation' }
+      { type: 'image', src: 'projects/mistergreen/gallery-1.avif', caption: 'Complete branding system — logo, typography, color palette' },
+      { type: 'pair', src: 'projects/mistergreen/gallery-3.avif', src2: 'projects/mistergreen/gallery-2.avif', caption: 'Platform design and component system' },
+      { type: 'image', src: 'projects/mistergreen/gallery-4.avif', caption: 'Easter campaign — seasonal marketing activation' }
     ]
   }
 ];

@@ -121,8 +121,9 @@
         cell.dataset.id = project.id;
 
         let visual;
+        const priority = index < 3 ? 'fetchpriority="high"' : 'loading="lazy"';
         if (project.coverImage) {
-          visual = `<img class="cell-image" src="${project.coverImage}" alt="${project.title}" loading="lazy">`;
+          visual = `<img class="cell-image" src="${project.coverImage}" alt="${project.title}" decoding="async" ${priority} onload="this.classList.add('loaded')">`;
         } else {
           visual = `<div class="cell-gradient-bg" style="background: linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})">
             <span>${project.title}</span>
@@ -165,14 +166,14 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.dataset.index) * 60;
+            const delay = parseInt(entry.target.dataset.index) * 40;
             setTimeout(() => {
               entry.target.classList.add('revealed');
-            }, Math.min(delay, 600));
+            }, Math.min(delay, 300));
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
 
       cells.forEach(cell => observer.observe(cell));
     }
@@ -197,8 +198,8 @@
           case 'pair':
             return `
               <div class="gallery-item gallery-pair">
-                <img src="${item.src}" alt="" loading="lazy">
-                <img src="${item.src2}" alt="" loading="lazy">
+                <img src="${item.src}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
+                <img src="${item.src2}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
               </div>
               ${item.caption ? `<p class="gallery-caption">${item.caption}</p>` : ''}`;
 
@@ -206,7 +207,7 @@
           default:
             return `
               <div class="gallery-item gallery-full">
-                <img src="${item.src}" alt="${item.caption || ''}" loading="lazy">
+                <img src="${item.src}" alt="${item.caption || ''}" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
                 ${item.caption ? `<p class="gallery-caption">${item.caption}</p>` : ''}
               </div>`;
         }
