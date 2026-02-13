@@ -473,6 +473,9 @@ body {
   flex-direction: column;
   gap: 8px;
   padding: 0 clamp(3rem, 6vw, 5rem);
+  max-width: 1700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gallery-item img,
