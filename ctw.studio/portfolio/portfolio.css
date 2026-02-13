@@ -3,7 +3,7 @@
    ======================================== */
 
 :root {
-  --gap: 8px;
+  --gap: 16px;
   --nav-height: 72px;
   --transition-fast: 0.2s ease;
   --transition-med: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -11,6 +11,10 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scrollbar-gutter: stable;
+}
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -110,7 +114,7 @@ body {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 42vw;
+  grid-auto-rows: 21vw;
   gap: var(--gap);
   padding: var(--gap);
   padding-top: calc(var(--nav-height) + var(--gap));
@@ -548,7 +552,7 @@ body {
 @media (max-width: 1024px) {
   .portfolio-grid {
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 50vw;
+    grid-auto-rows: 25vw;
   }
   .grid-cell {
     grid-column: span 2;
@@ -567,7 +571,7 @@ body {
 @media (max-width: 640px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 66vw;
+    grid-auto-rows: 33vw;
   }
   .grid-cell,
   .grid-cell.span-2,
