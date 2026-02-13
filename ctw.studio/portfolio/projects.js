@@ -18,7 +18,7 @@ export const projects = [
 
 The goal: an interactive platform to study time-lapses between measured cloud points, bringing atmospheric science to the browser.`,
     coverImage: 'projects/ruisdael-observatory/cover.avif',
-    gridSpan: 2,
+    gridSpan: 4,
     liveUrl: 'https://ruisdael.ctwhome.com',
     repoUrl: 'https://github.com/NLeSC/zarrviz',
     tags: ['Three.js', 'WebGL', 'Zarr', 'Climate Science'],
@@ -147,7 +147,7 @@ The project establishes validation protocols and governance frameworks for ML sy
 
 The redesign introduced a new logotype, simplified information architecture, and improved visual hierarchy — making the tool accessible to non-technical stakeholders while preserving data integrity.`,
     coverImage: 'projects/carbon-budget-explorer/cover.avif',
-    gridSpan: 2,
+    gridSpan: 4,
     liveUrl: null,
     tags: ['UI/UX Design', 'Climate Policy', 'Data Visualization'],
     institution: 'Netherlands eScience Center',
@@ -167,7 +167,7 @@ The redesign introduced a new logotype, simplified information architecture, and
 
 The platform includes an LLM-powered agent for natural language queries and follows FAIR principles for data accessibility.`,
     coverImage: 'projects/plan-eo/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
     tags: ['GIS', 'MapLibre', 'Svelte', 'COGTIFF'],
     institution: 'Netherlands eScience Center',
@@ -186,7 +186,7 @@ The platform includes an LLM-powered agent for natural language queries and foll
 
 Built with SvelteKit, featuring local-first storage, markdown editing, and daily reflection prompts.`,
     coverImage: 'projects/notidian/cover.avif',
-    gridSpan: 2,
+    gridSpan: 3,
     liveUrl: 'https://notidian.com',
     tags: ['SvelteKit', 'PKM', 'Productivity'],
     institution: null,
@@ -272,7 +272,7 @@ The rendering pipeline converts compressed Zarr data into interactive 3D volumes
 
 The visual identity blends a modern aesthetic with a green narrative, paired with a full-stack web platform at mistergreen.nl. The branding now offers a cohesive identity across all touchpoints, promoting sustainable mobility solutions.`,
     coverImage: 'projects/mistergreen/cover.avif',
-    gridSpan: 2,
+    gridSpan: 4,
     liveUrl: 'https://mistergreen.nl',
     tags: ['Branding', 'Web Platform', 'Design System'],
     institution: null,
