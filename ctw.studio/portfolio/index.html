@@ -248,6 +248,9 @@
       if (project.repoUrl) {
         linksHTML += `<a href="${project.repoUrl}" target="_blank" rel="noopener" class="detail-link-secondary">GitHub &#x2197;</a>`;
       }
+      if (project.blogUrl) {
+        linksHTML += `<a href="${project.blogUrl}" target="_blank" rel="noopener" class="detail-link-secondary">Blog Post &#x2197;</a>`;
+      }
       linksEl.innerHTML = linksHTML;
 
       // Gallery

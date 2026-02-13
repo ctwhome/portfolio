@@ -71,6 +71,7 @@ Built with SvelteKit, Threlte (Three.js for Svelte), and Google Gemini API with 
     gridSpan: 1,
     liveUrl: 'https://nlesc.github.io/data-storytelling/',
     repoUrl: 'https://github.com/NLeSC/data-storytelling',
+    blogUrl: 'https://ctwux.medium.com/639cc6664dc2',
     tags: ['AI', 'Three.js', 'SvelteKit', 'Gemini', 'LLM'],
     institution: 'Netherlands eScience Center',
     gallery: [
