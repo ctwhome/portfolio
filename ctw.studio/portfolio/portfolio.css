@@ -3,7 +3,7 @@
    ======================================== */
 
 :root {
-  --gap: 16px;
+  --gap: 24px;
   --nav-height: 72px;
   --transition-fast: 0.2s ease;
   --transition-med: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -124,6 +124,7 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 16px;
   /* Default: spans 2 of 6 cols (1/3 width) */
   grid-column: span 2;
 }
@@ -175,8 +176,8 @@ body {
 }
 
 .cell-info h3 {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
   color: #fff;
   line-height: 1.2;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
