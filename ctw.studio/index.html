@@ -27,34 +27,12 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            coal: '#050505',
-            chalk: '#f6f5f0',
-            ember: '#f7b500',
-            dusk: '#0d0d0d'
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="tailwind.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Anime.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
 
   <style>
     :root {
@@ -981,9 +959,12 @@
     </div>
   </footer>
 
-  <!-- Animations -->
+  <!-- Animations (Anime.js loaded async) -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js';
+      s.onload = function () {
       // Hero text animations
       const heroTimeline = anime.timeline({
         easing: 'easeOutExpo',
@@ -1069,19 +1050,25 @@
         el.style.opacity = '0';
         observer.observe(el);
       });
-    });
 
-    // Testimonials gallery navigation
+      };
+      document.head.appendChild(s);
+
+    // Testimonials gallery navigation (available immediately, no anime.js dependency)
     window.scrollTestimonials = function (direction) {
       const gallery = document.getElementById('testimonials-gallery');
       const scrollAmount = 380; // card width + gap
       gallery.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     };
+    })();
   </script>
 
-  <!-- Three.js Blueprint Effects -->
+  <!-- Three.js Blueprint Effects (loaded async) -->
   <script>
     (function () {
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      s.onload = function () {
       // Scene setup
       const canvas = document.getElementById('blueprint-canvas');
       const scene = new THREE.Scene();
@@ -1410,6 +1397,8 @@
       } else {
         init();
       }
+      };
+      document.head.appendChild(s);
     })();
   </script>
 
