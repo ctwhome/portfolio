@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — CTW Studio</title>
+  <meta name="description" content="Selected projects by CTW Studio. Applied research software, scientific visualization, and digital experiences.">
+
+  <meta property="og:title" content="Work — CTW Studio">
+  <meta property="og:description" content="Selected projects by CTW Studio. Applied research software, scientific visualization, and digital experiences.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ctw.studio/portfolio/">
+  <meta property="og:image" content="https://ctw.studio/og-image.png">
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="portfolio.css">
+
+  <!-- Three.js (same as landing page) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Three.js Blueprint Background -->
+  <canvas id="blueprint-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav id="portfolio-nav" class="portfolio-nav">
+    <a href="../" class="nav-logo">
+      <img src="../favicon.png" alt="CTW Studio">
+      <span>CTW<span class="dot">.</span>studio</span>
+    </a>
+    <div class="nav-links">
+      <a href="./">Work</a>
+      <a href="../#about">Info</a>
+    </div>
+  </nav>
+
+  <!-- Portfolio Grid (rendered by JS) -->
+  <div id="portfolio-grid" class="portfolio-grid"></div>
+
+  <!-- Detail Overlay (full page, rendered dynamically) -->
+  <div id="detail-overlay" class="detail-overlay">
+    <!-- Sticky header with title + close -->
+    <div class="detail-header">
+      <div class="detail-header-info">
+        <span id="detail-header-title" class="detail-header-title"></span>
+        <span id="detail-header-meta" class="detail-header-meta"></span>
+      </div>
+      <button id="detail-close" class="detail-close" aria-label="Close">&#x2715;</button>
+    </div>
+
+    <!-- Scrollable content -->
+    <div id="detail-body" class="detail-body">
+      <!-- Separator line -->
+      <div class="detail-separator"></div>
+
+      <!-- Headline -->
+      <h2 id="detail-headline" class="detail-headline"></h2>
+
+      <!-- Description paragraphs -->
+      <div id="detail-description" class="detail-description"></div>
+
+      <!-- Tags -->
+      <div id="detail-tags" class="detail-tags"></div>
+
+      <!-- Action links -->
+      <div id="detail-links" class="detail-links"></div>
+
+      <!-- Gallery (videos, images, pairs) -->
+      <div id="detail-gallery" class="detail-gallery"></div>
+
+      <!-- Next Project -->
+      <div id="detail-next" class="detail-next">
+        <p class="detail-next-label">Next Project</p>
+        <span id="detail-next-title" class="detail-next-title"></span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { projects } from './projects.js';
+
+    const grid = document.getElementById('portfolio-grid');
+    const overlay = document.getElementById('detail-overlay');
+    const detailBody = document.getElementById('detail-body');
+    const closeBtn = document.getElementById('detail-close');
+    let savedScrollY = 0;
+
+    // =====================
+    // GRID RENDERING
+    // =====================
+    function renderGrid() {
+      grid.innerHTML = '';
+
+      projects.forEach((project, index) => {
+        const cell = document.createElement('div');
+        cell.className = `grid-cell${project.gridSpan === 2 ? ' span-2' : ''}`;
+        cell.dataset.index = index;
+        cell.dataset.id = project.id;
+
+        let visual;
+        if (project.coverImage) {
+          visual = `<img class="cell-image" src="${project.coverImage}" alt="${project.title}" loading="lazy">`;
+        } else {
+          visual = `<div class="cell-gradient-bg" style="background: linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})">
+            <span>${project.title}</span>
+          </div>`;
+        }
+
+        let hoverButtons = `<button class="btn btn-primary" data-action="detail">View Project</button>`;
+        if (project.liveUrl) {
+          hoverButtons += `<a class="btn btn-outline" href="${project.liveUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Visit Site &#x2197;</a>`;
+        }
+
+        cell.innerHTML = `
+          ${visual}
+          <div class="cell-info-gradient"></div>
+          <div class="cell-info">
+            <h3>${project.title}</h3>
+            <p>for ${project.client}</p>
+          </div>
+          <div class="cell-hover-overlay">
+            ${hoverButtons}
+          </div>
+        `;
+
+        cell.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          openDetail(index);
+        });
+
+        grid.appendChild(cell);
+      });
+
+      observeCells();
+    }
+
+    // =====================
+    // SCROLL REVEAL
+    // =====================
+    function observeCells() {
+      const cells = document.querySelectorAll('.grid-cell');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.index) * 60;
+            setTimeout(() => {
+              entry.target.classList.add('revealed');
+            }, Math.min(delay, 600));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      cells.forEach(cell => observer.observe(cell));
+    }
+
+    // =====================
+    // DETAIL VIEW (mvsm.com style)
+    // =====================
+    function renderGallery(gallery) {
+      if (!gallery || gallery.length === 0) return '';
+
+      return gallery.map(item => {
+        switch (item.type) {
+          case 'video':
+            return `
+              <div class="gallery-item gallery-full">
+                <video controls playsinline preload="metadata" class="gallery-video">
+                  <source src="${item.src}" type="video/mp4">
+                </video>
+                ${item.caption ? `<p class="gallery-caption">${item.caption}</p>` : ''}
+              </div>`;
+
+          case 'pair':
+            return `
+              <div class="gallery-item gallery-pair">
+                <img src="${item.src}" alt="" loading="lazy">
+                <img src="${item.src2}" alt="" loading="lazy">
+              </div>
+              ${item.caption ? `<p class="gallery-caption">${item.caption}</p>` : ''}`;
+
+          case 'image':
+          default:
+            return `
+              <div class="gallery-item gallery-full">
+                <img src="${item.src}" alt="${item.caption || ''}" loading="lazy">
+                ${item.caption ? `<p class="gallery-caption">${item.caption}</p>` : ''}
+              </div>`;
+        }
+      }).join('');
+    }
+
+    function openDetail(index) {
+      const project = projects[index];
+      if (!project) return;
+
+      savedScrollY = window.scrollY;
+
+      // Header
+      document.getElementById('detail-header-title').textContent = project.title;
+      document.getElementById('detail-header-meta').textContent =
+        `${project.category} ~ ${project.client}`;
+
+      // Headline
+      document.getElementById('detail-headline').textContent = project.headline || project.title;
+
+      // Description — split on double newlines into paragraphs
+      const descEl = document.getElementById('detail-description');
+      const paragraphs = project.description.split('\n\n').filter(Boolean);
+      descEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+
+      // Tags
+      const tagsEl = document.getElementById('detail-tags');
+      tagsEl.innerHTML = (project.tags || []).map(t =>
+        `<span class="detail-tag">${t}</span>`
+      ).join('');
+
+      // Links
+      const linksEl = document.getElementById('detail-links');
+      let linksHTML = '';
+      if (project.liveUrl) {
+        linksHTML += `<a href="${project.liveUrl}" target="_blank" rel="noopener" class="detail-link-primary">Visit Site &#x2197;</a>`;
+      }
+      if (project.repoUrl) {
+        linksHTML += `<a href="${project.repoUrl}" target="_blank" rel="noopener" class="detail-link-secondary">GitHub &#x2197;</a>`;
+      }
+      linksEl.innerHTML = linksHTML;
+
+      // Gallery
+      document.getElementById('detail-gallery').innerHTML = renderGallery(project.gallery);
+
+      // Next project
+      const nextIndex = (index + 1) % projects.length;
+      const nextProject = projects[nextIndex];
+      const nextTitle = document.getElementById('detail-next-title');
+      nextTitle.textContent = nextProject.title;
+      nextTitle.onclick = () => {
+        detailBody.scrollTop = 0;
+        openDetail(nextIndex);
+      };
+
+      // Update URL
+      history.pushState(null, '', `#${project.id}`);
+
+      // Open
+      overlay.classList.add('open');
+      detailBody.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetail() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      history.pushState(null, '', window.location.pathname);
+      window.scrollTo(0, savedScrollY);
+    }
+
+    closeBtn.addEventListener('click', closeDetail);
+
+    // Close on click outside content area (clicking the dark bg)
+    detailBody.addEventListener('click', (e) => {
+      if (e.target === detailBody) closeDetail();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        closeDetail();
+      }
+    });
+
+    window.addEventListener('popstate', () => {
+      if (overlay.classList.contains('open')) {
+        closeDetail();
+      } else {
+        handleHash();
+      }
+    });
+
+    // =====================
+    // HASH ROUTING
+    // =====================
+    function handleHash() {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+      const index = projects.findIndex(p => p.id === hash);
+      if (index !== -1) openDetail(index);
+    }
+
+    // =====================
+    // INIT
+    // =====================
+    renderGrid();
+    handleHash();
+  </script>
+
+</body>
+</html>
