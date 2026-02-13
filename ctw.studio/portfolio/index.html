@@ -19,6 +19,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coal: '#050505',
+            chalk: '#f6f5f0',
+            ember: '#f7b500',
+            dusk: '#0d0d0d'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
   <link rel="stylesheet" href="portfolio.css">
 
   <!-- Three.js (same as landing page) -->
@@ -29,15 +48,21 @@
   <!-- Three.js Blueprint Background -->
   <canvas id="blueprint-canvas"></canvas>
 
-  <!-- Navigation -->
-  <nav id="portfolio-nav" class="portfolio-nav">
-    <a href="../" class="nav-logo">
-      <img src="../favicon.png" alt="CTW Studio">
-      <span>CTW<span class="dot">.</span>studio</span>
-    </a>
-    <div class="nav-links">
-      <a href="./">Work</a>
-      <a href="../#about">Info</a>
+  <!-- Navigation (same as landing page) -->
+  <nav class="frost-nav">
+    <div class="frost-glass"></div>
+    <div class="frost-glass-edge"></div>
+    <div class="max-w-6xl mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
+      <a href="../" class="flex items-center gap-2.5">
+        <img src="../favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
+        <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
+      </a>
+      <div class="flex items-center gap-4 md:gap-8 text-xs md:text-sm text-gray-300">
+        <a href="./" class="nav-link hidden md:block">Work</a>
+        <a href="../#about" class="nav-link hidden md:block">Founder</a>
+        <a href="../#collaborations" class="nav-link hidden md:block">Collaborations</a>
+        <a href="../#contact" class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
+      </div>
     </div>
   </nav>
 
@@ -100,7 +125,8 @@
 
       projects.forEach((project, index) => {
         const cell = document.createElement('div');
-        cell.className = `grid-cell${project.gridSpan === 2 ? ' span-2' : ''}`;
+        const spanClass = project.gridSpan === 4 ? ' span-2' : project.gridSpan === 3 ? ' span-3' : '';
+        cell.className = `grid-cell${spanClass}`;
         cell.dataset.index = index;
         cell.dataset.id = project.id;
 
@@ -298,6 +324,172 @@
     // =====================
     renderGrid();
     handleHash();
+  </script>
+
+  <!-- Three.js Blueprint Effects (shared with landing page) -->
+  <script>
+    (function () {
+      const canvas = document.getElementById('blueprint-canvas');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.position.z = 30;
+
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.06
+      });
+
+      // Hover brackets for grid cells
+      let activeHoverGroup = null;
+      let hoverTargetOpacity = 0;
+      let hoverCurrentOpacity = 0;
+
+      function createBracketGroup() {
+        const group = new THREE.Group();
+        const bracketLength = 2;
+        const corners = [
+          { x: -1, y: 1, rotZ: 0 },
+          { x: 1, y: 1, rotZ: -Math.PI / 2 },
+          { x: 1, y: -1, rotZ: Math.PI },
+          { x: -1, y: -1, rotZ: Math.PI / 2 }
+        ];
+        corners.forEach(corner => {
+          const points = [
+            new THREE.Vector3(0, bracketLength, 0),
+            new THREE.Vector3(0, 0, 0),
+            new THREE.Vector3(bracketLength, 0, 0)
+          ];
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+          const bracket = new THREE.Line(geometry, lineMaterial.clone());
+          bracket.rotation.z = corner.rotZ;
+          bracket.position.set(corner.x, corner.y, 0);
+          group.add(bracket);
+        });
+        const crossSize = 0.3;
+        const crossPoints = [
+          new THREE.Vector3(-crossSize, 0, 0), new THREE.Vector3(crossSize, 0, 0),
+          new THREE.Vector3(0, -crossSize, 0), new THREE.Vector3(0, crossSize, 0)
+        ];
+        const crossGeom = new THREE.BufferGeometry().setFromPoints(crossPoints);
+        group.add(new THREE.LineSegments(crossGeom, lineMaterial.clone()));
+        group.visible = false;
+        scene.add(group);
+        return group;
+      }
+
+      const bracketGroups = [];
+      for (let i = 0; i < 16; i++) bracketGroups.push(createBracketGroup());
+      let hoveredElement = null;
+      let bracketIndex = 0;
+
+      function getBracket(el) {
+        if (!el._bpBracket) {
+          el._bpBracket = bracketGroups[bracketIndex % bracketGroups.length];
+          bracketIndex++;
+        }
+        return el._bpBracket;
+      }
+
+      function setupHoverListeners() {
+        document.querySelectorAll('.grid-cell').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            hoveredElement = el;
+            activeHoverGroup = getBracket(el);
+            activeHoverGroup.visible = true;
+            hoverTargetOpacity = 0.12;
+          });
+          el.addEventListener('mouseleave', () => {
+            hoveredElement = null;
+            hoverTargetOpacity = 0;
+          });
+        });
+      }
+
+      // Ambient floating particles
+      const particles = [];
+      function createParticles() {
+        for (let i = 0; i < 20; i++) {
+          const geometry = new THREE.BufferGeometry();
+          geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([0, 0, 0]), 3));
+          const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.04, transparent: true, opacity: 0.04 });
+          const p = new THREE.Points(geometry, material);
+          p.position.set((Math.random() - 0.5) * 60, (Math.random() - 0.5) * 60, (Math.random() - 0.5) * 20);
+          p._vel = { x: (Math.random() - 0.5) * 0.008, y: (Math.random() - 0.5) * 0.008, z: (Math.random() - 0.5) * 0.003 };
+          scene.add(p);
+          particles.push(p);
+        }
+      }
+
+      // Animation
+      let scrollY = 0, targetScrollY = 0;
+      window.addEventListener('scroll', () => { targetScrollY = window.scrollY; });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        scrollY += (targetScrollY - scrollY) * 0.1;
+
+        if (activeHoverGroup) {
+          hoverCurrentOpacity += (hoverTargetOpacity - hoverCurrentOpacity) * 0.12;
+          activeHoverGroup.children.forEach(child => { if (child.material) child.material.opacity = hoverCurrentOpacity; });
+          if (hoveredElement) {
+            const rect = hoveredElement.getBoundingClientRect();
+            const x = (rect.left + rect.width / 2 - window.innerWidth / 2) / 30;
+            const y = -(rect.top + rect.height / 2 - window.innerHeight / 2) / 30;
+            activeHoverGroup.position.x += (x - activeHoverGroup.position.x) * 0.15;
+            activeHoverGroup.position.y += (y - activeHoverGroup.position.y) * 0.15;
+            activeHoverGroup.scale.x += (rect.width / 80 - activeHoverGroup.scale.x) * 0.15;
+            activeHoverGroup.scale.y += (rect.height / 80 - activeHoverGroup.scale.y) * 0.15;
+          }
+          if (hoverCurrentOpacity < 0.005 && hoverTargetOpacity === 0) {
+            activeHoverGroup.visible = false;
+            activeHoverGroup = null;
+          }
+        }
+
+        particles.forEach(p => {
+          p.position.x += p._vel.x; p.position.y += p._vel.y; p.position.z += p._vel.z;
+          if (p.position.x > 30) p.position.x = -30;
+          if (p.position.x < -30) p.position.x = 30;
+          if (p.position.y > 30) p.position.y = -30;
+          if (p.position.y < -30) p.position.y = 30;
+        });
+
+        camera.position.y = -scrollY * 0.005;
+        camera.rotation.x = scrollY * 0.0001;
+        renderer.render(scene, camera);
+      }
+
+      function init() {
+        setupHoverListeners();
+        createParticles();
+        animate();
+      }
+
+      // Re-attach hover listeners when grid re-renders
+      const observer = new MutationObserver(() => {
+        bracketIndex = 0;
+        setupHoverListeners();
+      });
+      const gridEl = document.getElementById('portfolio-grid');
+      if (gridEl) observer.observe(gridEl, { childList: true });
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
   </script>
 
 </body>

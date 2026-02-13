@@ -35,68 +35,73 @@ body {
 }
 
 /* Ensure grid cells sit above the canvas */
-.portfolio-grid,
-.portfolio-nav {
+.portfolio-grid {
   position: relative;
   z-index: 10;
 }
 
 /* ========================================
-   Navigation (frosted glass, dark — matches landing)
+   Navigation (frosted glass — matches landing page)
    ======================================== */
-.portfolio-nav {
+.frost-nav {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 clamp(1.5rem, 4vw, 3rem);
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  top: 0;
+  z-index: 50;
 }
 
-.nav-logo {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #f2f1ec;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.frost-glass {
+  position: absolute;
+  inset: 0;
+  --extended-by: 100px;
+  bottom: calc(-1 * var(--extended-by));
+  --filter: blur(24px);
+  -webkit-backdrop-filter: var(--filter);
+  backdrop-filter: var(--filter);
+  pointer-events: none;
+  --cutoff: calc(100% - var(--extended-by));
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
+  mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
 }
 
-.nav-logo img {
-  width: 32px;
-  height: 32px;
+.frost-glass-edge {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  --extended-by: 80px;
+  --offset: 20px;
+  --thickness: 2px;
+  height: calc(var(--extended-by) + var(--offset));
+  top: calc(100% - var(--offset) + var(--thickness));
+  --filter: blur(60px) saturate(140%) brightness(1.2);
+  -webkit-backdrop-filter: var(--filter);
+  backdrop-filter: var(--filter);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
+  mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
 }
 
-.nav-logo .dot {
-  color: #f7b500;
+.nav-link {
+  position: relative;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
 }
 
-.nav-links a {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.nav-links a:hover {
-  color: #fff;
+.nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 /* ========================================
@@ -104,7 +109,8 @@ body {
    ======================================== */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 42vw;
   gap: var(--gap);
   padding: var(--gap);
   padding-top: calc(var(--nav-height) + var(--gap));
@@ -114,11 +120,18 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  aspect-ratio: 4 / 3;
+  /* Default: spans 2 of 6 cols (1/3 width) */
+  grid-column: span 2;
 }
 
 .grid-cell.span-2 {
-  grid-column: span 2;
+  /* Wide: spans 4 of 6 cols (2/3 width) */
+  grid-column: span 4;
+}
+
+.grid-cell.span-3 {
+  /* Half: spans 3 of 6 cols (1/2 width) */
+  grid-column: span 3;
 }
 
 /* ---- Cell Image ---- */
@@ -127,7 +140,6 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform var(--transition-slow);
 }
 
 .cell-gradient-bg {
@@ -145,9 +157,7 @@ body {
   letter-spacing: -0.02em;
 }
 
-.grid-cell:hover .cell-image {
-  transform: scale(1.03);
-}
+/* No image zoom on hover — only gradient overlay */
 
 /* ---- Cell Text Overlay ---- */
 .cell-info {
@@ -537,9 +547,16 @@ body {
    ======================================== */
 @media (max-width: 1024px) {
   .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 50vw;
+  }
+  .grid-cell {
+    grid-column: span 2;
   }
   .grid-cell.span-2 {
+    grid-column: span 4;
+  }
+  .grid-cell.span-3 {
     grid-column: span 2;
   }
   .detail-gallery {
@@ -550,15 +567,12 @@ body {
 @media (max-width: 640px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: 66vw;
   }
-  .grid-cell.span-2 {
+  .grid-cell,
+  .grid-cell.span-2,
+  .grid-cell.span-3 {
     grid-column: span 1;
-  }
-  .grid-cell {
-    aspect-ratio: 16 / 10;
-  }
-  .nav-links {
-    gap: 1.25rem;
   }
   .detail-gallery {
     padding: 0 1rem;
