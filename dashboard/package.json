@@ -1,0 +1,16 @@
+{
+  "name": "personal-signal-desk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch server.ts",
+    "start": "bun run server.ts",
+    "collect": "bun run scripts/collect.ts",
+    "build:css": "bunx tailwindcss -i ./src/styles.css -o ./public/assets/styles.css --minify"
+  },
+  "dependencies": {
+    "daisyui": "^5.0.14",
+    "tailwindcss": "^3.4.17"
+  }
+}
