@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-base-100 text-ink;
+    background-image:
+      radial-gradient(circle at top left, rgba(207, 116, 72, 0.12), transparent 28%),
+      radial-gradient(circle at top right, rgba(70, 99, 91, 0.1), transparent 32%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(244, 241, 234, 1));
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-[2rem] border border-base-300 bg-base-100 shadow-paper backdrop-blur;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-secondary;
+  }
+}

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Literacy Workshop — CTW.studio</title>
+  <link rel="icon" href="../../favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../tailwind.css">
+  <style>
+    :root { color-scheme: dark; }
+    body { background: #000; }
+    .reveal { font-family: 'Inter', system-ui, sans-serif; color: #f2f1ec; }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { padding: 40px 60px; }
+    .reveal h1 { font-size: 2.5em; font-weight: 800; color: #f2f1ec; margin-bottom: 0.5em; }
+    .reveal h2 { font-size: 1.8em; font-weight: 700; color: #f2f1ec; margin-bottom: 0.5em; }
+    .reveal h3 { font-size: 1.3em; font-weight: 600; color: #fbbf24; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { font-size: 0.85em; line-height: 1.7; color: #d1d5db; }
+    .reveal .amber { color: #fbbf24; }
+    .reveal .gray { color: #9ca3af; }
+    .reveal .small { font-size: 0.6em; color: #6b7280; }
+    .reveal .slide-number { color: #6b7280; font-size: 0.7em; }
+    .reveal ul { list-style: none; padding: 0; margin: 0; }
+    .reveal ul li { padding: 0.3em 0; padding-left: 1.5em; position: relative; }
+    .reveal ul li::before { content: "\2192"; color: #fbbf24; position: absolute; left: 0; }
+    .reveal .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .reveal .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; }
+    .reveal .highlight-card { border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.03); }
+    .reveal .tag { text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.55em; color: #fbbf24; }
+    .reveal blockquote { border-left: 3px solid #fbbf24; padding-left: 1em; font-style: italic; color: #9ca3af; }
+    .reveal code { background: rgba(255,255,255,0.08); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.85em; }
+    .reveal .fragment.fade-in-then-semi-out.visible:not(.current-fragment) { opacity: 0.3; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ========== BLOCK 0: Welcome ========== -->
+      <section>
+
+        <!-- 0.1 Title -->
+        <section data-background-color="#000">
+          <p class="tag">LIVE WORKSHOP &middot; 3 HOURS</p>
+          <h1><span class="amber">AI</span> Literacy Workshop</h1>
+          <p class="gray small">CTW.studio</p>
+          <p class="gray">[Your Institution] &middot; [Date]</p>
+        </section>
+
+        <!-- 0.2 Agenda -->
+        <section data-background-color="#000">
+          <h2>Today's Plan</h2>
+          <ul>
+            <li>Block 1: Context &mdash; How AI actually works (50 min)</li>
+            <li>Block 2: Tools &mdash; Hands-on with real AI tools (65 min)</li>
+            <li>Block 3: Future &mdash; What's coming and what it means (50 min)</li>
+          </ul>
+          <p class="small" style="margin-top: 1.5em;">40% theory &middot; 60% hands-on &middot; Two breaks</p>
+        </section>
+
+        <!-- 0.3 Quick Poll -->
+        <section data-background-color="#000">
+          <h2>Quick Poll</h2>
+          <p>Raise your hand if you've...</p>
+          <ul>
+            <li class="fragment fade-in-then-semi-out">Used ChatGPT or similar</li>
+            <li class="fragment fade-in-then-semi-out">Used AI for your research or teaching</li>
+            <li class="fragment fade-in-then-semi-out">Tried more than one AI tool</li>
+            <li class="fragment fade-in-then-semi-out">Built something with AI (a project, workflow, assistant)</li>
+          </ul>
+          <p class="small" style="margin-top: 1.5em;">No wrong answers. We're meeting you where you are.</p>
+        </section>
+
+      </section>
+
+      <!-- ========== BLOCK 1: Context ========== -->
+      <section>
+
+        <!-- 1.1 Block Title -->
+        <section data-background-color="#000">
+          <p class="tag">BLOCK 1</p>
+          <h1>Context</h1>
+          <p>How AI actually works</p>
+        </section>
+
+        <!-- 1.2 The Prediction Machine -->
+        <section data-background-color="#000">
+          <h2>AI is a prediction machine</h2>
+          <p>At its core, a large language model (LLM) predicts the next word.</p>
+          <p>You type text &rarr; the model predicts the most likely continuation.</p>
+          <blockquote>"Today is a lovely day. I would like to go to the..."</blockquote>
+          <p class="amber">park? beach? library? The model picks statistically.</p>
+        </section>
+
+        <!-- 1.3 Training vs Inference -->
+        <section data-background-color="#000">
+          <h2>Two phases</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>Training</h3>
+              <p>Reading every book in the library</p>
+              <ul>
+                <li>Costs millions of dollars</li>
+                <li>Takes months</li>
+                <li>Done by companies (OpenAI, Anthropic, Google)</li>
+                <li>Happens once (then updated)</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Inference</h3>
+              <p>Answering a question from memory</p>
+              <ul>
+                <li>Fast (seconds)</li>
+                <li>Cheap per query</li>
+                <li>What happens when you type a prompt</li>
+                <li>Happens every time you use AI</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 1.4 Tokens -->
+        <section data-background-color="#000">
+          <h2>Tokens: how AI reads</h2>
+          <p>AI doesn't read words &mdash; it reads tokens.</p>
+          <p><code>'university'</code> = 1 token</p>
+          <p><code>'epistemology'</code> = 3 tokens</p>
+          <p><code>'AI Literacy Workshop'</code> = 3 tokens</p>
+          <p class="small" style="margin-top: 1.5em;">Tokens are how models process text and how you're billed.</p>
+          <p class="small">Try it: tokenizer.dev</p>
+        </section>
+
+        <!-- 1.5 Context Window -->
+        <section data-background-color="#000">
+          <h2>Context window: AI's working memory</h2>
+          <p>How much text the model can "see" at once.</p>
+          <ul>
+            <li>GPT-4: ~128K tokens (~300 pages)</li>
+            <li>Claude: ~200K tokens (~500 pages)</li>
+            <li>Gemini: ~1M tokens (~2,500 pages)</li>
+          </ul>
+          <p style="margin-top: 1em;">This is why you can upload entire papers and ask questions about them.</p>
+        </section>
+
+        <!-- 1.6 Vocabulary: Foundation Layer -->
+        <section data-background-color="#000">
+          <h3 class="tag">VOCABULARY</h3>
+          <h2>Foundation Layer</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out"><strong>Frontier model</strong> &mdash; The most advanced AI available today (GPT-4.5, Claude Opus, Gemini Ultra)</li>
+            <li class="fragment fade-in-then-semi-out"><strong>LLM</strong> &mdash; Large Language Model. The engine behind ChatGPT, Claude, Gemini</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Multimodal</strong> &mdash; Handles text + images + audio + video. Upload a handwritten exam &rarr; transcribed and analyzed</li>
+          </ul>
+        </section>
+
+        <!-- 1.7 Vocabulary: Accuracy Layer -->
+        <section data-background-color="#000">
+          <h2>Accuracy Layer</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out"><strong>Hallucination</strong> &mdash; When AI confidently makes things up. Citing papers that don't exist.</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Grounding</strong> &mdash; Giving AI trusted sources so it stays factual. "Only answer based on these PDFs."</li>
+            <li class="fragment fade-in-then-semi-out"><strong>RAG</strong> &mdash; Retrieval-Augmented Generation. The model searches a knowledge base before answering.</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Temperature</strong> &mdash; Controls randomness. Low = predictable (grading). High = creative (brainstorming).</li>
+          </ul>
+        </section>
+
+        <!-- 1.8 Vocabulary: Action Layer -->
+        <section data-background-color="#000">
+          <h2>Action Layer</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out"><strong>Tools</strong> &mdash; External capabilities AI can call: search, calculate, browse, send email</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Orchestration</strong> &mdash; The conductor coordinating model + tools + data behind the scenes</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Agents</strong> &mdash; AI that plans and executes multi-step tasks autonomously</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Autonomy</strong> &mdash; How independently the AI operates (spectrum: scripted &rarr; semi-autonomous &rarr; fully autonomous)</li>
+          </ul>
+        </section>
+
+        <!-- 1.9 Vocabulary: Development Layer -->
+        <section data-background-color="#000">
+          <h2>Development Layer</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out"><strong>Fine-tuning</strong> &mdash; Retraining a model on specialized data (expensive, rare, last resort)</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Context engineering</strong> &mdash; Designing the instructions and information you give AI (this is the real skill)</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Prompt</strong> &mdash; The instruction you give AI. The question, task, or request.</li>
+          </ul>
+        </section>
+
+        <!-- 1.10 The AI Landscape -->
+        <section data-background-color="#000">
+          <h2>Who builds what</h2>
+          <ul>
+            <li><strong>OpenAI</strong> (GPT-4.5, GPT-5) &mdash; first mover, ChatGPT, strong general tasks</li>
+            <li><strong>Anthropic</strong> (Claude) &mdash; safety-focused, exceptional with long documents, Projects</li>
+            <li><strong>Google</strong> (Gemini) &mdash; Google Workspace integration, strong multimodal</li>
+            <li><strong>Meta</strong> (Llama) &mdash; open-source, free, can run locally</li>
+            <li><strong>Mistral</strong> &mdash; European, open-source, strong multilingual</li>
+          </ul>
+        </section>
+
+        <!-- 1.11 Open vs Closed -->
+        <section data-background-color="#000">
+          <h2>Open-source vs closed</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>Closed / Commercial</h3>
+              <ul>
+                <li>ChatGPT, Claude, Gemini</li>
+                <li>Best performance</li>
+                <li>Easy to use</li>
+                <li>Data goes to their servers</li>
+                <li>Subscription costs</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Open-source</h3>
+              <ul>
+                <li>Llama, Mistral, DeepSeek</li>
+                <li>Free to use</li>
+                <li>Can run on your laptop</li>
+                <li>Data stays private</li>
+                <li>Requires some setup</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top: 1.5em;">The gap is narrowing fast. Today's frontier is next year's baseline.</p>
+        </section>
+
+        <!-- 1.12 Block 1 Recap -->
+        <section data-background-color="#000">
+          <h2>What you now know</h2>
+          <ul>
+            <li>AI predicts the next word &mdash; it's not "thinking"</li>
+            <li>Training vs inference: building the brain vs using it</li>
+            <li>Tokens, context windows, temperature &mdash; the dials you can turn</li>
+            <li>The vocabulary to talk about AI without guessing</li>
+            <li>Who builds what and why it matters</li>
+          </ul>
+          <p class="amber" style="margin-top: 1.5em;">Break &mdash; 5 minutes</p>
+        </section>
+
+      </section>
+
+      <!-- ========== BLOCK 2: Tools ========== -->
+      <section>
+
+        <!-- 2.1 Block Title -->
+        <section data-background-color="#000">
+          <p class="tag">BLOCK 2</p>
+          <h1>Tools</h1>
+          <p>What's available today</p>
+        </section>
+
+        <!-- 2.2 The Tool Landscape -->
+        <section data-background-color="#000">
+          <h2>The major players</h2>
+          <p>A quick tour &mdash; what each does best.</p>
+        </section>
+
+        <!-- 2.3 ChatGPT -->
+        <section data-background-color="#000">
+          <h2>ChatGPT</h2>
+          <h3>OpenAI</h3>
+          <ul>
+            <li>The most popular AI tool in the world</li>
+            <li>Free tier (limited) vs Plus ($20/mo) vs Pro ($200/mo)</li>
+            <li>GPTs: custom assistants for specific tasks</li>
+            <li>Best for: general tasks, image generation (DALL-E), voice conversations</li>
+            <li>Limitation: shorter context window than Claude</li>
+          </ul>
+        </section>
+
+        <!-- 2.4 Gemini -->
+        <section data-background-color="#000">
+          <h2>Gemini</h2>
+          <h3>Google</h3>
+          <ul>
+            <li>Deep integration with Google Workspace (Docs, Sheets, Gmail)</li>
+            <li>Strong multimodal: images, video, YouTube analysis</li>
+            <li>Best for: people already in the Google ecosystem</li>
+            <li>NotebookLM: upload sources, get a podcast-style summary</li>
+          </ul>
+        </section>
+
+        <!-- 2.5 Local & Open-Source -->
+        <section data-background-color="#000">
+          <h2>Local &amp; Open-Source LLMs</h2>
+          <ul>
+            <li>Ollama, LM Studio &mdash; run models on your own laptop</li>
+            <li>Complete data privacy &mdash; nothing leaves your machine</li>
+            <li>Free, no subscription</li>
+            <li>Best for: sensitive data, offline use, experimentation</li>
+            <li>Trade-off: less capable than frontier models (for now)</li>
+          </ul>
+        </section>
+
+        <!-- 2.6 Why Claude -->
+        <section data-background-color="#000">
+          <h2>Why we're focusing on Claude</h2>
+          <ul>
+            <li>200K token context &mdash; upload 500 pages and ask questions</li>
+            <li>Projects: persistent knowledge base + custom instructions</li>
+            <li>Chrome extension for research on any web page</li>
+            <li>Excellent academic writing quality</li>
+            <li>Honest about uncertainty &mdash; says "I don't know" when it doesn't</li>
+          </ul>
+          <p class="small" style="margin-top: 1.5em;">We cover the landscape. We go deep on one tool.</p>
+        </section>
+
+        <!-- 2.7 Claude: Projects -->
+        <section data-background-color="#000">
+          <h2>Claude Projects</h2>
+          <p>Your personal AI research assistant.</p>
+          <ul>
+            <li>Create a project for your research area</li>
+            <li>Upload papers, syllabi, guidelines, rubrics</li>
+            <li>Set custom instructions ("You specialize in...")</li>
+            <li>Every conversation in the project uses this knowledge</li>
+            <li>The knowledge persists across conversations</li>
+          </ul>
+          <p class="amber" style="margin-top: 1em;">This is what we're about to build.</p>
+        </section>
+
+        <!-- 2.8 Exercise 1 -->
+        <section data-background-color="#000">
+          <p class="tag">HANDS-ON</p>
+          <h2>Exercise 1: Research Assistant</h2>
+          <p>Open claude.ai and follow along.</p>
+          <ul>
+            <li>1. Create a new Project named after your research area</li>
+            <li>2. Set instructions: "You are a research assistant specializing in [your field]. When summarizing papers, note methodology, key findings, and limitations."</li>
+            <li>3. Upload 2-3 papers you brought</li>
+            <li>4. Ask: "What methodological approaches do these papers share?"</li>
+            <li>5. Try: "Identify gaps in the literature based on these papers"</li>
+          </ul>
+          <p class="small" style="margin-top: 1em;">10 minutes &mdash; I'll walk around to help.</p>
+        </section>
+
+        <!-- 2.9 Exercise 2 -->
+        <section data-background-color="#000">
+          <p class="tag">HANDS-ON</p>
+          <h2>Exercise 2: Course Material Generator</h2>
+          <ul>
+            <li>1. Paste a section of your syllabus into Claude</li>
+            <li>2. Prompt: "Generate 5 discussion questions for a seminar on [topic] that encourage critical thinking. Students are [level]. Avoid yes/no questions."</li>
+            <li>3. Iterate: "Make question 3 more specific to [framework]"</li>
+            <li>4. Try: "Create a rubric for evaluating student responses"</li>
+          </ul>
+          <p class="small" style="margin-top: 1em;">8 minutes</p>
+        </section>
+
+        <!-- 2.10 Exercise 3 -->
+        <section data-background-color="#000">
+          <p class="tag">HANDS-ON</p>
+          <h2>Exercise 3: Writing Feedback Loop</h2>
+          <ul>
+            <li>1. Paste a paragraph of your academic writing</li>
+            <li>2. Prompt: "Critique this paragraph for clarity, argument structure, and academic tone. Suggest specific revisions."</li>
+            <li>3. Apply the suggestions, re-submit</li>
+            <li>4. Notice: iterative improvement &mdash; this mirrors how AI itself works (reflection)</li>
+          </ul>
+          <p class="small" style="margin-top: 1em;">7 minutes</p>
+          <p class="amber" style="margin-top: 1.5em;">Break &mdash; 10 minutes</p>
+        </section>
+
+      </section>
+
+      <!-- ========== BLOCK 3: Future & Discussion ========== -->
+      <section>
+
+        <!-- 3.1 Block Title -->
+        <section data-background-color="#000">
+          <p class="tag">BLOCK 3</p>
+          <h1>Future</h1>
+          <p>What's coming and what it means</p>
+        </section>
+
+        <!-- 3.2 What's Coming -->
+        <section data-background-color="#000">
+          <h2>The next 12-24 months</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out"><strong>Agents</strong> &mdash; AI that doesn't just answer, but plans and executes multi-step tasks</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Computer use</strong> &mdash; AI that can see and interact with your screen</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Research workflows</strong> &mdash; automated literature monitoring, cross-language sources, dataset analysis</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Personalized education</strong> &mdash; AI tutors adapted to individual students</li>
+          </ul>
+        </section>
+
+        <!-- 3.3 AI as Amplifier -->
+        <section data-background-color="#000">
+          <h2>AI as research amplifier</h2>
+          <p>The tedious parts get automated.</p>
+          <p>The thinking that requires human judgment stays human.</p>
+          <ul>
+            <li>Interpretation</li>
+            <li>Ethics</li>
+            <li>Creativity</li>
+            <li>Mentorship</li>
+          </ul>
+          <blockquote style="margin-top: 1em;">"The academics who engage with AI will shape how it's used. The ones who don't will have it shaped for them."</blockquote>
+        </section>
+
+        <!-- 3.4 Benefits -->
+        <section data-background-color="#000">
+          <h2>Benefits for academics</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out">Democratizes access to research tools (smaller institutions, limited funding)</li>
+            <li class="fragment fade-in-then-semi-out">Reduces administrative burden (grading, emails, reports)</li>
+            <li class="fragment fade-in-then-semi-out">Enables new research methods (large-scale text analysis, cross-language research)</li>
+            <li class="fragment fade-in-then-semi-out">Levels the playing field for non-native English speakers</li>
+          </ul>
+        </section>
+
+        <!-- 3.5 Risks -->
+        <section data-background-color="#000">
+          <h2>Risks to discuss honestly</h2>
+          <ul>
+            <li class="fragment fade-in-then-semi-out"><strong>Plagiarism &amp; integrity</strong> &mdash; detection is unreliable. Policy matters more than policing.</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Institutional policies</strong> &mdash; most universities are still figuring this out</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Citation of AI content</strong> &mdash; emerging standards (APA 7th ed. has guidelines)</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Data privacy</strong> &mdash; what happens when you upload student work to cloud AI?</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Bias</strong> &mdash; LLMs inherit biases from training data. Critical for social sciences.</li>
+            <li class="fragment fade-in-then-semi-out"><strong>Over-reliance</strong> &mdash; skill atrophy when you can't write without AI</li>
+          </ul>
+          <p class="amber" style="margin-top: 1em;">These risks are manageable. Not engaging is the bigger risk.</p>
+        </section>
+
+        <!-- 3.6 Open Discussion -->
+        <section data-background-color="#000">
+          <h2>Your turn</h2>
+          <p style="font-size: 1.1em;">What's one task in your weekly workflow that takes too long?</p>
+          <p class="gray">Let's work through your scenarios live.</p>
+          <p class="small" style="margin-top: 2em;">Common examples: grading, grant writing, student emails, literature review, lecture prep</p>
+        </section>
+
+        <!-- 3.7 Wrap-up -->
+        <section data-background-color="#000">
+          <h2>What you're leaving with</h2>
+          <ul>
+            <li>A working Claude Project for your research</li>
+            <li>AI vocabulary you actually understand</li>
+            <li>Prompt templates for academic use cases</li>
+            <li>Confidence to lead, not follow</li>
+          </ul>
+          <p style="margin-top: 1.5em;">Resources and templates will be sent to your email.</p>
+          <p>Questions after today: contact@ctw.studio</p>
+        </section>
+
+        <!-- 3.8 Thank You -->
+        <section data-background-color="#000">
+          <h1>Thank you</h1>
+          <p class="amber">contact@ctw.studio</p>
+          <p class="gray">ctw.studio/workshop</p>
+        </section>
+
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'fade',
+      backgroundTransition: 'fade',
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720
+    });
+  </script>
+</body>
+</html>

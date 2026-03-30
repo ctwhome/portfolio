@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" style="background:#000">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Literacy Workshop – CTW Studio</title>
+  <meta name="description" content="A 3-hour hands-on AI workshop for university academics. Understand AI vocabulary, master current tools, and prepare for what's next.">
+  <meta property="og:title" content="AI Literacy Workshop – CTW Studio">
+  <meta property="og:description" content="A 3-hour hands-on workshop for academics ready to understand AI on their own terms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ctw.studio/workshop/">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="stylesheet" href="../tailwind.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <style>
+    :root { color-scheme: dark; }
+    html { scrollbar-gutter: stable; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #000000;
+      color: #f2f1ec;
+      line-height: 1.7;
+    }
+    .frost-nav { position: fixed; left: 0; right: 0; top: 0; z-index: 50; }
+    .frost-glass {
+      position: absolute; inset: 0;
+      --extended-by: 100px;
+      bottom: calc(-1 * var(--extended-by));
+      --filter: blur(24px);
+      -webkit-backdrop-filter: var(--filter);
+      backdrop-filter: var(--filter);
+      pointer-events: none;
+      --cutoff: calc(100% - var(--extended-by));
+      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
+      mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
+    }
+    .frost-glass-edge {
+      position: absolute; z-index: -1; left: 0; right: 0;
+      --extended-by: 80px; --offset: 20px; --thickness: 2px;
+      height: calc(var(--extended-by) + var(--offset));
+      top: calc(100% - var(--offset) + var(--thickness));
+      --filter: blur(60px) saturate(140%) brightness(1.2);
+      -webkit-backdrop-filter: var(--filter);
+      backdrop-filter: var(--filter);
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
+      mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
+    }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), transparent);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .tag { letter-spacing: 0.25em; font-size: 0.65rem; }
+    .scroll-card {
+      background: rgba(8, 8, 8, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px; padding: 2rem;
+      transition: transform 0.2s ease, border 0.2s ease;
+    }
+    .scroll-card:hover { transform: translateY(-4px); border-color: rgba(247, 181, 0, 0.4); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.3s ease; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav" class="frost-nav">
+    <div class="frost-glass"></div>
+    <div class="frost-glass-edge"></div>
+    <div class="max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
+      <a href="../" class="flex items-center gap-2.5">
+        <img src="../favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
+        <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
+      </a>
+      <div class="flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
+        <a href="../workshop/" class="nav-link text-white">Workshop</a>
+        <a href="../portfolio/" class="nav-link">Work</a>
+        <a href="../#about" class="nav-link hidden md:block">Founder</a>
+        <a href="../#contact" class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero" class="pt-32 lg:pt-44">
+    <div class="px-6 pb-24 lg:pb-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="tag uppercase text-amber-400 mb-3">LIVE WORKSHOP · 3 HOURS</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <span class="text-amber-400">AI</span> Literacy<br>Workshop
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">A hands-on intensive for university academics ready to understand AI on their own terms -- not through jargon, but through real tools and practical experience.</p>
+        <a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">Get in Touch — €295 per person</a>
+        <p class="text-sm text-gray-400 mt-6">Delivered at your institution · Groups of 10-15 · 40% theory, 60% hands-on</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section id="curriculum" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-12 text-center">What You'll Learn</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="scroll-card">
+          <p class="tag uppercase text-amber-400 mb-3">BLOCK 1</p>
+          <h3 class="text-xl font-semibold mb-3">Context</h3>
+          <p class="text-gray-300">How AI actually works. LLMs, tokens, inference, grounding -- the vocabulary you need, explained without the computer science degree. You'll understand what your students are already using.</p>
+        </div>
+        <div class="scroll-card">
+          <p class="tag uppercase text-amber-400 mb-3">BLOCK 2</p>
+          <h3 class="text-xl font-semibold mb-3">Tools</h3>
+          <p class="text-gray-300">Hands-on with Claude, ChatGPT, Gemini, and open-source models. You'll build a Claude Project for your research field and create AI-assisted course materials in real time.</p>
+        </div>
+        <div class="scroll-card">
+          <p class="tag uppercase text-amber-400 mb-3">BLOCK 3</p>
+          <h3 class="text-xl font-semibold mb-3">Future</h3>
+          <p class="text-gray-300">Where AI is heading in the next 12-24 months. Agents, automation, and what it means for teaching, research, and academic publishing. Benefits and risks, discussed honestly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section id="audience" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-10">Built for academics who'd rather lead than catch up</h2>
+      <div class="space-y-6 text-gray-300 text-lg">
+        <p>Your students are using AI tools you haven't tried yet. That gap grows every semester.</p>
+        <p>The institutional pressure to "have an AI policy" landed on your desk, but nobody explained the technology.</p>
+        <p>You've seen the headlines. You want to know what's real, what's hype, and what actually matters for your work.</p>
+      </div>
+      <p class="mt-10 text-amber-400 font-medium">No technical background required. If you can use email and a web browser, you're ready.</p>
+    </div>
+  </section>
+
+  <!-- What's Included + Prerequisites -->
+  <section id="details" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">What's Included</h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>3-hour facilitated workshop at your institution</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>All presentation materials and reference cards</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>Hands-on exercises with guided practice</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>AI vocabulary reference card</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>Prompt templates for academic use cases</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>Post-workshop resource pack</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 mt-1">&#10003;</span>
+            <span>Follow-up support via email</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">Before You Arrive</h2>
+        <div class="border border-amber-400/30 bg-amber-400/5 rounded-2xl p-6">
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1">&#8226;</span>
+              <span><a href="https://claude.ai" target="_blank" rel="noopener" class="text-amber-400 underline underline-offset-2 hover:text-amber-300">Claude Pro subscription</a> (€20/month) -- required for hands-on exercises</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1">&#8226;</span>
+              <span>Chrome browser with Claude extension installed</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1">&#8226;</span>
+              <span>2-3 PDF papers from your research area</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1">&#8226;</span>
+              <span>A paragraph of your own academic writing</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1">&#8226;</span>
+              <span>A laptop (fully charged)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your Instructor -->
+  <section id="instructor" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-12">Your Instructor</h2>
+      <div class="p-8 rounded-2xl border border-white/10 bg-white/[0.02] max-w-lg mx-auto text-left">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-full bg-amber-600 flex items-center justify-center">
+            <span class="text-lg font-semibold text-amber-100">JG</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">Jesse Gonzalez</h3>
+            <p class="text-gray-400 text-sm">Founder · CTW Studio</p>
+          </div>
+        </div>
+        <p class="text-gray-300 mb-4">17+ years teaching technology across universities and research institutions. Computer Science background with a Master's in Artificial Intelligence.</p>
+        <p class="text-gray-400 mb-4">Currently Senior Research Software Engineer at Netherlands eScience Center. 50+ projects across 15 institutions worldwide.</p>
+        <p class="text-gray-400">Based in Amsterdam, delivering workshops globally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="border-t border-white/10 px-6 py-32">
+    <div class="max-w-lg mx-auto text-center scroll-card p-10">
+      <p class="tag uppercase text-amber-400 mb-4">PRICING</p>
+      <div class="mb-8">
+        <span class="text-5xl font-bold text-amber-400">€295</span>
+        <span class="text-lg text-gray-400">/person</span>
+      </div>
+      <ul class="space-y-3 text-left text-gray-300 mb-8">
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span>3-hour workshop at your institution</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span>All materials and reference cards</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span>Hands-on exercises with Claude Pro</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span>Post-workshop resource pack</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span>Follow-up support via email</span>
+        </li>
+      </ul>
+      <p class="text-sm text-gray-400 mb-8">Minimum group size: 10 participants. Maximum: 15.</p>
+      <a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">Get in Touch</a>
+      <p class="text-sm text-gray-400 mt-6">Travel costs may apply for locations outside the Netherlands.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-12">Questions</h2>
+
+      <div class="space-y-4">
+        <div class="faq-item border border-white/10 rounded-2xl">
+          <button class="faq-question w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer">
+            <span class="font-medium text-lg">Do I need technical experience?</span>
+            <span class="faq-icon text-amber-400 text-2xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="px-6 pb-5 text-gray-300">No. This workshop is designed for academics in social sciences and humanities with no programming or technical background. If you can use email and a web browser, you're ready.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/10 rounded-2xl">
+          <button class="faq-question w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer">
+            <span class="font-medium text-lg">Why Claude specifically?</span>
+            <span class="faq-icon text-amber-400 text-2xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="px-6 pb-5 text-gray-300">Claude handles long documents exceptionally well (up to 500 pages), which is essential for academic work. Its Projects feature lets you build a persistent knowledge base with your own papers and guidelines. We'll also cover ChatGPT and Gemini so you understand the full landscape.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/10 rounded-2xl">
+          <button class="faq-question w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer">
+            <span class="font-medium text-lg">What if I need to cancel?</span>
+            <span class="faq-icon text-amber-400 text-2xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="px-6 pb-5 text-gray-300">Full refund if cancelled 14 or more days before the workshop. 50% refund between 7-14 days. No refund within 7 days. See our <a href="terms/" class="text-amber-400 underline underline-offset-2 hover:text-amber-300">terms and conditions</a> for details.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/10 rounded-2xl">
+          <button class="faq-question w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer">
+            <span class="font-medium text-lg">Will I get the materials afterwards?</span>
+            <span class="faq-icon text-amber-400 text-2xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="px-6 pb-5 text-gray-300">Yes. You'll receive all slides, the AI vocabulary reference card, prompt templates, and a curated resource list after the workshop.</p>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/10 rounded-2xl">
+          <button class="faq-question w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer">
+            <span class="font-medium text-lg">Can I expense this through my university?</span>
+            <span class="faq-icon text-amber-400 text-2xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="px-6 pb-5 text-gray-300">Absolutely. We provide a formal invoice suitable for institutional professional development budgets. Many universities have dedicated funds for digital skills training.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="contact" class="px-6 py-32">
+    <div class="max-w-5xl mx-auto scroll-card p-10 md:p-14 text-center">
+      <p class="tag uppercase text-amber-200/80 mb-4">Ready?</p>
+      <h2 class="text-3xl md:text-4xl font-semibold mb-6">Bring AI literacy to your department</h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">Tell us about your team, your institution, and when you'd like to run the workshop. We'll handle the rest.</p>
+      <a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">contact@ctw.studio</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="px-6 py-8 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="text-sm text-gray-400">CTW Studio — Software for research and society</span>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="mailto:contact@ctw.studio" class="hover:text-white transition-colors">contact@ctw.studio</a>
+        <a href="terms/" class="hover:text-white transition-colors">Terms</a>
+        <a href="privacy/" class="hover:text-white transition-colors">Privacy</a>
+        <span>&copy; 2025</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
