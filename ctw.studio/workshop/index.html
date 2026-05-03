@@ -25,38 +25,6 @@
       color: #f2f1ec;
       line-height: 1.7;
     }
-    .frost-nav { position: fixed; left: 0; right: 0; top: 0; z-index: 50; }
-    .frost-glass {
-      position: absolute; inset: 0;
-      --extended-by: 100px;
-      bottom: calc(-1 * var(--extended-by));
-      --filter: blur(24px);
-      -webkit-backdrop-filter: var(--filter);
-      backdrop-filter: var(--filter);
-      pointer-events: none;
-      --cutoff: calc(100% - var(--extended-by));
-      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
-      mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
-    }
-    .frost-glass-edge {
-      position: absolute; z-index: -1; left: 0; right: 0;
-      --extended-by: 80px; --offset: 20px; --thickness: 2px;
-      height: calc(var(--extended-by) + var(--offset));
-      top: calc(100% - var(--offset) + var(--thickness));
-      --filter: blur(60px) saturate(140%) brightness(1.2);
-      -webkit-backdrop-filter: var(--filter);
-      backdrop-filter: var(--filter);
-      pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
-      mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
-    }
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
-      background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), transparent);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
-    }
-    .nav-link:hover::after { transform: scaleX(1); }
     .tag { letter-spacing: 0.25em; font-size: 0.65rem; }
     .scroll-card {
       background: rgba(8, 8, 8, 0.75);
@@ -69,39 +37,77 @@
     .faq-item.open .faq-answer { max-height: 300px; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
     .faq-icon { transition: transform 0.3s ease; }
+
+    /* Glitch effect - plays once on load, then on hover */
+    .glitch {
+      position: relative;
+      display: inline-block;
+      cursor: default;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      background: #000;
+      clip-path: inset(0 0 100% 0);
+    }
+    .glitch::before {
+      color: #0ff;
+      text-shadow: 1px 0 #0ff;
+    }
+    .glitch::after {
+      color: #f0a;
+      text-shadow: -1px 0 #f0a;
+    }
+    /* Intro glitch: plays once after page load */
+    .glitch.intro::before { animation: glitch-1 0.7s 1 linear; }
+    .glitch.intro::after { animation: glitch-2 0.7s 1 linear; }
+    /* Hover glitch - loops while hovering */
+    .glitch:hover::before { animation: glitch-1 0.7s 1 linear; }
+    .glitch:hover::after { animation: glitch-2 0.7s 1 linear; }
+    @keyframes glitch-1 {
+      0% { clip-path: inset(0 0 100% 0); }
+      12% { clip-path: inset(15% -3px 55% 0); transform: translate(-4px, -1px); }
+      25% { clip-path: inset(60% -3px 10% 0); transform: translate(5px, 1px); }
+      37% { clip-path: inset(5% -3px 70% 0); transform: translate(-3px, 1px); }
+      50% { clip-path: inset(45% -3px 20% 0); transform: translate(4px, -1px); }
+      62% { clip-path: inset(70% -3px 5% 0); transform: translate(-5px, 1px); }
+      75% { clip-path: inset(25% -3px 50% 0); transform: translate(3px, -1px); }
+      87% { clip-path: inset(55% -3px 20% 0); transform: translate(-2px, 1px); }
+      100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+    }
+    @keyframes glitch-2 {
+      0% { clip-path: inset(0 0 100% 0); }
+      12% { clip-path: inset(50% -3px 15% 0); transform: translate(4px, 1px); }
+      25% { clip-path: inset(10% -3px 60% 0); transform: translate(-5px, -1px); }
+      37% { clip-path: inset(65% -3px 5% 0); transform: translate(3px, 1px); }
+      50% { clip-path: inset(20% -3px 50% 0); transform: translate(-4px, -1px); }
+      62% { clip-path: inset(75% -3px 5% 0); transform: translate(5px, 1px); }
+      75% { clip-path: inset(35% -3px 35% 0); transform: translate(-3px, -1px); }
+      87% { clip-path: inset(60% -3px 15% 0); transform: translate(2px, 1px); }
+      100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav id="nav" class="frost-nav">
-    <div class="frost-glass"></div>
-    <div class="frost-glass-edge"></div>
-    <div class="max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
-      <a href="../" class="flex items-center gap-2.5">
-        <img src="../favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
-        <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
-      </a>
-      <div class="flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
-        <a href="../workshop/" class="nav-link text-white">Workshop</a>
-        <a href="../portfolio/" class="nav-link">Work</a>
-        <a href="../#about" class="nav-link hidden md:block">Founder</a>
-        <a href="../#contact" class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <script src="../nav.js" data-base="../" data-active="workshop"></script>
 
   <!-- Hero -->
   <section id="hero" class="pt-32 lg:pt-44">
     <div class="px-6 pb-24 lg:pb-32">
       <div class="max-w-4xl mx-auto text-center">
         <p class="tag uppercase text-amber-400 mb-3">LIVE WORKSHOP · 3 HOURS</p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-          <span class="text-amber-400">AI</span> Literacy<br>Workshop
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 glitch" data-text="AI Literacy Workshop">
+          <span class="text-amber-400">AI</span> Literacy Workshop
         </h1>
         <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">A hands-on intensive for university academics ready to understand AI on their own terms -- not through jargon, but through real tools and practical experience.</p>
-        <a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">Get in Touch — €295 per person</a>
-        <p class="text-sm text-gray-400 mt-6">Delivered at your institution · Groups of 10-15 · 40% theory, 60% hands-on</p>
+        <div class="mb-6"><a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">Get in Touch — €295 per person</a></div>
+        <p class="text-sm text-gray-400">Delivered at your institution · Groups of 10-15 · 40% theory, 60% hands-on</p>
       </div>
     </div>
   </section>
@@ -130,6 +136,37 @@
     </div>
   </section>
 
+  <!-- Workspaces Preview -->
+  <section id="workspaces" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-5xl mx-auto">
+      <p class="tag uppercase text-amber-400 mb-3 text-center">Hands-on with Claude</p>
+      <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-center">Essential Workspaces</h2>
+      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Every participant builds these Claude Project workspaces during the workshop -- ready to use the moment you're back at your desk.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-xl font-bold mb-2">Research Assistant</h3>
+          <p class="text-gray-400 text-sm mb-6">Claude Project with your uploaded papers and custom instructions. Ask questions across your entire literature base, get cited summaries, and spot connections you'd miss reading linearly.</p>
+          <img src="img/workspace-research.svg" alt="Research Assistant workspace" class="rounded-t-xl w-full">
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-xl font-bold mb-2">Course Material Builder</h3>
+          <p class="text-gray-400 text-sm mb-6">Generate syllabi, reading lists, assignment rubrics, and lecture outlines from your existing course descriptions. Iterate in real time during the workshop.</p>
+          <img src="img/workspace-course.svg" alt="Course Material Builder workspace" class="rounded-t-xl w-full">
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-xl font-bold mb-2">Writing Feedback Loop</h3>
+          <p class="text-gray-400 text-sm mb-6">Claude reviews your academic writing with tracked suggestions, style notes, and structural feedback. Like a tireless writing partner that knows your field.</p>
+          <img src="img/workspace-writing.svg" alt="Writing Feedback Loop workspace" class="rounded-t-xl w-full">
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-xl font-bold mb-2">AI Policy Drafter</h3>
+          <p class="text-gray-400 text-sm mb-6">Institutional templates for department AI guidelines. Start from proven frameworks and adapt them to your faculty's needs, values, and risk tolerance.</p>
+          <img src="img/workspace-policy.svg" alt="AI Policy Drafter workspace" class="rounded-t-xl w-full">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Who It's For -->
   <section id="audience" class="border-t border-white/10 px-6 py-24">
     <div class="max-w-4xl mx-auto">
@@ -140,6 +177,32 @@
         <p>You've seen the headlines. You want to know what's real, what's hype, and what actually matters for your work.</p>
       </div>
       <p class="mt-10 text-amber-400 font-medium">No technical background required. If you can use email and a web browser, you're ready.</p>
+    </div>
+  </section>
+
+  <!-- Templates & Skills -->
+  <section id="templates" class="border-t border-white/10 px-6 py-24">
+    <div class="max-w-5xl mx-auto">
+      <p class="tag uppercase text-amber-400 mb-3 text-center">What you take home</p>
+      <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-center">Templates & Reference Cards</h2>
+      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Ready-to-use templates so you can hit the ground running after the workshop.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-lg font-bold mb-2">Prompt Templates</h3>
+          <p class="text-gray-400 text-sm mb-6">Academic prompt patterns for research, grading, and writing. Copy, adapt, and reuse from day one.</p>
+          <img src="img/template-prompts.svg" alt="Prompt Templates" class="rounded-t-xl w-full">
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-lg font-bold mb-2">AI Vocabulary Card</h3>
+          <p class="text-gray-400 text-sm mb-6">Key AI terms explained plainly: LLMs, tokens, grounding, inference, hallucination, and more.</p>
+          <img src="img/template-vocab.svg" alt="AI Vocabulary Card" class="rounded-t-xl w-full">
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 pb-0 overflow-hidden">
+          <h3 class="text-lg font-bold mb-2">Claude Skills Cheatsheet</h3>
+          <p class="text-gray-400 text-sm mb-6">Quick reference for Projects, Artifacts, web search, PDF analysis, and key Claude features.</p>
+          <img src="img/template-skills.svg" alt="Claude Skills Cheatsheet" class="rounded-t-xl w-full">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -232,43 +295,45 @@
 
   <!-- Pricing -->
   <section id="pricing" class="border-t border-white/10 px-6 py-32">
-    <div class="max-w-lg mx-auto text-center scroll-card p-10">
+    <div class="max-w-md mx-auto text-center">
       <p class="tag uppercase text-amber-400 mb-4">PRICING</p>
-      <div class="mb-8">
+      <div class="mb-2">
         <span class="text-5xl font-bold text-amber-400">€295</span>
         <span class="text-lg text-gray-400">/person</span>
       </div>
-      <ul class="space-y-3 text-left text-gray-300 mb-8">
+      <p class="text-sm text-gray-500 mb-10">Minimum group size: 10 participants. Maximum: 15.</p>
+      <ul class="space-y-3 text-gray-300 text-left mx-auto max-w-xs mb-10">
         <li class="flex items-start gap-3">
-          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span class="text-amber-400 mt-0.5">&#10003;</span>
           <span>3-hour workshop at your institution</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span class="text-amber-400 mt-0.5">&#10003;</span>
           <span>All materials and reference cards</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span class="text-amber-400 mt-0.5">&#10003;</span>
           <span>Hands-on exercises with Claude Pro</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span class="text-amber-400 mt-0.5">&#10003;</span>
           <span>Post-workshop resource pack</span>
         </li>
         <li class="flex items-start gap-3">
-          <span class="text-amber-400 mt-1">&#10003;</span>
+          <span class="text-amber-400 mt-0.5">&#10003;</span>
           <span>Follow-up support via email</span>
         </li>
       </ul>
-      <p class="text-sm text-gray-400 mb-8">Minimum group size: 10 participants. Maximum: 15.</p>
-      <a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">Get in Touch</a>
-      <p class="text-sm text-gray-400 mt-6">Travel costs may apply for locations outside the Netherlands.</p>
+      <div class="mb-4">
+        <a href="mailto:contact@ctw.studio?subject=AI%20Literacy%20Workshop%20Inquiry" class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors inline-block">Get in Touch</a>
+      </div>
+      <p class="text-sm text-gray-500">Travel costs may apply for locations outside the Netherlands.</p>
     </div>
   </section>
 
   <!-- FAQ -->
   <section id="faq" class="border-t border-white/10 px-6 py-24">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-2xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-semibold mb-12">Questions</h2>
 
       <div class="space-y-4">
@@ -354,6 +419,15 @@
         item.classList.toggle('open');
       });
     });
+
+    // Intro glitch: fire once after 1s delay
+    const glitchEl = document.querySelector('.glitch');
+    setTimeout(() => {
+      glitchEl.classList.add('intro');
+      glitchEl.addEventListener('animationend', () => {
+        glitchEl.classList.remove('intro');
+      }, { once: true });
+    }, 1000);
   </script>
 
 </body>

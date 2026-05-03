@@ -51,67 +51,6 @@
     }
 
     /* Frosted glass navigation */
-    .frost-nav {
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      z-index: 50;
-    }
-
-    .frost-glass {
-      position: absolute;
-      inset: 0;
-      --extended-by: 100px;
-      bottom: calc(-1 * var(--extended-by));
-      --filter: blur(24px);
-      -webkit-backdrop-filter: var(--filter);
-      backdrop-filter: var(--filter);
-      pointer-events: none;
-      --cutoff: calc(100% - var(--extended-by));
-      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
-      mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
-    }
-
-    .frost-glass-edge {
-      position: absolute;
-      z-index: -1;
-      left: 0;
-      right: 0;
-      --extended-by: 80px;
-      --offset: 20px;
-      --thickness: 2px;
-      height: calc(var(--extended-by) + var(--offset));
-      top: calc(100% - var(--offset) + var(--thickness));
-      --filter: blur(60px) saturate(140%) brightness(1.2);
-      -webkit-backdrop-filter: var(--filter);
-      backdrop-filter: var(--filter);
-      pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
-      mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
-    }
-
-    .nav-link {
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), transparent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-
-    .nav-link:hover::after {
-      transform: scaleX(1);
-    }
-
     .tag {
       letter-spacing: 0.25em;
       font-size: 0.65rem;
@@ -332,24 +271,7 @@
   <!-- Three.js Blueprint Background -->
   <canvas id="blueprint-canvas"></canvas>
 
-  <!-- Navigation -->
-  <nav class="frost-nav">
-    <div class="frost-glass"></div>
-    <div class="frost-glass-edge"></div>
-    <div class="max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
-      <a href="#" class="flex items-center gap-2.5">
-        <img src="favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
-        <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
-      </a>
-      <div class="flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
-        <a href="workshop/" class="nav-link">Workshop</a>
-        <a href="portfolio/" class="nav-link">Work</a>
-        <a href="#about" class="nav-link hidden md:block">Founder</a>
-        <a href="#contact"
-          class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <script src="nav.js" data-base="" data-active=""></script>
 
   <main>
 

@@ -35,24 +35,7 @@
   <!-- Three.js Blueprint Background -->
   <canvas id="blueprint-canvas"></canvas>
 
-  <!-- Navigation (same as landing page) -->
-  <nav class="frost-nav">
-    <div class="frost-glass"></div>
-    <div class="frost-glass-edge"></div>
-    <div class="max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
-      <a href="../" class="flex items-center gap-2.5">
-        <img src="../favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
-        <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
-      </a>
-      <div class="flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
-        <a href="../workshop/" class="nav-link">Workshop</a>
-        <a href="./" class="nav-link">Work</a>
-        <a href="../#about" class="nav-link hidden md:block">Founder</a>
-        <a href="../#contact"
-          class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <script src="../nav.js" data-base="../" data-active="work"></script>
 
   <!-- Portfolio Grid (rendered by JS) -->
   <div id="portfolio-grid" class="portfolio-grid mt-52 max-w-[1700px] mx-auto"></div>
@@ -114,6 +97,9 @@
     function renderGrid() {
       grid.innerHTML = '';
 
+      // Sort projects by date, newest first
+      projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+
       projects.forEach((project, index) => {
         const cell = document.createElement('div');
         const spanClass = project.gridSpan === 4 ? ' span-2' : project.gridSpan === 3 ? ' span-3' : '';
@@ -141,7 +127,7 @@
           <div class="cell-info-gradient"></div>
           <div class="cell-info">
             <h3>${project.title}</h3>
-            <p>for ${project.client}</p>
+            <p>for ${project.client} · ${new Date(project.date).getFullYear()}</p>
           </div>
           <div class="cell-hover-overlay">
             ${hoverButtons}
@@ -224,7 +210,7 @@
       // Header
       document.getElementById('detail-header-title').textContent = project.title;
       document.getElementById('detail-header-meta').textContent =
-        `${project.category} ~ ${project.client}`;
+        `${project.category} ~ ${project.client} · ${new Date(project.date).getFullYear()}`;
 
       // Headline
       document.getElementById('detail-headline').textContent = project.headline || project.title;
