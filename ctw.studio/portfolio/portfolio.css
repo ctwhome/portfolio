@@ -51,67 +51,6 @@ body {
 /* ========================================
    Navigation (frosted glass — matches landing page)
    ======================================== */
-.frost-nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 50;
-}
-
-.frost-glass {
-  position: absolute;
-  inset: 0;
-  --extended-by: 100px;
-  bottom: calc(-1 * var(--extended-by));
-  --filter: blur(24px);
-  -webkit-backdrop-filter: var(--filter);
-  backdrop-filter: var(--filter);
-  pointer-events: none;
-  --cutoff: calc(100% - var(--extended-by));
-  -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
-  mask-image: linear-gradient(to bottom, black 0, black var(--cutoff), transparent var(--cutoff));
-}
-
-.frost-glass-edge {
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 0;
-  --extended-by: 80px;
-  --offset: 20px;
-  --thickness: 2px;
-  height: calc(var(--extended-by) + var(--offset));
-  top: calc(100% - var(--offset) + var(--thickness));
-  --filter: blur(60px) saturate(140%) brightness(1.2);
-  -webkit-backdrop-filter: var(--filter);
-  backdrop-filter: var(--filter);
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
-  mask-image: linear-gradient(to bottom, black 0, black var(--offset), transparent var(--offset));
-}
-
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), transparent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.nav-link:hover::after {
-  transform: scaleX(1);
-}
-
 /* ========================================
    Portfolio Grid
    ======================================== */
