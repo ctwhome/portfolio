@@ -329,7 +329,7 @@
     <section id="about" class="px-6 py-24 border-t border-white/10">
       <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <!-- Founder Card -->
-        <div class="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
+        <div class="about-fade p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
           <div class="flex items-center gap-4 mb-6">
             <div class="w-14 h-14 rounded-full bg-amber-600 flex items-center justify-center">
               <span class="text-lg font-semibold text-amber-100">JG</span>
@@ -357,7 +357,7 @@
         </div>
 
         <!-- Right: Mission -->
-        <div>
+        <div class="about-fade">
           <p class="tag uppercase text-amber-400 mb-3">About CTW Studio</p>
           <h2 class="text-3xl md:text-4xl font-semibold mb-6">Creating a<br><span class="text-amber-400">Technological
               World</span></h2>
@@ -862,12 +862,26 @@
                 easing: 'easeOutExpo',
               });
             }
+
+            // Animate about section cards (staggered by index)
+            if (entry.target.classList.contains('about-fade')) {
+              const aboutCards = Array.from(document.querySelectorAll('.about-fade'));
+              const idx = aboutCards.indexOf(entry.target);
+              anime({
+                targets: entry.target,
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 900,
+                delay: idx * 150,
+                easing: 'easeOutExpo',
+              });
+            }
           }
         });
       }, observerOptions);
 
-      // Observe scroll cards and quote cards
-      document.querySelectorAll('.scroll-card, .scroll-card-light, .quote-card').forEach(el => {
+      // Observe scroll cards, quote cards, and about section
+      document.querySelectorAll('.scroll-card, .scroll-card-light, .quote-card, .about-fade').forEach(el => {
         el.style.opacity = '0';
         observer.observe(el);
       });
