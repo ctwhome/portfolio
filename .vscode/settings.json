@@ -1,5 +1,5 @@
 {
-	"window.title": "🟡 Portfolio - ${activeEditorShort}",
+	"window.title": "🟠 Portfolio - ${activeEditorShort}",
 	"eslint.workingDirectories": [
 		{
 			"mode": "auto"
@@ -14,4 +14,12 @@
 	"[sql]": {
     "editor.formatOnSave": false
   },
+  "workbench.colorCustomizations": {
+    "statusBar.noFolderBackground": "#410A56",
+    "statusBar.noFolderForeground": "#FEFBFF",
+    "titleBar.activeBackground": "#ff6600",
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.inactiveBackground": "#ff6600",
+    "titleBar.inactiveForeground": "#bababa"
+  }
 }
