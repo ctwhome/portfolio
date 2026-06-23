@@ -17,11 +17,11 @@ categories:
 
 I go by Jesse Gonzalez now.
 
-Let’s get one thing straight. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell. Classic name. Common. Clean. Biblical.
+Let’s get one thing straight. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell, a classic name. Common and Biblical.
 
 But somewhere along the way — specifically the moment I crossed a border — that name stopped being a name and turned into an icebreaker sideshow.
 
-Every meeting. Every Zoom. Every coffee with a stranger.
+Every meeting, zoom and every coffee with a stranger.
 
 > Wait… like Jesus?”  
 > “Are you really named after God?”  
@@ -29,7 +29,7 @@ Every meeting. Every Zoom. Every coffee with a stranger.
 > “Where’s your beard?”  
 > “Do you walk on water too?  
 
-No, Piet, I don’t.
+No, Pieternela, I don’t.
 
 I write TypeScript. I’m a product designer and researcher. I build research software tools with lots of colors, clean up toddler puke at 2 AM and drink magnesium like a 90-year-old biohacker. There is nothing divine going on here.
 
@@ -65,7 +65,7 @@ Yeah, no. Feels like the name of a cyberpunk DJ who lives in a data center. It i
 
 **J.G. Gonzalez**
 
-Very author-y. Might use this if I start writing sci-fi. Mysterious, cool. Works for serious stuff. But again:
+Very author-y. Might use this if I start writing sci-fi. It is mysterious and cool and works for serious stuff. But again:
 
 - Not friendly
 - No one knows how to say it out loud
