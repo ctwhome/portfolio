@@ -245,16 +245,23 @@ Built with NuxtJS, ThreeJS, PotreeJS, and a Git-based content management system 
     date: '2021-07-05',
     client: 'Maastricht University',
     category: 'Medical Imaging',
-    headline: 'Clinical Images, Annotated',
-    description: `Eshmun is a standalone, robust medical image analysis tool developed with C++, Qt, and VTK. Part of the FEDMix project (Fusible Evolutionary Deep Neural Network Mixture Learning), it provides cross-platform clinical image annotation and analysis for Mac, Windows, and Linux.`,
+    headline: 'Desktop tooling for AI-assisted clinical image review',
+    description: `Eshmun is a standalone medical image analysis and annotation viewer built for the FEDMix research project: Fusible Evolutionary Deep Neural Network Mixture Learning. The application gives researchers a cross-platform desktop environment for loading clinical scans, inspecting model output, and drawing or reviewing anatomical regions directly on top of medical image slices.
+
+I worked on the research-software product layer: turning clinical-imaging workflows into a robust C++/Qt/VTK application that could be built across macOS, Windows, and Linux. The interface combines grayscale scan inspection, color overlays, contour editing, and multi-panel comparison so experimental AI results can be evaluated by humans instead of staying hidden in notebooks or scripts.
+
+The project sits at the intersection of medical imaging, reproducible research software, and human-in-the-loop AI validation.`,
     coverImage: 'projects/fedmix-clinical-viewer/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/FEDMix/eshmun',
-    tags: ['C++', 'Qt', 'VTK', 'Medical Imaging'],
+    tags: ['C++', 'Qt', 'VTK', 'Medical Imaging', 'AI Validation'],
     institution: 'Netherlands eScience Center',
     gallery: [
-      { type: 'image', src: 'projects/fedmix-clinical-viewer/cover.avif', caption: 'Eshmun — medical image analysis' }
+      { type: 'image', src: 'projects/fedmix-clinical-viewer/cover.avif', caption: 'Clinical image slice with contour annotations and model-output overlays' },
+      { type: 'image', src: 'projects/fedmix-clinical-viewer/overview.jpg', caption: 'Eshmun desktop viewer interface from the FEDMix README' },
+      { type: 'pair', src: 'projects/fedmix-clinical-viewer/gallery-1.jpg', src2: 'projects/fedmix-clinical-viewer/gallery-2.jpg', caption: 'Application screens for reviewing medical images and segmentation overlays' },
+      { type: 'image', src: 'projects/fedmix-clinical-viewer/gallery-3.jpg', caption: 'Multi-panel clinical viewer workflow for image comparison and annotation' }
     ]
   },
   {
