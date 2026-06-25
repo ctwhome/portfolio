@@ -24,7 +24,6 @@ Built with SvelteKit, Threlte (Three.js for Svelte), and Google Gemini API with 
     gridSpan: 4,
     liveUrl: 'https://nlesc.github.io/data-storytelling/',
     repoUrl: 'https://github.com/NLeSC/data-storytelling',
-    blogUrl: 'https://ctwux.medium.com/639cc6664dc2',
     tags: ['AI', 'Three.js', 'SvelteKit', 'Gemini', 'LLM'],
     institution: 'Netherlands eScience Center',
     gallery: [
@@ -40,15 +39,18 @@ Built with SvelteKit, Threlte (Three.js for Svelte), and Google Gemini API with 
     date: '2025-12-01',
     client: 'Netherlands eScience Center',
     category: 'Research Platform',
-    headline: 'Showcasing Research Impact',
-    description: `Interactive portfolio platform empowering researchers through innovative, open, and sustainable research software. A showcase of the Netherlands eScience Center's projects, people, and impact.`,
+    headline: 'A living portfolio for open research software',
+    description: `A public-facing research software portfolio for the Netherlands eScience Center: part showcase, part discovery surface, and part communications tool. The platform is designed to make project impact visible without forcing research teams into a heavy content-management workflow.
+
+The work focuses on clear project cards, fast browsing, strong visual rhythm, and simple pathways from a project story to the software, people, and research context behind it. It turns an institutional archive into something closer to an editorial product: readable, filterable, and approachable for funders, collaborators, researchers, and the public.`,
     coverImage: 'projects/nlesc-portfolio/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: 'https://nlesc.ctwhome.com/',
-    tags: ['SvelteKit', 'Research', 'Portfolio'],
+    tags: ['SvelteKit', 'Research', 'Portfolio', 'Communication'],
     institution: 'Netherlands eScience Center',
     gallery: [
-      { type: 'image', src: 'projects/nlesc-portfolio/cover.avif', caption: 'Netherlands eScience Center portfolio' }
+      { type: 'image', src: 'projects/nlesc-portfolio/cover.avif', caption: 'Netherlands eScience Center portfolio identity and landing screen' },
+      { type: 'image', src: 'projects/nlesc-portfolio/live-site.jpg', caption: 'Live portfolio interface showing research software as editorial project stories' }
     ]
   },
   {
@@ -57,14 +59,14 @@ Built with SvelteKit, Threlte (Three.js for Svelte), and Google Gemini API with 
     date: '2025-10-15',
     client: 'Netherlands eScience Center',
     category: 'Geospatial',
-    headline: 'Earth Observation Made Practical',
-    description: `A practical geospatial visualization solution using Cloud Optimized GeoTIFF (COGTIFF), MapLibre, and Svelte. Static deployment on GitHub Pages eliminates server costs while maintaining performance for academic research.
+    headline: 'Earth observation made practical',
+    description: `A practical geospatial visualization solution using Cloud Optimized GeoTIFF, MapLibre, and Svelte. The prototype explores how research teams can publish map-based Earth-observation data without inheriting the cost and maintenance burden of a custom geospatial backend.
 
-The platform includes an LLM-powered agent for natural language queries and follows FAIR principles for data accessibility.`,
+The platform combines a static-first deployment model with an LLM-powered agent for natural-language exploration. The goal is a lighter, FAIR-friendly workflow: data remains accessible, maps stay performant in the browser, and researchers can ask questions in human language instead of only through GIS controls.`,
     coverImage: 'projects/plan-eo/cover.avif',
     gridSpan: 3,
     liveUrl: null,
-    tags: ['GIS', 'MapLibre', 'Svelte', 'COGTIFF'],
+    tags: ['GIS', 'MapLibre', 'Svelte', 'COGTIFF', 'AI Agent'],
     institution: 'Netherlands eScience Center',
     gallery: [
       { type: 'image', src: 'projects/plan-eo/cover.avif', caption: 'PlanEO geospatial visualization interface' },
@@ -77,18 +79,18 @@ The platform includes an LLM-powered agent for natural language queries and foll
     date: '2025-01-01',
     client: 'Huygens Institute (KNAW)',
     category: 'Textual Scholarship',
-    headline: 'Machine Learning Meets Manuscripts',
-    description: `Collens is a dynamic web-based tool designed for scholars to compare textual variants with annotations. Using machine learning, it offers an efficient workflow for analyzing multiple versions of literary and scholarly documents.
+    headline: 'Machine learning meets manuscripts',
+    description: `Collens is a web-based tool for scholars comparing textual variants with annotations. It supports TEI/XML-encoded texts, side-by-side comparison, annotation-aware alignment, and an offline-first workflow for research sessions where the source material should remain close to the scholar.
 
-The tool supports TEI/XML-encoded texts, side-by-side variant comparison, annotation-aware alignment, and offline-first storage via IndexedDB. Built with SvelteKit, TypeScript, and TailwindCSS.`,
+The product challenge was to make machine-learning assistance feel like a practical scholarly instrument rather than a black box. The interface focuses on direct manipulation: drag documents in, compare variants, inspect alignment, and keep the critical reading workflow visible throughout.`,
     coverImage: 'projects/collaite/cover.avif',
     gridSpan: 1,
-    liveUrl: 'https://collaite.github.io/collens',
+    liveUrl: null,
     repoUrl: 'https://github.com/collaite/collens',
     tags: ['ML', 'Digital Humanities', 'SvelteKit', 'NLP'],
     institution: 'Netherlands eScience Center',
     gallery: [
-      { type: 'image', src: 'projects/collaite/cover.avif', caption: 'Collens — Intelligent text comparison' },
+      { type: 'image', src: 'projects/collaite/cover.avif', caption: 'Collens — intelligent text comparison' },
       { type: 'video', src: 'projects/collaite/drag.mp4', caption: 'Drag-and-drop document comparison workflow' },
       { type: 'image', src: 'projects/collaite/gallery-1.avif', caption: 'Side-by-side manuscript variant analysis' }
     ]
@@ -99,18 +101,21 @@ The tool supports TEI/XML-encoded texts, side-by-side variant comparison, annota
     date: '2024-10-06',
     client: 'Netherlands eScience Center',
     category: 'Wearable Research',
-    headline: 'Understanding Play Through Wearables',
-    description: `SmartPlay is an Android Wear OS application designed for children to measure and understand play behaviors by collecting real-time data using advanced wearable technology. In collaboration with developmental psychology and human-media interaction experts, this project bridges life sciences and social sciences.
+    headline: 'Understanding play through wearables',
+    description: `SmartPlay is a Wear OS research application for studying children's play behavior with real-time sensor data. The project bridges developmental psychology, human-media interaction, and research software engineering: GPS, motion, heart-rate, and environmental signals are captured alongside subjective input from children themselves.
 
-The app provides researchers with a rich dataset comprising both objective sensor data and subjective input from the children themselves, addressing the challenge of capturing the nuances of play behavior and its impact on emotional, social, and physical development.`,
+The design challenge was balancing scientific richness with a child-friendly, glanceable watch interface and a privacy-conscious data workflow. The app stores data locally and supports offline extraction, giving researchers a richer picture of play while keeping participant safety and ethics at the center.`,
     coverImage: 'projects/smartplay/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/ctwhome/SmartPlay',
-    tags: ['WearOS', 'Android', 'Research', 'Child Development'],
+    tags: ['WearOS', 'Android', 'Research', 'Child Development', 'Sensors'],
     institution: 'Netherlands eScience Center',
     gallery: [
-      { type: 'image', src: 'projects/smartplay/cover.avif', caption: 'SmartPlay WearOS application' }
+      { type: 'image', src: 'projects/smartplay/cover.avif', caption: 'SmartPlay Wear OS application' },
+      { type: 'image', src: 'projects/smartplay/dashboard.jpg', caption: 'Research dashboard for reviewing activity and play-behavior data' },
+      { type: 'pair', src: 'projects/smartplay/workflow.jpg', src2: 'projects/smartplay/sensors.jpg', caption: 'Data workflow and sensor streams captured by the wearable app' },
+      { type: 'image', src: 'projects/smartplay/dashboard.gif', caption: 'Animated dashboard walkthrough' }
     ]
   },
   {
@@ -119,18 +124,19 @@ The app provides researchers with a rich dataset comprising both objective senso
     date: '2024-01-01',
     client: 'Netherlands eScience Center',
     category: 'Healthcare AI',
-    headline: 'Fair and Validated AI for Healthcare',
-    description: `FAIR machine learning validation framework for healthcare applications. Ensuring AI models used in clinical contexts are responsible, reproducible, and explainable.
+    headline: 'Governed validation for healthcare AI',
+    description: `FAIVOR is a FAIR validation platform for medical machine-learning systems. It helps move healthcare AI from experimental notebooks toward documented, reproducible, and properly governed validation workflows.
 
-The project establishes validation protocols and governance frameworks for ML systems operating in sensitive healthcare environments.`,
-    coverImage: null,
-    gradientFrom: '#10b981',
-    gradientTo: '#06b6d4',
+The portfolio entry now treats FAIVOR as the trust layer around clinical AI: model outputs need provenance, validation protocols, explainability, and a clear path for reviewers. The work sits between research software, MLOps, and responsible healthcare deployment, where the interface has to communicate confidence without overselling automation.`,
+    coverImage: 'projects/faivor/cover.jpg',
     gridSpan: 1,
     liveUrl: 'https://research-software-directory.org/projects/faivor',
-    tags: ['ML', 'FAIR', 'Healthcare', 'Validation'],
+    tags: ['ML', 'FAIR', 'Healthcare', 'Validation', 'MLOps'],
     institution: 'Netherlands eScience Center',
-    gallery: []
+    gallery: [
+      { type: 'image', src: 'projects/faivor/cover.jpg', caption: 'FAIVOR project page in the Research Software Directory' },
+      { type: 'image', src: 'projects/faivor/details.jpg', caption: 'FAIVOR software metadata and validation context' }
+    ]
   },
   {
     id: 'ruisdael-observatory',
@@ -138,13 +144,13 @@ The project establishes validation protocols and governance frameworks for ML sy
     date: '2023-11-29',
     client: 'TU Delft · KNMI',
     category: 'Climate Science',
-    headline: 'Seeing the Atmosphere in Real Time',
-    description: `A dynamic 3D volumetric rendering on the web for large data. Created in collaboration with the Ruisdael Observatory at TU Delft, pulling data from atmospheric instruments and processing it with DALES — a model that simulates atmospheric boundary layer physics.
+    headline: 'Seeing the atmosphere in real time',
+    description: `A dynamic 3D volumetric rendering experiment for large atmospheric datasets. Created with the Ruisdael Observatory at TU Delft, the viewer explores measured cloud points and DALES simulation output directly in the browser.
 
-The goal: an interactive platform to study time-lapses between measured cloud points, bringing atmospheric science to the browser. The rendering pipeline converts compressed Zarr data into interactive 3D volumes, with timeline playback for studying atmospheric evolution over time.`,
+The rendering pipeline converts compressed Zarr data into interactive 3D volumes with timeline playback, map context, and cloud-point inspection. It is research software as an instrument: a way for atmospheric scientists to move from static plots toward explorable time-lapses of the boundary layer.`,
     coverImage: 'projects/ruisdael-observatory/cover.avif',
     gridSpan: 4,
-    liveUrl: 'https://ruisdael.ctwhome.com',
+    liveUrl: null,
     repoUrl: 'https://github.com/NLeSC/zarrviz',
     tags: ['Three.js', 'WebGL', 'Zarr', 'Climate Science'],
     institution: 'Netherlands eScience Center',
@@ -161,13 +167,14 @@ The goal: an interactive platform to study time-lapses between measured cloud po
     date: '2023-10-12',
     client: 'PBL Netherlands',
     category: 'Climate Policy · Design',
-    headline: 'Clarity for Climate Policy',
-    description: `UI/UX redesign of the Carbon Budget Explorer, targeting policymakers who need to make sense of complex climate data. The challenge: simplify without losing scientific nuance.
+    headline: 'Clarity for climate policy',
+    description: `UI/UX redesign of the Carbon Budget Explorer for policymakers who need to reason about complex climate pathways without becoming climate-model specialists. The challenge was to simplify the product while preserving the scientific nuance behind carbon budgets, scenarios, and uncertainty.
 
-The redesign introduced a new logotype, simplified information architecture, and improved visual hierarchy — making the tool accessible to non-technical stakeholders while preserving data integrity.`,
+The redesign introduced a new logotype, cleaner information architecture, stronger comparison views, and a more deliberate visual hierarchy. It makes the tool easier for non-technical stakeholders to scan, discuss, and trust while keeping the underlying data visible.`,
     coverImage: 'projects/carbon-budget-explorer/cover.avif',
     gridSpan: 4,
     liveUrl: null,
+    repoUrl: 'https://github.com/pbl-nl/website-carbon-budget-explorer',
     tags: ['UI/UX Design', 'Climate Policy', 'Data Visualization'],
     institution: 'Netherlands eScience Center',
     gallery: [
@@ -182,17 +189,20 @@ The redesign introduced a new logotype, simplified information architecture, and
     date: '2023-01-01',
     client: 'CTW Studio',
     category: 'Productivity',
-    headline: 'Your Daily Knowledge Companion',
-    description: `Personal knowledge management and daily journaling application. A modern note-taking tool designed for researchers and knowledge workers who need structure without friction.
+    headline: 'A local-first workspace for notes, media, and thought',
+    description: `Notidian is a workspace-first personal knowledge management app: notes, documents, drawing, media, and daily thinking in one local-first environment. It started from the friction of using Obsidian as a power tool and asks what a calmer, more spatial, more media-native knowledge OS could look like.
 
-Built with SvelteKit, featuring local-first storage, markdown editing, and daily reflection prompts.`,
+The product direction emphasizes user-owned data, fast local interaction, private sync, and a canvas/editor model that can grow from writing into diagrams, presentations, and multimedia work. It is less a note app clone and more a long-term research/product bet on personal operating systems.`,
     coverImage: 'projects/notidian/cover.avif',
     gridSpan: 3,
     liveUrl: 'https://notidian.com',
-    tags: ['SvelteKit', 'PKM', 'Productivity'],
+    tags: ['SvelteKit', 'Tauri', 'Local-first', 'PKM', 'WebGPU'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/notidian/cover.avif', caption: 'Notidian — daily knowledge management' }
+      { type: 'image', src: 'projects/notidian/cover.avif', caption: 'Notidian — daily knowledge management' },
+      { type: 'image', src: 'projects/notidian/live-site.jpg', caption: 'Public product site for Notidian' },
+      { type: 'pair', src: 'projects/notidian/workspace.webp', src2: 'projects/notidian/local-first.webp', caption: 'Workspace-first information architecture and local-first ownership' },
+      { type: 'pair', src: 'projects/notidian/drawing.webp', src2: 'projects/notidian/ai.webp', caption: 'Drawing and AI-assisted workflows planned as native workspace primitives' }
     ]
   },
   {
@@ -201,15 +211,20 @@ Built with SvelteKit, featuring local-first storage, markdown editing, and daily
     date: '2023-01-01',
     client: 'CTW Studio',
     category: 'Creativity Tool',
-    headline: 'From Scattered Thoughts to Structured Plans',
-    description: `Visual brainstorming and idea management platform. Transform scattered thoughts into structured, actionable plans through spatial thinking and visual organization.`,
+    headline: 'From scattered thoughts to shared idea systems',
+    description: `IdeasDiamond is a visual ideation and organization platform for turning loose thoughts into structured, actionable plans. It combines brainstorming, categorization, private workspaces, and lightweight publishing so ideas can move from private sparks into something teams can discuss.
+
+The product explores a more playful model for knowledge work: spatial thinking, branded idea spaces, community feedback, and simple app-like containers for projects. The result sits somewhere between a brainstorming canvas, an internal innovation board, and a personal idea operating system.`,
     coverImage: 'projects/ideasdiamond/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: 'https://ideasdiamond.com',
-    tags: ['SvelteKit', 'Creativity', 'Productivity'],
+    tags: ['SvelteKit', 'Creativity', 'Productivity', 'Community'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/ideasdiamond/cover.avif', caption: 'IdeasDiamond — visual brainstorming' }
+      { type: 'image', src: 'projects/ideasdiamond/cover.avif', caption: 'IdeasDiamond — visual brainstorming' },
+      { type: 'image', src: 'projects/ideasdiamond/live-site.jpg', caption: 'Current IdeasDiamond public landing page' },
+      { type: 'pair', src: 'projects/ideasdiamond/all-apps.png', src2: 'projects/ideasdiamond/private-organizations.png', caption: 'App-style idea spaces and private organization workflows' },
+      { type: 'image', src: 'projects/ideasdiamond/make-it-yours.gif', caption: 'Customizing an IdeasDiamond workspace' }
     ]
   },
   {
@@ -270,17 +285,21 @@ The project sits at the intersection of medical imaging, reproducible research s
     date: '2021-06-10',
     client: 'NL-RSE Community',
     category: 'Community Platform',
-    headline: 'Connecting Research Software Engineers',
-    description: `A complete structure and content redesign for the Netherlands Group of Research Software Engineers website. In collaboration with Lieke de Boer and the NL-RSE community, this portal provides a central hub for everything related to Research Software Engineers in the Netherlands.
+    headline: 'A public home for Dutch Research Software Engineers',
+    description: `A complete structure and content redesign for the Netherlands Group of Research Software Engineers website. In collaboration with Lieke de Boer and the NL-RSE community, the site became a central hub for events, community updates, resources, and the wider identity of research software engineering in the Netherlands.
 
-Built with NuxtJS and Nuxt Content, featuring an RSE Feed, custom animations, and a performance-first experience. The site serves as the primary gateway for the Dutch research software engineering community.`,
+The implementation used NuxtJS and Nuxt Content with a performance-first static workflow. The design work focused on making a volunteer-led community feel credible and alive: clear navigation, an RSE feed, custom animations, reusable content patterns, and a maintainable editorial structure.`,
     coverImage: 'projects/nl-rse/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: 'https://nl-rse.org',
-    tags: ['NuxtJS', 'Community', 'Web Design'],
+    repoUrl: 'https://github.com/nl-rse/nl-rse.github.io',
+    tags: ['NuxtJS', 'Community', 'Web Design', 'Static Site'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/nl-rse/cover.avif', caption: 'NL-RSE community website redesign' }
+      { type: 'image', src: 'projects/nl-rse/cover.avif', caption: 'NL-RSE community website redesign' },
+      { type: 'image', src: 'projects/nl-rse/live-site.jpg', caption: 'Current NL-RSE community website' },
+      { type: 'pair', src: 'projects/nl-rse/design-system.jpg', src2: 'projects/nl-rse/community-page.png', caption: 'Visual design exploration and community page structure' },
+      { type: 'image', src: 'projects/nl-rse/cover-alt.jpg', caption: 'Homepage composition and interaction direction' }
     ]
   },
   {
@@ -289,17 +308,21 @@ Built with NuxtJS and Nuxt Content, featuring an RSE Feed, custom animations, an
     date: '2020-10-08',
     client: 'Horizon 2020 EU',
     category: 'Climate Visualization',
-    headline: 'Climate Storylines for Action',
-    description: `The "Climate Storylines" platform is dedicated to sharing insights on climate change through narrative approaches. It features storylines crafted to elucidate the impacts and challenges associated with climate change in a relatable manner.
+    headline: 'Climate storylines for action',
+    description: `The Climate Storylines platform translated climate-change research into narrative, explorable scenes for the EU Horizon 2020 RECEIPT project. Rather than dropping users into raw datasets, the interface guided them through storylines that explain risks, impacts, and adaptation challenges in a more relatable way.
 
-Developed the UI from scratch with a focus on seamless user experience between scenes, the platform provides resources and a network for dialogue and engagement among stakeholders. Through its unique storytelling approach, it aims to foster understanding and prompt action towards a more sustainable future.`,
+I developed the UI from scratch with a focus on scene-to-scene continuity: keeping the experience coherent as users moved between maps, 3D visualizations, explanatory panels, and supporting resources. The result was a research communication product designed to make climate impacts easier to discuss with stakeholders.`,
     coverImage: 'projects/receipt/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
     tags: ['3D Visualization', 'Climate Change', 'Web', 'Research'],
     institution: 'Netherlands eScience Center',
     gallery: [
-      { type: 'image', src: 'projects/receipt/cover.avif', caption: 'Climate Storylines platform' }
+      { type: 'image', src: 'projects/receipt/cover.avif', caption: 'Climate Storylines platform' },
+      { type: 'image', src: 'projects/receipt/image-2.avif', caption: 'Climate Storylines overview screen' },
+      { type: 'pair', src: 'projects/receipt/image-3.png', src2: 'projects/receipt/image-4.png', caption: 'Narrative scene design and climate-impact exploration' },
+      { type: 'pair', src: 'projects/receipt/image-5.png', src2: 'projects/receipt/image-7.png', caption: 'Supporting interface states and storyline resources' },
+      { type: 'image', src: 'projects/receipt/image-8.png', caption: 'Technology and project context for the RECEIPT platform' }
     ]
   },
   {
@@ -330,19 +353,20 @@ The visual identity blends a modern aesthetic with a green narrative, paired wit
     date: '2018-07-10',
     client: 'CTW Studio',
     category: 'Productivity',
-    headline: 'The New Pomodoro Timer',
-    description: `Diamond Productivity Method — a 55-minute focus timer designed to replace the traditional Pomodoro technique. Research suggests that 25-minute Pomodoro sessions are too short for deep work, while procrastination actually improves creativity.
+    headline: 'A sharper focus timer than Pomodoro',
+    description: `FocusDiamond is a 55-minute focus timer and productivity method built around deeper work blocks than traditional Pomodoro sessions. The method pairs longer concentration periods with short breaks, a procrastination capture list, and a deliberately opinionated daily structure.
 
-FocusDiamond uses diamond-shaped timers of 55 minutes per session to boost productivity, helping users achieve and master their productivity routine.`,
-    coverImage: null,
-    gradientFrom: '#8b5cf6',
-    gradientTo: '#ec4899',
-    gridSpan: 1,
-    liveUrl: 'https://focusdiamond.app/',
-    repoUrl: 'https://github.com/ctwhome/pure-diamond-method',
-    tags: ['Web', 'Productivity', 'PWA'],
+The app was both a product experiment and a personal productivity manifesto: use pressure carefully, protect attention, write down distractions instead of following them, and end the day with visible progress. The dead production and private source links have been removed so the portfolio entry now stands on the actual product artifact instead of sending visitors into 404s.`,
+    coverImage: 'projects/focusdiamond/cover.jpg',
+    gridSpan: 3,
+    liveUrl: null,
+    tags: ['Web', 'Productivity', 'PWA', 'Focus'],
     institution: null,
-    gallery: []
+    gallery: [
+      { type: 'image', src: 'projects/focusdiamond/cover.jpg', caption: 'FocusDiamond — 55-minute focus method' },
+      { type: 'pair', src: 'projects/focusdiamond/session-screen.png', src2: 'projects/focusdiamond/app-flow.png', caption: 'Diamond session modes and in-app flow' },
+      { type: 'pair', src: 'projects/focusdiamond/timer-interface.png', src2: 'projects/focusdiamond/comparison-table.png', caption: 'Timer interface and productivity-method comparison table' }
+    ]
   },
   {
     id: 'pioneering-pwa',
@@ -350,17 +374,19 @@ FocusDiamond uses diamond-shaped timers of 55 minutes per session to boost produ
     date: '2017-07-13',
     client: 'Research Prototype',
     category: 'XR · Progressive Web',
-    headline: 'Augmented Reality in the Browser',
-    description: `A groundbreaking Progressive Web App prototype that capitalized on the full potential of PWA technology when it was freshly introduced. A blend of cutting-edge tech and responsive design, this prototype showcased the enormous potential of PWAs.
+    headline: 'Augmented reality in the browser, before it felt normal',
+    description: `A 2017 Progressive Web App prototype exploring what the web could do when service workers, mobile installability, responsive layouts, and hardware access were still emerging ideas. The project used HTML, React, CSS, and AR.js to demonstrate one codebase running across desktop, tablet, and mobile.
 
-Key highlights include a unified codebase using HTML, ReactJS, and CSS for all devices, augmented reality capabilities leveraging AR.js for mobile experiences, and full hardware and touch support ensuring a native app-like feel.`,
+The point was not only technical feasibility; it was product imagination. The prototype treated the browser as an app platform with offline access, touch-first interaction, and augmented-reality scenes that could run without a native install.`,
     coverImage: 'projects/pioneering-pwa/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
-    tags: ['PWA', 'AR.js', 'ReactJS', 'XR'],
+    tags: ['PWA', 'AR.js', 'ReactJS', 'XR', 'Prototype'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/pioneering-pwa/cover.avif', caption: 'Progressive Web App with AR capabilities' }
+      { type: 'image', src: 'projects/pioneering-pwa/cover.avif', caption: 'Progressive Web App with AR capabilities' },
+      { type: 'image', src: 'projects/pioneering-pwa/ar-demo.avif', caption: 'AR.js prototype screen' },
+      { type: 'image', src: 'projects/pioneering-pwa/mobile-flow.png', caption: 'Responsive PWA flow across mobile screens' }
     ]
   },
   {
@@ -369,15 +395,19 @@ Key highlights include a unified codebase using HTML, ReactJS, and CSS for all d
     date: '2014-01-01',
     client: 'CTW Studio',
     category: 'Design · Portfolio',
-    headline: 'A Decade of Creative Work',
-    description: `A comprehensive illustrated portfolio documenting projects and creative work up until 2014, spanning web design, native applications, and UX design across multiple industries and platforms.`,
+    headline: 'The messy, illustrated archive before the studio became a system',
+    description: `An illustrated portfolio collecting the early body of work up to 2014: web design, native app interfaces, UX concepts, visual systems, and freelance/client experiments. It is intentionally more raw than the current studio site — a snapshot of the craft before the process became more mature and product-led.
+
+This entry now links to the original PDF archive so the piece has a concrete artifact, not just a single image. It shows the longer arc: interface design, illustration, product thinking, and the gradual shift from visual execution toward full-stack product building.`,
     coverImage: 'projects/illustrated-portfolio/cover.avif',
     gridSpan: 1,
     liveUrl: null,
-    tags: ['Web', 'Design', 'Native App'],
+    pdfUrl: 'projects/illustrated-portfolio/Illustrated_Portfolio_UX_Jesus_Garcia_en_2014.pdf',
+    tags: ['Web', 'Design', 'Native App', 'UX Archive'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/illustrated-portfolio/cover.avif', caption: 'Illustrated portfolio collection' }
+      { type: 'image', src: 'projects/illustrated-portfolio/cover.avif', caption: 'Illustrated portfolio collection' },
+      { type: 'image', src: 'projects/illustrated-portfolio/archive-preview.jpg', caption: 'Preview of the original illustrated UX portfolio PDF archive' }
     ]
   },
   {
@@ -386,17 +416,20 @@ Key highlights include a unified codebase using HTML, ReactJS, and CSS for all d
     date: '2013-07-11',
     client: 'Research Project',
     category: 'Gesture Recognition',
-    headline: 'Programming Gestures in 3D',
-    description: `An application focused on gesture recognition technology utilizing Leap Motion. It provides a platform where users can program and interpret new gestures in three dimensions, connecting them with various system actions.
+    headline: 'Teaching computers new gestures in 3D',
+    description: `LeapLearn is a gesture-recognition application built around Leap Motion. Users can program new three-dimensional hand gestures by example, connect them to system actions, and customize interaction patterns without writing low-level recognition code.
 
-The application supports customization of interaction experiences through End User Development techniques and Programming by Examples. Featuring an intuitive interface and a modified $1 recognition algorithm, LeapLearn offers precise hand gesture interpretation, representing a step towards personalized and natural user interaction.`,
+The project explored End User Development and Programming by Example before natural interaction became mainstream. A modified $1 recognition algorithm powered the gesture interpretation, while the interface focused on making 3D input understandable enough for people to train and reuse their own gestures.`,
     coverImage: 'projects/leaplearn/cover.avif',
-    gridSpan: 1,
-    liveUrl: null,
-    tags: ['3D Visualization', 'Three.js', 'Leap Motion', 'Gesture'],
+    gridSpan: 3,
+    liveUrl: 'https://ctwhome.github.io/leaplearn.github.io/',
+    repoUrl: 'https://github.com/ctwhome/leaplearn',
+    pdfUrl: 'projects/leaplearn/leaplearn_garcia_gonzalez.pdf',
+    tags: ['3D Visualization', 'Three.js', 'Leap Motion', 'Gesture', 'EUD'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/leaplearn/cover.avif', caption: 'LeapLearn gesture recognition interface' }
+      { type: 'image', src: 'projects/leaplearn/cover.avif', caption: 'LeapLearn gesture recognition interface' },
+      { type: 'image', src: 'projects/leaplearn/foreground.webp', caption: 'LeapLearn interaction flow and 3D gesture-training interface' }
     ]
-  },
+  }
 ];
