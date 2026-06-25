@@ -238,6 +238,9 @@
       if (project.blogUrl) {
         linksHTML += `<a href="${project.blogUrl}" target="_blank" rel="noopener" class="detail-link-secondary">Blog Post &#x2197;</a>`;
       }
+      if (project.pdfUrl) {
+        linksHTML += `<a href="${project.pdfUrl}" target="_blank" rel="noopener" class="detail-link-secondary">PDF &#x2197;</a>`;
+      }
       linksEl.innerHTML = linksHTML;
 
       // Gallery
