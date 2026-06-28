@@ -63,6 +63,9 @@
     .glitch-sm::after { color: #f0a; text-shadow: -1px 0 #f0a; }
     .glitch-sm:hover::before { animation: glitch-sm-1 0.5s 1 linear; }
     .glitch-sm:hover::after { animation: glitch-sm-2 0.5s 1 linear; }
+    @media (max-width: 639px) {
+      .nav-mobile-hide { display: none !important; }
+    }
     @keyframes glitch-sm-1 {
       0% { clip-path: inset(0 0 100% 0); }
       15% { clip-path: inset(10% -2px 50% 0); transform: translate(-3px, -1px) skewX(-1deg); }
@@ -88,7 +91,8 @@
 
   // Build nav links
   const links = [
-    { id: 'workshop', href: base + 'workshop/', label: 'AI Workshop', glitch: true },
+    // Keep the mobile header breathable: the long workshop label collides with the brand + CTA.
+    { id: 'workshop', href: base + 'workshop/', label: 'AI Workshop', glitch: true, classes: 'nav-mobile-hide' },
     { id: 'work', href: base + 'portfolio/', label: 'Work' },
     { id: 'founder', href: base + '#about', label: 'Founder', classes: 'hidden md:block' },
   ];
