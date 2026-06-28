@@ -63,8 +63,14 @@
     .glitch-sm::after { color: #f0a; text-shadow: -1px 0 #f0a; }
     .glitch-sm:hover::before { animation: glitch-sm-1 0.5s 1 linear; }
     .glitch-sm:hover::after { animation: glitch-sm-2 0.5s 1 linear; }
+    .nav-label-mobile { display: none; }
     @media (max-width: 639px) {
-      .nav-mobile-hide { display: none !important; }
+      .studio-nav-inner { padding-left: 1rem !important; padding-right: 1rem !important; }
+      .studio-nav-links { gap: 0.875rem !important; }
+      .nav-label-desktop { display: none; }
+      .nav-label-mobile { display: inline; }
+      .glitch-sm.nav-compact::before,
+      .glitch-sm.nav-compact::after { content: attr(data-mobile-text); }
     }
     @keyframes glitch-sm-1 {
       0% { clip-path: inset(0 0 100% 0); }
@@ -91,8 +97,8 @@
 
   // Build nav links
   const links = [
-    // Keep the mobile header breathable: the long workshop label collides with the brand + CTA.
-    { id: 'workshop', href: base + 'workshop/', label: 'AI Workshop', glitch: true, classes: 'nav-mobile-hide' },
+    // Keep the workshop route visible on phones without the long label colliding with the brand + CTA.
+    { id: 'workshop', href: base + 'workshop/', label: 'AI Workshop', mobileLabel: 'AI', glitch: true, classes: 'nav-compact' },
     { id: 'work', href: base + 'portfolio/', label: 'Work' },
     { id: 'founder', href: base + '#about', label: 'Founder', classes: 'hidden md:block' },
   ];
@@ -100,10 +106,15 @@
   const linkHTML = links.map(l => {
     const isActive = active === l.id ? ' text-white' : '';
     const extraClasses = l.classes ? ' ' + l.classes : '';
+    const labelHTML = l.mobileLabel
+      ? `<span class="nav-label-desktop">${l.label}</span><span class="nav-label-mobile" aria-hidden="true">${l.mobileLabel}</span>`
+      : l.label;
+    const aria = l.mobileLabel ? ` aria-label="${l.label}"` : '';
     if (l.glitch) {
-      return `<a href="${l.href}" class="nav-link glitch-sm${isActive}${extraClasses}" data-text="${l.label}">${l.label}</a>`;
+      const mobileData = l.mobileLabel ? ` data-mobile-text="${l.mobileLabel}"` : '';
+      return `<a href="${l.href}" class="nav-link glitch-sm${isActive}${extraClasses}" data-text="${l.label}"${mobileData}${aria}>${labelHTML}</a>`;
     }
-    return `<a href="${l.href}" class="nav-link${isActive}${extraClasses}">${l.label}</a>`;
+    return `<a href="${l.href}" class="nav-link${isActive}${extraClasses}"${aria}>${labelHTML}</a>`;
   }).join('\n        ');
 
   const contactHref = base + '#contact';
@@ -115,12 +126,12 @@
   nav.innerHTML = `
     <div class="frost-glass"></div>
     <div class="frost-glass-edge"></div>
-    <div class="max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
+    <div class="studio-nav-inner max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
       <a href="${base}" class="flex items-center gap-2.5">
         <img src="${base}favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
         <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
       </a>
-      <div class="flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
+      <div class="studio-nav-links flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
         ${linkHTML}
         <a href="${contactHref}" class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
       </div>
