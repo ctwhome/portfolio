@@ -98,9 +98,9 @@
   // Build nav links
   const links = [
     // Keep the workshop route visible on phones without the long label colliding with the brand + CTA.
-    { id: 'services', href: base + '#services', label: 'Services', mobileLabel: 'Svc', classes: 'hidden sm:block' },
     { id: 'workshop', href: base + 'workshop/', label: 'AI Workshop', mobileLabel: 'AI', glitch: true, classes: 'nav-compact' },
     { id: 'work', href: base + 'portfolio/', label: 'Work' },
+    { id: 'founder', href: base + '#about', label: 'Founder', classes: 'hidden md:block' },
   ];
 
   const linkHTML = links.map(l => {
