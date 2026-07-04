@@ -1,6 +1,6 @@
 export const siteSettings = {
-  title: 'Jesse Gonzalez - AI-native research software & product design',
-  description: 'Applied research software, product design, and AI-native systems for complex knowledge work.',
+  title: 'Jesse Gonzalez - Digital Garden & Portfolio',
+  description: 'Building, learning, sharing. Personal projects, experiments, and thoughts from Jesse Gonzalez.',
   baseUrl: 'https://jessegonzalez.dev',
   twitterHandle: '@ctwhome',
   facebookAppId: '1234567890',
@@ -12,5 +12,5 @@ export const siteSettings = {
   siteDirection: 'ltr',
   siteThemeColor: '#000000',
   siteBackgroundColor: '#ffffff',
-  siteKeywords: 'Jesse Gonzalez, CTW Studio, applied research software, AI-native systems, product design, research software'
+  siteKeywords: 'Jesse Gonzalez, digital garden, software engineering, personal projects'
 }

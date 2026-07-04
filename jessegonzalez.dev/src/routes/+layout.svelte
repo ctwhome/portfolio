@@ -5,7 +5,6 @@
 	import Header from '$lib/components/Header.svelte';
 	import Analytics from '$lib/components/Analytics.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
-	import { siteSettings } from '$lib/siteSettings';
 	injectSpeedInsights();
 
 	if ('serviceWorker' in navigator) {
@@ -20,8 +19,7 @@
 <Analytics />
 
 <svelte:head>
-	<title>{siteSettings.title}</title>
-	<meta name="description" content={siteSettings.description} />
+	<title>Jesse Gonzalez - Building, learning, sharing</title>
 </svelte:head>
 
 <div class="flex h-screen flex-col">
