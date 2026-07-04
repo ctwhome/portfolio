@@ -35,23 +35,18 @@
 	<div class="m-auto max-w-screen-xl px-6">
 		<div class="grid gap-20 sm:grid-cols-2">
 			<div class="animate-slide-up flex flex-col gap-10 sm:mt-5 sm:gap-10">
-				<div class="order-2 space-y-5 sm:order-1">
-					<p class="hover:glow-text text-2xl transition-all duration-300 sm:text-3xl lg:text-5xl">
-						I turn complex <span class="ctw-text-gradient font-serif font-bold">knowledge work</span>
-						into beautiful, useful
-						<span class="ctw-text-gradient-green font-serif font-bold">AI-native systems</span>.
-					</p>
-					<p class="max-w-xl text-base leading-relaxed text-base-content/65 sm:text-lg">
-						Product design, research software, and engineering for teams whose tools need to be
-						trusted, understood, and adopted — not just generated.
-					</p>
-					<div class="flex flex-wrap gap-3">
-						<a href="/studio" class="btn btn-primary">CTW Studio approach</a>
-						<a href="/work?category=Research+Project" class="btn btn-outline">Research work</a>
-					</div>
-				</div>
+				<p
+					class="hover:glow-text order-2 text-2xl transition-all duration-300 sm:order-1 sm:text-3xl lg:text-5xl"
+				>
+					I create experiences weaving strong <span class="ctw-text-gradient font-serif font-bold">
+						design aesthetics
+					</span>
+					with
+					<span class="ctw-text-gradient-green font-serif font-bold">technical engineering</span>
+					know-how.
+				</p>
 				<TiltContent class="order-1">
-					<ProfilePicture subtitle="AI-native research software" />
+					<ProfilePicture subtitle="Building, learning, sharing" />
 				</TiltContent>
 			</div>
 
