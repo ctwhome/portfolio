@@ -14,7 +14,7 @@
 				<span class="text-xl font-bold">
 					Jesse<span class="text-primary">.</span>Gonzalez
 				</span>
-				<span class="text-sm opacity-70">Building, learning, sharing.</span>
+				<span class="text-sm opacity-70">AI-native research software, product design, and storytelling.</span>
 			</div>
 		</div>
 
@@ -26,12 +26,10 @@
 			</div>
 			<div class="flex items-center gap-4">
 				<a
-					href="https://ctw.studio"
-					target="_blank"
-					rel="noopener"
+					href="/studio"
 					class="text-sm font-medium bg-base-200 hover:bg-primary hover:text-primary-content px-3 py-1.5 rounded-full transition-colors"
 				>
-					Professional work &rarr;
+					CTW Studio approach &rarr;
 				</a>
 				<Socialicons />
 			</div>

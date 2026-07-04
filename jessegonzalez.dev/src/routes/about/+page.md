@@ -14,7 +14,7 @@ I'm a Senior Research Software Engineer based in Amsterdam with over 17 years of
 
 I work as a **Research Software Engineer** at the [Netherlands eScience Center](https://www.esciencecenter.nl/), where I build tools for scientific research across health, life sciences, climate science, digital humanities, and cultural heritage.
 
-Independently, I run **[CTW Studio](https://ctw.studio)**—building software for research and society, and developing my own products like IdeasDiamond and Notidian.
+Independently, I run **[CTW Studio](/studio)** — an applied research software studio for turning complex research and expert knowledge work into beautiful, trustworthy AI-native systems. I also develop my own products like IdeasDiamond and Notidian.
 
 <TiltContent>
   <img draggable="false" src="/images/profile.avif" class="tilt rounded pointer-events-none h-[450px] aspect-video w-full object-cover" alt="Jesse Gonzalez Profile" />
@@ -61,9 +61,9 @@ This is my **digital garden**—a place where I share what I'm learning, buildin
 
 ## CTW Studio
 
-For detailed case studies, project portfolios, services, and consulting inquiries, visit my independent studio:
+For the CTW Studio approach, collaboration modes, project portfolio, and consulting inquiries:
 
-<a href="https://ctw.studio" target="_blank" rel="noopener" class="btn btn-primary mt-4">CTW Studio →</a>
+<a href="/studio" class="btn btn-primary mt-4">CTW Studio →</a>
 
 ## Get in Touch
 

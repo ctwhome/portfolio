@@ -82,12 +82,7 @@
 						</li>
 					{/each}
 					<li class="mt-2 pt-2 border-t border-base-200">
-						<a
-							href="https://ctw.studio"
-							target="_blank"
-							rel="noopener"
-							class="btn btn-sm btn-primary !no-underline"
-						>
+						<a href="/studio" class="btn btn-sm btn-primary !no-underline">
 							CTW Studio
 						</a>
 					</li>
@@ -106,12 +101,7 @@
 						{link.displayTitle}
 					</a>
 				{/each}
-				<a
-					href="https://ctw.studio"
-					target="_blank"
-					rel="noopener"
-					class="btn btn-sm btn-primary !no-underline"
-				>
+				<a href="/studio" class="btn btn-sm btn-primary !no-underline">
 					CTW Studio
 				</a>
 			</div>
