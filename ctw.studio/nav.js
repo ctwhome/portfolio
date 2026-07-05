@@ -139,4 +139,15 @@
   `;
 
   document.body.prepend(nav);
+
+  // Shared feedback widget: mirrors Pure3D's FeedbackButton behavior, but posts to
+  // this site's serverless Resend endpoint instead of a PocketBase-backed app API.
+  if (!document.querySelector('script[data-ctw-feedback]')) {
+    const feedbackScript = document.createElement('script');
+    feedbackScript.src = base + 'feedback.js';
+    feedbackScript.defer = true;
+    feedbackScript.setAttribute('data-base', base);
+    feedbackScript.setAttribute('data-ctw-feedback', '');
+    document.body.appendChild(feedbackScript);
+  }
 })();
