@@ -1,0 +1,1143 @@
+{
+  "meta": {
+    "topic": "AI and the job market",
+    "edition": 1,
+    "updated": "2026-07-22",
+    "seriesUpdated": "2026-07-23",
+    "geography": "Global evidence with live U.S. labour-market indicators",
+    "verdict": "Early transformation is visible; broad AI-driven mass displacement is not yet established.",
+    "method": "Separate observed outcomes, occupational exposure, controlled experiments, and forecasts. Never use one as a proxy for another."
+  },
+  "series": {
+    "openings": {
+      "fredId": "JTSJOL",
+      "label": "Job openings",
+      "shortLabel": "Openings",
+      "unit": "million",
+      "sourceId": "fred-jolts",
+      "definition": "Seasonally adjusted total nonfarm job openings in the United States.",
+      "observations": [
+        {
+          "date": "2020-01-01",
+          "value": 7.124
+        },
+        {
+          "date": "2020-02-01",
+          "value": 6.966
+        },
+        {
+          "date": "2020-03-01",
+          "value": 5.894
+        },
+        {
+          "date": "2020-04-01",
+          "value": 4.606
+        },
+        {
+          "date": "2020-05-01",
+          "value": 5.612
+        },
+        {
+          "date": "2020-06-01",
+          "value": 6.129
+        },
+        {
+          "date": "2020-07-01",
+          "value": 6.53
+        },
+        {
+          "date": "2020-08-01",
+          "value": 6.429
+        },
+        {
+          "date": "2020-09-01",
+          "value": 6.511
+        },
+        {
+          "date": "2020-10-01",
+          "value": 6.798
+        },
+        {
+          "date": "2020-11-01",
+          "value": 6.82
+        },
+        {
+          "date": "2020-12-01",
+          "value": 6.773
+        },
+        {
+          "date": "2021-01-01",
+          "value": 7.162
+        },
+        {
+          "date": "2021-02-01",
+          "value": 7.827
+        },
+        {
+          "date": "2021-03-01",
+          "value": 8.499
+        },
+        {
+          "date": "2021-04-01",
+          "value": 9.346
+        },
+        {
+          "date": "2021-05-01",
+          "value": 9.954
+        },
+        {
+          "date": "2021-06-01",
+          "value": 10.319
+        },
+        {
+          "date": "2021-07-01",
+          "value": 10.983
+        },
+        {
+          "date": "2021-08-01",
+          "value": 10.872
+        },
+        {
+          "date": "2021-09-01",
+          "value": 10.834
+        },
+        {
+          "date": "2021-10-01",
+          "value": 11.238
+        },
+        {
+          "date": "2021-11-01",
+          "value": 11.199
+        },
+        {
+          "date": "2021-12-01",
+          "value": 11.52
+        },
+        {
+          "date": "2022-01-01",
+          "value": 11.21
+        },
+        {
+          "date": "2022-02-01",
+          "value": 11.698
+        },
+        {
+          "date": "2022-03-01",
+          "value": 12.301
+        },
+        {
+          "date": "2022-04-01",
+          "value": 11.861
+        },
+        {
+          "date": "2022-05-01",
+          "value": 11.535
+        },
+        {
+          "date": "2022-06-01",
+          "value": 11.283
+        },
+        {
+          "date": "2022-07-01",
+          "value": 11.576
+        },
+        {
+          "date": "2022-08-01",
+          "value": 10.092
+        },
+        {
+          "date": "2022-09-01",
+          "value": 10.8
+        },
+        {
+          "date": "2022-10-01",
+          "value": 10.447
+        },
+        {
+          "date": "2022-11-01",
+          "value": 10.632
+        },
+        {
+          "date": "2022-12-01",
+          "value": 10.902
+        },
+        {
+          "date": "2023-01-01",
+          "value": 10.318
+        },
+        {
+          "date": "2023-02-01",
+          "value": 9.857
+        },
+        {
+          "date": "2023-03-01",
+          "value": 9.655
+        },
+        {
+          "date": "2023-04-01",
+          "value": 9.966
+        },
+        {
+          "date": "2023-05-01",
+          "value": 9.368
+        },
+        {
+          "date": "2023-06-01",
+          "value": 9.18
+        },
+        {
+          "date": "2023-07-01",
+          "value": 8.657
+        },
+        {
+          "date": "2023-08-01",
+          "value": 9.254
+        },
+        {
+          "date": "2023-09-01",
+          "value": 9.259
+        },
+        {
+          "date": "2023-10-01",
+          "value": 8.58
+        },
+        {
+          "date": "2023-11-01",
+          "value": 8.602
+        },
+        {
+          "date": "2023-12-01",
+          "value": 8.52
+        },
+        {
+          "date": "2024-01-01",
+          "value": 8.378
+        },
+        {
+          "date": "2024-02-01",
+          "value": 8.44
+        },
+        {
+          "date": "2024-03-01",
+          "value": 8.206
+        },
+        {
+          "date": "2024-04-01",
+          "value": 7.529
+        },
+        {
+          "date": "2024-05-01",
+          "value": 7.782
+        },
+        {
+          "date": "2024-06-01",
+          "value": 7.416
+        },
+        {
+          "date": "2024-07-01",
+          "value": 7.426
+        },
+        {
+          "date": "2024-08-01",
+          "value": 7.52
+        },
+        {
+          "date": "2024-09-01",
+          "value": 6.943
+        },
+        {
+          "date": "2024-10-01",
+          "value": 7.379
+        },
+        {
+          "date": "2024-11-01",
+          "value": 7.566
+        },
+        {
+          "date": "2024-12-01",
+          "value": 7.295
+        },
+        {
+          "date": "2025-01-01",
+          "value": 7.431
+        },
+        {
+          "date": "2025-02-01",
+          "value": 7.242
+        },
+        {
+          "date": "2025-03-01",
+          "value": 6.952
+        },
+        {
+          "date": "2025-04-01",
+          "value": 7.098
+        },
+        {
+          "date": "2025-05-01",
+          "value": 7.31
+        },
+        {
+          "date": "2025-06-01",
+          "value": 7.204
+        },
+        {
+          "date": "2025-07-01",
+          "value": 7.089
+        },
+        {
+          "date": "2025-08-01",
+          "value": 6.919
+        },
+        {
+          "date": "2025-09-01",
+          "value": 7.169
+        },
+        {
+          "date": "2025-10-01",
+          "value": 7.17
+        },
+        {
+          "date": "2025-11-01",
+          "value": 6.846
+        },
+        {
+          "date": "2025-12-01",
+          "value": 6.55
+        },
+        {
+          "date": "2026-01-01",
+          "value": 7.24
+        },
+        {
+          "date": "2026-02-01",
+          "value": 6.922
+        },
+        {
+          "date": "2026-03-01",
+          "value": 6.887
+        },
+        {
+          "date": "2026-04-01",
+          "value": 7.585
+        },
+        {
+          "date": "2026-05-01",
+          "value": 7.594
+        }
+      ],
+      "unavailable": [],
+      "latest": {
+        "date": "2026-05-01",
+        "value": 7.594
+      }
+    },
+    "hires": {
+      "fredId": "JTSHIL",
+      "label": "Hires",
+      "shortLabel": "Hires",
+      "unit": "million",
+      "sourceId": "fred-jolts",
+      "definition": "Seasonally adjusted total nonfarm hires in the United States.",
+      "observations": [
+        {
+          "date": "2020-01-01",
+          "value": 5.981
+        },
+        {
+          "date": "2020-02-01",
+          "value": 5.99
+        },
+        {
+          "date": "2020-03-01",
+          "value": 5.171
+        },
+        {
+          "date": "2020-04-01",
+          "value": 4.029
+        },
+        {
+          "date": "2020-05-01",
+          "value": 8.133
+        },
+        {
+          "date": "2020-06-01",
+          "value": 7.477
+        },
+        {
+          "date": "2020-07-01",
+          "value": 6.32
+        },
+        {
+          "date": "2020-08-01",
+          "value": 6.004
+        },
+        {
+          "date": "2020-09-01",
+          "value": 5.966
+        },
+        {
+          "date": "2020-10-01",
+          "value": 6.091
+        },
+        {
+          "date": "2020-11-01",
+          "value": 5.894
+        },
+        {
+          "date": "2020-12-01",
+          "value": 5.577
+        },
+        {
+          "date": "2021-01-01",
+          "value": 5.598
+        },
+        {
+          "date": "2021-02-01",
+          "value": 5.813
+        },
+        {
+          "date": "2021-03-01",
+          "value": 6.158
+        },
+        {
+          "date": "2021-04-01",
+          "value": 6.138
+        },
+        {
+          "date": "2021-05-01",
+          "value": 5.981
+        },
+        {
+          "date": "2021-06-01",
+          "value": 6.535
+        },
+        {
+          "date": "2021-07-01",
+          "value": 6.72
+        },
+        {
+          "date": "2021-08-01",
+          "value": 6.394
+        },
+        {
+          "date": "2021-09-01",
+          "value": 6.632
+        },
+        {
+          "date": "2021-10-01",
+          "value": 6.678
+        },
+        {
+          "date": "2021-11-01",
+          "value": 6.911
+        },
+        {
+          "date": "2021-12-01",
+          "value": 6.686
+        },
+        {
+          "date": "2022-01-01",
+          "value": 6.431
+        },
+        {
+          "date": "2022-02-01",
+          "value": 6.801
+        },
+        {
+          "date": "2022-03-01",
+          "value": 6.619
+        },
+        {
+          "date": "2022-04-01",
+          "value": 6.528
+        },
+        {
+          "date": "2022-05-01",
+          "value": 6.44
+        },
+        {
+          "date": "2022-06-01",
+          "value": 6.487
+        },
+        {
+          "date": "2022-07-01",
+          "value": 6.478
+        },
+        {
+          "date": "2022-08-01",
+          "value": 6.448
+        },
+        {
+          "date": "2022-09-01",
+          "value": 6.201
+        },
+        {
+          "date": "2022-10-01",
+          "value": 6.151
+        },
+        {
+          "date": "2022-11-01",
+          "value": 6.18
+        },
+        {
+          "date": "2022-12-01",
+          "value": 6.163
+        },
+        {
+          "date": "2023-01-01",
+          "value": 6.37
+        },
+        {
+          "date": "2023-02-01",
+          "value": 5.989
+        },
+        {
+          "date": "2023-03-01",
+          "value": 5.925
+        },
+        {
+          "date": "2023-04-01",
+          "value": 5.876
+        },
+        {
+          "date": "2023-05-01",
+          "value": 6.119
+        },
+        {
+          "date": "2023-06-01",
+          "value": 5.928
+        },
+        {
+          "date": "2023-07-01",
+          "value": 5.672
+        },
+        {
+          "date": "2023-08-01",
+          "value": 5.846
+        },
+        {
+          "date": "2023-09-01",
+          "value": 5.773
+        },
+        {
+          "date": "2023-10-01",
+          "value": 5.765
+        },
+        {
+          "date": "2023-11-01",
+          "value": 5.535
+        },
+        {
+          "date": "2023-12-01",
+          "value": 5.583
+        },
+        {
+          "date": "2024-01-01",
+          "value": 5.591
+        },
+        {
+          "date": "2024-02-01",
+          "value": 5.618
+        },
+        {
+          "date": "2024-03-01",
+          "value": 5.452
+        },
+        {
+          "date": "2024-04-01",
+          "value": 5.469
+        },
+        {
+          "date": "2024-05-01",
+          "value": 5.492
+        },
+        {
+          "date": "2024-06-01",
+          "value": 5.137
+        },
+        {
+          "date": "2024-07-01",
+          "value": 5.43
+        },
+        {
+          "date": "2024-08-01",
+          "value": 5.204
+        },
+        {
+          "date": "2024-09-01",
+          "value": 5.427
+        },
+        {
+          "date": "2024-10-01",
+          "value": 5.228
+        },
+        {
+          "date": "2024-11-01",
+          "value": 5.155
+        },
+        {
+          "date": "2024-12-01",
+          "value": 5.292
+        },
+        {
+          "date": "2025-01-01",
+          "value": 5.238
+        },
+        {
+          "date": "2025-02-01",
+          "value": 5.236
+        },
+        {
+          "date": "2025-03-01",
+          "value": 5.333
+        },
+        {
+          "date": "2025-04-01",
+          "value": 5.391
+        },
+        {
+          "date": "2025-05-01",
+          "value": 5.328
+        },
+        {
+          "date": "2025-06-01",
+          "value": 5.327
+        },
+        {
+          "date": "2025-07-01",
+          "value": 5.225
+        },
+        {
+          "date": "2025-08-01",
+          "value": 5.145
+        },
+        {
+          "date": "2025-09-01",
+          "value": 5.244
+        },
+        {
+          "date": "2025-10-01",
+          "value": 5.18
+        },
+        {
+          "date": "2025-11-01",
+          "value": 5.019
+        },
+        {
+          "date": "2025-12-01",
+          "value": 5.272
+        },
+        {
+          "date": "2026-01-01",
+          "value": 5.347
+        },
+        {
+          "date": "2026-02-01",
+          "value": 4.899
+        },
+        {
+          "date": "2026-03-01",
+          "value": 5.535
+        },
+        {
+          "date": "2026-04-01",
+          "value": 5.215
+        },
+        {
+          "date": "2026-05-01",
+          "value": 5.17
+        }
+      ],
+      "unavailable": [],
+      "latest": {
+        "date": "2026-05-01",
+        "value": 5.17
+      }
+    },
+    "unemployment": {
+      "fredId": "UNRATE",
+      "label": "Unemployment rate",
+      "shortLabel": "Unemployment",
+      "unit": "percent",
+      "sourceId": "fred-unrate",
+      "definition": "Seasonally adjusted U.S. civilian unemployment rate.",
+      "observations": [
+        {
+          "date": "2020-01-01",
+          "value": 3.6
+        },
+        {
+          "date": "2020-02-01",
+          "value": 3.5
+        },
+        {
+          "date": "2020-03-01",
+          "value": 4.4
+        },
+        {
+          "date": "2020-04-01",
+          "value": 14.8
+        },
+        {
+          "date": "2020-05-01",
+          "value": 13.2
+        },
+        {
+          "date": "2020-06-01",
+          "value": 11.0
+        },
+        {
+          "date": "2020-07-01",
+          "value": 10.2
+        },
+        {
+          "date": "2020-08-01",
+          "value": 8.4
+        },
+        {
+          "date": "2020-09-01",
+          "value": 7.8
+        },
+        {
+          "date": "2020-10-01",
+          "value": 6.9
+        },
+        {
+          "date": "2020-11-01",
+          "value": 6.7
+        },
+        {
+          "date": "2020-12-01",
+          "value": 6.7
+        },
+        {
+          "date": "2021-01-01",
+          "value": 6.4
+        },
+        {
+          "date": "2021-02-01",
+          "value": 6.2
+        },
+        {
+          "date": "2021-03-01",
+          "value": 6.1
+        },
+        {
+          "date": "2021-04-01",
+          "value": 6.1
+        },
+        {
+          "date": "2021-05-01",
+          "value": 5.8
+        },
+        {
+          "date": "2021-06-01",
+          "value": 5.9
+        },
+        {
+          "date": "2021-07-01",
+          "value": 5.4
+        },
+        {
+          "date": "2021-08-01",
+          "value": 5.1
+        },
+        {
+          "date": "2021-09-01",
+          "value": 4.7
+        },
+        {
+          "date": "2021-10-01",
+          "value": 4.5
+        },
+        {
+          "date": "2021-11-01",
+          "value": 4.1
+        },
+        {
+          "date": "2021-12-01",
+          "value": 3.9
+        },
+        {
+          "date": "2022-01-01",
+          "value": 4.0
+        },
+        {
+          "date": "2022-02-01",
+          "value": 3.9
+        },
+        {
+          "date": "2022-03-01",
+          "value": 3.7
+        },
+        {
+          "date": "2022-04-01",
+          "value": 3.7
+        },
+        {
+          "date": "2022-05-01",
+          "value": 3.6
+        },
+        {
+          "date": "2022-06-01",
+          "value": 3.6
+        },
+        {
+          "date": "2022-07-01",
+          "value": 3.5
+        },
+        {
+          "date": "2022-08-01",
+          "value": 3.6
+        },
+        {
+          "date": "2022-09-01",
+          "value": 3.5
+        },
+        {
+          "date": "2022-10-01",
+          "value": 3.6
+        },
+        {
+          "date": "2022-11-01",
+          "value": 3.6
+        },
+        {
+          "date": "2022-12-01",
+          "value": 3.5
+        },
+        {
+          "date": "2023-01-01",
+          "value": 3.5
+        },
+        {
+          "date": "2023-02-01",
+          "value": 3.6
+        },
+        {
+          "date": "2023-03-01",
+          "value": 3.5
+        },
+        {
+          "date": "2023-04-01",
+          "value": 3.4
+        },
+        {
+          "date": "2023-05-01",
+          "value": 3.6
+        },
+        {
+          "date": "2023-06-01",
+          "value": 3.6
+        },
+        {
+          "date": "2023-07-01",
+          "value": 3.5
+        },
+        {
+          "date": "2023-08-01",
+          "value": 3.7
+        },
+        {
+          "date": "2023-09-01",
+          "value": 3.7
+        },
+        {
+          "date": "2023-10-01",
+          "value": 3.9
+        },
+        {
+          "date": "2023-11-01",
+          "value": 3.7
+        },
+        {
+          "date": "2023-12-01",
+          "value": 3.8
+        },
+        {
+          "date": "2024-01-01",
+          "value": 3.7
+        },
+        {
+          "date": "2024-02-01",
+          "value": 3.9
+        },
+        {
+          "date": "2024-03-01",
+          "value": 3.9
+        },
+        {
+          "date": "2024-04-01",
+          "value": 3.9
+        },
+        {
+          "date": "2024-05-01",
+          "value": 3.9
+        },
+        {
+          "date": "2024-06-01",
+          "value": 4.1
+        },
+        {
+          "date": "2024-07-01",
+          "value": 4.2
+        },
+        {
+          "date": "2024-08-01",
+          "value": 4.2
+        },
+        {
+          "date": "2024-09-01",
+          "value": 4.1
+        },
+        {
+          "date": "2024-10-01",
+          "value": 4.1
+        },
+        {
+          "date": "2024-11-01",
+          "value": 4.2
+        },
+        {
+          "date": "2024-12-01",
+          "value": 4.1
+        },
+        {
+          "date": "2025-01-01",
+          "value": 4.0
+        },
+        {
+          "date": "2025-02-01",
+          "value": 4.2
+        },
+        {
+          "date": "2025-03-01",
+          "value": 4.2
+        },
+        {
+          "date": "2025-04-01",
+          "value": 4.2
+        },
+        {
+          "date": "2025-05-01",
+          "value": 4.3
+        },
+        {
+          "date": "2025-06-01",
+          "value": 4.1
+        },
+        {
+          "date": "2025-07-01",
+          "value": 4.3
+        },
+        {
+          "date": "2025-08-01",
+          "value": 4.3
+        },
+        {
+          "date": "2025-09-01",
+          "value": 4.4
+        },
+        {
+          "date": "2025-11-01",
+          "value": 4.5
+        },
+        {
+          "date": "2025-12-01",
+          "value": 4.4
+        },
+        {
+          "date": "2026-01-01",
+          "value": 4.3
+        },
+        {
+          "date": "2026-02-01",
+          "value": 4.4
+        },
+        {
+          "date": "2026-03-01",
+          "value": 4.3
+        },
+        {
+          "date": "2026-04-01",
+          "value": 4.3
+        },
+        {
+          "date": "2026-05-01",
+          "value": 4.3
+        },
+        {
+          "date": "2026-06-01",
+          "value": 4.2
+        }
+      ],
+      "unavailable": [
+        {
+          "date": "2025-10-01",
+          "reason": "Data unavailable due to the 2025 lapse in appropriations."
+        }
+      ],
+      "latest": {
+        "date": "2026-06-01",
+        "value": 4.2
+      }
+    }
+  },
+  "headline": {
+    "chatgptBaseline": "2022-11-01",
+    "openingsAtBaseline": {
+      "date": "2022-11-01",
+      "value": 10.632
+    },
+    "openingsLatest": {
+      "date": "2026-05-01",
+      "value": 7.594
+    },
+    "openingsChangeSinceBaselinePct": -28.6,
+    "preChatgptOpeningsPeak": {
+      "date": "2022-03-01",
+      "value": 12.301
+    },
+    "openingsChangeFromPreChatgptPeakPct": -38.3,
+    "hiresLatest": {
+      "date": "2026-05-01",
+      "value": 5.17
+    },
+    "unemploymentAtBaseline": {
+      "date": "2022-11-01",
+      "value": 3.6
+    },
+    "unemploymentLatest": {
+      "date": "2026-06-01",
+      "value": 4.2
+    },
+    "unemploymentChangeSinceBaselinePoints": 0.6
+  },
+  "evidence": {
+    "iloExposure": {
+      "someExposurePct": 25,
+      "someExposureLabel": "one in four",
+      "highestExposurePct": 3.3,
+      "womenHighestExposurePct": 4.7,
+      "menHighestExposurePct": 2.4,
+      "scope": "Global employment",
+      "period": "2025",
+      "kind": "Exposure estimate",
+      "interpretation": "Most exposed occupations still contain tasks requiring human input, so transformation is more likely than redundancy.",
+      "sourceId": "ilo-2025"
+    },
+    "earlyCareer": {
+      "relativeEmploymentDeclinePct": 16,
+      "ages": "22–25",
+      "scope": "U.S. workers in the most AI-exposed occupations",
+      "period": "Since widespread GenAI adoption; revised November 2025",
+      "kind": "Observed association · working paper",
+      "interpretation": "A concentrated warning signal, not an estimate of economy-wide job loss and not by itself definitive proof of causation.",
+      "sourceId": "stanford-canaries"
+    },
+    "macroLabour": {
+      "scope": "Whole U.S. labour market",
+      "period": "First 33 months after ChatGPT",
+      "kind": "Observed economy-wide comparison",
+      "finding": "No discernible broad disruption",
+      "interpretation": "Changes in the occupational mix were only about 1 percentage point faster than the comparable early-internet period and had started before ChatGPT.",
+      "sourceId": "yale-budget-lab"
+    },
+    "wefForecast": {
+      "createdMillions": 170,
+      "displacedMillions": 92,
+      "netMillions": 78,
+      "churnPct": 22,
+      "scope": "1.2 billion formal jobs across all structural macrotrends",
+      "period": "2025–2030",
+      "kind": "Employer-survey forecast",
+      "interpretation": "This is a scenario across technology, demographics, the green transition and other forces—not an AI-only prediction.",
+      "sourceId": "wef-2025"
+    },
+    "productivity": {
+      "overallGainPct": 14,
+      "noviceGainPct": 34,
+      "sampleSize": 5179,
+      "scope": "Customer-support agents at one company",
+      "period": "Study revised November 2023",
+      "kind": "Controlled workplace study",
+      "interpretation": "AI changed task performance and narrowed skill gaps in this setting; the study does not measure total jobs created or lost.",
+      "sourceId": "nber-31161"
+    },
+    "adoption": {
+      "organizationsUsingAiPct": 88,
+      "organizationsUsingGenAiPct": 70,
+      "period": "2025 survey data",
+      "kind": "Organizational survey",
+      "interpretation": "Use is widespread, but adoption is not the same thing as workforce reduction.",
+      "sourceId": "ai-index-2026"
+    }
+  },
+  "sources": [
+    {
+      "id": "fred-jolts",
+      "institution": "U.S. Bureau of Labor Statistics via FRED",
+      "title": "Job Openings and Labor Turnover Survey: total nonfarm job openings and hires",
+      "date": "Monthly; latest values shown in chart",
+      "url": "https://fred.stlouisfed.org/series/JTSJOL",
+      "note": "Observed U.S. labour-market indicators. They cannot identify whether a change was caused by AI. Values can be revised."
+    },
+    {
+      "id": "fred-unrate",
+      "institution": "U.S. Bureau of Labor Statistics via FRED",
+      "title": "Civilian unemployment rate",
+      "date": "Monthly; latest value shown in chart",
+      "url": "https://fred.stlouisfed.org/series/UNRATE",
+      "note": "Observed U.S. macro indicator; not an AI attribution series."
+    },
+    {
+      "id": "ilo-2025",
+      "institution": "International Labour Organization",
+      "title": "Generative AI and Jobs: A Refined Global Index of Occupational Exposure",
+      "date": "20 May 2025",
+      "url": "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure",
+      "note": "Working Paper 140, DOI 10.54394/HETP0387. Exposure estimates are not counts of jobs lost."
+    },
+    {
+      "id": "yale-budget-lab",
+      "institution": "The Budget Lab at Yale",
+      "title": "Evaluating the Impact of AI on the Labor Market: Current State of Affairs",
+      "date": "1 October 2025",
+      "url": "https://budgetlab.yale.edu/research/evaluating-impact-ai-labor-market-current-state-affairs",
+      "note": "Economy-wide observational analysis; explicitly not predictive of future effects."
+    },
+    {
+      "id": "stanford-canaries",
+      "institution": "Stanford Digital Economy Lab",
+      "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+      "date": "13 November 2025",
+      "url": "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
+      "note": "Working paper using U.S. payroll-provider data. Strong subgroup signal, but not a peer-reviewed economy-wide causal estimate."
+    },
+    {
+      "id": "wef-2025",
+      "institution": "World Economic Forum",
+      "title": "Future of Jobs Report 2025",
+      "date": "January 2025",
+      "url": "https://reports.weforum.org/docs/WEF_Future_of_Jobs_Report_2025.pdf",
+      "note": "Forecast based on the Future of Jobs Survey 2024 and ILOSTAT; covers all structural macrotrends, not AI alone."
+    },
+    {
+      "id": "nber-31161",
+      "institution": "National Bureau of Economic Research",
+      "title": "Generative AI at Work, Working Paper 31161",
+      "date": "April 2023; revised November 2023",
+      "url": "https://www.nber.org/papers/w31161",
+      "note": "Workplace study of 5,179 customer-support agents; scope limits generalization."
+    },
+    {
+      "id": "ai-index-2026",
+      "institution": "Stanford Institute for Human-Centered AI",
+      "title": "2026 AI Index Report — Economy",
+      "date": "2026",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/economy",
+      "note": "Synthesis of investment, adoption, labour-market and productivity evidence; underlying sources vary by indicator."
+    }
+  ]
+}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth food-page" style="background: #050505">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What does eating animals cost? — CTW Signals</title>
+  <meta name="description" content="A Factfulness-style dashboard on animal farming: slaughter, fish, emissions, land, forests, water, oceans and health—built from FAO, WHO and peer-reviewed evidence.">
+  <meta name="theme-color" content="#050505">
+  <link rel="canonical" href="https://ctw.studio/signals/food/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What does eating animals cost? — CTW Signals">
+  <meta property="og:description" content="Count the animals. Trace the land, climate, water and health effects. Keep the uncertainty visible.">
+  <meta property="og:url" content="https://ctw.studio/signals/food/">
+  <meta property="og:image" content="https://ctw.studio/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="apple-touch-icon" href="../../favicon.png">
+  <link href="../../tailwind.css" rel="stylesheet">
+  <link href="../signals.css" rel="stylesheet">
+  <link href="food.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <script defer src="../../nav.js" data-base="../../" data-active="signals"></script>
+  <script defer src="food.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to the evidence</a>
+  <div id="site-nav"></div>
+
+  <main id="main-content">
+    <section class="signal-hero food-hero" aria-labelledby="page-title">
+      <div class="signal-shell">
+        <div class="topic-switcher" aria-label="Signal topics">
+          <span class="topic-label">Signals /</span>
+          <a class="topic-pill" href="../">AI &amp; work</a>
+          <a class="topic-pill active food-active" href="./" aria-current="page">Food, animals &amp; planet</a>
+          <span class="topic-pill future">Housing <small>queued</small></span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <p class="brief-id"><span>Brief 002</span><span class="brief-line"></span><span>Global food system</span></p>
+            <h1 id="page-title">What does eating animals cost—<em>beyond the price tag?</em></h1>
+            <p class="hero-deck">Count the lives. Trace the land, emissions, forests, water and health effects. Keep the system boundaries—and the uncertainty—visible.</p>
+            <div class="hero-meta">
+              <span>Data checked <strong id="food-data-date">—</strong></span>
+              <span>Global unless labelled</span>
+              <span>No advocacy math</span>
+            </div>
+          </div>
+
+          <aside class="verdict-card food-verdict reveal" aria-label="Current evidence summary">
+            <div class="verdict-topline">
+              <span class="status-dot food-dot" aria-hidden="true"></span>
+              <span>Current read</span>
+            </div>
+            <p class="verdict-answer">The scale is enormous. The burden is uneven.</p>
+            <p class="verdict-copy">Animal-sourced food is a major driver of land use, livestock emissions and animal deaths. Beef carries an especially large climate and forest footprint. Not every agriculture-wide harm, however, can honestly be assigned to livestock alone.</p>
+            <dl class="verdict-metrics">
+              <div>
+                <dt>Tracked land animals / day</dt>
+                <dd id="hero-land-daily">—</dd>
+              </div>
+              <div>
+                <dt>Livestock share of human GHG</dt>
+                <dd>≈12%</dd>
+              </div>
+              <div>
+                <dt>Farmland for animal foods</dt>
+                <dd>≈83%</dd>
+              </div>
+            </dl>
+            <p class="verdict-footnote">Different years and methods. These figures belong beside one another—not added together.</p>
+          </aside>
+        </div>
+
+        <a class="scroll-cue" href="#story" aria-label="Start the story">
+          <span>Follow the evidence</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v12m0 0 5-5m-5 5-5-5"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section id="story" class="signal-story">
+      <div class="signal-shell story-layout">
+        <aside class="story-index" aria-label="Story chapters">
+          <p>The evidence</p>
+          <nav>
+            <a href="#lives" data-chapter="lives"><span>01</span> Lives</a>
+            <a href="#climate" data-chapter="climate"><span>02</span> Climate</a>
+            <a href="#land" data-chapter="land"><span>03</span> Land &amp; forests</a>
+            <a href="#water" data-chapter="water"><span>04</span> Water</a>
+            <a href="#oceans" data-chapter="oceans"><span>05</span> Oceans</a>
+            <a href="#health" data-chapter="health"><span>06</span> Health</a>
+            <a href="#answer" data-chapter="answer"><span>07</span> Answer</a>
+            <a href="#sources" data-chapter="sources"><span>08</span> Sources</a>
+          </nav>
+        </aside>
+
+        <article class="story-content">
+          <section id="lives" class="story-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>01</span> Scale before opinion</p>
+              <h2>How many animals are killed for food every day?</h2>
+              <p>Official global data can answer this for major land animals. For fish, it mostly records tonnes—so researchers must estimate individual lives from body weights.</p>
+            </header>
+
+            <div class="life-counter" aria-label="Latest tracked land animal slaughter total">
+              <div>
+                <span class="counter-label">Seven tracked land species · <span id="slaughter-year">—</span></span>
+                <strong id="daily-land-exact">—</strong>
+                <span>animals per average day</span>
+              </div>
+              <div class="counter-minute">
+                <span>That is about</span>
+                <strong id="per-minute-exact">—</strong>
+                <span>every minute</span>
+              </div>
+            </div>
+
+            <figure class="chart-card species-card">
+              <div class="chart-head">
+                <div>
+                  <p class="chart-eyebrow">Observed · FAO / OWID</p>
+                  <h3>Daily slaughter, by species</h3>
+                </div>
+                <span class="scope-chip">World</span>
+              </div>
+              <div id="species-chart" class="species-chart" role="img" aria-label="Horizontal bars comparing the average daily slaughter count of seven land-animal species"></div>
+              <figcaption>Bars use a common linear scale. Counts divide the annual total by the number of days in the source year. Fish and species absent from the selected series are excluded.</figcaption>
+              <details class="chart-table-wrap">
+                <summary>View the values as a table</summary>
+                <div id="species-table" class="chart-table-scroll"></div>
+              </details>
+            </figure>
+
+            <div class="fish-estimate-grid">
+              <article class="estimate-card">
+                <p class="chart-eyebrow">Estimated · farmed finfish · 2019</p>
+                <strong>≈340M <small>/ day</small></strong>
+                <div class="range-line"><span style="width:46%"></span></div>
+                <p>Peer-reviewed midpoint: 124B a year. Plausible range: <strong>214–468M/day</strong>.</p>
+              </article>
+              <article class="estimate-card">
+                <p class="chart-eyebrow">Estimated · wild finfish · 2019</p>
+                <strong>2.7–5.2B <small>/ day</small></strong>
+                <div class="range-line wild"><span style="width:72%"></span></div>
+                <p>Converted from catch tonnage and estimated body weights. This is a range, not a census.</p>
+              </article>
+            </div>
+
+            <aside class="boundary-note dignity-note">
+              <div class="boundary-icon" aria-hidden="true">≠</div>
+              <div>
+                <h3>A dashboard can count bodies. It cannot count dignity.</h3>
+                <p>There is no standardized global time series for “factory-farmed animals” or humane treatment. Stocking density, cage or outdoor access, premature mortality, transport time and stunning compliance are the kinds of measures that would be needed. Definitions and reporting still differ sharply by country.</p>
+              </div>
+            </aside>
+          </section>
+
+          <section id="climate" class="story-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>02</span> Climate footprint</p>
+              <h2>Livestock is a material climate sector—not the whole climate problem.</h2>
+              <p>FAO estimates livestock agrifood systems emitted 6.2 gigatonnes of CO₂-equivalent in 2015, about 12% of human-caused greenhouse-gas emissions.</p>
+            </header>
+
+            <div class="climate-number-grid">
+              <article class="big-number-card coral-card">
+                <p>Livestock-system emissions</p>
+                <strong>6.2 <small>Gt CO₂e</small></strong>
+                <span>2015 baseline</span>
+              </article>
+              <article class="big-number-card">
+                <p>Share of all anthropogenic GHG</p>
+                <strong>≈12%</strong>
+                <span>FAO scope</span>
+              </article>
+              <article class="big-number-card">
+                <p>Share of agrifood emissions</p>
+                <strong>≈40%</strong>
+                <span>FAO scope</span>
+              </article>
+            </div>
+
+            <figure class="chart-card footprint-card">
+              <div class="chart-head">
+                <div>
+                  <p class="chart-eyebrow">Global meta-analysis · full supply chain</p>
+                  <h3>Not all proteins carry the same footprint</h3>
+                </div>
+                <span class="scope-chip">kg CO₂e / kg food</span>
+              </div>
+              <div id="footprint-chart" class="footprint-chart" role="img" aria-label="Bars comparing greenhouse-gas emissions per kilogram of several foods"></div>
+              <figcaption>Global mean life-cycle estimates from Poore &amp; Nemecek’s dataset. Producer-to-producer variation can be large; product averages describe systems, not every farm.</figcaption>
+              <details class="chart-table-wrap">
+                <summary>View the values as a table</summary>
+                <div id="footprint-table" class="chart-table-scroll"></div>
+              </details>
+            </figure>
+
+            <div class="interpretation-row">
+              <div class="interpretation-icon food-good" aria-hidden="true">↓</div>
+              <div>
+                <strong>What changes the total most?</strong>
+                <p>Diet composition matters more than food miles for many products. Replacing ruminant meat usually produces the largest climate reduction; improving farms also matters, but even low-impact animal products often exceed plant substitutes in this global dataset.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="land" class="story-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>03</span> Land &amp; forests</p>
+              <h2>The land equation is the clearest imbalance.</h2>
+              <p>Animal-sourced foods use most agricultural land while delivering a minority of calories. Pasture expansion for beef is also the largest single driver in the cited tropical-deforestation attribution.</p>
+            </header>
+
+            <figure class="chart-card land-card">
+              <div class="chart-head">
+                <div>
+                  <p class="chart-eyebrow">Poore–Nemecek global food-system estimate</p>
+                  <h3>Share of input versus output</h3>
+                </div>
+                <span class="scope-chip">World · around 2010</span>
+              </div>
+              <div class="resource-comparison">
+                <div class="resource-row">
+                  <div class="resource-label"><strong>83%</strong><span>agricultural land</span></div>
+                  <div class="resource-track"><span class="resource-fill land-fill" style="width:83%"></span></div>
+                  <span class="resource-note">animal-sourced foods</span>
+                </div>
+                <div class="resource-row">
+                  <div class="resource-label"><strong>37%</strong><span>protein</span></div>
+                  <div class="resource-track"><span class="resource-fill protein-fill" style="width:37%"></span></div>
+                  <span class="resource-note">provided</span>
+                </div>
+                <div class="resource-row">
+                  <div class="resource-label"><strong>18%</strong><span>calories</span></div>
+                  <div class="resource-track"><span class="resource-fill calorie-fill" style="width:18%"></span></div>
+                  <span class="resource-note">provided</span>
+                </div>
+              </div>
+              <figcaption>“Animal-sourced foods” includes pasture plus cropland used for feed. Land quality differs; not all grazing land could grow crops. The ratio still captures the opportunity cost for habitat and carbon storage.</figcaption>
+            </figure>
+
+            <div class="land-scenario">
+              <div class="scenario-copy">
+                <p class="chart-eyebrow">Scenario, not forecast</p>
+                <h3>If the world used a plant-based food system</h3>
+                <p>The modelled agricultural footprint falls from <strong>4.1B hectares</strong> to about <strong>1.0B</strong>—a 75% reduction. It includes less pasture and less feed cropland, while direct human-food cropland grows.</p>
+              </div>
+              <div class="scenario-visual" aria-label="Agricultural land falls from 4.1 to 1 billion hectares in a modelled plant-based scenario">
+                <div class="land-block current"><span>4.1B ha</span><small>current mix</small></div>
+                <svg viewBox="0 0 64 24" aria-hidden="true"><path d="M2 12h55m0 0-8-8m8 8-8 8"/></svg>
+                <div class="land-block plant"><span>1.0B ha</span><small>plant-based</small></div>
+              </div>
+            </div>
+
+            <div class="forest-grid">
+              <article class="forest-card">
+                <div class="ring-stat" style="--ring-value:41"><span>41%</span></div>
+                <h3>of tropical deforestation</h3>
+                <p>was attributed to pasture expansion for beef in the 2005–2013 study average—about 2.1M hectares per year.</p>
+              </article>
+              <article class="forest-card soy-card">
+                <div class="ring-stat" style="--ring-value:77"><span>77%</span></div>
+                <h3>of global soy</h3>
+                <p>was fed to livestock in the cited 2018 end-use analysis; about 7% went directly to human foods such as tofu and soy milk.</p>
+              </article>
+            </div>
+            <p class="precision-line"><strong>Boundary:</strong> 41% is not “all global forest loss today.” It is a commodity-attribution result for tropical deforestation in a defined historical study period.</p>
+          </section>
+
+          <section id="water" class="story-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>04</span> Freshwater &amp; nutrient pollution</p>
+              <h2>Agriculture dominates the pressure. Attribution within agriculture is harder.</h2>
+              <p>Irrigation, livestock and aquaculture share an interconnected system. Two large global numbers reveal the scale—but neither is a livestock-only share.</p>
+            </header>
+
+            <div class="water-grid">
+              <article class="water-stat withdrawal-card">
+                <div class="water-wave" aria-hidden="true"></div>
+                <p>Global freshwater withdrawals</p>
+                <strong>69%</strong>
+                <span>agriculture, including irrigation, livestock and aquaculture</span>
+              </article>
+              <article class="water-stat pollution-card">
+                <div class="water-wave" aria-hidden="true"></div>
+                <p>Ocean &amp; freshwater eutrophication</p>
+                <strong>78%</strong>
+                <span>caused by agriculture in the cited food-system assessment</span>
+              </article>
+            </div>
+
+            <div class="scope-ledger">
+              <div>
+                <span class="scope-mark yes">✓</span>
+                <p><strong>We can say:</strong> feed production, fertilizer and manure release nitrogen and phosphorus; agriculture is the dominant global system boundary for eutrophication.</p>
+              </div>
+              <div>
+                <span class="scope-mark no">×</span>
+                <p><strong>We cannot say:</strong> livestock alone causes 69% of withdrawals or 78% of eutrophication. These sources do not make that allocation.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="oceans" class="story-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>05</span> Oceans</p>
+              <h2>More than a third of assessed marine stocks are overfished.</h2>
+              <p>The state of fish populations and the number of fish killed are different questions. FAO measures the former by stocks and production tonnes; researchers estimate the latter in individuals.</p>
+            </header>
+
+            <div class="ocean-grid">
+              <figure class="ocean-donut-card">
+                <div class="ocean-donut" aria-label="37.7 percent of assessed marine stocks were fished at biologically unsustainable levels in 2021">
+                  <div><strong>37.7%</strong><span>unsustainable</span></div>
+                </div>
+                <figcaption>Unweighted share of marine stocks monitored by FAO, 2021. The production-weighted sustainability measure is higher because large, well-managed fisheries count more.</figcaption>
+              </figure>
+              <div class="ocean-production">
+                <p class="chart-eyebrow">Aquatic animal production · 2022</p>
+                <div class="production-row">
+                  <span>Capture fisheries</span>
+                  <strong>92.3M tonnes</strong>
+                  <div class="production-track"><span style="width:97.8%"></span></div>
+                </div>
+                <div class="production-row aqua">
+                  <span>Aquaculture</span>
+                  <strong>94.4M tonnes</strong>
+                  <div class="production-track"><span style="width:100%"></span></div>
+                </div>
+                <p>Aquaculture surpassed capture fisheries as the main producer of aquatic animals for the first time. That shifts pressure; it does not remove welfare, feed, pollution or habitat questions.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="health" class="story-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>06</span> Human health</p>
+              <h2>The health case is about replacement and planning—not a vegan halo.</h2>
+              <p>Processed meat has an established causal link to colorectal cancer. A balanced vegan diet can provide needed nutrients, but “vegan” alone does not mean nutritious.</p>
+            </header>
+
+            <div class="health-evidence-grid">
+              <article class="health-card evidence-strong">
+                <p class="chart-eyebrow">WHO / IARC</p>
+                <span class="classification">Group 1</span>
+                <h3>Processed meat</h3>
+                <p>Carcinogenic to humans. An analysis of ten studies estimated that eating 50g daily was associated with an <strong>18% higher relative risk</strong> of colorectal cancer.</p>
+                <small>Same evidence class does not mean same danger as smoking. Classification measures confidence that it can cause cancer, not risk magnitude.</small>
+              </article>
+              <article class="health-card evidence-limited">
+                <p class="chart-eyebrow">WHO / IARC</p>
+                <span class="classification">Group 2A</span>
+                <h3>Red meat</h3>
+                <p>Probably carcinogenic to humans, based on limited epidemiological evidence plus strong mechanistic evidence.</p>
+                <small>“Limited” means chance, bias or confounding could not be ruled out in the human evidence.</small>
+              </article>
+            </div>
+
+            <div class="nutrition-balance">
+              <div>
+                <p class="chart-eyebrow">NHS guidance</p>
+                <h3>A well-planned vegan diet can meet nutritional needs.</h3>
+                <p>Variety, fortified foods and appropriate supplements matter. Special life stages deserve professional guidance.</p>
+              </div>
+              <ul class="nutrient-cloud" aria-label="Nutrients that need attention in a vegan diet">
+                <li>B12</li><li>Vitamin D</li><li>Iodine</li><li>Iron</li><li>Calcium</li><li>Selenium</li><li>Omega-3</li>
+              </ul>
+            </div>
+
+            <aside class="boundary-note amr-note">
+              <div class="boundary-icon" aria-hidden="true">Rx</div>
+              <div>
+                <h3>Antimicrobial resistance crosses the farm gate.</h3>
+                <p>WHO estimates bacterial AMR was associated with more than 4.7M deaths globally in 2021 and identifies misuse and overuse across humans, animals and plants as drivers. The global death total cannot be assigned wholesale to animal farming from that evidence.</p>
+              </div>
+            </aside>
+          </section>
+
+          <section id="answer" class="story-chapter conclusion-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>07</span> The answer, for now</p>
+              <h2>Does moving away from animal farming materially change the picture?</h2>
+            </header>
+
+            <div class="conclusion-verdict food-conclusion">
+              <span>Yes—especially for animals, land, beef-driven deforestation and food-system emissions.</span>
+              <p>The strongest global evidence supports a shift toward plant-rich diets. It does not support collapsing every environmental or health problem into one livestock statistic, nor pretending all animal foods, farms, places or people are interchangeable.</p>
+            </div>
+
+            <div class="answer-grid food-answer-grid">
+              <article>
+                <span class="answer-mark strong">Strong</span>
+                <h3>Direct evidence</h3>
+                <p>Animal slaughter counts; fish production; livestock emissions; animal-food land use; beef-linked tropical deforestation; processed-meat cancer evidence.</p>
+              </article>
+              <article>
+                <span class="answer-mark partial">Shared</span>
+                <h3>System-level evidence</h3>
+                <p>Freshwater withdrawals, eutrophication and antimicrobial resistance involve animal farming, crop farming and other pathways. Attribution must stay explicit.</p>
+              </article>
+              <article>
+                <span class="answer-mark open">Missing</span>
+                <h3>What data still fails us</h3>
+                <p>Comparable global welfare measures, a true individual fish census, consistent intensive-farm definitions, and timely farm-level pollution reporting.</p>
+              </article>
+            </div>
+
+            <div class="action-ladder">
+              <p class="chart-eyebrow">If the goal is impact rather than identity</p>
+              <ol>
+                <li><span>01</span><div><strong>Reduce ruminant meat first.</strong><p>Beef and lamb dominate many land and climate comparisons.</p></div></li>
+                <li><span>02</span><div><strong>Replace—do not merely remove.</strong><p>Use varied legumes, grains, vegetables, nuts, seeds and fortified foods; plan B12.</p></div></li>
+                <li><span>03</span><div><strong>Count welfare as well as carbon.</strong><p>Switching from cattle to chicken can lower emissions while increasing the number of animals killed.</p></div></li>
+                <li><span>04</span><div><strong>Keep producer variation visible.</strong><p>Better farming practices matter even when global product categories remain far apart.</p></div></li>
+              </ol>
+            </div>
+          </section>
+
+          <section id="sources" class="story-chapter sources-chapter reveal" data-observe-chapter>
+            <header class="chapter-head">
+              <p class="chapter-kicker"><span>08</span> Evidence trail</p>
+              <h2>Every headline number has a boundary.</h2>
+              <p>Primary international statistics and peer-reviewed research take priority. Synthesis pages are used where they expose the underlying study and definition clearly.</p>
+            </header>
+
+            <div class="method-grid">
+              <article><span>01</span><h3>Observe</h3><p>Use FAO counts and assessments for what is directly measured.</p></article>
+              <article><span>02</span><h3>Estimate</h3><p>Label modelled fish counts as ranges, never official totals.</p></article>
+              <article><span>03</span><h3>Attribute</h3><p>Separate livestock-specific evidence from agriculture-wide shares.</p></article>
+              <article><span>04</span><h3>Compare</h3><p>Keep periods, units, denominators and study scopes visible.</p></article>
+            </div>
+
+            <div id="food-source-list" class="source-list" aria-live="polite">
+              <p class="loading-message">Loading the evidence ledger…</p>
+            </div>
+
+            <details class="method-details">
+              <summary>Data and editorial method</summary>
+              <div>
+                <p><strong>Updateable observations.</strong> The land-animal count is the sum of seven major species in the latest World row of the FAO-derived OWID series. The update script also rebuilds the product-footprint comparison from the published Poore–Nemecek dataset.</p>
+                <p><strong>Fish.</strong> FAO reports aquatic animals in tonnes. Individual totals are peer-reviewed estimates that divide production or catch by estimated species/country body weights. They are presented separately because uncertainty is large.</p>
+                <p><strong>Scenarios.</strong> A 75% land reduction under a global plant-based diet is a modelled counterfactual. It is not a prediction of consumer behavior or a date-bound forecast.</p>
+                <p><strong>Health.</strong> Relative risk is not absolute risk. Diet adequacy depends on foods, quantities, fortification, supplements and life stage—not on a label alone.</p>
+                <p><strong>Refresh.</strong> Run <code>python3 signals/scripts/update_food_data.py</code> from <code>ctw.studio</code>, then review the diff, periods and source definitions before publishing.</p>
+              </div>
+            </details>
+          </section>
+
+          <section class="future-card reveal" aria-label="Future Signals topics">
+            <div>
+              <p class="chapter-kicker"><span>Next</span> Expand the lens</p>
+              <h2>Housing: are homes becoming less attainable?</h2>
+              <p>Prices, income, rents, mortgage costs, supply and household formation—without turning one national market into “the world.”</p>
+            </div>
+            <span class="future-tag">Queued</span>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="signal-footer">
+    <div class="signal-shell">
+      <div><strong>CTW<span>.</span>Signals</strong><p>Evidence before narrative.</p></div>
+      <div class="footer-links"><a href="../../">Studio</a><a href="../">AI &amp; work</a><a href="#sources">Sources</a></div>
+    </div>
+  </footer>
+
+  <noscript><div class="noscript-note">This briefing needs JavaScript to load its baked data and charts. The narrative and source boundaries remain readable above.</div></noscript>
+</body>
+</html>

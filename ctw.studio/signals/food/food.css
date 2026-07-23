@@ -1,0 +1,1276 @@
+.food-page {
+  --food: #b8f26d;
+  --food-soft: rgba(184, 242, 109, 0.13);
+  --coral: #ff745e;
+  --coral-soft: rgba(255, 116, 94, 0.12);
+  --water: #58c7ed;
+  --water-soft: rgba(88, 199, 237, 0.12);
+  --amber-soft: rgba(247, 181, 0, 0.12);
+  --serif: Georgia, 'Times New Roman', serif;
+  --radius-md: 1rem;
+  --radius-lg: 1.35rem;
+}
+
+/* Brief 002 shares the system tokens with Brief 001, but uses a more editorial
+   chapter vocabulary. These structural rules intentionally stay local. */
+.food-page .topic-pill {
+  color: inherit;
+  text-decoration: none;
+}
+
+.food-page .topic-label {
+  margin-right: 0.7rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.food-page .topic-pill.future small {
+  margin-left: 0.35rem;
+  color: var(--ink-soft);
+  font-size: inherit;
+}
+
+.brief-id {
+  display: flex;
+  max-width: 41rem;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 1.2rem;
+  color: var(--food);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.brief-line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(184,242,109,0.65), transparent);
+}
+
+.food-page .verdict-topline {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+}
+
+.verdict-answer {
+  margin: 2rem 0 0.75rem;
+  color: var(--ink);
+  font-size: clamp(1.45rem, 2.5vw, 2.25rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.verdict-copy {
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.verdict-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 1.5rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.verdict-metrics div {
+  padding: 1rem 0.55rem 0.4rem 0;
+}
+
+.verdict-metrics dt {
+  min-height: 2rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.54rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.verdict-metrics dd {
+  margin: 0.35rem 0 0;
+  color: var(--food);
+  font-family: var(--mono);
+  font-size: 1.2rem;
+}
+
+.verdict-footnote {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+.scroll-cue {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: clamp(3.5rem, 7vw, 6.5rem);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.scroll-cue svg {
+  width: 1.1rem;
+  fill: none;
+  stroke: var(--food);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.food-page .story-index > p {
+  margin: 0 0 1.4rem;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.food-page .story-index nav {
+  border-bottom: 1px solid var(--line);
+}
+
+.food-page .story-index a {
+  border-top: 1px solid var(--line);
+}
+
+.food-page .story-index a.active {
+  color: var(--food);
+  transform: translateX(3px);
+}
+
+.story-chapter {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 6.5rem;
+}
+
+.chapter-head h2 {
+  max-width: 980px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2.35rem, 5vw, 5rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.chapter-head > p:last-child {
+  max-width: 820px;
+  margin: 1.5rem 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.chapter-kicker,
+.chart-eyebrow {
+  margin: 0 0 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.chapter-kicker span {
+  margin-right: 0.45rem;
+}
+
+.food-page .chart-card {
+  margin: 1rem 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.chart-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.chart-head h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+}
+
+.scope-chip {
+  flex: 0 0 auto;
+  padding: 0.38rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.59rem;
+  text-transform: uppercase;
+}
+
+.food-page figure > figcaption {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+.chart-table-wrap {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.chart-table-wrap summary {
+  width: fit-content;
+  cursor: pointer;
+  font-family: var(--mono);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.chart-table-scroll {
+  max-height: 18rem;
+  overflow: auto;
+  margin-top: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+}
+
+.chart-table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.chart-table-scroll th,
+.chart-table-scroll td {
+  padding: 0.55rem 0.75rem;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+
+.chart-table-scroll td {
+  color: var(--ink-soft);
+}
+
+.boundary-note {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.2rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.boundary-icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.boundary-note h3 {
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.boundary-note p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.interpretation-row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+.interpretation-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--mono);
+}
+
+.interpretation-row strong { color: var(--ink); font-size: 0.84rem; }
+.interpretation-row p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.6; }
+
+.conclusion-verdict {
+  margin: 2rem 0 1rem;
+  padding: clamp(1.5rem, 4vw, 2.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.conclusion-verdict > span {
+  display: block;
+  font-size: clamp(1.5rem, 3.2vw, 2.8rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.conclusion-verdict p {
+  max-width: 850px;
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.food-answer-grid {
+  overflow: hidden;
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+.food-answer-grid article { min-height: 17rem; }
+.food-answer-grid h3 { margin: 1rem 0 0.7rem; color: var(--ink); font-size: 1rem; }
+.food-answer-grid p { color: var(--muted); font-size: 0.77rem; line-height: 1.65; }
+
+.answer-mark {
+  display: inline-block;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+.source-list {
+  margin-top: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+.source-item {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.source-item:last-child { border-bottom: 0; }
+.source-item h3 { margin: 0; font-size: 0.88rem; }
+.source-item a { text-decoration-color: #54534d; text-underline-offset: 4px; }
+.source-item a:hover { color: var(--food); }
+.source-role { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.72rem; }
+.source-kind { display: inline-block; margin-top: 0.65rem; padding: 0.2rem 0.45rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); font-family: var(--mono); font-size: 0.55rem; }
+.loading-message { padding: 1rem 1.5rem; color: var(--muted); }
+
+.method-details {
+  margin-top: 1rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+.method-details summary { cursor: pointer; color: var(--ink); font-weight: 600; }
+.method-details p { color: var(--muted); font-size: 0.78rem; line-height: 1.65; }
+.method-details code { color: var(--food); }
+
+.future-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  margin: 2rem 0 clamp(5rem,10vw,9rem);
+  padding: clamp(2rem,5vw,4rem);
+  overflow: hidden;
+  border: 1px solid rgba(165,139,255,.24);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(165,139,255,.075), rgba(255,255,255,.015));
+}
+
+.future-card h2 { max-width: 720px; margin: 0; font-size: clamp(2rem,4vw,4rem); letter-spacing: -.055em; line-height: 1.05; }
+.future-card div > p:last-child { max-width: 700px; color: var(--muted); font-size: .9rem; }
+.future-tag { padding: 0.55rem 0.8rem; border: 1px solid rgba(165,139,255,.3); border-radius: 999px; color: var(--violet); font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase; }
+
+.food-page .signal-footer > .signal-shell {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 2.5rem;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.food-page .signal-footer strong { color: var(--ink); }
+.food-page .signal-footer strong span { color: var(--food); }
+.food-page .signal-footer p { margin: 0; }
+.footer-links { display: flex; gap: 1.2rem; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.has-reveal .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.has-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.food-page body {
+  background:
+    radial-gradient(circle at 83% 11%, rgba(184, 242, 109, 0.055), transparent 22rem),
+    #050505;
+}
+
+.food-hero::before {
+  background: radial-gradient(circle at center, rgba(184, 242, 109, 0.09), transparent 68%);
+}
+
+.food-hero .hero-copy h1 em,
+.food-page .chapter-kicker,
+.food-page .chart-eyebrow {
+  color: var(--food);
+}
+
+.food-active {
+  border-color: var(--food) !important;
+  background: var(--food-soft) !important;
+  color: var(--food) !important;
+}
+
+.food-dot {
+  background: var(--food);
+  box-shadow: 0 0 0 6px rgba(184, 242, 109, 0.09), 0 0 22px rgba(184, 242, 109, 0.44);
+}
+
+.food-verdict {
+  border-color: rgba(184, 242, 109, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 26px 90px rgba(0, 0, 0, 0.28);
+}
+
+.life-counter {
+  display: grid;
+  grid-template-columns: 1.65fr 0.75fr;
+  gap: 1px;
+  margin: 2.25rem 0 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--line);
+}
+
+.life-counter > div {
+  min-height: 13rem;
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  background:
+    radial-gradient(circle at 90% 0, rgba(255, 116, 94, 0.09), transparent 52%),
+    var(--panel);
+}
+
+.life-counter > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.life-counter .counter-label,
+.counter-minute > span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.life-counter strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: clamp(2.7rem, 7vw, 6.2rem);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 0.92;
+}
+
+.life-counter > div:first-child > span:last-child {
+  color: var(--coral);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.counter-minute {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--line);
+}
+
+.counter-minute strong {
+  margin: 1rem 0 0.65rem;
+  color: var(--food);
+  font-size: clamp(2rem, 4vw, 3.7rem);
+}
+
+.species-chart,
+.footprint-chart {
+  display: grid;
+  gap: 0.85rem;
+  min-height: 19rem;
+  padding: 2rem 0 1rem;
+}
+
+.species-row,
+.footprint-row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) 5rem;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.species-name,
+.footprint-name {
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.species-track,
+.footprint-track {
+  position: relative;
+  height: 0.62rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.species-bar,
+.footprint-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--bar-width);
+  min-width: 2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--coral), #ffb06c);
+  box-shadow: 0 0 20px rgba(255, 116, 94, 0.15);
+  animation: bar-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--bar-delay);
+  transform-origin: left center;
+}
+
+.species-row strong,
+.footprint-row strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+.fish-estimate-grid,
+.climate-number-grid,
+.forest-grid,
+.water-grid,
+.health-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.estimate-card,
+.big-number-card,
+.forest-card,
+.water-stat,
+.health-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+.estimate-card > strong {
+  display: block;
+  margin: 1rem 0;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.estimate-card > strong small {
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+
+.estimate-card > p:last-child,
+.forest-card p,
+.water-stat span,
+.health-card p,
+.nutrition-balance p {
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.range-line {
+  height: 3px;
+  margin-bottom: 1.2rem;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.range-line span {
+  display: block;
+  height: 100%;
+  margin-left: 20%;
+  background: var(--food);
+  box-shadow: 0 0 15px rgba(184, 242, 109, 0.3);
+}
+
+.range-line.wild span {
+  margin-left: 12%;
+  background: var(--water);
+}
+
+.dignity-note,
+.amr-note {
+  margin-top: 1rem;
+  border-color: rgba(255, 116, 94, 0.2);
+  background: linear-gradient(135deg, rgba(255, 116, 94, 0.07), transparent 52%), var(--panel);
+}
+
+.dignity-note .boundary-icon,
+.amr-note .boundary-icon {
+  color: var(--coral);
+}
+
+.climate-number-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.big-number-card p,
+.water-stat > p {
+  min-height: 2.3rem;
+  color: var(--muted);
+  font-size: 0.69rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.big-number-card strong,
+.water-stat strong {
+  display: block;
+  margin: 1.5rem 0 0.65rem;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: clamp(2rem, 4.8vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.big-number-card strong small {
+  color: var(--muted);
+  font-size: 0.65rem;
+  letter-spacing: 0;
+}
+
+.big-number-card > span {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.coral-card {
+  border-color: rgba(255, 116, 94, 0.22);
+  background: linear-gradient(140deg, rgba(255, 116, 94, 0.1), transparent 58%), var(--panel);
+}
+
+.footprint-row {
+  grid-template-columns: 8rem minmax(0, 1fr) 3.5rem;
+}
+
+.footprint-bar {
+  background: linear-gradient(90deg, var(--coral), #ffd078);
+}
+
+.plant-row .footprint-bar {
+  background: linear-gradient(90deg, #7dcf74, var(--food));
+  box-shadow: 0 0 20px rgba(184, 242, 109, 0.12);
+}
+
+.food-good {
+  color: var(--food) !important;
+  background: var(--food-soft) !important;
+}
+
+.resource-comparison {
+  display: grid;
+  gap: 1.65rem;
+  padding: 2rem 0 1rem;
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) 8rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resource-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.resource-label strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.resource-label span,
+.resource-note {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.resource-track {
+  height: 1.15rem;
+  overflow: hidden;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.resource-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--coral);
+}
+
+.protein-fill { background: var(--food); }
+.calorie-fill { background: #f7b500; }
+
+.land-scenario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem 0;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  border: 1px solid rgba(184, 242, 109, 0.2);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(184, 242, 109, 0.08), transparent 50%), var(--panel);
+}
+
+.scenario-copy h3 {
+  margin: 0.6rem 0 0.7rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+}
+
+.scenario-copy > p:last-child {
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.scenario-visual {
+  display: grid;
+  grid-template-columns: 1fr 3rem 0.58fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scenario-visual svg {
+  width: 100%;
+  fill: none;
+  stroke: var(--muted);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.land-block {
+  display: flex;
+  aspect-ratio: 1.15;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.land-block span {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+.land-block small {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.61rem;
+  text-transform: uppercase;
+}
+
+.land-block.plant {
+  border-color: rgba(184, 242, 109, 0.28);
+  background: var(--food-soft);
+}
+
+.forest-card {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  column-gap: 1rem;
+  align-items: center;
+}
+
+.ring-stat {
+  display: grid;
+  width: 5rem;
+  aspect-ratio: 1;
+  grid-row: 1 / span 2;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--coral) calc(var(--ring-value) * 1%), rgba(255,255,255,0.07) 0);
+}
+
+.ring-stat::before {
+  width: 3.65rem;
+  aspect-ratio: 1;
+  grid-area: 1 / 1;
+  border-radius: 50%;
+  background: var(--panel);
+  content: '';
+}
+
+.ring-stat span {
+  z-index: 1;
+  grid-area: 1 / 1;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
+.forest-card h3 {
+  align-self: end;
+  margin: 0 0 0.25rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.forest-card p {
+  align-self: start;
+  margin: 0;
+  font-size: 0.78rem;
+}
+
+.soy-card .ring-stat {
+  background: conic-gradient(var(--food) calc(var(--ring-value) * 1%), rgba(255,255,255,0.07) 0);
+}
+
+.precision-line {
+  margin: 0.5rem 0 0;
+  padding: 1rem 1.2rem;
+  border-left: 2px solid var(--muted);
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.water-stat {
+  min-height: 18rem;
+  isolation: isolate;
+}
+
+.water-stat > *:not(.water-wave) {
+  position: relative;
+  z-index: 1;
+}
+
+.water-stat strong {
+  color: var(--water);
+  font-size: clamp(3rem, 7vw, 6rem);
+}
+
+.water-wave {
+  position: absolute;
+  z-index: 0;
+  inset: auto -15% -34% -15%;
+  height: 80%;
+  border-radius: 45% 52% 0 0;
+  background: rgba(88, 199, 237, 0.08);
+  transform: rotate(-4deg);
+}
+
+.pollution-card strong { color: var(--food); }
+.pollution-card .water-wave { background: rgba(184, 242, 109, 0.07); transform: rotate(4deg); }
+
+.scope-ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  overflow: hidden;
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--line);
+}
+
+.scope-ledger > div {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.8rem;
+  padding: 1.4rem;
+  background: var(--panel);
+}
+
+.scope-ledger p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.scope-mark {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.scope-mark.yes { color: var(--food); background: var(--food-soft); }
+.scope-mark.no { color: var(--coral); background: var(--coral-soft); }
+
+.ocean-grid {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.ocean-donut-card,
+.ocean-production {
+  margin: 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.ocean-donut {
+  display: grid;
+  width: min(100%, 15rem);
+  margin: 0 auto 1.5rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--coral) 0 37.7%, var(--water) 37.7% 100%);
+}
+
+.ocean-donut::before {
+  width: 72%;
+  aspect-ratio: 1;
+  grid-area: 1 / 1;
+  border-radius: 50%;
+  background: var(--panel);
+  content: '';
+}
+
+.ocean-donut > div {
+  z-index: 1;
+  display: grid;
+  grid-area: 1 / 1;
+  text-align: center;
+}
+
+.ocean-donut strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 500;
+}
+
+.ocean-donut span {
+  color: var(--muted);
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ocean-donut-card figcaption,
+.ocean-production > p:last-child {
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.6;
+}
+
+.production-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.7rem;
+  margin: 2rem 0;
+}
+
+.production-row > span {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.production-row strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.production-track {
+  grid-column: 1 / -1;
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.06);
+}
+
+.production-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--water);
+}
+
+.aqua .production-track span { background: var(--food); }
+
+.health-card {
+  min-height: 22rem;
+}
+
+.classification {
+  display: inline-block;
+  margin: 1.5rem 0 1rem;
+  padding: 0.28rem 0.58rem;
+  border: 1px solid rgba(255, 116, 94, 0.28);
+  border-radius: 99px;
+  color: var(--coral);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+}
+
+.health-card h3 {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.health-card small {
+  display: block;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.69rem;
+  line-height: 1.6;
+}
+
+.evidence-limited .classification {
+  border-color: rgba(247, 181, 0, 0.3);
+  color: var(--amber);
+}
+
+.nutrition-balance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgba(184, 242, 109, 0.18);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(184, 242, 109, 0.07), transparent 60%), var(--panel);
+}
+
+.nutrition-balance h3 {
+  margin: 0.6rem 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+}
+
+.nutrient-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nutrient-cloud li {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 99px;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+}
+
+.food-conclusion {
+  border-color: rgba(184, 242, 109, 0.24);
+  background: linear-gradient(135deg, rgba(184, 242, 109, 0.1), transparent 48%), var(--panel);
+}
+
+.food-conclusion > span { color: var(--food); }
+
+.food-answer-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.answer-mark.strong { color: var(--food); background: var(--food-soft); }
+.answer-mark.partial { color: var(--amber); background: var(--amber-soft); }
+.answer-mark.open { color: var(--coral); background: var(--coral-soft); }
+
+.action-ladder {
+  margin-top: 1rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.action-ladder ol {
+  display: grid;
+  gap: 0;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.action-ladder li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.action-ladder li > span {
+  color: var(--food);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.action-ladder strong { color: var(--ink); font-size: 0.9rem; }
+.action-ladder p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
+
+@keyframes bar-in {
+  from { opacity: 0.2; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@media (max-width: 880px) {
+  .life-counter,
+  .land-scenario,
+  .nutrition-balance,
+  .ocean-grid { grid-template-columns: 1fr; }
+  .counter-minute { border-top: 1px solid var(--line); border-left: 0; }
+  .climate-number-grid { grid-template-columns: 1fr 1fr; }
+  .climate-number-grid .big-number-card:first-child { grid-column: 1 / -1; }
+  .food-answer-grid { grid-template-columns: 1fr; }
+  .scenario-visual { max-width: 32rem; }
+}
+
+@media (max-width: 760px) {
+  .food-page .topic-switcher { align-items: flex-start; }
+  .food-page .topic-label { width: 100%; margin-bottom: 0.2rem; }
+  .food-page .topic-pill.future { display: none; }
+  .food-page .future-card { grid-template-columns: 1fr; }
+  .food-page .signal-footer > .signal-shell { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  .fish-estimate-grid,
+  .forest-grid,
+  .water-grid,
+  .health-evidence-grid,
+  .scope-ledger,
+  .climate-number-grid { grid-template-columns: 1fr; }
+  .climate-number-grid .big-number-card:first-child { grid-column: auto; }
+  .species-row { grid-template-columns: 4.7rem minmax(0, 1fr) 3.9rem; gap: 0.55rem; }
+  .footprint-row { grid-template-columns: 5.8rem minmax(0, 1fr) 2.8rem; gap: 0.55rem; }
+  .species-name, .footprint-name, .species-row strong, .footprint-row strong { font-size: 0.66rem; }
+  .resource-row { grid-template-columns: 5rem minmax(0, 1fr); gap: 0.7rem; }
+  .resource-note { display: none; }
+  .resource-label { display: grid; }
+  .scenario-visual { grid-template-columns: 1fr 2rem 0.58fr; }
+  .forest-card { grid-template-columns: 4.5rem 1fr; }
+  .ring-stat { width: 4.25rem; }
+  .ring-stat::before { width: 3.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .species-bar, .footprint-bar { animation: none; }
+}
