@@ -6,7 +6,8 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 
 - **Brief 001 · AI & work** (`index.html`) — observed U.S. labor-market conditions, global AI exposure, early-career signals, employer expectations, adoption and productivity evidence.
 - **Brief 002 · Food, animals & the planet** (`food/index.html`) — animal slaughter, fish-count uncertainty, livestock emissions, product footprints, land, deforestation, water, oceans and health evidence.
-- **Queued · Housing & affordability** — compare prices with incomes, rents, mortgage costs, supply and household formation; do not equate price appreciation with affordability.
+- **Brief 003 · Housing & affordability** (`housing/index.html`) — world housing adequacy, Dutch prices, rents, financing, tenure burden, supply and household formation, plus mechanism-led country comparisons.
+- **Signals atlas** (`roadmap/index.html`) — the shared five-question evidence contract, three geographic lenses and the ten-subject publication roadmap.
 
 ## Files
 
@@ -20,6 +21,11 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - `food/food.css` — Brief 002 visual components
 - `data/food-system.json` — curated food-system evidence and baked observations
 - `scripts/update_food_data.py` — no-key refresh for FAO slaughter and product-footprint data via OWID
+- `housing/index.html` — Brief 003 housing storyboard using the shared five-question / three-lens contract
+- `housing/housing.js` and `housing/housing.css` — dependency-free housing charts, interactions and visual layer
+- `data/housing.json` — curated housing interpretation plus baked World Bank, OECD, Eurostat, CBS and ECB observations
+- `scripts/update_housing_data.py` — no-key refresh for eight official housing source series
+- `roadmap/index.html` — ten-subject Signals atlas and publication sequence
 - `tests/*.test.mjs` — source/data/markup integrity checks
 
 ## Refreshing the data
@@ -29,6 +35,7 @@ From `ctw.studio/`:
 ```bash
 python3 signals/scripts/update_fred.py
 python3 signals/scripts/update_food_data.py
+python3 signals/scripts/update_housing_data.py
 node --test signals/tests/*.test.mjs
 ```
 
@@ -45,12 +52,20 @@ The food-system updater downloads:
 - FAOSTAT slaughter observations republished in the OWID Grapher
 - Poore & Nemecek product-level supply-chain footprints republished in the OWID Grapher
 
-After either refresh:
+The housing updater downloads and reconciles:
+
+- World Bank / UN-Habitat urban slum share and matching world urban population
+- OECD analytical house-price, rent, price-to-income and price-to-rent indices
+- Eurostat housing-cost overburden and tenure shares
+- CBS existing-home prices, dwelling-stock changes and private households
+- ECB / DNB new-mortgage interest rates
+
+After any refresh:
 
 1. Review the diff for revisions, missing observations and definition changes.
 2. Confirm the source date and current-period labels.
 3. Run the full test suite.
-4. Inspect both pages at desktop and mobile widths before publishing.
+4. Inspect every affected page at desktop and mobile widths before publishing.
 5. Commit the generated JSON with the source and script changes.
 
 ## Editorial rules
@@ -62,8 +77,12 @@ After either refresh:
 5. **Do not combine official animal counts with modelled fish estimates.** Show the fish ranges and uncertainty separately.
 6. **Relative risk is not absolute risk.** Explain IARC evidence classes and effect-size units.
 7. **Scenarios are not forecasts.** A modelled plant-based land footprint says what a counterfactual system could require, not when behavior will change.
-8. **Prefer primary sources.** Use syntheses only when they expose the underlying study and definitions.
+8. **Housing prices are not housing affordability.** Keep prices, rents, income, financing and total burden distinct.
+9. **Country indices show change, not rank.** A 2015=100 comparison cannot establish absolute affordability.
+10. **National housing totals do not prove allocation.** Location, tenure, price, suitability, vacancy and accumulated backlog remain material.
+11. **Every new atlas brief answers the shared contract.** Show where we are, direction, distribution, competing explanations and what would change the conclusion, then label possibilities as hypotheses.
+12. **Prefer primary sources.** Use syntheses only when they expose the underlying study and definitions.
 
-## Adding the housing brief
+## Adding the next brief
 
-Give housing its own route and data file. Prefer official or established statistical series for house prices, disposable income, rents, mortgage rates/payments, completions, vacancies and household formation. Begin with a defined geography; a single national market must not be labeled as a global result.
+Follow the atlas contract in `roadmap/index.html`: one data file, a reproducible no-key updater where feasible, an inspectable source ledger, explicit world / Europe-Netherlands / selected-country scopes, and tests that fail on silent data gaps or denominator changes.

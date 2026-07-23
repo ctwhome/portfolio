@@ -413,6 +413,8 @@
 .future-card {
   position: relative;
   display: grid;
+  color: inherit;
+  text-decoration: none;
   grid-template-columns: 1fr auto;
   gap: 2rem;
   align-items: center;
