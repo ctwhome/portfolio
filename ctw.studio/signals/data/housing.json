@@ -1,0 +1,3002 @@
+{
+  "meta": {
+    "topic": "Housing & affordability",
+    "brief": "003",
+    "dataUpdated": "2026-07-23",
+    "editorialReview": "2026-07-23",
+    "question": "Is an ordinary life becoming more or less attainable?",
+    "scope": "World structure; Europe and the Netherlands in detail; selected-country comparisons",
+    "verdict": "Dutch house prices remain far ahead of incomes relative to 2015, financing remains much more expensive than in 2021, and the burden is concentrated among market-rate tenants. One recent year in which stock additions outpaced household formation cannot establish that the accumulated mismatch is resolved."
+  },
+  "framework": {
+    "questions": [
+      {
+        "id": "where-now",
+        "label": "Where are we now?"
+      },
+      {
+        "id": "direction",
+        "label": "What direction are we moving?"
+      },
+      {
+        "id": "distribution",
+        "label": "Who is benefiting or carrying the cost?"
+      },
+      {
+        "id": "explanations",
+        "label": "What are the competing explanations?"
+      },
+      {
+        "id": "change-evidence",
+        "label": "What evidence would change our current conclusion?"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "world",
+        "label": "World",
+        "role": "Structural picture"
+      },
+      {
+        "id": "netherlands-europe",
+        "label": "Europe / Netherlands",
+        "role": "Lived political and economic context"
+      },
+      {
+        "id": "comparisons",
+        "label": "Selected countries",
+        "role": "Mechanism-led comparisons, not rankings"
+      }
+    ],
+    "possibilityQuestion": "What might this make possible?"
+  },
+  "world": {
+    "slumShare": {
+      "value": 23.2,
+      "rawValue": 23.2280234635748,
+      "unit": "% of urban population",
+      "period": "2022",
+      "sourceId": "world-bank-slums"
+    },
+    "urbanPopulation": {
+      "valueBillions": 4.56,
+      "valuePeople": 4559245664.0,
+      "period": "2022",
+      "sourceId": "world-bank-slums"
+    },
+    "estimatedPeople": {
+      "valueMillions": 1059,
+      "period": "2022",
+      "derived": true,
+      "note": "Derived from unrounded source values: the World Bank/UN-Habitat slum share and World Bank urban-population observation for the same year. It is not a direct census count.",
+      "sourceId": "world-bank-slums"
+    },
+    "limitations": "There is no timely, harmonized global affordability series covering prices, rents, incomes, mortgage access, tenure and informal housing. The world lens therefore shows housing adequacy, while OECD and Eurostat carry the affordability analysis."
+  },
+  "netherlands": {
+    "oecd": {
+      "housePrice": {
+        "measure": "HPI",
+        "label": "House-price index",
+        "base": "2015=100",
+        "frequency": "Quarterly, seasonally adjusted",
+        "observations": [
+          {
+            "period": "2010-Q1",
+            "value": 111.5
+          },
+          {
+            "period": "2010-Q2",
+            "value": 111.9
+          },
+          {
+            "period": "2010-Q3",
+            "value": 111.4
+          },
+          {
+            "period": "2010-Q4",
+            "value": 110.9
+          },
+          {
+            "period": "2011-Q1",
+            "value": 110.9
+          },
+          {
+            "period": "2011-Q2",
+            "value": 110.0
+          },
+          {
+            "period": "2011-Q3",
+            "value": 108.8
+          },
+          {
+            "period": "2011-Q4",
+            "value": 107.1
+          },
+          {
+            "period": "2012-Q1",
+            "value": 105.0
+          },
+          {
+            "period": "2012-Q2",
+            "value": 103.7
+          },
+          {
+            "period": "2012-Q3",
+            "value": 99.1
+          },
+          {
+            "period": "2012-Q4",
+            "value": 99.7
+          },
+          {
+            "period": "2013-Q1",
+            "value": 97.0
+          },
+          {
+            "period": "2013-Q2",
+            "value": 95.4
+          },
+          {
+            "period": "2013-Q3",
+            "value": 95.4
+          },
+          {
+            "period": "2013-Q4",
+            "value": 95.4
+          },
+          {
+            "period": "2014-Q1",
+            "value": 95.8
+          },
+          {
+            "period": "2014-Q2",
+            "value": 96.6
+          },
+          {
+            "period": "2014-Q3",
+            "value": 96.6
+          },
+          {
+            "period": "2014-Q4",
+            "value": 97.3
+          },
+          {
+            "period": "2015-Q1",
+            "value": 98.3
+          },
+          {
+            "period": "2015-Q2",
+            "value": 99.5
+          },
+          {
+            "period": "2015-Q3",
+            "value": 100.6
+          },
+          {
+            "period": "2015-Q4",
+            "value": 101.6
+          },
+          {
+            "period": "2016-Q1",
+            "value": 102.6
+          },
+          {
+            "period": "2016-Q2",
+            "value": 104.3
+          },
+          {
+            "period": "2016-Q3",
+            "value": 106.2
+          },
+          {
+            "period": "2016-Q4",
+            "value": 108.1
+          },
+          {
+            "period": "2017-Q1",
+            "value": 110.3
+          },
+          {
+            "period": "2017-Q2",
+            "value": 112.4
+          },
+          {
+            "period": "2017-Q3",
+            "value": 114.8
+          },
+          {
+            "period": "2017-Q4",
+            "value": 117.8
+          },
+          {
+            "period": "2018-Q1",
+            "value": 120.4
+          },
+          {
+            "period": "2018-Q2",
+            "value": 122.9
+          },
+          {
+            "period": "2018-Q3",
+            "value": 125.9
+          },
+          {
+            "period": "2018-Q4",
+            "value": 128.3
+          },
+          {
+            "period": "2019-Q1",
+            "value": 130.5
+          },
+          {
+            "period": "2019-Q2",
+            "value": 132.3
+          },
+          {
+            "period": "2019-Q3",
+            "value": 133.9
+          },
+          {
+            "period": "2019-Q4",
+            "value": 136.8
+          },
+          {
+            "period": "2020-Q1",
+            "value": 139.5
+          },
+          {
+            "period": "2020-Q2",
+            "value": 142.8
+          },
+          {
+            "period": "2020-Q3",
+            "value": 145.2
+          },
+          {
+            "period": "2020-Q4",
+            "value": 148.7
+          },
+          {
+            "period": "2021-Q1",
+            "value": 153.9
+          },
+          {
+            "period": "2021-Q2",
+            "value": 160.7
+          },
+          {
+            "period": "2021-Q3",
+            "value": 168.7
+          },
+          {
+            "period": "2021-Q4",
+            "value": 176.3
+          },
+          {
+            "period": "2022-Q1",
+            "value": 183.2
+          },
+          {
+            "period": "2022-Q2",
+            "value": 188.9
+          },
+          {
+            "period": "2022-Q3",
+            "value": 189.0
+          },
+          {
+            "period": "2022-Q4",
+            "value": 186.2
+          },
+          {
+            "period": "2023-Q1",
+            "value": 183.3
+          },
+          {
+            "period": "2023-Q2",
+            "value": 181.3
+          },
+          {
+            "period": "2023-Q3",
+            "value": 182.0
+          },
+          {
+            "period": "2023-Q4",
+            "value": 186.4
+          },
+          {
+            "period": "2024-Q1",
+            "value": 190.1
+          },
+          {
+            "period": "2024-Q2",
+            "value": 195.3
+          },
+          {
+            "period": "2024-Q3",
+            "value": 200.9
+          },
+          {
+            "period": "2024-Q4",
+            "value": 206.5
+          },
+          {
+            "period": "2025-Q1",
+            "value": 210.6
+          },
+          {
+            "period": "2025-Q2",
+            "value": 213.9
+          },
+          {
+            "period": "2025-Q3",
+            "value": 216.9
+          },
+          {
+            "period": "2025-Q4",
+            "value": 219.1
+          }
+        ],
+        "latest": {
+          "period": "2025-Q4",
+          "value": 219.1
+        },
+        "sourceId": "oecd-house-prices"
+      },
+      "rentPrice": {
+        "measure": "RPI",
+        "label": "Rent-price index",
+        "base": "2015=100",
+        "frequency": "Quarterly, seasonally adjusted",
+        "observations": [
+          {
+            "period": "2010-Q1",
+            "value": 85.4
+          },
+          {
+            "period": "2010-Q2",
+            "value": 85.8
+          },
+          {
+            "period": "2010-Q3",
+            "value": 85.8
+          },
+          {
+            "period": "2010-Q4",
+            "value": 86.3
+          },
+          {
+            "period": "2011-Q1",
+            "value": 86.8
+          },
+          {
+            "period": "2011-Q2",
+            "value": 87.3
+          },
+          {
+            "period": "2011-Q3",
+            "value": 87.3
+          },
+          {
+            "period": "2011-Q4",
+            "value": 87.7
+          },
+          {
+            "period": "2012-Q1",
+            "value": 88.4
+          },
+          {
+            "period": "2012-Q2",
+            "value": 88.9
+          },
+          {
+            "period": "2012-Q3",
+            "value": 89.7
+          },
+          {
+            "period": "2012-Q4",
+            "value": 90.2
+          },
+          {
+            "period": "2013-Q1",
+            "value": 90.9
+          },
+          {
+            "period": "2013-Q2",
+            "value": 91.5
+          },
+          {
+            "period": "2013-Q3",
+            "value": 93.7
+          },
+          {
+            "period": "2013-Q4",
+            "value": 94.4
+          },
+          {
+            "period": "2014-Q1",
+            "value": 95.1
+          },
+          {
+            "period": "2014-Q2",
+            "value": 95.8
+          },
+          {
+            "period": "2014-Q3",
+            "value": 97.8
+          },
+          {
+            "period": "2014-Q4",
+            "value": 98.5
+          },
+          {
+            "period": "2015-Q1",
+            "value": 99.2
+          },
+          {
+            "period": "2015-Q2",
+            "value": 99.8
+          },
+          {
+            "period": "2015-Q3",
+            "value": 100.2
+          },
+          {
+            "period": "2015-Q4",
+            "value": 100.7
+          },
+          {
+            "period": "2016-Q1",
+            "value": 101.4
+          },
+          {
+            "period": "2016-Q2",
+            "value": 102.0
+          },
+          {
+            "period": "2016-Q3",
+            "value": 102.2
+          },
+          {
+            "period": "2016-Q4",
+            "value": 102.8
+          },
+          {
+            "period": "2017-Q1",
+            "value": 103.4
+          },
+          {
+            "period": "2017-Q2",
+            "value": 104.0
+          },
+          {
+            "period": "2017-Q3",
+            "value": 103.8
+          },
+          {
+            "period": "2017-Q4",
+            "value": 104.4
+          },
+          {
+            "period": "2018-Q1",
+            "value": 105.0
+          },
+          {
+            "period": "2018-Q2",
+            "value": 105.7
+          },
+          {
+            "period": "2018-Q3",
+            "value": 106.2
+          },
+          {
+            "period": "2018-Q4",
+            "value": 106.9
+          },
+          {
+            "period": "2019-Q1",
+            "value": 107.5
+          },
+          {
+            "period": "2019-Q2",
+            "value": 108.2
+          },
+          {
+            "period": "2019-Q3",
+            "value": 108.9
+          },
+          {
+            "period": "2019-Q4",
+            "value": 109.6
+          },
+          {
+            "period": "2020-Q1",
+            "value": 110.2
+          },
+          {
+            "period": "2020-Q2",
+            "value": 111.0
+          },
+          {
+            "period": "2020-Q3",
+            "value": 112.0
+          },
+          {
+            "period": "2020-Q4",
+            "value": 112.8
+          },
+          {
+            "period": "2021-Q1",
+            "value": 113.4
+          },
+          {
+            "period": "2021-Q2",
+            "value": 114.2
+          },
+          {
+            "period": "2021-Q3",
+            "value": 112.9
+          },
+          {
+            "period": "2021-Q4",
+            "value": 113.6
+          },
+          {
+            "period": "2022-Q1",
+            "value": 114.3
+          },
+          {
+            "period": "2022-Q2",
+            "value": 115.2
+          },
+          {
+            "period": "2022-Q3",
+            "value": 116.2
+          },
+          {
+            "period": "2022-Q4",
+            "value": 116.9
+          },
+          {
+            "period": "2023-Q1",
+            "value": 117.8
+          },
+          {
+            "period": "2023-Q2",
+            "value": 118.8
+          },
+          {
+            "period": "2023-Q3",
+            "value": 118.4
+          },
+          {
+            "period": "2023-Q4",
+            "value": 119.1
+          },
+          {
+            "period": "2024-Q1",
+            "value": 120.2
+          },
+          {
+            "period": "2024-Q2",
+            "value": 121.4
+          },
+          {
+            "period": "2024-Q3",
+            "value": 124.7
+          },
+          {
+            "period": "2024-Q4",
+            "value": 125.5
+          },
+          {
+            "period": "2025-Q1",
+            "value": 126.7
+          },
+          {
+            "period": "2025-Q2",
+            "value": 128.1
+          },
+          {
+            "period": "2025-Q3",
+            "value": 130.6
+          },
+          {
+            "period": "2025-Q4",
+            "value": 131.6
+          },
+          {
+            "period": "2026-Q1",
+            "value": 132.9
+          },
+          {
+            "period": "2026-Q2",
+            "value": 134.5
+          }
+        ],
+        "latest": {
+          "period": "2026-Q2",
+          "value": 134.5
+        },
+        "sourceId": "oecd-house-prices"
+      },
+      "priceToIncome": {
+        "measure": "HPI_YDH",
+        "label": "Price-to-income index",
+        "base": "2015=100",
+        "frequency": "Quarterly, seasonally adjusted",
+        "observations": [
+          {
+            "period": "2010-Q1",
+            "value": 121.2
+          },
+          {
+            "period": "2010-Q2",
+            "value": 121.0
+          },
+          {
+            "period": "2010-Q3",
+            "value": 119.7
+          },
+          {
+            "period": "2010-Q4",
+            "value": 118.5
+          },
+          {
+            "period": "2011-Q1",
+            "value": 117.3
+          },
+          {
+            "period": "2011-Q2",
+            "value": 116.1
+          },
+          {
+            "period": "2011-Q3",
+            "value": 114.9
+          },
+          {
+            "period": "2011-Q4",
+            "value": 113.2
+          },
+          {
+            "period": "2012-Q1",
+            "value": 110.9
+          },
+          {
+            "period": "2012-Q2",
+            "value": 109.8
+          },
+          {
+            "period": "2012-Q3",
+            "value": 104.8
+          },
+          {
+            "period": "2012-Q4",
+            "value": 105.4
+          },
+          {
+            "period": "2013-Q1",
+            "value": 103.2
+          },
+          {
+            "period": "2013-Q2",
+            "value": 100.9
+          },
+          {
+            "period": "2013-Q3",
+            "value": 100.2
+          },
+          {
+            "period": "2013-Q4",
+            "value": 99.4
+          },
+          {
+            "period": "2014-Q1",
+            "value": 99.2
+          },
+          {
+            "period": "2014-Q2",
+            "value": 99.4
+          },
+          {
+            "period": "2014-Q3",
+            "value": 98.8
+          },
+          {
+            "period": "2014-Q4",
+            "value": 98.9
+          },
+          {
+            "period": "2015-Q1",
+            "value": 99.5
+          },
+          {
+            "period": "2015-Q2",
+            "value": 100.0
+          },
+          {
+            "period": "2015-Q3",
+            "value": 100.2
+          },
+          {
+            "period": "2015-Q4",
+            "value": 100.3
+          },
+          {
+            "period": "2016-Q1",
+            "value": 100.2
+          },
+          {
+            "period": "2016-Q2",
+            "value": 101.4
+          },
+          {
+            "period": "2016-Q3",
+            "value": 102.8
+          },
+          {
+            "period": "2016-Q4",
+            "value": 104.1
+          },
+          {
+            "period": "2017-Q1",
+            "value": 106.5
+          },
+          {
+            "period": "2017-Q2",
+            "value": 107.5
+          },
+          {
+            "period": "2017-Q3",
+            "value": 108.5
+          },
+          {
+            "period": "2017-Q4",
+            "value": 109.9
+          },
+          {
+            "period": "2018-Q1",
+            "value": 111.2
+          },
+          {
+            "period": "2018-Q2",
+            "value": 112.1
+          },
+          {
+            "period": "2018-Q3",
+            "value": 113.6
+          },
+          {
+            "period": "2018-Q4",
+            "value": 114.5
+          },
+          {
+            "period": "2019-Q1",
+            "value": 115.0
+          },
+          {
+            "period": "2019-Q2",
+            "value": 115.6
+          },
+          {
+            "period": "2019-Q3",
+            "value": 115.9
+          },
+          {
+            "period": "2019-Q4",
+            "value": 117.3
+          },
+          {
+            "period": "2020-Q1",
+            "value": 119.2
+          },
+          {
+            "period": "2020-Q2",
+            "value": 120.7
+          },
+          {
+            "period": "2020-Q3",
+            "value": 121.1
+          },
+          {
+            "period": "2020-Q4",
+            "value": 122.2
+          },
+          {
+            "period": "2021-Q1",
+            "value": 125.7
+          },
+          {
+            "period": "2021-Q2",
+            "value": 129.1
+          },
+          {
+            "period": "2021-Q3",
+            "value": 133.1
+          },
+          {
+            "period": "2021-Q4",
+            "value": 136.5
+          },
+          {
+            "period": "2022-Q1",
+            "value": 140.2
+          },
+          {
+            "period": "2022-Q2",
+            "value": 141.5
+          },
+          {
+            "period": "2022-Q3",
+            "value": 138.7
+          },
+          {
+            "period": "2022-Q4",
+            "value": 133.9
+          },
+          {
+            "period": "2023-Q1",
+            "value": 128.3
+          },
+          {
+            "period": "2023-Q2",
+            "value": 125.2
+          },
+          {
+            "period": "2023-Q3",
+            "value": 124.3
+          },
+          {
+            "period": "2023-Q4",
+            "value": 126.1
+          },
+          {
+            "period": "2024-Q1",
+            "value": 127.3
+          },
+          {
+            "period": "2024-Q2",
+            "value": 129.4
+          },
+          {
+            "period": "2024-Q3",
+            "value": 131.7
+          },
+          {
+            "period": "2024-Q4",
+            "value": 133.7
+          },
+          {
+            "period": "2025-Q1",
+            "value": 134.7
+          },
+          {
+            "period": "2025-Q2",
+            "value": 135.3
+          },
+          {
+            "period": "2025-Q3",
+            "value": 135.6
+          },
+          {
+            "period": "2025-Q4",
+            "value": 135.5
+          }
+        ],
+        "latest": {
+          "period": "2025-Q4",
+          "value": 135.5
+        },
+        "sourceId": "oecd-house-prices"
+      },
+      "priceToRent": {
+        "measure": "HPI_RPI",
+        "label": "Price-to-rent index",
+        "base": "2015=100",
+        "frequency": "Quarterly, seasonally adjusted",
+        "observations": [
+          {
+            "period": "2010-Q1",
+            "value": 130.6
+          },
+          {
+            "period": "2010-Q2",
+            "value": 130.4
+          },
+          {
+            "period": "2010-Q3",
+            "value": 129.8
+          },
+          {
+            "period": "2010-Q4",
+            "value": 128.6
+          },
+          {
+            "period": "2011-Q1",
+            "value": 127.9
+          },
+          {
+            "period": "2011-Q2",
+            "value": 126.0
+          },
+          {
+            "period": "2011-Q3",
+            "value": 124.7
+          },
+          {
+            "period": "2011-Q4",
+            "value": 122.1
+          },
+          {
+            "period": "2012-Q1",
+            "value": 118.8
+          },
+          {
+            "period": "2012-Q2",
+            "value": 116.7
+          },
+          {
+            "period": "2012-Q3",
+            "value": 110.5
+          },
+          {
+            "period": "2012-Q4",
+            "value": 110.6
+          },
+          {
+            "period": "2013-Q1",
+            "value": 106.7
+          },
+          {
+            "period": "2013-Q2",
+            "value": 104.2
+          },
+          {
+            "period": "2013-Q3",
+            "value": 101.8
+          },
+          {
+            "period": "2013-Q4",
+            "value": 101.0
+          },
+          {
+            "period": "2014-Q1",
+            "value": 100.7
+          },
+          {
+            "period": "2014-Q2",
+            "value": 100.8
+          },
+          {
+            "period": "2014-Q3",
+            "value": 98.8
+          },
+          {
+            "period": "2014-Q4",
+            "value": 98.8
+          },
+          {
+            "period": "2015-Q1",
+            "value": 99.0
+          },
+          {
+            "period": "2015-Q2",
+            "value": 99.7
+          },
+          {
+            "period": "2015-Q3",
+            "value": 100.4
+          },
+          {
+            "period": "2015-Q4",
+            "value": 100.8
+          },
+          {
+            "period": "2016-Q1",
+            "value": 101.2
+          },
+          {
+            "period": "2016-Q2",
+            "value": 102.3
+          },
+          {
+            "period": "2016-Q3",
+            "value": 104.0
+          },
+          {
+            "period": "2016-Q4",
+            "value": 105.1
+          },
+          {
+            "period": "2017-Q1",
+            "value": 106.7
+          },
+          {
+            "period": "2017-Q2",
+            "value": 108.0
+          },
+          {
+            "period": "2017-Q3",
+            "value": 110.6
+          },
+          {
+            "period": "2017-Q4",
+            "value": 112.8
+          },
+          {
+            "period": "2018-Q1",
+            "value": 114.6
+          },
+          {
+            "period": "2018-Q2",
+            "value": 116.3
+          },
+          {
+            "period": "2018-Q3",
+            "value": 118.6
+          },
+          {
+            "period": "2018-Q4",
+            "value": 120.1
+          },
+          {
+            "period": "2019-Q1",
+            "value": 121.4
+          },
+          {
+            "period": "2019-Q2",
+            "value": 122.3
+          },
+          {
+            "period": "2019-Q3",
+            "value": 123.0
+          },
+          {
+            "period": "2019-Q4",
+            "value": 124.8
+          },
+          {
+            "period": "2020-Q1",
+            "value": 126.6
+          },
+          {
+            "period": "2020-Q2",
+            "value": 128.7
+          },
+          {
+            "period": "2020-Q3",
+            "value": 129.6
+          },
+          {
+            "period": "2020-Q4",
+            "value": 131.8
+          },
+          {
+            "period": "2021-Q1",
+            "value": 135.7
+          },
+          {
+            "period": "2021-Q2",
+            "value": 140.7
+          },
+          {
+            "period": "2021-Q3",
+            "value": 149.4
+          },
+          {
+            "period": "2021-Q4",
+            "value": 155.1
+          },
+          {
+            "period": "2022-Q1",
+            "value": 160.2
+          },
+          {
+            "period": "2022-Q2",
+            "value": 164.0
+          },
+          {
+            "period": "2022-Q3",
+            "value": 162.7
+          },
+          {
+            "period": "2022-Q4",
+            "value": 159.2
+          },
+          {
+            "period": "2023-Q1",
+            "value": 155.7
+          },
+          {
+            "period": "2023-Q2",
+            "value": 152.7
+          },
+          {
+            "period": "2023-Q3",
+            "value": 153.7
+          },
+          {
+            "period": "2023-Q4",
+            "value": 156.5
+          },
+          {
+            "period": "2024-Q1",
+            "value": 158.2
+          },
+          {
+            "period": "2024-Q2",
+            "value": 160.9
+          },
+          {
+            "period": "2024-Q3",
+            "value": 161.2
+          },
+          {
+            "period": "2024-Q4",
+            "value": 164.5
+          },
+          {
+            "period": "2025-Q1",
+            "value": 166.1
+          },
+          {
+            "period": "2025-Q2",
+            "value": 167.0
+          },
+          {
+            "period": "2025-Q3",
+            "value": 166.1
+          },
+          {
+            "period": "2025-Q4",
+            "value": 166.5
+          }
+        ],
+        "latest": {
+          "period": "2025-Q4",
+          "value": 166.5
+        },
+        "sourceId": "oecd-house-prices"
+      }
+    },
+    "cbs": {
+      "existingHomes": {
+        "observations": [
+          {
+            "period": "2015-01",
+            "priceIndex2020": 68.3,
+            "yearOnYearPct": 2.5,
+            "soldHomes": 9437,
+            "averagePurchasePriceEur": 222800
+          },
+          {
+            "period": "2015-02",
+            "priceIndex2020": 68.5,
+            "yearOnYearPct": 2.8,
+            "soldHomes": 11697,
+            "averagePurchasePriceEur": 216678
+          },
+          {
+            "period": "2015-03",
+            "priceIndex2020": 68.6,
+            "yearOnYearPct": 3.2,
+            "soldHomes": 13393,
+            "averagePurchasePriceEur": 225024
+          },
+          {
+            "period": "2015-04",
+            "priceIndex2020": 68.8,
+            "yearOnYearPct": 2.7,
+            "soldHomes": 12748,
+            "averagePurchasePriceEur": 224376
+          },
+          {
+            "period": "2015-05",
+            "priceIndex2020": 68.9,
+            "yearOnYearPct": 3.0,
+            "soldHomes": 12827,
+            "averagePurchasePriceEur": 228032
+          },
+          {
+            "period": "2015-06",
+            "priceIndex2020": 69.3,
+            "yearOnYearPct": 3.1,
+            "soldHomes": 15147,
+            "averagePurchasePriceEur": 229381
+          },
+          {
+            "period": "2015-07",
+            "priceIndex2020": 69.9,
+            "yearOnYearPct": 3.3,
+            "soldHomes": 18422,
+            "averagePurchasePriceEur": 232562
+          },
+          {
+            "period": "2015-08",
+            "priceIndex2020": 69.9,
+            "yearOnYearPct": 3.1,
+            "soldHomes": 15863,
+            "averagePurchasePriceEur": 233485
+          },
+          {
+            "period": "2015-09",
+            "priceIndex2020": 70.4,
+            "yearOnYearPct": 4.0,
+            "soldHomes": 16324,
+            "averagePurchasePriceEur": 233956
+          },
+          {
+            "period": "2015-10",
+            "priceIndex2020": 70.6,
+            "yearOnYearPct": 3.9,
+            "soldHomes": 16324,
+            "averagePurchasePriceEur": 237796
+          },
+          {
+            "period": "2015-11",
+            "priceIndex2020": 70.7,
+            "yearOnYearPct": 4.3,
+            "soldHomes": 14545,
+            "averagePurchasePriceEur": 234610
+          },
+          {
+            "period": "2015-12",
+            "priceIndex2020": 70.5,
+            "yearOnYearPct": 3.6,
+            "soldHomes": 21566,
+            "averagePurchasePriceEur": 233242
+          },
+          {
+            "period": "2016-01",
+            "priceIndex2020": 71.2,
+            "yearOnYearPct": 4.4,
+            "soldHomes": 11907,
+            "averagePurchasePriceEur": 238934
+          },
+          {
+            "period": "2016-02",
+            "priceIndex2020": 71.3,
+            "yearOnYearPct": 4.2,
+            "soldHomes": 14866,
+            "averagePurchasePriceEur": 234830
+          },
+          {
+            "period": "2016-03",
+            "priceIndex2020": 71.8,
+            "yearOnYearPct": 4.7,
+            "soldHomes": 16124,
+            "averagePurchasePriceEur": 235799
+          },
+          {
+            "period": "2016-04",
+            "priceIndex2020": 72.0,
+            "yearOnYearPct": 4.7,
+            "soldHomes": 16387,
+            "averagePurchasePriceEur": 239522
+          },
+          {
+            "period": "2016-05",
+            "priceIndex2020": 72.4,
+            "yearOnYearPct": 5.0,
+            "soldHomes": 16066,
+            "averagePurchasePriceEur": 236730
+          },
+          {
+            "period": "2016-06",
+            "priceIndex2020": 72.9,
+            "yearOnYearPct": 5.1,
+            "soldHomes": 17862,
+            "averagePurchasePriceEur": 242089
+          },
+          {
+            "period": "2016-07",
+            "priceIndex2020": 73.6,
+            "yearOnYearPct": 5.3,
+            "soldHomes": 19723,
+            "averagePurchasePriceEur": 245980
+          },
+          {
+            "period": "2016-08",
+            "priceIndex2020": 74.3,
+            "yearOnYearPct": 6.3,
+            "soldHomes": 19975,
+            "averagePurchasePriceEur": 249054
+          },
+          {
+            "period": "2016-09",
+            "priceIndex2020": 74.9,
+            "yearOnYearPct": 6.5,
+            "soldHomes": 21009,
+            "averagePurchasePriceEur": 253498
+          },
+          {
+            "period": "2016-10",
+            "priceIndex2020": 74.9,
+            "yearOnYearPct": 6.1,
+            "soldHomes": 17339,
+            "averagePurchasePriceEur": 247673
+          },
+          {
+            "period": "2016-11",
+            "priceIndex2020": 75.2,
+            "yearOnYearPct": 6.4,
+            "soldHomes": 18255,
+            "averagePurchasePriceEur": 246819
+          },
+          {
+            "period": "2016-12",
+            "priceIndex2020": 75.6,
+            "yearOnYearPct": 7.2,
+            "soldHomes": 25280,
+            "averagePurchasePriceEur": 246511
+          },
+          {
+            "period": "2017-01",
+            "priceIndex2020": 76.3,
+            "yearOnYearPct": 7.1,
+            "soldHomes": 16555,
+            "averagePurchasePriceEur": 258467
+          },
+          {
+            "period": "2017-02",
+            "priceIndex2020": 76.5,
+            "yearOnYearPct": 7.2,
+            "soldHomes": 17708,
+            "averagePurchasePriceEur": 253388
+          },
+          {
+            "period": "2017-03",
+            "priceIndex2020": 77.4,
+            "yearOnYearPct": 7.8,
+            "soldHomes": 21648,
+            "averagePurchasePriceEur": 258838
+          },
+          {
+            "period": "2017-04",
+            "priceIndex2020": 77.6,
+            "yearOnYearPct": 7.9,
+            "soldHomes": 16694,
+            "averagePurchasePriceEur": 256800
+          },
+          {
+            "period": "2017-05",
+            "priceIndex2020": 78.3,
+            "yearOnYearPct": 8.1,
+            "soldHomes": 19990,
+            "averagePurchasePriceEur": 259615
+          },
+          {
+            "period": "2017-06",
+            "priceIndex2020": 79.0,
+            "yearOnYearPct": 8.4,
+            "soldHomes": 21686,
+            "averagePurchasePriceEur": 264362
+          },
+          {
+            "period": "2017-07",
+            "priceIndex2020": 79.7,
+            "yearOnYearPct": 8.3,
+            "soldHomes": 19979,
+            "averagePurchasePriceEur": 264007
+          },
+          {
+            "period": "2017-08",
+            "priceIndex2020": 80.5,
+            "yearOnYearPct": 8.3,
+            "soldHomes": 20780,
+            "averagePurchasePriceEur": 268452
+          },
+          {
+            "period": "2017-09",
+            "priceIndex2020": 80.8,
+            "yearOnYearPct": 7.9,
+            "soldHomes": 20632,
+            "averagePurchasePriceEur": 269817
+          },
+          {
+            "period": "2017-10",
+            "priceIndex2020": 81.4,
+            "yearOnYearPct": 8.7,
+            "soldHomes": 20143,
+            "averagePurchasePriceEur": 269083
+          },
+          {
+            "period": "2017-11",
+            "priceIndex2020": 81.8,
+            "yearOnYearPct": 8.8,
+            "soldHomes": 19647,
+            "averagePurchasePriceEur": 267868
+          },
+          {
+            "period": "2017-12",
+            "priceIndex2020": 82.1,
+            "yearOnYearPct": 8.7,
+            "soldHomes": 26398,
+            "averagePurchasePriceEur": 265122
+          },
+          {
+            "period": "2018-01",
+            "priceIndex2020": 83.1,
+            "yearOnYearPct": 9.0,
+            "soldHomes": 16035,
+            "averagePurchasePriceEur": 276906
+          },
+          {
+            "period": "2018-02",
+            "priceIndex2020": 84.0,
+            "yearOnYearPct": 9.8,
+            "soldHomes": 16094,
+            "averagePurchasePriceEur": 275201
+          },
+          {
+            "period": "2018-03",
+            "priceIndex2020": 84.3,
+            "yearOnYearPct": 8.9,
+            "soldHomes": 19976,
+            "averagePurchasePriceEur": 281548
+          },
+          {
+            "period": "2018-04",
+            "priceIndex2020": 84.7,
+            "yearOnYearPct": 9.1,
+            "soldHomes": 16267,
+            "averagePurchasePriceEur": 280027
+          },
+          {
+            "period": "2018-05",
+            "priceIndex2020": 85.5,
+            "yearOnYearPct": 9.2,
+            "soldHomes": 18237,
+            "averagePurchasePriceEur": 283945
+          },
+          {
+            "period": "2018-06",
+            "priceIndex2020": 86.2,
+            "yearOnYearPct": 9.2,
+            "soldHomes": 18426,
+            "averagePurchasePriceEur": 289399
+          },
+          {
+            "period": "2018-07",
+            "priceIndex2020": 87.0,
+            "yearOnYearPct": 9.1,
+            "soldHomes": 19580,
+            "averagePurchasePriceEur": 290731
+          },
+          {
+            "period": "2018-08",
+            "priceIndex2020": 88.2,
+            "yearOnYearPct": 9.5,
+            "soldHomes": 20892,
+            "averagePurchasePriceEur": 294203
+          },
+          {
+            "period": "2018-09",
+            "priceIndex2020": 88.5,
+            "yearOnYearPct": 9.5,
+            "soldHomes": 16449,
+            "averagePurchasePriceEur": 291218
+          },
+          {
+            "period": "2018-10",
+            "priceIndex2020": 88.8,
+            "yearOnYearPct": 9.2,
+            "soldHomes": 18809,
+            "averagePurchasePriceEur": 294050
+          },
+          {
+            "period": "2018-11",
+            "priceIndex2020": 89.7,
+            "yearOnYearPct": 9.7,
+            "soldHomes": 18292,
+            "averagePurchasePriceEur": 297502
+          },
+          {
+            "period": "2018-12",
+            "priceIndex2020": 89.2,
+            "yearOnYearPct": 8.6,
+            "soldHomes": 19434,
+            "averagePurchasePriceEur": 288356
+          },
+          {
+            "period": "2019-01",
+            "priceIndex2020": 90.7,
+            "yearOnYearPct": 9.0,
+            "soldHomes": 15125,
+            "averagePurchasePriceEur": 302157
+          },
+          {
+            "period": "2019-02",
+            "priceIndex2020": 90.5,
+            "yearOnYearPct": 7.8,
+            "soldHomes": 15470,
+            "averagePurchasePriceEur": 298717
+          },
+          {
+            "period": "2019-03",
+            "priceIndex2020": 90.9,
+            "yearOnYearPct": 7.9,
+            "soldHomes": 16836,
+            "averagePurchasePriceEur": 302845
+          },
+          {
+            "period": "2019-04",
+            "priceIndex2020": 91.4,
+            "yearOnYearPct": 7.9,
+            "soldHomes": 17303,
+            "averagePurchasePriceEur": 302456
+          },
+          {
+            "period": "2019-05",
+            "priceIndex2020": 91.8,
+            "yearOnYearPct": 7.4,
+            "soldHomes": 19708,
+            "averagePurchasePriceEur": 303240
+          },
+          {
+            "period": "2019-06",
+            "priceIndex2020": 92.2,
+            "yearOnYearPct": 7.0,
+            "soldHomes": 15495,
+            "averagePurchasePriceEur": 301736
+          },
+          {
+            "period": "2019-07",
+            "priceIndex2020": 93.2,
+            "yearOnYearPct": 7.1,
+            "soldHomes": 21039,
+            "averagePurchasePriceEur": 309689
+          },
+          {
+            "period": "2019-08",
+            "priceIndex2020": 93.3,
+            "yearOnYearPct": 5.8,
+            "soldHomes": 19583,
+            "averagePurchasePriceEur": 316183
+          },
+          {
+            "period": "2019-09",
+            "priceIndex2020": 93.9,
+            "yearOnYearPct": 6.1,
+            "soldHomes": 18313,
+            "averagePurchasePriceEur": 314225
+          },
+          {
+            "period": "2019-10",
+            "priceIndex2020": 94.4,
+            "yearOnYearPct": 6.3,
+            "soldHomes": 18804,
+            "averagePurchasePriceEur": 312772
+          },
+          {
+            "period": "2019-11",
+            "priceIndex2020": 94.9,
+            "yearOnYearPct": 5.8,
+            "soldHomes": 18346,
+            "averagePurchasePriceEur": 312866
+          },
+          {
+            "period": "2019-12",
+            "priceIndex2020": 95.0,
+            "yearOnYearPct": 6.6,
+            "soldHomes": 22573,
+            "averagePurchasePriceEur": 312957
+          },
+          {
+            "period": "2020-01",
+            "priceIndex2020": 96.4,
+            "yearOnYearPct": 6.3,
+            "soldHomes": 17525,
+            "averagePurchasePriceEur": 329450
+          },
+          {
+            "period": "2020-02",
+            "priceIndex2020": 96.7,
+            "yearOnYearPct": 6.9,
+            "soldHomes": 15427,
+            "averagePurchasePriceEur": 320889
+          },
+          {
+            "period": "2020-03",
+            "priceIndex2020": 97.5,
+            "yearOnYearPct": 7.3,
+            "soldHomes": 18627,
+            "averagePurchasePriceEur": 326529
+          },
+          {
+            "period": "2020-04",
+            "priceIndex2020": 98.3,
+            "yearOnYearPct": 7.6,
+            "soldHomes": 18854,
+            "averagePurchasePriceEur": 326232
+          },
+          {
+            "period": "2020-05",
+            "priceIndex2020": 99.1,
+            "yearOnYearPct": 7.9,
+            "soldHomes": 18347,
+            "averagePurchasePriceEur": 333093
+          },
+          {
+            "period": "2020-06",
+            "priceIndex2020": 99.3,
+            "yearOnYearPct": 7.7,
+            "soldHomes": 17722,
+            "averagePurchasePriceEur": 324195
+          },
+          {
+            "period": "2020-07",
+            "priceIndex2020": 100.3,
+            "yearOnYearPct": 7.6,
+            "soldHomes": 22571,
+            "averagePurchasePriceEur": 336957
+          },
+          {
+            "period": "2020-08",
+            "priceIndex2020": 101.1,
+            "yearOnYearPct": 8.3,
+            "soldHomes": 19034,
+            "averagePurchasePriceEur": 336277
+          },
+          {
+            "period": "2020-09",
+            "priceIndex2020": 102.1,
+            "yearOnYearPct": 8.7,
+            "soldHomes": 20601,
+            "averagePurchasePriceEur": 345443
+          },
+          {
+            "period": "2020-10",
+            "priceIndex2020": 103.0,
+            "yearOnYearPct": 9.1,
+            "soldHomes": 22146,
+            "averagePurchasePriceEur": 350244
+          },
+          {
+            "period": "2020-11",
+            "priceIndex2020": 103.3,
+            "yearOnYearPct": 8.9,
+            "soldHomes": 18449,
+            "averagePurchasePriceEur": 344217
+          },
+          {
+            "period": "2020-12",
+            "priceIndex2020": 102.9,
+            "yearOnYearPct": 8.3,
+            "soldHomes": 26208,
+            "averagePurchasePriceEur": 333199
+          },
+          {
+            "period": "2021-01",
+            "priceIndex2020": 105.4,
+            "yearOnYearPct": 9.3,
+            "soldHomes": 24516,
+            "averagePurchasePriceEur": 357458
+          },
+          {
+            "period": "2021-02",
+            "priceIndex2020": 106.6,
+            "yearOnYearPct": 10.2,
+            "soldHomes": 16871,
+            "averagePurchasePriceEur": 369070
+          },
+          {
+            "period": "2021-03",
+            "priceIndex2020": 108.3,
+            "yearOnYearPct": 11.1,
+            "soldHomes": 25240,
+            "averagePurchasePriceEur": 407014
+          },
+          {
+            "period": "2021-04",
+            "priceIndex2020": 109.4,
+            "yearOnYearPct": 11.2,
+            "soldHomes": 18954,
+            "averagePurchasePriceEur": 362525
+          },
+          {
+            "period": "2021-05",
+            "priceIndex2020": 111.7,
+            "yearOnYearPct": 12.8,
+            "soldHomes": 16126,
+            "averagePurchasePriceEur": 361001
+          },
+          {
+            "period": "2021-06",
+            "priceIndex2020": 113.7,
+            "yearOnYearPct": 14.5,
+            "soldHomes": 17707,
+            "averagePurchasePriceEur": 373384
+          },
+          {
+            "period": "2021-07",
+            "priceIndex2020": 116.4,
+            "yearOnYearPct": 16.1,
+            "soldHomes": 19043,
+            "averagePurchasePriceEur": 395786
+          },
+          {
+            "period": "2021-08",
+            "priceIndex2020": 118.9,
+            "yearOnYearPct": 17.6,
+            "soldHomes": 17257,
+            "averagePurchasePriceEur": 402308
+          },
+          {
+            "period": "2021-09",
+            "priceIndex2020": 120.7,
+            "yearOnYearPct": 18.3,
+            "soldHomes": 17575,
+            "averagePurchasePriceEur": 405165
+          },
+          {
+            "period": "2021-10",
+            "priceIndex2020": 121.8,
+            "yearOnYearPct": 18.2,
+            "soldHomes": 16191,
+            "averagePurchasePriceEur": 408987
+          },
+          {
+            "period": "2021-11",
+            "priceIndex2020": 124.0,
+            "yearOnYearPct": 20.0,
+            "soldHomes": 16048,
+            "averagePurchasePriceEur": 403941
+          },
+          {
+            "period": "2021-12",
+            "priceIndex2020": 123.7,
+            "yearOnYearPct": 20.2,
+            "soldHomes": 20559,
+            "averagePurchasePriceEur": 396848
+          },
+          {
+            "period": "2022-01",
+            "priceIndex2020": 127.4,
+            "yearOnYearPct": 20.9,
+            "soldHomes": 14053,
+            "averagePurchasePriceEur": 434886
+          },
+          {
+            "period": "2022-02",
+            "priceIndex2020": 127.9,
+            "yearOnYearPct": 20.0,
+            "soldHomes": 14037,
+            "averagePurchasePriceEur": 419361
+          },
+          {
+            "period": "2022-03",
+            "priceIndex2020": 129.3,
+            "yearOnYearPct": 19.4,
+            "soldHomes": 15833,
+            "averagePurchasePriceEur": 426183
+          },
+          {
+            "period": "2022-04",
+            "priceIndex2020": 130.7,
+            "yearOnYearPct": 19.6,
+            "soldHomes": 15972,
+            "averagePurchasePriceEur": 429020
+          },
+          {
+            "period": "2022-05",
+            "priceIndex2020": 132.3,
+            "yearOnYearPct": 18.4,
+            "soldHomes": 15749,
+            "averagePurchasePriceEur": 429077
+          },
+          {
+            "period": "2022-06",
+            "priceIndex2020": 132.4,
+            "yearOnYearPct": 16.4,
+            "soldHomes": 15661,
+            "averagePurchasePriceEur": 428932
+          },
+          {
+            "period": "2022-07",
+            "priceIndex2020": 132.9,
+            "yearOnYearPct": 14.2,
+            "soldHomes": 16417,
+            "averagePurchasePriceEur": 445241
+          },
+          {
+            "period": "2022-08",
+            "priceIndex2020": 132.7,
+            "yearOnYearPct": 11.6,
+            "soldHomes": 16405,
+            "averagePurchasePriceEur": 446263
+          },
+          {
+            "period": "2022-09",
+            "priceIndex2020": 131.7,
+            "yearOnYearPct": 9.1,
+            "soldHomes": 17631,
+            "averagePurchasePriceEur": 437996
+          },
+          {
+            "period": "2022-10",
+            "priceIndex2020": 130.9,
+            "yearOnYearPct": 7.5,
+            "soldHomes": 14863,
+            "averagePurchasePriceEur": 428079
+          },
+          {
+            "period": "2022-11",
+            "priceIndex2020": 129.6,
+            "yearOnYearPct": 4.5,
+            "soldHomes": 15146,
+            "averagePurchasePriceEur": 423124
+          },
+          {
+            "period": "2022-12",
+            "priceIndex2020": 126.5,
+            "yearOnYearPct": 2.2,
+            "soldHomes": 21336,
+            "averagePurchasePriceEur": 401436
+          },
+          {
+            "period": "2023-01",
+            "priceIndex2020": 128.2,
+            "yearOnYearPct": 0.7,
+            "soldHomes": 13126,
+            "averagePurchasePriceEur": 424681
+          },
+          {
+            "period": "2023-02",
+            "priceIndex2020": 126.4,
+            "yearOnYearPct": -1.2,
+            "soldHomes": 11858,
+            "averagePurchasePriceEur": 410189
+          },
+          {
+            "period": "2023-03",
+            "priceIndex2020": 125.9,
+            "yearOnYearPct": -2.6,
+            "soldHomes": 15453,
+            "averagePurchasePriceEur": 415141
+          },
+          {
+            "period": "2023-04",
+            "priceIndex2020": 124.6,
+            "yearOnYearPct": -4.7,
+            "soldHomes": 12816,
+            "averagePurchasePriceEur": 401374
+          },
+          {
+            "period": "2023-05",
+            "priceIndex2020": 124.6,
+            "yearOnYearPct": -5.8,
+            "soldHomes": 15099,
+            "averagePurchasePriceEur": 403913
+          },
+          {
+            "period": "2023-06",
+            "priceIndex2020": 124.9,
+            "yearOnYearPct": -5.7,
+            "soldHomes": 16585,
+            "averagePurchasePriceEur": 412943
+          },
+          {
+            "period": "2023-07",
+            "priceIndex2020": 125.6,
+            "yearOnYearPct": -5.5,
+            "soldHomes": 14925,
+            "averagePurchasePriceEur": 413917
+          },
+          {
+            "period": "2023-08",
+            "priceIndex2020": 126.4,
+            "yearOnYearPct": -4.7,
+            "soldHomes": 15934,
+            "averagePurchasePriceEur": 416595
+          },
+          {
+            "period": "2023-09",
+            "priceIndex2020": 127.2,
+            "yearOnYearPct": -3.4,
+            "soldHomes": 16089,
+            "averagePurchasePriceEur": 422175
+          },
+          {
+            "period": "2023-10",
+            "priceIndex2020": 128.1,
+            "yearOnYearPct": -2.1,
+            "soldHomes": 15705,
+            "averagePurchasePriceEur": 424521
+          },
+          {
+            "period": "2023-11",
+            "priceIndex2020": 128.7,
+            "yearOnYearPct": -0.6,
+            "soldHomes": 15248,
+            "averagePurchasePriceEur": 421284
+          },
+          {
+            "period": "2023-12",
+            "priceIndex2020": 129.0,
+            "yearOnYearPct": 1.9,
+            "soldHomes": 19565,
+            "averagePurchasePriceEur": 422372
+          },
+          {
+            "period": "2024-01",
+            "priceIndex2020": 130.5,
+            "yearOnYearPct": 1.8,
+            "soldHomes": 14452,
+            "averagePurchasePriceEur": 433285
+          },
+          {
+            "period": "2024-02",
+            "priceIndex2020": 131.8,
+            "yearOnYearPct": 4.3,
+            "soldHomes": 13810,
+            "averagePurchasePriceEur": 427279
+          },
+          {
+            "period": "2024-03",
+            "priceIndex2020": 132.7,
+            "yearOnYearPct": 5.4,
+            "soldHomes": 16179,
+            "averagePurchasePriceEur": 435049
+          },
+          {
+            "period": "2024-04",
+            "priceIndex2020": 133.9,
+            "yearOnYearPct": 7.5,
+            "soldHomes": 15689,
+            "averagePurchasePriceEur": 435984
+          },
+          {
+            "period": "2024-05",
+            "priceIndex2020": 135.4,
+            "yearOnYearPct": 8.6,
+            "soldHomes": 17591,
+            "averagePurchasePriceEur": 445430
+          },
+          {
+            "period": "2024-06",
+            "priceIndex2020": 137.1,
+            "yearOnYearPct": 9.7,
+            "soldHomes": 14662,
+            "averagePurchasePriceEur": 441112
+          },
+          {
+            "period": "2024-07",
+            "priceIndex2020": 139.0,
+            "yearOnYearPct": 10.6,
+            "soldHomes": 18610,
+            "averagePurchasePriceEur": 457320
+          },
+          {
+            "period": "2024-08",
+            "priceIndex2020": 140.5,
+            "yearOnYearPct": 11.2,
+            "soldHomes": 17915,
+            "averagePurchasePriceEur": 466207
+          },
+          {
+            "period": "2024-09",
+            "priceIndex2020": 141.7,
+            "yearOnYearPct": 11.4,
+            "soldHomes": 17622,
+            "averagePurchasePriceEur": 466890
+          },
+          {
+            "period": "2024-10",
+            "priceIndex2020": 142.8,
+            "yearOnYearPct": 11.5,
+            "soldHomes": 18131,
+            "averagePurchasePriceEur": 467355
+          },
+          {
+            "period": "2024-11",
+            "priceIndex2020": 144.1,
+            "yearOnYearPct": 11.9,
+            "soldHomes": 17973,
+            "averagePurchasePriceEur": 461931
+          },
+          {
+            "period": "2024-12",
+            "priceIndex2020": 143.1,
+            "yearOnYearPct": 11.0,
+            "soldHomes": 23824,
+            "averagePurchasePriceEur": 457467
+          },
+          {
+            "period": "2025-01",
+            "priceIndex2020": 145.5,
+            "yearOnYearPct": 11.5,
+            "soldHomes": 17907,
+            "averagePurchasePriceEur": 474534
+          },
+          {
+            "period": "2025-02",
+            "priceIndex2020": 145.7,
+            "yearOnYearPct": 10.6,
+            "soldHomes": 16356,
+            "averagePurchasePriceEur": 467363
+          },
+          {
+            "period": "2025-03",
+            "priceIndex2020": 146.7,
+            "yearOnYearPct": 10.6,
+            "soldHomes": 17211,
+            "averagePurchasePriceEur": 467873
+          },
+          {
+            "period": "2025-04",
+            "priceIndex2020": 147.6,
+            "yearOnYearPct": 10.2,
+            "soldHomes": 18915,
+            "averagePurchasePriceEur": 472054
+          },
+          {
+            "period": "2025-05",
+            "priceIndex2020": 148.5,
+            "yearOnYearPct": 9.7,
+            "soldHomes": 19614,
+            "averagePurchasePriceEur": 471875
+          },
+          {
+            "period": "2025-06",
+            "priceIndex2020": 149.8,
+            "yearOnYearPct": 9.3,
+            "soldHomes": 18883,
+            "averagePurchasePriceEur": 474234
+          },
+          {
+            "period": "2025-07",
+            "priceIndex2020": 150.9,
+            "yearOnYearPct": 8.6,
+            "soldHomes": 21189,
+            "averagePurchasePriceEur": 486041
+          },
+          {
+            "period": "2025-08",
+            "priceIndex2020": 151.6,
+            "yearOnYearPct": 7.9,
+            "soldHomes": 19459,
+            "averagePurchasePriceEur": 486190
+          },
+          {
+            "period": "2025-09",
+            "priceIndex2020": 151.6,
+            "yearOnYearPct": 7.0,
+            "soldHomes": 21934,
+            "averagePurchasePriceEur": 489072
+          },
+          {
+            "period": "2025-10",
+            "priceIndex2020": 152.3,
+            "yearOnYearPct": 6.6,
+            "soldHomes": 21849,
+            "averagePurchasePriceEur": 498996
+          },
+          {
+            "period": "2025-11",
+            "priceIndex2020": 152.8,
+            "yearOnYearPct": 6.1,
+            "soldHomes": 18224,
+            "averagePurchasePriceEur": 477531
+          },
+          {
+            "period": "2025-12",
+            "priceIndex2020": 151.4,
+            "yearOnYearPct": 5.8,
+            "soldHomes": 27154,
+            "averagePurchasePriceEur": 480051
+          },
+          {
+            "period": "2026-01",
+            "priceIndex2020": 153.3,
+            "yearOnYearPct": 5.4,
+            "soldHomes": 18893,
+            "averagePurchasePriceEur": 493875
+          },
+          {
+            "period": "2026-02",
+            "priceIndex2020": 153.5,
+            "yearOnYearPct": 5.4,
+            "soldHomes": 17675,
+            "averagePurchasePriceEur": 487768
+          },
+          {
+            "period": "2026-03",
+            "priceIndex2020": 154.0,
+            "yearOnYearPct": 5.0,
+            "soldHomes": 19381,
+            "averagePurchasePriceEur": 494605
+          },
+          {
+            "period": "2026-04",
+            "priceIndex2020": 154.0,
+            "yearOnYearPct": 4.3,
+            "soldHomes": 19454,
+            "averagePurchasePriceEur": 486101
+          },
+          {
+            "period": "2026-05",
+            "priceIndex2020": 154.9,
+            "yearOnYearPct": 4.4,
+            "soldHomes": 19120,
+            "averagePurchasePriceEur": 487383
+          },
+          {
+            "period": "2026-06",
+            "priceIndex2020": 155.9,
+            "yearOnYearPct": 4.1,
+            "soldHomes": 20378,
+            "averagePurchasePriceEur": 496235
+          }
+        ],
+        "latest": {
+          "period": "2026-06",
+          "priceIndex2020": 155.9,
+          "yearOnYearPct": 4.1,
+          "soldHomes": 20378,
+          "averagePurchasePriceEur": 496235
+        },
+        "sourceId": "cbs-existing-homes",
+        "note": "Average purchase price is descriptive and is not corrected for changes in the mix of homes sold; the price index is the quality-adjusted measure."
+      }
+    },
+    "ecbMortgage": {
+      "unit": "% per year",
+      "definition": "Annualised agreed rate on new euro-denominated loans to Dutch households for house purchase, all initial fixation periods.",
+      "observations": [
+        {
+          "period": "2015-01",
+          "value": 3.1
+        },
+        {
+          "period": "2015-02",
+          "value": 3.1
+        },
+        {
+          "period": "2015-03",
+          "value": 3.0
+        },
+        {
+          "period": "2015-04",
+          "value": 3.0
+        },
+        {
+          "period": "2015-05",
+          "value": 2.9
+        },
+        {
+          "period": "2015-06",
+          "value": 2.9
+        },
+        {
+          "period": "2015-07",
+          "value": 2.9
+        },
+        {
+          "period": "2015-08",
+          "value": 2.9
+        },
+        {
+          "period": "2015-09",
+          "value": 2.9
+        },
+        {
+          "period": "2015-10",
+          "value": 2.9
+        },
+        {
+          "period": "2015-11",
+          "value": 2.9
+        },
+        {
+          "period": "2015-12",
+          "value": 2.8
+        },
+        {
+          "period": "2016-01",
+          "value": 2.8
+        },
+        {
+          "period": "2016-02",
+          "value": 2.8
+        },
+        {
+          "period": "2016-03",
+          "value": 2.7
+        },
+        {
+          "period": "2016-04",
+          "value": 2.7
+        },
+        {
+          "period": "2016-05",
+          "value": 2.6
+        },
+        {
+          "period": "2016-06",
+          "value": 2.6
+        },
+        {
+          "period": "2016-07",
+          "value": 2.6
+        },
+        {
+          "period": "2016-08",
+          "value": 2.5
+        },
+        {
+          "period": "2016-09",
+          "value": 2.5
+        },
+        {
+          "period": "2016-10",
+          "value": 2.4
+        },
+        {
+          "period": "2016-11",
+          "value": 2.4
+        },
+        {
+          "period": "2016-12",
+          "value": 2.4
+        },
+        {
+          "period": "2017-01",
+          "value": 2.4
+        },
+        {
+          "period": "2017-02",
+          "value": 2.4
+        },
+        {
+          "period": "2017-03",
+          "value": 2.4
+        },
+        {
+          "period": "2017-04",
+          "value": 2.4
+        },
+        {
+          "period": "2017-05",
+          "value": 2.4
+        },
+        {
+          "period": "2017-06",
+          "value": 2.4
+        },
+        {
+          "period": "2017-07",
+          "value": 2.4
+        },
+        {
+          "period": "2017-08",
+          "value": 2.4
+        },
+        {
+          "period": "2017-09",
+          "value": 2.4
+        },
+        {
+          "period": "2017-10",
+          "value": 2.4
+        },
+        {
+          "period": "2017-11",
+          "value": 2.4
+        },
+        {
+          "period": "2017-12",
+          "value": 2.4
+        },
+        {
+          "period": "2018-01",
+          "value": 2.4
+        },
+        {
+          "period": "2018-02",
+          "value": 2.4
+        },
+        {
+          "period": "2018-03",
+          "value": 2.4
+        },
+        {
+          "period": "2018-04",
+          "value": 2.4
+        },
+        {
+          "period": "2018-05",
+          "value": 2.4
+        },
+        {
+          "period": "2018-06",
+          "value": 2.4
+        },
+        {
+          "period": "2018-07",
+          "value": 2.4
+        },
+        {
+          "period": "2018-08",
+          "value": 2.4
+        },
+        {
+          "period": "2018-09",
+          "value": 2.4
+        },
+        {
+          "period": "2018-10",
+          "value": 2.4
+        },
+        {
+          "period": "2018-11",
+          "value": 2.4
+        },
+        {
+          "period": "2018-12",
+          "value": 2.4
+        },
+        {
+          "period": "2019-01",
+          "value": 2.4
+        },
+        {
+          "period": "2019-02",
+          "value": 2.4
+        },
+        {
+          "period": "2019-03",
+          "value": 2.4
+        },
+        {
+          "period": "2019-04",
+          "value": 2.4
+        },
+        {
+          "period": "2019-05",
+          "value": 2.3
+        },
+        {
+          "period": "2019-06",
+          "value": 2.3
+        },
+        {
+          "period": "2019-07",
+          "value": 2.2
+        },
+        {
+          "period": "2019-08",
+          "value": 2.2
+        },
+        {
+          "period": "2019-09",
+          "value": 2.1
+        },
+        {
+          "period": "2019-10",
+          "value": 2.1
+        },
+        {
+          "period": "2019-11",
+          "value": 2.4
+        },
+        {
+          "period": "2019-12",
+          "value": 2.0
+        },
+        {
+          "period": "2020-01",
+          "value": 2.0
+        },
+        {
+          "period": "2020-02",
+          "value": 1.9
+        },
+        {
+          "period": "2020-03",
+          "value": 1.9
+        },
+        {
+          "period": "2020-04",
+          "value": 1.9
+        },
+        {
+          "period": "2020-05",
+          "value": 1.9
+        },
+        {
+          "period": "2020-06",
+          "value": 1.9
+        },
+        {
+          "period": "2020-07",
+          "value": 1.9
+        },
+        {
+          "period": "2020-08",
+          "value": 1.9
+        },
+        {
+          "period": "2020-09",
+          "value": 1.9
+        },
+        {
+          "period": "2020-10",
+          "value": 1.9
+        },
+        {
+          "period": "2020-11",
+          "value": 1.9
+        },
+        {
+          "period": "2020-12",
+          "value": 1.8
+        },
+        {
+          "period": "2021-01",
+          "value": 1.8
+        },
+        {
+          "period": "2021-02",
+          "value": 1.8
+        },
+        {
+          "period": "2021-03",
+          "value": 1.8
+        },
+        {
+          "period": "2021-04",
+          "value": 1.7
+        },
+        {
+          "period": "2021-05",
+          "value": 1.7
+        },
+        {
+          "period": "2021-06",
+          "value": 1.7
+        },
+        {
+          "period": "2021-07",
+          "value": 1.7
+        },
+        {
+          "period": "2021-08",
+          "value": 1.7
+        },
+        {
+          "period": "2021-09",
+          "value": 1.6
+        },
+        {
+          "period": "2021-10",
+          "value": 1.6
+        },
+        {
+          "period": "2021-11",
+          "value": 1.6
+        },
+        {
+          "period": "2021-12",
+          "value": 1.6
+        },
+        {
+          "period": "2022-01",
+          "value": 1.7
+        },
+        {
+          "period": "2022-02",
+          "value": 1.7
+        },
+        {
+          "period": "2022-03",
+          "value": 1.8
+        },
+        {
+          "period": "2022-04",
+          "value": 1.9
+        },
+        {
+          "period": "2022-05",
+          "value": 2.0
+        },
+        {
+          "period": "2022-06",
+          "value": 2.2
+        },
+        {
+          "period": "2022-07",
+          "value": 2.4
+        },
+        {
+          "period": "2022-08",
+          "value": 2.6
+        },
+        {
+          "period": "2022-09",
+          "value": 2.8
+        },
+        {
+          "period": "2022-10",
+          "value": 3.1
+        },
+        {
+          "period": "2022-11",
+          "value": 3.2
+        },
+        {
+          "period": "2022-12",
+          "value": 3.4
+        },
+        {
+          "period": "2023-01",
+          "value": 3.5
+        },
+        {
+          "period": "2023-02",
+          "value": 3.6
+        },
+        {
+          "period": "2023-03",
+          "value": 3.5
+        },
+        {
+          "period": "2023-04",
+          "value": 3.7
+        },
+        {
+          "period": "2023-05",
+          "value": 3.8
+        },
+        {
+          "period": "2023-06",
+          "value": 3.9
+        },
+        {
+          "period": "2023-07",
+          "value": 4.0
+        },
+        {
+          "period": "2023-08",
+          "value": 4.0
+        },
+        {
+          "period": "2023-09",
+          "value": 4.0
+        },
+        {
+          "period": "2023-10",
+          "value": 3.8
+        },
+        {
+          "period": "2023-11",
+          "value": 4.1
+        },
+        {
+          "period": "2023-12",
+          "value": 4.1
+        },
+        {
+          "period": "2024-01",
+          "value": 4.0
+        },
+        {
+          "period": "2024-02",
+          "value": 3.9
+        },
+        {
+          "period": "2024-03",
+          "value": 3.8
+        },
+        {
+          "period": "2024-04",
+          "value": 3.8
+        },
+        {
+          "period": "2024-05",
+          "value": 3.8
+        },
+        {
+          "period": "2024-06",
+          "value": 3.8
+        },
+        {
+          "period": "2024-07",
+          "value": 3.9
+        },
+        {
+          "period": "2024-08",
+          "value": 3.8
+        },
+        {
+          "period": "2024-09",
+          "value": 3.9
+        },
+        {
+          "period": "2024-10",
+          "value": 3.7
+        },
+        {
+          "period": "2024-11",
+          "value": 3.7
+        },
+        {
+          "period": "2024-12",
+          "value": 3.6
+        },
+        {
+          "period": "2025-01",
+          "value": 2.8
+        },
+        {
+          "period": "2025-02",
+          "value": 3.5
+        },
+        {
+          "period": "2025-03",
+          "value": 3.5
+        },
+        {
+          "period": "2025-04",
+          "value": 3.0
+        },
+        {
+          "period": "2025-05",
+          "value": 3.5
+        },
+        {
+          "period": "2025-06",
+          "value": 3.6
+        },
+        {
+          "period": "2025-07",
+          "value": 3.5
+        },
+        {
+          "period": "2025-08",
+          "value": 3.5
+        },
+        {
+          "period": "2025-09",
+          "value": 3.5
+        },
+        {
+          "period": "2025-10",
+          "value": 3.5
+        },
+        {
+          "period": "2025-11",
+          "value": 3.5
+        },
+        {
+          "period": "2025-12",
+          "value": 3.5
+        },
+        {
+          "period": "2026-01",
+          "value": 3.5
+        },
+        {
+          "period": "2026-02",
+          "value": 3.6
+        },
+        {
+          "period": "2026-03",
+          "value": 3.5
+        },
+        {
+          "period": "2026-04",
+          "value": 3.6
+        },
+        {
+          "period": "2026-05",
+          "value": 3.7
+        }
+      ],
+      "latest": {
+        "period": "2026-05",
+        "value": 3.7
+      },
+      "lowSince2015": {
+        "period": "2021-09",
+        "value": 1.6
+      },
+      "sourceId": "ecb-mortgage"
+    },
+    "overburden": {
+      "definition": "Share of people whose total housing costs exceed 40% of disposable household income, after housing allowances.",
+      "byTenure": [
+        {
+          "code": "OWN_L",
+          "tenure": "Owner with mortgage",
+          "value": 1.1
+        },
+        {
+          "code": "OWN_NL",
+          "tenure": "Owner without mortgage",
+          "value": 3.0
+        },
+        {
+          "code": "RENT_MKT",
+          "tenure": "Market-rate tenant",
+          "value": 39.5
+        },
+        {
+          "code": "RENT_FR",
+          "tenure": "Reduced/free-rent tenant",
+          "value": 12.9
+        }
+      ],
+      "period": "2025",
+      "totalPct": 6.5,
+      "sourceId": "eurostat-overburden"
+    },
+    "tenure": {
+      "period": "2025",
+      "shares": {
+        "NL": {
+          "OWN": 68.8,
+          "RENT_MKT": 5.5,
+          "RENT_FR": 25.7
+        },
+        "EU27_2020": {
+          "OWN": 68.5,
+          "RENT_MKT": 20.8,
+          "RENT_FR": 10.7
+        }
+      },
+      "sourceId": "eurostat-tenure",
+      "note": "Rent at reduced price or free includes social, subsidised and other below-market arrangements; categories are population shares, not dwelling-stock shares."
+    },
+    "supplyVsHouseholds": [
+      {
+        "year": 2018,
+        "newConstruction": 66585,
+        "netHousingAddition": 73921,
+        "householdsStart": 7857914,
+        "householdsEnd": 7924691,
+        "householdGrowth": 66777
+      },
+      {
+        "year": 2019,
+        "newConstruction": 71548,
+        "netHousingAddition": 76872,
+        "householdsStart": 7924691,
+        "householdsEnd": 7997800,
+        "householdGrowth": 73109
+      },
+      {
+        "year": 2020,
+        "newConstruction": 69985,
+        "netHousingAddition": 74543,
+        "householdsStart": 7997800,
+        "householdsEnd": 8043443,
+        "householdGrowth": 45643
+      },
+      {
+        "year": 2021,
+        "newConstruction": 71221,
+        "netHousingAddition": 79250,
+        "householdsStart": 8043443,
+        "householdsEnd": 8138591,
+        "householdGrowth": 95148
+      },
+      {
+        "year": 2022,
+        "newConstruction": 74560,
+        "netHousingAddition": 79649,
+        "householdsStart": 8138591,
+        "householdsEnd": 8270244,
+        "householdGrowth": 131653
+      },
+      {
+        "year": 2023,
+        "newConstruction": 73638,
+        "netHousingAddition": 78819,
+        "householdsStart": 8270244,
+        "householdsEnd": 8374404,
+        "householdGrowth": 104160
+      },
+      {
+        "year": 2024,
+        "newConstruction": 69129,
+        "netHousingAddition": 70420,
+        "householdsStart": 8374404,
+        "householdsEnd": 8430352,
+        "householdGrowth": 55948
+      }
+    ],
+    "latestSupply": {
+      "year": 2025,
+      "newConstruction": 69189,
+      "netHousingAddition": 70428,
+      "householdComparatorAvailable": false,
+      "sourceIds": [
+        "cbs-housing-stock",
+        "cbs-households"
+      ],
+      "note": "Households are measured on 1 January. Each aligned row compares stock change during the year with the change in private households from 1 January of that year to 1 January of the next."
+    }
+  },
+  "comparisons": {
+    "measure": "Price-to-income index",
+    "base": "2015=100",
+    "period": "2025-Q4",
+    "countries": [
+      {
+        "code": "NLD",
+        "name": "Netherlands",
+        "value": 135.5,
+        "whyIncluded": "Primary context: rapid post-2015 deterioration despite a large regulated-rental sector."
+      },
+      {
+        "code": "DEU",
+        "name": "Germany",
+        "value": 107.5,
+        "whyIncluded": "A renter-majority contrast with a smaller post-2015 price-to-income shift."
+      },
+      {
+        "code": "ESP",
+        "name": "Spain",
+        "value": 128.6,
+        "whyIncluded": "A high-ownership market shaped by a different construction cycle after the euro-area housing crash."
+      },
+      {
+        "code": "CAN",
+        "name": "Canada",
+        "value": 128.0,
+        "whyIncluded": "A non-European high-income market with strong population growth and pronounced urban supply pressure."
+      },
+      {
+        "code": "JPN",
+        "name": "Japan",
+        "value": 114.1,
+        "whyIncluded": "An aging-country contrast where national abundance can coexist with scarcity in the largest cities."
+      },
+      {
+        "code": "AUT",
+        "name": "Austria",
+        "value": 119.0,
+        "whyIncluded": "A European contrast with substantial social and limited-profit housing, especially in Vienna."
+      }
+    ],
+    "caveat": "This is not an absolute affordability ranking. Each country is indexed to its own 2015 price-to-income relationship; the comparison shows direction and scale of change, not how many years of income a home costs."
+  },
+  "interpretation": {
+    "currentConclusion": "Attainability has not broadly recovered in the Netherlands. Prices relative to incomes remain far above 2015, mortgage rates are well above their 2021 low, and market-rate tenants carry a disproportionate cost burden.",
+    "established": [
+      "Dutch existing-home prices are again rising year over year.",
+      "House prices have risen much faster than rents and disposable income since 2015.",
+      "Housing-cost overburden is highly unequal across tenure groups.",
+      "Recent net additions to the dwelling stock can exceed annual household growth without resolving accumulated shortages or mismatch."
+    ],
+    "notEstablished": [
+      "A single national shortage number fully explains price movements.",
+      "Falling nominal prices automatically improve affordability when mortgage rates or incomes move against buyers.",
+      "A country with a lower indexed change is necessarily more affordable in absolute terms.",
+      "More units anywhere, at any tenure or price, reach the households carrying the greatest burden."
+    ],
+    "competingExplanations": [
+      {
+        "title": "Accumulated undersupply",
+        "text": "Household formation, migration, smaller households and constrained building accumulated faster than suitable supply in high-demand places."
+      },
+      {
+        "title": "Credit and rates",
+        "text": "Cheap credit raised purchasing power before 2022; later rate increases reduced borrowing capacity even when prices briefly softened."
+      },
+      {
+        "title": "Income, tax and institutions",
+        "text": "Wages, mortgage-interest treatment, rent regulation, social housing and investor rules change who can bid and who receives protection."
+      },
+      {
+        "title": "Mismatch, not only totals",
+        "text": "Location, size, accessibility, energy quality and tenure can leave people without suitable homes even when the national stock grows."
+      }
+    ],
+    "changeEvidence": [
+      "A sustained fall in price-to-income and price-to-rent ratios, not merely a short nominal-price dip.",
+      "Market-renter overburden moving materially toward the national rate without displacement from the measured group.",
+      "Several years in which suitable, occupied additions outpace household formation in the highest-pressure regions.",
+      "Lower financing costs or stronger real incomes that measurably reduce first-time-buyer payment burdens.",
+      "Better administrative evidence connecting permits, completions, vacancies, tenure, household need and regional waiting times."
+    ],
+    "possibilities": [
+      {
+        "label": "Public capability",
+        "title": "An affordability account, not a price dashboard",
+        "text": "Publish one joined view of prices, rents, incomes, financing, supply, tenure and regional need so policies cannot claim success from one favorable series."
+      },
+      {
+        "label": "Institution",
+        "title": "Faster paths for repeatable, low-carbon housing",
+        "text": "Pre-approved patterns, transparent local constraints and shared infrastructure data could shorten delivery without removing safety or democratic review."
+      },
+      {
+        "label": "Product",
+        "title": "Search by total monthly burden",
+        "text": "Housing tools could compare rent or mortgage, energy, maintenance, tax and transport together rather than optimizing only the listing price."
+      },
+      {
+        "label": "Small lever",
+        "title": "Make existing space usable",
+        "text": "Conversions, splits, accessibility upgrades and matching older households to suitable homes may add effective capacity faster than greenfield construction alone."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "world-bank-slums",
+      "title": "Population living in slums (% of urban population)",
+      "publisher": "World Bank, sourced from UN-Habitat",
+      "url": "https://data.worldbank.org/indicator/EN.POP.SLUM.UR.ZS",
+      "accessed": "2026-07-23",
+      "role": "World housing-adequacy lens and derived affected-population estimate",
+      "kind": "SDG indicator"
+    },
+    {
+      "id": "oecd-house-prices",
+      "title": "Analytical house price indicators",
+      "publisher": "OECD",
+      "url": "https://sdmx.oecd.org/public/rest/v1/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.",
+      "accessed": "2026-07-23",
+      "role": "Harmonized house-price, rent, price-to-income and price-to-rent indices",
+      "kind": "Official comparative statistics"
+    },
+    {
+      "id": "eurostat-overburden",
+      "title": "Housing cost overburden rate by tenure status",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_lvho07c/default/table?lang=en",
+      "accessed": "2026-07-23",
+      "role": "Distribution of housing-cost burden across Dutch tenure groups",
+      "kind": "EU-SILC survey statistic"
+    },
+    {
+      "id": "eurostat-tenure",
+      "title": "Population by tenure status",
+      "publisher": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_lvho02/default/table?lang=en",
+      "accessed": "2026-07-23",
+      "role": "Owner and renter population shares in the Netherlands and EU",
+      "kind": "EU-SILC survey statistic"
+    },
+    {
+      "id": "cbs-existing-homes",
+      "title": "Existing own homes; purchase prices, price indices 2020=100",
+      "publisher": "Statistics Netherlands (CBS)",
+      "url": "https://opendata.cbs.nl/statline/#/CBS/en/dataset/85773ENG",
+      "accessed": "2026-07-23",
+      "role": "Current Dutch existing-home prices, transactions and average purchase price",
+      "kind": "Administrative transaction statistics"
+    },
+    {
+      "id": "cbs-housing-stock",
+      "title": "Housing stock; levels and changes since 1921",
+      "publisher": "Statistics Netherlands (CBS)",
+      "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/82235NED",
+      "accessed": "2026-07-23",
+      "role": "New construction and net dwelling-stock additions",
+      "kind": "Administrative BAG statistics"
+    },
+    {
+      "id": "cbs-households",
+      "title": "Households; composition, size, region, 1 January",
+      "publisher": "Statistics Netherlands (CBS)",
+      "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/71486NED",
+      "accessed": "2026-07-23",
+      "role": "Annual Dutch private-household formation",
+      "kind": "Population statistics"
+    },
+    {
+      "id": "ecb-mortgage",
+      "title": "Bank interest rates — loans to households for house purchase (new business)",
+      "publisher": "European Central Bank / De Nederlandsche Bank",
+      "url": "https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
+      "accessed": "2026-07-23",
+      "role": "Dutch new-mortgage interest-rate conditions",
+      "kind": "Monetary financial statistics"
+    }
+  ]
+}

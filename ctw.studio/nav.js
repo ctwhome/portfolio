@@ -4,7 +4,7 @@
  * Usage: <script src="/nav.js" data-base="/" data-active="workshop"></script>
  *
  * data-base:   Path prefix to root (e.g. "/" from root, "../" from subdirs)
- * data-active:  Which nav link to highlight: "workshop", "work", "founder"
+ * data-active:  Which nav link to highlight: "signals", "workshop", "work", "founder"
  */
 (function () {
   const script = document.currentScript;
@@ -45,7 +45,8 @@
       background: linear-gradient(90deg, rgba(247, 181, 0, 0.9), transparent);
       transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
     }
-    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:hover::after,
+    .nav-link[aria-current="page"]::after { transform: scaleX(1); }
     /* Nav glitch effect */
     .glitch-sm { position: relative; display: inline-block; }
     .glitch-sm::before,
@@ -66,11 +67,16 @@
     .nav-label-mobile { display: none; }
     @media (max-width: 639px) {
       .studio-nav-inner { padding-left: 1rem !important; padding-right: 1rem !important; }
-      .studio-nav-links { gap: 0.875rem !important; }
+      .studio-nav-links { gap: 0.75rem !important; }
       .nav-label-desktop { display: none; }
       .nav-label-mobile { display: inline; }
       .glitch-sm.nav-compact::before,
       .glitch-sm.nav-compact::after { content: attr(data-mobile-text); }
+    }
+    @media (max-width: 480px) {
+      .studio-brand-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+      .studio-nav-links { gap: 0.7rem !important; }
+      .studio-contact { padding-left: 0.8rem !important; padding-right: 0.8rem !important; }
     }
     @keyframes glitch-sm-1 {
       0% { clip-path: inset(0 0 100% 0); }
@@ -97,6 +103,7 @@
 
   // Build nav links
   const links = [
+    { id: 'signals', href: base + 'signals/', label: 'Signals' },
     // Keep the workshop route visible on phones without the long label colliding with the brand + CTA.
     { id: 'workshop', href: base + 'workshop/', label: 'AI Workshop', mobileLabel: 'AI', glitch: true, classes: 'nav-compact' },
     { id: 'work', href: base + 'portfolio/', label: 'Work' },
@@ -105,6 +112,7 @@
 
   const linkHTML = links.map(l => {
     const isActive = active === l.id ? ' text-white' : '';
+    const current = active === l.id ? ' aria-current="page"' : '';
     const extraClasses = l.classes ? ' ' + l.classes : '';
     const labelHTML = l.mobileLabel
       ? `<span class="nav-label-desktop">${l.label}</span><span class="nav-label-mobile" aria-hidden="true">${l.mobileLabel}</span>`
@@ -112,9 +120,9 @@
     const aria = l.mobileLabel ? ` aria-label="${l.label}"` : '';
     if (l.glitch) {
       const mobileData = l.mobileLabel ? ` data-mobile-text="${l.mobileLabel}"` : '';
-      return `<a href="${l.href}" class="nav-link glitch-sm${isActive}${extraClasses}" data-text="${l.label}"${mobileData}${aria}>${labelHTML}</a>`;
+      return `<a href="${l.href}" class="nav-link glitch-sm${isActive}${extraClasses}" data-text="${l.label}"${mobileData}${aria}${current}>${labelHTML}</a>`;
     }
-    return `<a href="${l.href}" class="nav-link${isActive}${extraClasses}"${aria}>${labelHTML}</a>`;
+    return `<a href="${l.href}" class="nav-link${isActive}${extraClasses}"${aria}${current}>${labelHTML}</a>`;
   }).join('\n        ');
 
   const contactHref = base + '#contact';
@@ -129,11 +137,11 @@
     <div class="studio-nav-inner max-w-[1700px] mx-auto px-6 py-5 md:py-6 flex items-center justify-between relative">
       <a href="${base}" class="flex items-center gap-2.5">
         <img src="${base}favicon.png" alt="CTW Studio" class="w-9 h-9 md:w-10 md:h-10">
-        <span class="text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
+        <span class="studio-brand-label text-lg font-semibold tracking-tight">CTW<span class="text-amber-400">.</span>studio</span>
       </a>
       <div class="studio-nav-links flex items-center gap-4 md:gap-8 text-sm md:text-base text-gray-300">
         ${linkHTML}
-        <a href="${contactHref}" class="border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
+        <a href="${contactHref}" class="studio-contact border border-amber-400 text-amber-400 px-4 py-2 rounded-full font-medium hover:bg-amber-400 hover:text-black transition-colors">Contact</a>
       </div>
     </div>
   `;

@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "topic": "Food, animals & the planet",
+    "brief": "002",
+    "dataUpdated": "2026-07-22",
+    "editorialReview": "2026-07-22",
+    "updateMode": "Curated evidence; FAO slaughter and Poore–Nemecek product-footprint data refreshable by script",
+    "scope": "Global unless a card says otherwise"
+  },
+  "question": "What does eating animals cost — beyond the price tag?",
+  "verdict": {
+    "label": "The evidence is strong, but the boundaries matter",
+    "text": "Animal-sourced food is a major driver of land use, livestock emissions and animal deaths. Beef has an especially large climate and forest footprint. Agriculture also dominates freshwater withdrawals and nutrient pollution, but those system-wide shares should not be presented as livestock-only."
+  },
+  "slaughter": {
+    "year": 2024,
+    "daysInYear": 366,
+    "speciesIncluded": [
+      "Chicken",
+      "Duck",
+      "Pig",
+      "Sheep",
+      "Goat",
+      "Turkey",
+      "Cattle"
+    ],
+    "annualTracked": 86332055600,
+    "dailyTracked": 235879933,
+    "perMinuteTracked": 163806,
+    "species": [
+      {
+        "name": "Chicken",
+        "annual": 78533920000,
+        "daily": 214573552
+      },
+      {
+        "name": "Duck",
+        "annual": 4227882000,
+        "daily": 11551590
+      },
+      {
+        "name": "Pig",
+        "annual": 1493796992,
+        "daily": 4081413
+      },
+      {
+        "name": "Sheep",
+        "annual": 703861376,
+        "daily": 1923119
+      },
+      {
+        "name": "Goat",
+        "annual": 563722560,
+        "daily": 1540226
+      },
+      {
+        "name": "Turkey",
+        "annual": 504128000,
+        "daily": 1377399
+      },
+      {
+        "name": "Cattle",
+        "annual": 304744672,
+        "daily": 832636
+      }
+    ],
+    "sourceId": "owid-fao-slaughter",
+    "note": "Sum of seven major land-animal species available in the selected FAOSTAT/OWID series. It excludes fish, shellfish and unlisted land species."
+  },
+  "fishCounts": {
+    "farmed": {
+      "year": 2019,
+      "annualMidpointBillions": 124,
+      "annualLowBillions": 78,
+      "annualHighBillions": 171,
+      "dailyMidpointMillions": 339.7,
+      "dailyLowMillions": 213.7,
+      "dailyHighMillions": 468.5,
+      "sourceId": "mood-farmed-fish",
+      "note": "Peer-reviewed estimate based on FAO production tonnage and estimated harvest weights; not an official head count."
+    },
+    "wild": {
+      "year": 2019,
+      "annualLowBillions": 980,
+      "annualHighBillions": 1900,
+      "dailyLowBillions": 2.68,
+      "dailyHighBillions": 5.21,
+      "sourceId": "mood-wild-fish",
+      "note": "Peer-reviewed range for wild finfish caught in 2019. Biomass-to-individual conversion is uncertain and does not count all bycatch or unreported catch."
+    }
+  },
+  "climate": {
+    "livestockGtCO2e": 6.2,
+    "livestockShareAnthropogenicPct": 12,
+    "livestockShareAgrifoodPct": 40,
+    "baselineYear": 2015,
+    "sourceId": "fao-livestock-emissions",
+    "definition": "Livestock agrifood systems, including farm production and selected supply-chain processes such as feed-related land-use change, transport and inputs."
+  },
+  "land": {
+    "animalFoodShareAgriculturalLandPct": 83,
+    "animalFoodShareCaloriesPct": 18,
+    "animalFoodShareProteinPct": 37,
+    "currentAgriculturalLandBillionHa": 4.1,
+    "plantBasedScenarioBillionHa": 1,
+    "scenarioReductionPct": 75,
+    "sourceId": "poore-nemecek",
+    "note": "Land estimates come from the Poore–Nemecek global meta-analysis; the 4.1-to-1.0 billion hectare result is a modelled global plant-based scenario, not a forecast."
+  },
+  "forests": {
+    "beefShareTropicalDeforestationPct": 41,
+    "beefDeforestationMillionHaPerYear": 2.1,
+    "measurementPeriod": "2005–2013 average",
+    "soyFedToLivestockPct": 77,
+    "soyDirectHumanFoodPct": 7,
+    "sourceId": "owid-deforestation",
+    "note": "The beef estimate concerns tropical deforestation attributed to agricultural expansion in the cited study period; it is not 41% of all current global forest loss."
+  },
+  "water": {
+    "agricultureFreshwaterWithdrawalPct": 69,
+    "agricultureEutrophicationPct": 78,
+    "sourceIds": [
+      "fao-aquastat",
+      "owid-food-environment"
+    ],
+    "note": "Both are agriculture-wide shares. AQUASTAT's agriculture category includes irrigation, livestock and aquaculture; the sources do not assign the full global share to animal farming."
+  },
+  "oceans": {
+    "marineStocksSustainablePct": 62.3,
+    "marineStocksUnsustainablePct": 37.7,
+    "stockYear": 2021,
+    "captureMillionTonnes": 92.3,
+    "aquacultureAquaticAnimalsMillionTonnes": 94.4,
+    "productionYear": 2022,
+    "sourceId": "fao-sofia-2024",
+    "note": "Stock status is the unweighted share of marine stocks monitored by FAO. Production-weighted results are more favorable; the two measures answer different questions."
+  },
+  "health": {
+    "processedMeatIarcGroup": "Group 1",
+    "redMeatIarcGroup": "Group 2A",
+    "processedMeatPortionGrams": 50,
+    "colorectalRelativeRiskIncreasePct": 18,
+    "sourceId": "who-meat-cancer",
+    "veganDietGuidance": "A varied, balanced vegan diet can provide needed nutrients when it includes fortified foods and, where needed, supplements.",
+    "nutrientsToPlan": [
+      "vitamin B12",
+      "vitamin D",
+      "iodine",
+      "selenium",
+      "calcium",
+      "iron",
+      "omega-3"
+    ],
+    "guidanceSourceId": "nhs-vegan-diet",
+    "note": "IARC groups describe strength of causal evidence, not the size of risk. The 18% figure is a relative-risk estimate, not an 18 percentage-point absolute risk."
+  },
+  "productFootprints": [
+    {
+      "product": "Beef (beef herd)",
+      "year": 2018,
+      "kgCO2ePerKgFood": 99.48
+    },
+    {
+      "product": "Lamb & Mutton",
+      "year": 2018,
+      "kgCO2ePerKgFood": 39.72
+    },
+    {
+      "product": "Fish (farmed)",
+      "year": 2018,
+      "kgCO2ePerKgFood": 13.63
+    },
+    {
+      "product": "Pig Meat",
+      "year": 2018,
+      "kgCO2ePerKgFood": 12.31
+    },
+    {
+      "product": "Poultry Meat",
+      "year": 2018,
+      "kgCO2ePerKgFood": 9.87
+    },
+    {
+      "product": "Tofu",
+      "year": 2018,
+      "kgCO2ePerKgFood": 3.16
+    },
+    {
+      "product": "Peas",
+      "year": 2018,
+      "kgCO2ePerKgFood": 0.98
+    }
+  ],
+  "sources": [
+    {
+      "id": "owid-fao-slaughter",
+      "title": "Yearly number of animals slaughtered for meat",
+      "publisher": "Our World in Data, based on UN FAO data",
+      "url": "https://ourworldindata.org/grapher/animals-slaughtered-for-meat",
+      "publicationDate": "2025 data release",
+      "accessed": "2026-07-22",
+      "role": "Observed annual counts for seven major land-animal species",
+      "kind": "Administrative statistics"
+    },
+    {
+      "id": "mood-farmed-fish",
+      "title": "Estimating global numbers of farmed fishes killed for food annually from 1990 to 2019",
+      "publisher": "Animal Welfare / Cambridge University Press",
+      "url": "https://doi.org/10.1017/awf.2023.4",
+      "publicationDate": "2023",
+      "accessed": "2026-07-22",
+      "role": "Modelled individual counts for farmed finfish",
+      "kind": "Peer-reviewed estimate"
+    },
+    {
+      "id": "mood-wild-fish",
+      "title": "Estimating global numbers of fishes caught from the wild annually from 2000 to 2019",
+      "publisher": "Animal Welfare / Cambridge University Press",
+      "url": "https://doi.org/10.1017/awf.2024.7",
+      "publicationDate": "2024",
+      "accessed": "2026-07-22",
+      "role": "Modelled individual-count range for wild-caught finfish",
+      "kind": "Peer-reviewed estimate"
+    },
+    {
+      "id": "fao-livestock-emissions",
+      "title": "Pathways towards lower emissions: a global assessment of livestock agrifood systems",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "url": "https://www.fao.org/newsroom/detail/new-fao-report-maps-pathways-towards-lower-livestock-emissions/en",
+      "publicationDate": "2023-12-08",
+      "accessed": "2026-07-22",
+      "role": "Global livestock-system emissions and scope definition",
+      "kind": "UN assessment"
+    },
+    {
+      "id": "poore-nemecek",
+      "title": "Reducing food's environmental impacts through producers and consumers",
+      "publisher": "Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29853680/",
+      "publicationDate": "2018-06-01",
+      "accessed": "2026-07-22",
+      "role": "Global meta-analysis of land use and product-level environmental impacts",
+      "kind": "Peer-reviewed meta-analysis"
+    },
+    {
+      "id": "owid-food-environment",
+      "title": "Environmental impacts of food production",
+      "publisher": "Our World in Data",
+      "url": "https://ourworldindata.org/environmental-impacts-of-food",
+      "publicationDate": "Living review",
+      "accessed": "2026-07-22",
+      "role": "Synthesis of land, calories, protein and agriculture-wide eutrophication",
+      "kind": "Research synthesis"
+    },
+    {
+      "id": "owid-deforestation",
+      "title": "Drivers of Deforestation",
+      "publisher": "Our World in Data, synthesizing Pendrill et al.",
+      "url": "https://ourworldindata.org/drivers-of-deforestation",
+      "publicationDate": "Updated 2024",
+      "accessed": "2026-07-22",
+      "role": "Tropical deforestation attribution and global soy end use",
+      "kind": "Research synthesis"
+    },
+    {
+      "id": "fao-aquastat",
+      "title": "AQUASTAT methodology: Water use",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "url": "https://www.fao.org/aquastat/en/overview/methodology/water-use",
+      "publicationDate": "Living methodology",
+      "accessed": "2026-07-22",
+      "role": "Global freshwater-withdrawal shares and category definitions",
+      "kind": "UN methodology and statistics"
+    },
+    {
+      "id": "fao-sofia-2024",
+      "title": "The State of World Fisheries and Aquaculture 2024",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "url": "https://www.fao.org/newsroom/detail/fao-report-global-fisheries-and-aquaculture-production-reaches-a-new-record-high/en",
+      "publicationDate": "2024-06-07",
+      "accessed": "2026-07-22",
+      "role": "Marine-stock status and fisheries/aquaculture production",
+      "kind": "UN assessment"
+    },
+    {
+      "id": "who-meat-cancer",
+      "title": "Cancer: Carcinogenicity of the consumption of red meat and processed meat",
+      "publisher": "World Health Organization / IARC",
+      "url": "https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat",
+      "publicationDate": "2015-10-26",
+      "accessed": "2026-07-22",
+      "role": "Cancer evidence classifications and relative-risk estimate",
+      "kind": "Public-health evidence review"
+    },
+    {
+      "id": "nhs-vegan-diet",
+      "title": "The vegan diet",
+      "publisher": "UK National Health Service",
+      "url": "https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/the-vegan-diet/",
+      "publicationDate": "Living guidance",
+      "accessed": "2026-07-22",
+      "role": "Nutritional adequacy and nutrients requiring planning",
+      "kind": "Public-health guidance"
+    },
+    {
+      "id": "who-amr",
+      "title": "Antimicrobial resistance",
+      "publisher": "World Health Organization",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance",
+      "publicationDate": "2026-07-16",
+      "accessed": "2026-07-22",
+      "role": "Health burden and cross-sector drivers of antimicrobial resistance",
+      "kind": "Public-health fact sheet"
+    }
+  ]
+}
