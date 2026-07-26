@@ -3,13 +3,14 @@
 ## App map and boundaries
 
 - `ctw.studio/` is the static CTW Studio site: plain HTML, CSS, vanilla JS, and committed JSON. Its local `vercel.json` serves that directory without a build.
-- `ctw.studio/nlesc/` is the canonical static NLeSC route at `/nlesc/`.
+- `about/` is the canonical NLeSC source. `ctw.studio/nlesc/` is its generated,
+  committed static export served at `/nlesc/`; never hand-edit generated files.
 - `ctw.studio/signals/` contains evidence briefs, topic renderers, `data/`, deterministic `scripts/`, and Node integrity tests.
-- `about/` is the frozen legacy Next.js NLeSC app. Keep it active until a separately approved redirect and retirement; do not add `about/vercel.json` without a proven platform need.
+- Keep the legacy `about/` deployment active until a separately approved redirect and retirement; do not add `about/vercel.json` without a proven platform need. Default `about/` builds must preserve legacy behavior.
 - `jessegonzalez.dev/`, `about/`, `dashboard/`, `ctw.studio2/`, and `ctw-kit/` are separate applications. Treat each app directory as its build and deployment root.
 - Never add a repository-root `vercel.json`. Framework and Vercel settings stay inside the affected app.
 - Root `package.json` and `bun.lock` cover only `ctw-kit/` and `jessegonzalez.dev/`; independent apps use their own lockfiles.
-- Preserve unrelated apps and generated assets. `ctw.studio/tailwind.css` is generated; Signals and NLeSC route CSS are handwritten.
+- Preserve unrelated apps and generated assets. `ctw.studio/tailwind.css` and the complete `ctw.studio/nlesc/` subtree are generated; Signals CSS is handwritten.
 
 ## Setup and checks
 
@@ -17,7 +18,7 @@ Run commands from the named directory.
 
 | Scope | Setup | Develop | Build/check |
 |---|---|---|---|
-| `about/` | `bun install --frozen-lockfile` | `bun run dev` | `bun run build` |
+| `about/` | `bun install --frozen-lockfile` | `bun run dev` | `bun run build`; `bun run static:sync`; `bun run static:check` |
 | `dashboard/` | `bun install --frozen-lockfile` | `bun run dev` | `bun run build:css` |
 | `ctw-kit/` | root: `bun install` | — | `bun run build` |
 | `jessegonzalez.dev/` | root: `bun install` | `bun run dev` | `bun run check`; `bun run build` |
@@ -25,6 +26,16 @@ Run commands from the named directory.
 | `ctw.studio2/` | none | serve as static files | no general build |
 
 For CTW Studio Tailwind regeneration, use the command in root `README.md`.
+
+For NLeSC static export work, run from `about/`:
+
+```bash
+bun run static:sync
+bun run static:check
+```
+
+`static:sync` rebuilds and replaces `ctw.studio/nlesc/` exactly. `static:check`
+rebuilds and byte-compares `about/out/` against the committed subtree.
 
 For Signals work, run from `ctw.studio/`:
 
@@ -70,9 +81,9 @@ Use targeted checks while editing. Before handoff, run applicable app checks, se
 | `ctw.studio` | `ctw.studio` | Other / static | `ctw.studio` |
 | `jessegonzalez.dev` | `jessegonzalez.dev` | SvelteKit | `jessegonzalez.dev` |
 
-- `/nlesc/` is the canonical replacement route, but `about/` and `nlesc-portfolio` remain active frozen legacy until cutover receives separate approval.
+- `/nlesc/` is the canonical replacement route generated from `about/`, but the legacy `nlesc-portfolio` deployment remains active until cutover receives separate approval.
 - Preserve `ctw.studio/vercel.json` redirects and static output `.`.
 - Jesse's SvelteKit settings belong only in `jessegonzalez.dev/vercel.json`.
-- `about/` runs `next-sitemap` during `postbuild`; do not hide or couple its separate configuration issue to unrelated work.
-- Rollback-safe cutover: preview → merge/deploy CTW route → verify production → separately approve redirect → verify redirect → retire legacy Vercel project → optionally remove `about/`.
+- Default `about/` builds run `next-sitemap` during `postbuild`; static export commands intentionally invoke Next directly and leave default behavior unchanged.
+- Rollback-safe cutover: preview → merge/deploy CTW route → verify production → separately approve redirect → verify redirect → retire legacy Vercel project. Preserve `about/` as canonical source.
 - Local build success never authorizes deployment, domain/DNS changes, redirects, or Vercel project deletion.

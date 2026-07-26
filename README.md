@@ -23,18 +23,36 @@ SvelteKit configuration.
 
 ### NLeSC route migration
 
-`ctw.studio/nlesc/` is the canonical replacement at
-[ctw.studio/nlesc/](https://ctw.studio/nlesc/). The `about/` app and its
-`nlesc-portfolio` Vercel project remain active, frozen legacy until a separate
-cutover is approved.
+`about/` is the canonical NLeSC source. Its default build preserves the legacy
+Next.js deployment behavior. `ctw.studio/nlesc/` is the generated, committed
+static export served at [ctw.studio/nlesc/](https://ctw.studio/nlesc/). Never
+edit that generated subtree by hand.
+
+Regenerate and synchronize the artifact:
+
+```bash
+cd about
+bun install --frozen-lockfile
+bun run static:sync
+```
+
+Rebuild and byte-compare the committed artifact:
+
+```bash
+cd about
+bun run static:check
+```
+
+The `about/` app and its `nlesc-portfolio` Vercel project remain active until a
+separate cutover is approved.
 
 Keep cutover rollback-safe:
 
 1. Verify a preview of the CTW Studio route.
 2. Merge and deploy the CTW Studio route, then verify it in production.
 3. Separately approve the legacy-domain redirect, then verify it.
-4. Retire the legacy Vercel project only after redirect verification.
-5. Optionally remove `about/` in a later, separately approved change.
+4. After redirect verification, retire the legacy `nlesc-portfolio` Vercel
+   project. Keep `about/` as the canonical source for `/nlesc/`.
 
 ## CTW Studio
 
