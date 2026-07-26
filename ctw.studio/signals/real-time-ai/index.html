@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth evidence-page realtime-page" style="background:#050707">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When does AI become real-time? — CTW Signals</title>
+  <meta name="description" content="A source-auditable briefing about bounded AI loops, deadlines, field reliability, authority, scale, and retained human work.">
+  <meta name="theme-color" content="#050707">
+  <link rel="canonical" href="https://ctw.studio/signals/real-time-ai/">
+  <link rel="icon" href="../../favicon.png">
+  <link rel="stylesheet" href="../../tailwind.css">
+  <link rel="stylesheet" href="../signals.css?v=6">
+  <link rel="stylesheet" href="real-time-ai.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="../../nav.js" data-base="../../" data-active="signals"></script>
+  <script defer src="real-time-ai.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to the evidence</a>
+  <main id="main-content">
+    <header class="evidence-hero realtime-hero">
+      <div class="signal-shell">
+        <nav class="evidence-topics" aria-label="Signal topics">
+          <span class="topic-switcher__label">Signals /</span>
+          <a class="topic-pill" href="../ai-work/">AI &amp; work</a>
+          <a class="topic-pill" href="../food/">Food &amp; planet</a>
+          <a class="topic-pill" href="../housing/">Housing</a>
+          <a class="topic-pill" href="../science/">Science</a>
+          <a class="topic-pill" href="../healthspan/">Healthspan</a>
+          <a class="topic-pill topic-pill--active" href="./" aria-current="page">Real-time AI</a>
+          <a class="topic-pill" href="../demography/">Demography</a>
+          <a class="topic-pill" href="../education/">Education</a>
+          <a class="topic-pill" href="../financial-fragility/">Financial fragility</a>
+          <a class="topic-pill" href="../">Atlas</a>
+        </nav>
+        <div class="evidence-hero-grid">
+          <div>
+            <p class="evidence-kicker">Brief 006 · Real-time AI</p>
+            <h1>Can AI close the loop<br><em>before the world moves?</em></h1>
+            <p class="evidence-deck">Evaluate a bounded task, not a model, profession, or industry. Speed matters only when sensing, interpretation, prediction, decision, action, and observation finish inside the task’s changing environment.</p>
+            <div class="evidence-meta"><span>Curated evidence reviewed <strong id="realtime-review-date">2026-07-26</strong></span><span>Six bounded cases</span><a href="#sources">Inspect source ledger</a></div>
+          </div>
+          <aside class="evidence-verdict evidence-bearing" data-source-id="ca-dmv-permits fda-idx-dr jhm-retina amazon-robin nist-ai-rmf" aria-label="Current verdict">
+            <span>Current read · conditional</span>
+            <strong>Some bounded loops close. Few justify broad autonomy claims.</strong>
+            <p>Timing success and benchmark accuracy do not establish field reliability, authority, scale, safety, or position removal.</p>
+            <p class="proximate-citation" data-citation-source-id="ca-dmv-permits fda-idx-dr jhm-retina amazon-robin">Evidence basis: bounded operation documented by <a href="https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/autonomous-vehicle-testing-permit-holders/" target="_blank" rel="noreferrer">California DMV</a> · <a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN180001.pdf" target="_blank" rel="noreferrer">FDA</a> · <a href="https://www.nature.com/articles/s41746-024-01197-3" target="_blank" rel="noreferrer">Johns Hopkins field deployment</a> · <a href="https://www.amazon.science/publications/pick-planning-strategies-for-large-scale-package-manipulation" target="_blank" rel="noreferrer">Amazon production evidence</a>.</p>
+            <p class="proximate-citation" data-citation-source-id="nist-ai-rmf">Evidence basis: methodology and risk caution from <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noreferrer">NIST AI RMF 1.0 ↗</a> · <a href="#source-nist-ai-rmf">scope &amp; caveats ↓</a></p>
+          </aside>
+        </div>
+
+        <ol class="loop-hero" aria-label="Six-stage real-time AI loop">
+          <li><span>01</span><strong>Sense</strong><small>capture state</small></li>
+          <li><span>02</span><strong>Interpret</strong><small>structure signal</small></li>
+          <li><span>03</span><strong>Predict</strong><small>estimate next</small></li>
+          <li><span>04</span><strong>Decide</strong><small>choose action</small></li>
+          <li><span>05</span><strong>Act</strong><small>change world</small></li>
+          <li><span>06</span><strong>Observe</strong><small>check result</small></li>
+        </ol>
+        <div class="deadline-sweep" aria-hidden="true"><span></span></div>
+      </div>
+    </header>
+
+    <div class="evidence-layout realtime-layout">
+      <aside class="evidence-index" aria-label="Brief chapters">
+        <p>Loop audit</p>
+        <nav>
+          <a href="#where"><span>01</span> Where now?</a>
+          <a href="#direction"><span>02</span> Direction</a>
+          <a href="#distribution"><span>03</span> Distribution</a>
+          <a href="#explanations"><span>04</span> Explanations</a>
+          <a href="#change"><span>05</span> Change evidence</a>
+          <a href="#feedback"><span>06</span> Feedback risks</a>
+          <a href="#possibilities"><span>07</span> Possibilities</a>
+          <a href="#sources"><span>→</span> Method &amp; sources</a>
+        </nav>
+      </aside>
+
+      <article>
+        <section id="where" class="evidence-chapter">
+          <p class="evidence-label">01 · Where are we now?</p>
+          <h2>“Real time” is a deadline,<br><em>not a vibe.</em></h2>
+          <p class="evidence-intro">Five timing classes prevent a fast benchmark from being confused with a safe control loop. Case rows show what closes, what stays bounded, and what remains open.</p>
+
+          <ol class="timing-spectrum" aria-label="Deadline spectrum from hard real time to offline intelligence">
+            <li><strong>Hard real time</strong><span>Deadline miss is system failure.</span></li>
+            <li><strong>Operational real time</strong><span>Process window; misses need containment.</span></li>
+            <li><strong>Interactive real time</strong><span>Human exchange keeps usable cadence.</span></li>
+            <li><strong>Near real time</strong><span>Result arrives inside encounter or shift.</span></li>
+            <li><strong>Offline intelligence</strong><span>Workflow can pause before output.</span></li>
+          </ol>
+
+          <div class="matrix-controls" aria-label="Filter cases by timing class">
+            <span>Highlight timing:</span>
+            <button type="button" data-timing-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-timing-filter="operational-real-time" aria-pressed="false">Operational</button>
+            <button type="button" data-timing-filter="interactive-real-time" aria-pressed="false">Interactive</button>
+            <button type="button" data-timing-filter="near-real-time" aria-pressed="false">Near</button>
+          </div>
+          <p id="timing-filter-status" class="matrix-filter-status" role="status" aria-live="polite">Showing all six cases.</p>
+
+          <div class="table-scroll field-map">
+            <table id="case-matrix-table">
+              <caption>Six bounded AI cases across loop stages, timing class, and independent maturity markers. Select a row for its full boundary.</caption>
+              <thead>
+                <tr><th scope="col">Bounded case</th><th scope="col">Sense</th><th scope="col">Interpret</th><th scope="col">Predict</th><th scope="col">Decide</th><th scope="col">Act</th><th scope="col">Observe</th><th scope="col">Timing</th><th scope="col">Maturity: D / O / R / A / S</th></tr>
+              </thead>
+              <tbody>
+                <tr class="case-row evidence-bearing is-selected" data-case-row="geofenced-driving" data-timing="operational-real-time" data-source-id="ca-dmv-permits nhtsa-sgo">
+                  <th scope="row"><button type="button" data-case-select="geofenced-driving" aria-pressed="true">Geofenced autonomous driving</button><span class="proximate-citation" data-citation-source-id="ca-dmv-permits nhtsa-sgo">Sources: <a href="https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/autonomous-vehicle-testing-permit-holders/" target="_blank" rel="noreferrer">California DMV</a> · <a href="https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting" target="_blank" rel="noreferrer">NHTSA</a></span></th>
+                  <td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="bounded">◐</td><td><code>operational-real-time</code></td>
+                  <td class="maturity-dots"><i data-value="supported">D</i><i data-value="supported">O</i><i data-value="unknown">R</i><i data-value="supported">A</i><i data-value="unknown">S</i><span class="sr-only">demonstrated:supported operational:supported reliable:unknown approved:supported scaled:unknown</span></td>
+                </tr>
+                <tr class="case-row evidence-bearing" data-case-row="retinal-screening" data-timing="near-real-time" data-source-id="fda-idx-dr idx-pivotal jhm-retina">
+                  <th scope="row"><button type="button" data-case-select="retinal-screening" aria-pressed="false">Autonomous retinal screening</button><span class="proximate-citation" data-citation-source-id="fda-idx-dr idx-pivotal jhm-retina">Sources: <a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN180001.pdf" target="_blank" rel="noreferrer">FDA</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/31304320/" target="_blank" rel="noreferrer">pivotal trial</a> · <a href="https://www.nature.com/articles/s41746-024-01197-3" target="_blank" rel="noreferrer">field study</a></span></th>
+                  <td data-state="bounded">◐</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="bounded">◐</td><td data-state="bounded">◐</td><td><code>near-real-time</code></td>
+                  <td class="maturity-dots"><i data-value="supported">D</i><i data-value="supported">O</i><i data-value="unknown">R</i><i data-value="supported">A</i><i data-value="unknown">S</i><span class="sr-only">demonstrated:supported operational:supported reliable:unknown approved:supported scaled:unknown</span></td>
+                </tr>
+                <tr class="case-row evidence-bearing" data-case-row="interactive-llm" data-timing="interactive-real-time" data-source-id="mlperf-llm">
+                  <th scope="row"><button type="button" data-case-select="interactive-llm" aria-pressed="false">Interactive LLM response</button><span class="proximate-citation" data-citation-source-id="mlperf-llm">Source: <a href="https://mlcommons.org/2025/04/mlperf-inference-v5-0-results/" target="_blank" rel="noreferrer">MLCommons MLPerf v5.0</a></span></th>
+                  <td data-state="bounded">◐</td><td data-state="bounded">◐</td><td data-state="closed">●</td><td data-state="bounded">◐</td><td data-state="bounded">◐</td><td data-state="open">○</td><td><code>interactive-real-time</code></td>
+                  <td class="maturity-dots"><i data-value="supported">D</i><i data-value="unknown">O</i><i data-value="unknown">R</i><i data-value="not-applicable">A</i><i data-value="unknown">S</i><span class="sr-only">demonstrated:supported operational:unknown reliable:unknown approved:not-applicable scaled:unknown</span></td>
+                </tr>
+                <tr class="case-row evidence-bearing" data-case-row="streaming-generation" data-timing="interactive-real-time" data-source-id="streamdiffusion">
+                  <th scope="row"><button type="button" data-case-select="streaming-generation" aria-pressed="false">Streaming image generation</button><span class="proximate-citation" data-citation-source-id="streamdiffusion">Source: <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Kodaira_StreamDiffusion_A_Pipeline-level_Solution_for_Real-Time_Interactive_Generation_ICCV_2025_paper.pdf" target="_blank" rel="noreferrer">ICCV 2025 paper</a></span></th>
+                  <td data-state="bounded">◐</td><td data-state="bounded">◐</td><td data-state="closed">●</td><td data-state="bounded">◐</td><td data-state="closed">●</td><td data-state="bounded">◐</td><td><code>interactive-real-time</code></td>
+                  <td class="maturity-dots"><i data-value="supported">D</i><i data-value="unknown">O</i><i data-value="unknown">R</i><i data-value="not-applicable">A</i><i data-value="unknown">S</i><span class="sr-only">demonstrated:supported operational:unknown reliable:unknown approved:not-applicable scaled:unknown</span></td>
+                </tr>
+                <tr class="case-row evidence-bearing" data-case-row="object-identification" data-timing="operational-real-time" data-source-id="mlperf-vision">
+                  <th scope="row"><button type="button" data-case-select="object-identification" aria-pressed="false">Real-time object identification</button><span class="proximate-citation" data-citation-source-id="mlperf-vision">Source: <a href="https://docs.mlcommons.org/inference/" target="_blank" rel="noreferrer">MLPerf Inference definitions</a></span></th>
+                  <td data-state="bounded">◐</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="open">○</td><td data-state="open">○</td><td data-state="open">○</td><td><code>operational-real-time</code></td>
+                  <td class="maturity-dots"><i data-value="supported">D</i><i data-value="unknown">O</i><i data-value="unknown">R</i><i data-value="not-applicable">A</i><i data-value="unknown">S</i><span class="sr-only">demonstrated:supported operational:unknown reliable:unknown approved:not-applicable scaled:unknown</span></td>
+                </tr>
+                <tr class="case-row evidence-bearing" data-case-row="warehouse-sorting" data-timing="operational-real-time" data-source-id="amazon-robin">
+                  <th scope="row"><button type="button" data-case-select="warehouse-sorting" aria-pressed="false">Warehouse sorting</button><span class="proximate-citation" data-citation-source-id="amazon-robin">Source: <a href="https://www.amazon.science/publications/pick-planning-strategies-for-large-scale-package-manipulation" target="_blank" rel="noreferrer">Amazon Science / IROS workshop</a></span></th>
+                  <td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="closed">●</td><td data-state="bounded">◐</td><td><code>operational-real-time</code></td>
+                  <td class="maturity-dots"><i data-value="supported">D</i><i data-value="supported">O</i><i data-value="unknown">R</i><i data-value="not-applicable">A</i><i data-value="supported">S</i><span class="sr-only">demonstrated:supported operational:supported reliable:unknown approved:not-applicable scaled:supported</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="matrix-legend" aria-label="Map legend">
+            <span><b data-state="closed">●</b> Closed</span><span><b data-state="bounded">◐</b> Bounded or shared</span><span><b data-state="open">○</b> Outside loop</span>
+            <span><b class="maturity-key supported">D</b> Supported</span><span><b class="maturity-key unknown">R</b> Unknown</span><span><b class="maturity-key na">A</b> N/A</span>
+          </div>
+
+          <aside id="case-detail" class="case-detail" aria-live="polite" aria-labelledby="case-detail-title">
+            <header><p class="evidence-label">Selected task boundary</p><h3 id="case-detail-title">Geofenced autonomous driving</h3><span id="case-detail-timing">Operational real time</span></header>
+            <dl>
+              <div><dt>Boundary</dt><dd id="case-detail-boundary">Dynamic driving task inside a permit-defined operational design domain; not unrestricted driving.</dd></div>
+              <div><dt>Deadline</dt><dd id="case-detail-deadline">Vehicle-control cycle before road state invalidates the action; exact deadline is system-specific.</dd></div>
+              <div><dt>Human fallback</dt><dd id="case-detail-fallback">Remote assistance, minimal-risk stop, passenger or fleet support, and emergency services; exact design is operator-specific.</dd></div>
+              <div><dt>Failure boundary</dt><dd id="case-detail-failure">Outside approved geography, weather, speed, road type, sensor visibility, or system capability; rare interactions and incident recovery.</dd></div>
+              <div><dt>Scope / period / intended use</dt><dd id="case-detail-scope">California public roads; permitted manufacturers and vehicles; Permit status through May 2026; federal crash-reporting framework amended through 2025. Intended use: Navigate, control speed, and respond to road users within approved location, weather, speed, and operating constraints.</dd></div>
+              <div><dt>Interpretation / caveat</dt><dd id="case-detail-read">Public-road operation demonstrates a bounded closed loop and regulatory authorization in named domains. Caveat: Permits are not proof of comparative safety. Raw report counts are not incident counts or comparative safety rates; reports can be duplicated and lack exposure denominators.</dd></div>
+            </dl>
+            <p id="case-detail-sources" class="case-detail__sources"><a href="https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/autonomous-vehicle-testing-permit-holders/" target="_blank" rel="noreferrer">California Department of Motor Vehicles ↗</a> <a href="https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting" target="_blank" rel="noreferrer">US National Highway Traffic Safety Administration ↗</a></p>
+          </aside>
+
+          <section aria-labelledby="static-passports-title">
+            <h3 id="static-passports-title" class="static-passports-title">Complete case passports</h3>
+            <div class="case-passports-static">
+              <details data-case-passport="geofenced-driving" data-source-ids="ca-dmv-permits nhtsa-sgo">
+                <summary>Geofenced autonomous driving</summary>
+                <dl>
+                  <div><dt>Boundary</dt><dd data-passport-field="boundary">Dynamic driving task inside a permit-defined operational design domain; not unrestricted driving.</dd></div>
+                  <div><dt>Scope</dt><dd data-passport-field="geographyPopulation">California public roads; permitted manufacturers and vehicles</dd></div>
+                  <div><dt>Period</dt><dd data-passport-field="period">Permit status through May 2026; federal crash-reporting framework amended through 2025</dd></div>
+                  <div><dt>Deadline</dt><dd data-passport-field="deadline">Vehicle-control cycle before road state invalidates the action; exact deadline is system-specific</dd></div>
+                  <div><dt>Timing class</dt><dd data-passport-field="timingClass">operational-real-time</dd></div>
+                  <div><dt>Intended use</dt><dd data-passport-field="intendedUse">Navigate, control speed, and respond to road users within approved location, weather, speed, and operating constraints</dd></div>
+                  <div><dt>Unit / denominator</dt><dd data-passport-field="unitDenominator">Permit categories and reportable incidents; NHTSA reports are not normalized by miles, fleet size, or ODD exposure</dd></div>
+                  <div><dt>Human fallback</dt><dd data-passport-field="humanFallback">Remote assistance, minimal-risk stop, passenger or fleet support, and emergency services; exact design is operator-specific.</dd></div>
+                  <div><dt>Failure boundary</dt><dd data-passport-field="failureBoundary">Outside approved geography, weather, speed, road type, sensor visibility, or system capability; rare interactions and incident recovery.</dd></div>
+                  <div><dt>Evidence type</dt><dd data-passport-field="evidenceType">observation</dd></div>
+                  <div><dt>Interpretation</dt><dd data-passport-field="interpretation">Public-road operation demonstrates a bounded closed loop and regulatory authorization in named domains.</dd></div>
+                  <div><dt>Caveat</dt><dd data-passport-field="caveat">Permits are not proof of comparative safety. Raw report counts are not incident counts or comparative safety rates; reports can be duplicated and lack exposure denominators.</dd></div>
+                </dl>
+              </details>
+              <details data-case-passport="retinal-screening" data-source-ids="fda-idx-dr idx-pivotal jhm-retina">
+                <summary>Autonomous retinal screening</summary>
+                <dl>
+                  <div><dt>Boundary</dt><dd data-passport-field="boundary">Detect more-than-mild diabetic retinopathy from specified retinal images in eligible adults with diabetes; not treatment or a general eye examination.</dd></div>
+                  <div><dt>Scope</dt><dd data-passport-field="geographyPopulation">United States; indicated primary-care patients with diabetes and no prior diabetic retinopathy diagnosis</dd></div>
+                  <div><dt>Period</dt><dd data-passport-field="period">FDA De Novo decision 11 April 2018; pivotal trial published 2018; Johns Hopkins deployment comparison 2019–2021</dd></div>
+                  <div><dt>Deadline</dt><dd data-passport-field="deadline">Near-real-time result during a primary-care encounter; acquisition and quality retries remain part of workflow</dd></div>
+                  <div><dt>Timing class</dt><dd data-passport-field="timingClass">near-real-time</dd></div>
+                  <div><dt>Intended use</dt><dd data-passport-field="intendedUse">Return an autonomous screening result or image-quality failure and route indicated patients to eye care</dd></div>
+                  <div><dt>Unit / denominator</dt><dd data-passport-field="unitDenominator">900 enrolled pivotal-trial participants; deployment study included more than 17,000 adult patients with diabetes</dd></div>
+                  <div><dt>Human fallback</dt><dd data-passport-field="humanFallback">Repeat image acquisition, clinician review, referral to an eye-care professional, and usual care when no result is returned.</dd></div>
+                  <div><dt>Failure boundary</dt><dd data-passport-field="failureBoundary">Ineligible patient, inadequate image quality, disease outside intended use, missed disease, false referral, or failed downstream follow-up.</dd></div>
+                  <div><dt>Evidence type</dt><dd data-passport-field="evidenceType">observation</dd></div>
+                  <div><dt>Interpretation</dt><dd data-passport-field="interpretation">A narrow medical loop has authorization, prospective diagnostic validation, and documented health-system operation.</dd></div>
+                  <div><dt>Caveat</dt><dd data-passport-field="caveat">Authorization and diagnostic accuracy do not prove completed referral, treatment, long-run outcomes, generalization, or scale.</dd></div>
+                </dl>
+              </details>
+              <details data-case-passport="interactive-llm" data-source-ids="mlperf-llm">
+                <summary>Interactive LLM response</summary>
+                <dl>
+                  <div><dt>Boundary</dt><dd data-passport-field="boundary">Generate and stream text for a submitted prompt; not verify truth, complete external work, or own consequences.</dd></div>
+                  <div><dt>Scope</dt><dd data-passport-field="geographyPopulation">Benchmark systems and datasets; not a population estimate</dd></div>
+                  <div><dt>Period</dt><dd data-passport-field="period">MLPerf Inference v5.0 results published April 2025</dd></div>
+                  <div><dt>Deadline</dt><dd data-passport-field="deadline">Interactive benchmark constrains time to first token and time per output token; application tolerance varies</dd></div>
+                  <div><dt>Timing class</dt><dd data-passport-field="timingClass">interactive-real-time</dd></div>
+                  <div><dt>Intended use</dt><dd data-passport-field="intendedUse">Preserve conversational response cadence under benchmarked server load</dd></div>
+                  <div><dt>Unit / denominator</dt><dd data-passport-field="unitDenominator">Queries and generated tokens under MLPerf workload, model, accuracy, latency, and submission rules</dd></div>
+                  <div><dt>Human fallback</dt><dd data-passport-field="humanFallback">User correction, source inspection, retry, tool confirmation, or escalation to a responsible person.</dd></div>
+                  <div><dt>Failure boundary</dt><dd data-passport-field="failureBoundary">Unsupported request, hallucination, unsafe output, excessive latency, context loss, tool failure, or unobserved downstream effect.</dd></div>
+                  <div><dt>Evidence type</dt><dd data-passport-field="evidenceType">observation</dd></div>
+                  <div><dt>Interpretation</dt><dd data-passport-field="interpretation">Latency-constrained generation is measurable jointly with benchmark quality requirements.</dd></div>
+                  <div><dt>Caveat</dt><dd data-passport-field="caveat">A compliant benchmark run does not establish factuality, field reliability, task completion, approval, or product-wide service quality.</dd></div>
+                </dl>
+              </details>
+              <details data-case-passport="streaming-generation" data-source-ids="streamdiffusion">
+                <summary>Streaming image generation</summary>
+                <dl>
+                  <div><dt>Boundary</dt><dd data-passport-field="boundary">Continuously update generated imagery from changing input on specified GPU pipelines; not general visual truth or production reliability.</dd></div>
+                  <div><dt>Scope</dt><dd data-passport-field="geographyPopulation">Research hardware and benchmark inputs; not a human population</dd></div>
+                  <div><dt>Period</dt><dd data-passport-field="period">Peer-reviewed ICCV publication, 2025</dd></div>
+                  <div><dt>Deadline</dt><dd data-passport-field="deadline">Frame or update cadence fast enough for documented interactive generation on tested hardware</dd></div>
+                  <div><dt>Timing class</dt><dd data-passport-field="timingClass">interactive-real-time</dd></div>
+                  <div><dt>Intended use</dt><dd data-passport-field="intendedUse">Provide continuous visual feedback while a user changes prompts or input streams</dd></div>
+                  <div><dt>Unit / denominator</dt><dd data-passport-field="unitDenominator">Frames or images per unit time on reported model, pipeline, resolution, and hardware</dd></div>
+                  <div><dt>Human fallback</dt><dd data-passport-field="humanFallback">Pause, regenerate, edit manually, reject output, or switch to offline rendering.</dd></div>
+                  <div><dt>Failure boundary</dt><dd data-passport-field="failureBoundary">Hardware mismatch, quality collapse, temporal inconsistency, unsafe content, prompt drift, or missed interaction cadence.</dd></div>
+                  <div><dt>Evidence type</dt><dd data-passport-field="evidenceType">experiment</dd></div>
+                  <div><dt>Interpretation</dt><dd data-passport-field="interpretation">Pipeline-level research demonstrates hardware-specific interactive diffusion generation.</dd></div>
+                  <div><dt>Caveat</dt><dd data-passport-field="caveat">Demo throughput does not establish stable quality, safety, rights clearance, operational service, or scale.</dd></div>
+                </dl>
+              </details>
+              <details data-case-passport="object-identification" data-source-ids="mlperf-vision">
+                <summary>Real-time object identification</summary>
+                <dl>
+                  <div><dt>Boundary</dt><dd data-passport-field="boundary">Classify or detect objects from benchmark-defined images; not open-world scene understanding.</dd></div>
+                  <div><dt>Scope</dt><dd data-passport-field="geographyPopulation">ImageNet-2012 and OpenImages benchmark samples; not geographic or population inference</dd></div>
+                  <div><dt>Period</dt><dd data-passport-field="period">MLPerf Inference v5.0 benchmark definitions, 2025</dd></div>
+                  <div><dt>Deadline</dt><dd data-passport-field="deadline">Model- and scenario-specific latency constraint; ResNet50 server scenario specifies 15 ms</dd></div>
+                  <div><dt>Timing class</dt><dd data-passport-field="timingClass">operational-real-time</dd></div>
+                  <div><dt>Intended use</dt><dd data-passport-field="intendedUse">Measure image classification or object detection throughput and latency while meeting stated accuracy targets</dd></div>
+                  <div><dt>Unit / denominator</dt><dd data-passport-field="unitDenominator">Benchmark queries on fixed validation datasets, quality targets, load scenarios, hardware, and software</dd></div>
+                  <div><dt>Human fallback</dt><dd data-passport-field="humanFallback">Reject low-confidence output, stop downstream actuation, request another view, or send to human review.</dd></div>
+                  <div><dt>Failure boundary</dt><dd data-passport-field="failureBoundary">Open-set object, domain shift, poor lighting, occlusion, adversarial input, sensor fault, or deadline miss.</dd></div>
+                  <div><dt>Evidence type</dt><dd data-passport-field="evidenceType">observation</dd></div>
+                  <div><dt>Interpretation</dt><dd data-passport-field="interpretation">A benchmark can demonstrate latency plus accuracy for a fixed task and dataset.</dd></div>
+                  <div><dt>Caveat</dt><dd data-passport-field="caveat">Fixed-dataset accuracy does not prove field reliability under distribution shift, occlusion, novel classes, or sensor failure.</dd></div>
+                </dl>
+              </details>
+              <details data-case-passport="warehouse-sorting" data-source-ids="amazon-robin">
+                <summary>Warehouse sorting</summary>
+                <dl>
+                  <div><dt>Boundary</dt><dd data-passport-field="boundary">Pick and singulate packages from unstructured piles in a named robotic induction fleet; adjacent transport, packing, maintenance, and exceptions remain separate.</dd></div>
+                  <div><dt>Scope</dt><dd data-passport-field="geographyPopulation">Amazon Robotics production facilities and handled packages; locations not enumerated in source</dd></div>
+                  <div><dt>Period</dt><dd data-passport-field="period">Deployment evidence reported at IROS workshop in 2023</dd></div>
+                  <div><dt>Deadline</dt><dd data-passport-field="deadline">Operational cycle must keep pace with induction flow; source reports daily fleet volume rather than per-item deadline</dd></div>
+                  <div><dt>Timing class</dt><dd data-passport-field="timingClass">operational-real-time</dd></div>
+                  <div><dt>Intended use</dt><dd data-passport-field="intendedUse">Select feasible picks, manipulate packages, and route failed attempts within robotic induction</dd></div>
+                  <div><dt>Unit / denominator</dt><dd data-passport-field="unitDenominator">Vendor-authored extended abstract reports fleet handling up to 6 million packages per day and more than 2 billion cumulative manipulations</dd></div>
+                  <div><dt>Human fallback</dt><dd data-passport-field="humanFallback">Operators handle damaged, unsafe, ungraspable, misrouted, or repeatedly failed packages and maintain equipment.</dd></div>
+                  <div><dt>Failure boundary</dt><dd data-passport-field="failureBoundary">Deformable or unknown package, clutter, bad grasp, damage risk, congestion, hardware fault, or downstream routing exception.</dd></div>
+                  <div><dt>Evidence type</dt><dd data-passport-field="evidenceType">observation</dd></div>
+                  <div><dt>Interpretation</dt><dd data-passport-field="interpretation">Vendor research documents scaled production use of learned pick-success estimation in one bounded warehouse loop.</dd></div>
+                  <div><dt>Caveat</dt><dd data-passport-field="caveat">Vendor-authored aggregate volume lacks independent reliability, exception-rate, economics, worker-outcome, and site-level denominators.</dd></div>
+                </dl>
+              </details>
+            </div>
+          </section>
+
+          <p class="scope-warning"><strong>Independent gates:</strong> Demonstrated, operational, reliable, approved, and scaled answer different questions. Unknown is not failed. Approval may be N/A.</p>
+        </section>
+
+        <section id="direction" class="evidence-chapter">
+          <p class="evidence-label">02 · What direction are we moving?</p>
+          <h2>Case passports show<br><em>which gate evidence supports.</em></h2>
+          <p class="evidence-intro">A green gate never spills into its neighbour. Authorization does not turn unknown field reliability into “reliable”; scale does not certify safety.</p>
+          <div class="passport-grid">
+            <article><span>Driving</span><h3>Authorized, bounded operation</h3><p><b>Supported:</b> demonstrated, operational, approved.</p><p><b>Unknown:</b> field reliability and scale under comparable denominators.</p></article>
+            <article><span>Retinal screening</span><h3>Authorized diagnostic loop</h3><p><b>Supported:</b> demonstrated, operational, approved.</p><p><b>Unknown:</b> long-run field reliability and broad scale.</p></article>
+            <article><span>Interactive LLM</span><h3>Latency benchmark</h3><p><b>Supported:</b> demonstrated.</p><p><b>Unknown:</b> operation, reliability, scale. <b>N/A:</b> approval.</p></article>
+            <article><span>Streaming generation</span><h3>Peer-reviewed demonstration</h3><p><b>Supported:</b> demonstrated.</p><p><b>Unknown:</b> operation, reliability, scale. <b>N/A:</b> approval.</p></article>
+            <article><span>Object identification</span><h3>Fixed-dataset benchmark</h3><p><b>Supported:</b> demonstrated.</p><p><b>Unknown:</b> operation, reliability, scale. <b>N/A:</b> approval.</p></article>
+            <article><span>Warehouse sorting</span><h3>Vendor-documented production loop</h3><p><b>Supported:</b> demonstrated, operational, scaled.</p><p><b>Unknown:</b> independent reliability. <b>N/A:</b> approval.</p></article>
+          </div>
+        </section>
+
+        <section id="distribution" class="evidence-chapter">
+          <p class="evidence-label">03 · Who benefits or carries cost?</p>
+          <h2>A task loop is not<br><em>a whole position.</em></h2>
+          <div class="bundle-diagram evidence-bearing" data-source-id="ilo-exposure">
+            <article><span>01</span><h3>Automatable loop</h3><p>Only stages inside stated task boundary.</p></article>
+            <article><span>02</span><h3>Possible position effects</h3><p>Demand, workflow, authority, economics, and exception load mediate staffing.</p></article>
+            <article><span>03</span><h3>Retained human work</h3><p>Goals, context, consent, preparation, verification, care, maintenance, and accountability.</p></article>
+            <article><span>04</span><h3>Exception handling</h3><p>Out-of-domain cases, unsafe states, appeals, damaged inputs, and recovery.</p></article>
+            <article><span>05</span><h3>Affected groups</h3><p>Operators, patients, road users, workers, customers, bystanders, and data subjects.</p></article>
+            <p class="proximate-citation" data-citation-source-id="ilo-exposure">Evidence basis: <a href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure" target="_blank" rel="noreferrer">ILO–NASK task exposure index, 2025 ↗</a> · exposure is not observed job loss · <a href="#source-ilo-exposure">Scope &amp; caveats ↓</a></p>
+          </div>
+          <p class="scope-warning"><strong>Position-removal threshold:</strong> full-loop coverage plus reliable operation, authority, integration, economics, and exception handling. Below that threshold, describe task change, exposure, or augmentation.</p>
+        </section>
+
+        <section id="explanations" class="evidence-chapter">
+          <p class="evidence-label">04 · Competing explanations</p>
+          <h2>Model gains are<br><em>one system component.</em></h2>
+          <div class="explanation-orbit evidence-bearing" data-source-id="nist-ai-rmf mlperf-vision">
+            <div class="orbit-core"><strong>Closed loop</strong><span>inside deadline</span></div>
+            <ul>
+              <li>Constrained environment</li><li>Hardware</li><li>Sensors</li><li>Human fallback</li><li>Integration</li><li>Regulation</li><li>Model gains</li>
+            </ul>
+            <p class="proximate-citation" data-citation-source-id="nist-ai-rmf mlperf-vision">Evidence basis: <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noreferrer">NIST AI RMF</a> · <a href="https://docs.mlcommons.org/inference/" target="_blank" rel="noreferrer">MLPerf definitions</a> · <a href="#source-nist-ai-rmf">risk scope ↓</a> · <a href="#source-mlperf-vision">benchmark caveat ↓</a></p>
+          </div>
+        </section>
+
+        <section id="change" class="evidence-chapter">
+          <p class="evidence-label">05 · What would change our conclusion?</p>
+          <h2>Upgrade with field denominators.<br><em>Downgrade on hidden boundaries.</em></h2>
+          <div class="change-grid">
+            <article><span>Upgrade indicators</span><ul><li>Repeated field evidence reports deadline misses, failures, interventions, and recovery.</li><li>Independent evaluation covers intended populations, domains, shift, and rare conditions.</li><li>Authority, integration, economics, and exception handling hold across sustained volume.</li><li>Downstream outcomes improve without shifting hidden cost or risk.</li></ul></article>
+            <article><span>Downgrade indicators</span><ul><li>Permit, benchmark, or demo is generalized beyond its operating domain.</li><li>Latency improves while accuracy, safety, or outcomes worsen.</li><li>Human intervention, exception work, or exposure denominators disappear.</li><li>New conditions produce correlated failures, unsafe actions, or responsibility gaps.</li></ul></article>
+          </div>
+        </section>
+
+        <section id="feedback" class="evidence-chapter">
+          <p class="evidence-label">06 · New-problem feedback map</p>
+          <h2>Faster action creates<br><em>faster failure paths.</em></h2>
+          <div class="feedback-map evidence-bearing" data-source-id="nist-ai-rmf">
+            <article><span>Latency</span><p>Late safe answer can become unsafe action.</p></article>
+            <article><span>Distribution shift</span><p>Next input can leave intended-use distribution.</p></article>
+            <article><span>Surveillance</span><p>Observation loops can expand collection about people and places.</p></article>
+            <article><span>Cyberattack</span><p>Sensors, models, interfaces, and actuators add attack surfaces.</p></article>
+            <article><span>Cascading actions</span><p>Coupled systems can propagate one error before review.</p></article>
+            <article><span>Responsibility gaps</span><p>Operator, deployer, vendor, and authority roles can diverge.</p></article>
+            <article><span>Deskilling</span><p>Reliance can weaken fallback capability.</p></article>
+            <article><span>Rebound demand</span><p>Cheaper decisions can increase total actions and exception volume.</p></article>
+            <p class="proximate-citation" data-citation-source-id="nist-ai-rmf">Evidence basis: <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noreferrer">NIST AI RMF 1.0 ↗</a> · risk nodes are editorial applications, not NIST maturity ratings · <a href="#source-nist-ai-rmf">Scope &amp; caveats ↓</a></p>
+          </div>
+        </section>
+
+        <section id="possibilities" class="evidence-chapter">
+          <p class="evidence-label">07 · What might this make possible?</p>
+          <h2>Possibilities stay<br><em>labelled and contestable.</em></h2>
+          <div class="possibility-list">
+            <article><strong>Hypothesis</strong><p>Smaller local models may close more useful loops by reducing network latency and data transfer.</p></article>
+            <article><strong>Hypothesis</strong><p>Exception-handling quality may become a stronger bottleneck than inference speed.</p></article>
+            <article><strong>Hypothesis</strong><p>Jobs may reorganize around supervising several bounded loops rather than disappear whole.</p></article>
+            <article><strong>Normative question</strong><p>Which actions should remain slow enough for contestability, consent, or human judgment?</p></article>
+            <article><strong>Normative question</strong><p>Who bears proof and liability when a system acts before affected people can intervene?</p></article>
+          </div>
+        </section>
+
+        <section id="sources" class="evidence-chapter">
+          <p class="evidence-label">Method &amp; full source ledger</p>
+          <h2>Scope travels<br><em>with every claim.</em></h2>
+          <div class="method-rules">
+            <article><span>Loop rule</span><p>Sense → Interpret → Predict → Decide → Act → Observe must close before environment invalidates action.</p></article>
+            <article><span>Maturity rule</span><p>Benchmark accuracy ≠ field reliability. Authorization ≠ scale. Scale ≠ safety.</p></article>
+            <article><span>Unknown rule</span><p>Unknown is not failed. Approval may be N/A where no task-specific regime applies.</p></article>
+            <article><span>Refresh rule</span><p>Monthly editorial replay. Curated JSON only; no visitor-time evidence calls.</p></article>
+          </div>
+          <p class="evidence-vocabulary"><strong>Evidence vocabulary:</strong> observation · exposure estimate · association · experiment · forecast · scenario · editorial judgment · hypothesis · normative question</p>
+
+          <div class="source-ledger-static realtime-ledger">
+            <article id="source-ca-dmv-permits"><h3>California DMV · Autonomous Vehicle Permit Holders</h3><p><b>Scope:</b> California permit categories and named operating constraints; reviewed 26 July 2026.</p><p><b>Caveat:</b> permit status is not a safety rate, reliability verdict, or proof of unrestricted autonomy.</p><a href="https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/autonomous-vehicle-testing-permit-holders/" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-nhtsa-sgo"><h3>NHTSA · Standing General Order on Crash Reporting</h3><p><b>Scope:</b> reportable US ADS and Level 2 ADAS crashes; amended through 2025.</p><p><b>Caveat:</b> possible duplicate reports and no common mileage, fleet, or ODD exposure denominator.</p><a href="https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-fda-idx-dr"><h3>FDA · IDx-DR De Novo summary, DEN180001</h3><p><b>Scope:</b> indicated US adults with diabetes; retinal diagnostic software authorized 11 April 2018.</p><p><b>Caveat:</b> authorization does not prove follow-up, outcomes, broad generalization, or scale.</p><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN180001.pdf" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-idx-pivotal"><h3>npj Digital Medicine · IDx-DR pivotal trial</h3><p><b>Scope:</b> 900 enrolled people at 10 US primary-care sites; prospective diagnostic study.</p><p><b>Caveat:</b> eligibility, enrichment, acquisition, and reference workflow limit generalization.</p><a href="https://pubmed.ncbi.nlm.nih.gov/31304320/" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-jhm-retina"><h3>npj Digital Medicine · Johns Hopkins field deployment</h3><p><b>Scope:</b> more than 17,000 largely metropolitan adults with diabetes; 2019 versus 2021.</p><p><b>Caveat:</b> retrospective association does not prove causality, completed referral, clinical outcomes, or broad scale.</p><a href="https://www.nature.com/articles/s41746-024-01197-3" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-mlperf-llm"><h3>MLCommons · MLPerf Inference v5.0 results</h3><p><b>Scope:</b> submitted systems under defined LLM workload, quality, TTFT, TPOT, and compliance rules.</p><p><b>Caveat:</b> benchmark compliance does not establish factuality, field reliability, task completion, or service quality.</p><a href="https://mlcommons.org/2025/04/mlperf-inference-v5-0-results/" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-streamdiffusion"><h3>ICCV 2025 · StreamDiffusion</h3><p><b>Scope:</b> specified diffusion pipelines, inputs, resolutions, and GPU hardware.</p><p><b>Caveat:</b> research throughput does not prove operational reliability, safe content, rights clearance, or scale.</p><a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Kodaira_StreamDiffusion_A_Pipeline-level_Solution_for_Real-Time_Interactive_Generation_ICCV_2025_paper.pdf" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-mlperf-vision"><h3>MLCommons · MLPerf Inference definitions</h3><p><b>Scope:</b> fixed vision datasets, accuracy targets, scenarios, hardware, and software; v5.0 definitions.</p><p><b>Caveat:</b> benchmark accuracy does not prove open-world reliability, sensor robustness, downstream decisions, or safety.</p><a href="https://docs.mlcommons.org/inference/" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-amazon-robin"><h3>Amazon Science / IROS workshop · Robin pick planning</h3><p><b>Scope:</b> vendor-reported production fleet, up to 6 million packages per day and more than 2 billion cumulative manipulations.</p><p><b>Caveat:</b> aggregate vendor claims lack independent site, reliability, intervention, economics, and worker-outcome denominators.</p><a href="https://www.amazon.science/publications/pick-planning-strategies-for-large-scale-package-manipulation" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-ilo-exposure"><h3>ILO–NASK · Refined global occupational exposure index</h3><p><b>Scope:</b> global employment mapped through tasks and harmonized microdata; 2025.</p><p><b>Caveat:</b> modeled exposure is not adoption, full-loop automation, observed displacement, or forecast timing.</p><a href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-nist-ai-rmf"><h3>NIST · Artificial Intelligence Risk Management Framework 1.0</h3><p><b>Scope:</b> cross-sector lifecycle risk management, intended use, oversight, impacts, and emergent risk.</p><p><b>Caveat:</b> voluntary guidance does not certify any case, maturity flag, reliability level, or legal compliance.</p><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noreferrer">Open source ↗</a></article>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+  <footer class="evidence-footer"><div class="signal-shell"><span>Brief 006 · Real-time AI</span><a href="../">Explore Signals atlas →</a></div></footer>
+  <noscript><div class="noscript-note">JavaScript is unavailable. Core verdict, six-stage map, case boundaries, maturity flags, static tables, caveats, and source ledger remain available above.</div></noscript>
+</body>
+</html>

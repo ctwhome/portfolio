@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh stable official series for Financial fragility (Brief 008).
+"""Refresh stable official series for Financial fragility (Brief 009).
 
 The browser reads only the committed JSON. This updater owns the whitelisted BIS
 household-credit and debt-service series, the ECB new-mortgage rate, Eurostat

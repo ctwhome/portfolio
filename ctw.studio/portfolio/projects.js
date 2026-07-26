@@ -45,8 +45,8 @@ Built with SvelteKit, Threlte (Three.js for Svelte), and Google Gemini API with 
 The work focuses on clear project cards, fast browsing, strong visual rhythm, and simple pathways from a project story to the software, people, and research context behind it. It turns an institutional archive into something closer to an editorial product: readable, filterable, and approachable for funders, collaborators, researchers, and the public.`,
     coverImage: 'projects/nlesc-portfolio/cover.avif',
     gridSpan: 3,
-    liveUrl: 'https://nlesc.ctwhome.com/',
-    tags: ['SvelteKit', 'Research', 'Portfolio', 'Communication'],
+    liveUrl: '/nlesc/',
+    tags: ['Next.js', 'React', 'WebGL', 'Portfolio'],
     institution: 'Netherlands eScience Center',
     gallery: [
       { type: 'image', src: 'projects/nlesc-portfolio/cover.avif', caption: 'Netherlands eScience Center portfolio identity and landing screen' },
