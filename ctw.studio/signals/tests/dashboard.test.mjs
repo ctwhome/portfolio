@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/ai-jobs.json', root), 'utf8'));
-const html = await readFile(new URL('index.html', root), 'utf8');
+const html = await readFile(new URL('ai-work/index.html', root), 'utf8');
 const script = await readFile(new URL('dashboard.js', root), 'utf8');
 
 const requiredSeries = ['openings', 'hires', 'unemployment'];
@@ -91,6 +91,7 @@ test('source ledger is auditable and uses secure links', () => {
     assert.match(source.url, /^https:\/\//);
     assert.ok(source.institution && source.title && source.date && source.note);
   }
+  assert.match(html, new RegExp(`id="source-count">${data.sources.length} sources`));
 });
 
 test('page exposes the story, active navigation, chart alternatives, and method', () => {
@@ -99,12 +100,15 @@ test('page exposes the story, active navigation, chart alternatives, and method'
   assert.match(html, /id="exposure"/);
   assert.match(html, /id="uneven"/);
   assert.match(html, /id="expectations"/);
+  assert.match(html, /id="transition-discipline"/);
   assert.match(html, /id="answer"/);
   assert.match(html, /id="market-data-table"/);
   assert.match(html, /market-chart-keyboard-help/);
   assert.match(html, /id="market-chart"[^>]*tabindex="0"/);
   assert.match(html, /id="sources-list"/);
   assert.match(html, /Housing &amp; affordability/);
+  assert.match(html, /Science/);
+  assert.match(html, /Healthspan/);
 });
 
 test('dashboard renders from the published data file without third-party chart code', () => {
@@ -112,6 +116,29 @@ test('dashboard renders from the published data file without third-party chart c
   assert.match(script, /renderMarketChart/);
   assert.match(script, /renderDataTable/);
   assert.match(script, /safeHttpsUrl/);
+  assert.match(script, /renderTransitionDiscipline/);
   assert.match(script, /ArrowLeft/);
   assert.doesNotMatch(script, /chart\.js|d3\.js|plotly/i);
+});
+
+test('AI transition discipline classifies guidance, limitations, and reversal indicators', () => {
+  const discipline = data.transitionDiscipline;
+  assert.equal(discipline.frameworkSourceId, 'gapminder-factfulness');
+  assert.match(discipline.frameworkUse, /no affiliation/i);
+  const framework = data.sources.find((source) => source.id === discipline.frameworkSourceId);
+  for (const field of ['institution', 'title', 'date', 'url', 'geographyPopulation', 'period', 'denominatorUnit', 'evidenceType', 'role', 'interpretation', 'caveat']) {
+    assert.ok(framework[field], `framework source missing ${field}`);
+  }
+  assert.ok(discipline.observedBasis.length >= 3);
+  assert.ok(discipline.observedBasis.every((item) => item.classification && item.sourceId && item.limitation));
+  assert.ok(discipline.robustActions.length >= 4);
+  assert.ok(discipline.robustActions.every((item) => item.classification === 'Prudent judgment' && item.basis && item.limitation));
+  assert.ok(discipline.watchIndicators.length >= 4);
+  assert.match(discipline.explicitLimitations, /mass displacement is not established/i);
+  assert.match(html, /Base rate/);
+  assert.match(html, /Trend ≠ cause/);
+  assert.match(html, /Exposure ≠ loss/);
+  assert.match(html, /Task ≠ occupation/);
+  assert.match(html, /Experiment ≠ forecast/);
+  assert.match(html, /not universal prescription/i);
 });
