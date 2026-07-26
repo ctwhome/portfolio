@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const DATA_URL = 'data/ai-jobs.json';
+  const DATA_URL = '../data/ai-jobs.json';
   const COLORS = {
     observed: '#57d7ff',
     observedFill: 'rgba(87, 215, 255, 0.12)',
@@ -89,6 +89,7 @@
     const title = $('#market-chart-title');
     const description = $('#market-chart-desc');
     const sourceLink = $('#market-source');
+    const citation = $('#market-citation');
     const source = getSource(config.sourceId);
     const tooltip = $('#chart-tooltip');
 
@@ -99,6 +100,14 @@
     if (sourceUrl) {
       sourceLink.href = sourceUrl;
       sourceLink.textContent = `${source.institution.replace('U.S. Bureau of Labor Statistics via ', '')} ↗`;
+      if (citation) {
+        citation.dataset.citationSourceId = config.sourceId;
+        citation.closest('.evidence-bearing').dataset.sourceId = config.sourceId;
+        const links = citation.querySelectorAll('a');
+        links[0].href = sourceUrl;
+        links[0].textContent = `${source.institution}, ${source.title} ↗`;
+        links[1].href = `#source-${config.sourceId}`;
+      }
     } else {
       sourceLink.removeAttribute('href');
       sourceLink.textContent = 'Source URL unavailable';

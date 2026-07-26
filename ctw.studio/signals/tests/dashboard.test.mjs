@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/ai-jobs.json', root), 'utf8'));
-const html = await readFile(new URL('index.html', root), 'utf8');
+const html = await readFile(new URL('ai-work/index.html', root), 'utf8');
 const script = await readFile(new URL('dashboard.js', root), 'utf8');
 
 const requiredSeries = ['openings', 'hires', 'unemployment'];

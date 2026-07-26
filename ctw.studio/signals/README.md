@@ -4,16 +4,17 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 
 ## Published briefs
 
-- **Brief 001 · AI & work** (`index.html`) — observed U.S. labor-market conditions, global AI exposure, early-career signals, employer expectations, adoption and productivity evidence.
+- **Signals atlas** (`index.html`) — the shared five-question evidence contract, three geographic lenses and the ten-subject publication roadmap.
+- **Brief 001 · AI & work** (`ai-work/index.html`) — observed U.S. labor-market conditions, global AI exposure, early-career signals, employer expectations, adoption and productivity evidence.
 - **Brief 002 · Food, animals & the planet** (`food/index.html`) — animal slaughter, fish-count uncertainty, livestock emissions, product footprints, land, deforestation, water, oceans and health evidence.
 - **Brief 003 · Housing & affordability** (`housing/index.html`) — world housing adequacy, Dutch prices, rents, financing, tenure burden, supply and household formation, plus mechanism-led country comparisons.
 - **Brief 004 · Science & discovery** (`science/index.html`) — R&D inputs, publication volume, reliability, open data/software, translation and demonstrated AI-assisted acceleration kept separate.
 - **Brief 005 · Healthspan & care** (`healthspan/index.html`) — lifespan, healthy life years, avoidable mortality, access, workforce, spending and AMR with explicit evidence-category boundaries.
-- **Signals atlas** (`roadmap/index.html`) — the shared five-question evidence contract, three geographic lenses and the ten-subject publication roadmap.
 
 ## Files
 
-- `index.html` — AI/jobs editorial storyboard and accessible chart containers
+- `index.html` and `atlas.css` — Signals Atlas homepage and ten-subject roadmap
+- `ai-work/index.html` — AI/jobs editorial storyboard and accessible chart containers
 - `dashboard.js` — dependency-free AI/jobs rendering and interactions
 - `signals.css` — shared Signals visual system plus Brief 001 components
 - `data/ai-jobs.json` — curated AI/jobs evidence and baked FRED/BLS observations
@@ -27,7 +28,7 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - `housing/housing.js` and `housing/housing.css` — dependency-free housing charts, interactions and visual layer
 - `data/housing.json` — curated housing interpretation plus baked World Bank, OECD, Eurostat, CBS and ECB observations
 - `scripts/update_housing_data.py` — no-key refresh for eight official housing source series
-- `roadmap/index.html` — ten-subject Signals atlas and publication sequence
+- `roadmap/index.html` — noindex static fallback for the permanently redirected former Atlas route
 - `science/index.html`, `science/science.js`, `science/science.css` — Brief 004 page, dependency-free renderer and topic composition
 - `data/science.json` — official science series plus manually curated primary evidence and source ledger
 - `scripts/update_science_data.py` — no-key World Bank refresh for R&D intensity and journal-article series
@@ -70,10 +71,11 @@ The housing updater downloads and reconciles:
 - CBS existing-home prices, dwelling-stock changes and private households
 - ECB / DNB new-mortgage interest rates
 
-The science updater downloads:
+The science updater atomically downloads:
 
 - World Bank WDI R&D expenditure as a share of GDP, sourced from UNESCO UIS
 - World Bank WDI scientific and technical journal-article counts
+- Stanford HAI 2026 AI Index Figure 1.6.1 publication counts and AI share of computer-science publications
 
 The healthspan updater downloads:
 
@@ -113,7 +115,7 @@ After any refresh:
 
 ## Adding the next brief
 
-Follow the atlas contract in `roadmap/index.html`: one data file, a reproducible no-key updater where feasible, an inspectable source ledger, explicit world / Europe-Netherlands / selected-country scopes, and tests that fail on silent data gaps or denominator changes.
+Follow the atlas contract in `index.html`: one data file, a reproducible no-key updater where feasible, an inspectable source ledger, explicit world / Europe-Netherlands / selected-country scopes, and tests that fail on silent data gaps or denominator changes.
 
 ## Verification
 
@@ -130,4 +132,4 @@ python3 -m py_compile signals/scripts/*.py
 python3 -m http.server 4173
 ```
 
-Probe `/signals/`, `/signals/food/`, `/signals/housing/`, `/signals/science/`, `/signals/healthspan/` and `/signals/roadmap/`. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.
+Probe `/signals/`, `/signals/ai-work/`, `/signals/food/`, `/signals/housing/`, `/signals/science/` and `/signals/healthspan/`. Confirm `/signals/roadmap` and `/signals/roadmap/` redirect exactly to `/signals/`. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.

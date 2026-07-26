@@ -28,6 +28,7 @@
     const title = byId('health-series-title');
     const bars = byId('health-bars');
     const table = byId('health-data-table');
+    const citation = byId('health-series-citation');
     if (!series || !title || !bars || !table) return;
 
     title.textContent = `${series.label} · latest available`;
@@ -62,6 +63,17 @@
       );
       return row;
     }));
+    if (citation) {
+      const source = data.sources.find((item) => item.id === series.sourceId);
+      const links = citation.querySelectorAll('a');
+      citation.dataset.citationSourceId = series.sourceId;
+      citation.closest('.evidence-bearing').dataset.sourceId = series.sourceId;
+      if (source && links.length === 2) {
+        links[0].href = safeHttpsUrl(source.url) || '#sources';
+        links[0].textContent = `${source.institution}, ${source.title}, ${source.period} ↗`;
+        links[1].href = `#source-${series.sourceId}`;
+      }
+    }
   }
 
   function renderHealthyYears(data) {
@@ -106,6 +118,7 @@
     if (!host) return;
     host.replaceChildren(...sources.map((source) => {
       const article = document.createElement('article');
+      article.id = `source-${source.id}`;
       const title = document.createElement('h3');
       title.textContent = source.title;
       const meta = document.createElement('p');

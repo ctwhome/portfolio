@@ -156,6 +156,7 @@
     sources.forEach((source, index) => {
       const item = document.createElement('article');
       item.className = 'source-item';
+      item.id = `source-${source.id}`;
 
       const number = document.createElement('span');
       number.className = 'source-number';

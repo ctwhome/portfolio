@@ -1,507 +1,217 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" style="background: #050505">
+<html lang="en" class="scroll-smooth roadmap-page" style="background:#080907">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Is AI transforming the job market? — CTW Signals</title>
-  <meta name="description" content="A fact-first visual briefing on AI, jobs, exposure, productivity and what the labour-market numbers actually show.">
+  <title>The Signals atlas — CTW Signals</title>
+  <meta name="description" content="The evidence standard, geographic lenses and publication roadmap for ten CTW Signals briefings.">
+  <meta name="theme-color" content="#080907">
   <link rel="canonical" href="https://ctw.studio/signals/">
-
-  <meta property="og:title" content="Is AI transforming the job market? — CTW Signals">
-  <meta property="og:description" content="Observed data, forecasts and experiments—kept separate. A visual evidence briefing from CTW Studio.">
-  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Signals atlas — CTW Signals">
+  <meta property="og:description" content="Ten long-horizon evidence briefs held to one inspectable standard.">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://ctw.studio/signals/">
-  <meta property="og:image" content="https://ctw.studio/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="icon" type="image/png" href="../favicon.png">
-  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
   <link rel="stylesheet" href="../tailwind.css">
-  <link rel="stylesheet" href="signals.css?v=6">
+  <link rel="stylesheet" href="signals.css">
+  <link rel="stylesheet" href="atlas.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
-  <script src="dashboard.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="../nav.js" data-base="../" data-active="signals"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to the evidence</a>
-  <script src="../nav.js" data-base="../" data-active="signals"></script>
-
+  <a class="skip-link" href="#main-content">Skip to the atlas</a>
   <main id="main-content">
-    <header class="signal-hero">
-      <div class="signal-shell">
-        <div class="topic-switcher" aria-label="CTW Signals topics">
-          <span class="topic-switcher__label">CTW Signals</span>
-          <a class="topic-pill topic-pill--active" href="./" aria-current="page">AI &amp; work</a>
-          <a class="topic-pill" href="food/">Food, animals &amp; planet</a>
-          <a class="topic-pill" href="housing/">Housing &amp; affordability</a>
-          <a class="topic-pill" href="science/">Science</a>
-          <a class="topic-pill" href="healthspan/">Healthspan</a>
-          <a class="topic-pill" href="roadmap/">Atlas</a>
-        </div>
-
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Brief 001 · Evidence over headlines</p>
-            <h1>Is AI taking jobs—or <em>changing</em> them?</h1>
-            <p class="hero-deck">
-              A fact-first storyboard about a fast-moving technology and a slow-moving labour market.
-              We compare what is <strong>observed</strong>, what is merely <strong>exposed</strong>, what happened in
-              <strong>experiments</strong>, and what remains a <strong>forecast</strong>.
-            </p>
-            <div class="hero-meta">
-              <span class="live-dot" aria-hidden="true"></span>
-              <span id="data-as-of">Loading the latest official series…</span>
-              <a href="#method">How to read this</a>
-            </div>
-          </div>
-
-          <aside class="verdict-card" aria-label="Current evidence verdict">
-            <div class="verdict-card__topline">
-              <span>Current read</span>
-              <span class="verdict-status"><i aria-hidden="true"></i> Mixed signal</span>
-            </div>
-            <p class="verdict-card__statement">Transformation is visible.<br>Mass displacement is <span>not established.</span></p>
-            <div class="verdict-scale" aria-label="Evidence scale: early signal, concentrated effects, broad disruption">
-              <span class="verdict-scale__active">Early signal</span>
-              <span class="verdict-scale__active">Concentrated effects</span>
-              <span>Broad disruption</span>
-            </div>
-            <p class="verdict-card__note">The strongest observed warning is among young workers in highly exposed occupations—not across the whole economy.</p>
-          </aside>
-        </div>
-
-        <div class="hero-question-row" aria-label="Questions this briefing answers">
-          <span>01 Is the market breaking?</span>
-          <span>02 How many jobs are exposed?</span>
-          <span>03 Who feels it first?</span>
-          <span>04 What do forecasts really say?</span>
+    <header class="atlas-hero">
+      <div class="atlas-shell">
+        <nav class="atlas-topics" aria-label="Signal topics">
+          <span>Signals /</span>
+          <a href="ai-work/">AI &amp; work</a>
+          <a href="food/">Food &amp; planet</a>
+          <a href="housing/">Housing</a>
+          <a href="science/">Science</a>
+          <a href="healthspan/">Healthspan</a>
+          <a class="active" href="./" aria-current="page">Atlas</a>
+        </nav>
+        <p class="atlas-kicker">The Signals atlas · Version 1</p>
+        <h1>Important questions,<br><em>held to one standard.</em></h1>
+        <p class="atlas-deck">Ten long-horizon briefings about whether life is becoming more capable, affordable, healthy, resilient and free—not a scoreboard of context-free metrics.</p>
+        <div class="atlas-status">
+          <span><strong>5</strong> briefings published</span>
+          <span><strong>3 of 10</strong> atlas briefs published</span>
+          <span><strong>7</strong> atlas briefs planned</span>
         </div>
       </div>
     </header>
 
-    <div class="signal-shell story-layout">
-      <aside class="story-index" aria-label="Briefing chapters">
-        <p class="story-index__title">The storyboard</p>
-        <ol>
-          <li><a href="#big-picture"><span>01</span> The whole market</a></li>
-          <li><a href="#exposure"><span>02</span> Exposure ≠ loss</a></li>
-          <li><a href="#uneven"><span>03</span> Uneven effects</a></li>
-          <li><a href="#expectations"><span>04</span> Expectations</a></li>
-          <li><a href="#work-changes"><span>05</span> Work changes</a></li>
-          <li><a href="#transition-discipline"><span>06</span> Factful uncertainty</a></li>
-          <li><a href="#answer"><span>07</span> The honest answer</a></li>
-        </ol>
-        <div class="legend-mini">
-          <p><i class="key key--observed"></i> Observed</p>
-          <p><i class="key key--exposure"></i> Exposure</p>
-          <p><i class="key key--experiment"></i> Experiment</p>
-          <p><i class="key key--forecast"></i> Forecast</p>
+    <section class="atlas-topics-section" aria-labelledby="topics-title">
+      <div class="atlas-shell">
+        <div class="section-head topics-head">
+          <div><p class="section-label">The ten-subject atlas</p><h2 id="topics-title">What Signals will track.</h2></div>
+          <p>Each card defines a standing evidence brief, not a one-off article. The indicators can evolve; the question remains inspectable.</p>
         </div>
-      </aside>
 
-      <div class="story-content">
-        <section id="big-picture" class="story-section reveal">
-          <div class="section-heading">
+        <ol class="atlas-grid">
+          <li class="atlas-card atlas-card--published" data-status="published">
+            <a href="housing/">
+              <header><span>01</span><small>Published · Brief 003</small></header>
+              <h3>Housing &amp; affordability</h3>
+              <p>Track prices against incomes, rents, mortgage costs and total monthly burden; construction against household formation; social housing, waiting times, homelessness, vacancy and who gains from scarcity.</p>
+              <strong>Read the brief →</strong>
+            </a>
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <p class="eyebrow eyebrow--observed"><span>Observed</span> · U.S. monthly data</p>
-              <h2>The labour market is cooling.<br><em>That is not the same as an AI collapse.</em></h2>
+              <header><span>02</span><small>Planned · Next</small></header>
+              <h3>Prosperity</h3>
+              <p>Track median disposable income, productivity, real wages, essential costs, wealth distribution, public services, time use and whether economic gains reach ordinary households.</p>
             </div>
-            <span class="chapter-number">01</span>
-          </div>
-          <p class="section-intro">
-            Job openings have fallen since ChatGPT arrived, while unemployment is modestly higher. But openings had already peaked in March 2022—eight months before ChatGPT. These lines describe the market; they do not assign a cause.
-          </p>
-
-          <div class="metric-strip">
-            <article>
-              <span class="metric-label">Latest openings</span>
-              <strong id="openings-latest">—</strong>
-              <small id="openings-latest-date">U.S. · loading</small>
-            </article>
-            <article>
-              <span class="metric-label">Since Nov. 2022</span>
-              <strong id="openings-change">—</strong>
-              <small>openings · not AI-attributed</small>
-            </article>
-            <article>
-              <span class="metric-label">Latest unemployment</span>
-              <strong id="unemployment-latest">—</strong>
-              <small id="unemployment-latest-date">U.S. · loading</small>
-            </article>
-          </div>
-
-          <article class="chart-card chart-card--wide">
-            <div class="chart-card__header">
-              <div>
-                <p class="chart-kicker">Live indicator</p>
-                <h3 id="market-chart-title">U.S. job openings</h3>
-              </div>
-              <div class="chart-switcher" role="group" aria-label="Choose labour-market indicator">
-                <button type="button" data-series="openings" aria-pressed="true">Openings</button>
-                <button type="button" data-series="hires" aria-pressed="false">Hires</button>
-                <button type="button" data-series="unemployment" aria-pressed="false">Unemployment</button>
-              </div>
-            </div>
-            <div class="line-chart-wrap">
-              <svg id="market-chart" class="line-chart" viewBox="0 0 780 360" role="img" tabindex="0" aria-labelledby="market-chart-title" aria-describedby="market-chart-desc market-chart-keyboard-help"></svg>
-              <div id="chart-tooltip" class="chart-tooltip" role="status" aria-live="polite" hidden></div>
-            </div>
-            <p id="market-chart-desc" class="chart-description">Loading official monthly observations…</p>
-            <p id="market-chart-keyboard-help" class="sr-only">Focus the chart and use the left and right arrow keys to inspect monthly observations. The complete values are also available in the data table below.</p>
-            <div class="chart-footer">
-              <span><i class="annotation-line" aria-hidden="true"></i> ChatGPT public launch · Nov. 2022</span>
-              <a id="market-source" href="https://fred.stlouisfed.org/series/JTSJOL" target="_blank" rel="noreferrer">BLS via FRED ↗</a>
-            </div>
-            <details class="data-table-wrap">
-              <summary>View the chart as data</summary>
-              <div id="market-data-table" class="data-table-scroll"></div>
-            </details>
-          </article>
-
-          <aside class="reading-note">
-            <span class="reading-note__mark">!</span>
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <strong>What the line can tell us</strong>
-              <p>Whether hiring conditions are tightening or loosening.</p>
+              <header><span>03</span><small>Planned</small></header>
+              <h3>Energy &amp; compute</h3>
+              <p>Track demand, prices, grid congestion, clean generation, firm capacity, storage, transmission, data centres, AI load, emissions and which constraints are physical rather than rhetorical.</p>
             </div>
+          </li>
+          <li class="atlas-card atlas-card--published" data-status="published">
+            <a href="healthspan/">
+              <header><span>04</span><small>Published · Brief 005</small></header>
+              <h3>Healthspan &amp; care</h3>
+              <p>Track healthy life years, preventable mortality, chronic and mental illness, access and waiting times, workforce capacity, antimicrobial resistance and whether longer lives are better lives.</p>
+              <strong>Read the brief →</strong>
+            </a>
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <strong>What it cannot tell us</strong>
-              <p>Whether AI, interest rates, post-pandemic normalization, or another force caused the movement.</p>
+              <header><span>05</span><small>Planned</small></header>
+              <h3>Demography, migration &amp; aging</h3>
+              <p>Track fertility, age structure, migration, dependency, household formation, regional divergence, integration and what population change means for housing, care, work and public finance.</p>
             </div>
-          </aside>
-        </section>
-
-        <section id="exposure" class="story-section reveal">
-          <div class="section-heading">
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <p class="eyebrow eyebrow--exposure"><span>Exposure estimate</span> · Global</p>
-              <h2>One in four workers is exposed.<br><em>Only a small share is highly exposed.</em></h2>
+              <header><span>06</span><small>Planned</small></header>
+              <h3>Democracy, trust &amp; information</h3>
+              <p>Track institutional trust, rule of law, corruption, turnout, polarization, press freedom, information concentration, online manipulation and how AI-mediated discovery changes public knowledge.</p>
             </div>
-            <span class="chapter-number">02</span>
-          </div>
-          <p class="section-intro">
-            The ILO asks whether generative AI can perform tasks inside an occupation. It does not count redundancies. That distinction changes the story.
-          </p>
-
-          <article class="exposure-card">
-            <div class="exposure-card__headline">
-              <div>
-                <span>Some GenAI exposure</span>
-                <strong>≈<b id="exposure-any">25</b>%</strong>
-              </div>
-              <div>
-                <span>Highest exposure category</span>
-                <strong><b id="exposure-high">3.3</b>%</strong>
-              </div>
-            </div>
-            <div id="exposure-chart" class="exposure-chart" role="img" aria-label="Of global employment, about 25 percent is in occupations with some generative AI exposure, including 3.3 percent in the highest exposure category."></div>
-            <div class="exposure-legend">
-              <span><i class="key key--high"></i> Highest exposure</span>
-              <span><i class="key key--exposure"></i> Other exposure</span>
-              <span><i class="key key--muted"></i> Lower / no measured exposure</span>
-            </div>
-          </article>
-
-          <div class="two-column-notes">
-            <article class="fact-card">
-              <span class="fact-card__index">A</span>
-              <p class="fact-card__label">The likely mechanism</p>
-              <h3>Tasks change before occupations disappear.</h3>
-              <p>Most occupations combine automatable tasks with judgement, physical work, relationships, accountability, or context that still needs people.</p>
-            </article>
-            <article class="fact-card">
-              <span class="fact-card__index">B</span>
-              <p class="fact-card__label">The uneven distribution</p>
-              <h3>Exposure is higher for women in the top category.</h3>
-              <div class="mini-comparison" aria-label="Highest exposure: women 4.7 percent, men 2.4 percent">
-                <div><span>Women</span><i style="--value: 4.7"></i><b>4.7%</b></div>
-                <div><span>Men</span><i style="--value: 2.4"></i><b>2.4%</b></div>
-              </div>
-              <p>The ILO links the gap to the concentration of women in clerical work, especially in high-income countries.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="uneven" class="story-section reveal">
-          <div class="section-heading">
+          </li>
+          <li class="atlas-card atlas-card--published" data-status="published">
+            <a href="science/">
+              <header><span>07</span><small>Published · Brief 004</small></header>
+              <h3>Science &amp; discovery</h3>
+              <p>Track R&amp;D investment, research concentration, open data and software, replication, clinical translation, drug-development time, public research capacity, and whether AI measurably accelerates discovery rather than merely increasing publication volume.</p>
+              <strong>Read the brief →</strong>
+            </a>
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <p class="eyebrow eyebrow--observed"><span>Observed association</span> · U.S.</p>
-              <h2>The first effects may appear<br><em>at the entry ramp, not the exit door.</em></h2>
+              <header><span>08</span><small>Planned</small></header>
+              <h3>Education &amp; human capability</h3>
+              <p>Track foundational literacy and numeracy, learning loss, vocational pathways, adult retraining, education costs, teacher shortages, skill mismatches, and whether AI tutors improve outcomes.</p>
             </div>
-            <span class="chapter-number">03</span>
-          </div>
-          <p class="section-intro">
-            Two rigorous analyses can be true at the same time because they look through different lenses: one at a vulnerable subgroup, the other at the entire labour market.
-          </p>
-
-          <div class="contrast-grid">
-            <article class="contrast-card contrast-card--warning">
-              <div class="contrast-card__type">Concentrated signal</div>
-              <strong class="contrast-card__number">−<span id="early-career-decline">16</span>%</strong>
-              <h3>Relative employment decline for ages 22–25 in the most AI-exposed occupations.</h3>
-              <p>Stanford’s U.S. payroll-data working paper finds the decline after firm-level controls, while older workers in the same occupations and workers in less-exposed fields were steadier.</p>
-              <footer>
-                <span>Working paper · revised Nov. 2025</span>
-                <a href="#source-stanford-canaries">Scope &amp; source ↓</a>
-              </footer>
-            </article>
-
-            <article class="contrast-card contrast-card--calm">
-              <div class="contrast-card__type">Economy-wide counterpoint</div>
-              <div class="no-break-graphic" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-              <h3>No discernible broad disruption in the first 33 months after ChatGPT.</h3>
-              <p>Yale’s Budget Lab found exposure, automation, and augmentation measures were not related to employment or unemployment changes across the whole market.</p>
-              <footer>
-                <span>Economy-wide analysis · Oct. 2025</span>
-                <a href="#source-yale-budget-lab">Scope &amp; source ↓</a>
-              </footer>
-            </article>
-          </div>
-
-          <div class="interpretation-panel">
-            <p class="interpretation-panel__label">Interpretation</p>
-            <p><strong>There is a canary, but not yet a mine-wide alarm.</strong> Entry-level hiring can weaken before aggregate employment moves. It can also be affected by interest rates, post-pandemic tech corrections, education choices and remote-work shifts. Watch the subgroup; do not inflate it into an economy-wide count.</p>
-          </div>
-
-          <article class="watchlist-card">
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <p class="chart-kicker">What would change our mind?</p>
-              <h3>Signals worth watching next</h3>
+              <header><span>09</span><small>Planned</small></header>
+              <h3>Financial fragility</h3>
+              <p>Track household debt, government interest burden, credit stress, savings, asset-price-to-income ratios, bank stability, pension adequacy, and who is exposed when rates or prices move.</p>
             </div>
-            <ol>
-              <li><span>01</span><p><strong>Persistence</strong>Do early-career declines continue across revisions and datasets?</p></li>
-              <li><span>02</span><p><strong>Diffusion</strong>Do effects spread from highly exposed occupations to the wider labour market?</p></li>
-              <li><span>03</span><p><strong>Mechanism</strong>Do employer records tie fewer hires or separations explicitly to AI deployment?</p></li>
-              <li><span>04</span><p><strong>Compensation</strong>Do wages, hours and job quality move before headcount does?</p></li>
-            </ol>
-          </article>
-        </section>
-
-        <section id="expectations" class="story-section reveal">
-          <div class="section-heading">
+          </li>
+          <li class="atlas-card" data-status="planned">
             <div>
-              <p class="eyebrow eyebrow--forecast"><span>Forecast</span> · Global to 2030</p>
-              <h2>The scary number is rarely<br><em>the whole number.</em></h2>
+              <header><span>10</span><small>Planned</small></header>
+              <h3>Global resilience</h3>
+              <p>Track conflict, displacement, food and energy exposure, supply-chain concentration, critical minerals, semiconductor dependencies, disaster losses, insurance retreat, and adaptation investment.</p>
             </div>
-            <span class="chapter-number">04</span>
-          </div>
-          <p class="section-intro">
-            The World Economic Forum’s headline is not “92 million jobs vanish.” Its employer-survey scenario pairs displacement with more creation—and covers every structural macrotrend, not AI alone.
-          </p>
-
-          <article class="chart-card forecast-card">
-            <div class="forecast-summary">
-              <div><span>Projected creation</span><strong>+170M</strong></div>
-              <div><span>Projected displacement</span><strong>−92M</strong></div>
-              <div class="forecast-summary__net"><span>Projected net</span><strong>+78M</strong></div>
-            </div>
-            <div id="forecast-chart" class="bar-chart" role="img" aria-label="World Economic Forum forecast for 2025 to 2030: 170 million jobs created, 92 million displaced, net gain 78 million."></div>
-            <p class="forecast-scope"><strong>Scope check:</strong> 1.2 billion formal jobs, 2025–2030, across technology, demographics, geoeconomic fragmentation, the green transition and other forces.</p>
-          </article>
-
-          <div class="forecast-caveat">
-            <span>22%</span>
-            <p><strong>Projected structural churn</strong>—jobs created plus jobs displaced as a share of the formal jobs studied. It describes movement, not inevitable unemployment.</p>
-          </div>
-        </section>
-
-        <section id="work-changes" class="story-section reveal">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow eyebrow--experiment"><span>Workplace experiment</span> · One company</p>
-              <h2>Before AI replaces work,<br><em>it can redistribute expertise.</em></h2>
-            </div>
-            <span class="chapter-number">05</span>
-          </div>
-          <p class="section-intro">
-            In a study of 5,179 customer-support agents, an AI assistant increased issues resolved per hour—especially for novice and lower-skilled workers. This is strong evidence about a task setting, not a universal employment forecast.
-          </p>
-
-          <div class="work-grid">
-            <article class="chart-card productivity-card">
-              <div class="chart-card__header">
-                <div>
-                  <p class="chart-kicker">Productivity gain</p>
-                  <h3>Issues resolved per hour</h3>
-                </div>
-                <span class="sample-badge">n = 5,179</span>
-              </div>
-              <div id="productivity-chart" class="productivity-chart" role="img" aria-label="Average productivity improved by 14 percent, and novice and lower-skilled worker productivity improved by 34 percent."></div>
-              <p class="chart-description">The largest gain accrued to workers with less experience. Experienced, highly skilled workers saw minimal impact.</p>
-            </article>
-
-            <article class="adoption-card">
-              <p class="chart-kicker">Adoption context · 2025</p>
-              <strong><span id="adoption-rate">88</span>%</strong>
-              <h3>of surveyed organizations reported using AI.</h3>
-              <div class="adoption-ring" aria-hidden="true"><span></span></div>
-              <p>Adoption is widespread; measured workforce effects are not. That gap is exactly why outcomes must be tracked separately from usage.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="transition-discipline" class="story-section transition-section reveal">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow eyebrow--transition"><span>Decision discipline</span> · Evidence + conditional judgment</p>
-              <h2>A Factfulness discipline<br><em>for uncertainty.</em></h2>
-            </div>
-            <span class="chapter-number">06</span>
-          </div>
-          <p class="section-intro">
-            A disorderly AI transition is possible. It is not established as the present economy-wide outcome. Adapted from Gapminder’s Factfulness framework, this chapter checks dramatic narratives against base rates, definitions, rival causes and evidence that could reverse the advice. It implies no Gapminder affiliation and offers neither clinical nor universal career authority.
-          </p>
-
-          <div class="discipline-grid" aria-label="Six distinctions for interpreting AI transition evidence">
-            <article><span>Base rate</span><h3>Start with the whole market.</h3><p>Subgroup warnings matter, but must be sized against aggregate employment, unemployment, hiring and ordinary churn.</p></article>
-            <article><span>Trend ≠ cause</span><h3>Ask what moved before AI.</h3><p>Openings peaked before ChatGPT. Timing can fit several explanations.</p></article>
-            <article><span>Exposure ≠ loss</span><h3>Potential is not outcome.</h3><p>Task overlap flags where change could occur; it does not count redundancies.</p></article>
-            <article><span>Task ≠ occupation</span><h3>Jobs bundle unlike work.</h3><p>Automation of one task can remove, redesign, intensify or complement other tasks.</p></article>
-            <article><span>Experiment ≠ forecast</span><h3>Local effects stay local.</h3><p>A customer-support productivity gain shows a mechanism in one setting, not future national employment.</p></article>
-            <article><span>Multiple causes</span><h3>Keep rivals alive.</h3><p>Rates, demand, post-pandemic normalization, sector cycles, demographics and policy can move alongside AI.</p></article>
-          </div>
-
-          <div class="transition-basis">
-            <article>
-              <p class="chart-kicker">Observed basis</p>
-              <h3>What current evidence permits</h3>
-              <ul>
-                <li>Broad U.S. disruption is not discernible in the cited first 33 months.</li>
-                <li>A concerning early-career association appears in highly exposed occupations.</li>
-                <li>AI can raise task productivity in a controlled workplace setting.</li>
-                <li>Exposure and employer forecasts identify possible pressure, not realized loss.</li>
-              </ul>
-            </article>
-            <article>
-              <p class="chart-kicker">Prudent judgment · not universal prescription</p>
-              <h3>Robust under several futures</h3>
-              <ul id="transition-action-list">
-                <li><strong>Judgment:</strong> preserve learning capacity and domain knowledge because augmentation and substitution both change tasks.</li>
-                <li><strong>Judgment:</strong> test tools on real work with quality checks before reorganizing roles around forecasts.</li>
-                <li><strong>Judgment:</strong> keep financial and organizational slack where feasible because transition speed is uncertain.</li>
-                <li><strong>Judgment:</strong> protect junior pathways where evidence shows concentrated pressure; do not infer one career answer for everyone.</li>
-              </ul>
-            </article>
-          </div>
-
-          <aside class="transition-limit">
-            <strong>Explicit limitation</strong>
-            <p>Evidence is early, U.S.-heavy and definition-sensitive. Adoption, exposure, productivity, hiring and separations update at different speeds. These actions are conditional resilience judgments—not claims that disruption will or will not become severe.</p>
-          </aside>
-
-          <article class="watchlist-card transition-watch">
-            <div><p class="chart-kicker">Reversal indicators</p><h3>What would change the advice?</h3></div>
-            <ol id="transition-watch-list">
-              <li><span>01</span><p><strong>Separations</strong>Persistent AI-attributed layoffs across independent employer and administrative data.</p></li>
-              <li><span>02</span><p><strong>Hiring</strong>Broad, sustained entry-level contraction beyond exposed occupations and ordinary cycles.</p></li>
-              <li><span>03</span><p><strong>Diffusion</strong>Wage, hours and employment effects spreading across sectors and countries.</p></li>
-              <li><span>04</span><p><strong>Counterweight</strong>New tasks, occupations, firms and demand offsetting displacement—or failing to do so.</p></li>
-            </ol>
-          </article>
-          <p class="transition-credit">Framework source: <a id="transition-framework-source" href="https://www.gapminder.org/factfulness/" target="_blank" rel="noreferrer">Gapminder, Factfulness ↗</a>. Principles paraphrased and adapted for labour-market evidence.</p>
-        </section>
-
-        <section id="answer" class="story-section answer-section reveal">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Current answer · July 2026</p>
-              <h2>So, is AI transforming<br><em>the job market?</em></h2>
-            </div>
-            <span class="chapter-number">07</span>
-          </div>
-
-          <div class="answer-card">
-            <p class="answer-card__lead">Yes—but transformation is not a synonym for net job loss.</p>
-            <div class="answer-grid">
-              <article>
-                <span class="answer-icon answer-icon--yes">✓</span>
-                <h3>What is established</h3>
-                <ul>
-                  <li>AI exposure reaches a meaningful share of occupations.</li>
-                  <li>AI can materially change productivity and task performance.</li>
-                  <li>Early-career workers in highly exposed U.S. occupations show a concerning employment signal.</li>
-                </ul>
-              </article>
-              <article>
-                <span class="answer-icon answer-icon--no">×</span>
-                <h3>What is not established</h3>
-                <ul>
-                  <li>That today’s broad market cooling was caused mainly by AI.</li>
-                  <li>That exposed jobs will disappear one-for-one.</li>
-                  <li>That economy-wide AI mass unemployment is already visible in the data.</li>
-                </ul>
-              </article>
-              <article>
-                <span class="answer-icon answer-icon--watch">→</span>
-                <h3>Our working prediction</h3>
-                <ul>
-                  <li>Near-term disruption will remain uneven and hiring-led.</li>
-                  <li>Junior pipelines and routine cognitive tasks deserve the closest watch.</li>
-                  <li>Job redesign, skill shifts and wage effects may arrive before aggregate headcount losses.</li>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="method" class="story-section methodology-section reveal">
-          <div class="section-heading section-heading--compact">
-            <div>
-              <p class="eyebrow">Method &amp; sources</p>
-              <h2>How this briefing stays factual</h2>
-            </div>
-          </div>
-
-          <div class="method-grid">
-            <article><span>01</span><h3>Label the evidence</h3><p>Observed outcomes, exposure models, experiments and forecasts never share an unlabeled axis.</p></article>
-            <article><span>02</span><h3>Match the scope</h3><p>A subgroup result stays a subgroup result. A one-company experiment stays a one-company experiment.</p></article>
-            <article><span>03</span><h3>Separate timing from cause</h3><p>“After ChatGPT” is not automatically “because of ChatGPT.”</p></article>
-            <article><span>04</span><h3>Keep uncertainty visible</h3><p>Working papers, survey scenarios, revisions and source limitations travel with the number.</p></article>
-          </div>
-
-          <div class="source-ledger">
-            <div class="source-ledger__header">
-              <div>
-                <p class="chart-kicker">Evidence ledger</p>
-                <h3>Primary and institution-grade sources</h3>
-              </div>
-              <span id="source-count">9 sources</span>
-            </div>
-            <ol id="sources-list" class="sources-list" aria-live="polite">
-              <li>Loading source details…</li>
-            </ol>
-          </div>
-        </section>
-
-        <section class="future-section reveal" aria-labelledby="future-title">
-          <div>
-            <p class="eyebrow">Also in Signals · Brief 004</p>
-            <h2 id="future-title">Is science getting faster—or merely producing more?</h2>
-            <p>Separate investment and output from reliability, translation and demonstrated AI-assisted acceleration.</p>
-          </div>
-          <div class="future-metrics" aria-label="Science dashboard evidence layers">
-            <span>Inputs</span>
-            <span>Volume</span>
-            <span>Reliability</span>
-            <span>Translation</span>
-          </div>
-          <a class="future-badge" href="science/">Open Brief 004 →</a>
-        </section>
+          </li>
+        </ol>
       </div>
-    </div>
+    </section>
+
+
+    <section class="atlas-standard" aria-labelledby="standard-title">
+      <div class="atlas-shell atlas-two-column">
+        <div class="standard-copy">
+          <p class="section-label">The organizing idea</p>
+          <h2 id="standard-title">Every briefing answers the same five questions.</h2>
+          <p>The topic changes. The burden of proof does not. A Signals brief must show its current read, its direction, its distribution, its rival explanations and the conditions under which we would change our mind.</p>
+        </div>
+        <ol class="standard-questions">
+          <li><span>01</span><strong>Where are we now?</strong></li>
+          <li><span>02</span><strong>What direction are we moving?</strong></li>
+          <li><span>03</span><strong>Who is benefiting or carrying the cost?</strong></li>
+          <li><span>04</span><strong>What are the competing explanations?</strong></li>
+          <li><span>05</span><strong>What evidence would change our current conclusion?</strong></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="atlas-lenses" aria-labelledby="lens-title">
+      <div class="atlas-shell">
+        <div class="section-head">
+          <p class="section-label">Geographic discipline</p>
+          <h2 id="lens-title">Three lenses. Three different jobs.</h2>
+        </div>
+        <div class="lens-grid">
+          <article><span>01 · World</span><h3>The structural picture</h3><p>Global scale, long-run direction and the constraints a national dashboard cannot see.</p></article>
+          <article><span>02 · Europe / Netherlands</span><h3>The lived context</h3><p>The institutions, political choices and economic conditions closest to everyday life.</p></article>
+          <article><span>03 · Selected countries</span><h3>Useful comparisons</h3><p>Cases selected to illuminate mechanisms—not arbitrary rankings or league tables.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="publication-path" aria-labelledby="path-title">
+      <div class="atlas-shell">
+        <div class="section-head"><p class="section-label">Preferred first publication wave</p><h2 id="path-title">Build depth before breadth.</h2></div>
+        <p class="path-note">This six-topic first wave preserves the preferred order. Democracy, Education, Financial fragility and Global resilience remain part of the complete atlas and follow as evidence capacity allows.</p>
+        <ol>
+          <li class="done"><span>01</span><strong>Housing</strong><small>Published</small></li>
+          <li><span>02</span><strong>Prosperity</strong><small>Next</small></li>
+          <li><span>03</span><strong>Energy &amp; Compute</strong><small>Queued</small></li>
+          <li class="done"><span>04</span><strong>Healthspan</strong><small>Published</small></li>
+          <li><span>05</span><strong>Demography</strong><small>Queued</small></li>
+          <li class="done"><span>06</span><strong>Science</strong><small>Published</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="possibility-standard" aria-labelledby="possibility-title">
+      <div class="atlas-shell atlas-two-column">
+        <div>
+          <p class="section-label">The distinctive final chapter</p>
+          <h2 id="possibility-title">What might this make possible?</h2>
+        </div>
+        <div class="possibility-copy">
+          <p>Not investment advice and not optimism pasted over bad news. Every brief ends with explicitly labelled hypotheses about:</p>
+          <ul>
+            <li>Problems becoming more urgent</li>
+            <li>Capabilities becoming newly possible</li>
+            <li>Institutions or products society will need</li>
+            <li>Small interventions with disproportionate leverage</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="published-foundations" aria-labelledby="foundation-title">
+      <div class="atlas-shell">
+        <div class="section-head"><p class="section-label">Published foundations</p><h2 id="foundation-title">The experiment is already live.</h2></div>
+        <div class="foundation-grid">
+          <a href="ai-work/"><span>Brief 001</span><h3>AI &amp; work</h3><p>Observed labour markets, exposure, experiments, adoption and forecasts kept analytically separate.</p><strong>Open →</strong></a>
+          <a href="food/"><span>Brief 002</span><h3>Food, animals &amp; planet</h3><p>Lives, land, emissions, forests, water, oceans and health with system boundaries intact.</p><strong>Open →</strong></a>
+          <a href="housing/"><span>Brief 003</span><h3>Housing &amp; affordability</h3><p>Prices, incomes, rents, financing, tenure, supply and household formation across three lenses.</p><strong>Open →</strong></a>
+          <a href="science/"><span>Brief 004</span><h3>Science &amp; discovery</h3><p>Inputs, output, reliability, translation and demonstrated acceleration kept separate.</p><strong>Open →</strong></a>
+          <a href="healthspan/"><span>Brief 005</span><h3>Healthspan &amp; care</h3><p>Lifespan, healthy years, mortality, access, workforce and speculative claims kept in evidence lanes.</p><strong>Open →</strong></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="signal-footer">
-    <div class="signal-shell signal-footer__inner">
-      <p><strong>CTW Signals</strong> turns consequential claims into inspectable evidence.</p>
-      <div><a href="../">CTW Studio</a><a href="../portfolio/">Work</a><a href="#main-content">Back to top ↑</a></div>
-    </div>
+  <footer class="atlas-footer">
+    <div class="atlas-shell"><a href="../">CTW Studio</a><span>Evidence over headlines</span><a href="#main-content">Back to top ↑</a></div>
   </footer>
-
-  <noscript>
-    <div class="noscript-note">The live charts require JavaScript. All interpretations and source links remain available above.</div>
-  </noscript>
+  <script src="../feedback.js"></script>
 </body>
 </html>

@@ -28,6 +28,7 @@
     const title = byId('science-series-title');
     const bars = byId('science-bars');
     const table = byId('science-data-table');
+    const citation = byId('science-series-citation');
     if (!series || !title || !bars || !table) return;
 
     title.textContent = `${series.label} · latest available`;
@@ -64,6 +65,18 @@
       );
       return row;
     }));
+    if (citation) {
+      const source = data.sources.find((item) => item.id === series.sourceId);
+      const external = citation.querySelector('a[target="_blank"]');
+      const ledger = citation.querySelector('a[href^="#source-"]');
+      citation.dataset.citationSourceId = series.sourceId;
+      citation.closest('.evidence-bearing').dataset.sourceId = series.sourceId;
+      if (external && source) {
+        external.textContent = `${source.institution}, ${source.title}, ${source.period} ↗`;
+        external.href = safeHttpsUrl(source.url) || '#sources';
+      }
+      if (ledger) ledger.href = `#source-${series.sourceId}`;
+    }
   }
 
   function renderSources(sources) {
@@ -71,6 +84,7 @@
     if (!host) return;
     host.replaceChildren(...sources.map((source) => {
       const article = document.createElement('article');
+      article.id = `source-${source.id}`;
       const title = document.createElement('h3');
       title.textContent = source.title;
       const meta = document.createElement('p');
@@ -118,6 +132,9 @@
     const response = await fetch(DATA_URL, { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error(`Science data request failed: ${response.status}`);
     const data = await response.json();
+    if (Math.round((data.aiPublications.observations.at(-1).count / data.aiPublications.observations.at(-2).count - 1) * 1000) / 10 !== 6.3) {
+      throw new Error('Stanford 2024 publication growth no longer rounds to 6.3%');
+    }
     byId('science-data-date').textContent = data.meta.dataUpdated;
     renderSeries(data, 'rdIntensity');
     renderSources(data.sources);

@@ -715,3 +715,10 @@ button { font: inherit; }
   html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.proximate-citation {
+  margin-top: .85rem;
+  color: var(--muted);
+  font: 500 .7rem/1.55 "DM Mono", ui-monospace, monospace;
+}
+.proximate-citation a { color: inherit; text-decoration: underline; text-underline-offset: .18em; }

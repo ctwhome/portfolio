@@ -85,7 +85,7 @@ test('food page exposes the complete storyboard, chart alternatives, and active 
   for (const id of ['lives', 'climate', 'land', 'water', 'oceans', 'health', 'answer', 'sources']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
-  assert.match(html, /href="\.\.\/"[^>]*>AI &amp; work/);
+  assert.match(html, /href="\.\.\/ai-work\/"[^>]*>AI &amp; work/);
   assert.match(html, /food-active/);
   assert.match(html, /species-table/);
   assert.match(html, /footprint-table/);

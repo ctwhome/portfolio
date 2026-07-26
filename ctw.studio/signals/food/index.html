@@ -34,12 +34,12 @@
       <div class="signal-shell">
         <div class="topic-switcher" aria-label="Signal topics">
           <span class="topic-label">Signals /</span>
-          <a class="topic-pill" href="../">AI &amp; work</a>
+          <a class="topic-pill" href="../ai-work/">AI &amp; work</a>
           <a class="topic-pill active food-active" href="./" aria-current="page">Food, animals &amp; planet</a>
           <a class="topic-pill" href="../housing/">Housing</a>
           <a class="topic-pill" href="../science/">Science</a>
           <a class="topic-pill" href="../healthspan/">Healthspan</a>
-          <a class="topic-pill" href="../roadmap/">Atlas</a>
+          <a class="topic-pill" href="../">Atlas</a>
         </div>
 
         <div class="hero-grid">
@@ -54,7 +54,7 @@
             </div>
           </div>
 
-          <aside class="verdict-card food-verdict reveal" aria-label="Current evidence summary">
+          <aside class="verdict-card food-verdict reveal evidence-bearing" data-source-id="owid-fao-slaughter fao-livestock-emissions poore-nemecek" aria-label="Current evidence summary">
             <div class="verdict-topline">
               <span class="status-dot food-dot" aria-hidden="true"></span>
               <span>Current read</span>
@@ -76,6 +76,7 @@
               </div>
             </dl>
             <p class="verdict-footnote">Different years and methods. These figures belong beside one another—not added together.</p>
+            <p class="proximate-citation" data-citation-source-id="owid-fao-slaughter fao-livestock-emissions poore-nemecek">Evidence basis: <a href="https://ourworldindata.org/grapher/animals-slaughtered-for-meat" target="_blank" rel="noreferrer">FAO slaughter ↗</a>, <a href="https://www.fao.org/newsroom/detail/new-fao-report-maps-pathways-towards-lower-livestock-emissions/en" target="_blank" rel="noreferrer">FAO emissions ↗</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/29853680/" target="_blank" rel="noreferrer">Poore–Nemecek land ↗</a> · <a href="#source-owid-fao-slaughter">Scope &amp; caveats ↓</a></p>
           </aside>
         </div>
 
@@ -110,7 +111,7 @@
               <p>Official global data can answer this for major land animals. For fish, it mostly records tonnes—so researchers must estimate individual lives from body weights.</p>
             </header>
 
-            <div class="life-counter" aria-label="Latest tracked land animal slaughter total">
+            <div class="life-counter evidence-bearing" data-source-id="owid-fao-slaughter" aria-label="Latest tracked land animal slaughter total">
               <div>
                 <span class="counter-label">Seven tracked land species · <span id="slaughter-year">—</span></span>
                 <strong id="daily-land-exact">—</strong>
@@ -122,8 +123,9 @@
                 <span>every minute</span>
               </div>
             </div>
+            <p class="proximate-citation" data-citation-source-id="owid-fao-slaughter">Source: <a href="https://ourworldindata.org/grapher/animals-slaughtered-for-meat" target="_blank" rel="noreferrer">FAOSTAT via Our World in Data, annual slaughter counts ↗</a> · <a href="#source-owid-fao-slaughter">Scope &amp; caveats ↓</a></p>
 
-            <figure class="chart-card species-card">
+            <figure class="chart-card species-card evidence-bearing" data-source-id="owid-fao-slaughter">
               <div class="chart-head">
                 <div>
                   <p class="chart-eyebrow">Observed · FAO / OWID</p>
@@ -137,9 +139,10 @@
                 <summary>View the values as a table</summary>
                 <div id="species-table" class="chart-table-scroll"></div>
               </details>
+              <p class="proximate-citation" data-citation-source-id="owid-fao-slaughter">Source: <a href="https://ourworldindata.org/grapher/animals-slaughtered-for-meat" target="_blank" rel="noreferrer">FAOSTAT via OWID, seven land species, annual ↗</a> · <a href="#source-owid-fao-slaughter">Scope &amp; caveats ↓</a></p>
             </figure>
 
-            <div class="fish-estimate-grid">
+            <div class="fish-estimate-grid evidence-bearing" data-source-id="mood-farmed-fish mood-wild-fish">
               <article class="estimate-card">
                 <p class="chart-eyebrow">Estimated · farmed finfish · 2019</p>
                 <strong>≈340M <small>/ day</small></strong>
@@ -153,6 +156,7 @@
                 <p>Converted from catch tonnage and estimated body weights. This is a range, not a census.</p>
               </article>
             </div>
+            <p class="proximate-citation" data-citation-source-id="mood-farmed-fish mood-wild-fish">Sources: <a href="https://doi.org/10.1017/awf.2023.4" target="_blank" rel="noreferrer">Mood et al., farmed fish estimates ↗</a> + <a href="https://doi.org/10.1017/awf.2024.7" target="_blank" rel="noreferrer">wild fish estimates ↗</a> · <a href="#source-mood-farmed-fish">Scope &amp; caveats ↓</a></p>
 
             <aside class="boundary-note dignity-note">
               <div class="boundary-icon" aria-hidden="true">≠</div>
@@ -170,7 +174,7 @@
               <p>FAO estimates livestock agrifood systems emitted 6.2 gigatonnes of CO₂-equivalent in 2015, about 12% of human-caused greenhouse-gas emissions.</p>
             </header>
 
-            <div class="climate-number-grid">
+            <div class="climate-number-grid evidence-bearing" data-source-id="fao-livestock-emissions">
               <article class="big-number-card coral-card">
                 <p>Livestock-system emissions</p>
                 <strong>6.2 <small>Gt CO₂e</small></strong>
@@ -187,8 +191,9 @@
                 <span>FAO scope</span>
               </article>
             </div>
+            <p class="proximate-citation" data-citation-source-id="fao-livestock-emissions">Source: <a href="https://www.fao.org/newsroom/detail/new-fao-report-maps-pathways-towards-lower-livestock-emissions/en" target="_blank" rel="noreferrer">FAO, livestock agrifood emissions, 2015 baseline ↗</a> · <a href="#source-fao-livestock-emissions">Scope &amp; caveats ↓</a></p>
 
-            <figure class="chart-card footprint-card">
+            <figure class="chart-card footprint-card evidence-bearing" data-source-id="poore-nemecek">
               <div class="chart-head">
                 <div>
                   <p class="chart-eyebrow">Global meta-analysis · full supply chain</p>
@@ -202,6 +207,7 @@
                 <summary>View the values as a table</summary>
                 <div id="footprint-table" class="chart-table-scroll"></div>
               </details>
+              <p class="proximate-citation" data-citation-source-id="poore-nemecek">Source: <a href="https://pubmed.ncbi.nlm.nih.gov/29853680/" target="_blank" rel="noreferrer">Poore &amp; Nemecek, global food footprints, Science 2018 ↗</a> · <a href="#source-poore-nemecek">Scope &amp; caveats ↓</a></p>
             </figure>
 
             <div class="interpretation-row">
@@ -220,7 +226,7 @@
               <p>Animal-sourced foods use most agricultural land while delivering a minority of calories. Pasture expansion for beef is also the largest single driver in the cited tropical-deforestation attribution.</p>
             </header>
 
-            <figure class="chart-card land-card">
+            <figure class="chart-card land-card evidence-bearing" data-source-id="poore-nemecek">
               <div class="chart-head">
                 <div>
                   <p class="chart-eyebrow">Poore–Nemecek global food-system estimate</p>
@@ -246,9 +252,10 @@
                 </div>
               </div>
               <figcaption>“Animal-sourced foods” includes pasture plus cropland used for feed. Land quality differs; not all grazing land could grow crops. The ratio still captures the opportunity cost for habitat and carbon storage.</figcaption>
+              <p class="proximate-citation" data-citation-source-id="poore-nemecek">Source: <a href="https://pubmed.ncbi.nlm.nih.gov/29853680/" target="_blank" rel="noreferrer">Poore &amp; Nemecek, land/input-output estimates ↗</a> · <a href="#source-poore-nemecek">Scope &amp; caveats ↓</a></p>
             </figure>
 
-            <div class="land-scenario">
+            <div class="land-scenario evidence-bearing" data-source-id="poore-nemecek">
               <div class="scenario-copy">
                 <p class="chart-eyebrow">Scenario, not forecast</p>
                 <h3>If the world used a plant-based food system</h3>
@@ -260,8 +267,9 @@
                 <div class="land-block plant"><span>1.0B ha</span><small>plant-based</small></div>
               </div>
             </div>
+            <p class="proximate-citation" data-citation-source-id="poore-nemecek">Source: <a href="https://pubmed.ncbi.nlm.nih.gov/29853680/" target="_blank" rel="noreferrer">Poore &amp; Nemecek, modelled plant-based land scenario ↗</a> · <a href="#source-poore-nemecek">Scope &amp; caveats ↓</a></p>
 
-            <div class="forest-grid">
+            <div class="forest-grid evidence-bearing" data-source-id="owid-deforestation owid-food-environment">
               <article class="forest-card">
                 <div class="ring-stat" style="--ring-value:41"><span>41%</span></div>
                 <h3>of tropical deforestation</h3>
@@ -273,6 +281,7 @@
                 <p>was fed to livestock in the cited 2018 end-use analysis; about 7% went directly to human foods such as tofu and soy milk.</p>
               </article>
             </div>
+            <p class="proximate-citation" data-citation-source-id="owid-deforestation owid-food-environment">Sources: <a href="https://ourworldindata.org/drivers-of-deforestation" target="_blank" rel="noreferrer">OWID, tropical deforestation drivers ↗</a> + <a href="https://ourworldindata.org/environmental-impacts-of-food" target="_blank" rel="noreferrer">food-system soy end use ↗</a> · <a href="#source-owid-deforestation">Scope &amp; caveats ↓</a></p>
             <p class="precision-line"><strong>Boundary:</strong> 41% is not “all global forest loss today.” It is a commodity-attribution result for tropical deforestation in a defined historical study period.</p>
           </section>
 
@@ -283,7 +292,7 @@
               <p>Irrigation, livestock and aquaculture share an interconnected system. Two large global numbers reveal the scale—but neither is a livestock-only share.</p>
             </header>
 
-            <div class="water-grid">
+            <div class="water-grid evidence-bearing" data-source-id="fao-aquastat owid-food-environment">
               <article class="water-stat withdrawal-card">
                 <div class="water-wave" aria-hidden="true"></div>
                 <p>Global freshwater withdrawals</p>
@@ -297,6 +306,7 @@
                 <span>caused by agriculture in the cited food-system assessment</span>
               </article>
             </div>
+            <p class="proximate-citation" data-citation-source-id="fao-aquastat owid-food-environment">Sources: <a href="https://www.fao.org/aquastat/en/overview/methodology/water-use" target="_blank" rel="noreferrer">FAO AQUASTAT, withdrawals ↗</a> + <a href="https://ourworldindata.org/environmental-impacts-of-food" target="_blank" rel="noreferrer">OWID food-system eutrophication synthesis ↗</a> · <a href="#source-fao-aquastat">Scope &amp; caveats ↓</a></p>
 
             <div class="scope-ledger">
               <div>
@@ -317,7 +327,7 @@
               <p>The state of fish populations and the number of fish killed are different questions. FAO measures the former by stocks and production tonnes; researchers estimate the latter in individuals.</p>
             </header>
 
-            <div class="ocean-grid">
+            <div class="ocean-grid evidence-bearing" data-source-id="fao-sofia-2024">
               <figure class="ocean-donut-card">
                 <div class="ocean-donut" aria-label="37.7 percent of assessed marine stocks were fished at biologically unsustainable levels in 2021">
                   <div><strong>37.7%</strong><span>unsustainable</span></div>
@@ -339,6 +349,7 @@
                 <p>Aquaculture surpassed capture fisheries as the main producer of aquatic animals for the first time. That shifts pressure; it does not remove welfare, feed, pollution or habitat questions.</p>
               </div>
             </div>
+            <p class="proximate-citation" data-citation-source-id="fao-sofia-2024">Source: <a href="https://www.fao.org/newsroom/detail/fao-report-global-fisheries-and-aquaculture-production-reaches-a-new-record-high/en" target="_blank" rel="noreferrer">FAO, State of World Fisheries and Aquaculture 2024 ↗</a> · <a href="#source-fao-sofia-2024">Scope &amp; caveats ↓</a></p>
           </section>
 
           <section id="health" class="story-chapter reveal" data-observe-chapter>
@@ -348,7 +359,7 @@
               <p>Processed meat has an established causal link to colorectal cancer. A balanced vegan diet can provide needed nutrients, but “vegan” alone does not mean nutritious.</p>
             </header>
 
-            <div class="health-evidence-grid">
+            <div class="health-evidence-grid evidence-bearing" data-source-id="who-meat-cancer">
               <article class="health-card evidence-strong">
                 <p class="chart-eyebrow">WHO / IARC</p>
                 <span class="classification">Group 1</span>
@@ -364,8 +375,9 @@
                 <small>“Limited” means chance, bias or confounding could not be ruled out in the human evidence.</small>
               </article>
             </div>
+            <p class="proximate-citation" data-citation-source-id="who-meat-cancer">Source: <a href="https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat" target="_blank" rel="noreferrer">WHO/IARC, red and processed meat evidence ↗</a> · <a href="#source-who-meat-cancer">Scope &amp; caveats ↓</a></p>
 
-            <div class="nutrition-balance">
+            <div class="nutrition-balance evidence-bearing" data-source-id="nhs-vegan-diet">
               <div>
                 <p class="chart-eyebrow">NHS guidance</p>
                 <h3>A well-planned vegan diet can meet nutritional needs.</h3>
@@ -375,13 +387,15 @@
                 <li>B12</li><li>Vitamin D</li><li>Iodine</li><li>Iron</li><li>Calcium</li><li>Selenium</li><li>Omega-3</li>
               </ul>
             </div>
+            <p class="proximate-citation" data-citation-source-id="nhs-vegan-diet">Source: <a href="https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/the-vegan-diet/" target="_blank" rel="noreferrer">NHS, vegan diet guidance ↗</a> · <a href="#source-nhs-vegan-diet">Scope &amp; caveats ↓</a></p>
 
-            <aside class="boundary-note amr-note">
+            <aside class="boundary-note amr-note evidence-bearing" data-source-id="who-amr">
               <div class="boundary-icon" aria-hidden="true">Rx</div>
               <div>
                 <h3>Antimicrobial resistance crosses the farm gate.</h3>
                 <p>WHO estimates bacterial AMR was associated with more than 4.7M deaths globally in 2021 and identifies misuse and overuse across humans, animals and plants as drivers. The global death total cannot be assigned wholesale to animal farming from that evidence.</p>
               </div>
+              <p class="proximate-citation" data-citation-source-id="who-amr">Source: <a href="https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance" target="_blank" rel="noreferrer">WHO, antimicrobial resistance fact sheet ↗</a> · <a href="#source-who-amr">Scope &amp; caveats ↓</a></p>
             </aside>
           </section>
 
@@ -440,7 +454,18 @@
             </div>
 
             <div id="food-source-list" class="source-list" aria-live="polite">
-              <p class="loading-message">Loading the evidence ledger…</p>
+              <article id="source-owid-fao-slaughter"><h3><a href="https://ourworldindata.org/grapher/animals-slaughtered-for-meat" target="_blank" rel="noreferrer">Yearly number of animals slaughtered for meat ↗</a></h3><p>Our World in Data, based on UN FAO data · 2025 data release</p><p>Observed annual counts for seven major land-animal species</p><span class="source-kind">Administrative statistics</span></article>
+              <article id="source-mood-farmed-fish"><h3><a href="https://doi.org/10.1017/awf.2023.4" target="_blank" rel="noreferrer">Estimating global numbers of farmed fishes killed for food annually from 1990 to 2019 ↗</a></h3><p>Animal Welfare / Cambridge University Press · 2023</p><p>Modelled individual counts for farmed finfish</p><span class="source-kind">Peer-reviewed estimate</span></article>
+              <article id="source-mood-wild-fish"><h3><a href="https://doi.org/10.1017/awf.2024.7" target="_blank" rel="noreferrer">Estimating global numbers of fishes caught from the wild annually from 2000 to 2019 ↗</a></h3><p>Animal Welfare / Cambridge University Press · 2024</p><p>Modelled individual-count range for wild-caught finfish</p><span class="source-kind">Peer-reviewed estimate</span></article>
+              <article id="source-fao-livestock-emissions"><h3><a href="https://www.fao.org/newsroom/detail/new-fao-report-maps-pathways-towards-lower-livestock-emissions/en" target="_blank" rel="noreferrer">Pathways towards lower emissions: a global assessment of livestock agrifood systems ↗</a></h3><p>Food and Agriculture Organization of the United Nations · 2023-12-08</p><p>Global livestock-system emissions and scope definition</p><span class="source-kind">UN assessment</span></article>
+              <article id="source-poore-nemecek"><h3><a href="https://pubmed.ncbi.nlm.nih.gov/29853680/" target="_blank" rel="noreferrer">Reducing food's environmental impacts through producers and consumers ↗</a></h3><p>Science · 2018-06-01</p><p>Global meta-analysis of land use and product-level environmental impacts</p><span class="source-kind">Peer-reviewed meta-analysis</span></article>
+              <article id="source-owid-food-environment"><h3><a href="https://ourworldindata.org/environmental-impacts-of-food" target="_blank" rel="noreferrer">Environmental impacts of food production ↗</a></h3><p>Our World in Data · Living review</p><p>Synthesis of land, calories, protein and agriculture-wide eutrophication</p><span class="source-kind">Research synthesis</span></article>
+              <article id="source-owid-deforestation"><h3><a href="https://ourworldindata.org/drivers-of-deforestation" target="_blank" rel="noreferrer">Drivers of Deforestation ↗</a></h3><p>Our World in Data, synthesizing Pendrill et al. · Updated 2024</p><p>Tropical deforestation attribution and global soy end use</p><span class="source-kind">Research synthesis</span></article>
+              <article id="source-fao-aquastat"><h3><a href="https://www.fao.org/aquastat/en/overview/methodology/water-use" target="_blank" rel="noreferrer">AQUASTAT methodology: Water use ↗</a></h3><p>Food and Agriculture Organization of the United Nations · Living methodology</p><p>Global freshwater-withdrawal shares and category definitions</p><span class="source-kind">UN methodology and statistics</span></article>
+              <article id="source-fao-sofia-2024"><h3><a href="https://www.fao.org/newsroom/detail/fao-report-global-fisheries-and-aquaculture-production-reaches-a-new-record-high/en" target="_blank" rel="noreferrer">The State of World Fisheries and Aquaculture 2024 ↗</a></h3><p>Food and Agriculture Organization of the United Nations · 2024-06-07</p><p>Marine-stock status and fisheries/aquaculture production</p><span class="source-kind">UN assessment</span></article>
+              <article id="source-who-meat-cancer"><h3><a href="https://www.who.int/news-room/questions-and-answers/item/cancer-carcinogenicity-of-the-consumption-of-red-meat-and-processed-meat" target="_blank" rel="noreferrer">Cancer: Carcinogenicity of the consumption of red meat and processed meat ↗</a></h3><p>World Health Organization / IARC · 2015-10-26</p><p>Cancer evidence classifications and relative-risk estimate</p><span class="source-kind">Public-health evidence review</span></article>
+              <article id="source-nhs-vegan-diet"><h3><a href="https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/the-vegan-diet/" target="_blank" rel="noreferrer">The vegan diet ↗</a></h3><p>UK National Health Service · Living guidance</p><p>Nutritional adequacy and nutrients requiring planning</p><span class="source-kind">Public-health guidance</span></article>
+              <article id="source-who-amr"><h3><a href="https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance" target="_blank" rel="noreferrer">Antimicrobial resistance ↗</a></h3><p>World Health Organization · 2026-07-16</p><p>Health burden and cross-sector drivers of antimicrobial resistance</p><span class="source-kind">Public-health fact sheet</span></article>
             </div>
 
             <details class="method-details">
@@ -471,7 +496,7 @@
   <footer class="signal-footer">
     <div class="signal-shell">
       <div><strong>CTW<span>.</span>Signals</strong><p>Evidence before narrative.</p></div>
-      <div class="footer-links"><a href="../../">Studio</a><a href="../">AI &amp; work</a><a href="#sources">Sources</a></div>
+      <div class="footer-links"><a href="../../">Studio</a><a href="../ai-work/">AI &amp; work</a><a href="#sources">Sources</a></div>
     </div>
   </footer>
 
