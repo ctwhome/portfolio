@@ -47,12 +47,18 @@ node --check signals/housing/housing.js
 node --check signals/science/science.js
 node --check signals/healthspan/healthspan.js
 node --check signals/real-time-ai/real-time-ai.js
+node --check signals/demography/demography.js
+node --check signals/education/education.js
+node --check signals/financial-fragility/financial-fragility.js
 python3 -m py_compile signals/scripts/*.py
 python3 signals/scripts/update_fred.py
 python3 signals/scripts/update_food_data.py
 python3 signals/scripts/update_housing_data.py
 python3 signals/scripts/update_science_data.py
 python3 signals/scripts/update_healthspan_data.py
+python3 signals/scripts/update_demography_data.py
+python3 signals/scripts/update_education_data.py
+python3 signals/scripts/update_financial_fragility_data.py
 ```
 
 Use targeted checks while editing. Before handoff, run applicable app checks, serve touched static routes/assets, inspect desktop and mobile layouts, run `git diff --check`, and inspect `git status --short`. Report exit statuses and warnings exactly.
@@ -70,6 +76,9 @@ Use targeted checks while editing. Before handoff, run applicable app checks, se
 - Scope, period, population, denominator, and unit travel with every public number.
 - Publication volume is not discovery; exposure is not job loss; lifespan is not healthy lifespan; unlike waiting-time clocks are not comparable; spending does not prove outcomes.
 - Fast inference is not a closed loop; demonstration, operation, reliability, approval, and scale are independent.
+- Demographic flows are not population stocks or projections; keep timing, category and variant assumptions explicit.
+- Assessment results, pathway access and AI-tutor experiments are distinct; bounded effects do not prove system-wide adaptation.
+- Financial balance-sheet dimensions do not net into a composite; keep stocks, flows, service, liquidity, sector and denominator separate.
 - Keep substantive HTML, accessible table alternatives, HTTPS source links, and useful no-JS content.
 - Preserve the atlas ten-topic order and verify counts, publication states, switchers, and cross-links together.
 

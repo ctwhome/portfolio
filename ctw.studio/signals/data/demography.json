@@ -1,0 +1,1176 @@
+{
+  "meta": {
+    "topic": "Demography, migration & aging",
+    "brief": "006",
+    "dataUpdated": "2026-07-13",
+    "editorialReview": "2026-07-26",
+    "updateStatus": "World Bank observations refreshed; curated Eurostat, CBS and projection evidence unchanged",
+    "scope": "World, Europe / Netherlands, and selected Dutch regional comparisons"
+  },
+  "question": "How are fertility, aging, migration and household formation reshaping the population—and what do they imply for housing, care, work and public finance?",
+  "verdict": "Aging is structurally persistent. Migration changes the pace and composition of population change, but it is not a complete answer: gross flows, retention and integration outcomes all matter.",
+  "questions": [
+    {
+      "id": "where",
+      "label": "Where are we now?"
+    },
+    {
+      "id": "direction",
+      "label": "Which direction?"
+    },
+    {
+      "id": "distribution",
+      "label": "Who and where differ?"
+    },
+    {
+      "id": "explanations",
+      "label": "What else explains it?"
+    },
+    {
+      "id": "change",
+      "label": "What changes our mind?"
+    }
+  ],
+  "lenses": [
+    {
+      "id": "world",
+      "label": "World",
+      "role": "Scale and long-run age structure"
+    },
+    {
+      "id": "netherlands",
+      "label": "Europe / Netherlands",
+      "role": "Comparable observations and national mechanisms"
+    },
+    {
+      "id": "regional",
+      "label": "Selected regions",
+      "role": "Dutch provincial divergence; not a ranking"
+    }
+  ],
+  "definitions": {
+    "populationTiming": "World Bank population is a de facto annual estimate; Eurostat and CBS population records shown here are residents on 1 January. Neither is an annual-average population.",
+    "migration": "Immigration and emigration are gross residence flows. Net migration is immigration minus emigration. None is a migrant stock.",
+    "identity": "Residence, citizenship, country of birth and nationality are different classifications. The gross-flow series shown here counts changes of usual residence, not a stock by citizenship or birthplace.",
+    "oldAgeDependency": {
+      "numeratorAgeBand": "65 years and older",
+      "denominatorAgeBand": "15–64 years",
+      "formula": "(population aged 65+ ÷ population aged 15–64) × 100",
+      "unit": "people aged 65+ per 100 people aged 15–64",
+      "caveat": "This conventional age ratio is not an employment, health, fiscal or care-burden measure."
+    }
+  },
+  "series": {
+    "population": {
+      "id": "SP.POP.TOTL",
+      "label": "Population, total",
+      "unit": "people",
+      "denominator": "Not applicable",
+      "sourceId": "world-bank-population",
+      "evidenceCategory": "observation",
+      "period": "2000–2025",
+      "timing": "Annual de facto population estimate",
+      "population": "All residents regardless of legal status or citizenship",
+      "observations": {
+        "WLD": [
+          {
+            "year": 2000,
+            "value": 6161528496
+          },
+          {
+            "year": 2001,
+            "value": 6244739668
+          },
+          {
+            "year": 2002,
+            "value": 6327171255
+          },
+          {
+            "year": 2003,
+            "value": 6409352386
+          },
+          {
+            "year": 2004,
+            "value": 6492354627
+          },
+          {
+            "year": 2005,
+            "value": 6575410029
+          },
+          {
+            "year": 2006,
+            "value": 6659536021
+          },
+          {
+            "year": 2007,
+            "value": 6744049498
+          },
+          {
+            "year": 2008,
+            "value": 6830080867
+          },
+          {
+            "year": 2009,
+            "value": 6916168196
+          },
+          {
+            "year": 2010,
+            "value": 7000860073
+          },
+          {
+            "year": 2011,
+            "value": 7086704141
+          },
+          {
+            "year": 2012,
+            "value": 7176482165
+          },
+          {
+            "year": 2013,
+            "value": 7265404737
+          },
+          {
+            "year": 2014,
+            "value": 7353532223
+          },
+          {
+            "year": 2015,
+            "value": 7441084771
+          },
+          {
+            "year": 2016,
+            "value": 7528221579
+          },
+          {
+            "year": 2017,
+            "value": 7613788655
+          },
+          {
+            "year": 2018,
+            "value": 7696159728
+          },
+          {
+            "year": 2019,
+            "value": 7777162476
+          },
+          {
+            "year": 2020,
+            "value": 7853863139
+          },
+          {
+            "year": 2021,
+            "value": 7919567995
+          },
+          {
+            "year": 2022,
+            "value": 7988550201
+          },
+          {
+            "year": 2023,
+            "value": 8062923417
+          },
+          {
+            "year": 2024,
+            "value": 8140897523
+          },
+          {
+            "year": 2025,
+            "value": 8215424893
+          }
+        ],
+        "NLD": [
+          {
+            "year": 2000,
+            "value": 15925513
+          },
+          {
+            "year": 2001,
+            "value": 16046180
+          },
+          {
+            "year": 2002,
+            "value": 16148929
+          },
+          {
+            "year": 2003,
+            "value": 16225302
+          },
+          {
+            "year": 2004,
+            "value": 16281779
+          },
+          {
+            "year": 2005,
+            "value": 16319868
+          },
+          {
+            "year": 2006,
+            "value": 16346101
+          },
+          {
+            "year": 2007,
+            "value": 16381696
+          },
+          {
+            "year": 2008,
+            "value": 16445593
+          },
+          {
+            "year": 2009,
+            "value": 16530388
+          },
+          {
+            "year": 2010,
+            "value": 16615394
+          },
+          {
+            "year": 2011,
+            "value": 16693074
+          },
+          {
+            "year": 2012,
+            "value": 16754962
+          },
+          {
+            "year": 2013,
+            "value": 16804432
+          },
+          {
+            "year": 2014,
+            "value": 16865008
+          },
+          {
+            "year": 2015,
+            "value": 16939923
+          },
+          {
+            "year": 2016,
+            "value": 17030314
+          },
+          {
+            "year": 2017,
+            "value": 17131296
+          },
+          {
+            "year": 2018,
+            "value": 17231624
+          },
+          {
+            "year": 2019,
+            "value": 17344874
+          },
+          {
+            "year": 2020,
+            "value": 17441500
+          },
+          {
+            "year": 2021,
+            "value": 17533044
+          },
+          {
+            "year": 2022,
+            "value": 17700982
+          },
+          {
+            "year": 2023,
+            "value": 17877117
+          },
+          {
+            "year": 2024,
+            "value": 17993485
+          },
+          {
+            "year": 2025,
+            "value": 18087633
+          }
+        ]
+      },
+      "latest": {
+        "WLD": {
+          "year": 2025,
+          "value": 8215424893
+        },
+        "NLD": {
+          "year": 2025,
+          "value": 18087633
+        }
+      }
+    },
+    "olderShare": {
+      "id": "SP.POP.65UP.TO.ZS",
+      "label": "Population ages 65 and above",
+      "unit": "% of total population",
+      "denominator": "Total population",
+      "sourceId": "world-bank-older-share",
+      "evidenceCategory": "observation",
+      "period": "2000–2025",
+      "timing": "Annual de facto population estimate",
+      "population": "All residents regardless of legal status or citizenship",
+      "observations": {
+        "WLD": [
+          {
+            "year": 2000,
+            "value": 6.8358
+          },
+          {
+            "year": 2001,
+            "value": 6.9204
+          },
+          {
+            "year": 2002,
+            "value": 7.009
+          },
+          {
+            "year": 2003,
+            "value": 7.0961
+          },
+          {
+            "year": 2004,
+            "value": 7.1789
+          },
+          {
+            "year": 2005,
+            "value": 7.2597
+          },
+          {
+            "year": 2006,
+            "value": 7.3391
+          },
+          {
+            "year": 2007,
+            "value": 7.4093
+          },
+          {
+            "year": 2008,
+            "value": 7.4662
+          },
+          {
+            "year": 2009,
+            "value": 7.5203
+          },
+          {
+            "year": 2010,
+            "value": 7.5803
+          },
+          {
+            "year": 2011,
+            "value": 7.6632
+          },
+          {
+            "year": 2012,
+            "value": 7.7849
+          },
+          {
+            "year": 2013,
+            "value": 7.9223
+          },
+          {
+            "year": 2014,
+            "value": 8.0783
+          },
+          {
+            "year": 2015,
+            "value": 8.2584
+          },
+          {
+            "year": 2016,
+            "value": 8.4491
+          },
+          {
+            "year": 2017,
+            "value": 8.6553
+          },
+          {
+            "year": 2018,
+            "value": 8.8762
+          },
+          {
+            "year": 2019,
+            "value": 9.1058
+          },
+          {
+            "year": 2020,
+            "value": 9.3319
+          },
+          {
+            "year": 2021,
+            "value": 9.5278
+          },
+          {
+            "year": 2022,
+            "value": 9.7392
+          },
+          {
+            "year": 2023,
+            "value": 9.9815
+          },
+          {
+            "year": 2024,
+            "value": 10.2018
+          },
+          {
+            "year": 2025,
+            "value": 10.4024
+          }
+        ],
+        "NLD": [
+          {
+            "year": 2000,
+            "value": 13.4808
+          },
+          {
+            "year": 2001,
+            "value": 13.5186
+          },
+          {
+            "year": 2002,
+            "value": 13.5687
+          },
+          {
+            "year": 2003,
+            "value": 13.6597
+          },
+          {
+            "year": 2004,
+            "value": 13.814
+          },
+          {
+            "year": 2005,
+            "value": 14.0185
+          },
+          {
+            "year": 2006,
+            "value": 14.2339
+          },
+          {
+            "year": 2007,
+            "value": 14.4543
+          },
+          {
+            "year": 2008,
+            "value": 14.7046
+          },
+          {
+            "year": 2009,
+            "value": 14.9931
+          },
+          {
+            "year": 2010,
+            "value": 15.2791
+          },
+          {
+            "year": 2011,
+            "value": 15.7303
+          },
+          {
+            "year": 2012,
+            "value": 16.34
+          },
+          {
+            "year": 2013,
+            "value": 16.8802
+          },
+          {
+            "year": 2014,
+            "value": 17.3524
+          },
+          {
+            "year": 2015,
+            "value": 17.7567
+          },
+          {
+            "year": 2016,
+            "value": 18.0944
+          },
+          {
+            "year": 2017,
+            "value": 18.4202
+          },
+          {
+            "year": 2018,
+            "value": 18.751
+          },
+          {
+            "year": 2019,
+            "value": 19.0649
+          },
+          {
+            "year": 2020,
+            "value": 19.3704
+          },
+          {
+            "year": 2021,
+            "value": 19.6618
+          },
+          {
+            "year": 2022,
+            "value": 19.9013
+          },
+          {
+            "year": 2023,
+            "value": 20.1568
+          },
+          {
+            "year": 2024,
+            "value": 20.4961
+          },
+          {
+            "year": 2025,
+            "value": 20.8688
+          }
+        ]
+      },
+      "latest": {
+        "WLD": {
+          "year": 2025,
+          "value": 10.4024
+        },
+        "NLD": {
+          "year": 2025,
+          "value": 20.8688
+        }
+      }
+    }
+  },
+  "fertility": {
+    "sourceId": "eurostat-fertility",
+    "label": "Total fertility rate",
+    "evidenceCategory": "observation",
+    "geography": "Netherlands",
+    "period": "2000–2024",
+    "population": "Synthetic cohort based on age-specific fertility rates for resident women",
+    "denominator": "Women of reproductive ages represented in the period rates",
+    "unit": "live births per woman",
+    "observations": [
+      {
+        "year": 2000,
+        "value": 1.72
+      },
+      {
+        "year": 2005,
+        "value": 1.71
+      },
+      {
+        "year": 2010,
+        "value": 1.8
+      },
+      {
+        "year": 2015,
+        "value": 1.66
+      },
+      {
+        "year": 2020,
+        "value": 1.55
+      },
+      {
+        "year": 2021,
+        "value": 1.62
+      },
+      {
+        "year": 2022,
+        "value": 1.49
+      },
+      {
+        "year": 2023,
+        "value": 1.43
+      },
+      {
+        "year": 2024,
+        "value": 1.43
+      }
+    ],
+    "caveat": "A period total fertility rate is not completed family size and is sensitive to the timing of births."
+  },
+  "ageStructure": {
+    "sourceId": "eurostat-age-structure",
+    "label": "Population on 1 January by broad age group",
+    "evidenceCategory": "observation",
+    "geography": "Netherlands",
+    "geographyCode": "NL",
+    "period": "2000, 2010, 2020 and 2025",
+    "population": "Usually resident population",
+    "denominator": "Population on 1 January in the same year",
+    "unit": "% of population",
+    "records": [
+      {
+        "year": 2000,
+        "ageBand": "0–14",
+        "value": 18.56
+      },
+      {
+        "year": 2000,
+        "ageBand": "15–64",
+        "value": 67.86
+      },
+      {
+        "year": 2000,
+        "ageBand": "65+",
+        "value": 13.58
+      },
+      {
+        "year": 2010,
+        "ageBand": "0–14",
+        "value": 17.53
+      },
+      {
+        "year": 2010,
+        "ageBand": "15–64",
+        "value": 67.08
+      },
+      {
+        "year": 2010,
+        "ageBand": "65+",
+        "value": 15.39
+      },
+      {
+        "year": 2020,
+        "ageBand": "0–14",
+        "value": 15.72
+      },
+      {
+        "year": 2020,
+        "ageBand": "15–64",
+        "value": 64.52
+      },
+      {
+        "year": 2020,
+        "ageBand": "65+",
+        "value": 19.76
+      },
+      {
+        "year": 2025,
+        "ageBand": "0–14",
+        "value": 15.1
+      },
+      {
+        "year": 2025,
+        "ageBand": "15–64",
+        "value": 64.08
+      },
+      {
+        "year": 2025,
+        "ageBand": "65+",
+        "value": 20.82
+      }
+    ],
+    "caveat": "Broad age bands describe age structure, not employment, health, eligibility or care need."
+  },
+  "componentsOfChange": {
+    "sourceId": "cbs-population-dynamics",
+    "label": "Annual population components",
+    "evidenceCategory": "observation",
+    "geography": "Netherlands",
+    "period": "2015–2024",
+    "population": "Registered resident population and registered changes of residence",
+    "denominator": "Annual event count",
+    "unit": "people",
+    "flowDefinition": "Births and deaths are annual events. Immigration and emigration are separate gross residence flows; net migration is derived as immigration minus emigration.",
+    "observations": [
+      {
+        "year": 2015,
+        "births": 170510,
+        "deaths": 147134,
+        "immigration": 204615,
+        "emigration": 149509,
+        "netMigration": 55106
+      },
+      {
+        "year": 2016,
+        "births": 172520,
+        "deaths": 148997,
+        "immigration": 230739,
+        "emigration": 151545,
+        "netMigration": 79194
+      },
+      {
+        "year": 2017,
+        "births": 169836,
+        "deaths": 150214,
+        "immigration": 234957,
+        "emigration": 154292,
+        "netMigration": 80665
+      },
+      {
+        "year": 2018,
+        "births": 168525,
+        "deaths": 153363,
+        "immigration": 243737,
+        "emigration": 157366,
+        "netMigration": 86371
+      },
+      {
+        "year": 2019,
+        "births": 169680,
+        "deaths": 151885,
+        "immigration": 269064,
+        "emigration": 161029,
+        "netMigration": 108035
+      },
+      {
+        "year": 2020,
+        "births": 168681,
+        "deaths": 168678,
+        "immigration": 220853,
+        "emigration": 152494,
+        "netMigration": 68359
+      },
+      {
+        "year": 2021,
+        "births": 179441,
+        "deaths": 170972,
+        "immigration": 252528,
+        "emigration": 145330,
+        "netMigration": 107198
+      },
+      {
+        "year": 2022,
+        "births": 167504,
+        "deaths": 170112,
+        "immigration": 403108,
+        "emigration": 179310,
+        "netMigration": 223798
+      },
+      {
+        "year": 2023,
+        "births": 164487,
+        "deaths": 169521,
+        "immigration": 335668,
+        "emigration": 198302,
+        "netMigration": 137366
+      },
+      {
+        "year": 2024,
+        "births": 166143,
+        "deaths": 172165,
+        "immigration": 316305,
+        "emigration": 208537,
+        "netMigration": 107768
+      }
+    ],
+    "caveat": "Administrative corrections can make total population growth differ from natural increase plus net migration. The 2022 immigration spike includes people displaced from Ukraine under temporary protection."
+  },
+  "migrationCitizenship": {
+    "sourceId": "eurostat-immigration-citizenship",
+    "label": "Gross immigration by citizenship",
+    "evidenceCategory": "observation",
+    "geography": "Netherlands",
+    "period": "2023",
+    "population": "People establishing usual residence for at least 12 months",
+    "denominator": "Gross immigration events",
+    "unit": "people",
+    "classification": "citizenship",
+    "status": "classification boundary shown; subgroup values intentionally not plotted",
+    "records": [
+      {
+        "question": "Citizenship at immigration",
+        "classification": "citizen",
+        "answerable": "Yes, within the Eurostat gross immigration flow"
+      },
+      {
+        "question": "Country of birth",
+        "classification": "country of birth",
+        "answerable": "No, not from this citizenship series"
+      },
+      {
+        "question": "Reason or legal route",
+        "classification": "permit or administrative category",
+        "answerable": "No, not from this citizenship series"
+      },
+      {
+        "question": "People currently resident",
+        "classification": "stock",
+        "answerable": "No, this dataset measures a flow"
+      }
+    ],
+    "caveat": "Citizenship is not country of birth, nationality at birth, reason for migration or legal residence category, and these groupings are not migrant stocks. Subgroup values are not plotted because the reviewed snapshot cannot answer those distinct questions."
+  },
+  "dependencyTrajectory": {
+    "sourceId": "eurostat-age-structure",
+    "label": "Conventional old-age dependency ratio",
+    "formula": "(population aged 65+ ÷ population aged 15–64) × 100",
+    "numeratorAgeBand": "65+",
+    "denominatorAgeBand": "15–64",
+    "unit": "people aged 65+ per 100 people aged 15–64",
+    "observations": [
+      {
+        "year": 2000,
+        "value": 20.01,
+        "evidenceCategory": "observation"
+      },
+      {
+        "year": 2010,
+        "value": 22.94,
+        "evidenceCategory": "observation"
+      },
+      {
+        "year": 2020,
+        "value": 30.63,
+        "evidenceCategory": "observation"
+      },
+      {
+        "year": 2025,
+        "value": 32.49,
+        "evidenceCategory": "observation"
+      }
+    ],
+    "projection": {
+      "year": 2050,
+      "value": 43.8,
+      "evidenceCategory": "projection",
+      "author": "United Nations, Department of Economic and Social Affairs, Population Division",
+      "vintage": "World Population Prospects 2024",
+      "variant": "Medium",
+      "assumptions": "Medium trajectories for fertility, mortality and international migration; age bands recomputed from the published five-year age distribution.",
+      "sourceId": "un-wpp-2024"
+    },
+    "caveat": "The projection is a conditional model result, not an observed outcome or policy target."
+  },
+  "populationHouseholds": {
+    "sourceId": "cbs-households",
+    "label": "Population and private households",
+    "evidenceCategory": "observation",
+    "geography": "Netherlands",
+    "period": "2018–2025",
+    "population": "Registered population and private households on 1 January",
+    "denominator": "Index, 2018=100",
+    "unit": "index (2018=100)",
+    "records": [
+      {
+        "year": 2018,
+        "population": 17181084,
+        "households": 7857914,
+        "populationIndex": 100.0,
+        "householdIndex": 100.0
+      },
+      {
+        "year": 2019,
+        "population": 17282163,
+        "households": 7924691,
+        "populationIndex": 100.6,
+        "householdIndex": 100.8
+      },
+      {
+        "year": 2020,
+        "population": 17407585,
+        "households": 7997800,
+        "populationIndex": 101.3,
+        "householdIndex": 101.8
+      },
+      {
+        "year": 2021,
+        "population": 17475415,
+        "households": 8043443,
+        "populationIndex": 101.7,
+        "householdIndex": 102.4
+      },
+      {
+        "year": 2022,
+        "population": 17590672,
+        "households": 8138591,
+        "populationIndex": 102.4,
+        "householdIndex": 103.6
+      },
+      {
+        "year": 2023,
+        "population": 17811291,
+        "households": 8270244,
+        "populationIndex": 103.7,
+        "householdIndex": 105.2
+      },
+      {
+        "year": 2024,
+        "population": 17942942,
+        "households": 8374404,
+        "populationIndex": 104.4,
+        "householdIndex": 106.6
+      },
+      {
+        "year": 2025,
+        "population": 18044027,
+        "households": 8430352,
+        "populationIndex": 105.0,
+        "householdIndex": 107.3
+      }
+    ],
+    "caveat": "A private household is one or more people sharing accommodation and living expenses. Institutional households are excluded; household growth does not equal dwelling demand one-for-one."
+  },
+  "regionalDivergence": {
+    "sourceId": "cbs-regional-population",
+    "label": "Provincial age structure and recent population change",
+    "evidenceCategory": "observation",
+    "geography": "Selected Netherlands provinces",
+    "period": "1 January 2020 to 1 January 2025",
+    "population": "Registered residents",
+    "denominator": "Provincial resident population",
+    "unit": "%",
+    "boundaryVintage": "Province boundaries as published for 1 January 2025; stable PV codes",
+    "records": [
+      {
+        "code": "PV20",
+        "region": "Groningen",
+        "populationChangePercent": 2.0,
+        "share65PlusPercent": 21.3
+      },
+      {
+        "code": "PV22",
+        "region": "Gelderland",
+        "populationChangePercent": 3.1,
+        "share65PlusPercent": 22.1
+      },
+      {
+        "code": "PV27",
+        "region": "North Holland",
+        "populationChangePercent": 4.3,
+        "share65PlusPercent": 18.8
+      },
+      {
+        "code": "PV28",
+        "region": "South Holland",
+        "populationChangePercent": 4.0,
+        "share65PlusPercent": 19.1
+      },
+      {
+        "code": "PV31",
+        "region": "Utrecht",
+        "populationChangePercent": 5.8,
+        "share65PlusPercent": 17.3
+      },
+      {
+        "code": "PV23",
+        "region": "Flevoland",
+        "populationChangePercent": 7.1,
+        "share65PlusPercent": 16.1
+      },
+      {
+        "code": "PV30",
+        "region": "Zeeland",
+        "populationChangePercent": 2.3,
+        "share65PlusPercent": 25.4
+      },
+      {
+        "code": "PV29",
+        "region": "Limburg",
+        "populationChangePercent": -0.1,
+        "share65PlusPercent": 25.1
+      }
+    ],
+    "caveat": "Selected provinces expose divergence; they are not a ranking of quality or fiscal capacity. Boundary changes and institutional populations can affect comparisons."
+  },
+  "effectsMatrix": [
+    {
+      "domain": "Housing",
+      "signal": "Households have grown faster than population since 2018.",
+      "evidenceCategory": "association",
+      "implication": "Smaller households can raise the number and alter the type of homes required even with modest population growth.",
+      "limit": "Household counts do not reveal location, tenure, price, vacancy or unmet demand.",
+      "sourceIds": [
+        "cbs-households"
+      ]
+    },
+    {
+      "domain": "Care",
+      "signal": "The 65+ share and conventional age ratio have risen.",
+      "evidenceCategory": "judgment",
+      "implication": "Care planning should test age-specific health, disability, informal-care and workforce scenarios.",
+      "limit": "Chronological age alone is not care need; healthy working life can change exposure.",
+      "sourceIds": [
+        "world-bank-older-share",
+        "eurostat-age-structure"
+      ]
+    },
+    {
+      "domain": "Work",
+      "signal": "Migration adds working-age people but gross inflows and outflows are both large.",
+      "evidenceCategory": "judgment",
+      "implication": "Retention, skills, participation, language, credential recognition and job matching determine labour effects.",
+      "limit": "Exposure to the labour market is not employment, productivity or fiscal contribution.",
+      "sourceIds": [
+        "eurostat-immigration-citizenship",
+        "cbs-population-dynamics"
+      ]
+    },
+    {
+      "domain": "Public finance",
+      "signal": "The age ratio shifts under the pinned medium projection.",
+      "evidenceCategory": "scenario",
+      "implication": "Pension, tax and service paths depend jointly on employment, productivity, eligibility, health and migration.",
+      "limit": "A demographic ratio is not a fiscal forecast and no demographic burden score is constructed.",
+      "sourceIds": [
+        "un-wpp-2024"
+      ]
+    }
+  ],
+  "rivalExplanations": [
+    {
+      "name": "Longevity and cohort size",
+      "category": "observation",
+      "detail": "Large cohorts moving through fixed age bands and lower old-age mortality can raise the older share even if fertility later recovers."
+    },
+    {
+      "name": "Education and birth timing",
+      "category": "association",
+      "detail": "Later partnership and first-birth timing can depress period fertility without the same-sized fall in completed family size."
+    },
+    {
+      "name": "Housing and family formation",
+      "category": "hypothesis",
+      "detail": "Cost, space and security may delay household and family formation; this brief does not claim a single causal estimate."
+    },
+    {
+      "name": "Policy and labour demand",
+      "category": "judgment",
+      "detail": "Admission rules, employer demand, study routes and family migration shape who arrives and who stays."
+    },
+    {
+      "name": "Temporary protection and students",
+      "category": "observation",
+      "detail": "Ukraine-related protection and international study contributed to recent flow composition and cannot be read as permanent retention."
+    },
+    {
+      "name": "Administrative reclassification",
+      "category": "observation",
+      "detail": "Registration corrections and changes of status can affect annual component reconciliation without representing a new physical move."
+    }
+  ],
+  "reversalIndicators": [
+    "A sustained fertility shift across at least one completed cohort, not one period-rate bounce.",
+    "Migration retention and composition differ persistently from the medium projection assumptions.",
+    "Employment, earnings and productivity gaps by migration background narrow on stable definitions.",
+    "Healthy working life and participation at older ages rise faster than the conventional age ratio.",
+    "Household size and formation stabilize enough that household growth no longer outpaces population.",
+    "Regional population and service-capacity divergence narrows under stable boundaries."
+  ],
+  "sources": [
+    {
+      "id": "world-bank-population",
+      "institution": "World Bank, sourced from UN Population Division and national statistical offices",
+      "title": "World Development Indicators: Population, total (SP.POP.TOTL)",
+      "date": "2026-07-13 data update",
+      "url": "https://api.worldbank.org/v2/indicator/SP.POP.TOTL?format=json",
+      "geographyPopulation": "World and Netherlands; de facto population counting all residents regardless of legal status or citizenship",
+      "period": "2000–2025 annual estimates",
+      "denominatorUnit": "People; not an annual-average comparison with 1 January series",
+      "evidenceType": "Official statistical observation",
+      "role": "Population scale and direction",
+      "interpretation": "Tracks total resident population under the WDI definition.",
+      "caveat": "Estimates can be revised; timing and methods differ from national 1 January counts."
+    },
+    {
+      "id": "world-bank-older-share",
+      "institution": "World Bank, sourced from UN Population Division",
+      "title": "World Development Indicators: Population ages 65 and above (SP.POP.65UP.TO.ZS)",
+      "date": "2026-07-13 data update",
+      "url": "https://api.worldbank.org/v2/indicator/SP.POP.65UP.TO.ZS?format=json",
+      "geographyPopulation": "World and Netherlands; de facto resident population",
+      "period": "2000–2025 annual estimates",
+      "denominatorUnit": "Population aged 65+ as % of total population",
+      "evidenceType": "Official statistical observation",
+      "role": "Long-run aging comparison",
+      "interpretation": "Shows the share crossing a conventional chronological threshold.",
+      "caveat": "Age 65 does not encode health, employment, care need or pension eligibility."
+    },
+    {
+      "id": "eurostat-age-structure",
+      "institution": "Eurostat",
+      "title": "Population on 1 January by age and sex (demo_pjan)",
+      "date": "2026-07-17 extraction review",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/demo_pjan/default/table?lang=en",
+      "geographyPopulation": "Netherlands (NL); usually resident population, total sex",
+      "period": "1 January 2000, 2010, 2020 and 2025",
+      "denominatorUnit": "People and derived shares in exact 0–14, 15–64 and 65+ bands",
+      "evidenceType": "Official statistical observation",
+      "role": "Age structure and exact dependency-ratio inputs",
+      "interpretation": "Allows transparent broad-band shares and conventional age-ratio calculation.",
+      "caveat": "1 January stock is not annual average; broad bands do not measure economic dependency."
+    },
+    {
+      "id": "eurostat-fertility",
+      "institution": "Eurostat",
+      "title": "Fertility indicators (demo_find)",
+      "date": "2026-07-17 extraction review",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/demo_find/default/table?lang=en",
+      "geographyPopulation": "Netherlands; period fertility based on resident live births and women by age",
+      "period": "2000–2024",
+      "denominatorUnit": "Live births per woman; synthetic period measure",
+      "evidenceType": "Official statistical observation",
+      "role": "Fertility level and direction",
+      "interpretation": "Summarizes current age-specific fertility rates into a period measure.",
+      "caveat": "Not completed cohort fertility; tempo shifts can change the period rate."
+    },
+    {
+      "id": "eurostat-immigration-citizenship",
+      "institution": "Eurostat",
+      "title": "Immigration by age, sex and citizenship (migr_imm1ctz)",
+      "date": "2026-07-17 extraction review",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/migr_imm1ctz/default/table?lang=en",
+      "geographyPopulation": "Netherlands; people establishing usual residence for at least 12 months",
+      "period": "2023",
+      "denominatorUnit": "People; gross immigration flow classified by citizenship",
+      "evidenceType": "Official statistical observation",
+      "role": "Flow composition boundary",
+      "interpretation": "Separates selected citizenship groupings within a gross flow.",
+      "caveat": "Citizenship is not country of birth, migration reason, residence status or migrant stock."
+    },
+    {
+      "id": "cbs-population-dynamics",
+      "institution": "Statistics Netherlands (CBS)",
+      "title": "Population dynamics; month and year",
+      "date": "2026-07-26 editorial extraction",
+      "url": "https://opendata.cbs.nl/statline/#/CBS/en/dataset/83474ENG",
+      "geographyPopulation": "Netherlands; registered resident population and vital/migration events",
+      "period": "2015–2024 calendar years",
+      "denominatorUnit": "People; births, deaths, gross immigration and gross emigration",
+      "evidenceType": "Official statistical observation, manually curated",
+      "role": "Components of annual population change",
+      "interpretation": "Keeps natural change and both gross migration flows visible.",
+      "caveat": "Administrative corrections can prevent exact reconciliation with population-stock change."
+    },
+    {
+      "id": "cbs-households",
+      "institution": "Statistics Netherlands (CBS)",
+      "title": "Private households by composition and size",
+      "date": "2026-07-26 editorial extraction",
+      "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/71486NED",
+      "geographyPopulation": "Netherlands; private households and registered population on 1 January",
+      "period": "2018–2025",
+      "denominatorUnit": "Households and people, converted to separate 2018=100 indices",
+      "evidenceType": "Official statistical observation, manually curated",
+      "role": "Household formation relative to population",
+      "interpretation": "Shows how household counts can grow faster than resident population.",
+      "caveat": "Institutional households are excluded and household growth is not dwelling demand one-for-one."
+    },
+    {
+      "id": "cbs-regional-population",
+      "institution": "Statistics Netherlands (CBS)",
+      "title": "Regional key figures Netherlands",
+      "date": "2026-07-26 editorial extraction",
+      "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/70072NED",
+      "geographyPopulation": "Selected provinces; registered residents",
+      "period": "1 January 2020–1 January 2025",
+      "denominatorUnit": "Population change and 65+ share, %",
+      "evidenceType": "Official statistical observation, manually curated",
+      "role": "Regional divergence",
+      "interpretation": "Contrasts growth and aging under stable province codes.",
+      "caveat": "Selected provinces are not a ranking; boundary and registration changes remain material."
+    },
+    {
+      "id": "un-wpp-2024",
+      "institution": "United Nations, Department of Economic and Social Affairs, Population Division",
+      "title": "World Population Prospects 2024",
+      "date": "2024 edition, pinned snapshot",
+      "url": "https://population.un.org/wpp/Download/Standard/Population/",
+      "geographyPopulation": "Netherlands; resident population by five-year age group",
+      "period": "2050",
+      "denominatorUnit": "Population aged 65+ per 100 aged 15–64",
+      "evidenceType": "Projection",
+      "role": "Conditional aging trajectory",
+      "interpretation": "Medium-variant age distribution translated into the same transparent ratio.",
+      "caveat": "Pinned edition and variant; future fertility, mortality and migration are assumptions, not observations."
+    }
+  ],
+  "manualEvidence": [
+    "Eurostat fertility and citizenship-flow snapshots are review-gated because category structures and revisions need editorial inspection.",
+    "CBS births, deaths, gross immigration, gross emigration, households and provincial records remain manually curated until their exact OData schemas are separately approved.",
+    "UN WPP 2024 medium-variant projection is deliberately pinned and is never changed by the updater."
+  ]
+}

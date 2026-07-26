@@ -1,0 +1,279 @@
+:root {
+  --demo-lime: #c6f178;
+  --demo-mint: #64d8a5;
+  --demo-blue: #72a7ff;
+  --demo-rust: #ee8562;
+  --demo-sand: #e8d4a8;
+}
+
+.demography-page body {
+  background:
+    radial-gradient(circle at 84% 5%, rgba(100, 216, 165, .09), transparent 25rem),
+    #060806;
+}
+
+.demography-hero em,
+.demography-page .evidence-chapter h2 em {
+  color: var(--demo-lime);
+}
+
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 2rem 0;
+}
+
+.now-card,
+.classification-card,
+.definition-rail {
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .035);
+  padding: 1.1rem;
+}
+
+.now-card span,
+.region-grid span {
+  color: rgba(255, 255, 255, .58);
+  font: 500 .68rem/1.4 "DM Mono", monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.now-card strong {
+  display: block;
+  color: var(--demo-lime);
+  font-size: clamp(1.65rem, 3vw, 2.7rem);
+  line-height: 1;
+  margin: .7rem 0;
+}
+
+.now-card p,
+.definition-rail p {
+  color: rgba(255, 255, 255, .68);
+  font-size: .82rem;
+  margin: 0;
+}
+
+.stack-chart,
+.component-chart,
+.trajectory,
+.paired-bars {
+  display: grid;
+  gap: .9rem;
+  margin: 1.5rem 0;
+}
+
+.stack-row {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: .75rem;
+  align-items: center;
+}
+
+.stack-row > span,
+.component-row > span {
+  color: rgba(255, 255, 255, .7);
+  font: 500 .72rem "DM Mono", monospace;
+}
+
+.stack {
+  display: flex;
+  min-height: 3.1rem;
+  overflow: hidden;
+}
+
+.stack i {
+  align-items: center;
+  color: #071009;
+  display: flex;
+  font: 600 .68rem "DM Mono", monospace;
+  justify-content: center;
+  min-width: 2.25rem;
+}
+
+.age-young { background: var(--demo-sand); }
+.age-work { background: var(--demo-mint); }
+.age-old { background: var(--demo-rust); }
+
+.definition-rail {
+  border-left: 3px solid var(--demo-rust);
+  margin-top: 1rem;
+}
+
+.definition-rail strong {
+  color: var(--demo-rust);
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.component-row {
+  display: grid;
+  grid-template-columns: 3.4rem repeat(4, minmax(0, 1fr));
+  gap: .4rem;
+}
+
+.component-row i {
+  background: linear-gradient(90deg, var(--bar-color) var(--v), rgba(255,255,255,.045) var(--v));
+  color: rgba(255,255,255,.86);
+  font: normal 500 .62rem/1.3 "DM Mono", monospace;
+  min-height: 3.25rem;
+  padding: .55rem;
+}
+
+.component-row .birth { --bar-color: rgba(198, 241, 120, .72); }
+.component-row .death { --bar-color: rgba(238, 133, 98, .72); }
+.component-row .inflow { --bar-color: rgba(100, 216, 165, .72); }
+.component-row .outflow { --bar-color: rgba(114, 167, 255, .72); }
+
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.trajectory > div,
+.paired-bars > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(5rem, 2fr) 3.5rem;
+  gap: .75rem;
+  align-items: center;
+}
+
+.trajectory span,
+.paired-bars span {
+  color: rgba(255,255,255,.7);
+  font: 500 .68rem "DM Mono", monospace;
+}
+
+.trajectory i,
+.paired-bars i {
+  background: var(--demo-mint);
+  display: block;
+  height: .7rem;
+}
+
+.trajectory strong,
+.paired-bars strong {
+  color: var(--demo-lime);
+  font: 600 .82rem "DM Mono", monospace;
+}
+
+.trajectory .projected i {
+  background: repeating-linear-gradient(90deg, var(--demo-rust) 0 7px, transparent 7px 12px);
+}
+
+.trajectory .projected strong { color: var(--demo-rust); }
+
+.formula-note,
+.classification-card > p {
+  color: rgba(255,255,255,.68);
+  font-size: .8rem;
+}
+
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .65rem;
+  margin: 1.5rem 0;
+}
+
+.region-grid article {
+  background: linear-gradient(145deg, rgba(100,216,165,.1), rgba(255,255,255,.025));
+  border: 1px solid rgba(100,216,165,.2);
+  padding: 1rem;
+}
+
+.region-grid strong,
+.region-grid small {
+  display: block;
+}
+
+.region-grid strong {
+  color: var(--demo-lime);
+  font-size: 1.8rem;
+  margin: .65rem 0 .3rem;
+}
+
+.region-grid small { color: rgba(255,255,255,.7); }
+
+.classification-card {
+  margin-top: 1rem;
+}
+
+.classification-card h3 { font-size: 1.35rem; margin: .45rem 0; }
+
+.rival-grid,
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+.rival-grid article,
+.method-grid article {
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 1rem;
+}
+
+.rival-grid span {
+  color: var(--demo-mint);
+  font: 500 .68rem "DM Mono", monospace;
+  text-transform: uppercase;
+}
+
+.rival-grid h3 {
+  font-size: 1rem;
+  margin: .55rem 0;
+}
+
+.rival-grid p,
+.method-grid p {
+  color: rgba(255,255,255,.66);
+  font-size: .78rem;
+  margin: 0;
+}
+
+.method-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 1.5rem;
+}
+
+.method-grid strong { color: var(--demo-lime); }
+
+.demography-page table th:first-child { white-space: nowrap; }
+
+@media (max-width: 980px) {
+  .now-grid,
+  .region-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .direction-grid { grid-template-columns: 1fr; }
+  .rival-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .now-grid,
+  .region-grid,
+  .rival-grid,
+  .method-grid { grid-template-columns: 1fr; }
+  .component-row {
+    grid-template-columns: 3rem 1fr;
+  }
+  .component-row i { grid-column: 2; }
+  .trajectory > div,
+  .paired-bars > div {
+    grid-template-columns: 1fr 3rem;
+  }
+  .trajectory i,
+  .paired-bars i {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .stack i { font-size: .58rem; }
+}
+
+html[data-data-error="demography"] #demography-data-date::after {
+  color: var(--demo-rust);
+  content: " · cached HTML";
+}

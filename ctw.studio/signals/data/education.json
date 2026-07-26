@@ -1,0 +1,641 @@
+{
+  "meta": {
+    "brief": "007",
+    "title": "Education & human capability",
+    "dataUpdated": "2026-07-13",
+    "updateStatus": "World Bank / UNESCO UIS series refreshed; edition-pinned assessments and studies unchanged",
+    "browserDataPolicy": "committed JSON only"
+  },
+  "question": "Are people gaining the capabilities needed to adapt?",
+  "verdict": {
+    "status": "conditional",
+    "text": "Foundational outcomes weakened in many measured systems and gaps persist. Vocational and adult-learning pathways expand access for some populations, but participation is not demonstrated reskilling. Teacher capacity is a local constraint. AI tutors show promising bounded effects, not system-level substitution.",
+    "distribution": "Socioeconomic status, migration background, gender, geography, pathway and prior attainment remain material."
+  },
+  "questions": [
+    "Where are capabilities now?",
+    "What direction are outcomes and pathways moving?",
+    "Who gains and who remains excluded?",
+    "What competing explanations fit the evidence?",
+    "What would change the conclusion?"
+  ],
+  "lenses": [
+    {
+      "id": "world",
+      "label": "World",
+      "role": "Foundational learning and completion, with modelled learning-poverty estimates kept distinct from observations."
+    },
+    {
+      "id": "europe-netherlands",
+      "label": "Europe / Netherlands",
+      "role": "PISA, adult participation, graduate employment and Dutch capacity in their own definitions."
+    },
+    {
+      "id": "selected",
+      "label": "Selected countries",
+      "role": "Mechanism comparisons by pathway and institution; not a ranking or a composite."
+    }
+  ],
+  "definitions": [
+    {
+      "id": "assessment",
+      "label": "Assessment boundary",
+      "text": "Framework, age, domain and cycle travel together. Scores from different assessments are never spliced."
+    },
+    {
+      "id": "adult-learning",
+      "label": "Adult-learning boundary",
+      "text": "Participation is not completion, measured skill gain, occupational transition or earnings."
+    },
+    {
+      "id": "pathway",
+      "label": "Pathway boundary",
+      "text": "Enrollment is not completion, employment, earnings or job match."
+    },
+    {
+      "id": "teacher",
+      "label": "Teacher-capacity boundary",
+      "text": "Pupil-teacher ratio is not a vacancy, unqualified-teaching share, workload measure or forecast shortage."
+    },
+    {
+      "id": "ai",
+      "label": "AI evidence boundary",
+      "text": "A task effect is not durable learning, teacher substitution, cost reduction or system equity."
+    }
+  ],
+  "foundationalTrajectory": {
+    "sourceId": "oecd-pisa-nl-2022",
+    "framework": "OECD PISA",
+    "populationAge": "15-year-old students enrolled in education",
+    "geography": "Netherlands",
+    "cycles": [
+      {
+        "cycle": 2012,
+        "mathematics": 523,
+        "reading": 511,
+        "science": 522
+      },
+      {
+        "cycle": 2015,
+        "mathematics": 512,
+        "reading": 503,
+        "science": 509
+      },
+      {
+        "cycle": 2018,
+        "mathematics": 519,
+        "reading": 485,
+        "science": 503
+      },
+      {
+        "cycle": 2022,
+        "mathematics": 493,
+        "reading": 459,
+        "science": 488
+      }
+    ],
+    "unit": "PISA scale score",
+    "release": "PISA 2022 Results, released 2023-12-05",
+    "evidenceCategory": "observation",
+    "caveat": "PISA 2022 mathematics was the major domain. The Dutch sample exceeded the PISA exclusion-rate standard, which may bias results upward. These cycles are not joined to PIRLS, TIMSS, national tests or PIAAC."
+  },
+  "proficiencyDistribution": {
+    "sourceId": "oecd-pisa-nl-2022",
+    "framework": "OECD PISA 2022",
+    "populationAge": "15-year-old students enrolled in education",
+    "geography": "Netherlands",
+    "domain": "mathematics unless otherwise stated",
+    "denominator": "represented population of enrolled 15-year-old students",
+    "release": "2023-12-05",
+    "evidenceCategory": "observation",
+    "measures": [
+      {
+        "id": "math-minimum",
+        "label": "At or above mathematics Level 2",
+        "value": 73,
+        "unit": "% of represented students",
+        "subgroupDefinition": "all represented students"
+      },
+      {
+        "id": "reading-minimum",
+        "label": "At or above reading Level 2",
+        "value": 65,
+        "unit": "% of represented students",
+        "subgroupDefinition": "all represented students"
+      },
+      {
+        "id": "ses-gap",
+        "label": "Advantaged–disadvantaged mathematics gap",
+        "value": 106,
+        "unit": "PISA score points",
+        "subgroupDefinition": "top versus bottom national quartile of PISA ESCS"
+      },
+      {
+        "id": "migration-adjusted-gap",
+        "label": "Non-immigrant–immigrant mathematics gap after ESCS adjustment",
+        "value": 27,
+        "unit": "PISA score points",
+        "subgroupDefinition": "immigrant background means both parents born outside the country of assessment; adjusted for socioeconomic profile"
+      },
+      {
+        "id": "reading-gender-gap",
+        "label": "Girls–boys reading gap",
+        "value": 26,
+        "unit": "PISA score points",
+        "subgroupDefinition": "represented girls versus represented boys"
+      }
+    ],
+    "caveat": "Average scores do not replace these distributions. Adjusted gaps are associations, not causal effects of migration background or household resources."
+  },
+  "learningPoverty": {
+    "sourceId": "world-bank-learning-poverty-2022",
+    "value": 70,
+    "unit": "% of children at late-primary age in low- and middle-income countries",
+    "period": "2022 intermediate simulation",
+    "population": "children at late-primary age in low- and middle-income countries",
+    "denominator": "children of late-primary age, combining schooling deprivation and reading proficiency",
+    "release": "2022-06-23",
+    "evidenceCategory": "modelled estimate",
+    "interpretation": "An estimated share unable to read and understand a simple text by age 10.",
+    "caveat": "A harmonised composite built from schooling and assessment inputs with modelling for missing and post-disruption outcomes; not a direct universal observation and not comparable to a single PISA percentage."
+  },
+  "pathwaySequence": [
+    {
+      "stage": "Enrollment",
+      "question": "Did a learner enter a programme?",
+      "measure": "participants or entrants",
+      "notEquivalentTo": "completion"
+    },
+    {
+      "stage": "Completion",
+      "question": "Was the credential or final stage completed?",
+      "measure": "graduates or completers",
+      "notEquivalentTo": "employment"
+    },
+    {
+      "stage": "Employment",
+      "question": "Was a recent graduate employed?",
+      "measure": "employment rate in a defined post-graduation window",
+      "notEquivalentTo": "earnings or job match"
+    },
+    {
+      "stage": "Earnings",
+      "question": "What labour-market return followed?",
+      "measure": "earnings with population and comparison group",
+      "notEquivalentTo": "skill use or job quality"
+    },
+    {
+      "stage": "Job match",
+      "question": "Are acquired capabilities used in the occupation?",
+      "measure": "field or skill match under a stated classification",
+      "notEquivalentTo": "adaptability"
+    }
+  ],
+  "pathwayEvidence": [
+    {
+      "id": "recent-graduate-employment",
+      "sourceId": "eurostat-graduate-employment-2025",
+      "stage": "employment",
+      "geography": "Netherlands",
+      "period": "2025",
+      "population": "people aged 20–34 who left education 1–3 years earlier and attained ISCED 3–8",
+      "denominator": "recent graduates meeting the Eurostat definition",
+      "value": 90.1,
+      "unit": "% employed",
+      "release": "2026-06-15",
+      "evidenceCategory": "observation",
+      "interpretation": "A high employment rate after upper-secondary through tertiary education.",
+      "caveat": "Combines medium and tertiary pathways; does not establish completion, earnings, field match, job quality or a causal education effect. Series breaks occurred in 2014 and 2021."
+    },
+    {
+      "id": "work-based-learning-target",
+      "sourceId": "eurostat-education-policy",
+      "stage": "pathway exposure",
+      "geography": "European Union",
+      "period": "policy target for 2025",
+      "population": "recent vocational education and training graduates",
+      "denominator": "recent VET graduates under the EU indicator definition",
+      "value": 60,
+      "unit": "% with work-based learning exposure",
+      "release": "European Education Area 2021–2030 framework",
+      "evidenceCategory": "policy target",
+      "interpretation": "The EU benchmark concerns exposure during VET, not a demonstrated outcome.",
+      "caveat": "A target is not an observation; exposure is not completion, employment, earnings or job match."
+    }
+  ],
+  "adultLearning": {
+    "sourceId": "eurostat-lfs-adult-learning",
+    "indicator": "Participation in formal or non-formal education and training",
+    "populationAge": "25–64",
+    "referenceWindow": "four weeks preceding the EU Labour Force Survey interview",
+    "denominator": "surveyed resident population aged 25–64",
+    "unit": "% participating",
+    "release": "Eurostat dataset trng_lfse_01",
+    "evidenceCategory": "survey observation",
+    "breaks": [
+      "2021 break in all country series due to the revised EU Labour Force Survey methodology"
+    ],
+    "observations": [
+      {
+        "geography": "European Union",
+        "year": 2021,
+        "value": 11
+      },
+      {
+        "geography": "Netherlands",
+        "year": 2021,
+        "value": 27
+      }
+    ],
+    "distribution": {
+      "sourceId": "eurostat-aes-2022",
+      "period": "2022 Adult Education Survey",
+      "populationAge": "25–64 for the published participation comparison",
+      "referenceWindow": "12 months preceding interview",
+      "lowerPriorAttainmentValue": 25.1,
+      "lowerPriorAttainmentUnit": "% participating",
+      "subgroupDenominator": "adults aged 25–64 with a low level of educational attainment",
+      "caveat": "AES waves and the LFS annual series use different reference windows. Since 2022 the AES collection scope expanded to ages 18–69; the quoted comparison retains ages 25–64."
+    },
+    "interpretation": "The Netherlands recorded high short-window participation, while participation was lower among adults with low prior attainment in the separate AES.",
+    "caveat": "Participation records an activity in a window. It does not demonstrate completion, measured skill gain, occupational transition, earnings or successful reskilling."
+  },
+  "teacherCapacity": {
+    "sourceId": "oecd-pisa-nl-2022",
+    "geography": "Netherlands",
+    "period": "PISA 2022 principal questionnaire",
+    "population": "represented 15-year-old students in participating schools",
+    "denominator": "students weighted by their school principal's response",
+    "release": "2023-12-05",
+    "evidenceCategory": "survey observation",
+    "measures": [
+      {
+        "construct": "instruction hindered by lack of teaching staff",
+        "value": 72,
+        "unit": "% of represented students",
+        "year": 2022
+      },
+      {
+        "construct": "instruction hindered by inadequate or poorly qualified teaching staff",
+        "value": 46,
+        "unit": "% of represented students",
+        "year": 2022
+      },
+      {
+        "construct": "instruction hindered by lack of teaching staff",
+        "value": 36,
+        "unit": "% of represented students",
+        "year": 2018
+      }
+    ],
+    "costContext": {
+      "value": 119600,
+      "unit": "USD PPP cumulative expenditure per student",
+      "period": "ages 6–15, expenditure reference year 2019",
+      "interpretation": "Resource level is context, not proof of effective allocation or outcomes."
+    },
+    "caveat": "A principal-reported constraint is not a vacancy count, pupil-teacher ratio, unqualified-teaching share, workload measure or forecast shortage. Student exclusion and response patterns constrain inference."
+  },
+  "aiTutorStudies": [
+    {
+      "id": "harvard-physics-ai-tutor",
+      "sourceId": "kestin-2025",
+      "design": "cluster-constrained randomized crossover trial",
+      "sample": "194 eligible students in one introductory life-sciences physics course at Harvard; 316 lesson-level post-tests across two lessons",
+      "comparator": "custom AI tutor at home versus the same content in an in-class active-learning lesson with instructors and peers",
+      "duration": "two lessons in consecutive weeks; median AI time on task 49 minutes versus 60 assumed instructional minutes in class",
+      "outcome": "Immediate lesson post-test; linear model effect 0.63 SD, with quantile estimates 0.73–1.3 SD under ceiling effects",
+      "uncertainty": "Mann–Whitney z = -5.6, p < 10^-8; ceiling effects and lesson-level analysis complicate a single effect estimate",
+      "fundingConflicts": "No dedicated funding statement was reported on the article page; Harvard units supported production. Authors declared no competing interests.",
+      "generalizability": "One selective university, one physics course, two lessons, bespoke tutor and immediate tests. No durable retention, cost, equity or teacher-substitution test.",
+      "evidenceCategory": "experiment",
+      "poolingGroup": null
+    },
+    {
+      "id": "tutor-copilot",
+      "sourceId": "tutor-copilot-2025",
+      "design": "preregistered tutor-level randomized controlled trial",
+      "sample": "783 tutors and more than 1,000 K–12 students in a virtual mathematics tutoring programme in one southern U.S. district serving federally funded schools",
+      "comparator": "human tutors with optional real-time AI suggestions versus the same tutoring platform without Tutor CoPilot",
+      "duration": "2024-03-27 to 2024-05-17, about seven weeks",
+      "outcome": "Access increased unconditional session exit-ticket passing by 4 percentage points; no statistically significant improvement in end-of-year MAP mathematics scores",
+      "uncertainty": "Exit-ticket ITT estimate 0.040 (SE 0.015), with multiple-testing adjustment; treatment exposure was low and varied by session",
+      "fundingConflicts": "Working paper produced with FEV Tutor and a partner district; the paper does not provide a standalone funding or competing-interest declaration.",
+      "generalizability": "Human-AI support for tutors, not an autonomous tutor; short implementation, one provider and district, proximal session outcome.",
+      "evidenceCategory": "experiment",
+      "poolingGroup": null
+    },
+    {
+      "id": "nigeria-copilot",
+      "sourceId": "world-bank-nigeria-ai-2025",
+      "design": "school-level randomized controlled trial",
+      "sample": "first-year senior-secondary students in 12 public schools in Edo State, Nigeria",
+      "comparator": "six-week after-school programme using Microsoft Copilot with teacher facilitation versus usual schooling",
+      "duration": "six weeks",
+      "outcome": "0.31 SD improvement on an assessment covering English, AI knowledge and digital skills",
+      "uncertainty": "Study-specific standardized treatment estimate; components and delivery differ from the other trials",
+      "fundingConflicts": "World Bank Policy Research Working Paper linked to the Edo Basic Education Sector and Skills Transformation Operation; intervention used Microsoft Copilot. Interpret as a working paper, not independent multi-site replication.",
+      "generalizability": "Short, facilitated after-school programme in one Nigerian state; does not test autonomous replacement, long-run retention or system costs.",
+      "evidenceCategory": "experiment",
+      "poolingGroup": null
+    },
+    {
+      "id": "scale-access-human-support",
+      "sourceId": "scale-access-2026",
+      "design": "two randomized controlled trials",
+      "sample": "about 350 elementary students in two unnamed U.S. districts using an AI literacy platform",
+      "comparator": "independent AI-platform access versus platform access plus an in-person tutor focused on engagement",
+      "duration": "intervention windows of 14–31 weeks; active users used the platform for about four to five weeks on average",
+      "outcome": "Human support raised engagement 71–80%, but usage remained low and reading achievement did not improve",
+      "uncertainty": "Nearly half of independent-access students never used the platform; platform and districts were unnamed",
+      "fundingConflicts": "Stanford SCALE / EdWorkingPapers publication; public summary does not disclose the platform or a standalone funding/conflict statement.",
+      "generalizability": "Evidence about implementation and engagement, not the instructional efficacy of every AI tutor.",
+      "evidenceCategory": "experiment",
+      "poolingGroup": null
+    }
+  ],
+  "poolingDecision": {
+    "pooled": false,
+    "reason": "No forest plot or pooled effect: interventions, units of randomization, populations, comparators, durations and outcomes are not commensurable."
+  },
+  "officialSeries": {
+    "primaryGrossEnrollment": {
+      "id": "SE.PRM.ENRR",
+      "sourceId": "world-bank-primary-enrollment-nl",
+      "label": "School enrollment, primary, gross",
+      "definition": "Total enrollment in primary education, regardless of age, divided by the population of the age group that officially corresponds to primary education.",
+      "geography": "Netherlands",
+      "population": "all pupils enrolled in primary education relative to the official primary-school-age population",
+      "denominator": "population of official primary-school age",
+      "unit": "% gross enrollment ratio",
+      "evidenceCategory": "observation",
+      "caveat": "A gross access ratio that can exceed 100 because it includes over-age and under-age pupils. Enrollment is not attendance, completion or proficiency.",
+      "period": "annual; 2016–2023 observations",
+      "release": "World Development Indicators / UNESCO UIS, source updated 2026-07-13",
+      "observations": [
+        {
+          "year": 2016,
+          "value": 105.6804
+        },
+        {
+          "year": 2017,
+          "value": 105.0394
+        },
+        {
+          "year": 2018,
+          "value": 104.5611
+        },
+        {
+          "year": 2019,
+          "value": 104.5789
+        },
+        {
+          "year": 2020,
+          "value": 104.3388
+        },
+        {
+          "year": 2021,
+          "value": 104.3784
+        },
+        {
+          "year": 2022,
+          "value": 104.2154
+        },
+        {
+          "year": 2023,
+          "value": 104.1566
+        }
+      ],
+      "latest": {
+        "year": 2023,
+        "value": 104.1566
+      }
+    }
+  },
+  "competingExplanations": [
+    {
+      "id": "composition",
+      "label": "Cohort composition and coverage",
+      "text": "Enrollment, exclusion and migration can change who an assessment represents."
+    },
+    {
+      "id": "mode",
+      "label": "Test mode and framework",
+      "text": "Digital transition, domain emphasis and framework changes can alter comparability."
+    },
+    {
+      "id": "closures",
+      "label": "School closures",
+      "text": "Closures plausibly contributed, but declines in several systems and domains predated 2020."
+    },
+    {
+      "id": "household",
+      "label": "Household resources",
+      "text": "Language, devices, quiet study space, income and parental time shape opportunity."
+    },
+    {
+      "id": "selection",
+      "label": "Selection into pathways",
+      "text": "Learners and employers select into programmes, so raw outcomes do not identify programme effects."
+    },
+    {
+      "id": "demand",
+      "label": "Labour demand",
+      "text": "Employment and earnings can move because the economy changes, independently of training quality."
+    },
+    {
+      "id": "capacity",
+      "label": "Institutional capacity",
+      "text": "Staffing, timetable, curriculum, procurement and implementation determine whether an intervention reaches learners."
+    }
+  ],
+  "reversalIndicators": [
+    "Sustained recovery across repeated cycles within the same assessment framework, age, domain and mode.",
+    "Narrower proficiency and outcome gaps with stable subgroup definitions and denominators.",
+    "Credible vocational pathway evidence joining enrollment, completion, employment, earnings and job match without collapsing them.",
+    "Repeated adult-learning evidence showing measured skill gains and occupational transitions, especially for adults with low prior attainment.",
+    "Reduced vacancies, unqualified teaching and workload pressure under locally valid measures, not only a lower pupil-teacher ratio.",
+    "Replicated, independent, long-duration AI-tutor trials showing retention, equity, total costs and safe integration at system scale."
+  ],
+  "possibilities": [
+    {
+      "label": "Hypothesis",
+      "text": "AI may extend feedback and practice when teachers and institutions can integrate it."
+    },
+    {
+      "label": "Possibility",
+      "text": "Work-based pathways may improve transitions when employer demand and credential quality align."
+    },
+    {
+      "label": "Data gap",
+      "text": "No defensible education/capability composite joins foundational proficiency, adult skill gain, pathway outcomes and teacher capacity."
+    }
+  ],
+  "sources": [
+    {
+      "id": "oecd-pisa-nl-2022",
+      "institution": "OECD",
+      "title": "PISA 2022 Results, Netherlands country note",
+      "date": "2023-12-05",
+      "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/netherlands_0941b029-en.html",
+      "geographyPopulation": "Netherlands; represented 15-year-old students enrolled in education",
+      "period": "PISA cycles 2012, 2015, 2018 and 2022; subgroup results for 2022",
+      "denominatorUnit": "represented students; PISA score points or percent at proficiency level",
+      "release": "PISA 2022 country note",
+      "evidenceType": "observation",
+      "role": "Foundational trajectory, distributions, gaps and principal-reported capacity",
+      "interpretation": "Within-framework evidence of achievement and distribution.",
+      "caveat": "Framework, age, domain and cycle remain attached; the Dutch 2022 sample exceeded the exclusion-rate standard."
+    },
+    {
+      "id": "world-bank-learning-poverty-2022",
+      "institution": "World Bank, UNESCO, UNICEF, FCDO, USAID and Gates Foundation",
+      "title": "The State of Global Learning Poverty: 2022 Update",
+      "date": "2022-06-23",
+      "url": "https://www.worldbank.org/en/topic/education/publication/state-of-global-learning-poverty",
+      "geographyPopulation": "low- and middle-income countries; children at late-primary age",
+      "period": "pre-pandemic baseline and 2022 simulation",
+      "denominatorUnit": "children at late-primary age; percent in learning poverty",
+      "release": "2022 update",
+      "evidenceType": "modelled estimate",
+      "role": "Global foundational-learning context",
+      "interpretation": "Combines schooling deprivation with reading proficiency.",
+      "caveat": "Harmonised and modelled, not a direct universal observation or a PISA series."
+    },
+    {
+      "id": "eurostat-lfs-adult-learning",
+      "institution": "Eurostat",
+      "title": "Adult participation in learning, EU Labour Force Survey (trng_lfse_01)",
+      "date": "2023-01-30",
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20230130-1",
+      "geographyPopulation": "European Union and member states; resident people aged 25–64",
+      "period": "annual, four weeks before interview; quoted 2021",
+      "denominatorUnit": "surveyed population aged 25–64; percent participating",
+      "release": "2021 results",
+      "evidenceType": "survey observation",
+      "role": "Adult-learning participation",
+      "interpretation": "Measures recent formal or non-formal learning activity.",
+      "caveat": "2021 series break; participation is not completion, skill gain or transition."
+    },
+    {
+      "id": "eurostat-aes-2022",
+      "institution": "Eurostat",
+      "title": "Adult Education Survey 2022",
+      "date": "2022",
+      "url": "https://ec.europa.eu/eurostat/web/microdata/collections-research/adult-education-survey",
+      "geographyPopulation": "European countries; collection scope ages 18–69 from 2022",
+      "period": "12 months before interview; waves 2007, 2011, 2016 and 2022",
+      "denominatorUnit": "survey population or stated attainment subgroup; percent participating",
+      "release": "2022 wave",
+      "evidenceType": "survey observation",
+      "role": "Prior-attainment distribution and window definition",
+      "interpretation": "Long-window participation and barriers by subgroup.",
+      "caveat": "Do not splice with the four-week LFS indicator; age scope changed in 2022."
+    },
+    {
+      "id": "eurostat-graduate-employment-2025",
+      "institution": "Eurostat",
+      "title": "Employment of recent graduates reached 83% in 2025 (edat_lfse_24)",
+      "date": "2026-06-15",
+      "url": "https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260615-1",
+      "geographyPopulation": "EU and member states; recent graduates aged 20–34, ISCED 3–8",
+      "period": "2025; graduated 1–3 years earlier",
+      "denominatorUnit": "recent graduates; percent employed",
+      "release": "2025 observation",
+      "evidenceType": "observation",
+      "role": "Pathway employment stage",
+      "interpretation": "Employment after education under a defined window.",
+      "caveat": "Not completion, earnings, job match or a causal pathway effect; 2014 and 2021 breaks."
+    },
+    {
+      "id": "eurostat-education-policy",
+      "institution": "European Commission / Eurostat",
+      "title": "European Education Area policy context",
+      "date": "2021",
+      "url": "https://ec.europa.eu/eurostat/web/education-and-training/information-data/policy-context",
+      "geographyPopulation": "European Union; recent VET graduates and adults under indicator definitions",
+      "period": "2021–2030 framework; 2025 targets",
+      "denominatorUnit": "defined target populations; percent",
+      "release": "Council strategic framework",
+      "evidenceType": "policy target",
+      "role": "VET work-based-learning benchmark",
+      "interpretation": "States the target, not current attainment or causal impact.",
+      "caveat": "Exposure is not completion, employment, earnings or job match."
+    },
+    {
+      "id": "world-bank-primary-enrollment-nl",
+      "institution": "World Bank / UNESCO Institute for Statistics",
+      "title": "School enrollment, primary, gross (SE.PRM.ENRR)",
+      "date": "2026-07-26",
+      "url": "https://api.worldbank.org/v2/country/NLD/indicator/SE.PRM.ENRR?format=json",
+      "geographyPopulation": "Netherlands; all primary pupils and official primary-school-age population",
+      "period": "annual; 2016–2023 observations",
+      "denominatorUnit": "official primary-school-age population; gross enrollment ratio",
+      "release": "World Development Indicators",
+      "evidenceType": "observation",
+      "role": "Machine-refreshable pathway access proxy",
+      "interpretation": "Gross participation relative to the official-age population.",
+      "caveat": "May exceed 100; enrollment is not attendance, completion or proficiency."
+    },
+    {
+      "id": "kestin-2025",
+      "institution": "Scientific Reports / Harvard University",
+      "title": "AI tutoring outperforms in-class active learning",
+      "date": "2025-06-03",
+      "url": "https://doi.org/10.1038/s41598-025-97652-6",
+      "geographyPopulation": "one Harvard introductory physics course; 194 eligible students",
+      "period": "two lessons in consecutive weeks in fall 2023",
+      "denominatorUnit": "eligible students and lesson-level post-tests; standardized effect",
+      "release": "Scientific Reports 15, 17458",
+      "evidenceType": "experiment",
+      "role": "Bounded direct AI-tutor efficacy",
+      "interpretation": "Immediate learning gains under a bespoke, scaffolded design.",
+      "caveat": "Short, selective, single-course study; no durable, system, cost or substitution result."
+    },
+    {
+      "id": "tutor-copilot-2025",
+      "institution": "Stanford SCALE / EdWorkingPapers",
+      "title": "Tutor CoPilot: A Human-AI Approach for Scaling Real-Time Expertise",
+      "date": "2025",
+      "url": "https://edworkingpapers.com/sites/default/files/ai24_1054_v2.pdf",
+      "geographyPopulation": "one southern U.S. district; 783 virtual tutors and more than 1,000 K–12 students",
+      "period": "2024-03-27 to 2024-05-17",
+      "denominatorUnit": "tutoring sessions and students; percentage-point exit-ticket outcome",
+      "release": "EdWorkingPaper 24-1054 v2",
+      "evidenceType": "experiment",
+      "role": "Human-AI tutor-support evidence",
+      "interpretation": "Proximal session improvement when AI supports human tutors.",
+      "caveat": "No significant end-of-year MAP effect; short exposure and one provider/district."
+    },
+    {
+      "id": "world-bank-nigeria-ai-2025",
+      "institution": "World Bank",
+      "title": "From Chalkboards to Chatbots: Evaluating the Impact of Generative AI on Learning Outcomes in Nigeria",
+      "date": "2025-05-19",
+      "url": "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099548105192529324",
+      "geographyPopulation": "first-year senior-secondary students in 12 Edo State public schools",
+      "period": "six-week after-school intervention",
+      "denominatorUnit": "participating students; standardized assessment effect",
+      "release": "Policy Research Working Paper 11125",
+      "evidenceType": "experiment",
+      "role": "Facilitated generative-AI programme evidence",
+      "interpretation": "Short-run assessment gain in a defined programme.",
+      "caveat": "Working paper, one state, mixed outcome assessment, teacher facilitation and no long-run system test."
+    },
+    {
+      "id": "scale-access-2026",
+      "institution": "Stanford SCALE / EdWorkingPapers",
+      "title": "Access is Not Enough: Human Support Improves Engagement with AI Tutoring",
+      "date": "2026-06",
+      "url": "https://scale.stanford.edu/publications/access-not-enough-human-support-improves-engagement-ai-tutoring",
+      "geographyPopulation": "about 350 elementary students in two unnamed U.S. districts",
+      "period": "14–31 week intervention windows",
+      "denominatorUnit": "assigned students; platform use, engagement and reading achievement",
+      "release": "EdWorkingPapers publication",
+      "evidenceType": "experiment",
+      "role": "AI-tutor implementation and human-support evidence",
+      "interpretation": "Access did not ensure use; human support improved engagement.",
+      "caveat": "Low usage, unnamed platform/districts and no reading-achievement improvement."
+    }
+  ]
+}

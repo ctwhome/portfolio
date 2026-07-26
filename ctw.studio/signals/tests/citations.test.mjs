@@ -11,6 +11,11 @@ const pages = [
   ['healthspan/index.html', 'data/healthspan.json'],
   ['real-time-ai/index.html', 'data/real-time-ai.json']
 ];
+const newPages = [
+  ['demography/index.html', 'data/demography.json', 'demography/demography.js'],
+  ['education/index.html', 'data/education.json', 'education/education.js'],
+  ['financial-fragility/index.html', 'data/financial-fragility.json', 'financial-fragility/financial-fragility.js']
+];
 
 function idsFrom(html, attribute) {
   return [...html.matchAll(new RegExp(`${attribute}="([^"]+)"`, 'g'))]
@@ -41,6 +46,41 @@ for (const [pagePath, dataPath] of pages) {
       assert.match(citation, /target="_blank"/);
       assert.match(citation, /rel="noreferrer"/);
     }
+  });
+}
+
+for (const [pagePath, dataPath, scriptPath] of newPages) {
+  test(`${pagePath} resolves every evidence marker through a proximate HTTPS citation and source ledger`, async () => {
+    const html = await readFile(new URL(pagePath, root), 'utf8');
+    const data = JSON.parse(await readFile(new URL(dataPath, root), 'utf8'));
+    const script = await readFile(new URL(scriptPath, root), 'utf8');
+    const known = new Set(data.sources.map((source) => source.id));
+    const evidenceIds = idsFrom(html, 'data-source-id');
+    const citationIds = idsFrom(html, 'data-citation-source-id');
+
+    assert.ok(evidenceIds.length, `${pagePath} has no semantic evidence markers`);
+    assert.equal(citationIds.length, evidenceIds.length, `${pagePath} evidence/citation source count differs`);
+    assert.deepEqual([...citationIds].sort(), [...evidenceIds].sort(), `${pagePath} evidence and proximate citation sources diverge`);
+
+    for (const source of data.sources) {
+      assert.match(source.url, /^https:\/\//, `${pagePath} ledger source ${source.id} is not HTTPS`);
+    }
+    for (const id of evidenceIds) {
+      assert.ok(known.has(id), `${pagePath} cites unknown source ${id}`);
+      const staticTarget = new RegExp(`id="source-${id}"`).test(html);
+      const dynamicTarget = /`source-\$\{source\.id\}`/.test(script);
+      assert.ok(staticTarget || dynamicTarget, `${pagePath} lacks ledger resolution for ${id}`);
+    }
+
+    const citations = [...html.matchAll(/<(?:p|footer)\b[^>]*data-citation-source-id="[^"]+"[^>]*>[\s\S]*?<\/(?:p|footer)>/g)];
+    assert.ok(citations.length, `${pagePath} has no proximate citation strips`);
+    for (const match of citations) {
+      assert.match(match[0], /(?:Source(?:s)?|Evidence basis):/i, `${pagePath} citation lacks source label`);
+      assert.match(match[0], /href="https:\/\//, `${pagePath} citation lacks direct HTTPS source`);
+      assert.match(match[0], /target="_blank"/);
+      assert.match(match[0], /rel="noreferrer"/);
+    }
+    assert.match(script, /safeHttpsUrl/);
   });
 }
 
