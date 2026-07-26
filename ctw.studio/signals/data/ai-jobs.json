@@ -1074,6 +1074,72 @@
       "sourceId": "ai-index-2026"
     }
   },
+  "transitionDiscipline": {
+    "label": "A Factfulness discipline for uncertainty",
+    "frameworkSourceId": "gapminder-factfulness",
+    "frameworkUse": "Paraphrased adaptation of Factfulness critical-thinking principles; no affiliation, clinical authority or universal career authority implied.",
+    "observedBasis": [
+      {
+        "classification": "Observed economy-wide comparison",
+        "claim": "No discernible broad U.S. labour-market disruption in the cited first 33 months after ChatGPT.",
+        "sourceId": "yale-budget-lab",
+        "limitation": "Early U.S. observational window; not a forecast."
+      },
+      {
+        "classification": "Observed subgroup association",
+        "claim": "A concerning early-career employment decline appears in highly exposed U.S. occupations.",
+        "sourceId": "stanford-canaries",
+        "limitation": "Working paper and subgroup result; not economy-wide causal proof."
+      },
+      {
+        "classification": "Controlled workplace study",
+        "claim": "AI raised task productivity in one customer-support setting.",
+        "sourceId": "nber-31161",
+        "limitation": "Task and employer scope do not establish labour-market outcomes."
+      }
+    ],
+    "distinctions": [
+      "base rate versus subgroup",
+      "trend versus cause",
+      "exposure versus realized loss",
+      "task versus occupation",
+      "experiment versus forecast",
+      "single story versus multiple explanations"
+    ],
+    "robustActions": [
+      {
+        "classification": "Prudent judgment",
+        "action": "Preserve learning capacity and domain knowledge.",
+        "basis": "Both augmentation and substitution change task bundles.",
+        "limitation": "Not a universal prescription for a specific occupation or person."
+      },
+      {
+        "classification": "Prudent judgment",
+        "action": "Test AI on real work with quality checks before reorganizing roles around forecasts.",
+        "basis": "Controlled task gains do not automatically transfer across settings.",
+        "limitation": "Appropriate validation depends on stakes, role and institution."
+      },
+      {
+        "classification": "Prudent judgment",
+        "action": "Keep financial and organizational slack where feasible.",
+        "basis": "Transition direction, pace and distribution remain uncertain.",
+        "limitation": "Feasibility and appropriate buffers vary; this is not financial advice."
+      },
+      {
+        "classification": "Prudent judgment",
+        "action": "Protect junior pathways where evidence shows concentrated pressure.",
+        "basis": "The strongest cited observed warning is early-career and exposure-concentrated.",
+        "limitation": "Does not imply all junior roles or sectors face the same risk."
+      }
+    ],
+    "watchIndicators": [
+      "Persistent AI-attributed separations across independent employer and administrative sources",
+      "Broad sustained entry-level contraction beyond highly exposed occupations and ordinary cycles",
+      "Wage, hours and employment effects diffusing across sectors and countries",
+      "New tasks, occupations, firms and demand offsetting displacement—or failing to do so"
+    ],
+    "explicitLimitations": "Evidence is early, U.S.-heavy and definition-sensitive. Adoption, exposure, productivity, hiring and separations update at different speeds. Potential disorder is plausible; broad AI-driven mass displacement is not established."
+  },
   "sources": [
     {
       "id": "fred-jolts",
@@ -1138,6 +1204,21 @@
       "date": "2026",
       "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/economy",
       "note": "Synthesis of investment, adoption, labour-market and productivity evidence; underlying sources vary by indicator."
+    },
+    {
+      "id": "gapminder-factfulness",
+      "institution": "Gapminder Foundation",
+      "title": "Factfulness",
+      "date": "Framework page accessed 26 July 2026; book published 2018",
+      "url": "https://www.gapminder.org/factfulness/",
+      "geographyPopulation": "Global educational framework; no study population",
+      "period": "Book published 2018; framework page accessed 26 July 2026",
+      "denominatorUnit": "Not applicable; conceptual framework",
+      "evidenceType": "Critical-thinking framework",
+      "role": "Discipline for testing dramatic interpretations against base rates, definitions and rival explanations",
+      "interpretation": "Useful as a reasoning checklist, not empirical evidence about AI labour outcomes",
+      "caveat": "Paraphrased adaptation; no Gapminder affiliation or clinical, financial or universal career authority",
+      "note": "Critical-thinking framework for checking dramatic interpretations. Principles are paraphrased and adapted here; no affiliation or professional authority is implied."
     }
   ]
 }

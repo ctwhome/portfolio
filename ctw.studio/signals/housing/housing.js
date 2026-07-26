@@ -368,6 +368,7 @@
     if (!host) return;
     host.replaceChildren(...data.sources.map((source, index) => {
       const item = document.createElement('article');
+      item.id = `source-${source.id}`;
       const number = document.createElement('span');
       number.className = 'source-number';
       number.textContent = String(index + 1).padStart(2, '0');
