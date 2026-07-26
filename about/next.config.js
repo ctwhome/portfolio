@@ -1,4 +1,6 @@
 const runtimeCaching = require('next-pwa/cache')
+const isStaticExport = process.env.NLESC_STATIC_EXPORT === '1'
+
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -16,9 +18,20 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   reactStrictMode: true,
+  ...(isStaticExport && {
+    output: 'export',
+    basePath: '/nlesc',
+    trailingSlash: true,
+    optimizeFonts: false,
+    generateBuildId: async () => {
+      if (!process.env.NLESC_BUILD_ID) {
+        throw new Error('NLESC_BUILD_ID is required for static export')
+      }
+      return process.env.NLESC_BUILD_ID
+    },
+  }),
   experimental: {
-    optimizeCss: true,
-    legacyBrowsers: false,
+    ...(!isStaticExport && { optimizeCss: true }),
     nextScriptWorkers: true,
   },
   compiler: {
@@ -30,6 +43,7 @@ const nextConfig = {
     // contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ['images.ctfassets.net', 'assets.darkroom.engineering'],
     formats: ['image/avif', 'image/webp'],
+    ...(isStaticExport && { unoptimized: true }),
   },
   webpack: (config, options) => {
     const { dir } = options
@@ -105,36 +119,38 @@ const nextConfig = {
 
     return config
   },
-  headers: async () => {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-    ]
-  },
-  redirects: async () => {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-    ]
-  },
+  ...(!isStaticExport && {
+    headers: async () => {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'X-Frame-Options',
+              value: 'SAMEORIGIN',
+            },
+            {
+              key: 'X-XSS-Protection',
+              value: '1; mode=block',
+            },
+          ],
+        },
+      ]
+    },
+    redirects: async () => {
+      return [
+        {
+          source: '/home',
+          destination: '/',
+          permanent: true,
+        },
+      ]
+    },
+  }),
 }
 
 module.exports = () => {

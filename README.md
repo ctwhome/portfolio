@@ -1,4 +1,60 @@
-# CTW Studio Portfolio
+# Portfolio Monorepo
+
+Portfolio monorepo containing several independently built and deployed applications:
+
+- `about/`: Next.js NLeSC portfolio
+- `ctw.studio/`: static CTW Studio portfolio and Signals pages
+- `ctw.studio2/`: alternate static portfolio
+- `dashboard/`: Bun Signals dashboard
+- `jessegonzalez.dev/`: SvelteKit portfolio
+- `ctw-kit/`: shared Svelte library used by `jessegonzalez.dev/`
+
+Root `package.json` and `bun.lock` define Bun workspaces only for `ctw-kit/` and
+`jessegonzalez.dev/`. Independent applications use their own app-local setup and
+lockfiles.
+
+## Vercel deployments
+
+Each Vercel project must set its Root Directory to its application directory.
+Framework-specific configuration belongs inside that application; do not add a
+repository-root `vercel.json`. `about/` uses native Next.js/Vercel defaults,
+`ctw.studio/` owns its static configuration, and `jessegonzalez.dev/` owns its
+SvelteKit configuration.
+
+### NLeSC route migration
+
+`about/` is the canonical NLeSC source. Its default build preserves the legacy
+Next.js deployment behavior. `ctw.studio/nlesc/` is the generated, committed
+static export served at [ctw.studio/nlesc/](https://ctw.studio/nlesc/). Never
+edit that generated subtree by hand.
+
+Regenerate and synchronize the artifact:
+
+```bash
+cd about
+bun install --frozen-lockfile
+bun run static:sync
+```
+
+Rebuild and byte-compare the committed artifact:
+
+```bash
+cd about
+bun run static:check
+```
+
+The `about/` app and its `nlesc-portfolio` Vercel project remain active until a
+separate cutover is approved.
+
+Keep cutover rollback-safe:
+
+1. Verify a preview of the CTW Studio route.
+2. Merge and deploy the CTW Studio route, then verify it in production.
+3. Separately approve the legacy-domain redirect, then verify it.
+4. After redirect verification, retire the legacy `nlesc-portfolio` Vercel
+   project. Keep `about/` as the canonical source for `/nlesc/`.
+
+## CTW Studio
 
 Static portfolio site for [ctw.studio](https://ctw.studio). No build framework — plain HTML, CSS, and vanilla JS.
 
