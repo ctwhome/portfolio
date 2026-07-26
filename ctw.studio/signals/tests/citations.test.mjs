@@ -8,7 +8,8 @@ const pages = [
   ['food/index.html', 'data/food-system.json'],
   ['housing/index.html', 'data/housing.json'],
   ['science/index.html', 'data/science.json'],
-  ['healthspan/index.html', 'data/healthspan.json']
+  ['healthspan/index.html', 'data/healthspan.json'],
+  ['real-time-ai/index.html', 'data/real-time-ai.json']
 ];
 
 function idsFrom(html, attribute) {
