@@ -7,6 +7,8 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - **Brief 001 · AI & work** (`index.html`) — observed U.S. labor-market conditions, global AI exposure, early-career signals, employer expectations, adoption and productivity evidence.
 - **Brief 002 · Food, animals & the planet** (`food/index.html`) — animal slaughter, fish-count uncertainty, livestock emissions, product footprints, land, deforestation, water, oceans and health evidence.
 - **Brief 003 · Housing & affordability** (`housing/index.html`) — world housing adequacy, Dutch prices, rents, financing, tenure burden, supply and household formation, plus mechanism-led country comparisons.
+- **Brief 004 · Science & discovery** (`science/index.html`) — R&D inputs, publication volume, reliability, open data/software, translation and demonstrated AI-assisted acceleration kept separate.
+- **Brief 005 · Healthspan & care** (`healthspan/index.html`) — lifespan, healthy life years, avoidable mortality, access, workforce, spending and AMR with explicit evidence-category boundaries.
 - **Signals atlas** (`roadmap/index.html`) — the shared five-question evidence contract, three geographic lenses and the ten-subject publication roadmap.
 
 ## Files
@@ -26,6 +28,12 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - `data/housing.json` — curated housing interpretation plus baked World Bank, OECD, Eurostat, CBS and ECB observations
 - `scripts/update_housing_data.py` — no-key refresh for eight official housing source series
 - `roadmap/index.html` — ten-subject Signals atlas and publication sequence
+- `science/index.html`, `science/science.js`, `science/science.css` — Brief 004 page, dependency-free renderer and topic composition
+- `data/science.json` — official science series plus manually curated primary evidence and source ledger
+- `scripts/update_science_data.py` — no-key World Bank refresh for R&D intensity and journal-article series
+- `healthspan/index.html`, `healthspan/healthspan.js`, `healthspan/healthspan.css` — Brief 005 page, renderer and topic composition
+- `data/healthspan.json` — life/healthy-life outcomes, workforce series, evidence boundaries and source ledger
+- `scripts/update_healthspan_data.py` — no-key World Bank and Eurostat refresh for life expectancy, physicians and healthy life years
 - `tests/*.test.mjs` — source/data/markup integrity checks
 
 ## Refreshing the data
@@ -36,6 +44,8 @@ From `ctw.studio/`:
 python3 signals/scripts/update_fred.py
 python3 signals/scripts/update_food_data.py
 python3 signals/scripts/update_housing_data.py
+python3 signals/scripts/update_science_data.py
+python3 signals/scripts/update_healthspan_data.py
 node --test signals/tests/*.test.mjs
 ```
 
@@ -60,6 +70,19 @@ The housing updater downloads and reconciles:
 - CBS existing-home prices, dwelling-stock changes and private households
 - ECB / DNB new-mortgage interest rates
 
+The science updater downloads:
+
+- World Bank WDI R&D expenditure as a share of GDP, sourced from UNESCO UIS
+- World Bank WDI scientific and technical journal-article counts
+
+The healthspan updater downloads:
+
+- World Bank WDI life expectancy at birth
+- World Bank WDI physicians per 1,000 people
+- Eurostat life expectancy and healthy life years at birth for EU27 and the Netherlands
+
+Updaters validate source identity, geography, dimensions, chronology and minimum observation counts before writing. They fail closed on schema or definition gaps. Papers, benchmarks, regulatory material, AMR interpretation and other non-API evidence remain manually curated in JSON.
+
 After any refresh:
 
 1. Review the diff for revisions, missing observations and definition changes.
@@ -82,7 +105,29 @@ After any refresh:
 10. **National housing totals do not prove allocation.** Location, tenure, price, suitability, vacancy and accumulated backlog remain material.
 11. **Every new atlas brief answers the shared contract.** Show where we are, direction, distribution, competing explanations and what would change the conclusion, then label possibilities as hypotheses.
 12. **Prefer primary sources.** Use syntheses only when they expose the underlying study and definitions.
+13. **Publication volume is not discovery speed.** Keep inputs, output, reliability, translation and demonstrated acceleration separate.
+14. **Lifespan is not healthy lifespan.** Do not combine population outcomes, system performance, individual risks, clinical evidence, consumer devices or speculative longevity.
+15. **Waiting times need matching clocks and procedures.** Expose a data gap instead of ranking unlike definitions.
+16. **Spending is allocation, not causal proof.** Prevention or treatment expenditure does not itself demonstrate an outcome.
+17. **Guidance stays classified.** Observed evidence, conditional judgment, hypotheses and reversal indicators must remain visible.
 
 ## Adding the next brief
 
 Follow the atlas contract in `roadmap/index.html`: one data file, a reproducible no-key updater where feasible, an inspectable source ledger, explicit world / Europe-Netherlands / selected-country scopes, and tests that fail on silent data gaps or denominator changes.
+
+## Verification
+
+From `ctw.studio/`:
+
+```bash
+node --test signals/tests/*.test.mjs
+node --check signals/dashboard.js
+node --check signals/food/food.js
+node --check signals/housing/housing.js
+node --check signals/science/science.js
+node --check signals/healthspan/healthspan.js
+python3 -m py_compile signals/scripts/*.py
+python3 -m http.server 4173
+```
+
+Probe `/signals/`, `/signals/food/`, `/signals/housing/`, `/signals/science/`, `/signals/healthspan/` and `/signals/roadmap/`. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.

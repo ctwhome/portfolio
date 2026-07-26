@@ -1,0 +1,925 @@
+{
+  "meta": {
+    "topic": "Healthspan & care",
+    "brief": "005",
+    "dataUpdated": "2026-07-13",
+    "editorialReview": "2026-07-26",
+    "updateStatus": "Official API series refreshed; curated evidence unchanged",
+    "scope": "World, Europe / Netherlands, and selected-country comparisons"
+  },
+  "question": "Are longer lives becoming healthier lives?",
+  "verdict": {
+    "label": "Longevity recovered; healthy years and care capacity do not move automatically with it",
+    "text": "Global life expectancy has recovered above its 2019 level in the World Bank series. In 2023, Eurostat estimated 81.4 life-expectancy years but 63.1 healthy life years for the EU, and 81.9 versus 59.0 for the Netherlands under its activity-limitation definition.",
+    "direction": "Life expectancy is recovering, but comparable healthy-life and system-performance trends are patchier.",
+    "distribution": "Health, access and workforce capacity differ within and between countries.",
+    "confidence": "Conditional"
+  },
+  "questions": [
+    "Where are we now?",
+    "What direction are we moving?",
+    "Who is benefiting or carrying the cost?",
+    "What are the competing explanations?",
+    "What evidence would change our current conclusion?"
+  ],
+  "lenses": [
+    {
+      "id": "world",
+      "label": "World",
+      "role": "Longevity and workforce capacity with uneven reporting"
+    },
+    {
+      "id": "europe",
+      "label": "Europe / Netherlands",
+      "role": "Comparable EU healthy-life-years and unmet-need definitions"
+    },
+    {
+      "id": "selected",
+      "label": "Selected countries",
+      "role": "Japan and United States illustrate different longevity and capacity profiles; not a ranking"
+    }
+  ],
+  "categories": [
+    {
+      "id": "population-outcomes",
+      "label": "Population outcomes",
+      "includes": "Life expectancy, healthy life years, mortality and disease burden"
+    },
+    {
+      "id": "system-performance",
+      "label": "System performance",
+      "includes": "Access, waits, staffing, capacity and spending"
+    },
+    {
+      "id": "individual-risks",
+      "label": "Individual risks",
+      "includes": "Behaviours and exposures; not destiny or population-system performance"
+    },
+    {
+      "id": "clinical-evidence",
+      "label": "Clinical evidence",
+      "includes": "Intervention benefits and harms in defined populations"
+    },
+    {
+      "id": "consumer-devices",
+      "label": "Consumer devices",
+      "includes": "Measurements or prompts; not validated clinical outcomes by default"
+    },
+    {
+      "id": "speculative-longevity",
+      "label": "Speculative longevity claims",
+      "includes": "Hypotheses without demonstrated human healthspan benefit"
+    }
+  ],
+  "series": {
+    "lifeExpectancy": {
+      "id": "SP.DYN.LE00.IN",
+      "label": "Life expectancy at birth",
+      "unit": "years",
+      "denominator": "period life table for total population",
+      "sourceId": "world-bank-life",
+      "period": "2000–latest available annual observation",
+      "observations": {
+        "WLD": [
+          {
+            "year": 2000,
+            "value": 67.6505
+          },
+          {
+            "year": 2001,
+            "value": 67.9452
+          },
+          {
+            "year": 2002,
+            "value": 68.2314
+          },
+          {
+            "year": 2003,
+            "value": 68.5158
+          },
+          {
+            "year": 2004,
+            "value": 68.7711
+          },
+          {
+            "year": 2005,
+            "value": 69.1114
+          },
+          {
+            "year": 2006,
+            "value": 69.469
+          },
+          {
+            "year": 2007,
+            "value": 69.805
+          },
+          {
+            "year": 2008,
+            "value": 70.0043
+          },
+          {
+            "year": 2009,
+            "value": 70.3803
+          },
+          {
+            "year": 2010,
+            "value": 70.6826
+          },
+          {
+            "year": 2011,
+            "value": 70.9688
+          },
+          {
+            "year": 2012,
+            "value": 71.2646
+          },
+          {
+            "year": 2013,
+            "value": 71.5335
+          },
+          {
+            "year": 2014,
+            "value": 71.7764
+          },
+          {
+            "year": 2015,
+            "value": 71.9656
+          },
+          {
+            "year": 2016,
+            "value": 72.1858
+          },
+          {
+            "year": 2017,
+            "value": 72.3663
+          },
+          {
+            "year": 2018,
+            "value": 72.6442
+          },
+          {
+            "year": 2019,
+            "value": 72.8699
+          },
+          {
+            "year": 2020,
+            "value": 72.1832
+          },
+          {
+            "year": 2021,
+            "value": 71.2161
+          },
+          {
+            "year": 2022,
+            "value": 72.969
+          },
+          {
+            "year": 2023,
+            "value": 73.3302
+          },
+          {
+            "year": 2024,
+            "value": 73.4818
+          }
+        ],
+        "NLD": [
+          {
+            "year": 2000,
+            "value": 77.9878
+          },
+          {
+            "year": 2001,
+            "value": 78.1902
+          },
+          {
+            "year": 2002,
+            "value": 78.2927
+          },
+          {
+            "year": 2003,
+            "value": 78.4927
+          },
+          {
+            "year": 2004,
+            "value": 79.0951
+          },
+          {
+            "year": 2005,
+            "value": 79.3463
+          },
+          {
+            "year": 2006,
+            "value": 79.6976
+          },
+          {
+            "year": 2007,
+            "value": 80.0976
+          },
+          {
+            "year": 2008,
+            "value": 80.2512
+          },
+          {
+            "year": 2009,
+            "value": 80.5488
+          },
+          {
+            "year": 2010,
+            "value": 80.7024
+          },
+          {
+            "year": 2011,
+            "value": 81.2049
+          },
+          {
+            "year": 2012,
+            "value": 81.1049
+          },
+          {
+            "year": 2013,
+            "value": 81.3049
+          },
+          {
+            "year": 2014,
+            "value": 81.7073
+          },
+          {
+            "year": 2015,
+            "value": 81.5098
+          },
+          {
+            "year": 2016,
+            "value": 81.561
+          },
+          {
+            "year": 2017,
+            "value": 81.761
+          },
+          {
+            "year": 2018,
+            "value": 81.8122
+          },
+          {
+            "year": 2019,
+            "value": 82.1122
+          },
+          {
+            "year": 2020,
+            "value": 81.3585
+          },
+          {
+            "year": 2021,
+            "value": 81.3098
+          },
+          {
+            "year": 2022,
+            "value": 81.6146
+          },
+          {
+            "year": 2023,
+            "value": 81.8634
+          },
+          {
+            "year": 2024,
+            "value": 81.9659
+          }
+        ],
+        "JPN": [
+          {
+            "year": 2000,
+            "value": 81.0761
+          },
+          {
+            "year": 2001,
+            "value": 81.4163
+          },
+          {
+            "year": 2002,
+            "value": 81.6907
+          },
+          {
+            "year": 2003,
+            "value": 81.76
+          },
+          {
+            "year": 2004,
+            "value": 82.0302
+          },
+          {
+            "year": 2005,
+            "value": 81.9551
+          },
+          {
+            "year": 2006,
+            "value": 82.322
+          },
+          {
+            "year": 2007,
+            "value": 82.5071
+          },
+          {
+            "year": 2008,
+            "value": 82.5876
+          },
+          {
+            "year": 2009,
+            "value": 82.9315
+          },
+          {
+            "year": 2010,
+            "value": 82.8427
+          },
+          {
+            "year": 2011,
+            "value": 82.5912
+          },
+          {
+            "year": 2012,
+            "value": 83.0961
+          },
+          {
+            "year": 2013,
+            "value": 83.332
+          },
+          {
+            "year": 2014,
+            "value": 83.5878
+          },
+          {
+            "year": 2015,
+            "value": 83.7939
+          },
+          {
+            "year": 2016,
+            "value": 83.9849
+          },
+          {
+            "year": 2017,
+            "value": 84.0998
+          },
+          {
+            "year": 2018,
+            "value": 84.211
+          },
+          {
+            "year": 2019,
+            "value": 84.3563
+          },
+          {
+            "year": 2020,
+            "value": 84.56
+          },
+          {
+            "year": 2021,
+            "value": 84.4456
+          },
+          {
+            "year": 2022,
+            "value": 83.9963
+          },
+          {
+            "year": 2023,
+            "value": 84.0412
+          },
+          {
+            "year": 2024,
+            "value": 84.0363
+          }
+        ],
+        "USA": [
+          {
+            "year": 2000,
+            "value": 76.6366
+          },
+          {
+            "year": 2001,
+            "value": 76.8366
+          },
+          {
+            "year": 2002,
+            "value": 76.9366
+          },
+          {
+            "year": 2003,
+            "value": 77.0366
+          },
+          {
+            "year": 2004,
+            "value": 77.4878
+          },
+          {
+            "year": 2005,
+            "value": 77.4878
+          },
+          {
+            "year": 2006,
+            "value": 77.6878
+          },
+          {
+            "year": 2007,
+            "value": 77.9878
+          },
+          {
+            "year": 2008,
+            "value": 78.039
+          },
+          {
+            "year": 2009,
+            "value": 78.3902
+          },
+          {
+            "year": 2010,
+            "value": 78.5415
+          },
+          {
+            "year": 2011,
+            "value": 78.6415
+          },
+          {
+            "year": 2012,
+            "value": 78.7415
+          },
+          {
+            "year": 2013,
+            "value": 78.7415
+          },
+          {
+            "year": 2014,
+            "value": 78.8415
+          },
+          {
+            "year": 2015,
+            "value": 78.6902
+          },
+          {
+            "year": 2016,
+            "value": 78.539
+          },
+          {
+            "year": 2017,
+            "value": 78.539
+          },
+          {
+            "year": 2018,
+            "value": 78.639
+          },
+          {
+            "year": 2019,
+            "value": 78.7878
+          },
+          {
+            "year": 2020,
+            "value": 76.9805
+          },
+          {
+            "year": 2021,
+            "value": 76.3293
+          },
+          {
+            "year": 2022,
+            "value": 77.4341
+          },
+          {
+            "year": 2023,
+            "value": 78.3854
+          },
+          {
+            "year": 2024,
+            "value": 78.8902
+          }
+        ]
+      },
+      "latest": {
+        "WLD": {
+          "year": 2024,
+          "value": 73.4818
+        },
+        "NLD": {
+          "year": 2024,
+          "value": 81.9659
+        },
+        "JPN": {
+          "year": 2024,
+          "value": 84.0363
+        },
+        "USA": {
+          "year": 2024,
+          "value": 78.8902
+        }
+      }
+    },
+    "physicians": {
+      "id": "SH.MED.PHYS.ZS",
+      "label": "Physicians",
+      "unit": "per 1,000 people",
+      "denominator": "total population",
+      "sourceId": "world-bank-physicians",
+      "period": "2000–latest available annual observation",
+      "observations": {
+        "WLD": [
+          {
+            "year": 2000,
+            "value": 1.5231
+          },
+          {
+            "year": 2010,
+            "value": 1.4908
+          },
+          {
+            "year": 2022,
+            "value": 1.8609
+          }
+        ],
+        "NLD": [
+          {
+            "year": 2000,
+            "value": 2.423
+          },
+          {
+            "year": 2001,
+            "value": 2.494
+          },
+          {
+            "year": 2002,
+            "value": 2.553
+          },
+          {
+            "year": 2003,
+            "value": 2.594
+          },
+          {
+            "year": 2004,
+            "value": 2.625
+          },
+          {
+            "year": 2005,
+            "value": 2.684
+          },
+          {
+            "year": 2006,
+            "value": 2.77
+          },
+          {
+            "year": 2007,
+            "value": 2.768
+          },
+          {
+            "year": 2008,
+            "value": 2.844
+          },
+          {
+            "year": 2009,
+            "value": 2.896
+          },
+          {
+            "year": 2010,
+            "value": 2.936
+          },
+          {
+            "year": 2011,
+            "value": 3.103
+          },
+          {
+            "year": 2012,
+            "value": 3.223
+          },
+          {
+            "year": 2013,
+            "value": 3.282
+          },
+          {
+            "year": 2014,
+            "value": 3.392
+          },
+          {
+            "year": 2015,
+            "value": 3.457
+          },
+          {
+            "year": 2016,
+            "value": 3.501
+          },
+          {
+            "year": 2017,
+            "value": 3.565
+          },
+          {
+            "year": 2018,
+            "value": 3.632
+          },
+          {
+            "year": 2019,
+            "value": 3.713
+          },
+          {
+            "year": 2020,
+            "value": 3.805
+          },
+          {
+            "year": 2021,
+            "value": 3.875
+          },
+          {
+            "year": 2022,
+            "value": 3.876
+          }
+        ],
+        "JPN": [
+          {
+            "year": 2000,
+            "value": 1.931
+          },
+          {
+            "year": 2002,
+            "value": 1.976
+          },
+          {
+            "year": 2004,
+            "value": 2.029
+          },
+          {
+            "year": 2006,
+            "value": 2.082
+          },
+          {
+            "year": 2008,
+            "value": 2.146
+          },
+          {
+            "year": 2010,
+            "value": 2.212
+          },
+          {
+            "year": 2012,
+            "value": 2.283
+          },
+          {
+            "year": 2014,
+            "value": 2.354
+          },
+          {
+            "year": 2016,
+            "value": 2.423
+          },
+          {
+            "year": 2018,
+            "value": 2.485
+          },
+          {
+            "year": 2020,
+            "value": 2.592
+          },
+          {
+            "year": 2022,
+            "value": 2.649
+          }
+        ],
+        "USA": [
+          {
+            "year": 2000,
+            "value": 2.596
+          },
+          {
+            "year": 2004,
+            "value": 2.711
+          },
+          {
+            "year": 2018,
+            "value": 2.548
+          },
+          {
+            "year": 2019,
+            "value": 3.482
+          },
+          {
+            "year": 2020,
+            "value": 3.518
+          },
+          {
+            "year": 2021,
+            "value": 3.575
+          },
+          {
+            "year": 2022,
+            "value": 3.681
+          }
+        ]
+      },
+      "latest": {
+        "WLD": {
+          "year": 2022,
+          "value": 1.8609
+        },
+        "NLD": {
+          "year": 2022,
+          "value": 3.876
+        },
+        "JPN": {
+          "year": 2022,
+          "value": 2.649
+        },
+        "USA": {
+          "year": 2022,
+          "value": 3.681
+        }
+      }
+    }
+  },
+  "healthyLifeYears": {
+    "period": 2023,
+    "unit": "years at birth",
+    "denominator": "Period life table combined with self-reported activity limitation using Sullivan method",
+    "sourceId": "eurostat-hly",
+    "observations": [
+      {
+        "geography": "EU27_2020",
+        "label": "European Union - 27 countries (from 2020)",
+        "year": 2023,
+        "lifeExpectancyYears": 81.4,
+        "healthyLifeYears": 63.1,
+        "yearsWithActivityLimitation": 18.3
+      },
+      {
+        "geography": "NL",
+        "label": "Netherlands",
+        "year": 2023,
+        "lifeExpectancyYears": 81.9,
+        "healthyLifeYears": 59.0,
+        "yearsWithActivityLimitation": 22.9
+      }
+    ],
+    "sourceUpdated": "2026-07-17",
+    "caveat": "Healthy life years are not WHO HALE. National implementation of the activity-limitation question can hamper cross-country comparison."
+  },
+  "evidence": [
+    {
+      "id": "avoidable-mortality-eu",
+      "category": "population-outcomes",
+      "evidenceType": "Official mortality statistics",
+      "observation": "In 2023, the EU age-standardised avoidable-mortality rate under age 75 was 237.7 per 100,000: 150.9 preventable and 86.8 treatable.",
+      "interpretation": "Prevention and treatment contribute through different mechanisms and should remain separate.",
+      "caveat": "Avoidable mortality uses agreed cause lists and an under-75 boundary; it is not every premature death.",
+      "sourceId": "eurostat-avoidable"
+    },
+    {
+      "id": "unmet-care-eu",
+      "category": "system-performance",
+      "evidenceType": "Official self-reported survey statistic",
+      "observation": "In 2024, 3.6% of EU residents aged 16 or older who needed medical examination or treatment reported unmet need due to cost, waiting lists or distance; 6.0% among people at risk of poverty versus 3.2% among others.",
+      "interpretation": "Access burden is distributed unequally.",
+      "caveat": "Self-reported unmet need combines three barriers and is not a clinical waiting-time measure.",
+      "sourceId": "eurostat-unmet"
+    },
+    {
+      "id": "amr-surveillance",
+      "category": "system-performance",
+      "evidenceType": "Official surveillance coverage",
+      "observation": "WHO's 2025 GLASS dashboard includes more than 23 million confirmed infection episodes reported by 110 reporting areas for 2016–2023.",
+      "interpretation": "AMR surveillance has widened and can reveal resistance patterns.",
+      "caveat": "Reported episodes and participation measure surveillance coverage, not a comparable global burden trend.",
+      "sourceId": "who-glass"
+    },
+    {
+      "id": "spending-boundary",
+      "category": "system-performance",
+      "evidenceType": "Editorial evidence boundary",
+      "observation": "Health accounts can separate preventive care from treatment and other functions.",
+      "interpretation": "Spending shows resource allocation, not causal health benefit.",
+      "caveat": "Definitions, prices, purchasing power, age structure and accounting differ; no spending-outcome causal claim is made here.",
+      "sourceId": "eurostat-spending"
+    }
+  ],
+  "dataGaps": [
+    "No single waiting-time definition is comparable across world, EU and national systems; this brief reports unmet need instead of manufacturing a league table.",
+    "Mental-health burden estimates depend on diagnostic coverage, survey instruments and disability weights; no mixed-definition trend is plotted.",
+    "Prevention spending is not treated as evidence that prevention caused an observed outcome.",
+    "Consumer wearables and speculative longevity interventions are excluded from outcome claims without defined clinical evidence."
+  ],
+  "rivalExplanations": [
+    "Longer survival can coexist with more years lived with disability because mortality and morbidity change differently.",
+    "Apparent cross-country healthy-life gaps can partly reflect survey wording, reporting culture and institutional-population coverage.",
+    "Access can worsen despite higher staffing or spending when demand, case complexity, distribution and workflow change.",
+    "Pandemic recovery can lift life expectancy without proving a durable improvement in chronic or mental-health burden."
+  ],
+  "reversalIndicators": [
+    "Healthy life years rise faster than life expectancy across repeated, definition-stable observations.",
+    "Preventable and treatable mortality fall across income groups and regions, not only in national averages.",
+    "Unmet need and definition-stable waits fall while safety and health outcomes hold or improve.",
+    "Workforce capacity, retention and geographic distribution improve together.",
+    "AMR incidence and resistance fall under stable testing and surveillance coverage."
+  ],
+  "possibilities": [
+    {
+      "label": "Hypothesis",
+      "text": "Better prevention may compress morbidity, but spending alone cannot demonstrate that pathway."
+    },
+    {
+      "label": "Possibility",
+      "text": "Automation may release clinical time if workload, safety and access outcomes improve in real settings."
+    },
+    {
+      "label": "Data gap",
+      "text": "No defensible global composite healthspan score joins outcomes, access, workforce and individual risks."
+    }
+  ],
+  "sources": [
+    {
+      "id": "world-bank-life",
+      "institution": "World Bank, sourced from UN Population Division and national statistics",
+      "title": "World Development Indicators: Life expectancy at birth",
+      "date": "2026-07-13 data update",
+      "url": "https://api.worldbank.org/v2/indicator/SP.DYN.LE00.IN?format=json",
+      "geographyPopulation": "World, Netherlands, Japan, United States; total populations",
+      "period": "2000–latest available annual observation",
+      "denominatorUnit": "Years at birth",
+      "evidenceType": "Official statistical series",
+      "role": "Population longevity outcome",
+      "interpretation": "Tracks period life expectancy at birth.",
+      "caveat": "Does not measure healthy years, distribution within countries or care-system performance."
+    },
+    {
+      "id": "world-bank-physicians",
+      "institution": "World Bank, sourced from World Health Organization workforce data",
+      "title": "World Development Indicators: Physicians",
+      "date": "2026-07-13 data update",
+      "url": "https://api.worldbank.org/v2/indicator/SH.MED.PHYS.ZS?format=json",
+      "geographyPopulation": "World, Netherlands, Japan, United States; total populations",
+      "period": "2000–latest available annual observation",
+      "denominatorUnit": "Physicians per 1,000 people",
+      "evidenceType": "Official statistical series",
+      "role": "Workforce capacity",
+      "interpretation": "Tracks physician density.",
+      "caveat": "Latest years differ; density does not measure distribution, workload, quality or access."
+    },
+    {
+      "id": "eurostat-hly",
+      "institution": "Eurostat",
+      "title": "Healthy life years by sex (hlth_hlye)",
+      "date": "2026-07-17 data update",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/hlth_hlye/default/table?lang=en",
+      "geographyPopulation": "EU27 and Netherlands, total population",
+      "period": "2023",
+      "denominatorUnit": "Years at birth; life table plus activity-limitation prevalence",
+      "evidenceType": "Official harmonised statistic",
+      "role": "Life expectancy versus healthy-life boundary",
+      "interpretation": "Shows that lifespan and years without activity limitation differ.",
+      "caveat": "Not WHO HALE; national question implementation can hamper comparisons."
+    },
+    {
+      "id": "eurostat-avoidable",
+      "institution": "Eurostat",
+      "title": "1 million deaths from avoidable conditions in 2023",
+      "date": "2026-03-26",
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260326-3",
+      "geographyPopulation": "EU residents under age 75",
+      "period": "2023",
+      "denominatorUnit": "Age-standardised deaths per 100,000 inhabitants",
+      "evidenceType": "Official mortality statistics",
+      "role": "Preventable and treatable mortality",
+      "interpretation": "Separates public-health prevention from timely effective treatment.",
+      "caveat": "Categories overlap by agreed allocation and do not cover all premature mortality."
+    },
+    {
+      "id": "eurostat-unmet",
+      "institution": "Eurostat",
+      "title": "3.6% experience unmet needs for medical care in 2024",
+      "date": "2025-08-20",
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20250820-2",
+      "geographyPopulation": "EU residents aged 16+ who reported needing examination or treatment",
+      "period": "Previous 12 months, reported in 2024",
+      "denominatorUnit": "Percent of relevant survey population",
+      "evidenceType": "Official survey statistic",
+      "role": "Access and distribution",
+      "interpretation": "Measures self-reported unmet need across cost, waits and distance.",
+      "caveat": "Not directly comparable to administrative waiting-time targets."
+    },
+    {
+      "id": "who-glass",
+      "institution": "World Health Organization",
+      "title": "Updated WHO dashboard offers new insights on antimicrobial resistance and use",
+      "date": "2025-09-25",
+      "url": "https://www.who.int/news/item/25-09-2025-updated-who-dashboard-offers-new-insights-on-antimicrobial-resistance-and-use",
+      "geographyPopulation": "141 participating countries, territories and areas; 110 reporting infection episodes",
+      "period": "2016–2023",
+      "denominatorUnit": "Confirmed infection episodes and reporting areas",
+      "evidenceType": "Official surveillance system",
+      "role": "AMR surveillance coverage",
+      "interpretation": "Documents scale and reach of surveillance.",
+      "caveat": "Coverage and testing intensity vary; counts are not burden rates."
+    },
+    {
+      "id": "eurostat-spending",
+      "institution": "Eurostat",
+      "title": "Health care expenditure (SHA 2011) metadata",
+      "date": "2025-11-05 metadata update",
+      "url": "https://ec.europa.eu/eurostat/cache/metadata/en/hlth_sha11_esms.htm",
+      "geographyPopulation": "EU and reporting European countries",
+      "period": "Annual health accounts",
+      "denominatorUnit": "Expenditure classified by function, provider and financing scheme",
+      "evidenceType": "Official statistical metadata",
+      "role": "Spending-definition boundary",
+      "interpretation": "Defines curative, rehabilitative, long-term and preventive care as separate spending functions.",
+      "caveat": "Accounting records allocation; it does not establish causal health outcomes."
+    }
+  ]
+}

@@ -396,6 +396,42 @@
     setText('#source-count', `${dashboardData.sources.length} sources`);
   }
 
+  function renderTransitionDiscipline() {
+    const discipline = dashboardData.transitionDiscipline;
+    if (!discipline) return;
+
+    const actions = $('#transition-action-list');
+    if (actions) {
+      actions.replaceChildren(...discipline.robustActions.map((item) => {
+        const li = document.createElement('li');
+        const strong = document.createElement('strong');
+        strong.textContent = `${item.classification}: `;
+        li.append(strong, document.createTextNode(`${item.action} ${item.basis} Limitation: ${item.limitation}`));
+        return li;
+      }));
+    }
+
+    const watch = $('#transition-watch-list');
+    if (watch) {
+      watch.replaceChildren(...discipline.watchIndicators.map((item, index) => {
+        const li = document.createElement('li');
+        const number = document.createElement('span');
+        number.textContent = String(index + 1).padStart(2, '0');
+        const text = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = ['Separations', 'Hiring', 'Diffusion', 'Counterweight'][index] || 'Indicator';
+        text.append(strong, document.createTextNode(item));
+        li.append(number, text);
+        return li;
+      }));
+    }
+
+    const framework = dashboardData.sources.find((source) => source.id === discipline.frameworkSourceId);
+    const link = $('#transition-framework-source');
+    const url = framework ? safeHttpsUrl(framework.url) : null;
+    if (link && url) link.href = url;
+  }
+
   function setupInteractions() {
     $$('.chart-switcher button').forEach((button) => {
       button.addEventListener('click', () => renderMarketChart(button.dataset.series));
@@ -425,6 +461,7 @@
       renderExposure();
       renderForecast();
       renderProductivity();
+      renderTransitionDiscipline();
       renderSources();
       setupInteractions();
     } catch (error) {

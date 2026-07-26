@@ -1,0 +1,1060 @@
+{
+  "meta": {
+    "topic": "Science & discovery",
+    "brief": "004",
+    "dataUpdated": "2026-07-13",
+    "editorialReview": "2026-07-26",
+    "updateStatus": "Official API series refreshed; curated evidence unchanged",
+    "scope": "World, Europe / Netherlands, and selected-country comparisons"
+  },
+  "question": "Is science getting faster—or merely producing more?",
+  "verdict": {
+    "label": "More capacity and output; selective acceleration; no system-wide speed verdict",
+    "text": "Measured R&D intensity and publication volume have risen globally, and AlphaFold demonstrates a large capability jump in one research task. Those observations do not establish that reliable discoveries or clinical translation are accelerating across science.",
+    "direction": "Inputs and volume are rising. Reliability and translation move on separate clocks.",
+    "distribution": "R&D intensity and article output remain uneven across countries and fields.",
+    "confidence": "Conditional"
+  },
+  "questions": [
+    "Where are we now?",
+    "What direction are we moving?",
+    "Who is benefiting or carrying the cost?",
+    "What are the competing explanations?",
+    "What evidence would change our current conclusion?"
+  ],
+  "lenses": [
+    {
+      "id": "world",
+      "label": "World",
+      "role": "Global capacity, output and shared research infrastructure"
+    },
+    {
+      "id": "europe",
+      "label": "Europe / Netherlands",
+      "role": "Dutch R&D intensity inside European open-science institutions"
+    },
+    {
+      "id": "selected",
+      "label": "Selected countries",
+      "role": "United States and Korea illustrate different scale and intensity profiles; not a league table"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "inputs",
+      "label": "Inputs",
+      "claim": "Money and researchers create capacity, not guaranteed discovery."
+    },
+    {
+      "id": "volume",
+      "label": "Volume",
+      "claim": "Article counts measure recorded output, not meaning or reliability."
+    },
+    {
+      "id": "reliability",
+      "label": "Reliability",
+      "claim": "Replication and reproducible workflows test whether findings travel."
+    },
+    {
+      "id": "translation",
+      "label": "Translation",
+      "claim": "Laboratory insight must pass preclinical, clinical and regulatory gates."
+    },
+    {
+      "id": "acceleration",
+      "label": "Demonstrated acceleration",
+      "claim": "Task-specific gains require benchmark or experimental evidence."
+    }
+  ],
+  "series": {
+    "rdIntensity": {
+      "id": "GB.XPD.RSDV.GD.ZS",
+      "label": "Research and development expenditure",
+      "unit": "% of GDP",
+      "sourceId": "world-bank-rd",
+      "period": "2000–latest available annual observation",
+      "denominator": "GDP",
+      "observations": {
+        "WLD": [
+          {
+            "year": 2000,
+            "value": 2.045
+          },
+          {
+            "year": 2001,
+            "value": 2.0622
+          },
+          {
+            "year": 2002,
+            "value": 2.0264
+          },
+          {
+            "year": 2003,
+            "value": 2.0159
+          },
+          {
+            "year": 2004,
+            "value": 1.9674
+          },
+          {
+            "year": 2005,
+            "value": 1.9474
+          },
+          {
+            "year": 2006,
+            "value": 1.9595
+          },
+          {
+            "year": 2007,
+            "value": 1.9248
+          },
+          {
+            "year": 2008,
+            "value": 1.9778
+          },
+          {
+            "year": 2009,
+            "value": 2.0139
+          },
+          {
+            "year": 2010,
+            "value": 1.9989
+          },
+          {
+            "year": 2011,
+            "value": 1.9817
+          },
+          {
+            "year": 2012,
+            "value": 2.0129
+          },
+          {
+            "year": 2013,
+            "value": 1.9752
+          },
+          {
+            "year": 2014,
+            "value": 2.0866
+          },
+          {
+            "year": 2015,
+            "value": 2.1043
+          },
+          {
+            "year": 2016,
+            "value": 2.1487
+          },
+          {
+            "year": 2017,
+            "value": 2.142
+          },
+          {
+            "year": 2018,
+            "value": 2.2182
+          },
+          {
+            "year": 2019,
+            "value": 2.2634
+          },
+          {
+            "year": 2020,
+            "value": 2.4561
+          },
+          {
+            "year": 2021,
+            "value": 2.5228
+          },
+          {
+            "year": 2022,
+            "value": 2.5712
+          },
+          {
+            "year": 2023,
+            "value": 2.5974
+          }
+        ],
+        "NLD": [
+          {
+            "year": 2000,
+            "value": 1.7891
+          },
+          {
+            "year": 2001,
+            "value": 1.7921
+          },
+          {
+            "year": 2002,
+            "value": 1.7393
+          },
+          {
+            "year": 2003,
+            "value": 1.7767
+          },
+          {
+            "year": 2004,
+            "value": 1.7813
+          },
+          {
+            "year": 2005,
+            "value": 1.7667
+          },
+          {
+            "year": 2006,
+            "value": 1.7321
+          },
+          {
+            "year": 2007,
+            "value": 1.6606
+          },
+          {
+            "year": 2008,
+            "value": 1.6125
+          },
+          {
+            "year": 2009,
+            "value": 1.6516
+          },
+          {
+            "year": 2010,
+            "value": 1.6939
+          },
+          {
+            "year": 2011,
+            "value": 1.8651
+          },
+          {
+            "year": 2012,
+            "value": 1.9009
+          },
+          {
+            "year": 2013,
+            "value": 2.1395
+          },
+          {
+            "year": 2014,
+            "value": 2.1507
+          },
+          {
+            "year": 2015,
+            "value": 2.1179
+          },
+          {
+            "year": 2016,
+            "value": 2.1155
+          },
+          {
+            "year": 2017,
+            "value": 2.1417
+          },
+          {
+            "year": 2018,
+            "value": 2.1027
+          },
+          {
+            "year": 2019,
+            "value": 2.1404
+          },
+          {
+            "year": 2020,
+            "value": 2.2651
+          },
+          {
+            "year": 2021,
+            "value": 2.2154
+          },
+          {
+            "year": 2022,
+            "value": 2.1753
+          },
+          {
+            "year": 2023,
+            "value": 2.2672
+          }
+        ],
+        "USA": [
+          {
+            "year": 2000,
+            "value": 2.6198
+          },
+          {
+            "year": 2001,
+            "value": 2.6372
+          },
+          {
+            "year": 2002,
+            "value": 2.5475
+          },
+          {
+            "year": 2003,
+            "value": 2.5501
+          },
+          {
+            "year": 2004,
+            "value": 2.4869
+          },
+          {
+            "year": 2005,
+            "value": 2.5019
+          },
+          {
+            "year": 2006,
+            "value": 2.5455
+          },
+          {
+            "year": 2007,
+            "value": 2.6152
+          },
+          {
+            "year": 2008,
+            "value": 2.7448
+          },
+          {
+            "year": 2009,
+            "value": 2.7918
+          },
+          {
+            "year": 2010,
+            "value": 2.7144
+          },
+          {
+            "year": 2011,
+            "value": 2.738
+          },
+          {
+            "year": 2012,
+            "value": 2.6727
+          },
+          {
+            "year": 2013,
+            "value": 2.6959
+          },
+          {
+            "year": 2014,
+            "value": 2.7088
+          },
+          {
+            "year": 2015,
+            "value": 2.7733
+          },
+          {
+            "year": 2016,
+            "value": 2.8368
+          },
+          {
+            "year": 2017,
+            "value": 2.8832
+          },
+          {
+            "year": 2018,
+            "value": 2.9896
+          },
+          {
+            "year": 2019,
+            "value": 3.143
+          },
+          {
+            "year": 2020,
+            "value": 3.4179
+          },
+          {
+            "year": 2021,
+            "value": 3.4689
+          },
+          {
+            "year": 2022,
+            "value": 3.4874
+          },
+          {
+            "year": 2023,
+            "value": 3.4472
+          }
+        ],
+        "KOR": [
+          {
+            "year": 2000,
+            "value": 2.0494
+          },
+          {
+            "year": 2001,
+            "value": 2.1987
+          },
+          {
+            "year": 2002,
+            "value": 2.1304
+          },
+          {
+            "year": 2003,
+            "value": 2.1966
+          },
+          {
+            "year": 2004,
+            "value": 2.3529
+          },
+          {
+            "year": 2005,
+            "value": 2.4272
+          },
+          {
+            "year": 2006,
+            "value": 2.6152
+          },
+          {
+            "year": 2007,
+            "value": 2.759
+          },
+          {
+            "year": 2008,
+            "value": 2.8677
+          },
+          {
+            "year": 2009,
+            "value": 3.0215
+          },
+          {
+            "year": 2010,
+            "value": 3.1791
+          },
+          {
+            "year": 2011,
+            "value": 3.4441
+          },
+          {
+            "year": 2012,
+            "value": 3.6852
+          },
+          {
+            "year": 2013,
+            "value": 3.7749
+          },
+          {
+            "year": 2014,
+            "value": 3.8898
+          },
+          {
+            "year": 2015,
+            "value": 3.7891
+          },
+          {
+            "year": 2016,
+            "value": 3.7864
+          },
+          {
+            "year": 2017,
+            "value": 4.0734
+          },
+          {
+            "year": 2018,
+            "value": 4.2716
+          },
+          {
+            "year": 2019,
+            "value": 4.3638
+          },
+          {
+            "year": 2020,
+            "value": 4.5214
+          },
+          {
+            "year": 2021,
+            "value": 4.5967
+          },
+          {
+            "year": 2022,
+            "value": 4.8475
+          },
+          {
+            "year": 2023,
+            "value": 4.9435
+          }
+        ]
+      },
+      "latest": {
+        "WLD": {
+          "year": 2023,
+          "value": 2.5974
+        },
+        "NLD": {
+          "year": 2023,
+          "value": 2.2672
+        },
+        "USA": {
+          "year": 2023,
+          "value": 3.4472
+        },
+        "KOR": {
+          "year": 2023,
+          "value": 4.9435
+        }
+      }
+    },
+    "journalArticles": {
+      "id": "IP.JRN.ARTC.SC",
+      "label": "Scientific and technical journal articles",
+      "unit": "articles",
+      "sourceId": "world-bank-articles",
+      "period": "2000–latest available annual observation",
+      "denominator": "annual article count",
+      "observations": {
+        "WLD": [
+          {
+            "year": 2000,
+            "value": 1070966.8536
+          },
+          {
+            "year": 2001,
+            "value": 1109574.1605
+          },
+          {
+            "year": 2002,
+            "value": 1154717.0426
+          },
+          {
+            "year": 2003,
+            "value": 1213774.6483
+          },
+          {
+            "year": 2004,
+            "value": 1324893.8359
+          },
+          {
+            "year": 2005,
+            "value": 1484401.4239
+          },
+          {
+            "year": 2006,
+            "value": 1570080.8614
+          },
+          {
+            "year": 2007,
+            "value": 1636695.5206
+          },
+          {
+            "year": 2008,
+            "value": 1725502.0945
+          },
+          {
+            "year": 2009,
+            "value": 1827111.0062
+          },
+          {
+            "year": 2010,
+            "value": 1909442.1928
+          },
+          {
+            "year": 2011,
+            "value": 2003515.2692
+          },
+          {
+            "year": 2012,
+            "value": 2062566.0856
+          },
+          {
+            "year": 2013,
+            "value": 2125847.5956
+          },
+          {
+            "year": 2014,
+            "value": 2195343.6104
+          },
+          {
+            "year": 2015,
+            "value": 2252543.2099
+          },
+          {
+            "year": 2016,
+            "value": 2336756.5505
+          },
+          {
+            "year": 2017,
+            "value": 2425390.1279
+          },
+          {
+            "year": 2018,
+            "value": 2522113.1141
+          },
+          {
+            "year": 2019,
+            "value": 2708530.7219
+          },
+          {
+            "year": 2020,
+            "value": 2868012.709
+          },
+          {
+            "year": 2021,
+            "value": 3111012.8183
+          },
+          {
+            "year": 2022,
+            "value": 3220952.4613
+          },
+          {
+            "year": 2023,
+            "value": 3271296.2444
+          }
+        ],
+        "NLD": [
+          {
+            "year": 2000,
+            "value": 18865.25
+          },
+          {
+            "year": 2001,
+            "value": 18769.03
+          },
+          {
+            "year": 2002,
+            "value": 19456.24
+          },
+          {
+            "year": 2003,
+            "value": 19997.24
+          },
+          {
+            "year": 2004,
+            "value": 21434.75
+          },
+          {
+            "year": 2005,
+            "value": 24084.4
+          },
+          {
+            "year": 2006,
+            "value": 24738.7
+          },
+          {
+            "year": 2007,
+            "value": 25566.6
+          },
+          {
+            "year": 2008,
+            "value": 26450.2
+          },
+          {
+            "year": 2009,
+            "value": 28320.87
+          },
+          {
+            "year": 2010,
+            "value": 28946.69
+          },
+          {
+            "year": 2011,
+            "value": 29811.51
+          },
+          {
+            "year": 2012,
+            "value": 30760.85
+          },
+          {
+            "year": 2013,
+            "value": 31332.15
+          },
+          {
+            "year": 2014,
+            "value": 31445.39
+          },
+          {
+            "year": 2015,
+            "value": 31291.69
+          },
+          {
+            "year": 2016,
+            "value": 31097.01
+          },
+          {
+            "year": 2017,
+            "value": 31234.91
+          },
+          {
+            "year": 2018,
+            "value": 31506.82
+          },
+          {
+            "year": 2019,
+            "value": 31471.58
+          },
+          {
+            "year": 2020,
+            "value": 32236.56
+          },
+          {
+            "year": 2021,
+            "value": 34144.24
+          },
+          {
+            "year": 2022,
+            "value": 32878.0
+          },
+          {
+            "year": 2023,
+            "value": 32207.08
+          }
+        ],
+        "USA": [
+          {
+            "year": 2000,
+            "value": 306472.5
+          },
+          {
+            "year": 2001,
+            "value": 306733.89
+          },
+          {
+            "year": 2002,
+            "value": 321622.14
+          },
+          {
+            "year": 2003,
+            "value": 332537.09
+          },
+          {
+            "year": 2004,
+            "value": 356185.76
+          },
+          {
+            "year": 2005,
+            "value": 385012.19
+          },
+          {
+            "year": 2006,
+            "value": 387807.75
+          },
+          {
+            "year": 2007,
+            "value": 390236.82
+          },
+          {
+            "year": 2008,
+            "value": 392570.88
+          },
+          {
+            "year": 2009,
+            "value": 397790.4
+          },
+          {
+            "year": 2010,
+            "value": 407405.92
+          },
+          {
+            "year": 2011,
+            "value": 420413.97
+          },
+          {
+            "year": 2012,
+            "value": 425174.02
+          },
+          {
+            "year": 2013,
+            "value": 427372.54
+          },
+          {
+            "year": 2014,
+            "value": 428017.63
+          },
+          {
+            "year": 2015,
+            "value": 429258.44
+          },
+          {
+            "year": 2016,
+            "value": 431807.73
+          },
+          {
+            "year": 2017,
+            "value": 435377.24
+          },
+          {
+            "year": 2018,
+            "value": 441099.68
+          },
+          {
+            "year": 2019,
+            "value": 442656.75
+          },
+          {
+            "year": 2020,
+            "value": 453889.89
+          },
+          {
+            "year": 2021,
+            "value": 471378.18
+          },
+          {
+            "year": 2022,
+            "value": 447538.91
+          },
+          {
+            "year": 2023,
+            "value": 430843.27
+          }
+        ],
+        "KOR": [
+          {
+            "year": 2000,
+            "value": 15875.05
+          },
+          {
+            "year": 2001,
+            "value": 18435.81
+          },
+          {
+            "year": 2002,
+            "value": 20150.89
+          },
+          {
+            "year": 2003,
+            "value": 23773.21
+          },
+          {
+            "year": 2004,
+            "value": 27625.82
+          },
+          {
+            "year": 2005,
+            "value": 32032.77
+          },
+          {
+            "year": 2006,
+            "value": 37086.16
+          },
+          {
+            "year": 2007,
+            "value": 41128.89
+          },
+          {
+            "year": 2008,
+            "value": 43712.38
+          },
+          {
+            "year": 2009,
+            "value": 45734.84
+          },
+          {
+            "year": 2010,
+            "value": 50064.7
+          },
+          {
+            "year": 2011,
+            "value": 53291.76
+          },
+          {
+            "year": 2012,
+            "value": 55711.68
+          },
+          {
+            "year": 2013,
+            "value": 56751.39
+          },
+          {
+            "year": 2014,
+            "value": 59378.7
+          },
+          {
+            "year": 2015,
+            "value": 61888.47
+          },
+          {
+            "year": 2016,
+            "value": 61914.97
+          },
+          {
+            "year": 2017,
+            "value": 62977.5
+          },
+          {
+            "year": 2018,
+            "value": 64793.42
+          },
+          {
+            "year": 2019,
+            "value": 67687.84
+          },
+          {
+            "year": 2020,
+            "value": 69089.86
+          },
+          {
+            "year": 2021,
+            "value": 72352.13
+          },
+          {
+            "year": 2022,
+            "value": 71998.13
+          },
+          {
+            "year": 2023,
+            "value": 71724.33
+          }
+        ]
+      },
+      "latest": {
+        "WLD": {
+          "year": 2023,
+          "value": 3271296.2444
+        },
+        "NLD": {
+          "year": 2023,
+          "value": 32207.08
+        },
+        "USA": {
+          "year": 2023,
+          "value": 430843.27
+        },
+        "KOR": {
+          "year": 2023,
+          "value": 71724.33
+        }
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "replication-psychology",
+      "category": "reliability",
+      "evidenceType": "Peer-reviewed coordinated replication study",
+      "observation": "A coordinated project repeated 100 experimental and correlational studies from three psychology journals; 36% of replications produced statistically significant results.",
+      "interpretation": "Reliability cannot be inferred from publication volume. This result concerns sampled psychology studies, not all science.",
+      "caveat": "Replication success depends on definitions, power, design fidelity and field context.",
+      "sourceId": "osc-2015"
+    },
+    {
+      "id": "alphafold-casp14",
+      "category": "demonstrated acceleration",
+      "evidenceType": "Peer-reviewed benchmark validation",
+      "observation": "On 87 CASP14 protein domains, AlphaFold achieved median backbone error of 0.96 Å versus 2.8 Å for the next-best method.",
+      "interpretation": "AI produced a demonstrated capability jump for protein-structure prediction.",
+      "caveat": "Prediction is not experimental confirmation, biological understanding, a drug candidate, or clinical benefit.",
+      "sourceId": "alphafold-2021"
+    },
+    {
+      "id": "open-science",
+      "category": "reliability",
+      "evidenceType": "International normative framework",
+      "observation": "UNESCO's 2021 Recommendation includes open publications, research data, software and source code within open scientific knowledge.",
+      "interpretation": "Inspectable data and software can lower verification and reuse friction.",
+      "caveat": "A recommendation records a standard, not adoption or causal impact.",
+      "sourceId": "unesco-open-science"
+    },
+    {
+      "id": "clinical-gates",
+      "category": "translation",
+      "evidenceType": "Regulatory process",
+      "observation": "FDA separates drug development into discovery, preclinical research, clinical research, review and post-market monitoring.",
+      "interpretation": "Faster discovery does not remove safety, efficacy and review requirements.",
+      "caveat": "FDA describes the United States and medical products; other jurisdictions and research outputs differ.",
+      "sourceId": "fda-drug-process"
+    }
+  ],
+  "rivalExplanations": [
+    "Higher article counts can reflect more researchers, indexing coverage, collaboration and publication incentives rather than faster discovery.",
+    "Higher R&D intensity can expand capacity while costs, complexity or regulatory safeguards lengthen translation.",
+    "AI can accelerate bounded tasks while validation, data quality, wet-lab work and implementation remain bottlenecks."
+  ],
+  "reversalIndicators": [
+    "Multi-field evidence that time from hypothesis to independently replicated result is falling without weaker standards.",
+    "Cohort evidence that clinical development stages shorten while safety and efficacy outcomes hold or improve.",
+    "Repeated randomized or benchmarked studies showing AI gains transfer from task performance to validated discoveries.",
+    "Widening access to research capacity, data and software rather than gains concentrated in few institutions."
+  ],
+  "possibilities": [
+    {
+      "label": "Hypothesis",
+      "text": "AI may compress search and modelling while moving the bottleneck to validation and implementation."
+    },
+    {
+      "label": "Possibility",
+      "text": "Open data and research software may compound discovery by making results easier to inspect and reuse."
+    },
+    {
+      "label": "Data gap",
+      "text": "No comparable global series measures time from idea to reliable, adopted discovery across fields."
+    }
+  ],
+  "sources": [
+    {
+      "id": "world-bank-rd",
+      "institution": "World Bank, sourced from UNESCO Institute for Statistics",
+      "title": "World Development Indicators: Research and development expenditure (% of GDP)",
+      "date": "2026-07-13 data update",
+      "url": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS?format=json",
+      "geographyPopulation": "World, Netherlands, United States, Korea; national and world aggregates",
+      "period": "2000–latest available annual observation",
+      "denominatorUnit": "% of GDP",
+      "evidenceType": "Official statistical series",
+      "role": "Research input intensity",
+      "interpretation": "Tracks domestic R&D expenditure relative to economic output.",
+      "caveat": "Investment creates capacity; it does not measure discovery, reliability or translation."
+    },
+    {
+      "id": "world-bank-articles",
+      "institution": "World Bank, sourced from U.S. National Science Foundation NCSES",
+      "title": "World Development Indicators: Scientific and technical journal articles",
+      "date": "2026-07-13 data update",
+      "url": "https://api.worldbank.org/v2/indicator/IP.JRN.ARTC.SC?format=json",
+      "geographyPopulation": "World, Netherlands, United States, Korea; national and world aggregates",
+      "period": "2000–latest available annual observation",
+      "denominatorUnit": "Annual article count",
+      "evidenceType": "Official statistical series",
+      "role": "Recorded publication output",
+      "interpretation": "Tracks indexed science and engineering article volume.",
+      "caveat": "Coverage and attribution matter; counts do not measure importance, reliability or discovery speed."
+    },
+    {
+      "id": "osc-2015",
+      "institution": "Open Science Collaboration",
+      "title": "Estimating the reproducibility of psychological science",
+      "date": "2015-08-28",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26315443/",
+      "geographyPopulation": "100 studies from three psychology journals",
+      "period": "Original studies published in 2008; replication project reported 2015",
+      "denominatorUnit": "100 study replications; share statistically significant",
+      "evidenceType": "Peer-reviewed primary study",
+      "role": "Reliability boundary",
+      "interpretation": "Shows why output volume and reliable findings must stay separate.",
+      "caveat": "Not a global or all-discipline replication rate."
+    },
+    {
+      "id": "alphafold-2021",
+      "institution": "DeepMind and CASP14 research collaborators",
+      "title": "Highly accurate protein structure prediction with AlphaFold",
+      "date": "2021-07-15",
+      "url": "https://doi.org/10.1038/s41586-021-03819-2",
+      "geographyPopulation": "CASP14 blind benchmark; 87 protein domains",
+      "period": "CASP14, 2020",
+      "denominatorUnit": "Median backbone RMSD at 95% residue coverage, Å",
+      "evidenceType": "Peer-reviewed primary benchmark study",
+      "role": "Demonstrated AI-assisted acceleration",
+      "interpretation": "Strong task-level evidence for structure prediction.",
+      "caveat": "Does not establish faster end-to-end drug or clinical development."
+    },
+    {
+      "id": "unesco-open-science",
+      "institution": "UNESCO",
+      "title": "Recommendation on Open Science",
+      "date": "2021-11-23",
+      "url": "https://www.unesco.org/en/legal-affairs/recommendation-open-science",
+      "geographyPopulation": "UNESCO Member States",
+      "period": "Adopted 2021",
+      "denominatorUnit": "Normative recommendation; no outcome denominator",
+      "evidenceType": "Official normative framework",
+      "role": "Open data and research-software boundary",
+      "interpretation": "Defines open scientific knowledge to include data, software and source code.",
+      "caveat": "Adoption and impact require separate measurement."
+    },
+    {
+      "id": "fda-drug-process",
+      "institution": "U.S. Food and Drug Administration",
+      "title": "The Drug Development Process",
+      "date": "Accessed 2026-07-26",
+      "url": "https://www.fda.gov/patients/learn-about-drug-and-device-approvals/drug-development-process",
+      "geographyPopulation": "United States medical-product development",
+      "period": "Current regulatory process",
+      "denominatorUnit": "Five development and monitoring stages",
+      "evidenceType": "Official regulatory guidance",
+      "role": "Translation boundary",
+      "interpretation": "Separates discovery from clinical validation and review.",
+      "caveat": "Not a measured development-time series."
+    }
+  ]
+}

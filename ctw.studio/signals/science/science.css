@@ -1,0 +1,12 @@
+.science-page {
+  --topic: #70e5c1;
+  --topic-rgb: 112, 229, 193;
+}
+.science-page body {
+  background:
+    radial-gradient(circle at 78% 7%, rgba(112, 229, 193, .11), transparent 31rem),
+    radial-gradient(circle at 4% 40%, rgba(87, 215, 255, .05), transparent 28rem),
+    var(--coal);
+}
+.science-page .evidence-hero h1 em { font-family: Georgia, serif; font-weight: 400; }
+.science-page .evidence-verdict { box-shadow: 0 26px 80px rgba(20, 90, 73, .12); }
