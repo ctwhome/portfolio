@@ -1,0 +1,298 @@
+.education-page {
+  --topic: #7fe6c4;
+  --topic-rgb: 127, 230, 196;
+}
+
+.education-page body {
+  background:
+    radial-gradient(circle at 82% 7%, rgba(127, 230, 196, .11), transparent 31rem),
+    radial-gradient(circle at 4% 51%, rgba(112, 149, 255, .07), transparent 28rem),
+    var(--coal);
+}
+
+.education-page .evidence-hero h1 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.learning-poverty-card {
+  margin-top: 1rem;
+}
+
+.learning-poverty-card > div {
+  align-items: baseline;
+  display: flex;
+  gap: 1rem;
+  margin: .65rem 0;
+}
+
+.learning-poverty-card > div strong {
+  color: var(--topic);
+  font-family: "DM Mono", monospace;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+}
+
+.education-boundaries {
+  margin-top: 1rem;
+}
+
+.trajectory-panel,
+.pathway-panel,
+.adult-panel,
+.capacity-panel,
+.ai-matrix,
+.method-note {
+  background: rgba(255, 255, 255, .025);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+#trajectory-chart {
+  display: block;
+  margin: 1rem 0 .4rem;
+  max-height: 22rem;
+  overflow: visible;
+  width: 100%;
+}
+
+#trajectory-chart line {
+  stroke: rgba(255, 255, 255, .18);
+  stroke-width: 1;
+}
+
+#trajectory-chart polyline {
+  fill: none;
+  stroke: var(--topic);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+#trajectory-chart circle {
+  fill: var(--coal);
+  stroke: var(--topic);
+  stroke-width: 4;
+}
+
+#trajectory-chart text {
+  fill: var(--ink-soft);
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+}
+
+.pathway-sequence {
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(5, minmax(7rem, 1fr));
+  list-style: none;
+  margin: 1.2rem 0;
+  padding: 0;
+}
+
+.pathway-sequence li {
+  background: rgba(var(--topic-rgb), .06);
+  border: 1px solid rgba(var(--topic-rgb), .25);
+  border-radius: .7rem;
+  display: grid;
+  min-height: 7.5rem;
+  padding: .75rem;
+  position: relative;
+}
+
+.pathway-sequence li:not(:last-child)::after {
+  color: var(--topic);
+  content: "→";
+  position: absolute;
+  right: -.85rem;
+  top: 2.6rem;
+  z-index: 2;
+}
+
+.pathway-sequence span,
+.pathway-sequence small {
+  color: var(--ink-soft);
+  font-family: "DM Mono", monospace;
+}
+
+.pathway-sequence strong {
+  align-self: end;
+}
+
+.distribution-grid,
+.explanation-grid {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.distribution-grid article,
+.explanation-grid article {
+  background: rgba(255, 255, 255, .025);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: .8rem;
+  padding: 1rem;
+}
+
+.distribution-grid article:first-child {
+  grid-column: span 2;
+}
+
+.distribution-grid span,
+.explanation-grid span,
+.adult-window-grid span {
+  color: var(--topic);
+  font-family: "DM Mono", monospace;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.distribution-grid strong,
+.adult-window-grid strong {
+  display: block;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin: .35rem 0;
+}
+
+.adult-window-grid {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1rem 0;
+}
+
+.adult-window-grid article {
+  background: rgba(var(--topic-rgb), .055);
+  border-left: 3px solid var(--topic);
+  padding: 1rem;
+}
+
+.capacity-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.capacity-meter {
+  background: rgba(255, 255, 255, .08);
+  border-radius: 999px;
+  height: 2.4rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.capacity-meter i {
+  background: linear-gradient(90deg, rgba(var(--topic-rgb), .4), var(--topic));
+  display: block;
+  height: 100%;
+}
+
+.capacity-meter span {
+  color: #04130f;
+  font-family: "DM Mono", monospace;
+  font-weight: 700;
+  left: 1rem;
+  position: absolute;
+  top: .55rem;
+}
+
+.explanation-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.explanation-grid article:last-child {
+  grid-column: 2;
+}
+
+.ai-matrix .table-scroll {
+  margin-top: 1rem;
+}
+
+.ai-matrix table {
+  font-size: .78rem;
+  min-width: 88rem;
+}
+
+.ai-matrix th:first-child {
+  left: 0;
+  min-width: 9rem;
+  position: sticky;
+  z-index: 1;
+}
+
+.ai-matrix tbody th:first-child {
+  background: #111513;
+}
+
+.method-note {
+  border-color: rgba(var(--topic-rgb), .35);
+}
+
+.method-note strong {
+  color: var(--topic);
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+}
+
+.education-page .data-gap {
+  border-style: dashed;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+}
+
+@media (max-width: 860px) {
+  .pathway-sequence {
+    grid-template-columns: 1fr;
+  }
+
+  .pathway-sequence li {
+    min-height: auto;
+  }
+
+  .pathway-sequence li:not(:last-child)::after {
+    bottom: -.85rem;
+    left: 50%;
+    right: auto;
+    top: auto;
+    transform: rotate(90deg);
+  }
+
+  .distribution-grid,
+  .explanation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distribution-grid article:first-child,
+  .explanation-grid article:last-child {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .adult-window-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trajectory-panel,
+  .pathway-panel,
+  .adult-panel,
+  .capacity-panel,
+  .ai-matrix {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  #trajectory-chart {
+    min-width: 35rem;
+  }
+
+  .trajectory-panel {
+    overflow-x: auto;
+  }
+}
