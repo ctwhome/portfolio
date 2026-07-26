@@ -84,9 +84,16 @@ test('Atlas is first post-hero section and old roadmap routes redirect exactly',
   assert.match(fallback, /name="robots" content="noindex,follow"/);
   assert.match(fallback, /rel="canonical" href="https:\/\/ctw\.studio\/signals\/"/);
   assert.match(fallback, /href="\/signals\/">Open the Signals Atlas/);
-  assert.deepEqual(vercel.redirects, [
+  assert.deepEqual(vercel.redirects.filter(({ source }) => source.startsWith('/signals/')), [
     { source: '/signals/roadmap', destination: '/signals/', permanent: true },
     { source: '/signals/roadmap/', destination: '/signals/', permanent: true }
+  ]);
+});
+
+test('NLeSC legacy home routes redirect exactly', () => {
+  assert.deepEqual(vercel.redirects.filter(({ source }) => source.startsWith('/nlesc/')), [
+    { source: '/nlesc/home', destination: '/nlesc/', permanent: true },
+    { source: '/nlesc/home/', destination: '/nlesc/', permanent: true }
   ]);
 });
 

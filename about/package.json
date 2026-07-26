@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "static:export": "bun scripts/static-artifact.mjs export",
+    "static:sync": "bun scripts/static-artifact.mjs sync",
+    "static:check": "bun scripts/static-artifact.mjs check",
     "start": "next start",
     "lint": "eslint --cache --fix",
     "postbuild": "next-sitemap",

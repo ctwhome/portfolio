@@ -12,8 +12,10 @@ export const URLGenerator = ({ data }) => {
     const generateURL = () => {
       try {
         const compressed = compressToEncodedURIComponent(JSON.stringify(data))
-        const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
-        return `${baseUrl}/?data=${compressed}`
+        const baseUrl =
+          typeof window !== 'undefined' ? window.location.origin : ''
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+        return `${baseUrl}${basePath}/?data=${compressed}`
       } catch (error) {
         console.error('Error generating URL:', error)
         return ''
