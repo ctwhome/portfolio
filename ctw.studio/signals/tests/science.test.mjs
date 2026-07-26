@@ -69,9 +69,8 @@ test('science page contains substantive no-JS evidence, tables, sources, and com
   assert.match(html, /id="science-data-table"/);
   assert.match(html, /<noscript>/);
   assert.match(html, /Publication volume is not meaningful discovery/i);
-  for (const route of ['../ai-work/', '../food/', '../housing/', './', '../healthspan/', '../']) {
-    assert.match(html, new RegExp(`href="${route.replace(/[./]/g, '\\$&')}"`));
-  }
+  assert.match(html, /href="\/signals\/">Signals \//);
+  assert.match(html, /href="\/signals\/#subject-science-discovery-ai-systems" aria-current="location"/);
 });
 
 test('science renderer and updater are dependency-free and fail closed', () => {

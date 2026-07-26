@@ -72,14 +72,12 @@
 
 .housing-topics {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 7px;
-  overflow-x: auto;
+  overflow-x: visible;
   padding: 3px 0 52px;
-  scrollbar-width: none;
 }
-
-.housing-topics::-webkit-scrollbar { display: none; }
 
 .housing-topics .topic-label {
   flex: 0 0 auto;
