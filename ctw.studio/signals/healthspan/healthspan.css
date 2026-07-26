@@ -1,0 +1,12 @@
+.healthspan-page {
+  --topic: #ff8fad;
+  --topic-rgb: 255, 143, 173;
+}
+.healthspan-page body {
+  background:
+    radial-gradient(circle at 78% 7%, rgba(255, 143, 173, .1), transparent 31rem),
+    radial-gradient(circle at 5% 44%, rgba(165, 139, 255, .06), transparent 28rem),
+    var(--coal);
+}
+.healthspan-page .evidence-hero h1 em { font-family: Georgia, serif; font-weight: 400; }
+.healthspan-page .data-gap { border-style: dashed; color: var(--ink-soft); }
