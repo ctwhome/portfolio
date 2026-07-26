@@ -1,4 +1,27 @@
-# CTW Studio Portfolio
+# Portfolio Monorepo
+
+Portfolio monorepo containing several independently built and deployed applications:
+
+- `about/`: Next.js NLeSC portfolio
+- `ctw.studio/`: static CTW Studio portfolio and Signals pages
+- `ctw.studio2/`: alternate static portfolio
+- `dashboard/`: Bun Signals dashboard
+- `jessegonzalez.dev/`: SvelteKit portfolio
+- `ctw-kit/`: shared Svelte library used by `jessegonzalez.dev/`
+
+Root `package.json` and `bun.lock` define Bun workspaces only for `ctw-kit/` and
+`jessegonzalez.dev/`. Independent applications use their own app-local setup and
+lockfiles.
+
+## Vercel deployments
+
+Each Vercel project must set its Root Directory to its application directory.
+Framework-specific configuration belongs inside that application; do not add a
+repository-root `vercel.json`. `about/` uses native Next.js/Vercel defaults,
+`ctw.studio/` owns its static configuration, and `jessegonzalez.dev/` owns its
+SvelteKit configuration.
+
+## CTW Studio
 
 Static portfolio site for [ctw.studio](https://ctw.studio). No build framework — plain HTML, CSS, and vanilla JS.
 
