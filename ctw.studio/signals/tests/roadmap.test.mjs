@@ -6,6 +6,8 @@ const root = new URL('../', import.meta.url);
 const html = await readFile(new URL('index.html', root), 'utf8');
 const fallback = await readFile(new URL('roadmap/index.html', root), 'utf8');
 const vercel = JSON.parse(await readFile(new URL('../vercel.json', root), 'utf8'));
+const subjectMenuCss = await readFile(new URL('subject-menu.css', root), 'utf8');
+const subjectMenuJs = await readFile(new URL('subject-menu.js', root), 'utf8');
 
 const subjects = [
   { label: 'Housing &amp; affordability', anchor: 'subject-housing-affordability', status: 'published', briefs: [['housing', '003']] },
@@ -104,6 +106,27 @@ test('every brief switcher is semantic and mirrors exact taxonomy, links and map
     assert.equal(current[0].current, 'location', `${route} must use aria-current="location"`);
     assert.match(page, new RegExp(`Brief ${briefId}\\b`), `${route} missing Brief ${briefId}`);
   });
+});
+
+test('all taxonomy pages load shared progressive subject disclosure assets', () => {
+  const pages = [{ route: 'atlas', html }, ...briefPages];
+
+  pages.forEach(({ route, html: page }) => {
+    const stylesheets = [...page.matchAll(/<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"[^>]*>|<link\b[^>]*\bhref="([^"]+)"[^>]*\brel="stylesheet"[^>]*>/g)]
+      .map((match) => match[1] || match[2])
+      .filter((href) => /\.css(?:\?|$)/.test(href));
+    assert.match(stylesheets.at(-1), /subject-menu\.css$/, `${route} must load subject menu CSS after page CSS`);
+    assert.match(page, /<script defer src="(?:\.\.\/)?subject-menu\.js"><\/script>/, `${route} missing deferred subject menu script`);
+  });
+
+  assert.match(subjectMenuCss, /@media \(max-width: 760px\)/);
+  assert.match(subjectMenuCss, /\.subject-menu__panel\[aria-hidden="false"\]/);
+  assert.match(subjectMenuJs, /createElement\('button'\)/);
+  assert.match(subjectMenuJs, /setAttribute\('aria-expanded'/);
+  assert.match(subjectMenuJs, /setAttribute\('aria-controls'/);
+  assert.match(subjectMenuJs, /getAttribute\('aria-current'\) === 'location'/);
+  assert.match(subjectMenuJs, /\|\| 'Explore subjects'/);
+  assert.match(subjectMenuJs, /event\.key === 'Escape'/);
 });
 
 test('first wave uses canonical vocabulary and truthful coverage state', () => {

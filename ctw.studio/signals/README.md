@@ -34,6 +34,8 @@ Atlas order, coverage and brief mapping:
 
 Current state: **9 published briefs**, **7 of 10 subjects with published coverage**, **3 planned subjects**. Coverage is not a completeness claim. All Atlas and brief-page subject pills use these root-relative anchors; each brief marks its mapped subject with `aria-current="location"`. The Signals brand links to `/signals/`.
 
+At 760px and below, `subject-menu.js` progressively enhances that same semantic navigation into a compact accessible disclosure. Without JavaScript, all ten links remain visible.
+
 ## Files
 
 - `index.html` and `atlas.css` — Signals Atlas homepage and ten-subject roadmap

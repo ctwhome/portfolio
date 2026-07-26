@@ -1,0 +1,97 @@
+.subject-menu__trigger {
+  display: none;
+}
+
+.subject-menu__panel {
+  display: contents;
+}
+
+@media (max-width: 760px) {
+  .subject-menu-ready .subject-menu {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 0;
+  }
+
+  .subject-menu-ready .subject-menu .signals-home {
+    width: auto;
+    margin: 0;
+  }
+
+  .subject-menu-ready .subject-menu__trigger {
+    display: flex;
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(8, 9, 7, 0.96);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .subject-menu-ready .subject-menu__trigger-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .subject-menu-ready .subject-menu__trigger[aria-expanded="true"] {
+    border-color: currentColor;
+  }
+
+  .subject-menu-ready .subject-menu__trigger:focus-visible,
+  .subject-menu-ready .subject-menu__panel a:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .subject-menu-ready .subject-menu__panel {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    left: 0;
+    z-index: 300;
+    display: none;
+    max-width: 100%;
+    max-height: min(32rem, calc(100vh - 9rem));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 1rem;
+    background: #0b0c0a;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+  }
+
+  .subject-menu-ready .subject-menu__panel[aria-hidden="false"] {
+    display: grid;
+  }
+
+  .subject-menu-ready .subject-menu__panel a {
+    display: flex;
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    padding: 0.7rem 0.8rem;
+    border: 0;
+    border-radius: 0.65rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .subject-menu-open .ctw-feedback-button {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
