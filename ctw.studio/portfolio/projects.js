@@ -46,7 +46,7 @@ The work focuses on clear project cards, fast browsing, strong visual rhythm, an
     coverImage: 'projects/nlesc-portfolio/cover.avif',
     gridSpan: 3,
     liveUrl: '/nlesc/',
-    tags: ['HTML', 'CSS', 'Research Software', 'Portfolio'],
+    tags: ['Next.js', 'React', 'WebGL', 'Portfolio'],
     institution: 'Netherlands eScience Center',
     gallery: [
       { type: 'image', src: 'projects/nlesc-portfolio/cover.avif', caption: 'Netherlands eScience Center portfolio identity and landing screen' },

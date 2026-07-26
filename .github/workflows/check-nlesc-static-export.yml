@@ -1,0 +1,34 @@
+name: Check NLeSC static export
+
+on:
+  pull_request:
+    paths:
+      - 'about/**'
+      - 'ctw.studio/nlesc/**'
+      - 'ctw.studio/vercel.json'
+      - '.github/workflows/check-nlesc-static-export.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'about/**'
+      - 'ctw.studio/nlesc/**'
+      - 'ctw.studio/vercel.json'
+      - '.github/workflows/check-nlesc-static-export.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: about
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - run: bun run static:check

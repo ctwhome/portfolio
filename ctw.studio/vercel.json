@@ -4,6 +4,16 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/nlesc/home",
+      "destination": "/nlesc/",
+      "permanent": true
+    },
+    {
+      "source": "/nlesc/home/",
+      "destination": "/nlesc/",
+      "permanent": true
+    },
+    {
       "source": "/signals/roadmap",
       "destination": "/signals/",
       "permanent": true
@@ -12,6 +22,25 @@
       "source": "/signals/roadmap/",
       "destination": "/signals/",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/nlesc/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
     }
   ]
 }
