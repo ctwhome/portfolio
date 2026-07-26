@@ -7,7 +7,8 @@ const html = await readFile(new URL('index.html', root), 'utf8');
 const fallback = await readFile(new URL('roadmap/index.html', root), 'utf8');
 const vercel = JSON.parse(await readFile(new URL('../vercel.json', root), 'utf8'));
 const briefPages = await Promise.all([
-  'ai-work/index.html', 'food/index.html', 'housing/index.html', 'science/index.html', 'healthspan/index.html'
+  'ai-work/index.html', 'food/index.html', 'housing/index.html', 'science/index.html',
+  'healthspan/index.html', 'real-time-ai/index.html'
 ].map((path) => readFile(new URL(path, root), 'utf8')));
 
 const topics = [
@@ -54,7 +55,7 @@ test('Atlas links all three atlas briefs and labels publication status honestly'
   assert.match(html, /href="healthspan\/"/);
   assert.equal((html.match(/data-status="published"/g) || []).length, 3);
   assert.equal((html.match(/data-status="planned"/g) || []).length, 7);
-  assert.match(html, /<strong>5<\/strong>\s*briefings published/i);
+  assert.match(html, /<strong>6<\/strong>\s*briefings published/i);
   assert.match(html, /<strong>3 of 10<\/strong>\s*atlas briefs published/i);
   assert.match(html, /<strong>7<\/strong>\s*atlas briefs planned/i);
 });
@@ -69,11 +70,11 @@ test('the preferred six-topic order is explicitly a first wave, not the complete
   assert.match(html, /<strong>Science<\/strong><small>Published<\/small>/);
 });
 
-test('atlas and published foundations expose all five briefs plus atlas navigation', () => {
-  for (const label of ['AI &amp; work', 'Food &amp; planet', 'Housing', 'Science', 'Healthspan', 'Atlas']) {
+test('atlas and published foundations expose all six briefs plus atlas navigation', () => {
+  for (const label of ['AI &amp; work', 'Food &amp; planet', 'Housing', 'Science', 'Healthspan', 'Real-time AI', 'Atlas']) {
     assert.match(html, new RegExp(label));
   }
-  for (const brief of ['Brief 001', 'Brief 002', 'Brief 003', 'Brief 004', 'Brief 005']) {
+  for (const brief of ['Brief 001', 'Brief 002', 'Brief 003', 'Brief 004', 'Brief 005', 'Brief 006']) {
     assert.match(html, new RegExp(brief));
   }
 });
@@ -89,8 +90,8 @@ test('Atlas is first post-hero section and old roadmap routes redirect exactly',
   ]);
 });
 
-test('every published brief switcher exposes all five briefs plus Atlas in canonical order', () => {
-  const labels = ['AI &amp; work', 'Food', 'Housing', 'Science', 'Healthspan', 'Atlas'];
+test('every published brief switcher exposes all six briefs plus Atlas in canonical order', () => {
+  const labels = ['AI &amp; work', 'Food', 'Housing', 'Science', 'Healthspan', 'Real-time AI', 'Atlas'];
   briefPages.forEach((page, index) => {
     const start = page.search(/class="[^"]*(?:topic-switcher|evidence-topics)[^"]*"/);
     assert.ok(start >= 0, `page ${index} missing topic switcher`);

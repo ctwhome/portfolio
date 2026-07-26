@@ -10,6 +10,7 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - **Brief 003 · Housing & affordability** (`housing/index.html`) — world housing adequacy, Dutch prices, rents, financing, tenure burden, supply and household formation, plus mechanism-led country comparisons.
 - **Brief 004 · Science & discovery** (`science/index.html`) — R&D inputs, publication volume, reliability, open data/software, translation and demonstrated AI-assisted acceleration kept separate.
 - **Brief 005 · Healthspan & care** (`healthspan/index.html`) — lifespan, healthy life years, avoidable mortality, access, workforce, spending and AMR with explicit evidence-category boundaries.
+- **Brief 006 · Real-time AI** (`real-time-ai/index.html`) — bounded six-stage loops, timing classes, field reliability, authority, scale, exception handling and retained human work kept separate.
 
 ## Files
 
@@ -35,6 +36,8 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - `healthspan/index.html`, `healthspan/healthspan.js`, `healthspan/healthspan.css` — Brief 005 page, renderer and topic composition
 - `data/healthspan.json` — life/healthy-life outcomes, workforce series, evidence boundaries and source ledger
 - `scripts/update_healthspan_data.py` — no-key World Bank and Eurostat refresh for life expectancy, physicians and healthy life years
+- `real-time-ai/index.html`, `real-time-ai/real-time-ai.js`, `real-time-ai/real-time-ai.css` — Brief 006 static evidence page, progressive case selection and topic composition
+- `data/real-time-ai.json` — manually curated bounded-loop cases, timing and maturity taxonomies, reversal indicators, feedback risks and source ledger
 - `tests/*.test.mjs` — source/data/markup integrity checks
 
 ## Refreshing the data
@@ -83,6 +86,8 @@ The healthspan updater downloads:
 - World Bank WDI physicians per 1,000 people
 - Eurostat life expectancy and healthy life years at birth for EU27 and the Netherlands
 
+Real-time AI has no deterministic updater. Regulatory scope, intended use, papers, benchmarks, field evidence and maturity caveats receive a monthly editorial replay; no source is converted automatically into a maturity verdict.
+
 Updaters validate source identity, geography, dimensions, chronology and minimum observation counts before writing. They fail closed on schema or definition gaps. Papers, benchmarks, regulatory material, AMR interpretation and other non-API evidence remain manually curated in JSON.
 
 After any refresh:
@@ -112,6 +117,9 @@ After any refresh:
 15. **Waiting times need matching clocks and procedures.** Expose a data gap instead of ranking unlike definitions.
 16. **Spending is allocation, not causal proof.** Prevention or treatment expenditure does not itself demonstrate an outcome.
 17. **Guidance stays classified.** Observed evidence, conditional judgment, hypotheses and reversal indicators must remain visible.
+18. **Real time is task-relative.** Evaluate bounded Sense → Interpret → Predict → Decide → Act → Observe loops against explicit deadlines, intended use and failure boundaries.
+19. **Maturity flags are independent.** Demonstration, operation, reliability, approval and scale never imply one another; unknown is not failed and approval can be not applicable.
+20. **Task automation is not position removal.** Require full-loop coverage, reliable operation, authority, integration, economics and exception handling before making a position-removal claim.
 
 ## Adding the next brief
 
@@ -128,8 +136,9 @@ node --check signals/food/food.js
 node --check signals/housing/housing.js
 node --check signals/science/science.js
 node --check signals/healthspan/healthspan.js
+node --check signals/real-time-ai/real-time-ai.js
 python3 -m py_compile signals/scripts/*.py
 python3 -m http.server 4173
 ```
 
-Probe `/signals/`, `/signals/ai-work/`, `/signals/food/`, `/signals/housing/`, `/signals/science/` and `/signals/healthspan/`. Confirm `/signals/roadmap` and `/signals/roadmap/` redirect exactly to `/signals/`. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.
+Probe `/signals/`, `/signals/ai-work/`, `/signals/food/`, `/signals/housing/`, `/signals/science/`, `/signals/healthspan/` and `/signals/real-time-ai/`. Confirm `/signals/roadmap` and `/signals/roadmap/` redirect exactly to `/signals/`. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.
