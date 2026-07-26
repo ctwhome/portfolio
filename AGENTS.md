@@ -35,6 +35,7 @@ node --check signals/food/food.js
 node --check signals/housing/housing.js
 node --check signals/science/science.js
 node --check signals/healthspan/healthspan.js
+node --check signals/real-time-ai/real-time-ai.js
 python3 -m py_compile signals/scripts/*.py
 python3 signals/scripts/update_fred.py
 python3 signals/scripts/update_food_data.py
@@ -47,14 +48,19 @@ Use targeted checks while editing. Before handoff, run applicable app checks, se
 
 ## Signals evidence architecture
 
-- Browser code reads committed JSON only. Never add visitor-time evidence API calls or a chart runtime.
+- Browser code reads committed JSON only. Never add visitor-time evidence API calls or a chart runtime for Signals.
 - Updaters own stable official no-key series and validate schema, definitions, units, geography, and chronology before writing.
 - Papers, forecasts, experiments, interpretations, and non-API evidence stay manually curated and source-auditable.
+- Real-time AI regulatory scope, benchmarks, field evidence, and maturity flags stay manually curated; no source automatically sets a maturity verdict.
 - Keep observation, association, experiment, exposure, forecast, scenario, counterfactual, judgment, and hypothesis labels distinct.
+
+## Durable pitfalls
+
 - Scope, period, population, denominator, and unit travel with every public number.
 - Publication volume is not discovery; exposure is not job loss; lifespan is not healthy lifespan; unlike waiting-time clocks are not comparable; spending does not prove outcomes.
+- Fast inference is not a closed loop; demonstration, operation, reliability, approval, and scale are independent.
 - Keep substantive HTML, accessible table alternatives, HTTPS source links, and useful no-JS content.
-- Preserve atlas ten-topic order; verify counts, publication states, switchers, and cross-links together.
+- Preserve the atlas ten-topic order and verify counts, publication states, switchers, and cross-links together.
 
 ## Deployment boundaries
 
