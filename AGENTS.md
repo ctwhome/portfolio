@@ -1,57 +1,72 @@
-# Repository Guide
+# Repository agent guide
 
-## Map
+## App map and boundaries
 
-- `about/`: independent Next.js NLeSC portfolio; own `bun.lock`.
-- `ctw.studio/`: static CTW Studio portfolio and Signals pages.
-- `ctw.studio2/`: alternate static portfolio.
-- `dashboard/`: independent Bun Signals dashboard; own `bun.lock`.
-- `jessegonzalez.dev/`: SvelteKit portfolio; root Bun workspace.
-- `ctw-kit/`: shared Svelte library consumed by `jessegonzalez.dev/`; root Bun workspace.
+- `ctw.studio/` is the static CTW Studio site: plain HTML, CSS, vanilla JS, and committed JSON. Its local `vercel.json` serves that directory without a build.
+- `ctw.studio/nlesc/` is the canonical static NLeSC route at `/nlesc/`.
+- `ctw.studio/signals/` contains evidence briefs, topic renderers, `data/`, deterministic `scripts/`, and Node integrity tests.
+- `about/` is the frozen legacy Next.js NLeSC app. Keep it active until a separately approved redirect and retirement; do not add `about/vercel.json` without a proven platform need.
+- `jessegonzalez.dev/`, `about/`, `dashboard/`, `ctw.studio2/`, and `ctw-kit/` are separate applications. Treat each app directory as its build and deployment root.
+- Never add a repository-root `vercel.json`. Framework and Vercel settings stay inside the affected app.
+- Root `package.json` and `bun.lock` cover only `ctw-kit/` and `jessegonzalez.dev/`; independent apps use their own lockfiles.
+- Preserve unrelated apps and generated assets. `ctw.studio/tailwind.css` is generated; Signals and NLeSC route CSS are handwritten.
 
-## Boundaries
-
-- Treat each app directory as its build and deployment root.
-- Keep framework-specific Vercel configuration inside its app. Never add a root `vercel.json`.
-- `about/` intentionally uses native Next.js/Vercel defaults; do not add `about/vercel.json` without a concrete platform requirement.
-- Root `package.json` and `bun.lock` cover only `ctw-kit/` and `jessegonzalez.dev/`.
-- Use each independent app's lockfile from that app directory.
-- Preserve unrelated apps and generated assets; do not make cross-app changes for an app-local task.
-
-## Setup and Commands
+## Setup and checks
 
 Run commands from the named directory.
 
 | Scope | Setup | Develop | Build/check |
-|-------|-------|---------|-------------|
+|---|---|---|---|
 | `about/` | `bun install --frozen-lockfile` | `bun run dev` | `bun run build` |
 | `dashboard/` | `bun install --frozen-lockfile` | `bun run dev` | `bun run build:css` |
 | `ctw-kit/` | root: `bun install` | — | `bun run build` |
 | `jessegonzalez.dev/` | root: `bun install` | `bun run dev` | `bun run check`; `bun run build` |
-| `ctw.studio/` | none | serve as static files | `test -f index.html && test -f vercel.json` |
+| `ctw.studio/` | none | `python3 -m http.server 4173` | `test -f index.html && test -f vercel.json` |
 | `ctw.studio2/` | none | serve as static files | no general build |
 
-For CTW Studio Tailwind regeneration, use the command documented in root `README.md`.
+For CTW Studio Tailwind regeneration, use the command in root `README.md`.
 
-## Verification
+For Signals work, run from `ctw.studio/`:
 
-- Always run `git diff --check` and inspect `git status --short`.
-- Targeted change: run setup plus build/check only for affected app.
-- Shared-library or root-workspace change: build `ctw-kit/`, then check and build `jessegonzalez.dev/`.
-- Cross-app config change: verify every `vercel.json` path and run affected app builds.
-- Broad refactor: run all applicable rows above; static apps need focused browser or asset checks for touched pages.
-- Report command exit statuses and warnings exactly. Do not convert logged errors into success claims.
+```bash
+node --test signals/tests/*.test.mjs
+node --check signals/dashboard.js
+node --check signals/food/food.js
+node --check signals/housing/housing.js
+node --check signals/science/science.js
+node --check signals/healthspan/healthspan.js
+python3 -m py_compile signals/scripts/*.py
+python3 signals/scripts/update_fred.py
+python3 signals/scripts/update_food_data.py
+python3 signals/scripts/update_housing_data.py
+python3 signals/scripts/update_science_data.py
+python3 signals/scripts/update_healthspan_data.py
+```
 
-## Deployment Pitfalls
+Use targeted checks while editing. Before handoff, run applicable app checks, serve touched static routes/assets, inspect desktop and mobile layouts, run `git diff --check`, and inspect `git status --short`. Report exit statuses and warnings exactly.
+
+## Signals evidence architecture
+
+- Browser code reads committed JSON only. Never add visitor-time evidence API calls or a chart runtime.
+- Updaters own stable official no-key series and validate schema, definitions, units, geography, and chronology before writing.
+- Papers, forecasts, experiments, interpretations, and non-API evidence stay manually curated and source-auditable.
+- Keep observation, association, experiment, exposure, forecast, scenario, counterfactual, judgment, and hypothesis labels distinct.
+- Scope, period, population, denominator, and unit travel with every public number.
+- Publication volume is not discovery; exposure is not job loss; lifespan is not healthy lifespan; unlike waiting-time clocks are not comparable; spending does not prove outcomes.
+- Keep substantive HTML, accessible table alternatives, HTTPS source links, and useful no-JS content.
+- Preserve atlas ten-topic order; verify counts, publication states, switchers, and cross-links together.
+
+## Deployment boundaries
 
 | Vercel project | Root Directory | Framework | Production domain |
-|----------------|----------------|-----------|-------------------|
+|---|---|---|---|
 | `nlesc-portfolio` | `about` | Next.js | `nlesc.ctwhome.com` |
 | `ctw.studio` | `ctw.studio` | Other / static | `ctw.studio` |
 | `jessegonzalez.dev` | `jessegonzalez.dev` | SvelteKit | `jessegonzalez.dev` |
 
-- Deployment configuration must be project-local. Never add a repository-root `vercel.json`: it contaminates every Vercel Root Directory with incompatible commands and output paths.
-- `about/` uses Next.js defaults. Do not add `about/vercel.json` unless a real local or remote Vercel test proves those defaults insufficient.
-- Jesse's SvelteKit settings belong only in `jessegonzalez.dev/vercel.json`; CTW Studio's static settings belong only in `ctw.studio/vercel.json`.
-- `about/` runs `next-sitemap` during `postbuild`; its separate configuration issue must not be hidden or coupled to unrelated deployment fixes.
-- Local build success does not authorize deployment or Vercel setting changes.
+- `/nlesc/` is the canonical replacement route, but `about/` and `nlesc-portfolio` remain active frozen legacy until cutover receives separate approval.
+- Preserve `ctw.studio/vercel.json` redirects and static output `.`.
+- Jesse's SvelteKit settings belong only in `jessegonzalez.dev/vercel.json`.
+- `about/` runs `next-sitemap` during `postbuild`; do not hide or couple its separate configuration issue to unrelated work.
+- Rollback-safe cutover: preview → merge/deploy CTW route → verify production → separately approve redirect → verify redirect → retire legacy Vercel project → optionally remove `about/`.
+- Local build success never authorizes deployment, domain/DNS changes, redirects, or Vercel project deletion.

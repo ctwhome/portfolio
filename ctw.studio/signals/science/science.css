@@ -1,0 +1,24 @@
+.science-page {
+  --topic: #70e5c1;
+  --topic-rgb: 112, 229, 193;
+}
+.science-page body {
+  background:
+    radial-gradient(circle at 78% 7%, rgba(112, 229, 193, .11), transparent 31rem),
+    radial-gradient(circle at 4% 40%, rgba(87, 215, 255, .05), transparent 28rem),
+    var(--coal);
+}
+.science-page .evidence-hero h1 em { font-family: Georgia, serif; font-weight: 400; }
+.science-page .evidence-verdict { box-shadow: 0 26px 80px rgba(20, 90, 73, .12); }
+.publication-figure { margin-top: 1.25rem; padding: clamp(1rem, 3vw, 2rem); border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.publication-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.publication-panels figure { min-width: 0; padding: 1rem; border: 1px solid var(--line); }
+.publication-panels figcaption { display: grid; gap: .2rem; margin-bottom: .8rem; }
+.publication-panels figcaption span, .chart-note { color: var(--muted); font-size: .78rem; line-height: 1.55; }
+.publication-panels svg { display: block; width: 100%; height: auto; overflow: visible; }
+.publication-panels svg line { stroke: rgba(255,255,255,.2); }
+.publication-panels svg polyline { fill: none; stroke: var(--topic); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.publication-panels svg text { fill: var(--muted); font: 12px "DM Mono", monospace; }
+.publication-panels svg .context-marker { stroke: #e9ad63; stroke-dasharray: 4 5; }
+.publication-panels details { margin-top: .7rem; }
+@media (max-width: 800px) { .publication-panels { grid-template-columns: 1fr; } }

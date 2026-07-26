@@ -1,5 +1,17 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/signals/roadmap",
+      "destination": "/signals/",
+      "permanent": true
+    },
+    {
+      "source": "/signals/roadmap/",
+      "destination": "/signals/",
+      "permanent": true
+    }
+  ]
 }
