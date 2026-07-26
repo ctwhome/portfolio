@@ -21,6 +21,21 @@ repository-root `vercel.json`. `about/` uses native Next.js/Vercel defaults,
 `ctw.studio/` owns its static configuration, and `jessegonzalez.dev/` owns its
 SvelteKit configuration.
 
+### NLeSC route migration
+
+`ctw.studio/nlesc/` is the canonical replacement at
+[ctw.studio/nlesc/](https://ctw.studio/nlesc/). The `about/` app and its
+`nlesc-portfolio` Vercel project remain active, frozen legacy until a separate
+cutover is approved.
+
+Keep cutover rollback-safe:
+
+1. Verify a preview of the CTW Studio route.
+2. Merge and deploy the CTW Studio route, then verify it in production.
+3. Separately approve the legacy-domain redirect, then verify it.
+4. Retire the legacy Vercel project only after redirect verification.
+5. Optionally remove `about/` in a later, separately approved change.
+
 ## CTW Studio
 
 Static portfolio site for [ctw.studio](https://ctw.studio). No build framework — plain HTML, CSS, and vanilla JS.
