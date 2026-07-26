@@ -10,6 +10,9 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - **Brief 003 · Housing & affordability** (`housing/index.html`) — world housing adequacy, Dutch prices, rents, financing, tenure burden, supply and household formation, plus mechanism-led country comparisons.
 - **Brief 004 · Science & discovery** (`science/index.html`) — R&D inputs, publication volume, reliability, open data/software, translation and demonstrated AI-assisted acceleration kept separate.
 - **Brief 005 · Healthspan & care** (`healthspan/index.html`) — lifespan, healthy life years, avoidable mortality, access, workforce, spending and AMR with explicit evidence-category boundaries.
+- **Brief 006 · Demography, migration & aging** (`demography/index.html`) — population stocks, migration flows, fertility, age structure, household formation, regional divergence and projections kept on their own clocks.
+- **Brief 007 · Education & human capability** (`education/index.html`) — assessments, pathways, adult learning, teacher capacity and bounded AI-tutor experiments without a synthetic capability score.
+- **Brief 008 · Financial fragility** (`financial-fragility/index.html`) — household, government, bank and pension balance sheets, flows, buffers and shock channels kept dimensionally separate.
 
 ## Files
 
@@ -35,6 +38,15 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - `healthspan/index.html`, `healthspan/healthspan.js`, `healthspan/healthspan.css` — Brief 005 page, renderer and topic composition
 - `data/healthspan.json` — life/healthy-life outcomes, workforce series, evidence boundaries and source ledger
 - `scripts/update_healthspan_data.py` — no-key World Bank and Eurostat refresh for life expectancy, physicians and healthy life years
+- `demography/index.html`, `demography/demography.js`, `demography/demography.css` — Brief 006 page, dependency-free renderer and topic composition
+- `data/demography.json` — population, fertility, age, migration, household, regional and projection evidence with source ledger
+- `scripts/update_demography_data.py` — no-key World Bank refresh for population and 65+ share
+- `education/index.html`, `education/education.js`, `education/education.css` — Brief 007 page, dependency-free renderer and topic composition
+- `data/education.json` — assessment, pathway, adult-learning, teacher-capacity and AI-tutor evidence with source ledger
+- `scripts/update_education_data.py` — no-key World Bank/UIS refresh for Dutch primary gross enrollment
+- `financial-fragility/index.html`, `financial-fragility/financial-fragility.js`, `financial-fragility/financial-fragility.css` — Brief 008 page, dependency-free renderer and topic composition
+- `data/financial-fragility.json` — dimensioned balance-sheet, series, distribution, safeguard and source-ledger evidence
+- `scripts/update_financial_fragility_data.py` — no-key refresh for whitelisted BIS, ECB and Eurostat series
 - `tests/*.test.mjs` — source/data/markup integrity checks
 
 ## Refreshing the data
@@ -47,6 +59,9 @@ python3 signals/scripts/update_food_data.py
 python3 signals/scripts/update_housing_data.py
 python3 signals/scripts/update_science_data.py
 python3 signals/scripts/update_healthspan_data.py
+python3 signals/scripts/update_demography_data.py
+python3 signals/scripts/update_education_data.py
+python3 signals/scripts/update_financial_fragility_data.py
 node --test signals/tests/*.test.mjs
 ```
 
@@ -83,6 +98,12 @@ The healthspan updater downloads:
 - World Bank WDI physicians per 1,000 people
 - Eurostat life expectancy and healthy life years at birth for EU27 and the Netherlands
 
+The demography updater owns World Bank total-population and 65+ share observations. Eurostat age, fertility and migration extracts, CBS population/household/regional tables and the pinned UN WPP projection remain manually curated.
+
+The education updater owns only the stable World Bank/UIS Dutch primary-enrollment series. PISA, learning-poverty estimates, Eurostat survey extracts, pathway and teacher evidence, and AI-tutor studies remain edition-pinned and manually reviewed.
+
+The financial-fragility updater owns only whitelisted BIS household credit/debt-service, ECB new-mortgage-rate and Eurostat saving/government-finance series. ECB/EBA supervision, CBS distributions and DNB pensions remain manually reviewed.
+
 Updaters validate source identity, geography, dimensions, chronology and minimum observation counts before writing. They fail closed on schema or definition gaps. Papers, benchmarks, regulatory material, AMR interpretation and other non-API evidence remain manually curated in JSON.
 
 After any refresh:
@@ -112,6 +133,9 @@ After any refresh:
 15. **Waiting times need matching clocks and procedures.** Expose a data gap instead of ranking unlike definitions.
 16. **Spending is allocation, not causal proof.** Prevention or treatment expenditure does not itself demonstrate an outcome.
 17. **Guidance stays classified.** Observed evidence, conditional judgment, hypotheses and reversal indicators must remain visible.
+18. **Demographic flows are not stocks or projections.** Immigration, resident populations and conditional future variants keep distinct clocks, categories and assumptions.
+19. **Education constructs do not collapse.** Assessment results, pathway access and AI-tutor experiments answer different questions; bounded study effects do not establish system-wide adaptation.
+20. **Financial fragility has no defensible composite.** Preserve sector, stock/flow, denominator, liquidity, service burden and distribution instead of netting unlike balance-sheet dimensions.
 
 ## Adding the next brief
 
@@ -128,8 +152,11 @@ node --check signals/food/food.js
 node --check signals/housing/housing.js
 node --check signals/science/science.js
 node --check signals/healthspan/healthspan.js
+node --check signals/demography/demography.js
+node --check signals/education/education.js
+node --check signals/financial-fragility/financial-fragility.js
 python3 -m py_compile signals/scripts/*.py
 python3 -m http.server 4173
 ```
 
-Probe `/signals/`, `/signals/ai-work/`, `/signals/food/`, `/signals/housing/`, `/signals/science/` and `/signals/healthspan/`. Confirm `/signals/roadmap` and `/signals/roadmap/` redirect exactly to `/signals/`. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.
+Probe `/signals/`, `/signals/ai-work/`, `/signals/food/`, `/signals/housing/`, `/signals/science/`, `/signals/healthspan/`, `/signals/demography/`, `/signals/education/` and `/signals/financial-fragility/`. Confirm `/signals/roadmap` and `/signals/roadmap/` redirect exactly to `/signals/`. The updater list is the eight commands under “Refreshing the data”; run them only when intentionally refreshing committed evidence. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.

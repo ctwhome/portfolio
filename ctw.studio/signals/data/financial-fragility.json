@@ -1,0 +1,1613 @@
+{
+  "meta": {
+    "topic": "Financial fragility",
+    "brief": "008",
+    "atlasPosition": "09",
+    "dataUpdated": "2026-07-26",
+    "editorialReview": "2026-07-26",
+    "updateStatus": "BIS, ECB and Eurostat stable official series refreshed; review-gated evidence unchanged",
+    "scope": "World structural context, Europe, the Netherlands, and selected-country mechanisms",
+    "browserPolicy": "Committed JSON only; no visitor-time evidence calls"
+  },
+  "question": "Where do rates, prices and leverage turn macro shocks into household, fiscal or financial stress?",
+  "verdict": {
+    "label": "Resilient aggregates, concentrated exposure",
+    "text": "Dutch household credit was 93.8% of GDP in 2025 Q4, down from 119.0% in 2015 Q4, while the BIS modelled household debt-service ratio was 13.0% of income. Lower aggregate ratios do not remove risk for recent, highly leveraged or liquidity-poor borrowers.",
+    "direction": "Debt ratios fell for years, but mortgage borrowing and debt service have stopped improving while new borrowing rates remain well above the ultra-low-rate period.",
+    "distribution": "Debt, liquid savings, housing equity and pension claims sit with different households and cannot be netted into a representative balance sheet.",
+    "confidence": "Conditional"
+  },
+  "questions": [
+    "Where are we now?",
+    "What direction are we moving?",
+    "Who is benefiting or carrying the cost?",
+    "What are the competing explanations?",
+    "What evidence would change our current conclusion?"
+  ],
+  "lenses": [
+    {
+      "id": "world",
+      "label": "World",
+      "role": "BIS cross-country structural credit and debt-service context; coverage is not universal"
+    },
+    {
+      "id": "europe",
+      "label": "Europe / Netherlands",
+      "role": "Harmonised fiscal, saving, banking and lending definitions"
+    },
+    {
+      "id": "selected",
+      "label": "Selected countries",
+      "role": "Mechanism contrasts in leverage and rate reset; not a fragility ranking"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "household",
+      "label": "Households",
+      "question": "Can income and liquid buffers absorb repayments, inflation and rate resets?",
+      "doNotConfuse": "Debt stock is not debt service; saving flow is not a liquid emergency buffer."
+    },
+    {
+      "id": "government",
+      "label": "Government",
+      "question": "Does interest absorb fiscal capacity or force crowd-out?",
+      "doNotConfuse": "Gross debt, net debt, interest/GDP and interest/revenue answer different questions."
+    },
+    {
+      "id": "banks",
+      "label": "Banks",
+      "question": "Can capital, liquidity and earnings absorb credit and market losses?",
+      "doNotConfuse": "Capital is not liquidity; low NPLs are not a guarantee against future losses."
+    },
+    {
+      "id": "pensions",
+      "label": "Pensions",
+      "question": "Are promised benefits covered through a valuation shock and transition?",
+      "doNotConfuse": "Funding coverage is not benefit adequacy or household liquidity."
+    }
+  ],
+  "balanceSheets": [
+    {
+      "id": "household",
+      "headline": "93.8%",
+      "unit": "household & NPISH credit / GDP",
+      "period": "2025-Q4",
+      "geography": "Netherlands",
+      "sourceId": "bis-household-credit",
+      "interpretation": "A high gross debt stock whose ratio has fallen materially since 2015.",
+      "caveat": "GDP is not household income and assets are not netted."
+    },
+    {
+      "id": "government",
+      "headline": "44.4%",
+      "unit": "general-government gross debt / GDP",
+      "period": "2025",
+      "geography": "Netherlands",
+      "sourceId": "eurostat-debt",
+      "interpretation": "Low relative to the euro-area aggregate, but the interest flow still matters for budgets.",
+      "caveat": "Maastricht gross debt is not net debt and does not include every contingent liability."
+    },
+    {
+      "id": "banks",
+      "headline": "15.99%",
+      "unit": "CET1 / risk-weighted assets",
+      "period": "2026-Q1",
+      "geography": "European significant institutions",
+      "sourceId": "ecb-supervisory",
+      "interpretation": "Loss-absorbing common equity remains substantial in aggregate.",
+      "caveat": "A risk-weighted capital ratio is not cash liquidity and masks dispersion."
+    },
+    {
+      "id": "pensions",
+      "headline": "122.9%",
+      "unit": "assets / technical provisions",
+      "period": "2025-Q4",
+      "geography": "Dutch pension funds",
+      "sourceId": "dnb-pensions",
+      "interpretation": "Aggregate funding improved before the pension-system transition.",
+      "caveat": "Coverage does not establish benefit adequacy, indexation or household access."
+    }
+  ],
+  "series": {
+    "householdCredit": {
+      "id": "BIS,WS_TC,2.0/Q.NL.H.A.M.770.A",
+      "label": "Total credit to households and NPISHs",
+      "geography": "Netherlands",
+      "population": "Households and non-profit institutions serving households (NPISH)",
+      "unit": "% of GDP",
+      "denominator": "Quarterly nominal GDP, BIS ratio convention",
+      "frequency": "Quarterly, end of period, not seasonally adjusted",
+      "valuation": "Market value",
+      "adjustment": "Adjusted for breaks",
+      "sourceId": "bis-household-credit",
+      "observations": [
+        {
+          "period": "2015-Q1",
+          "value": 120.8
+        },
+        {
+          "period": "2015-Q2",
+          "value": 120.0
+        },
+        {
+          "period": "2015-Q3",
+          "value": 119.2
+        },
+        {
+          "period": "2015-Q4",
+          "value": 119.0
+        },
+        {
+          "period": "2016-Q1",
+          "value": 119.0
+        },
+        {
+          "period": "2016-Q2",
+          "value": 118.7
+        },
+        {
+          "period": "2016-Q3",
+          "value": 118.6
+        },
+        {
+          "period": "2016-Q4",
+          "value": 117.9
+        },
+        {
+          "period": "2017-Q1",
+          "value": 117.7
+        },
+        {
+          "period": "2017-Q2",
+          "value": 117.0
+        },
+        {
+          "period": "2017-Q3",
+          "value": 116.3
+        },
+        {
+          "period": "2017-Q4",
+          "value": 115.7
+        },
+        {
+          "period": "2018-Q1",
+          "value": 115.0
+        },
+        {
+          "period": "2018-Q2",
+          "value": 114.3
+        },
+        {
+          "period": "2018-Q3",
+          "value": 113.5
+        },
+        {
+          "period": "2018-Q4",
+          "value": 112.9
+        },
+        {
+          "period": "2019-Q1",
+          "value": 112.1
+        },
+        {
+          "period": "2019-Q2",
+          "value": 111.1
+        },
+        {
+          "period": "2019-Q3",
+          "value": 110.1
+        },
+        {
+          "period": "2019-Q4",
+          "value": 109.5
+        },
+        {
+          "period": "2020-Q1",
+          "value": 109.6
+        },
+        {
+          "period": "2020-Q2",
+          "value": 112.1
+        },
+        {
+          "period": "2020-Q3",
+          "value": 113.2
+        },
+        {
+          "period": "2020-Q4",
+          "value": 114.6
+        },
+        {
+          "period": "2021-Q1",
+          "value": 115.4
+        },
+        {
+          "period": "2021-Q2",
+          "value": 112.6
+        },
+        {
+          "period": "2021-Q3",
+          "value": 111.0
+        },
+        {
+          "period": "2021-Q4",
+          "value": 109.0
+        },
+        {
+          "period": "2022-Q1",
+          "value": 107.0
+        },
+        {
+          "period": "2022-Q2",
+          "value": 105.6
+        },
+        {
+          "period": "2022-Q3",
+          "value": 103.8
+        },
+        {
+          "period": "2022-Q4",
+          "value": 101.5
+        },
+        {
+          "period": "2023-Q1",
+          "value": 100.2
+        },
+        {
+          "period": "2023-Q2",
+          "value": 99.3
+        },
+        {
+          "period": "2023-Q3",
+          "value": 98.7
+        },
+        {
+          "period": "2023-Q4",
+          "value": 97.0
+        },
+        {
+          "period": "2024-Q1",
+          "value": 96.1
+        },
+        {
+          "period": "2024-Q2",
+          "value": 95.5
+        },
+        {
+          "period": "2024-Q3",
+          "value": 95.2
+        },
+        {
+          "period": "2024-Q4",
+          "value": 94.3
+        },
+        {
+          "period": "2025-Q1",
+          "value": 94.1
+        },
+        {
+          "period": "2025-Q2",
+          "value": 93.9
+        },
+        {
+          "period": "2025-Q3",
+          "value": 93.8
+        },
+        {
+          "period": "2025-Q4",
+          "value": 93.8
+        }
+      ],
+      "latest": {
+        "period": "2025-Q4",
+        "value": 93.8
+      }
+    },
+    "householdDebtService": {
+      "id": "BIS,WS_DSR,1.0/Q.NL.H",
+      "label": "Household and NPISH debt-service ratio",
+      "geography": "Netherlands",
+      "population": "Households and non-profit institutions serving households (NPISH)",
+      "unit": "% of income",
+      "denominator": "BIS modelled income available for debt service",
+      "frequency": "Quarterly, not seasonally adjusted",
+      "sourceId": "bis-household-dsr",
+      "observations": [
+        {
+          "period": "2015-Q1",
+          "value": 19.5
+        },
+        {
+          "period": "2015-Q2",
+          "value": 19.2
+        },
+        {
+          "period": "2015-Q3",
+          "value": 18.9
+        },
+        {
+          "period": "2015-Q4",
+          "value": 18.9
+        },
+        {
+          "period": "2016-Q1",
+          "value": 18.7
+        },
+        {
+          "period": "2016-Q2",
+          "value": 18.5
+        },
+        {
+          "period": "2016-Q3",
+          "value": 18.5
+        },
+        {
+          "period": "2016-Q4",
+          "value": 18.2
+        },
+        {
+          "period": "2017-Q1",
+          "value": 17.8
+        },
+        {
+          "period": "2017-Q2",
+          "value": 17.8
+        },
+        {
+          "period": "2017-Q3",
+          "value": 17.7
+        },
+        {
+          "period": "2017-Q4",
+          "value": 17.7
+        },
+        {
+          "period": "2018-Q1",
+          "value": 17.5
+        },
+        {
+          "period": "2018-Q2",
+          "value": 17.2
+        },
+        {
+          "period": "2018-Q3",
+          "value": 17.1
+        },
+        {
+          "period": "2018-Q4",
+          "value": 16.9
+        },
+        {
+          "period": "2019-Q1",
+          "value": 16.6
+        },
+        {
+          "period": "2019-Q2",
+          "value": 16.5
+        },
+        {
+          "period": "2019-Q3",
+          "value": 16.4
+        },
+        {
+          "period": "2019-Q4",
+          "value": 16.2
+        },
+        {
+          "period": "2020-Q1",
+          "value": 15.8
+        },
+        {
+          "period": "2020-Q2",
+          "value": 15.8
+        },
+        {
+          "period": "2020-Q3",
+          "value": 15.8
+        },
+        {
+          "period": "2020-Q4",
+          "value": 15.6
+        },
+        {
+          "period": "2021-Q1",
+          "value": 15.4
+        },
+        {
+          "period": "2021-Q2",
+          "value": 15.1
+        },
+        {
+          "period": "2021-Q3",
+          "value": 15.1
+        },
+        {
+          "period": "2021-Q4",
+          "value": 15.0
+        },
+        {
+          "period": "2022-Q1",
+          "value": 14.6
+        },
+        {
+          "period": "2022-Q2",
+          "value": 14.3
+        },
+        {
+          "period": "2022-Q3",
+          "value": 14.2
+        },
+        {
+          "period": "2022-Q4",
+          "value": 14.2
+        },
+        {
+          "period": "2023-Q1",
+          "value": 13.5
+        },
+        {
+          "period": "2023-Q2",
+          "value": 13.2
+        },
+        {
+          "period": "2023-Q3",
+          "value": 13.0
+        },
+        {
+          "period": "2023-Q4",
+          "value": 13.0
+        },
+        {
+          "period": "2024-Q1",
+          "value": 12.9
+        },
+        {
+          "period": "2024-Q2",
+          "value": 12.8
+        },
+        {
+          "period": "2024-Q3",
+          "value": 13.0
+        },
+        {
+          "period": "2024-Q4",
+          "value": 13.0
+        },
+        {
+          "period": "2025-Q1",
+          "value": 12.9
+        },
+        {
+          "period": "2025-Q2",
+          "value": 12.9
+        },
+        {
+          "period": "2025-Q3",
+          "value": 12.9
+        },
+        {
+          "period": "2025-Q4",
+          "value": 13.0
+        }
+      ],
+      "latest": {
+        "period": "2025-Q4",
+        "value": 13.0
+      },
+      "caveat": "The BIS applies a unified aggregate model. It is strongest for change over time; absolute country levels are less comparable than within-country movements."
+    },
+    "newMortgageRate": {
+      "id": "MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
+      "label": "Rate on new loans for house purchase",
+      "geography": "Netherlands",
+      "population": "Households and NPISHs; new euro-denominated business",
+      "unit": "% per annum",
+      "denominator": "Annualised agreed rate on new business",
+      "frequency": "Monthly",
+      "sourceId": "ecb-mortgage-rate",
+      "observations": [
+        {
+          "period": "2015-01",
+          "value": 3.12
+        },
+        {
+          "period": "2015-02",
+          "value": 3.15
+        },
+        {
+          "period": "2015-03",
+          "value": 2.99
+        },
+        {
+          "period": "2015-04",
+          "value": 2.96
+        },
+        {
+          "period": "2015-05",
+          "value": 2.9
+        },
+        {
+          "period": "2015-06",
+          "value": 2.9
+        },
+        {
+          "period": "2015-07",
+          "value": 2.9
+        },
+        {
+          "period": "2015-08",
+          "value": 2.91
+        },
+        {
+          "period": "2015-09",
+          "value": 2.89
+        },
+        {
+          "period": "2015-10",
+          "value": 2.85
+        },
+        {
+          "period": "2015-11",
+          "value": 2.86
+        },
+        {
+          "period": "2015-12",
+          "value": 2.78
+        },
+        {
+          "period": "2016-01",
+          "value": 2.8
+        },
+        {
+          "period": "2016-02",
+          "value": 2.77
+        },
+        {
+          "period": "2016-03",
+          "value": 2.7
+        },
+        {
+          "period": "2016-04",
+          "value": 2.69
+        },
+        {
+          "period": "2016-05",
+          "value": 2.64
+        },
+        {
+          "period": "2016-06",
+          "value": 2.59
+        },
+        {
+          "period": "2016-07",
+          "value": 2.59
+        },
+        {
+          "period": "2016-08",
+          "value": 2.55
+        },
+        {
+          "period": "2016-09",
+          "value": 2.5
+        },
+        {
+          "period": "2016-10",
+          "value": 2.4
+        },
+        {
+          "period": "2016-11",
+          "value": 2.41
+        },
+        {
+          "period": "2016-12",
+          "value": 2.4
+        },
+        {
+          "period": "2017-01",
+          "value": 2.37
+        },
+        {
+          "period": "2017-02",
+          "value": 2.39
+        },
+        {
+          "period": "2017-03",
+          "value": 2.41
+        },
+        {
+          "period": "2017-04",
+          "value": 2.42
+        },
+        {
+          "period": "2017-05",
+          "value": 2.42
+        },
+        {
+          "period": "2017-06",
+          "value": 2.41
+        },
+        {
+          "period": "2017-07",
+          "value": 2.43
+        },
+        {
+          "period": "2017-08",
+          "value": 2.42
+        },
+        {
+          "period": "2017-09",
+          "value": 2.41
+        },
+        {
+          "period": "2017-10",
+          "value": 2.39
+        },
+        {
+          "period": "2017-11",
+          "value": 2.42
+        },
+        {
+          "period": "2017-12",
+          "value": 2.4
+        },
+        {
+          "period": "2018-01",
+          "value": 2.37
+        },
+        {
+          "period": "2018-02",
+          "value": 2.39
+        },
+        {
+          "period": "2018-03",
+          "value": 2.39
+        },
+        {
+          "period": "2018-04",
+          "value": 2.39
+        },
+        {
+          "period": "2018-05",
+          "value": 2.4
+        },
+        {
+          "period": "2018-06",
+          "value": 2.44
+        },
+        {
+          "period": "2018-07",
+          "value": 2.42
+        },
+        {
+          "period": "2018-08",
+          "value": 2.4
+        },
+        {
+          "period": "2018-09",
+          "value": 2.39
+        },
+        {
+          "period": "2018-10",
+          "value": 2.4
+        },
+        {
+          "period": "2018-11",
+          "value": 2.41
+        },
+        {
+          "period": "2018-12",
+          "value": 2.4
+        },
+        {
+          "period": "2019-01",
+          "value": 2.39
+        },
+        {
+          "period": "2019-02",
+          "value": 2.42
+        },
+        {
+          "period": "2019-03",
+          "value": 2.41
+        },
+        {
+          "period": "2019-04",
+          "value": 2.35
+        },
+        {
+          "period": "2019-05",
+          "value": 2.31
+        },
+        {
+          "period": "2019-06",
+          "value": 2.28
+        },
+        {
+          "period": "2019-07",
+          "value": 2.24
+        },
+        {
+          "period": "2019-08",
+          "value": 2.2
+        },
+        {
+          "period": "2019-09",
+          "value": 2.15
+        },
+        {
+          "period": "2019-10",
+          "value": 2.08
+        },
+        {
+          "period": "2019-11",
+          "value": 2.42
+        },
+        {
+          "period": "2019-12",
+          "value": 2.0
+        },
+        {
+          "period": "2020-01",
+          "value": 1.98
+        },
+        {
+          "period": "2020-02",
+          "value": 1.92
+        },
+        {
+          "period": "2020-03",
+          "value": 1.91
+        },
+        {
+          "period": "2020-04",
+          "value": 1.88
+        },
+        {
+          "period": "2020-05",
+          "value": 1.89
+        },
+        {
+          "period": "2020-06",
+          "value": 1.87
+        },
+        {
+          "period": "2020-07",
+          "value": 1.87
+        },
+        {
+          "period": "2020-08",
+          "value": 1.89
+        },
+        {
+          "period": "2020-09",
+          "value": 1.88
+        },
+        {
+          "period": "2020-10",
+          "value": 1.87
+        },
+        {
+          "period": "2020-11",
+          "value": 1.85
+        },
+        {
+          "period": "2020-12",
+          "value": 1.84
+        },
+        {
+          "period": "2021-01",
+          "value": 1.8
+        },
+        {
+          "period": "2021-02",
+          "value": 1.77
+        },
+        {
+          "period": "2021-03",
+          "value": 1.76
+        },
+        {
+          "period": "2021-04",
+          "value": 1.71
+        },
+        {
+          "period": "2021-05",
+          "value": 1.71
+        },
+        {
+          "period": "2021-06",
+          "value": 1.68
+        },
+        {
+          "period": "2021-07",
+          "value": 1.68
+        },
+        {
+          "period": "2021-08",
+          "value": 1.66
+        },
+        {
+          "period": "2021-09",
+          "value": 1.65
+        },
+        {
+          "period": "2021-10",
+          "value": 1.65
+        },
+        {
+          "period": "2021-11",
+          "value": 1.65
+        },
+        {
+          "period": "2021-12",
+          "value": 1.65
+        },
+        {
+          "period": "2022-01",
+          "value": 1.67
+        },
+        {
+          "period": "2022-02",
+          "value": 1.67
+        },
+        {
+          "period": "2022-03",
+          "value": 1.77
+        },
+        {
+          "period": "2022-04",
+          "value": 1.89
+        },
+        {
+          "period": "2022-05",
+          "value": 2.04
+        },
+        {
+          "period": "2022-06",
+          "value": 2.21
+        },
+        {
+          "period": "2022-07",
+          "value": 2.43
+        },
+        {
+          "period": "2022-08",
+          "value": 2.65
+        },
+        {
+          "period": "2022-09",
+          "value": 2.83
+        },
+        {
+          "period": "2022-10",
+          "value": 3.06
+        },
+        {
+          "period": "2022-11",
+          "value": 3.23
+        },
+        {
+          "period": "2022-12",
+          "value": 3.4
+        },
+        {
+          "period": "2023-01",
+          "value": 3.51
+        },
+        {
+          "period": "2023-02",
+          "value": 3.58
+        },
+        {
+          "period": "2023-03",
+          "value": 3.55
+        },
+        {
+          "period": "2023-04",
+          "value": 3.68
+        },
+        {
+          "period": "2023-05",
+          "value": 3.79
+        },
+        {
+          "period": "2023-06",
+          "value": 3.92
+        },
+        {
+          "period": "2023-07",
+          "value": 3.95
+        },
+        {
+          "period": "2023-08",
+          "value": 3.98
+        },
+        {
+          "period": "2023-09",
+          "value": 4.05
+        },
+        {
+          "period": "2023-10",
+          "value": 3.82
+        },
+        {
+          "period": "2023-11",
+          "value": 4.13
+        },
+        {
+          "period": "2023-12",
+          "value": 4.13
+        },
+        {
+          "period": "2024-01",
+          "value": 4.04
+        },
+        {
+          "period": "2024-02",
+          "value": 3.9
+        },
+        {
+          "period": "2024-03",
+          "value": 3.79
+        },
+        {
+          "period": "2024-04",
+          "value": 3.84
+        },
+        {
+          "period": "2024-05",
+          "value": 3.79
+        },
+        {
+          "period": "2024-06",
+          "value": 3.8
+        },
+        {
+          "period": "2024-07",
+          "value": 3.88
+        },
+        {
+          "period": "2024-08",
+          "value": 3.84
+        },
+        {
+          "period": "2024-09",
+          "value": 3.85
+        },
+        {
+          "period": "2024-10",
+          "value": 3.73
+        },
+        {
+          "period": "2024-11",
+          "value": 3.71
+        },
+        {
+          "period": "2024-12",
+          "value": 3.65
+        },
+        {
+          "period": "2025-01",
+          "value": 2.77
+        },
+        {
+          "period": "2025-02",
+          "value": 3.55
+        },
+        {
+          "period": "2025-03",
+          "value": 3.46
+        },
+        {
+          "period": "2025-04",
+          "value": 3.04
+        },
+        {
+          "period": "2025-05",
+          "value": 3.51
+        },
+        {
+          "period": "2025-06",
+          "value": 3.59
+        },
+        {
+          "period": "2025-07",
+          "value": 3.51
+        },
+        {
+          "period": "2025-08",
+          "value": 3.49
+        },
+        {
+          "period": "2025-09",
+          "value": 3.5
+        },
+        {
+          "period": "2025-10",
+          "value": 3.5
+        },
+        {
+          "period": "2025-11",
+          "value": 3.48
+        },
+        {
+          "period": "2025-12",
+          "value": 3.52
+        },
+        {
+          "period": "2026-01",
+          "value": 3.51
+        },
+        {
+          "period": "2026-02",
+          "value": 3.56
+        },
+        {
+          "period": "2026-03",
+          "value": 3.48
+        },
+        {
+          "period": "2026-04",
+          "value": 3.64
+        },
+        {
+          "period": "2026-05",
+          "value": 3.67
+        }
+      ],
+      "latest": {
+        "period": "2026-05",
+        "value": 3.67
+      },
+      "caveat": "New-business pricing is not the effective rate on the outstanding mortgage stock and does not reveal each loan's reset date."
+    },
+    "householdSaving": {
+      "id": "Eurostat nasa_10_ki/SRG_S14_S15",
+      "label": "Gross household saving rate",
+      "geography": "Netherlands",
+      "population": "Households including NPISH",
+      "unit": "% of gross disposable income",
+      "denominator": "Gross disposable income adjusted for change in pension entitlements",
+      "frequency": "Annual",
+      "sourceId": "eurostat-saving",
+      "observations": [
+        {
+          "period": "2015",
+          "value": 14.0
+        },
+        {
+          "period": "2016",
+          "value": 15.1
+        },
+        {
+          "period": "2017",
+          "value": 12.9
+        },
+        {
+          "period": "2018",
+          "value": 13.6
+        },
+        {
+          "period": "2019",
+          "value": 15.8
+        },
+        {
+          "period": "2020",
+          "value": 22.0
+        },
+        {
+          "period": "2021",
+          "value": 19.0
+        },
+        {
+          "period": "2022",
+          "value": 14.4
+        },
+        {
+          "period": "2023",
+          "value": 14.8
+        },
+        {
+          "period": "2024",
+          "value": 16.5
+        },
+        {
+          "period": "2025",
+          "value": 17.3
+        }
+      ],
+      "latest": {
+        "period": "2025",
+        "value": 17.3
+      },
+      "caveat": "A national saving flow is not a stock of liquid emergency funds and says nothing about who saved."
+    },
+    "governmentInterest": {
+      "id": "Eurostat gov_10a_main/S13/D41PAY",
+      "label": "General-government interest payable",
+      "geography": "Netherlands",
+      "population": "General government, ESA 2010 sector S.13",
+      "unit": "% of GDP and % of revenue",
+      "denominator": "Nominal GDP for interest/GDP; total general-government revenue for interest/revenue",
+      "frequency": "Annual",
+      "sourceId": "eurostat-government",
+      "formula": "interestToRevenuePct = D41PAY (million EUR) / TR (million EUR) × 100; interestToGdpPct is Eurostat PC_GDP",
+      "observations": [
+        {
+          "period": "2015",
+          "interestMioEur": 9380,
+          "revenueMioEur": 303558,
+          "interestToGdpPct": 1.3,
+          "interestToRevenuePct": 3.1
+        },
+        {
+          "period": "2016",
+          "interestMioEur": 8566,
+          "revenueMioEur": 317847,
+          "interestToGdpPct": 1.2,
+          "interestToRevenuePct": 2.7
+        },
+        {
+          "period": "2017",
+          "interestMioEur": 7664,
+          "revenueMioEur": 331188,
+          "interestToGdpPct": 1.0,
+          "interestToRevenuePct": 2.3
+        },
+        {
+          "period": "2018",
+          "interestMioEur": 7140,
+          "revenueMioEur": 345837,
+          "interestToGdpPct": 0.9,
+          "interestToRevenuePct": 2.1
+        },
+        {
+          "period": "2019",
+          "interestMioEur": 6455,
+          "revenueMioEur": 365187,
+          "interestToGdpPct": 0.8,
+          "interestToRevenuePct": 1.8
+        },
+        {
+          "period": "2020",
+          "interestMioEur": 5649,
+          "revenueMioEur": 360000,
+          "interestToGdpPct": 0.7,
+          "interestToRevenuePct": 1.6
+        },
+        {
+          "period": "2021",
+          "interestMioEur": 4849,
+          "revenueMioEur": 389062,
+          "interestToGdpPct": 0.5,
+          "interestToRevenuePct": 1.2
+        },
+        {
+          "period": "2022",
+          "interestMioEur": 5653,
+          "revenueMioEur": 430021,
+          "interestToGdpPct": 0.6,
+          "interestToRevenuePct": 1.3
+        },
+        {
+          "period": "2023",
+          "interestMioEur": 7125,
+          "revenueMioEur": 458557,
+          "interestToGdpPct": 0.7,
+          "interestToRevenuePct": 1.6
+        },
+        {
+          "period": "2024",
+          "interestMioEur": 7882,
+          "revenueMioEur": 489402,
+          "interestToGdpPct": 0.7,
+          "interestToRevenuePct": 1.6
+        },
+        {
+          "period": "2025",
+          "interestMioEur": 8496,
+          "revenueMioEur": 510195,
+          "interestToGdpPct": 0.7,
+          "interestToRevenuePct": 1.7
+        }
+      ],
+      "latest": {
+        "period": "2025",
+        "interestMioEur": 8496,
+        "revenueMioEur": 510195,
+        "interestToGdpPct": 0.7,
+        "interestToRevenuePct": 1.7
+      },
+      "caveat": "Interest payable is a flow. It is neither gross debt nor the effective yield on debt, and the two displayed ratios use different denominators."
+    }
+  },
+  "householdDistribution": [
+    {
+      "group": "Recent and highly leveraged owners",
+      "exposure": "Large mortgage relative to income or home value; less time to amortise",
+      "shockChannel": "Income loss, refinancing and house-price decline",
+      "evidence": "Owners under 35 had average mortgage debt equal to 0.64 of home value in 2024.",
+      "sourceId": "cbs-financial-sustainability",
+      "boundary": "Average loan-to-value does not reveal debt-service-to-income or tail risk."
+    },
+    {
+      "group": "Low-income and renter households",
+      "exposure": "Fewer liquid and housing assets; high essential spending shares",
+      "shockChannel": "Inflation and income loss rather than mortgage reset",
+      "evidence": "Median wealth was €1.5k in the lowest income decile versus €520.2k in the highest in 2024.",
+      "sourceId": "cbs-household-wealth",
+      "boundary": "Wealth includes illiquid assets; pension entitlements are excluded from this CBS definition."
+    },
+    {
+      "group": "Older owners",
+      "exposure": "Often lower mortgage leverage and more housing equity",
+      "shockChannel": "Asset repricing, pension indexation and care costs",
+      "evidence": "CBS reports that older households often own homes and have largely repaid mortgages.",
+      "sourceId": "cbs-household-wealth",
+      "boundary": "Age averages hide renters, interest-only loans and households without accessible savings."
+    },
+    {
+      "group": "Households with pension claims",
+      "exposure": "Large deferred claims but limited immediate access",
+      "shockChannel": "Funding, valuation and transition outcomes",
+      "evidence": "Dutch pension funds' aggregate funding ratio was 122.9% at end-2025.",
+      "sourceId": "dnb-pensions",
+      "boundary": "Pension claims cannot normally pay today's mortgage or emergency bill."
+    }
+  ],
+  "safeguards": {
+    "banks": [
+      {
+        "metric": "CET1 ratio",
+        "value": 15.99,
+        "unit": "% of risk-weighted assets",
+        "period": "2026-Q1",
+        "sourceId": "ecb-supervisory",
+        "boundary": "capital, not liquidity"
+      },
+      {
+        "metric": "NPL ratio",
+        "value": 2.18,
+        "unit": "% of loans excluding central-bank cash and demand deposits",
+        "period": "2026-Q1",
+        "sourceId": "ecb-supervisory",
+        "boundary": "arrears and Stage 2 exposures use different definitions"
+      },
+      {
+        "metric": "EU/EEA NPL ratio",
+        "value": 1.82,
+        "unit": "% of total loans",
+        "period": "2025-Q4",
+        "sourceId": "eba-risk-dashboard",
+        "boundary": "EBA sample; Q1 volumes rose only slightly"
+      },
+      {
+        "metric": "Capital headroom",
+        "value": 500,
+        "unit": "basis points above OCR + P2G, approximately",
+        "period": "2026-Q1",
+        "sourceId": "eba-risk-dashboard",
+        "boundary": "weighted aggregate with wide bank and country dispersion"
+      }
+    ],
+    "pensions": [
+      {
+        "metric": "Average funding ratio",
+        "value": 122.9,
+        "unit": "%",
+        "period": "2025-Q4",
+        "sourceId": "dnb-pensions",
+        "boundary": "assets / technical provisions, not adequacy"
+      },
+      {
+        "metric": "Transition question",
+        "value": null,
+        "unit": "review-gated",
+        "period": "2026",
+        "sourceId": "dnb-pensions",
+        "boundary": "new-system conversion outcomes require fund-level evidence"
+      }
+    ]
+  },
+  "arrearsBoundary": {
+    "label": "Arrears are not defaults",
+    "text": "There is no stable, harmonised series in this updater that joins Dutch mortgage payment arrears, consumer-credit arrears and realised defaults with consistent clocks. Bank NPL ratios are therefore shown only as a separate institutional safeguard.",
+    "status": "Data gap",
+    "whatWouldResolve": "A validated official series with population, days-past-due threshold, cure policy, loan count or balance denominator, and revision history."
+  },
+  "explanations": [
+    {
+      "id": "leverage",
+      "label": "Leverage",
+      "evidenceType": "Mechanism",
+      "text": "Large debts amplify income and valuation shocks even when collateral initially exceeds the loan.",
+      "test": "Track debt-to-income, loan-to-value and liquid buffers jointly by borrower cohort."
+    },
+    {
+      "id": "income",
+      "label": "Income shock",
+      "evidenceType": "Mechanism",
+      "text": "Job loss or real-income compression can create payment stress without a rate reset.",
+      "test": "Match repayment problems to income transitions and essential-cost exposure."
+    },
+    {
+      "id": "reset",
+      "label": "Rate reset",
+      "evidenceType": "Exposure",
+      "text": "New-business rates reveal the price facing new borrowers, not how quickly the outstanding stock reprices.",
+      "test": "Publish the stock by remaining fixation period, income and loan-to-value."
+    },
+    {
+      "id": "inflation",
+      "label": "Inflation",
+      "evidenceType": "Mechanism",
+      "text": "Inflation can erode real fixed debt while simultaneously compressing disposable cash flow and lifting rates.",
+      "test": "Separate nominal debt relief from the household budget effect."
+    },
+    {
+      "id": "scarcity",
+      "label": "Housing scarcity",
+      "evidenceType": "Association",
+      "text": "Scarcity supports collateral values but can force new buyers toward larger loans.",
+      "test": "Join local supply, prices, borrower leverage and tenure."
+    },
+    {
+      "id": "repricing",
+      "label": "Market repricing",
+      "evidenceType": "Scenario",
+      "text": "Fast yield or asset-price moves can expose duration and liquidity mismatches before credit defaults rise.",
+      "test": "Use institution-level stress tests; market volatility alone is not structural indebtedness."
+    }
+  ],
+  "reversalIndicators": [
+    {
+      "label": "Persistent household defaults",
+      "threshold": "A broad, sustained rise in consistently defined defaults after cures and write-offs",
+      "meaning": "Aggregate debt-service resilience would no longer describe borrower outcomes."
+    },
+    {
+      "label": "Depleted liquid buffers",
+      "threshold": "Falling deposits or liquid assets concentrated among mortgagors and low-income households",
+      "meaning": "The saving-flow comfort would be contradicted by household-level stocks."
+    },
+    {
+      "label": "Fiscal crowd-out",
+      "threshold": "Interest/revenue rises persistently while productive or protective spending is displaced",
+      "meaning": "Low gross debt would cease to imply ample fiscal room."
+    },
+    {
+      "label": "Bank losses",
+      "threshold": "NPL, Stage 2 and realised-loss ratios rise as capital headroom and liquidity fall",
+      "meaning": "Safeguards would be absorbing rather than merely standing ready for stress."
+    },
+    {
+      "label": "Restored affordability",
+      "threshold": "New-borrower payments fall relative to income without looser risk layering",
+      "meaning": "Household leverage would become easier to service rather than only smaller relative to GDP."
+    },
+    {
+      "label": "Pension resilience",
+      "threshold": "Funding and expected benefits remain stable through transition and valuation shocks",
+      "meaning": "Deferred household claims would be more defensible as a long-run buffer."
+    }
+  ],
+  "dataGaps": [
+    "Dutch arrears and defaults with a stable days-past-due clock, balance denominator and cure policy.",
+    "Mortgage stock by remaining rate-fixation period joined to borrower income, age, tenure and liquid assets.",
+    "Government contingent liabilities and refinancing schedule joined to interest/revenue scenarios.",
+    "Fund-level pension coverage joined to expected benefit adequacy and transition outcomes.",
+    "Comparable household liquid emergency buffers; aggregate saving and deposits cannot supply this distribution."
+  ],
+  "sources": [
+    {
+      "id": "bis-household-credit",
+      "institution": "Bank for International Settlements",
+      "title": "Credit to the non-financial sector",
+      "seriesTableId": "BIS,WS_TC,2.0/Q.NL.H.A.M.770.A; publication table F3.1",
+      "date": "2026-06-15 release",
+      "url": "https://data.bis.org/topics/TOTAL_CREDIT/BIS%2CWS_TC%2C2.0/Q.NL.H.A.M.770.A",
+      "geographyPopulation": "Netherlands; households and NPISH",
+      "period": "Quarterly, 1990-Q4 onward; page uses 2015 onward",
+      "denominatorUnit": "Percentage of GDP; end-of-period credit stock; market value; adjusted for breaks",
+      "evidenceType": "Observation",
+      "role": "Household leverage stock",
+      "methodology": "Total core debt from all lending sectors, following the System of National Accounts; quarterly nominal-GDP ratio.",
+      "transformation": "Updater filters the exact seven-dimension key, sorts periods and rounds observations to one decimal.",
+      "vintageRetrieved": "2026-06-15 release; retrieved 2026-07-26",
+      "revisionPolicy": "Refresh quarterly; revisions replace the full baked series after definition and chronology validation.",
+      "interpretation": "Shows structural indebtedness relative to the economy.",
+      "caveat": "Household includes NPISH; gross credit is not net wealth, household income or debt service."
+    },
+    {
+      "id": "bis-household-dsr",
+      "institution": "Bank for International Settlements",
+      "title": "Debt service ratios",
+      "seriesTableId": "BIS,WS_DSR,1.0/Q.NL.H; publication table G2",
+      "date": "2026-06-15 release",
+      "url": "https://data.bis.org/topics/DSR/BIS%2CWS_DSR%2C1.0/Q.NL.H",
+      "geographyPopulation": "Netherlands; households and NPISH",
+      "period": "Quarterly, 1999-Q1 onward",
+      "denominatorUnit": "Percent of modelled income available for debt service",
+      "evidenceType": "Modelled observation",
+      "role": "Repayment burden over time",
+      "methodology": "BIS unified aggregate model combines debt, income, average interest rate and remaining maturity to estimate interest plus amortisation.",
+      "transformation": "Updater filters the exact key, sorts periods and rounds to one decimal.",
+      "vintageRetrieved": "2026-06-15 release; retrieved 2026-07-26",
+      "revisionPolicy": "Refresh quarterly; review methodology changes before publishing.",
+      "interpretation": "Best read as within-country movement in debt-service constraints.",
+      "caveat": "Modelled aggregate level is not a microdata payment-to-income distribution and country levels are difficult to compare."
+    },
+    {
+      "id": "ecb-mortgage-rate",
+      "institution": "European Central Bank / De Nederlandsche Bank",
+      "title": "MFI interest rates: new loans to households for house purchase",
+      "seriesTableId": "MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
+      "date": "Last updated 2026-06-05",
+      "url": "https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
+      "geographyPopulation": "Netherlands; households and NPISH; new euro-denominated mortgage business",
+      "period": "Monthly; latest displayed 2026-05",
+      "denominatorUnit": "Percent per annum, annualised agreed rate / narrowly defined effective rate",
+      "evidenceType": "Observation",
+      "role": "Price of new mortgage funding",
+      "methodology": "Deposit-taking corporations excluding the central bank; all initial fixation periods and amount categories.",
+      "transformation": "Updater filters the exact series key, sorts monthly observations and rounds to two decimals.",
+      "vintageRetrieved": "2026-06-05 vintage; retrieved 2026-07-26",
+      "revisionPolicy": "Refresh monthly; replace history after key and unit validation.",
+      "interpretation": "Shows marginal borrowing cost faced by new business.",
+      "caveat": "Not the effective rate, reset schedule or debt service of the outstanding stock."
+    },
+    {
+      "id": "eurostat-saving",
+      "institution": "Eurostat",
+      "title": "Key indicators: gross household saving rate",
+      "seriesTableId": "nasa_10_ki; SRG_S14_S15; S14_S15",
+      "date": "Annual sector accounts available 2026-07",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/nasa_10_ki/default/table?lang=en",
+      "geographyPopulation": "Netherlands; households including NPISH",
+      "period": "Annual, 2015–2025 on page",
+      "denominatorUnit": "Gross saving / (gross disposable income adjusted for pension-entitlement changes), percent",
+      "evidenceType": "Observation",
+      "role": "Saving flow",
+      "methodology": "ESA 2010 sector accounts key indicator: B8G / (B6G + D8rec − D8pay) × 100.",
+      "transformation": "Updater filters SRG_S14_S15 for NL, annual frequency, then sorts and rounds to one decimal.",
+      "vintageRetrieved": "Retrieved 2026-07-26",
+      "revisionPolicy": "Refresh annually; preserve historical revisions after dimension checks.",
+      "interpretation": "Shows the national flow not consumed from adjusted disposable income.",
+      "caveat": "Saving flow is not liquid wealth, an emergency buffer or a distribution."
+    },
+    {
+      "id": "eurostat-government",
+      "institution": "Eurostat",
+      "title": "Government revenue, expenditure and main aggregates",
+      "seriesTableId": "gov_10a_main; S13; D41PAY and TR; units MIO_EUR and PC_GDP",
+      "date": "2026-04-22 transmission",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=en",
+      "geographyPopulation": "Netherlands; ESA 2010 general government S.13",
+      "period": "Annual, 2015–2025 on page",
+      "denominatorUnit": "Interest payable in million EUR and percent of GDP; total revenue in million EUR",
+      "evidenceType": "Observation and derived ratio",
+      "role": "Fiscal interest burden",
+      "methodology": "ESA 2010 government finance statistics for D.41 payable interest and total revenue.",
+      "transformation": "interest/revenue = D41PAY MIO_EUR ÷ TR MIO_EUR × 100; interest/GDP uses Eurostat PC_GDP directly.",
+      "vintageRetrieved": "2026-04-22 vintage; retrieved 2026-07-26",
+      "revisionPolicy": "Refresh after April/October transmissions; recalculate derived ratios from unrounded inputs.",
+      "interpretation": "Shows the budgetary interest flow with two explicit denominators.",
+      "caveat": "Interest/GDP and interest/revenue have separate denominators and are not the government debt stock."
+    },
+    {
+      "id": "eurostat-debt",
+      "institution": "Eurostat",
+      "title": "Government deficit and debt: gross consolidated government debt",
+      "seriesTableId": "gov_10dd_edpt1; S13; GD; PC_GDP",
+      "date": "2026 EDP transmission available 2026-07",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=en",
+      "geographyPopulation": "Netherlands; ESA 2010 general government S.13",
+      "period": "Annual, 2015–2025",
+      "denominatorUnit": "Maastricht gross consolidated debt as percent of GDP",
+      "evidenceType": "Observation",
+      "role": "Sovereign debt stock",
+      "methodology": "Excessive Deficit Procedure table for general-government gross consolidated debt at nominal value.",
+      "transformation": "Updater filters NL, S13, GD and PC_GDP, sorts annual periods and rounds to one decimal.",
+      "vintageRetrieved": "Retrieved 2026-07-26",
+      "revisionPolicy": "Refresh after EDP transmissions; preserve historical revisions after exact dimension checks.",
+      "interpretation": "Shows the gross government debt stock relative to GDP.",
+      "caveat": "Maastricht gross debt is not net debt and excludes some contingent liabilities."
+    },
+    {
+      "id": "ecb-supervisory",
+      "institution": "ECB Banking Supervision",
+      "title": "Supervisory banking statistics: significant institutions",
+      "seriesTableId": "Q1 2026 overview; CET1 ratio and NPL ratio",
+      "date": "2026-06-19",
+      "url": "https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260619~b2252c1d8a.en.html",
+      "geographyPopulation": "Significant institutions in European banking supervision",
+      "period": "2026-Q1",
+      "denominatorUnit": "CET1 / risk-weighted assets; NPL / loans excluding central-bank cash and demand deposits",
+      "evidenceType": "Supervisory observation",
+      "role": "Bank capital and asset-quality safeguards",
+      "methodology": "Aggregated COREP and FINREP reports at the relevant consolidation level.",
+      "transformation": "Manual snapshot of published aggregate ratios; no combination with EBA sample.",
+      "vintageRetrieved": "2026-Q1 release; retrieved 2026-07-26",
+      "revisionPolicy": "Manual quarterly review because sample and definitions require audit.",
+      "interpretation": "Shows aggregate loss absorption and recognised problem loans.",
+      "caveat": "Capital is not liquidity; risk weights and aggregate ratios mask institution dispersion."
+    },
+    {
+      "id": "eba-risk-dashboard",
+      "institution": "European Banking Authority",
+      "title": "Risk Dashboard Q1 2026 and Risk Assessment Report Spring 2026",
+      "seriesTableId": "RDB Q1 2026 statistical annex; RAR figures 2, 3, 25, 26, 43",
+      "date": "2026-06-18",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eueea-banks-remain-resilient-amid-rising-geopolitical-market-and-technological-risks",
+      "geographyPopulation": "EU/EEA supervisory sample; 161 banks from 30 EEA countries in the RAR",
+      "period": "2025-Q4 stock metrics with Q1 2026 direction and capital-headroom observation",
+      "denominatorUnit": "Metric-specific: NPL / total loans; capital headroom in basis points; liquidity and profitability separately defined",
+      "evidenceType": "Supervisory observation",
+      "role": "Bank resilience, dispersion and emerging-loss context",
+      "methodology": "EBA supervisory reporting uses weighted averages and an unbalanced sample unless stated otherwise.",
+      "transformation": "Manual, review-gated snapshot from the annex/report; metrics are not combined.",
+      "vintageRetrieved": "Q1 2026 dashboard; retrieved 2026-07-26",
+      "revisionPolicy": "Manual quarterly annex review; preserve sample and metric definition with every value.",
+      "interpretation": "Capital and liquidity start from strength while risks remain concentrated.",
+      "caveat": "NPLs, Stage 2, CET1, liquidity and profitability are different dimensions; country and bank dispersion is wide."
+    },
+    {
+      "id": "cbs-household-wealth",
+      "institution": "Statistics Netherlands (CBS)",
+      "title": "Distribution of well-being: material well-being",
+      "seriesTableId": "CBS household wealth, 1 January 2024",
+      "date": "Updated 2026-07-14",
+      "url": "https://www.cbs.nl/en-gb/visualisations/monitor-of-well-being-and-the-sustainable-development-goals/distribution-of-well-being/distribution-of-well-being-material-well-being",
+      "geographyPopulation": "Netherlands; 8.3 million private households",
+      "period": "2024",
+      "denominatorUnit": "Median and aggregate euros by household income group; pension entitlements excluded",
+      "evidenceType": "Distributional observation",
+      "role": "Household balance-sheet distribution",
+      "methodology": "CBS income and wealth statistics; assets less liabilities under the published household-wealth definition.",
+      "transformation": "Manual transcription of published medians and definition.",
+      "vintageRetrieved": "Retrieved 2026-07-26",
+      "revisionPolicy": "Manual annual review.",
+      "interpretation": "Shows why aggregate assets cannot be assumed to sit with indebted households.",
+      "caveat": "Wealth is not liquidity; pension entitlements are excluded and home values are illiquid."
+    },
+    {
+      "id": "cbs-financial-sustainability",
+      "institution": "Statistics Netherlands (CBS)",
+      "title": "SDG 10.2 Financial sustainability",
+      "seriesTableId": "Average mortgage debt and debt/home-value ratio for owners under 35",
+      "date": "Updated 2026-07",
+      "url": "https://www.cbs.nl/en-gb/visualisations/monitor-of-well-being-and-the-sustainable-development-goals/sdg-s/sdg-10-2-financial-sustainability",
+      "geographyPopulation": "Netherlands; households with mortgages and owner-occupiers under 35",
+      "period": "2024–2025 depending metric",
+      "denominatorUnit": "Euros per mortgaged household; mortgage debt / home value",
+      "evidenceType": "Distributional observation",
+      "role": "Age and borrower exposure",
+      "methodology": "Integral Income and Assets Survey and national accounts; metric-specific populations.",
+      "transformation": "Manual snapshot; no aggregation across populations.",
+      "vintageRetrieved": "Retrieved 2026-07-26",
+      "revisionPolicy": "Manual annual review.",
+      "interpretation": "Younger owners remain a useful leverage-exposure lens.",
+      "caveat": "Loan-to-value is not payment-to-income, liquidity, arrears or default."
+    },
+    {
+      "id": "dnb-pensions",
+      "institution": "De Nederlandsche Bank",
+      "title": "DNB Annual Report 2025: pension fund funding ratio",
+      "seriesTableId": "Pension funds average funding ratio at year-end",
+      "date": "2026-03",
+      "url": "https://www.dnb.nl/media/d0rdiihe/86336-2600114-dnb-annual-report-2025_tg_pdfa.pdf",
+      "geographyPopulation": "Dutch pension funds under DNB supervision",
+      "period": "2025-Q4",
+      "denominatorUnit": "Available assets / technical provisions, percent",
+      "evidenceType": "Supervisory observation",
+      "role": "Pension funding safeguard",
+      "methodology": "Aggregate regulatory funding ratio under the applicable pension framework.",
+      "transformation": "Manual snapshot of 122.9%.",
+      "vintageRetrieved": "2025 annual report; retrieved 2026-07-26",
+      "revisionPolicy": "Manual quarterly/annual review through the system transition.",
+      "interpretation": "Indicates aggregate coverage of measured pension liabilities.",
+      "caveat": "Funding coverage is not benefit adequacy, indexation, fund-level dispersion or liquid household wealth."
+    }
+  ]
+}

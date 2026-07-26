@@ -7,7 +7,14 @@ const html = await readFile(new URL('index.html', root), 'utf8');
 const fallback = await readFile(new URL('roadmap/index.html', root), 'utf8');
 const vercel = JSON.parse(await readFile(new URL('../vercel.json', root), 'utf8'));
 const briefPages = await Promise.all([
-  'ai-work/index.html', 'food/index.html', 'housing/index.html', 'science/index.html', 'healthspan/index.html'
+  'ai-work/index.html',
+  'food/index.html',
+  'housing/index.html',
+  'science/index.html',
+  'healthspan/index.html',
+  'demography/index.html',
+  'education/index.html',
+  'financial-fragility/index.html'
 ].map((path) => readFile(new URL(path, root), 'utf8')));
 
 const topics = [
@@ -24,12 +31,9 @@ const topics = [
 ];
 
 test('Atlas homepage publishes all ten subjects in the agreed order', () => {
-  let cursor = -1;
-  for (const topic of topics) {
-    const next = html.indexOf(topic);
-    assert.ok(next > cursor, `${topic} missing or out of order`);
-    cursor = next;
-  }
+  const grid = html.match(/<ol class="atlas-grid">([\s\S]*?)<\/ol>/)?.[1] || '';
+  const cardTopics = [...grid.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((match) => match[1]);
+  assert.deepEqual(cardTopics, topics);
 });
 
 test('Atlas homepage states the reusable evidence contract and geographic lenses', () => {
@@ -48,32 +52,37 @@ test('Atlas homepage states the reusable evidence contract and geographic lenses
   assert.match(html, /What might this make possible\?/);
 });
 
-test('Atlas links all three atlas briefs and labels publication status honestly', () => {
-  assert.match(html, /href="housing\/"/);
-  assert.match(html, /href="science\/"/);
-  assert.match(html, /href="healthspan\/"/);
-  assert.equal((html.match(/data-status="published"/g) || []).length, 3);
-  assert.equal((html.match(/data-status="planned"/g) || []).length, 7);
-  assert.match(html, /<strong>5<\/strong>\s*briefings published/i);
-  assert.match(html, /<strong>3 of 10<\/strong>\s*atlas briefs published/i);
-  assert.match(html, /<strong>7<\/strong>\s*atlas briefs planned/i);
+test('Atlas links all six atlas briefs and labels publication status honestly', () => {
+  for (const route of ['housing', 'healthspan', 'demography', 'science', 'education', 'financial-fragility']) {
+    assert.match(html, new RegExp(`href="${route}/"`));
+  }
+  for (const [route, card, id] of [['demography', '05', '006'], ['education', '08', '007'], ['financial-fragility', '09', '008']]) {
+    assert.match(html, new RegExp(`href="${route}/"[\\s\\S]*?<span>${card}</span><small>Published · Brief ${id}</small>`));
+  }
+  assert.equal((html.match(/data-status="published"/g) || []).length, 6);
+  assert.equal((html.match(/data-status="planned"/g) || []).length, 4);
+  assert.match(html, /<strong>8<\/strong>\s*briefings published/i);
+  assert.match(html, /<strong>6 of 10<\/strong>\s*atlas briefs published/i);
+  assert.match(html, /<strong>4<\/strong>\s*atlas briefs planned/i);
 });
 
 test('the preferred six-topic order is explicitly a first wave, not the complete atlas', () => {
   assert.match(html, /Preferred first publication wave/i);
-  assert.match(html, /six-topic first wave/i);
-  for (const deferred of ['Democracy', 'Education', 'Financial fragility', 'Global resilience']) {
-    assert.match(html, new RegExp(deferred));
+  assert.match(html, /six-topic sequence/i);
+  assert.match(html, /complete atlas is not yet published/i);
+  for (const planned of ['Prosperity', 'Energy', 'Democracy', 'Global resilience']) {
+    assert.match(html, new RegExp(planned));
   }
   assert.match(html, /<strong>Healthspan<\/strong><small>Published<\/small>/);
+  assert.match(html, /<strong>Demography<\/strong><small>Published<\/small>/);
   assert.match(html, /<strong>Science<\/strong><small>Published<\/small>/);
 });
 
-test('atlas and published foundations expose all five briefs plus atlas navigation', () => {
-  for (const label of ['AI &amp; work', 'Food &amp; planet', 'Housing', 'Science', 'Healthspan', 'Atlas']) {
+test('atlas and published foundations expose all eight briefs plus atlas navigation', () => {
+  for (const label of ['AI &amp; work', 'Food &amp; planet', 'Housing', 'Science', 'Healthspan', 'Demography', 'Education', 'Financial fragility', 'Atlas']) {
     assert.match(html, new RegExp(label));
   }
-  for (const brief of ['Brief 001', 'Brief 002', 'Brief 003', 'Brief 004', 'Brief 005']) {
+  for (const brief of ['Brief 001', 'Brief 002', 'Brief 003', 'Brief 004', 'Brief 005', 'Brief 006', 'Brief 007', 'Brief 008']) {
     assert.match(html, new RegExp(brief));
   }
 });
@@ -89,8 +98,9 @@ test('Atlas is first post-hero section and old roadmap routes redirect exactly',
   ]);
 });
 
-test('every published brief switcher exposes all five briefs plus Atlas in canonical order', () => {
-  const labels = ['AI &amp; work', 'Food', 'Housing', 'Science', 'Healthspan', 'Atlas'];
+test('every published brief switcher exposes all eight briefs plus Atlas in canonical order', () => {
+  const labels = ['AI &amp; work', 'Food', 'Housing', 'Science', 'Healthspan', 'Demography', 'Education', 'Financial fragility', 'Atlas'];
+  const routes = ['ai-work', 'food', 'housing', 'science', 'healthspan', 'demography', 'education', 'financial-fragility'];
   briefPages.forEach((page, index) => {
     const start = page.search(/class="[^"]*(?:topic-switcher|evidence-topics)[^"]*"/);
     assert.ok(start >= 0, `page ${index} missing topic switcher`);
@@ -101,5 +111,9 @@ test('every published brief switcher exposes all five briefs plus Atlas in canon
       assert.ok(next > cursor, `page ${index} missing or reorders ${label}`);
       cursor = next;
     });
+    const hrefs = [...switcher.matchAll(/<a\b[^>]*href="([^"]+)"/g)].slice(0, 9).map((match) => match[1]);
+    const expected = routes.map((route, routeIndex) => routeIndex === index ? './' : `../${route}/`);
+    expected.push('../');
+    assert.deepEqual(hrefs, expected, `page ${index} has incorrect switcher routes`);
   });
 });
