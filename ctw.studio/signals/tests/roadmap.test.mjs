@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
 const html = await readFile(new URL('index.html', root), 'utf8');
@@ -9,6 +9,12 @@ const vercel = JSON.parse(await readFile(new URL('../vercel.json', root), 'utf8'
 const atlasCss = await readFile(new URL('atlas.css', root), 'utf8');
 const subjectMenuCss = await readFile(new URL('subject-menu.css', root), 'utf8');
 const subjectMenuJs = await readFile(new URL('subject-menu.js', root), 'utf8');
+const pageCssFiles = (await readdir(root, { recursive: true }))
+  .filter((file) => file.endsWith('.css') && file !== 'subject-menu.css');
+const pageCss = await Promise.all(pageCssFiles.map(async (file) => ({
+  file,
+  css: await readFile(new URL(file, root), 'utf8')
+})));
 
 const subjects = [
   { label: 'Housing &amp; affordability', anchor: 'subject-housing-affordability', route: '/signals/housing/', status: 'published', briefs: [['housing', '003']] },
@@ -34,14 +40,35 @@ const briefPages = await Promise.all(briefs.map(async (brief) => ({
 
 const expectedLabels = subjects.map(({ label }) => label);
 const expectedRoutes = subjects.map(({ route }) => route);
+const placementClasses = new Map([
+  ['atlas', 'atlas-topics'],
+  ['ai-work', 'topic-switcher'],
+  ['food', 'topic-switcher'],
+  ['housing', 'housing-topics'],
+  ['science', 'evidence-topics'],
+  ['healthspan', 'evidence-topics'],
+  ['real-time-ai', 'evidence-topics'],
+  ['demography', 'evidence-topics'],
+  ['education', 'evidence-topics'],
+  ['financial-fragility', 'fragility-topics']
+]);
+const legacyNavClasses = [
+  'topic-pill',
+  'topic-pill--active',
+  'atlas-brand',
+  'topic-switcher__label',
+  'food-active',
+  'active',
+  'housing-active',
+  'fragility-active'
+];
 
 function subjectOptions(markup) {
   const options = [];
-  const pattern = /<a(?: class="([^"]*)")? href="([^"]+)"(?: aria-current="([^"]+)")?>([^<]+)<\/a>|<span class="([^"]*\btopic-pill--planned\b[^"]*)">([^<]+) <span class="topic-pill__badge">Planned<\/span><\/span>/g;
+  const pattern = /<a class="([^"]*\bsubject-menu__option\b[^"]*)" href="([^"]+)"(?: aria-current="([^"]+)")?>([^<]+)<\/a>|<span class="([^"]*\bsubject-menu__option--planned\b[^"]*)">([^<]+) <span class="subject-menu__badge">Planned<\/span><\/span>/g;
 
   for (const match of markup.matchAll(pattern)) {
     const [, classes = '', href, current, linkLabel, plannedClasses, plannedLabel] = match;
-    if (classes.split(/\s+/).includes('signals-home')) continue;
     options.push({
       classes: href ? classes : plannedClasses,
       current,
@@ -52,6 +79,30 @@ function subjectOptions(markup) {
     });
   }
   return options;
+}
+
+function subjectNav(markup) {
+  return markup.match(/<nav class="[^"]*\bsubject-menu\b[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
+}
+
+function assertStaticContract(route, markup) {
+  const nav = subjectNav(markup);
+  assert.ok(nav, `${route} missing subject menu`);
+
+  const navClasses = nav.match(/^<nav class="([^"]+)"/)?.[1].split(/\s+/) || [];
+  assert.deepEqual(navClasses, ['subject-menu', placementClasses.get(route)], `${route} has wrong nav classes`);
+  assert.match(nav, /<a class="subject-menu__brand" href="\/signals\/">Signals \/<\/a>/);
+  for (const legacyClass of legacyNavClasses) {
+    assert.doesNotMatch(nav, new RegExp(`class="[^"]*\\b${legacyClass}\\b`), `${route} retains ${legacyClass}`);
+  }
+
+  const options = subjectOptions(nav);
+  assert.deepEqual(options.map(({ label }) => label), expectedLabels, `${route} subject order differs`);
+  assert.deepEqual(options.map(({ route: optionRoute }) => optionRoute), expectedRoutes, `${route} subject routes differ`);
+  assert.equal(options.length, 10, `${route} must have ten options`);
+  assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
+  assert.equal(options.filter(({ tag }) => tag === 'span').length, 3, `${route} must have three planned rows`);
+  return { nav, options };
 }
 
 function cssRule(selector) {
@@ -98,32 +149,15 @@ test('Atlas counters and subject wording report 9 briefs, 7 covered subjects and
 });
 
 test('Atlas top navigation uses exact canonical routes and native planned rows', () => {
-  const nav = html.match(/<nav class="atlas-topics"[\s\S]*?<\/nav>/)?.[0] || '';
-  assert.match(nav, /<a class="signals-home atlas-brand" href="\/signals\/">Signals \/<\/a>/);
-  const options = subjectOptions(nav);
-  assert.deepEqual(options.map(({ label }) => label), expectedLabels);
-  assert.deepEqual(options.map(({ route }) => route), expectedRoutes);
-  assert.equal(options.filter(({ tag }) => tag === 'a').length, 7);
-  assert.equal(options.filter(({ tag }) => tag === 'span').length, 3);
+  const { nav, options } = assertStaticContract('atlas', html);
   assert.equal(options.filter(({ current }) => current).length, 0);
   assert.doesNotMatch(nav, />Atlas<\/a>/);
 });
 
 test('every brief switcher mirrors exact routes, planned rows and mapped current subject', () => {
   briefPages.forEach(({ route, subjectRoute, briefId, html: page }) => {
-    const nav = page.match(/<nav class="[^"]*(?:topic-switcher|evidence-topics)[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
-    assert.ok(nav, `${route} missing semantic topic navigation`);
-    assert.match(nav, /<a class="signals-home topic-switcher__label" href="\/signals\/">/);
-
-    const options = subjectOptions(nav);
-    assert.deepEqual(options.map(({ label }) => label), expectedLabels, `${route} subject order differs`);
-    assert.deepEqual(options.map(({ route }) => route), expectedRoutes, `${route} subject routes differ`);
-    assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
-    assert.equal(options.filter(({ tag }) => tag === 'span').length, 3, `${route} must have three planned rows`);
-
-    const current = options.filter(({ classes, current }) =>
-      classes.split(/\s+/).includes('topic-pill--active') || current
-    );
+    const { options } = assertStaticContract(route, page);
+    const current = options.filter(({ current }) => current);
     assert.equal(current.length, 1, `${route} must have one mapped current subject`);
     assert.equal(current[0].tag, 'a', `${route} current subject must be a link`);
     assert.equal(current[0].route, subjectRoute, `${route} maps to wrong subject`);
@@ -134,17 +168,17 @@ test('every brief switcher mirrors exact routes, planned rows and mapped current
 
 test('planned subject rows stay visibly native and noninteractive on every navigation copy', () => {
   for (const { route, html: page } of [{ route: 'atlas', html }, ...briefPages]) {
-    const nav = page.match(/<nav class="[^"]*(?:atlas-topics|topic-switcher|evidence-topics)[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
+    const nav = subjectNav(page);
     const planned = subjectOptions(nav).filter(({ tag }) => tag === 'span');
 
     assert.equal(planned.length, 3, `${route} planned-row count differs`);
     for (const option of planned) {
-      assert.match(option.markup, /<span class="topic-pill__badge">Planned<\/span>/);
+      assert.match(option.markup, /<span class="subject-menu__badge">Planned<\/span>/);
       assert.doesNotMatch(option.markup, /\b(?:href|role|tabindex|onclick|aria-disabled)=/i);
     }
   }
-  assert.match(atlasCss, /\.atlas-topics \.topic-pill--planned\s*\{[^}]*color:\s*var\(--atlas-muted\)/s);
-  assert.match(atlasCss, /\.atlas-topics \.topic-pill__badge\s*\{[^}]*color:\s*var\(--atlas-muted\)/s);
+  assert.match(cssRule('.subject-menu__option--planned'), /pointer-events:\s*none/);
+  assert.match(cssRule('.subject-menu__option--planned'), /cursor:\s*default/);
 });
 
 test('all taxonomy pages load shared progressive subject disclosure assets', () => {
@@ -160,13 +194,24 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
 
   assert.match(subjectMenuCss, /@media \(max-width: 760px\)/);
   assert.match(subjectMenuCss, /\.subject-menu__panel\[aria-hidden="false"\]/);
-  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
-  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-accent:\s*#f7b500/);
-  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-font:\s*Inter,\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*sans-serif/);
+  assert.match(cssRule('.subject-menu'), /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
+  assert.match(cssRule('.subject-menu'), /--subject-menu-accent:\s*#f7b500/);
+  assert.match(cssRule('.subject-menu'), /--subject-menu-font:\s*Inter,\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*sans-serif/);
+  assert.match(cssRule('.subject-menu'), /display:\s*flex/);
+  assert.match(cssRule('.subject-menu'), /flex-wrap:\s*wrap/);
+  assert.match(cssRule('.subject-menu'), /align-items:\s*center/);
+  assert.match(cssRule('.subject-menu'), /gap:\s*0\.65rem/);
+  assert.match(cssRule('.subject-menu .subject-menu__option'), /padding:\s*0\.42rem 0\.75rem/);
+  assert.match(cssRule('.subject-menu .subject-menu__option'), /border-radius:\s*999px/);
+  assert.match(cssRule('html:not(.subject-menu-ready) .subject-menu'), /grid-template-columns:\s*minmax\(0, 1fr\)/);
+  assert.match(cssRule('html:not(.subject-menu-ready) .subject-menu .subject-menu__option'), /min-height:\s*44px/);
+  assert.match(cssRule('html:not(.subject-menu-ready) .subject-menu .subject-menu__option'), /overflow-wrap:\s*anywhere/);
+  assert.match(cssRule('.subject-menu__badge'), /white-space:\s*nowrap/);
+  assert.match(cssRule('.subject-menu__option[aria-current="location"]'), /color:\s*var\(--subject-menu-accent\)/);
   for (const selector of [
     '.subject-menu-ready .subject-menu__trigger',
     '.subject-menu-ready .subject-menu__panel',
-    '.subject-menu-ready .subject-menu__panel > :is(a, .topic-pill--planned)'
+    '.subject-menu-ready .subject-menu__panel > .subject-menu__option'
   ]) {
     const rule = cssRule(selector);
     assert.match(rule, /font:\s*500 1rem\/1\.35 var\(--subject-menu-font\)/);
@@ -177,9 +222,9 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
     assert.doesNotMatch(rule, /(?:font|color):\s*inherit/);
   }
   const currentRule = cssRule('.subject-menu-ready .subject-menu__panel a[aria-current="location"]');
-  assert.match(currentRule, /background:\s*var\(--subject-menu-accent-soft\)\s*!important/);
-  assert.match(currentRule, /border-color:\s*var\(--subject-menu-accent\)\s*!important/);
-  assert.match(currentRule, /color:\s*var\(--subject-menu-accent\)\s*!important/);
+  assert.match(currentRule, /background:\s*var\(--subject-menu-accent-soft\)/);
+  assert.match(currentRule, /border-color:\s*var\(--subject-menu-accent\)/);
+  assert.match(currentRule, /color:\s*var\(--subject-menu-accent\)/);
   assert.match(currentRule, /box-shadow:\s*inset [^;]*var\(--subject-menu-accent\)/);
   const focusRule = cssRule('.subject-menu-ready .subject-menu__panel a:focus-visible');
   assert.match(focusRule, /border-color:\s*var\(--subject-menu-accent\)/);
@@ -189,21 +234,40 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(hoverRule, /background:\s*rgba\(255, 255, 255, 0\.07\)/);
   assert.match(hoverRule, /border-color:\s*var\(--subject-menu-border\)/);
   assert.match(hoverRule, /color:\s*var\(--subject-menu-text\)/);
-  const plannedRule = cssRule('.subject-menu-ready .subject-menu__panel > .topic-pill--planned');
+  const plannedRule = cssRule('.subject-menu-ready .subject-menu__panel > .subject-menu__option--planned');
   assert.match(plannedRule, /color:\s*color-mix\(in srgb, var\(--subject-menu-text\) 65%, transparent\)/);
   assert.match(plannedRule, /cursor:\s*default/);
-  assert.match(cssRule('.topic-pill--planned'), /opacity:\s*1/);
-  assert.match(cssRule('.topic-pill--planned'), /pointer-events:\s*none/);
+  assert.match(cssRule('.subject-menu__option--planned'), /pointer-events:\s*none/);
+  assert.doesNotMatch(subjectMenuCss, /!important/);
   assert.match(subjectMenuJs, /createElement\('button'\)/);
   assert.match(subjectMenuJs, /setAttribute\('aria-expanded'/);
   assert.match(subjectMenuJs, /setAttribute\('aria-controls'/);
-  assert.match(subjectMenuJs, /option\.matches\('a:not\(\.signals-home\), \.topic-pill--planned'\)/);
+  assert.match(subjectMenuJs, /querySelectorAll\('\.subject-menu'\)/);
+  assert.match(subjectMenuJs, /subjectMenuEnhanced === 'true'/);
+  assert.match(subjectMenuJs, /subjectMenuEnhanced = 'true'/);
+  assert.match(subjectMenuJs, /option\.matches\('\.subject-menu__option'\)/);
   assert.match(subjectMenuJs, /options\.length !== 10/);
   assert.match(subjectMenuJs, /option\.matches\('a\[aria-current="location"\]'\)/);
   assert.match(subjectMenuJs, /options\.forEach\(\(option\) => panel\.append\(option\)\)/);
   assert.match(subjectMenuJs, /\|\| 'Explore subjects'/);
   assert.match(subjectMenuJs, /event\.target\.closest\('a'\)/);
   assert.match(subjectMenuJs, /event\.key === 'Escape'/);
+});
+
+test('subject menu CSS owns internals while page styles retain placement only', () => {
+  for (const { file, css } of pageCss) {
+    assert.doesNotMatch(
+      css,
+      /subject-menu__|topic-pill|atlas-brand|topic-switcher__label|food-active|housing-active|fragility-active|\.signals-home/,
+      `${file} owns subject-menu internals`
+    );
+  }
+
+  assert.match(atlasCss, /\.atlas-topics\s*\{\s*padding-bottom:\s*78px;\s*\}/);
+  assert.match(pageCss.find(({ file }) => file === 'signals.css').css, /\.topic-switcher\s*\{\s*margin-bottom:\s*clamp\(3rem, 7vw, 6rem\);\s*\}/);
+  assert.match(pageCss.find(({ file }) => file === 'signals.css').css, /\.evidence-topics\s*\{\s*padding-bottom:\s*4rem;\s*\}/);
+  assert.match(pageCss.find(({ file }) => file === 'housing/housing.css').css, /\.housing-topics\s*\{\s*padding:\s*3px 0 52px;\s*\}/);
+  assert.match(pageCss.find(({ file }) => file === 'financial-fragility/financial-fragility.css').css, /\.fragility-topics\s*\{\s*padding:\s*118px 0 24px;\s*\}/);
 });
 
 test('first wave uses canonical vocabulary and truthful coverage state', () => {

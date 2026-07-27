@@ -71,44 +71,7 @@
 }
 
 .housing-topics {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 7px;
-  overflow-x: visible;
   padding: 3px 0 52px;
-}
-
-.housing-topics .topic-label {
-  flex: 0 0 auto;
-  margin-right: 4px;
-  color: var(--housing-faint);
-  font: 500 11px/1 var(--housing-mono);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.housing-topics .topic-pill {
-  flex: 0 0 auto;
-  padding: 8px 12px;
-  border: 1px solid var(--housing-line);
-  border-radius: 999px;
-  color: var(--housing-muted);
-  font: 500 11px/1 var(--housing-mono);
-  text-decoration: none;
-  transition: border-color .2s ease, color .2s ease, background .2s ease;
-}
-
-.housing-topics .topic-pill:hover,
-.housing-topics .topic-pill:focus-visible {
-  border-color: var(--housing-line-strong);
-  color: var(--housing-paper);
-}
-
-.housing-topics .housing-active {
-  border-color: rgba(255, 177, 92, .5);
-  background: rgba(255, 177, 92, .11);
-  color: var(--housing-gold);
 }
 
 .housing-hero-grid {

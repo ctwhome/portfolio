@@ -11,25 +11,6 @@
   --radius-lg: 1.35rem;
 }
 
-/* Brief 002 shares the system tokens with Brief 001, but uses a more editorial
-   chapter vocabulary. These structural rules intentionally stay local. */
-.food-page .topic-pill {
-  color: inherit;
-  text-decoration: none;
-}
-
-.food-page .topic-label {
-  margin-right: 0.7rem;
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.food-page .topic-pill.future small {
-  margin-left: 0.35rem;
-  color: var(--ink-soft);
-  font-size: inherit;
-}
-
 .brief-id {
   display: flex;
   max-width: 41rem;
@@ -480,12 +461,6 @@
 .food-page .chapter-kicker,
 .food-page .chart-eyebrow {
   color: var(--food);
-}
-
-.food-active {
-  border-color: var(--food) !important;
-  background: var(--food-soft) !important;
-  color: var(--food) !important;
 }
 
 .food-dot {
@@ -1246,9 +1221,6 @@
 }
 
 @media (max-width: 760px) {
-  .food-page .topic-switcher { align-items: flex-start; }
-  .food-page .topic-label { width: 100%; margin-bottom: 0.2rem; }
-  .food-page .topic-pill.future { display: none; }
   .food-page .future-card { grid-template-columns: 1fr; }
   .food-page .signal-footer > .signal-shell { align-items: flex-start; flex-direction: column; }
 }

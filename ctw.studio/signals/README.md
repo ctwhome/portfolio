@@ -34,7 +34,9 @@ Atlas order, coverage and brief mapping:
 
 Current state: **9 published briefs**, **7 of 10 subjects with published coverage**, **3 planned subjects**. Coverage is not a completeness claim. Atlas and brief-page subject navigation uses seven canonical brief routes plus three visibly planned noninteractive rows; each brief marks its mapped subject with `aria-current="location"`. The Signals brand links to `/signals/`.
 
-At 760px and below, `subject-menu.js` progressively enhances that same semantic navigation into a compact accessible disclosure. Without JavaScript, seven canonical links and three visibly planned noninteractive rows remain visible.
+Every copy follows one static component contract: `.subject-menu` plus one placement class (`.atlas-topics`, `.topic-switcher`, `.evidence-topics`, `.housing-topics` or `.fragility-topics`), one `.subject-menu__brand`, and exactly ten `.subject-menu__option` children. Planned spans also use `.subject-menu__option--planned` with a `.subject-menu__badge`; `aria-current="location"` alone marks the mapped current subject.
+
+`subject-menu.css` owns component layout, typography, states, options, badges, trigger, panel and responsive behavior. Page styles may use the retained placement class only for outer spacing. At 760px and below, `subject-menu.js` idempotently moves the ten options into a compact accessible disclosure. Without JavaScript, the static menu remains visible with seven canonical links and three noninteractive planned rows.
 
 ## Files
 
