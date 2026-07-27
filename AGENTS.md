@@ -7,7 +7,7 @@
   committed static export served at `/nlesc/`; never hand-edit generated files.
 - `ctw.studio/signals/` contains evidence briefs, topic renderers, `data/`, deterministic `scripts/`, and Node integrity tests.
 - `DESIGN.md` is the normative design-system source. `ctw.studio/design-system/`
-  contains browser tokens, components, compatibility aliases, generated
+contains browser tokens, components, expressive compositions, compatibility aliases, generated
   `tokens.json`, and the static `/design-system/` guide; adoption is opt-in and
   must not add a public navigation link without separate approval.
 - Keep the legacy `about/` deployment active until a separately approved redirect and retirement; do not add `about/vercel.json` without a proven platform need. Default `about/` builds must preserve legacy behavior.
@@ -48,7 +48,8 @@ Visual audit captures compact and wide screenshots under
 and retry traces as the `ctw-design-system-visual-audit` artifact for 14 days.
 
 `DESIGN.md` owns role definitions; `tokens.css` owns browser role
-implementation; `components.css` owns shared component classes; `compat.css`
+implementation; `components.css` owns shared component classes;
+`compositions.css` owns specimen-backed opt-in page compositions; `compat.css`
 owns approved role-backed migration aliases. Audit all handwritten CTW routes
 when route inventory changes. Preserve Signals page-scoped accents. Never edit
 generated `tokens.json` or `ctw.studio/nlesc/` by hand.

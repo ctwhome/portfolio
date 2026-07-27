@@ -41,6 +41,12 @@
   outline-offset: 3px;
 }
 
+.ctw-scope .ctw-feedback-button:focus-visible,
+.ctw-scope .ctw-feedback-textarea:focus-visible {
+  outline: 3px solid var(--ctw-color-focus);
+  outline-offset: 3px;
+}
+
 .ctw-scope :where(a, button, input, select, textarea, summary) {
   accent-color: var(--ctw-color-action);
 }
@@ -191,6 +197,12 @@
 
 .ctw-link:hover {
   color: var(--ctw-color-action);
+}
+
+.ctw-link--standalone {
+  display: inline-flex;
+  min-height: var(--ctw-size-touch);
+  align-items: center;
 }
 
 .ctw-button {

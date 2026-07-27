@@ -184,6 +184,12 @@ chalk, amber, measured typography, visible structure, and evidence before
 decoration. Decide pages make choices legible. Learn pages make provenance and
 uncertainty legible. Neither should resemble a generic product dashboard.
 
+Expressive direction is intentionally weighted: **70% Editorial Signal, 20%
+Research Instrument, 10% Kinetic Studio**. Editorial hierarchy leads; coordinate
+rules, numbered observations, source labels, margin annotations, scale/crop/
+registration marks, and visible data boundaries establish instrument character;
+restrained CSS-first motion supplies kinetic emphasis.
+
 ### Principles
 
 1. **Roles before pigments.** Components consume surface, text, border, action,
@@ -204,6 +210,7 @@ uncertainty legible. Neither should resemble a generic product dashboard.
 | `DESIGN.md` | Normative intent and exportable values | CTW Studio maintainers | Review first |
 | `ctw.studio/design-system/tokens.css` | Browser token implementation | CTW Studio maintainers | Keep aligned with front matter |
 | `ctw.studio/design-system/components.css` | Framework-neutral shared classes | CTW Studio maintainers | Components use role tokens only |
+| `ctw.studio/design-system/compositions.css` | Expressive page-level contracts | CTW Studio maintainers | Scoped, opt-in, specimen-backed |
 | `ctw.studio/design-system/compat.css` | Approved migration aliases | Route owner + design-system owner | Add aliases deliberately |
 | `ctw.studio/design-system/index.html` | Human examples and adoption guide | CTW Studio maintainers | Examples must match contracts |
 | Route-local CSS | Intentional exceptions and topic data accents | Route/family owner | Never promoted by accident |
@@ -253,9 +260,11 @@ Canonical CSS exposes palette tokens for theme authors and role tokens for
 component authors. `.ctw-theme-coal` and `.ctw-theme-chalk` remap roles.
 Components must not read `--ctw-palette-*`.
 
-Signals cyan, coral, and violet are controlled accents. Keep topic/chart/page
-variables local, mapping to canonical palette tokens only when values and
-meaning match. A topic accent may mark a series, annotation, or section key; it
+Signals cyan, coral, and violet are controlled coal-surface accents. Keep
+topic/chart/page variables local, mapping to canonical palette tokens only when
+values and meaning match. On chalk, compositions map these bright spectral
+accents to the accessible action role unless a separately verified dark accent
+token exists. A topic accent may mark a series, annotation, or section key; it
 must not become generic link, focus, success, or error color.
 
 Both themes target WCAG 2.2 AA: 4.5:1 for normal text, 3:1 for large text and
@@ -276,6 +285,9 @@ paragraphs in mono or uppercase.
 
 Responsive display sizes use CSS `clamp()` because alpha DESIGN.md exports
 cannot encode fluid type. Preserve token endpoints and avoid adding extra steps.
+Display compositions may use tighter tracking down to `-0.075em`, controlled
+wraps, section numerals, one-pixel outline text, or flat inverted text fields.
+Keep body copy readable and never outline long-form text.
 
 ## Layout
 
@@ -317,6 +329,11 @@ reveals, using a standard ease-out curve. Under `prefers-reduced-motion:
 reduce`, remove non-essential animation and scrolling; state changes remain
 immediate and understandable.
 
+Expressive compositions may overlap, crop, inset, stack rules, offset flat
+planes, use full-bleed media, or keep a chapter label sticky. They do not use
+glassmorphism, soft shadow-heavy card UI, decorative gradients, or generic
+bento layouts.
+
 ## Shapes
 
 Edges are engineered, not bubbly. Controls use 2px radius, cards use 4px, and
@@ -338,6 +355,22 @@ Theme class belongs on or above the scope. `components.css` owns:
 - evidence, claim, and source semantics;
 - skip link, focus treatment, and footer.
 
+`compositions.css` is a second opt-in tier. Every public class must appear in
+the guide or a real pilot. It owns oversized/split heroes, full-width showcase,
+case-study facts, argument/evidence sequence, annotated media/captions,
+statistical statements, chapter dividers/sticky labels, horizontal project
+indexes, source-led chart stories, observations/margin notes, quotes,
+article/brief metadata, pagination/related content, system states, closing
+thesis/action, and complete footers.
+
+Research-instrument marks expose real structure. Coordinate labels, crop/scale
+marks, registration corners, annotations, and data boundaries must describe
+the represented object; never use them to imply false precision.
+
+Motion is CSS-first and optional. Content order and meaning remain complete
+without JavaScript. `prefers-reduced-motion: reduce` removes scanning,
+translation, and smooth scrolling while preserving immediate state feedback.
+
 ### Controlled variants
 
 - **Theme:** `.ctw-theme-coal` or `.ctw-theme-chalk`.
@@ -349,6 +382,10 @@ Theme class belongs on or above the scope. `components.css` owns:
 - **Badge:** neutral, positive, critical, or topic accent. Meaning needs text.
 - **Page intent:** Decide emphasizes action sequence; Learn emphasizes reading
   measure, evidence type, source, and uncertainty.
+- **Expressive accent:** amber is default; cyan, coral, and violet are flat
+  structural aliases on coal surfaces. Chalk uses its accessible action role
+  unless a separately verified dark accent token exists. Accents do not
+  redefine focus, success, or error.
 
 ### Shell, masthead, and navigation
 
@@ -387,19 +424,27 @@ behavior is route-local and must never be implied by a non-submitting specimen.
 - Evidence labels name epistemic type: observation, association, experiment,
   exposure, forecast, scenario, counterfactual, judgment, or hypothesis.
 - Core guide and route content remains available without JavaScript.
+- Empty, loading, unavailable, and error states keep context and use text, not
+  animation or color alone.
+
+Privacy is a documented implementation trigger, not a speculative component.
+Add consent UI only when actual storage or processing creates a legal or
+ethical choice. Do not ship placeholder banners.
 
 ### Migration checklist
 
 - [ ] Identify family owner, page intent, and controlled theme/accent.
 - [ ] Load `tokens.css`, then `components.css`; load `compat.css` only when an
       approved alias is required.
+- [ ] Load `compositions.css` only for an expressive route or specimen using its
+      contracts.
 - [ ] Add `.ctw-scope` without changing unrelated descendants.
 - [ ] Replace repeated raw values with role tokens; keep meaningful data/topic
       variables local.
 - [ ] Use native elements before classes: landmarks, headings, links, buttons,
       labels, inputs, captions, tables.
 - [ ] Verify hover, focus-visible, active, disabled, invalid, empty, loading,
-      and long-content states that exist on route.
+      unavailable, error, and long-content states that exist on route.
 - [ ] Test keyboard order, skip link, contrast, 200% zoom, reduced motion, and
       no-JS reading.
 - [ ] Inspect compact and wide layouts with 44px touch targets.
@@ -414,6 +459,8 @@ behavior is route-local and must never be implied by a non-submitting specimen.
   metrics or dashboard chrome.
 - Do keep Signals accents purposeful and local; don't turn them into global
   status or action colors.
+- Do keep bright spectral accents on coal surfaces; on chalk use the accessible
+  action role unless a separately verified dark accent token exists.
 - Do use rules, type, and spacing for hierarchy; don't add glass, ornamental
   gradients, oversized rounded containers, or floating-card clutter.
 - Do write specific editorial copy; don't ship filler, generic hero triptychs,

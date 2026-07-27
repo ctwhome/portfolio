@@ -143,8 +143,8 @@ test('planned subject rows stay visibly native and noninteractive on every navig
       assert.doesNotMatch(option.markup, /\b(?:href|role|tabindex|onclick|aria-disabled)=/i);
     }
   }
-  assert.match(atlasCss, /\.atlas-topics \.topic-pill--planned\s*\{[^}]*color:\s*var\(--atlas-muted\)/s);
-  assert.match(atlasCss, /\.atlas-topics \.topic-pill__badge\s*\{[^}]*color:\s*var\(--atlas-muted\)/s);
+  assert.match(atlasCss, /\.atlas-topics \.topic-pill--planned\s*\{[^}]*color:\s*var\(--atlas-faint\)/s);
+  assert.match(atlasCss, /\.atlas-topics \.topic-pill__badge\s*\{[^}]*color:\s*var\(--atlas-green\)/s);
 });
 
 test('all taxonomy pages load shared progressive subject disclosure assets', () => {
@@ -160,9 +160,12 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
 
   assert.match(subjectMenuCss, /@media \(max-width: 760px\)/);
   assert.match(subjectMenuCss, /\.subject-menu__panel\[aria-hidden="false"\]/);
-  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
-  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-accent:\s*#f7b500/);
-  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-font:\s*Inter,\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*sans-serif/);
+  const genericMenuRule = cssRule('.subject-menu-ready .subject-menu');
+  assert.match(genericMenuRule, /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
+  assert.match(genericMenuRule, /--subject-menu-accent:\s*#f7b500/);
+  assert.match(genericMenuRule, /--subject-menu-accent-soft:\s*rgba\(247, 181, 0, 0\.11\)/);
+  assert.match(genericMenuRule, /--subject-menu-focus:\s*var\(--ctw-color-focus, #f7b500\)/);
+  assert.match(genericMenuRule, /--subject-menu-font:\s*Inter,\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*sans-serif/);
   for (const selector of [
     '.subject-menu-ready .subject-menu__trigger',
     '.subject-menu-ready .subject-menu__panel',
@@ -182,9 +185,9 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(currentRule, /color:\s*var\(--subject-menu-accent\)\s*!important/);
   assert.match(currentRule, /box-shadow:\s*inset [^;]*var\(--subject-menu-accent\)/);
   const focusRule = cssRule('.subject-menu-ready .subject-menu__panel a:focus-visible');
-  assert.match(focusRule, /border-color:\s*var\(--subject-menu-accent\)/);
+  assert.match(focusRule, /border-color:\s*var\(--subject-menu-focus\)/);
   assert.match(focusRule, /color:\s*var\(--subject-menu-text\)/);
-  assert.match(focusRule, /outline:\s*3px solid var\(--subject-menu-accent\)/);
+  assert.match(focusRule, /outline:\s*3px solid var\(--subject-menu-focus\)/);
   const hoverRule = cssRule('.subject-menu-ready .subject-menu__panel a:not([aria-current="location"]):hover');
   assert.match(hoverRule, /background:\s*rgba\(255, 255, 255, 0\.07\)/);
   assert.match(hoverRule, /border-color:\s*var\(--subject-menu-border\)/);
@@ -194,6 +197,17 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(plannedRule, /cursor:\s*default/);
   assert.match(cssRule('.topic-pill--planned'), /opacity:\s*1/);
   assert.match(cssRule('.topic-pill--planned'), /pointer-events:\s*none/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__trigger'), /border-radius:\s*999px/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__panel'), /border-radius:\s*1rem/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__panel'), /box-shadow:\s*0 1rem 3rem rgba\(0, 0, 0, 0\.5\)/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__panel > :is(a, .topic-pill--planned)'), /border-radius:\s*0\.65rem/);
+  const atlasMenuRule = cssRule('.roadmap-page.subject-menu-ready .subject-menu');
+  assert.match(atlasMenuRule, /--subject-menu-accent:\s*var\(--ctw-accent-cyan, #57d7ff\)/);
+  assert.match(atlasMenuRule, /--subject-menu-accent-soft:\s*color-mix\(in srgb, var\(--subject-menu-accent\) 11%, transparent\)/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__trigger'), /border-radius:\s*2px/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__panel'), /border-radius:\s*2px/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__panel'), /box-shadow:\s*none/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__panel > :is(a, .topic-pill--planned)'), /border-radius:\s*0/);
   assert.match(subjectMenuJs, /createElement\('button'\)/);
   assert.match(subjectMenuJs, /setAttribute\('aria-expanded'/);
   assert.match(subjectMenuJs, /setAttribute\('aria-controls'/);

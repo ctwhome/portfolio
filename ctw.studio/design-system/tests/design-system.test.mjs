@@ -13,9 +13,14 @@ const read = (path) => readFileSync(path, "utf8");
 const design = read(join(rootDir, "DESIGN.md"));
 const tokensCss = read(join(designDir, "tokens.css"));
 const componentsCss = read(join(designDir, "components.css"));
+const compositionsCss = read(join(designDir, "compositions.css"));
 const compatCss = read(join(designDir, "compat.css"));
 const guide = read(join(designDir, "index.html"));
 const guideCss = read(join(designDir, "guide.css"));
+const homepage = read(join(studioDir, "index.html"));
+const homepageCss = read(join(studioDir, "homepage.css"));
+const atlas = read(join(studioDir, "signals/index.html"));
+const atlasCss = read(join(studioDir, "signals/atlas.css"));
 const workflow = read(join(rootDir, ".github/workflows/check-ctw-design-system.yml"));
 const tokens = JSON.parse(read(join(designDir, "tokens.json")));
 const visualConfigPath = join(here, "playwright.config.cjs");
@@ -76,6 +81,25 @@ function resolveDtcg(value) {
 function cssRule(selector) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return componentsCss.match(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`, "s"))?.[1] ?? "";
+}
+
+function cssDeclarations(css, selector) {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const body = css.match(new RegExp(`(?:^|})[^{}]*${escaped}[^{}]*\\{([^}]*)\\}`, "s"))?.[1] ?? "";
+  return Object.fromEntries(
+    [...body.matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]),
+  );
+}
+
+function resolveCssProperty(name, properties, seen = new Set()) {
+  assert.ok(!seen.has(name), `Circular CSS variable: ${name}`);
+  const value = properties[name];
+  assert.notEqual(value, undefined, `Missing CSS variable: ${name}`);
+  const reference = value.match(/^var\((--[\w-]+)(?:,\s*([^)]+))?\)$/);
+  if (!reference) return value;
+  const [, target, fallback] = reference;
+  if (!(target in properties)) return fallback;
+  return resolveCssProperty(target, properties, new Set([...seen, name]));
 }
 
 const routeFamilies = {
@@ -185,6 +209,81 @@ test("browser tokens expose themes and components consume roles", () => {
   assert.doesNotMatch(componentsCss, /--ctw-palette-/);
   assert.match(componentsCss, /\.ctw-scope/);
   assert.doesNotMatch(componentsCss, /(^|})\s*(html|body|\*)\s*[{,]/m);
+  assert.match(compositionsCss, /\.ctw-scope/);
+  assert.doesNotMatch(compositionsCss, /(^|})\s*(html|body|\*)\s*[{,]/m);
+});
+
+test("expressive composition tier is scoped, documented, and specimen-backed", () => {
+  assert.match(design, /70% Editorial Signal, 20%\s*Research Instrument, 10% Kinetic Studio/);
+  assert.match(design, /Privacy is a documented implementation trigger/);
+  assert.doesNotMatch(compositionsCss, /(?:linear|radial)-gradient\([^)]*,[^)]*,/);
+  for (const contract of [
+    "ctw-hero",
+    "ctw-split-hero",
+    "ctw-showcase",
+    "ctw-case-study",
+    "ctw-argument",
+    "ctw-annotated-media",
+    "ctw-stat",
+    "ctw-chapter",
+    "ctw-chapter-divider",
+    "ctw-project-index",
+    "ctw-chart-story",
+    "ctw-margin-note",
+    "ctw-observation",
+    "ctw-quote",
+    "ctw-byline",
+    "ctw-brief-meta",
+    "ctw-pagination",
+    "ctw-related",
+    "ctw-state",
+    "ctw-closing",
+    "ctw-footer--complete",
+  ]) {
+    assert.ok(compositionsCss.includes(`.${contract}`), contract);
+    assert.ok(guide.includes(contract) || homepage.includes(contract) || atlas.includes(contract), `${contract} has no specimen`);
+  }
+  for (const motif of ["ctw-coordinate", "ctw-source-label", "ctw-registration", "ctw-legend"]) {
+    assert.ok(compositionsCss.includes(`.${motif}`), motif);
+    assert.ok(guide.includes(motif) || homepage.includes(motif), `${motif} has no specimen`);
+  }
+  for (const value of ["var(--ctw-palette-cyan)", "var(--ctw-palette-coral)", "var(--ctw-palette-violet)"]) {
+    assert.ok(compositionsCss.includes(value), value);
+  }
+  assert.match(compositionsCss, /@media \(prefers-reduced-motion: reduce\)/);
+});
+
+test("every supported composition accent meets text contrast in coal and chalk themes", () => {
+  const baseTheme = cssDeclarations(tokensCss, ".ctw-theme-coal");
+  const baseComposition = cssDeclarations(compositionsCss, ".ctw-scope");
+  const chalkTheme = cssDeclarations(tokensCss, ".ctw-theme-chalk");
+  const chalkComposition = cssDeclarations(compositionsCss, ".ctw-theme-chalk.ctw-scope");
+  assert.deepEqual(
+    Object.fromEntries(
+      ["cyan", "coral", "violet"].map((accent) => [
+        accent,
+        chalkComposition[`--ctw-accent-${accent}`],
+      ]),
+    ),
+    {
+      cyan: "var(--ctw-color-action)",
+      coral: "var(--ctw-color-action)",
+      violet: "var(--ctw-color-action)",
+    },
+  );
+
+  for (const [theme, overrides] of Object.entries({ coal: {}, chalk: { ...chalkTheme, ...chalkComposition } })) {
+    const properties = { ...baseTheme, ...baseComposition, ...overrides };
+    const surface = resolveCssProperty("--ctw-color-surface", properties);
+    for (const accent of ["default", "cyan", "coral", "violet"]) {
+      const name = accent === "default" ? "--ctw-accent" : `--ctw-accent-${accent}`;
+      const color = resolveCssProperty(name, properties);
+      assert.ok(
+        contrastRatio(color, surface) >= 4.5,
+        `${theme}/${accent}: ${color} on ${surface} = ${contrastRatio(color, surface).toFixed(3)}:1`,
+      );
+    }
+  }
 });
 
 test("compatibility layer contains only explicit role-backed aliases", () => {
@@ -338,6 +437,8 @@ test("workflow pins actions and resolves a fail-closed history base", () => {
     "if-no-files-found: error",
     "- 'AGENTS.md'",
     "- 'README.md'",
+    "- 'ctw.studio/index.html'",
+    "- 'ctw.studio/signals/index.html'",
     "DESIGN_SYSTEM_BASE_SHA=$base_sha",
     "PUSH_REF_NAME:",
     'git fetch --no-tags origin "$candidate_base" || true',
@@ -361,7 +462,12 @@ test("workflow pins actions and resolves a fail-closed history base", () => {
 test("guide is static, semantic, accessible, and complete without JavaScript", () => {
   assert.match(guide, /^<!doctype html>/i);
   assert.doesNotMatch(guide, /<script\b/i);
-  for (const href of ["tokens.css", "components.css", "guide.css"]) {
+  for (const href of [
+    "/design-system/tokens.css",
+    "/design-system/components.css",
+    "/design-system/compositions.css",
+    "/design-system/guide.css",
+  ]) {
     assert.match(guide, new RegExp(`href="${href}"`));
   }
   for (const requirement of [
@@ -383,6 +489,10 @@ test("guide is static, semantic, accessible, and complete without JavaScript", (
     'aria-describedby=',
     'id="component-table-hint"',
     'aria-describedby="component-table-hint"',
+    'id="spacing-chart-table-hint"',
+    'aria-describedby="spacing-chart-table-hint"',
+    'id="story-chart-table-hint"',
+    'aria-describedby="story-chart-table-hint"',
     'id="route-table-hint"',
     'aria-describedby="route-table-hint"',
     "Swipe table to see every column",
@@ -396,6 +506,16 @@ test("guide is static, semantic, accessible, and complete without JavaScript", (
     "Charts",
     "Feedback",
     "Evidence semantics",
+    "Expressive compositions",
+    "Full-width project showcase",
+    "Argument / Evidence",
+    "Annotated media",
+    "Source-led chart story",
+    "Empty",
+    "Loading",
+    "Unavailable",
+    "Error",
+    "Privacy is a trigger",
     "Accessibility",
     "Do + don",
     "Route + ownership audit",
@@ -417,21 +537,28 @@ test("guide is static, semantic, accessible, and complete without JavaScript", (
   assert.match(guide, /<svg[^>]+role="img"[^>]+aria-labelledby=/);
   assert.match(guide, /<figure class="ctw-chart-frame"[\s\S]*<table class="ctw-table">[\s\S]*<\/figure>/);
   assert.match(guide, /<fieldset class="ctw-feedback">[\s\S]*<label class="ctw-feedback-control"><input type="radio"/);
+  for (const [tag] of guide.matchAll(/<div class="ctw-table-wrap[^"]*"[^>]*>/g)) {
+    const hintId = tag.match(/aria-describedby="([^"]+)"/)?.[1];
+    assert.ok(hintId, `${tag} needs a scroll hint`);
+    assert.ok(guide.includes(`id="${hintId}"`), `${hintId} must resolve`);
+  }
   assert.doesNotMatch(guideCss, /\.guide-(?:masthead|wordmark|nav)/);
 });
 
 test("guide local paths stay inside worktree and resolve", () => {
   for (const [, value] of guide.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     if (value.startsWith("#") || /^https:\/\//.test(value)) continue;
-    assert.doesNotMatch(value, /^(?:\/|file:|javascript:)|(?:^|\/)\.\.(?:\/\.\.){3,}/);
-    const target = resolve(designDir, value.split("#")[0]);
+    assert.doesNotMatch(value, /^(?:file:|javascript:)|(?:^|\/)\.\.(?:\/\.\.){3,}/);
+    const target = value.startsWith("/")
+      ? resolve(studioDir, `.${value.split("#")[0]}`)
+      : resolve(designDir, value.split("#")[0]);
     assert.ok(target === rootDir || target.startsWith(`${rootDir}${sep}`), value);
     assert.ok(existsSync(target), `${value} -> ${relative(rootDir, target)}`);
   }
 });
 
 test("responsive, touch-target, focus, and reduced-motion contracts exist", () => {
-  for (const css of [componentsCss, guideCss]) {
+  for (const css of [componentsCss, compositionsCss, guideCss]) {
     assert.match(css, /@media \(max-width: 47\.99rem\)/);
     assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   }
@@ -442,12 +569,118 @@ test("responsive, touch-target, focus, and reduced-motion contracts exist", () =
   assert.match(componentsCss, /\.ctw-primary-nav__link\s*\{[^}]*height:\s*var\(--ctw-size-touch\)/s);
   assert.match(componentsCss, /\.ctw-primary-nav__link\[aria-current\]/);
   assert.match(componentsCss, /\.ctw-feedback-control\s*\{[^}]*min-height:\s*var\(--ctw-size-touch\)/s);
-  assert.match(guideCss, /\.guide-theme \.ctw-link\s*\{[^}]*min-height:\s*var\(--ctw-size-touch\)/s);
+  assert.match(componentsCss, /\.ctw-link--standalone\s*\{[^}]*display:\s*inline-flex[^}]*min-height:\s*var\(--ctw-size-touch\)[^}]*align-items:\s*center/s);
   assert.match(componentsCss, /\.ctw-scroll-hint\s*\{[^}]*display:\s*none/s);
   assert.match(componentsCss, /@media \(max-width: 48rem\)[\s\S]*\.ctw-scroll-hint\s*\{[^}]*display:\s*block/s);
   assert.match(componentsCss, /scrollbar-color:\s*var\(--ctw-color-action\)/);
+  assert.match(componentsCss, /\.ctw-scope \.ctw-feedback-button:focus-visible,\s*\.ctw-scope \.ctw-feedback-textarea:focus-visible\s*\{[^}]*outline:\s*3px solid var\(--ctw-color-focus\)[^}]*outline-offset:\s*3px/s);
   assert.match(componentsCss, /outline:\s*3px solid var\(--ctw-color-focus\)/);
   assert.match(componentsCss, /animation-duration:\s*0\.01ms !important/);
+});
+
+test("standalone links opt into touch targets while prose links remain inline", () => {
+  for (const [markup, labels] of [
+    [homepage, ["All projects →", "About →", "Full bio &amp; portfolio ↗"]],
+    [guide, ["Trace evidence", "Check access", "Read case-study contract →"]],
+  ]) {
+    for (const label of labels) {
+      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      assert.match(
+        markup,
+        new RegExp(`<a\\b[^>]*class="[^"]*\\bctw-link--standalone\\b[^"]*"[^>]*>${escaped}<\\/a>`),
+        label,
+      );
+    }
+  }
+  assert.match(
+    guide,
+    /<p><a class="ctw-link" href="#ownership">Inline link keeps underline<\/a> so interaction does not depend on color\.<\/p>/,
+  );
+});
+
+test("homepage pilot preserves content and removes legacy runtime treatments", () => {
+  for (const href of [
+    "/design-system/tokens.css",
+    "/design-system/components.css",
+    "/design-system/compositions.css",
+    "/homepage.css",
+  ]) {
+    assert.match(homepage, new RegExp(`href="${href}"`));
+  }
+  for (const text of [
+    "Applied research",
+    "17+ years in software engineering",
+    "50+",
+    "15",
+    "Jesse Gonzalez",
+    "Research Data Infrastructure",
+    "ML Systems &amp; Responsible AI",
+    "Scientific Visualization &amp; Digital Exhibits",
+    "Collaborative Research Platforms",
+    "Planning",
+    "Visibility",
+    "Implementation",
+    "Sustainability",
+    "Notidian",
+    "IdeasDiamond",
+    "NextHuman",
+    "Josh Colston, PhD",
+    "Elli Bleeker, PhD",
+    "Valentina Azzara, PhD",
+    "Kody Moodley, PhD",
+    "Veronica Pang",
+    "Netherlands eScience Center",
+    "Smithsonian Institution",
+    "contact@ctw.studio",
+    "accepting projects 2026-2027",
+  ]) {
+    assert.ok(homepage.includes(text), text);
+  }
+  assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
+  assert.match(homepage, /<script src="\/feedback\.js"><\/script>/);
+  assert.doesNotMatch(homepage, /tailwind\.css|anime(?:\.min)?\.js|three(?:\.min)?\.js|blueprint-canvas|onclick=|opacity-0|glass|bento/i);
+  assert.doesNotMatch(homepage, /<script[^>]+src="nav\.js"/);
+  assert.match(homepage, /id="product-index-hint"[^>]*>Swipe products to explore/);
+  assert.match(homepage, /class="ctw-project-index studio-products"[^>]*aria-describedby="product-index-hint"/);
+  assert.match(homepageCss, /@media \(min-width: 64rem\)[\s\S]*\.studio-quotes\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
+  assert.match(compositionsCss, /@media \(max-width: 47\.99rem\)[\s\S]*\.ctw-display--fluid\s*\{[^}]*line-height:\s*0\.98/s);
+  for (const tag of homepage.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
+    assert.match(tag[0], /rel="noopener noreferrer"/);
+  }
+  const homepageEffects = homepageCss
+    .replaceAll("box-shadow: none", "")
+    .replaceAll("-webkit-backdrop-filter: none", "")
+    .replaceAll("backdrop-filter: none", "");
+  assert.doesNotMatch(homepageEffects, /(?:linear|radial)-gradient|backdrop-filter|box-shadow/);
+});
+
+test("Signals atlas pilot opts into shared cyan composition without changing taxonomy", () => {
+  for (const href of [
+    "/design-system/tokens.css",
+    "/design-system/components.css",
+    "/design-system/compositions.css",
+    "signals.css",
+    "atlas.css",
+    "subject-menu.css",
+  ]) {
+    assert.match(atlas, new RegExp(`href="${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  }
+  assert.match(atlas, /<body class="ctw-scope ctw-accent--cyan">/);
+  assert.equal((atlas.match(/\bdata-status="published"/g) ?? []).length, 7);
+  assert.equal((atlas.match(/\bdata-status="planned"/g) ?? []).length, 3);
+  assert.equal((atlas.match(/Brief 00[1-9]/g) ?? []).length >= 18, true);
+  assert.equal(cssDeclarations(atlasCss, ":root")["--atlas-green"], undefined);
+  assert.equal(
+    cssDeclarations(atlasCss, ".roadmap-page body")["--atlas-green"],
+    "var(--ctw-accent-cyan, var(--ctw-palette-cyan, #57d7ff))",
+  );
+  assert.match(atlasCss, /\.lens-grid article\s*\{[^}]*border-radius:\s*0[^}]*background:\s*transparent/s);
+  assert.doesNotMatch(atlasCss, /(?:linear|radial)-gradient\([^)]*,[^)]*,/);
+  assert.doesNotMatch(atlas, /tailwind\.css/);
+  assert.match(atlas, /subject-menu\.js/);
+  assert.match(atlas, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
+  assert.doesNotMatch(atlas, /\.\.\/nav\.js/);
+  assert.match(atlas, /\.\.\/feedback\.js/);
 });
 
 test("generated NLeSC subtree has no local changes", () => {

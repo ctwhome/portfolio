@@ -7,6 +7,12 @@ on:
       - 'DESIGN.md'
       - 'README.md'
       - 'ctw.studio/design-system/**'
+      - 'ctw.studio/index.html'
+      - 'ctw.studio/homepage.css'
+      - 'ctw.studio/signals/index.html'
+      - 'ctw.studio/signals/atlas.css'
+      - 'ctw.studio/signals/subject-menu.css'
+      - 'ctw.studio/signals/tests/**'
       - '.github/workflows/check-ctw-design-system.yml'
   push:
     paths:
@@ -14,6 +20,12 @@ on:
       - 'DESIGN.md'
       - 'README.md'
       - 'ctw.studio/design-system/**'
+      - 'ctw.studio/index.html'
+      - 'ctw.studio/homepage.css'
+      - 'ctw.studio/signals/index.html'
+      - 'ctw.studio/signals/atlas.css'
+      - 'ctw.studio/signals/subject-menu.css'
+      - 'ctw.studio/signals/tests/**'
       - '.github/workflows/check-ctw-design-system.yml'
 
 permissions:
@@ -126,8 +138,11 @@ jobs:
           test -f ctw.studio/design-system/tokens.css
           test -f ctw.studio/design-system/tokens.json
           test -f ctw.studio/design-system/components.css
+          test -f ctw.studio/design-system/compositions.css
           test -f ctw.studio/design-system/compat.css
           test -f ctw.studio/design-system/guide.css
+          test -f ctw.studio/homepage.css
+          test -f ctw.studio/signals/atlas.css
 
       - name: Guard generated NLeSC export
         run: |

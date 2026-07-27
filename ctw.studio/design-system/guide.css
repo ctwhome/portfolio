@@ -69,12 +69,6 @@ body.guide-page {
   color: var(--ctw-color-text);
 }
 
-.guide-theme .ctw-link {
-  display: inline-flex;
-  min-height: var(--ctw-size-touch);
-  align-items: center;
-}
-
 .guide-type-sample {
   padding-block: var(--ctw-space-5);
   border-top: 1px solid var(--ctw-color-border);

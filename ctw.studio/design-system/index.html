@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CTW Studio design system: foundations, components, evidence semantics, and staged adoption.">
   <title>Design system — CTW Studio</title>
-  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="components.css">
-  <link rel="stylesheet" href="guide.css">
+  <link rel="stylesheet" href="/design-system/tokens.css">
+  <link rel="stylesheet" href="/design-system/components.css">
+  <link rel="stylesheet" href="/design-system/compositions.css">
+  <link rel="stylesheet" href="/design-system/guide.css">
 </head>
 <body class="guide-page">
   <a class="ctw-skip-link" href="#main">Skip to design system</a>
@@ -22,6 +23,7 @@
         <nav class="ctw-primary-nav" aria-label="Design system sections">
           <a class="ctw-primary-nav__link" href="#top" aria-current="location">Header + nav</a>
           <a class="ctw-primary-nav__link" href="#components">Components</a>
+          <a class="ctw-primary-nav__link" href="#compositions">Compositions</a>
           <a class="ctw-primary-nav__link" href="#charts">Charts</a>
           <a class="ctw-primary-nav__link" href="#feedback">Feedback</a>
           <a class="ctw-primary-nav__link" href="#adoption">Adoption</a>
@@ -85,13 +87,13 @@
                 <p class="ctw-label">Coal / investigate</p>
                 <h4 class="ctw-heading-md">Hold attention on system.</h4>
                 <p>Default for Signals, technical reading, and high-focus decision surfaces.</p>
-                <a class="ctw-link" href="#evidence">Trace evidence</a>
+                <a class="ctw-link ctw-link--standalone" href="#evidence">Trace evidence</a>
               </article>
               <article class="guide-theme ctw-theme-chalk ctw-stack">
                 <p class="ctw-label">Chalk / explain</p>
                 <h4 class="ctw-heading-md">Make long reading breathable.</h4>
                 <p>Use for dense guidance, legal reading, and print-adjacent editorial work.</p>
-                <a class="ctw-link" href="#accessibility">Check access</a>
+                <a class="ctw-link ctw-link--standalone" href="#accessibility">Check access</a>
               </article>
             </div>
 
@@ -246,7 +248,8 @@
                 <text x="0" y="198">space-7</text><rect x="70" y="182" width="480" height="20"></rect><text x="558" y="198">48</text>
                 <text x="0" y="232">space-8</text><rect x="70" y="216" width="640" height="20"></rect><text x="678" y="232">64</text>
               </svg>
-              <div class="ctw-table-wrap ctw-chart-frame__fallback" role="region" aria-label="Spacing token table" tabindex="0">
+              <p class="ctw-scroll-hint" id="spacing-chart-table-hint">Swipe table to see every column →</p>
+              <div class="ctw-table-wrap ctw-chart-frame__fallback" role="region" aria-label="Spacing token table" aria-describedby="spacing-chart-table-hint" tabindex="0">
                 <table class="ctw-table">
                   <caption>Table fallback for canonical spacing token chart</caption>
                   <thead><tr><th scope="col">Token</th><th scope="col">Pixels</th></tr></thead>
@@ -324,6 +327,141 @@
         </div>
       </section>
 
+      <section class="ctw-section" id="compositions" aria-labelledby="compositions-title">
+        <div class="ctw-container ctw-stack" style="--ctw-stack-gap:var(--ctw-space-8)">
+          <div class="guide-split">
+            <div class="ctw-stack">
+              <p class="ctw-section-number">06 / Expressive compositions</p>
+              <h2 class="ctw-heading-lg" id="compositions-title">Editorial signal, measured like an instrument.</h2>
+            </div>
+            <div class="ctw-stack">
+              <p class="ctw-lede">Direction is 70% Editorial Signal, 20% Research Instrument, 10% Kinetic Studio. Load <code>compositions.css</code> after tokens and components, then opt in beneath <code>.ctw-scope</code>.</p>
+              <p>Use bright amber, cyan, coral, or violet accents as structure on coal surfaces. Chalk maps spectral accents to its accessible action role unless a separately verified dark accent token exists. Add depth through overlap, crop, inset, stacked rules, offset planes, full-bleed media, or sticky chapter labels. No gradients, glass, soft shadow stacks, or generic bento layouts.</p>
+            </div>
+          </div>
+
+          <article class="ctw-case-study ctw-split-hero" aria-labelledby="case-study-title">
+            <div class="ctw-stack">
+              <p class="ctw-section-number">Project / Case study</p>
+              <h3 class="ctw-display--fluid" id="case-study-title">Make consequential work impossible to skim past.</h3>
+              <p class="ctw-lede">Oversized and split heroes state one proposition. Controlled wraps and tight readable tracking create force without decorative effects.</p>
+            </div>
+            <dl class="ctw-brief-meta ctw-case-study__facts">
+              <div><dt>Role</dt><dd>Research software</dd></div>
+              <div><dt>Period</dt><dd>2025–2026</dd></div>
+              <div><dt>State</dt><dd>In review</dd></div>
+            </dl>
+          </article>
+
+          <article class="ctw-showcase" aria-labelledby="showcase-title">
+            <div class="ctw-showcase__body ctw-stack">
+              <p class="ctw-section-number">Full-width project showcase</p>
+              <h3 class="ctw-heading-lg" id="showcase-title">Flat plane. Full field. One clear destination.</h3>
+              <p>Media may fill this field when owned, meaningful imagery exists. Structural treatment remains complete without image or script.</p>
+              <a class="ctw-link ctw-link--standalone" href="#case-study-title">Read case-study contract →</a>
+            </div>
+          </article>
+
+          <div class="guide-split">
+            <div class="ctw-stack">
+              <p class="ctw-section-number">Argument / Evidence</p>
+              <h3 class="ctw-heading-lg">Sequence claim, boundary, then response.</h3>
+            </div>
+            <dl>
+              <div class="ctw-argument"><dt>01 / Claim</dt><dd>State consequential proposition in plain language.</dd></div>
+              <div class="ctw-argument"><dt>02 / Evidence</dt><dd>Name evidence type, population, period, unit, and source.</dd></div>
+              <div class="ctw-argument"><dt>03 / Action</dt><dd>Expose decision or next inspection step.</dd></div>
+            </dl>
+          </div>
+
+          <figure class="ctw-annotated-media ctw-registration">
+            <div class="ctw-annotated-media__frame ctw-instrument">
+              <svg viewBox="0 0 800 360" role="img" aria-labelledby="media-title media-desc">
+                <title id="media-title">Annotated research-instrument field</title>
+                <desc id="media-desc">Coordinate lines, scale marks, crop marks, one observation boundary, and a cyan registration point.</desc>
+                <g fill="none" stroke="currentColor" opacity=".45">
+                  <path d="M40 40H760M40 180H760M40 320H760M40 40V320M400 40V320M760 40V320"></path>
+                  <rect x="220" y="105" width="360" height="150"></rect>
+                </g>
+                <g fill="var(--ctw-accent)" font-family="DM Mono, monospace" font-size="16">
+                  <text x="48" y="70">X 0042 / Y 0180</text><text x="228" y="135">VISIBLE DATA BOUNDARY</text>
+                  <circle cx="580" cy="255" r="8"></circle>
+                </g>
+              </svg>
+            </div>
+            <figcaption><span class="ctw-source-label">Source / specimen</span><p>Annotated media pairs meaningful alt text or SVG naming with caption, crop context, scale, and visible data boundaries. Registration marks never imply measurement precision that source does not support.</p></figcaption>
+          </figure>
+
+          <div class="ctw-chart-story ctw-accent--cyan">
+            <div class="ctw-chart-story__legend">
+              <p class="ctw-section-number">Source-led chart story</p>
+              <ul class="ctw-legend" aria-label="Series legend">
+                <li><span class="ctw-legend__key"></span>Observed</li>
+                <li><span class="ctw-legend__key" style="opacity:.45"></span>Boundary</li>
+              </ul>
+              <p class="ctw-margin-note">Margin annotation names revision, uncertainty, or method change at point of interpretation.</p>
+            </div>
+            <figure class="ctw-chart-story__plot ctw-chart-frame">
+              <figcaption>Illustrative observations with source boundary</figcaption>
+              <svg class="ctw-chart-frame__plot" viewBox="0 0 720 260" role="img" aria-labelledby="story-chart-title story-chart-desc">
+                <title id="story-chart-title">Three numbered observations inside one visible boundary</title>
+                <desc id="story-chart-desc">A cyan stepped line connects values 24, 38, and 31. A rule marks a method revision before observation three.</desc>
+                <path d="M80 190H300V105H520V140H660" fill="none" stroke="var(--ctw-accent)" stroke-width="5"></path>
+                <path d="M460 30V220" stroke="currentColor" stroke-dasharray="6 6" opacity=".5"></path>
+                <g fill="var(--ctw-accent)"><circle cx="80" cy="190" r="7"></circle><circle cx="300" cy="105" r="7"></circle><circle cx="520" cy="140" r="7"></circle></g>
+              </svg>
+              <p class="ctw-scroll-hint" id="story-chart-table-hint">Swipe table to see every column →</p>
+              <div class="ctw-table-wrap ctw-chart-frame__fallback" role="region" aria-label="Chart specimen values" aria-describedby="story-chart-table-hint" tabindex="0">
+                <table class="ctw-table"><caption>Table fallback for chart story specimen</caption><thead><tr><th scope="col">Observation</th><th scope="col">Value</th><th scope="col">Boundary</th></tr></thead><tbody><tr><th scope="row">01</th><td>24</td><td>Original method</td></tr><tr><th scope="row">02</th><td>38</td><td>Original method</td></tr><tr><th scope="row">03</th><td>31</td><td>Revised method</td></tr></tbody></table>
+              </div>
+            </figure>
+          </div>
+
+          <div class="ctw-chapter">
+            <div class="ctw-chapter__label ctw-stack"><p class="ctw-section-number">07 / Chapter</p><h3 class="ctw-heading-md">Sticky label</h3></div>
+            <div class="ctw-stack">
+              <div class="ctw-chapter-divider"><h3 class="ctw-display--fluid">Chapter dividers create breath, not a new card.</h3></div>
+              <ol class="ctw-observations"><li class="ctw-observation"><span class="ctw-observation__number">01</span><p>Number observations, not decorative tiles.</p></li><li class="ctw-observation"><span class="ctw-observation__number">02</span><p>Keep source labels adjacent to claim boundaries.</p></li></ol>
+            </div>
+          </div>
+
+          <nav aria-label="Horizontal project specimen">
+            <ol class="ctw-project-index">
+              <li><a href="#compositions"><span class="ctw-section-number">01 / Project</span><strong>Atlas</strong><span>Evidence family →</span></a></li>
+              <li><a href="#components"><span class="ctw-section-number">02 / Project</span><strong>Decision tool</strong><span>Component family →</span></a></li>
+              <li><a href="#adoption"><span class="ctw-section-number">03 / Project</span><strong>Route pilot</strong><span>Adoption →</span></a></li>
+            </ol>
+          </nav>
+
+          <div class="guide-split">
+            <blockquote class="ctw-quote"><p>“Quote scale follows consequence, not celebrity.”</p><footer><cite>Composition contract</cite> · source and role remain visible</footer></blockquote>
+            <div class="ctw-stack">
+              <p class="ctw-label">Article / brief metadata</p>
+              <dl class="ctw-brief-meta"><div><dt>Evidence</dt><dd>Observation</dd></div><div><dt>Updated</dt><dd>27 July 2026</dd></div><div><dt>Scope</dt><dd>Guide specimen</dd></div></dl>
+              <p class="ctw-byline"><span>By CTW Studio</span><span>6 minute read</span></p>
+            </div>
+          </div>
+
+          <div class="guide-state-grid" aria-label="System state specimens">
+            <article class="ctw-state" data-state="empty"><p class="ctw-label">Empty</p><h3 class="ctw-heading-md">No observations yet.</h3><p>Explain valid absence and next step.</p></article>
+            <article class="ctw-state" data-state="loading" aria-live="polite"><p class="ctw-label">Loading</p><h3 class="ctw-heading-md">Checking committed evidence…</h3><p>Core context remains visible.</p></article>
+            <article class="ctw-state" data-state="unavailable"><p class="ctw-label">Unavailable</p><h3 class="ctw-heading-md">Source unavailable.</h3><p>Preserve last verified date and boundary.</p></article>
+            <article class="ctw-state" data-state="error" role="alert"><p class="ctw-label">Error</p><h3 class="ctw-heading-md">Could not verify update.</h3><p>State failure without replacing prior evidence.</p></article>
+          </div>
+
+          <nav class="ctw-pagination" aria-label="Composition pagination">
+            <a href="#evidence"><span class="ctw-label">Previous</span><strong>Evidence semantics</strong></a>
+            <a href="#accessibility"><span class="ctw-label">Next</span><strong>Accessibility</strong></a>
+          </nav>
+          <aside class="ctw-related" aria-label="Related content">
+            <a href="/"><span class="ctw-label">Pilot</span><strong>Expressive homepage</strong></a>
+            <a href="/signals/"><span class="ctw-label">Pilot</span><strong>Sober Signals atlas</strong></a>
+          </aside>
+
+          <div class="guide-callout"><strong>Privacy is a trigger, not a specimen.</strong> Add consent UI only when a route introduces storage or processing that legally or ethically requires a choice. Do not prebuild speculative banners.</div>
+        </div>
+      </section>
+
       <section class="ctw-section" id="accessibility" aria-labelledby="accessibility-title">
         <div class="ctw-container guide-split">
           <div class="ctw-stack">
@@ -360,12 +498,12 @@
             <div class="ctw-stack">
               <span class="ctw-badge ctw-badge--positive">Do</span>
               <h3 class="ctw-heading-md">Lead with consequential question.</h3>
-              <p>Expose evidence type, boundary, source, and action. Use rules, spacing, and type to reveal structure.</p>
+              <p>Expose evidence type, boundary, source, and action. Use rules, spacing, and type to reveal structure. Keep bright spectral accents on coal; let chalk use its accessible action role.</p>
             </div>
             <div class="ctw-stack">
               <span class="ctw-badge ctw-badge--critical">Don't</span>
               <h3 class="ctw-heading-md">Imitate generic dashboard.</h3>
-              <p>No fake metrics, glass panels, ornamental gradients, floating-card clutter, generic three-card heroes, or filler claims.</p>
+              <p>Don't place bright coal-surface accents on chalk unless a separately verified dark accent token exists. No fake metrics, glass panels, ornamental gradients, floating-card clutter, generic three-card heroes, or filler claims.</p>
             </div>
           </div>
         </div>

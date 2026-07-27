@@ -19,6 +19,7 @@
     --subject-menu-border: rgba(255, 255, 255, 0.36);
     --subject-menu-accent: #f7b500;
     --subject-menu-accent-soft: rgba(247, 181, 0, 0.11);
+    --subject-menu-focus: var(--ctw-color-focus, #f7b500);
     --subject-menu-font: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     position: relative;
     display: grid;
@@ -66,9 +67,9 @@
 
   .subject-menu-ready .subject-menu__trigger:focus-visible,
   .subject-menu-ready .subject-menu__panel a:focus-visible {
-    border-color: var(--subject-menu-accent);
+    border-color: var(--subject-menu-focus);
     color: var(--subject-menu-text);
-    outline: 3px solid var(--subject-menu-accent);
+    outline: 3px solid var(--subject-menu-focus);
     outline-offset: 2px;
   }
 
@@ -142,6 +143,24 @@
     border-color: var(--subject-menu-accent) !important;
     color: var(--subject-menu-accent) !important;
     box-shadow: inset 0 0 0 1px var(--subject-menu-accent);
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu {
+    --subject-menu-accent: var(--ctw-accent-cyan, #57d7ff);
+    --subject-menu-accent-soft: color-mix(in srgb, var(--subject-menu-accent) 11%, transparent);
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu__trigger {
+    border-radius: 2px;
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu__panel {
+    border-radius: 2px;
+    box-shadow: none;
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu__panel > :is(a, .topic-pill--planned) {
+    border-radius: 0;
   }
 
   .subject-menu-open .ctw-feedback-button {
