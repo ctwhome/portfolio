@@ -72,7 +72,7 @@
   flex-wrap: wrap;
   gap: 7px;
   align-items: center;
-  padding: 24px 0;
+  padding: 118px 0 24px;
   font-family: var(--ff-mono);
   font-size: 11px;
 }
@@ -1076,8 +1076,8 @@
   }
 
   .fragility-topics {
-    overflow-x: auto;
-    flex-wrap: nowrap;
+    overflow-x: visible;
+    flex-wrap: wrap;
     padding-bottom: 12px;
   }
 

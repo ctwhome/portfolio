@@ -10,11 +10,13 @@
   <link rel="stylesheet" href="../../tailwind.css">
   <link rel="stylesheet" href="../signals.css">
   <link rel="stylesheet" href="housing.css">
+  <link rel="stylesheet" href="../subject-menu.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script defer src="../../nav.js" data-base="../../" data-active="signals"></script>
   <script defer src="housing.js"></script>
+  <script defer src="../subject-menu.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to the evidence</a>
@@ -23,17 +25,17 @@
     <header class="housing-hero" aria-labelledby="page-title">
       <div class="signal-shell">
         <nav class="topic-switcher housing-topics" aria-label="Signal topics">
-          <span class="topic-label">Signals /</span>
-          <a class="topic-pill" href="../ai-work/">AI &amp; work</a>
-          <a class="topic-pill" href="../food/">Food &amp; planet</a>
-          <a class="topic-pill housing-active" href="./" aria-current="page">Housing</a>
-          <a class="topic-pill" href="../science/">Science</a>
-          <a class="topic-pill" href="../healthspan/">Healthspan</a>
-          <a class="topic-pill" href="../real-time-ai/">Real-time AI</a>
-          <a class="topic-pill" href="../demography/">Demography</a>
-          <a class="topic-pill" href="../education/">Education</a>
-          <a class="topic-pill" href="../financial-fragility/">Financial fragility</a>
-          <a class="topic-pill" href="../">Atlas</a>
+          <a class="signals-home topic-switcher__label" href="/signals/">Signals /</a>
+          <a class="topic-pill topic-pill--active housing-active" href="/signals/housing/" aria-current="location">Housing &amp; affordability</a>
+          <a class="topic-pill" href="/signals/food/">Food, animals &amp; planet</a>
+          <a class="topic-pill" href="/signals/healthspan/">Healthspan &amp; care</a>
+          <a class="topic-pill" href="/signals/ai-work/">Work, education &amp; human capability</a>
+          <a class="topic-pill" href="/signals/financial-fragility/">Prosperity &amp; financial security</a>
+          <span class="topic-pill topic-pill--planned">Energy, compute &amp; infrastructure <span class="topic-pill__badge">Planned</span></span>
+          <a class="topic-pill" href="/signals/demography/">Demography, migration &amp; aging</a>
+          <span class="topic-pill topic-pill--planned">Democracy, trust &amp; information <span class="topic-pill__badge">Planned</span></span>
+          <a class="topic-pill" href="/signals/science/">Science, discovery &amp; AI systems</a>
+          <span class="topic-pill topic-pill--planned">Global resilience <span class="topic-pill__badge">Planned</span></span>
         </nav>
 
         <div class="housing-hero-grid">
@@ -307,8 +309,8 @@
         </section>
 
         <a class="roadmap-cta reveal" href="../">
-          <span><small>Signals atlas</small><strong>See the next ten briefings →</strong></span>
-          <span>Housing → Prosperity → Energy &amp; Compute → Healthspan → Demography → Science</span>
+          <span><small>Signals atlas</small><strong>Explore the ten subjects →</strong></span>
+          <span>Seven subjects with published coverage · three planned</span>
         </a>
       </article>
     </div>

@@ -228,10 +228,8 @@ test('page has substantive no-JS content, semantic tables, components, and navig
   ]) assert.match(html, new RegExp(phrase, 'i'));
   assert.match(html, /<noscript>/);
   assert.match(html, /No capability composite is reported/i);
-  for (const route of [
-    '../ai-work/', '../food/', '../housing/', '../science/',
-    '../healthspan/', './', '../'
-  ]) assert.match(html, new RegExp(`href="${route.replace(/[./]/g, '\\$&')}"`));
+  assert.match(html, /href="\/signals\/">Signals \//);
+  assert.match(html, /href="\/signals\/ai-work\/" aria-current="location"/);
   assert.match(css, /@media \(max-width: 600px\)/);
 });
 
