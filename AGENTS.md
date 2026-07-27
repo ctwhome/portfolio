@@ -66,6 +66,7 @@ Use targeted checks while editing. Before handoff, run applicable app checks, se
 ## Signals evidence architecture
 
 - Browser code reads committed JSON only. Never add visitor-time evidence API calls or a chart runtime for Signals.
+- `subject-menu.css` owns all `.subject-menu` internals; page styles may only use the retained placement class for outer spacing.
 - Updaters own stable official no-key series and validate schema, definitions, units, geography, and chronology before writing.
 - Papers, forecasts, experiments, interpretations, and non-API evidence stay manually curated and source-auditable.
 - Real-time AI regulatory scope, benchmarks, field evidence, and maturity flags stay manually curated; no source automatically sets a maturity verdict.

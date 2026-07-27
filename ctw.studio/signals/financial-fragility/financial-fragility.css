@@ -68,34 +68,7 @@
 }
 
 .fragility-topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  align-items: center;
   padding: 118px 0 24px;
-  font-family: var(--ff-mono);
-  font-size: 11px;
-}
-
-.fragility-topics .topic-label {
-  margin-right: 5px;
-  color: var(--ff-muted);
-  text-transform: uppercase;
-}
-
-.fragility-topics .topic-pill {
-  padding: 6px 10px;
-  border: 1px solid var(--ff-line);
-  border-radius: 999px;
-  color: #b9bec8;
-  text-decoration: none;
-}
-
-.fragility-topics .topic-pill:hover,
-.fragility-topics .topic-pill:focus-visible,
-.fragility-topics .fragility-active {
-  border-color: var(--ff-acid);
-  color: var(--ff-acid);
 }
 
 .fragility-hero-grid {
@@ -1076,14 +1049,7 @@
   }
 
   .fragility-topics {
-    overflow-x: visible;
-    flex-wrap: wrap;
     padding-bottom: 12px;
-  }
-
-  .fragility-topics .topic-pill,
-  .fragility-topics .topic-label {
-    flex: 0 0 auto;
   }
 
   .fragility-hero-grid {
