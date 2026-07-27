@@ -86,8 +86,13 @@
     padding: 0.7rem 0.8rem;
     border: 0;
     border-radius: 0.65rem;
+    font: inherit;
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+
+  .subject-menu-ready .subject-menu__panel :where(a:not([aria-current="location"])) {
+    color: inherit;
   }
 
   .subject-menu-open .ctw-feedback-button {
