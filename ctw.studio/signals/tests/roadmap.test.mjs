@@ -39,6 +39,10 @@ function topicPills(markup) {
     .map(([, classes, href, current, label]) => ({ classes, href, current, label }));
 }
 
+function cssRule(selector) {
+  return subjectMenuCss.match(new RegExp(`${selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\{([^}]+)\\}`))?.[1] || '';
+}
+
 function atlasCard(anchor, nextAnchor) {
   const start = html.indexOf(`<li id="${anchor}"`);
   const end = nextAnchor ? html.indexOf(`<li id="${nextAnchor}"`, start) : html.indexOf('</ol>', start);
@@ -121,6 +125,35 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
 
   assert.match(subjectMenuCss, /@media \(max-width: 760px\)/);
   assert.match(subjectMenuCss, /\.subject-menu__panel\[aria-hidden="false"\]/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-accent:\s*#f7b500/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu'), /--subject-menu-font:\s*Inter,\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*sans-serif/);
+  for (const selector of [
+    '.subject-menu-ready .subject-menu__trigger',
+    '.subject-menu-ready .subject-menu__panel',
+    '.subject-menu-ready .subject-menu__panel a'
+  ]) {
+    const rule = cssRule(selector);
+    assert.match(rule, /font:\s*500 1rem\/1\.35 var\(--subject-menu-font\)/);
+    assert.match(rule, /color:\s*var\(--subject-menu-text\)/);
+    assert.match(rule, /letter-spacing:\s*normal/);
+    assert.match(rule, /text-transform:\s*none/);
+    if (!selector.endsWith('__panel')) assert.match(rule, /transition:\s*none/);
+    assert.doesNotMatch(rule, /(?:font|color):\s*inherit/);
+  }
+  const currentRule = cssRule('.subject-menu-ready .subject-menu__panel a[aria-current="location"]');
+  assert.match(currentRule, /background:\s*var\(--subject-menu-accent-soft\)\s*!important/);
+  assert.match(currentRule, /border-color:\s*var\(--subject-menu-accent\)\s*!important/);
+  assert.match(currentRule, /color:\s*var\(--subject-menu-accent\)\s*!important/);
+  assert.match(currentRule, /box-shadow:\s*inset [^;]*var\(--subject-menu-accent\)/);
+  const focusRule = cssRule('.subject-menu-ready .subject-menu__panel a:focus-visible');
+  assert.match(focusRule, /border-color:\s*var\(--subject-menu-accent\)/);
+  assert.match(focusRule, /color:\s*var\(--subject-menu-text\)/);
+  assert.match(focusRule, /outline:\s*3px solid var\(--subject-menu-accent\)/);
+  const hoverRule = cssRule('.subject-menu-ready .subject-menu__panel a:not([aria-current="location"]):hover');
+  assert.match(hoverRule, /background:\s*rgba\(255, 255, 255, 0\.07\)/);
+  assert.match(hoverRule, /border-color:\s*var\(--subject-menu-border\)/);
+  assert.match(hoverRule, /color:\s*var\(--subject-menu-text\)/);
   assert.match(subjectMenuJs, /createElement\('button'\)/);
   assert.match(subjectMenuJs, /setAttribute\('aria-expanded'/);
   assert.match(subjectMenuJs, /setAttribute\('aria-controls'/);

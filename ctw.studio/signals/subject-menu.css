@@ -8,6 +8,12 @@
 
 @media (max-width: 760px) {
   .subject-menu-ready .subject-menu {
+    --subject-menu-surface: #0b0c0a;
+    --subject-menu-text: #f4f1e8;
+    --subject-menu-border: rgba(255, 255, 255, 0.36);
+    --subject-menu-accent: #f7b500;
+    --subject-menu-accent-soft: rgba(247, 181, 0, 0.11);
+    --subject-menu-font: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     position: relative;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -30,12 +36,15 @@
     justify-content: space-between;
     gap: 0.75rem;
     padding: 0.65rem 0.85rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    border: 1px solid var(--subject-menu-border);
     border-radius: 999px;
-    background: rgba(8, 9, 7, 0.96);
-    color: inherit;
-    font: inherit;
+    background: var(--subject-menu-surface);
+    color: var(--subject-menu-text);
+    font: 500 1rem/1.35 var(--subject-menu-font);
+    letter-spacing: normal;
     text-align: left;
+    text-transform: none;
+    transition: none;
     cursor: pointer;
   }
 
@@ -46,12 +55,14 @@
   }
 
   .subject-menu-ready .subject-menu__trigger[aria-expanded="true"] {
-    border-color: currentColor;
+    border-color: var(--subject-menu-accent);
   }
 
   .subject-menu-ready .subject-menu__trigger:focus-visible,
   .subject-menu-ready .subject-menu__panel a:focus-visible {
-    outline: 3px solid currentColor;
+    border-color: var(--subject-menu-accent);
+    color: var(--subject-menu-text);
+    outline: 3px solid var(--subject-menu-accent);
     outline-offset: 2px;
   }
 
@@ -68,10 +79,14 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 0.4rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    border: 1px solid var(--subject-menu-border);
     border-radius: 1rem;
-    background: #0b0c0a;
+    background: var(--subject-menu-surface);
+    color: var(--subject-menu-text);
+    font: 500 1rem/1.35 var(--subject-menu-font);
+    letter-spacing: normal;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+    text-transform: none;
   }
 
   .subject-menu-ready .subject-menu__panel[aria-hidden="false"] {
@@ -86,13 +101,26 @@
     padding: 0.7rem 0.8rem;
     border: 0;
     border-radius: 0.65rem;
-    font: inherit;
+    color: var(--subject-menu-text);
+    font: 500 1rem/1.35 var(--subject-menu-font);
+    letter-spacing: normal;
+    text-transform: none;
+    transition: none;
     white-space: normal;
     overflow-wrap: anywhere;
   }
 
-  .subject-menu-ready .subject-menu__panel :where(a:not([aria-current="location"])) {
-    color: inherit;
+  .subject-menu-ready .subject-menu__panel a:not([aria-current="location"]):hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--subject-menu-border);
+    color: var(--subject-menu-text);
+  }
+
+  .subject-menu-ready .subject-menu__panel a[aria-current="location"] {
+    background: var(--subject-menu-accent-soft) !important;
+    border-color: var(--subject-menu-accent) !important;
+    color: var(--subject-menu-accent) !important;
+    box-shadow: inset 0 0 0 1px var(--subject-menu-accent);
   }
 
   .subject-menu-open .ctw-feedback-button {
