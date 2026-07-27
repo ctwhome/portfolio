@@ -86,7 +86,7 @@ test('food page exposes the complete storyboard, chart alternatives, and active 
     assert.match(html, new RegExp(`id="${id}"`));
   }
   assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/#subject-food-animals-planet"[^>]*aria-current="location"/);
+  assert.match(html, /href="\/signals\/food\/"[^>]*aria-current="location"/);
   assert.match(html, /food-active/);
   assert.match(html, /species-table/);
   assert.match(html, /footprint-table/);

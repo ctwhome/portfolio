@@ -149,7 +149,7 @@ test('page provides substantive no-JS evidence and every required component', ()
   assert.match(html, /One interest bill\. Two denominators\./);
   assert.match(html, /There is no financial-fragility composite or traffic-light total/);
   assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/#subject-prosperity-financial-security" aria-current="location"/);
+  assert.match(html, /href="\/signals\/financial-fragility\/" aria-current="location"/);
 });
 
 test('renderer is dependency-free, defensive, and preserves accessible equivalents', () => {

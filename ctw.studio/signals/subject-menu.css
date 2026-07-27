@@ -6,6 +6,12 @@
   display: contents;
 }
 
+.topic-pill--planned {
+  cursor: default;
+  opacity: 1;
+  pointer-events: none;
+}
+
 @media (max-width: 760px) {
   .subject-menu-ready .subject-menu {
     --subject-menu-surface: #0b0c0a;
@@ -93,11 +99,13 @@
     display: grid;
   }
 
-  .subject-menu-ready .subject-menu__panel a {
+  .subject-menu-ready .subject-menu__panel > :is(a, .topic-pill--planned) {
     display: flex;
     min-width: 0;
     min-height: 44px;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
     padding: 0.7rem 0.8rem;
     border: 0;
     border-radius: 0.65rem;
@@ -108,6 +116,19 @@
     transition: none;
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+
+  .subject-menu-ready .subject-menu__panel > .topic-pill--planned {
+    color: color-mix(in srgb, var(--subject-menu-text) 65%, transparent);
+    cursor: default;
+  }
+
+  .subject-menu-ready .topic-pill__badge {
+    flex: 0 0 auto;
+    color: color-mix(in srgb, var(--subject-menu-text) 55%, transparent);
+    font: 500 0.68rem/1 var(--subject-menu-font);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .subject-menu-ready .subject-menu__panel a:not([aria-current="location"]):hover {

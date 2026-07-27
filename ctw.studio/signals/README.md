@@ -32,9 +32,9 @@ Atlas order, coverage and brief mapping:
 | 9 | Science, discovery & AI systems | `/signals/#subject-science-discovery-ai-systems` | Briefs 004, 006 |
 | 10 | Global resilience | `/signals/#subject-global-resilience` | Planned |
 
-Current state: **9 published briefs**, **7 of 10 subjects with published coverage**, **3 planned subjects**. Coverage is not a completeness claim. All Atlas and brief-page subject pills use these root-relative anchors; each brief marks its mapped subject with `aria-current="location"`. The Signals brand links to `/signals/`.
+Current state: **9 published briefs**, **7 of 10 subjects with published coverage**, **3 planned subjects**. Coverage is not a completeness claim. Atlas and brief-page subject navigation uses seven canonical brief routes plus three visibly planned noninteractive rows; each brief marks its mapped subject with `aria-current="location"`. The Signals brand links to `/signals/`.
 
-At 760px and below, `subject-menu.js` progressively enhances that same semantic navigation into a compact accessible disclosure. Without JavaScript, all ten links remain visible.
+At 760px and below, `subject-menu.js` progressively enhances that same semantic navigation into a compact accessible disclosure. Without JavaScript, seven canonical links and three visibly planned noninteractive rows remain visible.
 
 ## Files
 

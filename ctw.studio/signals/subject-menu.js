@@ -3,10 +3,12 @@
 
   document.querySelectorAll('.atlas-topics, .topic-switcher, .evidence-topics').forEach((nav, index) => {
     const brand = nav.querySelector(':scope > .signals-home');
-    const links = [...nav.querySelectorAll(':scope > a:not(.signals-home)')];
-    if (!brand || links.length !== 10) return;
+    const options = [...nav.children].filter((option) =>
+      option.matches('a:not(.signals-home), .topic-pill--planned')
+    );
+    if (!brand || options.length !== 10) return;
 
-    const current = links.find((link) => link.getAttribute('aria-current') === 'location');
+    const current = options.find((option) => option.matches('a[aria-current="location"]'));
     const panel = document.createElement('div');
     const trigger = document.createElement('button');
     const label = document.createElement('span');
@@ -16,7 +18,7 @@
     panel.id = panelId;
     panel.className = 'subject-menu__panel';
     panel.setAttribute('aria-hidden', String(mobile.matches));
-    links.forEach((link) => panel.append(link));
+    options.forEach((option) => panel.append(option));
 
     trigger.type = 'button';
     trigger.className = 'subject-menu__trigger';

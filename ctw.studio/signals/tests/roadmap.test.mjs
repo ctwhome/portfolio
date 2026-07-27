@@ -6,24 +6,25 @@ const root = new URL('../', import.meta.url);
 const html = await readFile(new URL('index.html', root), 'utf8');
 const fallback = await readFile(new URL('roadmap/index.html', root), 'utf8');
 const vercel = JSON.parse(await readFile(new URL('../vercel.json', root), 'utf8'));
+const atlasCss = await readFile(new URL('atlas.css', root), 'utf8');
 const subjectMenuCss = await readFile(new URL('subject-menu.css', root), 'utf8');
 const subjectMenuJs = await readFile(new URL('subject-menu.js', root), 'utf8');
 
 const subjects = [
-  { label: 'Housing &amp; affordability', anchor: 'subject-housing-affordability', status: 'published', briefs: [['housing', '003']] },
-  { label: 'Food, animals &amp; planet', anchor: 'subject-food-animals-planet', status: 'published', briefs: [['food', '002']] },
-  { label: 'Healthspan &amp; care', anchor: 'subject-healthspan-care', status: 'published', briefs: [['healthspan', '005']] },
-  { label: 'Work, education &amp; human capability', anchor: 'subject-work-education-human-capability', status: 'published', briefs: [['ai-work', '001'], ['education', '008']] },
-  { label: 'Prosperity &amp; financial security', anchor: 'subject-prosperity-financial-security', status: 'published', briefs: [['financial-fragility', '009']] },
-  { label: 'Energy, compute &amp; infrastructure', anchor: 'subject-energy-compute-infrastructure', status: 'planned', briefs: [] },
-  { label: 'Demography, migration &amp; aging', anchor: 'subject-demography-migration-aging', status: 'published', briefs: [['demography', '007']] },
-  { label: 'Democracy, trust &amp; information', anchor: 'subject-democracy-trust-information', status: 'planned', briefs: [] },
-  { label: 'Science, discovery &amp; AI systems', anchor: 'subject-science-discovery-ai-systems', status: 'published', briefs: [['science', '004'], ['real-time-ai', '006']] },
-  { label: 'Global resilience', anchor: 'subject-global-resilience', status: 'planned', briefs: [] }
+  { label: 'Housing &amp; affordability', anchor: 'subject-housing-affordability', route: '/signals/housing/', status: 'published', briefs: [['housing', '003']] },
+  { label: 'Food, animals &amp; planet', anchor: 'subject-food-animals-planet', route: '/signals/food/', status: 'published', briefs: [['food', '002']] },
+  { label: 'Healthspan &amp; care', anchor: 'subject-healthspan-care', route: '/signals/healthspan/', status: 'published', briefs: [['healthspan', '005']] },
+  { label: 'Work, education &amp; human capability', anchor: 'subject-work-education-human-capability', route: '/signals/ai-work/', status: 'published', briefs: [['ai-work', '001'], ['education', '008']] },
+  { label: 'Prosperity &amp; financial security', anchor: 'subject-prosperity-financial-security', route: '/signals/financial-fragility/', status: 'published', briefs: [['financial-fragility', '009']] },
+  { label: 'Energy, compute &amp; infrastructure', anchor: 'subject-energy-compute-infrastructure', route: null, status: 'planned', briefs: [] },
+  { label: 'Demography, migration &amp; aging', anchor: 'subject-demography-migration-aging', route: '/signals/demography/', status: 'published', briefs: [['demography', '007']] },
+  { label: 'Democracy, trust &amp; information', anchor: 'subject-democracy-trust-information', route: null, status: 'planned', briefs: [] },
+  { label: 'Science, discovery &amp; AI systems', anchor: 'subject-science-discovery-ai-systems', route: '/signals/science/', status: 'published', briefs: [['science', '004'], ['real-time-ai', '006']] },
+  { label: 'Global resilience', anchor: 'subject-global-resilience', route: null, status: 'planned', briefs: [] }
 ];
 
-const briefs = subjects.flatMap(({ anchor, briefs }) =>
-  briefs.map(([route, briefId]) => ({ route, briefId, anchor }))
+const briefs = subjects.flatMap(({ route: subjectRoute, briefs }) =>
+  briefs.map(([route, briefId]) => ({ route, briefId, subjectRoute }))
 ).sort((a, b) => a.briefId.localeCompare(b.briefId));
 
 const briefPages = await Promise.all(briefs.map(async (brief) => ({
@@ -32,11 +33,25 @@ const briefPages = await Promise.all(briefs.map(async (brief) => ({
 })));
 
 const expectedLabels = subjects.map(({ label }) => label);
-const expectedHrefs = subjects.map(({ anchor }) => `/signals/#${anchor}`);
+const expectedRoutes = subjects.map(({ route }) => route);
 
-function topicPills(markup) {
-  return [...markup.matchAll(/<a class="([^"]*\btopic-pill\b[^"]*)" href="([^"]+)"(?: aria-current="([^"]+)")?>([^<]+)<\/a>/g)]
-    .map(([, classes, href, current, label]) => ({ classes, href, current, label }));
+function subjectOptions(markup) {
+  const options = [];
+  const pattern = /<a(?: class="([^"]*)")? href="([^"]+)"(?: aria-current="([^"]+)")?>([^<]+)<\/a>|<span class="([^"]*\btopic-pill--planned\b[^"]*)">([^<]+) <span class="topic-pill__badge">Planned<\/span><\/span>/g;
+
+  for (const match of markup.matchAll(pattern)) {
+    const [, classes = '', href, current, linkLabel, plannedClasses, plannedLabel] = match;
+    if (classes.split(/\s+/).includes('signals-home')) continue;
+    options.push({
+      classes: href ? classes : plannedClasses,
+      current,
+      label: href ? linkLabel : plannedLabel,
+      route: href || null,
+      tag: href ? 'a' : 'span',
+      markup: match[0]
+    });
+  }
+  return options;
 }
 
 function cssRule(selector) {
@@ -82,34 +97,54 @@ test('Atlas counters and subject wording report 9 briefs, 7 covered subjects and
   assert.doesNotMatch(html, /Ten long-horizon briefings/);
 });
 
-test('Atlas top navigation uses brand home plus exact subject anchors', () => {
+test('Atlas top navigation uses exact canonical routes and native planned rows', () => {
   const nav = html.match(/<nav class="atlas-topics"[\s\S]*?<\/nav>/)?.[0] || '';
   assert.match(nav, /<a class="signals-home atlas-brand" href="\/signals\/">Signals \/<\/a>/);
-  assert.deepEqual(
-    [...nav.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)].map(([, href, label]) => ({ href, label })),
-    subjects.map(({ anchor, label }) => ({ href: `/signals/#${anchor}`, label }))
-  );
+  const options = subjectOptions(nav);
+  assert.deepEqual(options.map(({ label }) => label), expectedLabels);
+  assert.deepEqual(options.map(({ route }) => route), expectedRoutes);
+  assert.equal(options.filter(({ tag }) => tag === 'a').length, 7);
+  assert.equal(options.filter(({ tag }) => tag === 'span').length, 3);
+  assert.equal(options.filter(({ current }) => current).length, 0);
   assert.doesNotMatch(nav, />Atlas<\/a>/);
 });
 
-test('every brief switcher is semantic and mirrors exact taxonomy, links and mapped current subject', () => {
-  briefPages.forEach(({ route, anchor, briefId, html: page }) => {
+test('every brief switcher mirrors exact routes, planned rows and mapped current subject', () => {
+  briefPages.forEach(({ route, subjectRoute, briefId, html: page }) => {
     const nav = page.match(/<nav class="[^"]*(?:topic-switcher|evidence-topics)[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
     assert.ok(nav, `${route} missing semantic topic navigation`);
     assert.match(nav, /<a class="signals-home topic-switcher__label" href="\/signals\/">/);
 
-    const pills = topicPills(nav);
-    assert.deepEqual(pills.map(({ label }) => label), expectedLabels, `${route} subject order differs`);
-    assert.deepEqual(pills.map(({ href }) => href), expectedHrefs, `${route} subject links differ`);
+    const options = subjectOptions(nav);
+    assert.deepEqual(options.map(({ label }) => label), expectedLabels, `${route} subject order differs`);
+    assert.deepEqual(options.map(({ route }) => route), expectedRoutes, `${route} subject routes differ`);
+    assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
+    assert.equal(options.filter(({ tag }) => tag === 'span').length, 3, `${route} must have three planned rows`);
 
-    const current = pills.filter(({ classes, current }) =>
+    const current = options.filter(({ classes, current }) =>
       classes.split(/\s+/).includes('topic-pill--active') || current
     );
     assert.equal(current.length, 1, `${route} must have one mapped current subject`);
-    assert.equal(current[0].href, `/signals/#${anchor}`, `${route} maps to wrong subject`);
+    assert.equal(current[0].tag, 'a', `${route} current subject must be a link`);
+    assert.equal(current[0].route, subjectRoute, `${route} maps to wrong subject`);
     assert.equal(current[0].current, 'location', `${route} must use aria-current="location"`);
     assert.match(page, new RegExp(`Brief ${briefId}\\b`), `${route} missing Brief ${briefId}`);
   });
+});
+
+test('planned subject rows stay visibly native and noninteractive on every navigation copy', () => {
+  for (const { route, html: page } of [{ route: 'atlas', html }, ...briefPages]) {
+    const nav = page.match(/<nav class="[^"]*(?:atlas-topics|topic-switcher|evidence-topics)[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
+    const planned = subjectOptions(nav).filter(({ tag }) => tag === 'span');
+
+    assert.equal(planned.length, 3, `${route} planned-row count differs`);
+    for (const option of planned) {
+      assert.match(option.markup, /<span class="topic-pill__badge">Planned<\/span>/);
+      assert.doesNotMatch(option.markup, /\b(?:href|role|tabindex|onclick|aria-disabled)=/i);
+    }
+  }
+  assert.match(atlasCss, /\.atlas-topics \.topic-pill--planned\s*\{[^}]*color:\s*var\(--atlas-muted\)/s);
+  assert.match(atlasCss, /\.atlas-topics \.topic-pill__badge\s*\{[^}]*color:\s*var\(--atlas-muted\)/s);
 });
 
 test('all taxonomy pages load shared progressive subject disclosure assets', () => {
@@ -131,7 +166,7 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   for (const selector of [
     '.subject-menu-ready .subject-menu__trigger',
     '.subject-menu-ready .subject-menu__panel',
-    '.subject-menu-ready .subject-menu__panel a'
+    '.subject-menu-ready .subject-menu__panel > :is(a, .topic-pill--planned)'
   ]) {
     const rule = cssRule(selector);
     assert.match(rule, /font:\s*500 1rem\/1\.35 var\(--subject-menu-font\)/);
@@ -154,11 +189,20 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(hoverRule, /background:\s*rgba\(255, 255, 255, 0\.07\)/);
   assert.match(hoverRule, /border-color:\s*var\(--subject-menu-border\)/);
   assert.match(hoverRule, /color:\s*var\(--subject-menu-text\)/);
+  const plannedRule = cssRule('.subject-menu-ready .subject-menu__panel > .topic-pill--planned');
+  assert.match(plannedRule, /color:\s*color-mix\(in srgb, var\(--subject-menu-text\) 65%, transparent\)/);
+  assert.match(plannedRule, /cursor:\s*default/);
+  assert.match(cssRule('.topic-pill--planned'), /opacity:\s*1/);
+  assert.match(cssRule('.topic-pill--planned'), /pointer-events:\s*none/);
   assert.match(subjectMenuJs, /createElement\('button'\)/);
   assert.match(subjectMenuJs, /setAttribute\('aria-expanded'/);
   assert.match(subjectMenuJs, /setAttribute\('aria-controls'/);
-  assert.match(subjectMenuJs, /getAttribute\('aria-current'\) === 'location'/);
+  assert.match(subjectMenuJs, /option\.matches\('a:not\(\.signals-home\), \.topic-pill--planned'\)/);
+  assert.match(subjectMenuJs, /options\.length !== 10/);
+  assert.match(subjectMenuJs, /option\.matches\('a\[aria-current="location"\]'\)/);
+  assert.match(subjectMenuJs, /options\.forEach\(\(option\) => panel\.append\(option\)\)/);
   assert.match(subjectMenuJs, /\|\| 'Explore subjects'/);
+  assert.match(subjectMenuJs, /event\.target\.closest\('a'\)/);
   assert.match(subjectMenuJs, /event\.key === 'Escape'/);
 });
 

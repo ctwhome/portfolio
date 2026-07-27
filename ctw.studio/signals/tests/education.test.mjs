@@ -229,7 +229,7 @@ test('page has substantive no-JS content, semantic tables, components, and navig
   assert.match(html, /<noscript>/);
   assert.match(html, /No capability composite is reported/i);
   assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/#subject-work-education-human-capability" aria-current="location"/);
+  assert.match(html, /href="\/signals\/ai-work\/" aria-current="location"/);
   assert.match(css, /@media \(max-width: 600px\)/);
 });
 

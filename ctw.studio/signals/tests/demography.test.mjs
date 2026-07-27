@@ -147,7 +147,7 @@ test('page carries substantive no-JS evidence and six accessible component table
   assert.match(html, /No demographic burden score is created/i);
   assert.match(html, /Gross immigration and gross emigration remain visible/i);
   assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/#subject-demography-migration-aging" aria-current="location"/);
+  assert.match(html, /href="\/signals\/demography\/" aria-current="location"/);
 });
 
 test('renderer is dependency-free, uses baked JSON, handles missing data, and updater fails closed', () => {

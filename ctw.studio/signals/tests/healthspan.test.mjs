@@ -76,7 +76,7 @@ test('healthspan page exposes substantive no-JS evidence, accessible tables, and
   assert.match(html, /<noscript>/);
   assert.match(html, /prevention or treatment spending records allocation/i);
   assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/#subject-healthspan-care" aria-current="location"/);
+  assert.match(html, /href="\/signals\/healthspan\/" aria-current="location"/);
 });
 
 test('health renderer and updater have no chart runtime and fail closed on schema gaps', () => {

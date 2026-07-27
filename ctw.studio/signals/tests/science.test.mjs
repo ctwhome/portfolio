@@ -70,7 +70,7 @@ test('science page contains substantive no-JS evidence, tables, sources, and com
   assert.match(html, /<noscript>/);
   assert.match(html, /Publication volume is not meaningful discovery/i);
   assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/#subject-science-discovery-ai-systems" aria-current="location"/);
+  assert.match(html, /href="\/signals\/science\/" aria-current="location"/);
 });
 
 test('science renderer and updater are dependency-free and fail closed', () => {

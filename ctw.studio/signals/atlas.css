@@ -17,7 +17,10 @@
 .atlas-shell { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
 .atlas-hero { padding: 118px 0 90px; border-bottom: 1px solid var(--atlas-line); }
 .atlas-topics { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; padding-bottom: 78px; }
-.atlas-topics a { flex: 0 0 auto; padding: 8px 12px; border: 1px solid var(--atlas-line); border-radius: 99px; color: var(--atlas-muted); font: 500 10px/1 var(--atlas-mono); text-decoration: none; }
+.atlas-topics a,
+.atlas-topics .topic-pill--planned { display: flex; flex: 0 0 auto; align-items: center; gap: 7px; padding: 8px 12px; border: 1px solid var(--atlas-line); border-radius: 99px; color: var(--atlas-muted); font: 500 10px/1 var(--atlas-mono); text-decoration: none; }
+.atlas-topics .topic-pill--planned { border-style: dashed; color: var(--atlas-muted); }
+.atlas-topics .topic-pill__badge { color: var(--atlas-muted); font-size: 7px; letter-spacing: .08em; text-transform: uppercase; }
 .atlas-topics .atlas-brand { margin-right: 3px; padding-left: 0; border-color: transparent; color: var(--atlas-paper); letter-spacing: .12em; text-transform: uppercase; }
 .atlas-topics a:hover,
 .atlas-topics a:focus-visible { color: var(--atlas-paper); border-color: rgba(238,238,231,.3); }
