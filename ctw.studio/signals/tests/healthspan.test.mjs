@@ -75,9 +75,8 @@ test('healthspan page exposes substantive no-JS evidence, accessible tables, and
   assert.match(html, /id="health-data-table"/);
   assert.match(html, /<noscript>/);
   assert.match(html, /prevention or treatment spending records allocation/i);
-  for (const route of ['../ai-work/', '../food/', '../housing/', '../science/', './', '../']) {
-    assert.match(html, new RegExp(`href="${route.replace(/[./]/g, '\\$&')}"`));
-  }
+  assert.match(html, /href="\/signals\/">Signals \//);
+  assert.match(html, /href="\/signals\/healthspan\/" aria-current="location"/);
 });
 
 test('health renderer and updater have no chart runtime and fail closed on schema gaps', () => {

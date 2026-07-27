@@ -4,47 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Signals atlas — CTW Signals</title>
-  <meta name="description" content="The evidence standard, geographic lenses and publication roadmap for ten CTW Signals briefings.">
+  <meta name="description" content="The evidence standard, geographic lenses and canonical taxonomy for ten CTW Signals subjects.">
   <meta name="theme-color" content="#080907">
   <link rel="canonical" href="https://ctw.studio/signals/">
   <meta property="og:title" content="The Signals atlas — CTW Signals">
-  <meta property="og:description" content="Ten long-horizon evidence briefs held to one inspectable standard.">
+  <meta property="og:description" content="Ten long-horizon subjects held to one inspectable evidence standard.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ctw.studio/signals/">
   <link rel="icon" href="../favicon.png">
   <link rel="stylesheet" href="../tailwind.css">
   <link rel="stylesheet" href="signals.css">
   <link rel="stylesheet" href="atlas.css">
+  <link rel="stylesheet" href="subject-menu.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script defer src="../nav.js" data-base="../" data-active="signals"></script>
+  <script defer src="subject-menu.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to the atlas</a>
   <main id="main-content">
     <header class="atlas-hero">
       <div class="atlas-shell">
-        <nav class="atlas-topics" aria-label="Signal topics">
-          <span>Signals /</span>
-          <a href="ai-work/">AI &amp; work</a>
-          <a href="food/">Food &amp; planet</a>
-          <a href="housing/">Housing</a>
-          <a href="science/">Science</a>
-          <a href="healthspan/">Healthspan</a>
-          <a href="real-time-ai/">Real-time AI</a>
-          <a href="demography/">Demography</a>
-          <a href="education/">Education</a>
-          <a href="financial-fragility/">Financial fragility</a>
-          <a class="active" href="./" aria-current="page">Atlas</a>
+        <nav class="atlas-topics" aria-label="Signal subjects">
+          <a class="signals-home atlas-brand" href="/signals/">Signals /</a>
+          <a href="/signals/housing/">Housing &amp; affordability</a>
+          <a href="/signals/food/">Food, animals &amp; planet</a>
+          <a href="/signals/healthspan/">Healthspan &amp; care</a>
+          <a href="/signals/ai-work/">Work, education &amp; human capability</a>
+          <a href="/signals/financial-fragility/">Prosperity &amp; financial security</a>
+          <span class="topic-pill--planned">Energy, compute &amp; infrastructure <span class="topic-pill__badge">Planned</span></span>
+          <a href="/signals/demography/">Demography, migration &amp; aging</a>
+          <span class="topic-pill--planned">Democracy, trust &amp; information <span class="topic-pill__badge">Planned</span></span>
+          <a href="/signals/science/">Science, discovery &amp; AI systems</a>
+          <span class="topic-pill--planned">Global resilience <span class="topic-pill__badge">Planned</span></span>
         </nav>
         <p class="atlas-kicker">The Signals atlas · Version 1</p>
         <h1>Important questions,<br><em>held to one standard.</em></h1>
-        <p class="atlas-deck">Ten long-horizon briefings about whether life is becoming more capable, affordable, healthy, resilient and free—not a scoreboard of context-free metrics.</p>
+        <p class="atlas-deck">Ten long-horizon subjects asking whether life is becoming more capable, affordable, healthy, resilient and free—not a scoreboard of context-free metrics.</p>
         <div class="atlas-status">
-          <span><strong>9</strong> briefings published</span>
-          <span><strong>6 of 10</strong> atlas briefs published</span>
-          <span><strong>4</strong> atlas briefs planned</span>
+          <span><strong>9</strong> published briefs</span>
+          <span><strong>7 of 10</strong> subjects with published coverage</span>
+          <span><strong>3</strong> subjects planned</span>
         </div>
       </div>
     </header>
@@ -53,82 +55,89 @@
       <div class="atlas-shell">
         <div class="section-head topics-head">
           <div><p class="section-label">The ten-subject atlas</p><h2 id="topics-title">What Signals will track.</h2></div>
-          <p>Each card defines a standing evidence brief, not a one-off article. The indicators can evolve; the question remains inspectable.</p>
+          <p>Each card defines a standing subject, not a claim of complete coverage. Briefs can accumulate; indicators can evolve; each question remains inspectable.</p>
         </div>
 
         <ol class="atlas-grid">
-          <li class="atlas-card atlas-card--published" data-status="published">
-            <a href="housing/">
-              <header><span>01</span><small>Published · Brief 003</small></header>
+          <li id="subject-housing-affordability" class="atlas-card atlas-card--published" data-status="published">
+            <div>
+              <header><span>01</span><small>Published coverage</small></header>
               <h3>Housing &amp; affordability</h3>
               <p>Track prices against incomes, rents, mortgage costs and total monthly burden; construction against household formation; social housing, waiting times, homelessness, vacancy and who gains from scarcity.</p>
-              <strong>Read the brief →</strong>
-            </a>
-          </li>
-          <li class="atlas-card" data-status="planned">
-            <div>
-              <header><span>02</span><small>Planned · Next</small></header>
-              <h3>Prosperity</h3>
-              <p>Track median disposable income, productivity, real wages, essential costs, wealth distribution, public services, time use and whether economic gains reach ordinary households.</p>
+              <div class="atlas-card__links"><a href="housing/">Brief 003 · Housing &amp; affordability →</a></div>
             </div>
           </li>
-          <li class="atlas-card" data-status="planned">
+          <li id="subject-food-animals-planet" class="atlas-card atlas-card--published" data-status="published">
             <div>
-              <header><span>03</span><small>Planned</small></header>
-              <h3>Energy &amp; compute</h3>
+              <header><span>02</span><small>Published coverage</small></header>
+              <h3>Food, animals &amp; planet</h3>
+              <p>Track animal lives, land, emissions, forests, water, oceans, health and uncertainty without collapsing distinct system boundaries.</p>
+              <div class="atlas-card__links"><a href="food/">Brief 002 · Food, animals &amp; planet →</a></div>
+            </div>
+          </li>
+          <li id="subject-healthspan-care" class="atlas-card atlas-card--published" data-status="published">
+            <div>
+              <header><span>03</span><small>Published coverage</small></header>
+              <h3>Healthspan &amp; care</h3>
+              <p>Track healthy life years, preventable mortality, chronic and mental illness, access and waiting times, workforce capacity, antimicrobial resistance and whether longer lives are better lives.</p>
+              <div class="atlas-card__links"><a href="healthspan/">Brief 005 · Healthspan &amp; care →</a></div>
+            </div>
+          </li>
+          <li id="subject-work-education-human-capability" class="atlas-card atlas-card--published" data-status="published">
+            <div>
+              <header><span>04</span><small>Published coverage · 2 briefs</small></header>
+              <h3>Work, education &amp; human capability</h3>
+              <p>Track labour-market change, task exposure, learning outcomes, pathways, adult retraining, teacher capacity and whether technology expands human capability.</p>
+              <div class="atlas-card__links">
+                <a href="ai-work/">Brief 001 · AI &amp; work →</a>
+                <a href="education/">Brief 008 · Education &amp; human capability →</a>
+              </div>
+            </div>
+          </li>
+          <li id="subject-prosperity-financial-security" class="atlas-card atlas-card--published" data-status="published">
+            <div>
+              <header><span>05</span><small>Published coverage</small></header>
+              <h3>Prosperity &amp; financial security</h3>
+              <p>Track incomes, wages, essential costs, wealth, debt, savings, public finance and whether economic gains and financial buffers reach ordinary households.</p>
+              <div class="atlas-card__links"><a href="financial-fragility/">Brief 009 · Financial fragility →</a></div>
+            </div>
+          </li>
+          <li id="subject-energy-compute-infrastructure" class="atlas-card" data-status="planned">
+            <div>
+              <header><span>06</span><small>Planned subject</small></header>
+              <h3>Energy, compute &amp; infrastructure</h3>
               <p>Track demand, prices, grid congestion, clean generation, firm capacity, storage, transmission, data centres, AI load, emissions and which constraints are physical rather than rhetorical.</p>
             </div>
           </li>
-          <li class="atlas-card atlas-card--published" data-status="published">
-            <a href="healthspan/">
-              <header><span>04</span><small>Published · Brief 005</small></header>
-              <h3>Healthspan &amp; care</h3>
-              <p>Track healthy life years, preventable mortality, chronic and mental illness, access and waiting times, workforce capacity, antimicrobial resistance and whether longer lives are better lives.</p>
-              <strong>Read the brief →</strong>
-            </a>
-          </li>
-          <li class="atlas-card atlas-card--published" data-status="published">
-            <a href="demography/">
-              <header><span>05</span><small>Published · Brief 007</small></header>
+          <li id="subject-demography-migration-aging" class="atlas-card atlas-card--published" data-status="published">
+            <div>
+              <header><span>07</span><small>Published coverage</small></header>
               <h3>Demography, migration &amp; aging</h3>
               <p>Track fertility, age structure, migration, dependency, household formation, regional divergence, integration and what population change means for housing, care, work and public finance.</p>
-              <strong>Read the brief →</strong>
-            </a>
+              <div class="atlas-card__links"><a href="demography/">Brief 007 · Demography, migration &amp; aging →</a></div>
+            </div>
           </li>
-          <li class="atlas-card" data-status="planned">
+          <li id="subject-democracy-trust-information" class="atlas-card" data-status="planned">
             <div>
-              <header><span>06</span><small>Planned</small></header>
+              <header><span>08</span><small>Planned subject</small></header>
               <h3>Democracy, trust &amp; information</h3>
               <p>Track institutional trust, rule of law, corruption, turnout, polarization, press freedom, information concentration, online manipulation and how AI-mediated discovery changes public knowledge.</p>
             </div>
           </li>
-          <li class="atlas-card atlas-card--published" data-status="published">
-            <a href="science/">
-              <header><span>07</span><small>Published · Brief 004</small></header>
-              <h3>Science &amp; discovery</h3>
-              <p>Track R&amp;D investment, research concentration, open data and software, replication, clinical translation, drug-development time, public research capacity, and whether AI measurably accelerates discovery rather than merely increasing publication volume.</p>
-              <strong>Read the brief →</strong>
-            </a>
-          </li>
-          <li class="atlas-card atlas-card--published" data-status="published">
-            <a href="education/">
-              <header><span>08</span><small>Published · Brief 008</small></header>
-              <h3>Education &amp; human capability</h3>
-              <p>Track foundational literacy and numeracy, learning loss, vocational pathways, adult retraining, education costs, teacher shortages, skill mismatches, and whether AI tutors improve outcomes.</p>
-              <strong>Read the brief →</strong>
-            </a>
-          </li>
-          <li class="atlas-card atlas-card--published" data-status="published">
-            <a href="financial-fragility/">
-              <header><span>09</span><small>Published · Brief 009</small></header>
-              <h3>Financial fragility</h3>
-              <p>Track household debt, government interest burden, credit stress, savings, asset-price-to-income ratios, bank stability, pension adequacy, and who is exposed when rates or prices move.</p>
-              <strong>Read the brief →</strong>
-            </a>
-          </li>
-          <li class="atlas-card" data-status="planned">
+          <li id="subject-science-discovery-ai-systems" class="atlas-card atlas-card--published" data-status="published">
             <div>
-              <header><span>10</span><small>Planned</small></header>
+              <header><span>09</span><small>Published coverage · 2 briefs</small></header>
+              <h3>Science, discovery &amp; AI systems</h3>
+              <p>Track research inputs, reliability, translation and demonstrated AI acceleration alongside bounded AI systems, field operation and retained human work.</p>
+              <div class="atlas-card__links">
+                <a href="science/">Brief 004 · Science &amp; discovery →</a>
+                <a href="real-time-ai/">Brief 006 · Real-time AI →</a>
+              </div>
+            </div>
+          </li>
+          <li id="subject-global-resilience" class="atlas-card" data-status="planned">
+            <div>
+              <header><span>10</span><small>Planned subject</small></header>
               <h3>Global resilience</h3>
               <p>Track conflict, displacement, food and energy exposure, supply-chain concentration, critical minerals, semiconductor dependencies, disaster losses, insurance retreat, and adaptation investment.</p>
             </div>
@@ -171,15 +180,15 @@
 
     <section class="publication-path" aria-labelledby="path-title">
       <div class="atlas-shell">
-        <div class="section-head"><p class="section-label">Preferred first publication wave</p><h2 id="path-title">Build depth before breadth.</h2></div>
-        <p class="path-note">This six-topic sequence remains the preferred depth-first path, but publication now extends beyond it: Education and Financial fragility are live. Prosperity, Energy, Democracy and Global resilience remain planned; the complete atlas is not yet published.</p>
+        <div class="section-head"><p class="section-label">Original six-subject first wave</p><h2 id="path-title">Build depth before breadth.</h2></div>
+        <p class="path-note">This first-wave sequence still guides depth, while published coverage now spans seven canonical subjects. Coverage is a foundation, not completion. Energy, compute &amp; infrastructure remains planned; Democracy, trust &amp; information and Global resilience are also planned outside this wave.</p>
         <ol>
-          <li class="done"><span>01</span><strong>Housing</strong><small>Published</small></li>
-          <li><span>02</span><strong>Prosperity</strong><small>Next</small></li>
-          <li><span>03</span><strong>Energy &amp; Compute</strong><small>Queued</small></li>
-          <li class="done"><span>04</span><strong>Healthspan</strong><small>Published</small></li>
-          <li class="done"><span>05</span><strong>Demography</strong><small>Published</small></li>
-          <li class="done"><span>06</span><strong>Science</strong><small>Published</small></li>
+          <li class="done"><span>01</span><strong>Housing &amp; affordability</strong><small>Coverage published</small></li>
+          <li class="done"><span>02</span><strong>Prosperity &amp; financial security</strong><small>Coverage published</small></li>
+          <li><span>03</span><strong>Energy, compute &amp; infrastructure</strong><small>Planned</small></li>
+          <li class="done"><span>04</span><strong>Healthspan &amp; care</strong><small>Coverage published</small></li>
+          <li class="done"><span>05</span><strong>Demography, migration &amp; aging</strong><small>Coverage published</small></li>
+          <li class="done"><span>06</span><strong>Science, discovery &amp; AI systems</strong><small>Coverage published</small></li>
         </ol>
       </div>
     </section>

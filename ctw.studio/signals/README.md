@@ -4,7 +4,7 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 
 ## Published briefs
 
-- **Signals atlas** (`index.html`) — the shared five-question evidence contract, three geographic lenses and the ten-subject publication roadmap.
+- **Signals atlas** (`index.html`) — the shared five-question evidence contract, three geographic lenses and canonical ten-subject taxonomy.
 - **Brief 001 · AI & work** (`ai-work/index.html`) — observed U.S. labor-market conditions, global AI exposure, early-career signals, employer expectations, adoption and productivity evidence.
 - **Brief 002 · Food, animals & the planet** (`food/index.html`) — animal slaughter, fish-count uncertainty, livestock emissions, product footprints, land, deforestation, water, oceans and health evidence.
 - **Brief 003 · Housing & affordability** (`housing/index.html`) — world housing adequacy, Dutch prices, rents, financing, tenure burden, supply and household formation, plus mechanism-led country comparisons.
@@ -14,6 +14,27 @@ A lightweight, evidence-led dashboard inside `ctw.studio`. It treats important c
 - **Brief 007 · Demography, migration & aging** (`demography/index.html`) — population stocks, migration flows, fertility, age structure, household formation, regional divergence and projections kept on their own clocks.
 - **Brief 008 · Education & human capability** (`education/index.html`) — assessments, pathways, adult learning, teacher capacity and bounded AI-tutor experiments without a synthetic capability score.
 - **Brief 009 · Financial fragility** (`financial-fragility/index.html`) — household, government, bank and pension balance sheets, flows, buffers and shock channels kept dimensionally separate.
+
+## Canonical subject taxonomy
+
+Atlas order, coverage and brief mapping:
+
+| # | Subject | Atlas anchor | Published briefs |
+|---|---|---|---|
+| 1 | Housing & affordability | `/signals/#subject-housing-affordability` | Brief 003 |
+| 2 | Food, animals & planet | `/signals/#subject-food-animals-planet` | Brief 002 |
+| 3 | Healthspan & care | `/signals/#subject-healthspan-care` | Brief 005 |
+| 4 | Work, education & human capability | `/signals/#subject-work-education-human-capability` | Briefs 001, 008 |
+| 5 | Prosperity & financial security | `/signals/#subject-prosperity-financial-security` | Brief 009 |
+| 6 | Energy, compute & infrastructure | `/signals/#subject-energy-compute-infrastructure` | Planned |
+| 7 | Demography, migration & aging | `/signals/#subject-demography-migration-aging` | Brief 007 |
+| 8 | Democracy, trust & information | `/signals/#subject-democracy-trust-information` | Planned |
+| 9 | Science, discovery & AI systems | `/signals/#subject-science-discovery-ai-systems` | Briefs 004, 006 |
+| 10 | Global resilience | `/signals/#subject-global-resilience` | Planned |
+
+Current state: **9 published briefs**, **7 of 10 subjects with published coverage**, **3 planned subjects**. Coverage is not a completeness claim. Atlas and brief-page subject navigation uses seven canonical brief routes plus three visibly planned noninteractive rows; each brief marks its mapped subject with `aria-current="location"`. The Signals brand links to `/signals/`.
+
+At 760px and below, `subject-menu.js` progressively enhances that same semantic navigation into a compact accessible disclosure. Without JavaScript, seven canonical links and three visibly planned noninteractive rows remain visible.
 
 ## Files
 
