@@ -58,6 +58,43 @@ Keep cutover rollback-safe:
 
 Static portfolio site for [ctw.studio](https://ctw.studio). No build framework — plain HTML, CSS, and vanilla JS.
 
+### Design system
+
+The static [design-system guide](https://ctw.studio/design-system/) documents
+shared CTW roles and components. It is intentionally absent from public
+navigation while adoption remains staged.
+
+Source hierarchy:
+
+1. Root `DESIGN.md` owns normative intent and exportable token values.
+2. `ctw.studio/design-system/tokens.css` implements browser role tokens;
+   `components.css` implements framework-neutral components.
+3. `ctw.studio/design-system/index.html` demonstrates those contracts.
+4. `ctw.studio/design-system/tokens.json` is generated DTCG output, not a
+   hand-edited source.
+
+Verify the contract from the repository root:
+
+```bash
+npx --yes @google/design.md@0.3.0 lint DESIGN.md
+npx --yes @google/design.md@0.3.0 export --format dtcg DESIGN.md > /tmp/ctw-design-tokens.json
+diff -u ctw.studio/design-system/tokens.json /tmp/ctw-design-tokens.json
+node --test ctw.studio/design-system/tests/design-system.test.mjs
+npx --yes @playwright/test@1.62.0 install chromium
+npx --yes --package=@playwright/test@1.62.0 -- sh -c 'NODE_PATH="$(dirname "$(dirname "$(command -v playwright)")")" playwright test --config ctw.studio/design-system/tests/playwright.config.cjs'
+(cd ctw.studio && node --test signals/tests/*.test.mjs)
+```
+
+Visual audit writes compact and wide screenshots plus HTML report under
+`ctw.studio/design-system/test-results/`. CI uploads that directory, including
+first-retry traces, as `ctw-design-system-visual-audit` for 14 days.
+
+Adoption is opt-in: wrap migrated markup in `.ctw-scope`, load role tokens and
+components, and migrate one route family at a time. `compat.css` provides only
+approved role-backed aliases for existing variable names. Keep Signals
+page-scoped accents local. This route adds no SvelteKit or other framework,
+deployment, Vercel, or public-navigation change.
+
 ## Tech Stack
 
 - **HTML/CSS/JS** — Static pages, no framework
