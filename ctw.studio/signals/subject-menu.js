@@ -1,12 +1,16 @@
 (() => {
   const mobile = matchMedia('(max-width: 760px)');
 
-  document.querySelectorAll('.atlas-topics, .topic-switcher, .evidence-topics').forEach((nav, index) => {
-    const brand = nav.querySelector(':scope > .signals-home');
+  document.querySelectorAll('.subject-menu').forEach((nav, index) => {
+    if (nav.dataset.subjectMenuEnhanced === 'true') return;
+
+    const brand = nav.querySelector(':scope > .subject-menu__brand');
     const options = [...nav.children].filter((option) =>
-      option.matches('a:not(.signals-home), .topic-pill--planned')
+      option.matches('.subject-menu__option')
     );
     if (!brand || options.length !== 10) return;
+
+    nav.dataset.subjectMenuEnhanced = 'true';
 
     const current = options.find((option) => option.matches('a[aria-current="location"]'));
     const panel = document.createElement('div');
@@ -30,7 +34,6 @@
     icon.textContent = '▾';
     trigger.append(label, icon);
 
-    nav.classList.add('subject-menu');
     nav.append(trigger, panel);
 
     const sizePanel = () => {
