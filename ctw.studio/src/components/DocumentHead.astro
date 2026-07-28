@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import dmMono400Latin from '@fontsource/dm-mono/files/dm-mono-latin-400-normal.woff2?url';
 import dmMono500Latin from '@fontsource/dm-mono/files/dm-mono-latin-500-normal.woff2?url';
 import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
@@ -14,7 +13,6 @@ interface Props {
   homepageStyles?: boolean;
   pageCssUrls?: string[];
   pageScriptUrls?: string[];
-  transitions?: boolean;
 }
 
 const {
@@ -26,8 +24,7 @@ const {
   themeColor,
   homepageStyles = false,
   pageCssUrls = [],
-  pageScriptUrls = [],
-  transitions = false
+  pageScriptUrls = []
 } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
 ---
@@ -61,4 +58,3 @@ const canonicalUrl = new URL(canonical, Astro.site);
 {homepageStyles && <link rel="stylesheet" href="/homepage.css" />}
 {pageCssUrls.map((href) => <link rel="stylesheet" href={href} />)}
 {pageScriptUrls.map((src) => <script is:inline src={src} defer></script>)}
-{transitions && <ClientRouter />}

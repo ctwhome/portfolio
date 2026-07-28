@@ -1,5 +1,4 @@
 ---
-import PortfolioController from '../../components/PortfolioController.svelte';
 import ProjectDetails from '../../components/ProjectDetails.astro';
 import ProjectGrid from '../../components/ProjectGrid.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
@@ -16,7 +15,7 @@ const orderedProjects = [...projects].sort((a, b) => b.date.localeCompare(a.date
 >
   <main id="main-content" class="portfolio-page">
     <div class="ctw-container">
-      <header class="portfolio-lead" transition:name="portfolio-lead">
+      <header class="portfolio-lead">
         <p class="ctw-section-number">Selected work / 2013—2025</p>
         <h1>Research software as cultural practice.</h1>
         <div class="portfolio-lead__meta">
@@ -27,6 +26,6 @@ const orderedProjects = [...projects].sort((a, b) => b.date.localeCompare(a.date
       <ProjectGrid projects={orderedProjects} />
       <ProjectDetails projects={orderedProjects} />
     </div>
-    <PortfolioController client:load />
   </main>
+  <script src="../../scripts/portfolio-controller.ts"></script>
 </SiteLayout>

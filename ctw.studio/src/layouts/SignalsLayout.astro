@@ -48,7 +48,6 @@ const {
       themeColor={themeColor}
       pageCssUrls={pageCssUrls}
       pageScriptUrls={pageScriptUrls}
-      transitions={false}
     />
   </head>
   <body class={bodyClass || undefined}>
@@ -57,7 +56,6 @@ const {
       <SiteHeader current="signals" />
     </div>
     <slot />
-    <script is:inline>window.__ctwFeedbackLoaded = false;</script>
     <script is:inline src="/feedback.js"></script>
   </body>
 </html>

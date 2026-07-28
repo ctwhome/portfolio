@@ -27,6 +27,7 @@ const homepage = [
   read(join(studioDir, "src/components/SiteFooter.astro")),
 ].join("\n");
 const homepageCss = read(join(studioDir, "homepage.css"));
+const transitionsCss = read(join(studioDir, "src/styles/transitions.css"));
 const atlas = read(join(studioDir, "dist/signals/index.html"));
 const atlasCss = read(join(studioDir, "signals/atlas.css"));
 const workflow = read(join(rootDir, ".github/workflows/check-ctw-design-system.yml"));
@@ -689,7 +690,12 @@ test("homepage pilot preserves content and removes legacy runtime treatments", (
     assert.ok(homepage.includes(text), text);
   }
   assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
-  assert.match(homepage, /<script is:inline src="\/feedback\.js" data-astro-rerun><\/script>/);
+  assert.match(homepage, /<script is:inline src="\/feedback\.js"><\/script>/);
+  assert.doesNotMatch(homepage, /ClientRouter|data-astro-(?:reload|rerun)|transition:(?:name|animate)/);
+  assert.match(transitionsCss, /@view-transition\s*\{\s*navigation:\s*auto;/s);
+  assert.match(transitionsCss, /\.ctw-wordmark\s*\{\s*view-transition-name:\s*site-mark;/s);
+  assert.match(transitionsCss, /\.ctw-hero__title,\s*\.portfolio-lead\s*\{\s*view-transition-name:\s*portfolio-lead;/s);
+  assert.match(transitionsCss, /::view-transition-old\(site-mark\),\s*::view-transition-new\(site-mark\)\s*\{\s*animation:\s*none;/s);
   assert.doesNotMatch(homepage, /tailwind\.css|anime(?:\.min)?\.js|three(?:\.min)?\.js|blueprint-canvas|onclick=|opacity-0|glass|bento/i);
   assert.doesNotMatch(homepage, /<script[^>]+src="nav\.js"/);
   assert.match(homepage, /id="product-index-hint"[^>]*>Swipe products to explore/);
