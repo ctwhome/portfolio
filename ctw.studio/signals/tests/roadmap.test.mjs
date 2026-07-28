@@ -196,6 +196,8 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(subjectMenuCss, /\.subject-menu__panel\[aria-hidden="false"\]/);
   assert.match(cssRule('.subject-menu'), /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
   assert.match(cssRule('.subject-menu'), /--subject-menu-accent:\s*#f7b500/);
+  assert.match(cssRule('.subject-menu'), /--subject-menu-accent-soft:\s*rgba\(247, 181, 0, 0\.11\)/);
+  assert.match(cssRule('.subject-menu'), /--subject-menu-focus:\s*var\(--ctw-color-focus, #f7b500\)/);
   assert.match(cssRule('.subject-menu'), /--subject-menu-font:\s*Inter,\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*sans-serif/);
   assert.match(cssRule('.subject-menu'), /display:\s*flex/);
   assert.match(cssRule('.subject-menu'), /flex-wrap:\s*wrap/);
@@ -227,9 +229,9 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(currentRule, /color:\s*var\(--subject-menu-accent\)/);
   assert.match(currentRule, /box-shadow:\s*inset [^;]*var\(--subject-menu-accent\)/);
   const focusRule = cssRule('.subject-menu-ready .subject-menu__panel a:focus-visible');
-  assert.match(focusRule, /border-color:\s*var\(--subject-menu-accent\)/);
+  assert.match(focusRule, /border-color:\s*var\(--subject-menu-focus\)/);
   assert.match(focusRule, /color:\s*var\(--subject-menu-text\)/);
-  assert.match(focusRule, /outline:\s*3px solid var\(--subject-menu-accent\)/);
+  assert.match(focusRule, /outline:\s*3px solid var\(--subject-menu-focus\)/);
   const hoverRule = cssRule('.subject-menu-ready .subject-menu__panel a:not([aria-current="location"]):hover');
   assert.match(hoverRule, /background:\s*rgba\(255, 255, 255, 0\.07\)/);
   assert.match(hoverRule, /border-color:\s*var\(--subject-menu-border\)/);
@@ -239,6 +241,17 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(plannedRule, /cursor:\s*default/);
   assert.match(cssRule('.subject-menu__option--planned'), /pointer-events:\s*none/);
   assert.doesNotMatch(subjectMenuCss, /!important/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__trigger'), /border-radius:\s*999px/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__panel'), /border-radius:\s*1rem/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__panel'), /box-shadow:\s*0 1rem 3rem rgba\(0, 0, 0, 0\.5\)/);
+  assert.match(cssRule('.subject-menu-ready .subject-menu__panel > .subject-menu__option'), /border-radius:\s*0\.65rem/);
+  const atlasMenuRule = cssRule('.roadmap-page .subject-menu');
+  assert.match(atlasMenuRule, /--subject-menu-accent:\s*var\(--ctw-accent-cyan, #57d7ff\)/);
+  assert.match(atlasMenuRule, /--subject-menu-accent-soft:\s*color-mix\(in srgb, var\(--subject-menu-accent\) 11%, transparent\)/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__trigger'), /border-radius:\s*2px/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__panel'), /border-radius:\s*2px/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__panel'), /box-shadow:\s*none/);
+  assert.match(cssRule('.roadmap-page.subject-menu-ready .subject-menu__panel > .subject-menu__option'), /border-radius:\s*0/);
   assert.match(subjectMenuJs, /createElement\('button'\)/);
   assert.match(subjectMenuJs, /setAttribute\('aria-expanded'/);
   assert.match(subjectMenuJs, /setAttribute\('aria-controls'/);
@@ -254,6 +267,16 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(subjectMenuJs, /event\.key === 'Escape'/);
 });
 
+test('mobile subject menu brand provides a shared 44px touch target', () => {
+  const rule = subjectMenuCss.match(
+    /@media \(max-width: 760px\)[\s\S]*?\.subject-menu \.subject-menu__brand\s*\{([^}]+)\}/
+  )?.[1] || '';
+
+  assert.match(rule, /display:\s*inline-flex/);
+  assert.match(rule, /min-height:\s*44px/);
+  assert.match(rule, /align-items:\s*center/);
+});
+
 test('subject menu CSS owns internals while page styles retain placement only', () => {
   for (const { file, css } of pageCss) {
     assert.doesNotMatch(
@@ -263,7 +286,7 @@ test('subject menu CSS owns internals while page styles retain placement only', 
     );
   }
 
-  assert.match(atlasCss, /\.atlas-topics\s*\{\s*padding-bottom:\s*78px;\s*\}/);
+  assert.match(atlasCss, /\.atlas-topics\s*\{\s*padding-bottom:\s*4\.75rem;\s*\}/);
   assert.match(pageCss.find(({ file }) => file === 'signals.css').css, /\.topic-switcher\s*\{\s*margin-bottom:\s*clamp\(3rem, 7vw, 6rem\);\s*\}/);
   assert.match(pageCss.find(({ file }) => file === 'signals.css').css, /\.evidence-topics\s*\{\s*padding-bottom:\s*4rem;\s*\}/);
   assert.match(pageCss.find(({ file }) => file === 'housing/housing.css').css, /\.housing-topics\s*\{\s*padding:\s*3px 0 52px;\s*\}/);

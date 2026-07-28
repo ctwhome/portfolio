@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth" style="background:#000">
-
+<!doctype html>
+<html lang="en" class="ctw-theme-coal">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CTW Studio – Applied Research Software</title>
-  <meta name="description"
-    content="CTW Studio designs research software systems that pair academic rigor with cultural-grade design.">
-
+  <meta name="description" content="CTW Studio designs research software systems that pair academic rigor with cultural-grade design.">
   <meta property="og:title" content="CTW Studio – Applied Research Software">
   <meta property="og:description" content="Software for research and society.">
   <meta property="og:type" content="website">
@@ -16,1227 +13,186 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="CTW Studio">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CTW Studio – Applied Research Software">
-  <meta name="twitter:description"
-    content="Software for research and society. Data infrastructure, ML systems, and tools that create lasting impact.">
+  <meta name="twitter:description" content="Software for research and society. Data infrastructure, ML systems, and tools that create lasting impact.">
   <meta name="twitter:image" content="https://ctw.studio/og-image.png">
   <meta name="twitter:image:alt" content="CTW Studio – Applied Research Software">
-
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-
-  <link rel="stylesheet" href="tailwind.css">
-
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
-
-  <style>
-    :root {
-      color-scheme: dark;
-    }
-
-    html {
-      scrollbar-gutter: stable;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background-color: #000000;
-      color: #f2f1ec;
-      line-height: 1.7;
-    }
-
-    /* Frosted glass navigation */
-    .tag {
-      letter-spacing: 0.25em;
-      font-size: 0.65rem;
-    }
-
-    .scroll-card {
-      background: rgba(8, 8, 8, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: transform 0.2s ease, border 0.2s ease;
-    }
-
-    .scroll-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(247, 181, 0, 0.4);
-    }
-
-    .scroll-card-light {
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: transform 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .scroll-card-light:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0, 0, 0, 0.15);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    .horizontal-gallery {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
-      gap: 2rem;
-    }
-
-    .horizontal-gallery::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .horizontal-gallery::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
-    }
-
-    .bg-chalk .horizontal-gallery::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.15);
-    }
-
-    .projects-gallery {
-      padding-left: max(1.5rem, calc(50vw - 34.5rem));
-    }
-
-    .project-card {
-      min-width: 400px;
-      scroll-snap-align: start;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(6, 6, 6, 0.8);
-      display: flex;
-      flex-direction: column;
-      transition: border 0.2s ease, transform 0.2s ease;
-    }
-
-    .project-card:hover {
-      border-color: rgba(247, 181, 0, 0.4);
-      transform: translateY(-4px);
-    }
-
-    /* Light theme project cards */
-    .bg-chalk .project-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    .bg-chalk .project-card:hover {
-      border-color: rgba(0, 0, 0, 0.2);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .bg-chalk .project-body {
-      color: #050505;
-    }
-
-    .bg-chalk .project-body .text-gray-300 {
-      color: #525252;
-    }
-
-    .bg-chalk .project-body .text-gray-400 {
-      color: #737373;
-    }
-
-    .bg-chalk .project-body .text-amber-400 {
-      color: #d97706;
-    }
-
-    .project-cover {
-      position: relative;
-      height: 220px;
-      overflow: hidden;
-    }
-
-    .project-cover-gradient {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .project-body {
-      padding: 1.75rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .method-row {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .method-row:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .contact-card {
-      border-radius: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .quote-card {
-      background: rgba(8, 8, 8, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-    }
-
-    .bento-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .bento-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    @media (max-width: 768px) {
-      .project-card {
-        min-width: 320px;
-      }
-    }
-
-    /* Pillar cards - accordion */
-    .pillar-card {
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .pillar-expanded {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-      opacity: 0;
-      margin-top: 0;
-    }
-
-    .pillar-card.open .pillar-expanded {
-      max-height: 150px;
-      opacity: 1;
-      margin-top: 1rem;
-    }
-
-    .pillar-toggle {
-      transition: transform 0.3s ease;
-    }
-
-    .pillar-card.open .pillar-toggle {
-      transform: rotate(180deg);
-    }
-
-    /* Three.js Blueprint Canvas - on top with blend mode */
-    #blueprint-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 5;
-      mix-blend-mode: screen;
-    }
-
-    /* Content elements above the canvas lines */
-    .bento-card,
-    .scroll-card,
-    .scroll-card-light,
-    .project-card,
-    .quote-card,
-    .contact-card,
-    section>div {
-      position: relative;
-      z-index: 10;
-    }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="/design-system/tokens.css">
+  <link rel="stylesheet" href="/design-system/components.css">
+  <link rel="stylesheet" href="/design-system/compositions.css">
+  <link rel="stylesheet" href="/homepage.css">
 </head>
-
-<body class="antialiased">
-
-  <!-- Three.js Blueprint Background -->
-  <canvas id="blueprint-canvas"></canvas>
-
-  <script src="nav.js" data-base="" data-active=""></script>
-
-  <main>
-
-    <!-- Hero -->
-    <section class="pt-32 lg:pt-44">
-      <div class="px-6 pb-24 lg:pb-32">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1
-            class="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight mb-6 opacity-0">
-            Applied Research<br>
-            <span class="text-amber-400">Software</span>
-          </h1>
-          <p class="hero-desc text-lg lg:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl mx-auto opacity-0">
-            Software for research and society. Data infrastructure, ML systems, and tools that create <span
-              class="text-white">lasting impact</span>.
-          </p>
-          <div class="hero-desc flex items-center justify-center gap-6 opacity-0">
-            <a href="#contact"
-              class="inline-flex items-center gap-2 bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors">
-              Get in touch
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                </path>
-              </svg>
-            </a>
-            <span class="hidden sm:inline-flex items-center gap-2 text-sm text-gray-500">
-              <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              Available for collaborations
-            </span>
-          </div>
-        </div>
+<body class="ctw-scope">
+  <a class="ctw-skip-link" href="#main-content">Skip to content</a>
+  <div class="ctw-shell">
+    <header class="ctw-masthead">
+      <div class="ctw-container ctw-masthead__inner">
+        <a class="ctw-wordmark" href="/" aria-current="page">CTW Studio</a>
+        <nav class="ctw-primary-nav" aria-label="Primary navigation">
+          <a class="ctw-primary-nav__link" href="/portfolio/">Projects</a>
+          <a class="ctw-primary-nav__link" href="/signals/">Signals</a>
+          <a class="ctw-primary-nav__link" href="/nlesc/">NLeSC</a>
+          <a class="ctw-primary-nav__link" href="/workshop/">Workshop</a>
+          <a class="ctw-primary-nav__link" href="#contact">Contact</a>
+        </nav>
       </div>
+    </header>
 
-    
-
-      <!-- Stats bar -->
-      <div class="stats-bar px-8 lg:px-16 xl:px-24 py-10 border-t border-white/10 opacity-0">
-        <div class="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between gap-6">
-          <div class="flex flex-wrap gap-x-12 gap-y-3 text-base text-gray-400">
-            <span><strong class="text-white text-lg">17</strong> years</span>
-            <span><strong class="text-white text-lg">50+</strong> projects</span>
-            <span><strong class="text-white text-lg">15</strong> institutions</span>
-            <span class="text-gray-400">Amsterdam</span>
-          </div>
-          <div class="flex gap-6">
-            <a href="portfolio/" class="text-base text-amber-400 hover:text-amber-300 transition-colors">All projects
-              →</a>
-            <a href="#about" class="text-base text-gray-400 hover:text-white transition-colors">About →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="px-6 py-24 border-t border-white/10">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Founder Card -->
-        <div class="about-fade p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-14 h-14 rounded-full bg-amber-600 flex items-center justify-center">
-              <span class="text-lg font-semibold text-amber-100">JG</span>
+    <main id="main-content">
+      <section class="ctw-hero ctw-instrument" aria-labelledby="hero-title">
+        <div class="ctw-container ctw-stack">
+          <div class="ctw-coordinate"><span>52.3676° N / 4.9041° E</span><span>Amsterdam · working globally</span></div>
+          <div class="ctw-hero__grid">
+            <div class="ctw-stack">
+              <p class="ctw-section-number">01 / Applied practice</p>
+              <h1 class="ctw-hero__title" id="hero-title">Applied research <span class="ctw-display--outline">software.</span></h1>
+              <p class="ctw-lede">Software for research and society. Data infrastructure, ML systems, and tools that create <strong>lasting impact</strong>.</p>
+              <div class="ctw-cluster">
+                <a class="ctw-button" href="#contact">Get in touch →</a>
+                <span class="ctw-meta">Available for collaborations</span>
+              </div>
             </div>
-            <div>
-              <h3 class="text-lg font-semibold">Jesse Gonzalez</h3>
-              <p class="text-gray-400 text-sm">Founder · Senior Research Software Engineer</p>
+            <div class="studio-stats" aria-label="Studio facts">
+              <div class="ctw-stat"><strong class="ctw-stat__value">17</strong><p class="ctw-stat__label">years</p></div>
+              <div class="ctw-stat"><strong class="ctw-stat__value">50+</strong><p class="ctw-stat__label">projects</p></div>
+              <div class="ctw-stat"><strong class="ctw-stat__value">15</strong><p class="ctw-stat__label">institutions</p></div>
             </div>
           </div>
-          <p class="text-gray-300 mb-4">
-            17+ years in software engineering. Currently at Netherlands eScience Center.
-            Master's in Artificial Intelligence and Computer Science.
-          </p>
-          <p class="text-gray-400 mb-6">
-            Based in Amsterdam, working globally with research institutions and cultural organizations.
-          </p>
-          <a href="https://jessegonzalez.dev" target="_blank"
-            class="text-amber-400 text-sm font-medium inline-flex items-center gap-2 hover:text-amber-300 transition-colors">
-            Full bio & portfolio
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Right: Mission -->
-        <div class="about-fade">
-          <p class="tag uppercase text-amber-400 mb-3">About CTW Studio</p>
-          <h2 class="text-3xl md:text-4xl font-semibold mb-6">Creating a<br><span class="text-amber-400">Technological
-              World</span></h2>
-          <p class="text-gray-300 text-lg mb-4">
-            Software for research and society. Tools that help scientists do better research and communities have more
-            voice.
-          </p>
-          <p class="text-gray-400">
-            Open science, sustainable software, technology that serves human flourishing.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Collaborations -->
-    <section id="collaborations" class="px-6 py-32 border-y border-white/10">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.85fr_1.15fr] gap-16">
-        <div class="lg:sticky lg:top-32 self-start space-y-6">
-          <p class="tag uppercase text-amber-400">Collaborations</p>
-          <h2 class="text-3xl md:text-4xl font-semibold leading-tight">
-            Research software<br><span class="text-gray-500">engineering</span>
-          </h2>
-          <p class="text-lg text-gray-400">
-            Partnering with funded research projects to build sustainable, open-source software that advances scientific
-            discovery.
-          </p>
-          <a href="#contact"
-            class="inline-flex items-center gap-2 bg-amber-400 text-black px-6 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors">
-            Start a Collaboration
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-
-        <div class="space-y-6">
-          <article class="scroll-card relative overflow-hidden">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <ellipse cx="12" cy="5" rx="9" ry="3" />
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-              <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
-            </svg>
-            <div class="relative pl-8">
-              <h3 class="text-lg font-semibold mb-2">Research Data Infrastructure</h3>
-              <p class="text-gray-400">FAIR-compliant data pipelines and architectures for reproducible research at
-                scale.</p>
-            </div>
-          </article>
-
-          <article class="scroll-card relative overflow-hidden">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <rect x="4" y="4" width="16" height="16" rx="2" />
-              <rect x="9" y="9" width="6" height="6" rx="1" />
-              <path d="M9 2v2" />
-              <path d="M15 2v2" />
-              <path d="M9 20v2" />
-              <path d="M15 20v2" />
-              <path d="M2 9h2" />
-              <path d="M2 15h2" />
-              <path d="M20 9h2" />
-              <path d="M20 15h2" />
-            </svg>
-            <div class="relative pl-8">
-              <h3 class="text-lg font-semibold mb-2">ML Systems & Responsible AI</h3>
-              <p class="text-gray-400">Validated, explainable ML systems with proper governance for research and
-                clinical contexts.</p>
-            </div>
-          </article>
-
-          <article class="scroll-card relative overflow-hidden">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path d="M12 3L2 9l10 6 10-6-10-6Z" />
-              <path d="M2 17l10 6 10-6" />
-              <path d="M2 13l10 6 10-6" />
-            </svg>
-            <div class="relative pl-8">
-              <h3 class="text-lg font-semibold mb-2">Scientific Visualization & Digital Exhibits</h3>
-              <p class="text-gray-400">Interactive visualizations, 3D environments, and museum-ready digital
-                experiences.</p>
-            </div>
-          </article>
-
-          <article class="scroll-card relative overflow-hidden">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path d="M14 19a6 6 0 0 0-12 0" />
-              <circle cx="8" cy="9" r="4" />
-              <path d="M22 19a6 6 0 0 0-6-6 4 4 0 1 0 0-8" />
-            </svg>
-            <div class="relative pl-8">
-              <h3 class="text-lg font-semibold mb-2">Collaborative Research Platforms</h3>
-              <p class="text-gray-400">Open-source tools and platforms that support distributed research teams and
-                long-term scholarship.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- How We Work -->
-    <section id="how-we-work" class="px-6 py-24">
-      <div class="max-w-6xl mx-auto">
-        <p class="tag uppercase text-amber-400 mb-3">Our Process</p>
-        <h2 class="text-3xl md:text-4xl font-semibold mb-4">Working closely with</h2>
-        <p class="text-3xl md:text-4xl font-semibold text-amber-400 mb-12">research teams</p>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          <!-- Planning -->
-          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-              <path d="M8 14h.01" />
-              <path d="M12 14h.01" />
-              <path d="M16 14h.01" />
-              <path d="M8 18h.01" />
-              <path d="M12 18h.01" />
-            </svg>
-            <div class="relative pl-8">
-              <div class="flex items-center justify-between">
-                <h3 class="text-lg font-semibold">Planning</h3>
-                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <p class="text-gray-300 mt-2">Research goals drive technical strategy</p>
-              <div class="pillar-expanded">
-                <p class="text-gray-400 text-sm">We start with your grant narrative and scientific objectives.
-                  Collaborative roadmapping ensures every technical decision serves the research.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Visibility -->
-          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-              <circle cx="12" cy="12" r="3" />
-            </svg>
-            <div class="relative pl-8">
-              <div class="flex items-center justify-between">
-                <h3 class="text-lg font-semibold">Visibility</h3>
-                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <p class="text-gray-300 mt-2">Transparency at every stage</p>
-              <div class="pillar-expanded">
-                <p class="text-gray-400 text-sm">Regular demos, shared documentation, and open communication. You always
-                  know where the project stands and what's next.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Implementation -->
-          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path d="M21 12a9 9 0 0 1-9 9" />
-              <path d="M3 12a9 9 0 0 1 9-9" />
-              <path d="M12 3v3" />
-              <path d="M12 18v3" />
-              <path d="M3 12h3" />
-              <path d="M18 12h3" />
-              <circle cx="12" cy="12" r="3" />
-            </svg>
-            <div class="relative pl-8">
-              <div class="flex items-center justify-between">
-                <h3 class="text-lg font-semibold">Implementation</h3>
-                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <p class="text-gray-300 mt-2">Design thinking, iterative delivery</p>
-              <div class="pillar-expanded">
-                <p class="text-gray-400 text-sm">Prototypes before polish. We build, test, and refine with your
-                  team—solutions shaped by real researcher feedback.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sustainability -->
-          <article class="pillar-card scroll-card relative overflow-hidden" onclick="this.classList.toggle('open')">
-            <svg class="absolute -left-10 top-1/2 -translate-y-1/2 w-24 h-24 text-amber-400/[0.12]" fill="none"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path d="M12 22v-7" />
-              <path d="M9 22h6" />
-              <path d="M12 15a7 7 0 0 0 7-7c0-3.5-2.5-5-5-7-2.5 2-5 3.5-5 7a7 7 0 0 0 3 5.75" />
-              <path d="M12 15a7 7 0 0 1-3-5.75" />
-            </svg>
-            <div class="relative pl-8">
-              <div class="flex items-center justify-between">
-                <h3 class="text-lg font-semibold">Sustainability</h3>
-                <svg class="pillar-toggle w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <p class="text-gray-300 mt-2">Built to outlast the grant</p>
-              <div class="pillar-expanded">
-                <p class="text-gray-400 text-sm">Open source by default, documentation-first, knowledge transfer.
-                  Software that serves the community long after the project ends.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Products -->
-    <section class="py-32 px-6 bg-zinc-900/80">
-      <div class="max-w-6xl mx-auto">
-        <p class="tag uppercase text-amber-400 mb-3">Products</p>
-        <h2 class="text-3xl md:text-4xl font-semibold mb-4">Tools we're building</h2>
-        <p class="text-3xl md:text-4xl font-semibold text-amber-400 mb-16">for society</p>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
-          <!-- Notidian - Large -->
-          <a href="https://notidian.com" target="_blank"
-            class="bento-card col-span-2 row-span-2 rounded-2xl lg:rounded-3xl overflow-hidden relative group">
-            <img src="https://www.jessegonzalez.dev/images/notidian.avif" alt="Notidian"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </a>
-
-          <!-- IdeasDiamond -->
-          <a href="https://ideasdiamond.com" target="_blank"
-            class="bento-card col-span-1 row-span-1 rounded-2xl lg:rounded-3xl overflow-hidden relative group aspect-[5/3]">
-            <img src="https://www.jessegonzalez.dev/images/ideasdiamond.avif" alt="IdeasDiamond"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </a>
-
-          <!-- NextHuman -->
-          <a href="https://nexthuman.app" target="_blank"
-            class="bento-card col-span-1 row-span-1 rounded-2xl lg:rounded-3xl overflow-hidden relative group aspect-[5/3]">
-            <img src="https://www.jessegonzalez.dev/images/nexthuman.avif" alt="NextHuman"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute top-3 right-3">
-              <span class="text-[9px] uppercase tracking-wider text-white/60 bg-black/40 px-2 py-1 rounded">Coming
-                soon</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials & Methodology -->
-    <section id="methodology" class="py-24 border-t border-white/10 scroll-mt-24">
-      <div class="max-w-6xl mx-auto px-6 mb-8">
-        <div class="flex items-end justify-between">
-          <div>
-            <p class="tag uppercase text-gray-400 mb-3">What collaborators say</p>
-            <h2 class="text-3xl md:text-4xl font-semibold">Field notes</h2>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="scrollTestimonials(-1)"
-              class="testimonial-nav w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-amber-400 hover:text-amber-400 transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <button onclick="scrollTestimonials(1)"
-              class="testimonial-nav w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-amber-400 hover:text-amber-400 transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
+          <div class="ctw-cluster">
+            <a class="ctw-link ctw-link--standalone" href="/portfolio/">All projects →</a>
+            <a class="ctw-link ctw-link--standalone" href="#about">About →</a>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Horizontal scroll gallery -->
-      <div id="testimonials-gallery" class="flex gap-6 overflow-x-auto pb-4 px-6 scroll-smooth"
-        style="scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.15) transparent;">
-        <!-- Spacer for alignment -->
-        <div class="shrink-0 w-[max(0px,calc(50vw-36rem))]"></div>
-
-        <blockquote class="quote-card p-6 shrink-0 w-[360px]">
-          <p class="text-base text-gray-200 leading-relaxed mb-4">
-            "Jesse has really been <span class="text-amber-400">instrumental and decisive</span> in getting our
-            dashboard off the ground. Right from the start, he grasped the overarching concept and got straight
-            down to business."
-          </p>
-          <footer class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center">
-              <span class="text-amber-400 text-sm font-semibold">JC</span>
+      <section class="ctw-section" id="about" aria-labelledby="about-title">
+        <div class="ctw-container ctw-chapter">
+          <div class="ctw-chapter__label ctw-stack">
+            <p class="ctw-section-number">02 / About</p>
+            <p class="ctw-coordinate"><span>Founder</span><span>CTW</span></p>
+          </div>
+          <div class="studio-about">
+            <article class="ctw-stack studio-founder">
+              <p class="ctw-label">Jesse Gonzalez</p>
+              <h2 class="ctw-heading-lg" id="about-title">Creating a <span class="studio-accent">Technological World.</span></h2>
+              <p class="ctw-lede">Founder · Senior Research Software Engineer</p>
+              <p>17+ years in software engineering. Currently at Netherlands eScience Center. Master's in Artificial Intelligence and Computer Science.</p>
+              <p>Based in Amsterdam, working globally with research institutions and cultural organizations.</p>
+              <a class="ctw-link ctw-link--standalone" href="https://jessegonzalez.dev" target="_blank" rel="noopener noreferrer">Full bio &amp; portfolio ↗</a>
+            </article>
+            <div class="ctw-stack studio-mission">
+              <p class="ctw-label">About CTW Studio</p>
+              <p class="ctw-lede">Software for research and society. Tools that help scientists do better research and communities have more voice.</p>
+              <p>Open science, sustainable software, technology that serves human flourishing.</p>
             </div>
-            <div>
-              <cite class="not-italic font-medium text-sm">Josh Colston, PhD</cite>
-              <p class="text-gray-400 text-xs">Co-Lead, Mine-DD · University of Virginia</p>
-            </div>
-          </footer>
-        </blockquote>
-
-        <blockquote class="quote-card p-6 shrink-0 w-[360px]">
-          <p class="text-base text-gray-200 leading-relaxed mb-4">
-            "The research tool Collens has proven to be a <span class="text-amber-400">significant contribution</span>
-            to our research field. We are thoroughly impressed with Jesse's work and work ethic."
-          </p>
-          <footer class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-              <span class="text-white/60 text-sm font-semibold">EB</span>
-            </div>
-            <div>
-              <cite class="not-italic font-medium text-sm">Elli Bleeker, PhD</cite>
-              <p class="text-gray-400 text-xs">Lead Applicant, COLLaiTE · Huygens Institute (KNAW)</p>
-            </div>
-          </footer>
-        </blockquote>
-
-        <blockquote class="quote-card p-6 shrink-0 w-[360px]">
-          <p class="text-base text-gray-200 leading-relaxed mb-4">
-            "This is what we want as the eScience Center. Work that can have
-            <span class="text-amber-400">large and long-lasting impact</span>, beyond the project and beyond
-            the discipline."
-          </p>
-          <footer class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-              <span class="text-white/60 text-sm font-semibold">VA</span>
-            </div>
-            <div>
-              <cite class="not-italic font-medium text-sm">Valentina Azzara, PhD</cite>
-              <p class="text-gray-400 text-xs">Section Head · Netherlands eScience Center</p>
-            </div>
-          </footer>
-        </blockquote>
-
-        <blockquote class="quote-card p-6 shrink-0 w-[360px]">
-          <p class="text-base text-gray-200 leading-relaxed mb-4">
-            "His <span class="text-amber-400">leadership, initiative, and technical excellence</span> make him
-            a valuable asset to any team he joins."
-          </p>
-          <footer class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-amber-400/20 flex items-center justify-center">
-              <span class="text-amber-400 text-sm font-semibold">KM</span>
-            </div>
-            <div>
-              <cite class="not-italic font-medium text-sm">Kody Moodley, PhD</cite>
-              <p class="text-gray-400 text-xs">Senior Researcher · Maastricht University</p>
-            </div>
-          </footer>
-        </blockquote>
-
-        <blockquote class="quote-card p-6 shrink-0 w-[360px]">
-          <p class="text-base text-gray-200 leading-relaxed mb-4">
-            "This is <span class="text-amber-400">chef's kiss</span>."
-          </p>
-          <footer class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-              <span class="text-white/60 text-sm font-semibold">VP</span>
-            </div>
-            <div>
-              <cite class="not-italic font-medium text-sm">Veronica Pang</cite>
-              <p class="text-gray-400 text-xs">Communication Advisor · Netherlands eScience Center</p>
-            </div>
-          </footer>
-        </blockquote>
-
-        <!-- Spacer for alignment -->
-        <div class="shrink-0 w-6"></div>
-      </div>
-
-      <!-- Partners row -->
-      <div class="max-w-6xl mx-auto px-6 mt-12 pt-8 border-t border-white/10">
-        <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">Selected partners</p>
-        <div class="flex flex-wrap gap-x-8 gap-y-2 text-sm text-gray-400">
-          <span>Netherlands eScience Center</span>
-          <span>KNAW</span>
-          <span>KNMI</span>
-          <span>University of Virginia</span>
-          <span>Maastricht University</span>
-          <span>Smithsonian Institution</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Contact -->
-    <section id="contact" class="px-6 py-32">
-      <div class="max-w-5xl mx-auto contact-card p-10 md:p-14 text-center">
-        <p class="tag uppercase text-amber-200/80 mb-4">Collaborate</p>
-        <h2 class="text-3xl md:text-4xl font-semibold mb-6">
-          We partner with research institutions, cultural heritage organizations, and public-interest initiatives.
-        </h2>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-          Introduce us to your grant narrative, draft syllabus, or curatorial brief. We reply with a study plan
-          and references.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <a href="mailto:contact@ctw.studio"
-            class="bg-amber-400 text-black px-8 py-4 rounded-full font-semibold hover:bg-amber-300 transition-colors">
-            contact@ctw.studio
-          </a>
-          <a href="https://linkedin.com/in/ctwhome" target="_blank"
-            class="border border-white/30 px-8 py-4 rounded-full font-semibold hover:bg-white/5 transition-colors">
-            LinkedIn
-          </a>
+      <section class="ctw-section" id="collaborations" aria-labelledby="collaborations-title">
+        <div class="ctw-container ctw-chapter">
+          <div class="ctw-chapter__label ctw-stack">
+            <p class="ctw-section-number">03 / Collaborations</p>
+            <h2 class="ctw-heading-lg" id="collaborations-title">Research software <span class="ctw-display--outline">engineering.</span></h2>
+            <p>Partnering with funded research projects to build sustainable, open-source software that advances scientific discovery.</p>
+            <a class="ctw-button" href="#contact">Start a collaboration</a>
+          </div>
+          <ol class="ctw-observations">
+            <li class="ctw-observation"><span class="ctw-observation__number">01</span><div><h3 class="ctw-heading-md">Research Data Infrastructure</h3><p>FAIR-compliant data pipelines and architectures for reproducible research at scale.</p></div></li>
+            <li class="ctw-observation"><span class="ctw-observation__number">02</span><div><h3 class="ctw-heading-md">ML Systems &amp; Responsible AI</h3><p>Validated, explainable ML systems with proper governance for research and clinical contexts.</p></div></li>
+            <li class="ctw-observation"><span class="ctw-observation__number">03</span><div><h3 class="ctw-heading-md">Scientific Visualization &amp; Digital Exhibits</h3><p>Interactive visualizations, 3D environments, and museum-ready digital experiences.</p></div></li>
+            <li class="ctw-observation"><span class="ctw-observation__number">04</span><div><h3 class="ctw-heading-md">Collaborative Research Platforms</h3><p>Open-source tools and platforms that support distributed research teams and long-term scholarship.</p></div></li>
+          </ol>
         </div>
-        <p class="text-sm text-gray-400">Amsterdam · working globally · accepting projects 2026-2027</p>
+      </section>
+
+      <section class="ctw-section" id="how-we-work" aria-labelledby="process-title">
+        <div class="ctw-container ctw-stack">
+          <p class="ctw-section-number">04 / Our process</p>
+          <h2 class="ctw-display--fluid" id="process-title">Working closely with <span class="ctw-display--inverted">research teams.</span></h2>
+          <dl class="studio-process">
+            <div class="ctw-argument"><dt>01 / Planning</dt><dd><strong>Research goals drive technical strategy.</strong><p>We start with your grant narrative and scientific objectives. Collaborative roadmapping ensures every technical decision serves the research.</p></dd></div>
+            <div class="ctw-argument"><dt>02 / Visibility</dt><dd><strong>Transparency at every stage.</strong><p>Regular demos, shared documentation, and open communication. You always know where the project stands and what's next.</p></dd></div>
+            <div class="ctw-argument"><dt>03 / Implementation</dt><dd><strong>Design thinking, iterative delivery.</strong><p>Prototypes before polish. We build, test, and refine with your team—solutions shaped by real researcher feedback.</p></dd></div>
+            <div class="ctw-argument"><dt>04 / Sustainability</dt><dd><strong>Built to outlast the grant.</strong><p>Open source by default, documentation-first, knowledge transfer. Software that serves the community long after the project ends.</p></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="ctw-section" aria-labelledby="products-title">
+        <div class="ctw-container ctw-stack">
+          <p class="ctw-section-number">05 / Products</p>
+          <h2 class="ctw-display--fluid" id="products-title">Tools we're building <span class="studio-accent">for society.</span></h2>
+        </div>
+        <p class="ctw-scroll-hint ctw-container" id="product-index-hint">Swipe products to explore →</p>
+        <ul class="ctw-project-index studio-products" aria-label="Product index" aria-describedby="product-index-hint">
+          <li><a href="https://notidian.com" target="_blank" rel="noopener noreferrer"><span class="ctw-label">01 / Knowledge</span><strong class="ctw-heading-md">Notidian</strong><span>Open product ↗</span></a></li>
+          <li><a href="https://ideasdiamond.com" target="_blank" rel="noopener noreferrer"><span class="ctw-label">02 / Ideas</span><strong class="ctw-heading-md">IdeasDiamond</strong><span>Open product ↗</span></a></li>
+          <li><a href="https://nexthuman.app" target="_blank" rel="noopener noreferrer"><span class="ctw-label">03 / Capability</span><strong class="ctw-heading-md">NextHuman</strong><span>Coming soon ↗</span></a></li>
+          <li><a href="/portfolio/"><span class="ctw-label">Index / Research</span><strong class="ctw-heading-md">Selected projects</strong><span>View all →</span></a></li>
+        </ul>
+      </section>
+
+      <section class="ctw-section" id="methodology" aria-labelledby="notes-title">
+        <div class="ctw-container ctw-stack">
+          <p class="ctw-section-number">06 / What collaborators say</p>
+          <h2 class="ctw-display--fluid" id="notes-title">Field notes.</h2>
+          <div class="studio-quotes">
+            <blockquote class="ctw-quote"><p>“Jesse has really been instrumental and decisive in getting our dashboard off the ground. Right from the start, he grasped the overarching concept and got straight down to business.”</p><footer><cite>Josh Colston, PhD</cite><br>Co-Lead, Mine-DD · University of Virginia</footer></blockquote>
+            <blockquote class="ctw-quote"><p>“The research tool Collens has proven to be a significant contribution to our research field. We are thoroughly impressed with Jesse's work and work ethic.”</p><footer><cite>Elli Bleeker, PhD</cite><br>Lead Applicant, COLLaiTE · Huygens Institute (KNAW)</footer></blockquote>
+            <blockquote class="ctw-quote"><p>“This is what we want as the eScience Center. Work that can have large and long-lasting impact, beyond the project and beyond the discipline.”</p><footer><cite>Valentina Azzara, PhD</cite><br>Section Head · Netherlands eScience Center</footer></blockquote>
+            <blockquote class="ctw-quote"><p>“His leadership, initiative, and technical excellence make him a valuable asset to any team he joins.”</p><footer><cite>Kody Moodley, PhD</cite><br>Senior Researcher · Maastricht University</footer></blockquote>
+            <blockquote class="ctw-quote"><p>“This is chef's kiss.”</p><footer><cite>Veronica Pang</cite><br>Communication Advisor · Netherlands eScience Center</footer></blockquote>
+          </div>
+          <div class="ctw-stack studio-partners">
+            <p class="ctw-label">Selected partners</p>
+            <p>Netherlands eScience Center · KNAW · KNMI · University of Virginia · Maastricht University · Smithsonian Institution</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ctw-closing" id="contact" aria-labelledby="contact-title">
+        <div class="ctw-container ctw-stack">
+          <p class="ctw-section-number">07 / Collaborate</p>
+          <h2 class="ctw-display--fluid" id="contact-title">We partner with research institutions, cultural heritage organizations, and public-interest initiatives.</h2>
+          <p class="ctw-lede">Introduce us to your grant narrative, draft syllabus, or curatorial brief. We reply with a study plan and references.</p>
+          <div class="ctw-cluster">
+            <a class="ctw-button" href="mailto:contact@ctw.studio">contact@ctw.studio</a>
+            <a class="ctw-button ctw-button--secondary" href="https://linkedin.com/in/ctwhome" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+          <p class="ctw-meta">Amsterdam · working globally · accepting projects 2026-2027</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ctw-footer">
+      <div class="ctw-container ctw-footer--complete">
+        <div class="ctw-stack">
+          <strong>CTW Studio</strong>
+          <span>Software for research and society</span>
+          <span>© 2025</span>
+        </div>
+        <nav class="ctw-footer__links" aria-label="Studio destinations">
+          <span class="ctw-label">Explore</span>
+          <a href="/portfolio/">Projects</a>
+          <a href="/signals/">Signals</a>
+          <a href="/nlesc/">NLeSC</a>
+        </nav>
+        <nav class="ctw-footer__links" aria-label="Contact destinations">
+          <span class="ctw-label">Contact</span>
+          <a href="mailto:contact@ctw.studio">contact@ctw.studio</a>
+          <a href="https://jessegonzalez.dev" target="_blank" rel="noopener noreferrer">jessegonzalez.dev ↗</a>
+          <a href="https://github.com/ctwhome" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </nav>
       </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="px-6 py-8 border-t border-white/10">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <span class="text-sm text-gray-400">CTW Studio — Software for research and society</span>
-      <div class="flex items-center gap-6 text-sm text-gray-400">
-        <a href="mailto:contact@ctw.studio" class="hover:text-white transition-colors">contact@ctw.studio</a>
-        <a href="https://jessegonzalez.dev" target="_blank"
-          class="hover:text-white transition-colors">jessegonzalez.dev</a>
-        <a href="https://github.com/ctwhome" target="_blank" class="hover:text-white transition-colors">GitHub</a>
-        <span>© 2025</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Animations (Anime.js loaded async) -->
-  <script>
-    (function () {
-      var s = document.createElement('script');
-      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js';
-      s.onload = function () {
-      // Hero text animations
-      const heroTimeline = anime.timeline({
-        easing: 'easeOutExpo',
-      });
-
-      heroTimeline
-        .add({
-          targets: '.hero-tag',
-          opacity: [0, 1],
-          translateY: [20, 0],
-          duration: 800,
-        })
-        .add({
-          targets: '.hero-title',
-          opacity: [0, 1],
-          translateY: [40, 0],
-          duration: 1000,
-        }, '-=600')
-        .add({
-          targets: '.hero-desc',
-          opacity: [0, 1],
-          translateY: [30, 0],
-          duration: 800,
-        }, '-=700');
-
-      // Bento cards - simple fade
-      anime({
-        targets: '.bento-item',
-        opacity: [0, 1],
-        duration: 600,
-        delay: anime.stagger(50, { start: 500 }),
-        easing: 'easeOutQuad',
-      });
-
-      // Stats bar
-      anime({
-        targets: '.stats-bar',
-        opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 800,
-        delay: 1200,
-        easing: 'easeOutExpo',
-      });
-
-      // Scroll-triggered animations for sections
-      const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-            entry.target.classList.add('animated');
-
-            // Animate scroll cards
-            if (entry.target.classList.contains('scroll-card') || entry.target.classList.contains('scroll-card-light')) {
-              anime({
-                targets: entry.target,
-                opacity: [0, 1],
-                translateY: [40, 0],
-                duration: 800,
-                easing: 'easeOutExpo',
-              });
-            }
-
-            // Animate quote cards
-            if (entry.target.classList.contains('quote-card')) {
-              anime({
-                targets: entry.target,
-                opacity: [0, 1],
-                translateX: [-30, 0],
-                duration: 800,
-                easing: 'easeOutExpo',
-              });
-            }
-
-            // Animate about section cards (staggered by index)
-            if (entry.target.classList.contains('about-fade')) {
-              const aboutCards = Array.from(document.querySelectorAll('.about-fade'));
-              const idx = aboutCards.indexOf(entry.target);
-              anime({
-                targets: entry.target,
-                opacity: [0, 1],
-                translateY: [30, 0],
-                duration: 900,
-                delay: idx * 150,
-                easing: 'easeOutExpo',
-              });
-            }
-          }
-        });
-      }, observerOptions);
-
-      // Observe scroll cards, quote cards, and about section
-      document.querySelectorAll('.scroll-card, .scroll-card-light, .quote-card, .about-fade').forEach(el => {
-        el.style.opacity = '0';
-        observer.observe(el);
-      });
-
-      };
-      document.head.appendChild(s);
-
-    // Testimonials gallery navigation (available immediately, no anime.js dependency)
-    window.scrollTestimonials = function (direction) {
-      const gallery = document.getElementById('testimonials-gallery');
-      const scrollAmount = 380; // card width + gap
-      gallery.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-    };
-    })();
-  </script>
-
-  <!-- Three.js Blueprint Effects (loaded async) -->
-  <script>
-    (function () {
-      var s = document.createElement('script');
-      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-      s.onload = function () {
-      // Scene setup
-      const canvas = document.getElementById('blueprint-canvas');
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      camera.position.z = 30;
-
-      // Blueprint line material
-      const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0xffffff,
-        transparent: true,
-        opacity: 0.06
-      });
-
-      // ============================================
-      // HOVER BRACKETS (Option C - Architectural)
-      // ============================================
-      let activeHoverGroup = null;
-      let hoverTargetOpacity = 0;
-      let hoverCurrentOpacity = 0;
-
-      // Create corner bracket geometry for a card
-      function createBracketGroup() {
-        const group = new THREE.Group();
-        const bracketSize = 0.8;
-        const bracketLength = 2;
-
-        // Create 4 corner brackets
-        const corners = [
-          { x: -1, y: 1, rotZ: 0 },           // top-left
-          { x: 1, y: 1, rotZ: -Math.PI / 2 },   // top-right
-          { x: 1, y: -1, rotZ: Math.PI },     // bottom-right
-          { x: -1, y: -1, rotZ: Math.PI / 2 }   // bottom-left
-        ];
-
-        corners.forEach(corner => {
-          const points = [
-            new THREE.Vector3(0, bracketLength, 0),
-            new THREE.Vector3(0, 0, 0),
-            new THREE.Vector3(bracketLength, 0, 0)
-          ];
-          const geometry = new THREE.BufferGeometry().setFromPoints(points);
-          const bracket = new THREE.Line(geometry, lineMaterial.clone());
-          bracket.rotation.z = corner.rotZ;
-          bracket.position.set(corner.x, corner.y, 0);
-          group.add(bracket);
-        });
-
-        // Add subtle cross-hair at center
-        const crossSize = 0.3;
-        const crossPoints = [
-          new THREE.Vector3(-crossSize, 0, 0), new THREE.Vector3(crossSize, 0, 0),
-          new THREE.Vector3(0, -crossSize, 0), new THREE.Vector3(0, crossSize, 0)
-        ];
-        const crossGeom = new THREE.BufferGeometry().setFromPoints(crossPoints);
-        const cross = new THREE.LineSegments(crossGeom, lineMaterial.clone());
-        group.add(cross);
-
-        group.visible = false;
-        scene.add(group);
-        return group;
-      }
-
-      // Create bracket groups for hover
-      const bracketGroups = [];
-      for (let i = 0; i < 12; i++) {
-        bracketGroups.push(createBracketGroup());
-      }
-
-      let hoveredElement = null;
-      let bracketIndex = 0;
-
-      function getBracketForElement(el) {
-        if (!el._blueprintBracket) {
-          el._blueprintBracket = bracketGroups[bracketIndex % bracketGroups.length];
-          bracketIndex++;
-        }
-        return el._blueprintBracket;
-      }
-
-      // Setup hover listeners on cards
-      function setupHoverListeners() {
-        const hoverTargets = document.querySelectorAll('.bento-card, .project-card, .scroll-card');
-
-        hoverTargets.forEach((el) => {
-          el.addEventListener('mouseenter', () => {
-            hoveredElement = el;
-            activeHoverGroup = getBracketForElement(el);
-            activeHoverGroup.visible = true;
-            hoverTargetOpacity = 0.12;
-          });
-
-          el.addEventListener('mouseleave', () => {
-            hoveredElement = null;
-            hoverTargetOpacity = 0;
-          });
-        });
-      }
-
-      // ============================================
-      // SCROLL-TRIGGERED LINES (Option D)
-      // ============================================
-      const scrollLines = [];
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const lineData = entry.target._blueprintLine;
-          if (lineData) {
-            lineData.targetProgress = entry.isIntersecting ? 1 : 0;
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '-50px' });
-
-      function createScrollLine(section, config) {
-        const points = [];
-        const { startX, startY, segments } = config;
-
-        // Create a path that looks like architectural drawing lines
-        let x = startX;
-        let y = startY;
-
-        for (let i = 0; i < segments.length; i++) {
-          const seg = segments[i];
-          points.push(new THREE.Vector3(x, y, 0));
-          x += seg.dx || 0;
-          y += seg.dy || 0;
-          points.push(new THREE.Vector3(x, y, 0));
-        }
-
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        const line = new THREE.LineSegments(geometry, lineMaterial.clone());
-        line.material.opacity = 0;
-
-        scene.add(line);
-
-        const lineData = {
-          line,
-          progress: 0,
-          targetProgress: 0,
-          totalPoints: points.length
-        };
-
-        section._blueprintLine = lineData;
-        scrollLines.push(lineData);
-        sectionObserver.observe(section);
-      }
-
-      function setupScrollLines() {
-        const sections = document.querySelectorAll('section');
-
-        sections.forEach((section, index) => {
-          const rect = section.getBoundingClientRect();
-          const centerY = (window.innerHeight / 2 - rect.top - rect.height / 2) / 30;
-
-          // Different line patterns for each section
-          const patterns = [
-            // Corner bracket pattern
-            {
-              startX: -20, startY: centerY + 5, segments: [
-                { dx: 3, dy: 0 }, { dx: 0, dy: -3 },
-                { dx: 34, dy: 0 },
-                { dx: 0, dy: 3 }, { dx: 3, dy: 0 }
-              ]
-            },
-            // Technical measurement line
-            {
-              startX: -18, startY: centerY, segments: [
-                { dx: 0, dy: 2 }, { dx: 36, dy: 0 }, { dx: 0, dy: -2 },
-                { dx: 0, dy: -2 }, { dx: -36, dy: 0 }, { dx: 0, dy: 2 }
-              ]
-            },
-            // Cross reference marks
-            {
-              startX: -15, startY: centerY + 3, segments: [
-                { dx: 2, dy: -2 }, { dx: -2, dy: -2 }, { dx: 2, dy: -2 },
-                { dx: 26, dy: 0 },
-                { dx: 2, dy: 2 }, { dx: -2, dy: 2 }, { dx: 2, dy: 2 }
-              ]
-            },
-            // Simple frame
-            {
-              startX: -22, startY: centerY + 4, segments: [
-                { dx: 44, dy: 0 }, { dx: 0, dy: -8 }, { dx: -44, dy: 0 }, { dx: 0, dy: 8 }
-              ]
-            }
-          ];
-
-          createScrollLine(section, patterns[index % patterns.length]);
-        });
-      }
-
-      // ============================================
-      // AMBIENT FLOATING PARTICLES
-      // ============================================
-      const particles = [];
-
-      function createAmbientParticles() {
-        for (let i = 0; i < 25; i++) {
-          const geometry = new THREE.BufferGeometry();
-          const vertices = new Float32Array([0, 0, 0]);
-          geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-
-          const material = new THREE.PointsMaterial({
-            color: 0xffffff,
-            size: 0.04,
-            transparent: true,
-            opacity: 0.04
-          });
-
-          const particle = new THREE.Points(geometry, material);
-          particle.position.set(
-            (Math.random() - 0.5) * 60,
-            (Math.random() - 0.5) * 60,
-            (Math.random() - 0.5) * 20
-          );
-          particle._velocity = {
-            x: (Math.random() - 0.5) * 0.008,
-            y: (Math.random() - 0.5) * 0.008,
-            z: (Math.random() - 0.5) * 0.003
-          };
-
-          scene.add(particle);
-          particles.push(particle);
-        }
-      }
-
-      // ============================================
-      // ANIMATION LOOP
-      // ============================================
-      let scrollY = 0;
-      let targetScrollY = 0;
-
-      window.addEventListener('scroll', () => {
-        targetScrollY = window.scrollY;
-      });
-
-      function animate() {
-        requestAnimationFrame(animate);
-
-        // Smooth scroll tracking
-        scrollY += (targetScrollY - scrollY) * 0.1;
-
-        // Update hover brackets
-        if (activeHoverGroup) {
-          hoverCurrentOpacity += (hoverTargetOpacity - hoverCurrentOpacity) * 0.12;
-
-          // Update opacity for all children in the group
-          activeHoverGroup.children.forEach(child => {
-            if (child.material) child.material.opacity = hoverCurrentOpacity;
-          });
-
-          if (hoveredElement) {
-            const rect = hoveredElement.getBoundingClientRect();
-            const x = (rect.left + rect.width / 2 - window.innerWidth / 2) / 30;
-            const y = -(rect.top + rect.height / 2 - window.innerHeight / 2) / 30;
-
-            // Scale brackets to match card aspect ratio
-            const scaleX = rect.width / 80;
-            const scaleY = rect.height / 80;
-
-            activeHoverGroup.position.x += (x - activeHoverGroup.position.x) * 0.15;
-            activeHoverGroup.position.y += (y - activeHoverGroup.position.y) * 0.15;
-            activeHoverGroup.scale.x += (scaleX - activeHoverGroup.scale.x) * 0.15;
-            activeHoverGroup.scale.y += (scaleY - activeHoverGroup.scale.y) * 0.15;
-          }
-
-          // Fade out when not hovering
-          if (hoverCurrentOpacity < 0.005 && hoverTargetOpacity === 0) {
-            activeHoverGroup.visible = false;
-            activeHoverGroup = null;
-          }
-        }
-
-        // Update scroll lines
-        scrollLines.forEach(lineData => {
-          lineData.progress += (lineData.targetProgress - lineData.progress) * 0.05;
-          lineData.line.material.opacity = lineData.progress * 0.06;
-
-          // Scale effect as it draws
-          const scale = 0.8 + lineData.progress * 0.2;
-          lineData.line.scale.set(scale, scale, 1);
-        });
-
-        // Animate ambient particles
-        particles.forEach(p => {
-          p.position.x += p._velocity.x;
-          p.position.y += p._velocity.y;
-          p.position.z += p._velocity.z;
-
-          // Wrap around
-          if (p.position.x > 30) p.position.x = -30;
-          if (p.position.x < -30) p.position.x = 30;
-          if (p.position.y > 30) p.position.y = -30;
-          if (p.position.y < -30) p.position.y = 30;
-        });
-
-        // Subtle camera movement based on scroll
-        camera.position.y = -scrollY * 0.005;
-        camera.rotation.x = scrollY * 0.0001;
-
-        renderer.render(scene, camera);
-      }
-
-      // ============================================
-      // INIT
-      // ============================================
-      function init() {
-        setupHoverListeners();
-        setupScrollLines();
-        createAmbientParticles();
-        animate();
-      }
-
-      // Handle resize
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      // Start when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-      };
-      document.head.appendChild(s);
-    })();
-  </script>
-
+    </footer>
+  </div>
+  <script src="/feedback.js"></script>
 </body>
-
 </html>

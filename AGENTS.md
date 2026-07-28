@@ -6,6 +6,10 @@
 - `about/` is the canonical NLeSC source. `ctw.studio/nlesc/` is its generated,
   committed static export served at `/nlesc/`; never hand-edit generated files.
 - `ctw.studio/signals/` contains evidence briefs, topic renderers, `data/`, deterministic `scripts/`, and Node integrity tests.
+- `DESIGN.md` is the normative design-system source. `ctw.studio/design-system/`
+contains browser tokens, components, expressive compositions, compatibility aliases, generated
+  `tokens.json`, and the static `/design-system/` guide; adoption is opt-in and
+  must not add a public navigation link without separate approval.
 - Keep the legacy `about/` deployment active until a separately approved redirect and retirement; do not add `about/vercel.json` without a proven platform need. Default `about/` builds must preserve legacy behavior.
 - `jessegonzalez.dev/`, `about/`, `dashboard/`, `ctw.studio2/`, and `ctw-kit/` are separate applications. Treat each app directory as its build and deployment root.
 - Never add a repository-root `vercel.json`. Framework and Vercel settings stay inside the affected app.
@@ -26,6 +30,29 @@ Run commands from the named directory.
 | `ctw.studio2/` | none | serve as static files | no general build |
 
 For CTW Studio Tailwind regeneration, use the command in root `README.md`.
+
+For design-system work, run from the repository root:
+
+```bash
+npx --yes @google/design.md@0.3.0 lint DESIGN.md
+npx --yes @google/design.md@0.3.0 export --format dtcg DESIGN.md > /tmp/ctw-design-tokens.json
+diff -u ctw.studio/design-system/tokens.json /tmp/ctw-design-tokens.json
+node --test ctw.studio/design-system/tests/design-system.test.mjs
+npx --yes @playwright/test@1.62.0 install chromium
+npx --yes --package=@playwright/test@1.62.0 -- sh -c 'NODE_PATH="$(dirname "$(dirname "$(command -v playwright)")")" playwright test --config ctw.studio/design-system/tests/playwright.config.cjs'
+(cd ctw.studio && node --test signals/tests/*.test.mjs)
+```
+
+Visual audit captures compact and wide screenshots under
+`ctw.studio/design-system/test-results/`. CI uploads screenshots, HTML report,
+and retry traces as the `ctw-design-system-visual-audit` artifact for 14 days.
+
+`DESIGN.md` owns role definitions; `tokens.css` owns browser role
+implementation; `components.css` owns shared component classes;
+`compositions.css` owns specimen-backed opt-in page compositions; `compat.css`
+owns approved role-backed migration aliases. Audit all handwritten CTW routes
+when route inventory changes. Preserve Signals page-scoped accents. Never edit
+generated `tokens.json` or `ctw.studio/nlesc/` by hand.
 
 For NLeSC static export work, run from `about/`:
 

@@ -2,3 +2,4 @@
 node_modules
 __pycache__/
 *.py[cod]
+ctw.studio/design-system/test-results/
