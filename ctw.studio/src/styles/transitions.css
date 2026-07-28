@@ -1,0 +1,33 @@
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--ctw-motion-deliberate);
+  animation-timing-function: var(--ctw-ease-out);
+}
+
+::view-transition-old(site-mark),
+::view-transition-new(site-mark),
+::view-transition-old(portfolio-lead),
+::view-transition-new(portfolio-lead) {
+  animation-duration: var(--ctw-motion-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

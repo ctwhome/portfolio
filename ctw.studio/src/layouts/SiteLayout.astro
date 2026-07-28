@@ -1,0 +1,51 @@
+---
+import DocumentHead from '../components/DocumentHead.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/fonts.css';
+import '../styles/global.css';
+import '../styles/transitions.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  current?: 'home' | 'portfolio';
+  ogDescription?: string;
+  bodyClass?: string;
+  homepageStyles?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  current,
+  ogDescription = description,
+  bodyClass = '',
+  homepageStyles = false
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en" class="ctw-theme-coal">
+  <head>
+    <DocumentHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogDescription={ogDescription}
+      homepageStyles={homepageStyles}
+      transitions
+    />
+  </head>
+  <body class:list={['ctw-scope', bodyClass]}>
+    <a class="ctw-skip-link" href="#main-content">Skip to content</a>
+    <div class="ctw-shell">
+      <SiteHeader current={current} />
+      <slot />
+      <SiteFooter />
+    </div>
+    <script is:inline data-astro-rerun>window.__ctwFeedbackLoaded = false;</script>
+    <script is:inline src="/feedback.js" data-astro-rerun></script>
+  </body>
+</html>

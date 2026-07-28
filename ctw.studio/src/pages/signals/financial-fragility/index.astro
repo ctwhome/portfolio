@@ -1,0 +1,318 @@
+---
+import SignalSubjectMenu from '../../../components/SignalSubjectMenu.astro';
+import SignalsLayout from '../../../layouts/SignalsLayout.astro';
+---
+<SignalsLayout
+  title="Where does resilience become financial stress? — CTW Signals"
+  description="A definition-first briefing on household leverage, debt service, rates, fiscal interest, bank safeguards and Dutch pensions."
+  canonical="/signals/financial-fragility/"
+  themeColor="#08090b"
+  htmlClass="scroll-smooth fragility-page"
+  htmlStyle="background:#08090b"
+  pageCssUrls={["/tailwind.css","/signals/signals.css","/signals/financial-fragility/financial-fragility.css","/signals/subject-menu.css"]}
+  pageScriptUrls={["/signals/financial-fragility/financial-fragility.js","/signals/subject-menu.js"]}
+>
+<main id="main-content">
+    <header class="fragility-hero" aria-labelledby="page-title">
+      <div class="signal-shell">
+        <SignalSubjectMenu current="prosperity" class="fragility-topics" />
+
+        <div class="fragility-hero-grid">
+          <div class="fragility-hero-copy">
+            <p class="brief-id"><span>Brief 009</span><span class="brief-line"></span><span>Financial fragility</span></p>
+            <h1 id="page-title">Where does resilience become <em>financial stress?</em></h1>
+            <p class="fragility-deck">Rates, prices and leverage transmit the same shock differently. Aggregate balance sheets can look sound while recent borrowers, liquidity-poor households, rate-sensitive budgets or particular institutions carry the risk.</p>
+            <div class="fragility-meta">
+              <span>Evidence vintage <strong id="data-date">26 July 2026</strong></span>
+              <span>World → Europe → Netherlands</span>
+              <a href="#method">Definitions first</a>
+            </div>
+          </div>
+
+          <aside class="current-read evidence-bearing" data-source-id="bis-household-credit bis-household-dsr eba-risk-dashboard" aria-label="Current evidence conclusion">
+            <p class="eyebrow">Current read · conditional</p>
+            <h2>Resilient aggregates. Concentrated exposure.</h2>
+            <p id="verdict-text">Dutch household credit has fallen sharply relative to GDP since 2015, and bank safeguards remain substantial. That does not show whether a recent borrower or a household without liquid savings can absorb a reset or income loss.</p>
+            <dl>
+              <div><dt>Household credit</dt><dd id="hero-credit">93.8%</dd><small>GDP denominator · 2025-Q4</small></div>
+              <div><dt>Debt service</dt><dd id="hero-dsr">13.0%</dd><small>income denominator · 2025-Q4</small></div>
+              <div><dt>New mortgage rate</dt><dd id="hero-rate">3.67%</dd><small>per year · 2026-05</small></div>
+            </dl>
+            <p class="proximate-citation" data-citation-source-id="bis-household-credit bis-household-dsr eba-risk-dashboard">Evidence basis: <a href="https://data.bis.org/topics/TOTAL_CREDIT/BIS%2CWS_TC%2C2.0/Q.NL.H.A.M.770.A" target="_blank" rel="noreferrer">BIS credit ↗</a>, <a href="https://data.bis.org/topics/DSR/BIS%2CWS_DSR%2C1.0/Q.NL.H" target="_blank" rel="noreferrer">BIS debt service ↗</a>, <a href="https://www.eba.europa.eu/publications-and-media/press-releases/eueea-banks-remain-resilient-amid-rising-geopolitical-market-and-technological-risks" target="_blank" rel="noreferrer">EBA risk dashboard ↗</a>, and <a href="#sources">scope and revisions ↓</a></p>
+          </aside>
+        </div>
+
+        <ol class="question-rail" aria-label="The five questions every Signals brief answers">
+          <li><span>01</span> Where now?</li>
+          <li><span>02</span> Which direction?</li>
+          <li><span>03</span> Who carries it?</li>
+          <li><span>04</span> Why?</li>
+          <li><span>05</span> What changes our mind?</li>
+        </ol>
+      </div>
+    </header>
+
+    <div class="fragility-layout">
+      <aside class="fragility-index" aria-label="Briefing chapters">
+        <p>The questions</p>
+        <nav>
+          <a href="#where"><span>01</span> Four balance sheets</a>
+          <a href="#direction"><span>02</span> Direction</a>
+          <a href="#distribution"><span>03</span> Distribution</a>
+          <a href="#explanations"><span>04</span> Explanations</a>
+          <a href="#change"><span>05</span> Change evidence</a>
+          <a href="#sources"><span>→</span> Source ledger</a>
+        </nav>
+      </aside>
+
+      <article class="fragility-story">
+        <noscript>
+          <p class="boundary-callout"><strong>JavaScript is unavailable.</strong> The argument, latest observations, definitions and data tables remain below. Interactive highlighting and the expanded source ledger are optional.</p>
+        </noscript>
+
+        <section id="where" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>01</span> Where are we now?</p>
+            <h2>Four balance sheets. Four different failure modes.</h2>
+            <p>Household leverage cannot stand in for sovereign leverage, and neither establishes bank or pension resilience. Start with the relevant stock, denominator and shock channel.</p>
+          </header>
+
+          <div id="balance-sheet-grid" class="balance-sheet-grid evidence-bearing" data-source-id="bis-household-credit eurostat-debt ecb-supervisory dnb-pensions" aria-label="Four balance-sheet overview">
+            <article data-dimension="household">
+              <p>Households</p><strong>93.8%</strong><span>household &amp; NPISH credit / GDP</span>
+              <small>NL · 2025-Q4 · gross stock, not debt service</small>
+            </article>
+            <article data-dimension="government">
+              <p>Government</p><strong>44.4%</strong><span>gross debt / GDP</span>
+              <small>NL · 2025 · not net debt or interest burden</small>
+            </article>
+            <article data-dimension="banks">
+              <p>Banks</p><strong>15.99%</strong><span>CET1 / risk-weighted assets</span>
+              <small>European significant institutions · 2026-Q1 · capital, not liquidity</small>
+            </article>
+            <article data-dimension="pensions">
+              <p>Pensions</p><strong>122.9%</strong><span>assets / technical provisions</span>
+              <small>Dutch funds · 2025-Q4 · coverage, not adequacy</small>
+            </article>
+          </div>
+
+          <div class="definition-strip" aria-label="Non-negotiable definitions">
+            <p><strong>Stock ≠ service.</strong> Debt outstanding says how leveraged a sector is; debt service says how much income meets interest and amortisation.</p>
+            <p><strong>Flow ≠ buffer.</strong> The saving rate is a flow. It does not locate accessible cash or show how long a household can cope.</p>
+            <p><strong>Safeguard ≠ outcome.</strong> Capital, liquidity and pension funding are distinct buffers—not household welfare measures.</p>
+          </div>
+
+          <p class="proximate-citation" data-citation-source-id="bis-household-credit eurostat-debt ecb-supervisory dnb-pensions">Sources: <a href="https://data.bis.org/topics/TOTAL_CREDIT/BIS%2CWS_TC%2C2.0/Q.NL.H.A.M.770.A" target="_blank" rel="noreferrer">BIS WS_TC household credit ↗</a>, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=en" target="_blank" rel="noreferrer">Eurostat government debt ↗</a>, <a href="https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260619~b2252c1d8a.en.html" target="_blank" rel="noreferrer">ECB supervisory statistics ↗</a>, <a href="https://www.dnb.nl/media/d0rdiihe/86336-2600114-dnb-annual-report-2025_tg_pdfa.pdf" target="_blank" rel="noreferrer">DNB Annual Report 2025 ↗</a>.</p>
+        </section>
+
+        <section id="direction" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>02</span> What direction are we moving?</p>
+            <h2>Leverage fell. Repayment relief slowed. New money stayed expensive.</h2>
+            <p>The three series below deliberately keep unlike denominators and units in separate panels. A lower debt/GDP stock can coexist with a higher payment burden for the borrowers who reset today.</p>
+          </header>
+
+          <div class="metric-tabs" role="tablist" aria-label="Choose a financial-stress dimension">
+            <button type="button" role="tab" aria-selected="true" aria-controls="panel-credit" data-series-tab="householdCredit">Leverage</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="panel-service" data-series-tab="householdDebtService">Debt service</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="panel-rates" data-series-tab="newMortgageRate">New rates</button>
+          </div>
+
+          <div class="series-panels">
+            <figure id="panel-credit" class="series-card evidence-bearing" data-series-panel="householdCredit" data-source-id="bis-household-credit">
+              <div class="figure-head"><div><span>Netherlands · quarterly</span><h3>Household &amp; NPISH credit</h3></div><strong>93.8% <small>of GDP</small></strong></div>
+              <svg id="chart-householdCredit" viewBox="0 0 760 280" role="img" aria-labelledby="credit-title credit-desc"><title id="credit-title">Dutch household credit as a percentage of GDP</title><desc id="credit-desc">The ratio fell from 119 percent in late 2015 to 93.8 percent in late 2025.</desc></svg>
+              <figcaption>Gross credit stock from all sectors. The GDP denominator can move faster than debt.</figcaption>
+              <details open>
+                <summary>View data and exact scope</summary>
+                <div class="table-scroll">
+                  <table id="table-householdCredit"><caption>Selected household-credit observations</caption><thead><tr><th>Period</th><th>Credit / GDP</th></tr></thead><tbody><tr><td>2015-Q4</td><td>119.0%</td></tr><tr><td>2020-Q4</td><td>114.6%</td></tr><tr><td>2023-Q4</td><td>97.0%</td></tr><tr><td>2024-Q4</td><td>94.3%</td></tr><tr><td>2025-Q4</td><td>93.8%</td></tr></tbody></table>
+                </div>
+              </details>
+              <p class="proximate-citation" data-citation-source-id="bis-household-credit">Source: <a href="https://data.bis.org/topics/TOTAL_CREDIT/BIS%2CWS_TC%2C2.0/Q.NL.H.A.M.770.A" target="_blank" rel="noreferrer">BIS WS_TC 2.0 · Q.NL.H.A.M.770.A ↗</a>.</p>
+            </figure>
+
+            <figure id="panel-service" class="series-card evidence-bearing" data-series-panel="householdDebtService" data-source-id="bis-household-dsr">
+              <div class="figure-head"><div><span>Netherlands · modelled quarterly</span><h3>Household debt service</h3></div><strong>13.0% <small>of income</small></strong></div>
+              <svg id="chart-householdDebtService" viewBox="0 0 760 280" role="img" aria-labelledby="service-title service-desc"><title id="service-title">Dutch household debt-service ratio</title><desc id="service-desc">The BIS modelled share of income used for interest and amortisation declined after 2015 and edged higher from its 2024 low.</desc></svg>
+              <figcaption>Interest plus amortisation under the BIS unified aggregate model. Prefer within-country movement to absolute country ranking.</figcaption>
+              <details>
+                <summary>View data and exact scope</summary>
+                <div class="table-scroll">
+                  <table id="table-householdDebtService"><caption>Selected debt-service observations</caption><thead><tr><th>Period</th><th>Debt service / income</th></tr></thead><tbody><tr><td>2015-Q4</td><td>18.8%</td></tr><tr><td>2020-Q4</td><td>15.3%</td></tr><tr><td>2023-Q4</td><td>13.0%</td></tr><tr><td>2024-Q2</td><td>12.8%</td></tr><tr><td>2025-Q4</td><td>13.0%</td></tr></tbody></table>
+                </div>
+              </details>
+              <p class="proximate-citation" data-citation-source-id="bis-household-dsr">Source: <a href="https://data.bis.org/topics/DSR/BIS%2CWS_DSR%2C1.0/Q.NL.H" target="_blank" rel="noreferrer">BIS WS_DSR 1.0 · Q.NL.H ↗</a>.</p>
+            </figure>
+
+            <figure id="panel-rates" class="series-card evidence-bearing" data-series-panel="newMortgageRate" data-source-id="ecb-mortgage-rate">
+              <div class="figure-head"><div><span>Netherlands · monthly</span><h3>Rate on new mortgage business</h3></div><strong>3.67% <small>per year</small></strong></div>
+              <svg id="chart-newMortgageRate" viewBox="0 0 760 280" role="img" aria-labelledby="rates-title rates-desc"><title id="rates-title">Rate on new Dutch mortgages</title><desc id="rates-desc">New mortgage pricing rose sharply after 2022 and remained above the ultra-low-rate period in May 2026.</desc></svg>
+              <figcaption>Marginal new-business pricing. This is not the rate on the outstanding stock or a schedule of future resets.</figcaption>
+              <details>
+                <summary>View data and exact scope</summary>
+                <div class="table-scroll">
+                  <table id="table-newMortgageRate"><caption>Selected new-mortgage-rate observations</caption><thead><tr><th>Period</th><th>Annualised rate</th></tr></thead><tbody><tr><td>2015-01</td><td>3.05%</td></tr><tr><td>2021-01</td><td>1.72%</td></tr><tr><td>2023-01</td><td>3.71%</td></tr><tr><td>2024-01</td><td>4.12%</td></tr><tr><td>2026-05</td><td>3.67%</td></tr></tbody></table>
+                </div>
+              </details>
+              <p class="proximate-citation" data-citation-source-id="ecb-mortgage-rate">Source: <a href="https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.NL.B.A2C.A.R.A.2250.EUR.N" target="_blank" rel="noreferrer">ECB MIR.M.NL.B.A2C.A.R.A.2250.EUR.N ↗</a>.</p>
+            </figure>
+          </div>
+
+          <div class="direction-pair">
+            <article class="flow-card evidence-bearing" data-source-id="eurostat-saving">
+              <p class="eyebrow">Saving flow</p><strong id="saving-latest">17.3%</strong><span>of adjusted gross disposable income · 2025</span>
+              <p>National saving recovered after the pandemic spike eased. It does not tell us which household holds cash.</p>
+              <p class="proximate-citation" data-citation-source-id="eurostat-saving">Source: <a href="https://ec.europa.eu/eurostat/databrowser/view/nasa_10_ki/default/table?lang=en" target="_blank" rel="noreferrer">Eurostat nasa_10_ki · SRG_S14_S15 ↗</a></p>
+            </article>
+            <article class="arrears-card">
+              <p class="eyebrow">Data gap · not a zero</p><h3>Arrears are not defaults.</h3>
+              <p>No whitelisted series here joins mortgage and consumer-credit arrears with a stable days-past-due clock, balance denominator and cure policy. Bank NPLs stay in the institutional panel below.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="distribution" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>03</span> Who is benefiting—or carrying the cost?</p>
+            <h2>Debt and buffers do not belong to the same representative household.</h2>
+            <p>Tenure, income, borrower age, rate fixation and asset liquidity determine who feels a shock. National wealth cannot be netted against national debt to infer household safety.</p>
+          </header>
+
+          <div class="distribution-table-wrap evidence-bearing" data-source-id="cbs-household-wealth cbs-financial-sustainability dnb-pensions">
+            <table id="distribution-table">
+              <caption>Distributional household exposure: populations and channels remain separate</caption>
+              <thead><tr><th>Group</th><th>Exposure</th><th>Shock channel</th><th>Evidence boundary</th></tr></thead>
+              <tbody>
+                <tr><th>Recent, leveraged owners</th><td>Large mortgage relative to income or home value</td><td>Income loss, refinancing, house-price decline</td><td>Under-35 owner LTV averaged 0.64 in 2024; LTV is not payment-to-income.</td></tr>
+                <tr><th>Low-income and renter households</th><td>Few liquid or housing assets; high essential spending</td><td>Inflation and income loss</td><td>Median wealth: €1.5k in the lowest income decile; wealth is not liquidity.</td></tr>
+                <tr><th>Older owners</th><td>Often lower mortgage leverage and more housing equity</td><td>Valuation, pension and care costs</td><td>Group averages hide renters and households without accessible savings.</td></tr>
+                <tr><th>Pension participants</th><td>Large deferred but inaccessible claims</td><td>Funding, valuation and transition outcomes</td><td>Funding coverage cannot pay today's emergency bill.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="proximate-citation" data-citation-source-id="cbs-household-wealth cbs-financial-sustainability dnb-pensions">Sources: <a href="https://www.cbs.nl/en-gb/visualisations/monitor-of-well-being-and-the-sustainable-development-goals/distribution-of-well-being/distribution-of-well-being-material-well-being" target="_blank" rel="noreferrer">CBS household wealth ↗</a>, <a href="https://www.cbs.nl/en-gb/visualisations/monitor-of-well-being-and-the-sustainable-development-goals/sdg-s/sdg-10-2-financial-sustainability" target="_blank" rel="noreferrer">CBS financial sustainability ↗</a>, <a href="https://www.dnb.nl/media/d0rdiihe/86336-2600114-dnb-annual-report-2025_tg_pdfa.pdf" target="_blank" rel="noreferrer">DNB Annual Report 2025 ↗</a>.</p>
+
+          <aside class="distribution-conclusion">
+            <span>What the distribution says</span>
+            <p>A saver without a mortgage, a recent buyer with fixed payments, a renter exposed to inflation and a pension participant exposed to valuations do not share one stress channel—even if aggregate net wealth is positive.</p>
+          </aside>
+        </section>
+
+        <section id="government-burden" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>Fiscal channel</span> Government interest burden</p>
+            <h2>One interest bill. Two denominators.</h2>
+            <p>Interest relative to GDP speaks to the economy's scale. Interest relative to government revenue speaks more directly to budget capacity. Neither is gross debt.</p>
+          </header>
+          <figure class="fiscal-card evidence-bearing" data-source-id="eurostat-government eurostat-debt">
+            <div class="fiscal-ratios">
+              <div><span>Interest / GDP</span><strong id="interest-gdp">0.7%</strong><small>Eurostat PC_GDP</small></div>
+              <div><span>Interest / revenue</span><strong id="interest-revenue">1.7%</strong><small>D41PAY ÷ TR × 100</small></div>
+              <div><span>Gross debt / GDP</span><strong>44.4%</strong><small>Maastricht debt · separate stock</small></div>
+            </div>
+            <div class="table-scroll">
+              <table id="government-table">
+                <caption>Dutch general-government interest payable with separate denominators</caption>
+                <thead><tr><th>Year</th><th>Interest, €m</th><th>Interest / GDP</th><th>Revenue, €m</th><th>Interest / revenue</th></tr></thead>
+                <tbody><tr><td>2015</td><td>9,380</td><td>1.3%</td><td>303,558</td><td>3.1%</td></tr><tr><td>2019</td><td>6,455</td><td>0.8%</td><td>365,187</td><td>1.8%</td></tr><tr><td>2023</td><td>7,125</td><td>0.7%</td><td>458,557</td><td>1.6%</td></tr><tr><td>2025</td><td>8,496</td><td>0.7%</td><td>510,195</td><td>1.7%</td></tr></tbody>
+              </table>
+            </div>
+            <figcaption><strong>Derived formula:</strong> D.41 payable interest in million euros ÷ total general-government revenue in million euros × 100. The GDP ratio is Eurostat's published ratio, not a recomputation from rounded values.</figcaption>
+            <p class="proximate-citation" data-citation-source-id="eurostat-government eurostat-debt">Sources: <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=en" target="_blank" rel="noreferrer">Eurostat gov_10a_main · S13 · D41PAY and TR ↗</a>; <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=en" target="_blank" rel="noreferrer">gov_10dd_edpt1 · S13 · GD · PC_GDP ↗</a>.</p>
+          </figure>
+        </section>
+
+        <section id="safeguards" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>Institutional channel</span> Bank and pension safeguards</p>
+            <h2>Buffers matter—but they are not interchangeable.</h2>
+            <p>Capital absorbs losses, liquidity meets cash outflows, NPLs record recognised problem credit, and pension funding compares assets with technical provisions.</p>
+          </header>
+          <div class="safeguard-grid">
+            <article class="safeguard-card evidence-bearing" data-source-id="ecb-supervisory eba-risk-dashboard">
+              <p class="eyebrow">Banks · Europe</p><h3>Strong starting point, wide dispersion</h3>
+              <dl id="bank-safeguards">
+                <div><dt>CET1 ratio</dt><dd>15.99%</dd><small>risk-weighted capital · 2026-Q1</small></div>
+                <div><dt>NPL ratio</dt><dd>2.18%</dd><small>ECB significant institutions · 2026-Q1</small></div>
+                <div><dt>EBA NPL ratio</dt><dd>1.82%</dd><small>different sample/denominator · 2025-Q4</small></div>
+                <div><dt>Capital headroom</dt><dd>≈500 bp</dd><small>above OCR + P2G · aggregate</small></div>
+              </dl>
+              <p>Do not average these into resilience. EBA reports low aggregate NPLs alongside concentration in SMEs, consumer credit and commercial real estate.</p>
+              <p class="proximate-citation" data-citation-source-id="ecb-supervisory eba-risk-dashboard">Sources: <a href="https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260619~b2252c1d8a.en.html" target="_blank" rel="noreferrer">ECB Q1 2026 ↗</a> · <a href="https://www.eba.europa.eu/publications-and-media/press-releases/eueea-banks-remain-resilient-amid-rising-geopolitical-market-and-technological-risks" target="_blank" rel="noreferrer">EBA Q1 2026 ↗</a></p>
+            </article>
+            <article class="safeguard-card pension-card evidence-bearing" data-source-id="dnb-pensions">
+              <p class="eyebrow">Pensions · Netherlands</p><h3>Coverage is not adequacy</h3>
+              <div class="coverage-ring" aria-label="Average pension funding ratio 122.9 percent"><strong>122.9%</strong><span>assets / technical provisions</span></div>
+              <p>The aggregate ratio improved at end-2025. It does not say whether benefits are adequate, indexed, equally funded across schemes or accessible to a household under stress.</p>
+              <p class="proximate-citation" data-citation-source-id="dnb-pensions">Source: <a href="https://www.dnb.nl/media/d0rdiihe/86336-2600114-dnb-annual-report-2025_tg_pdfa.pdf" target="_blank" rel="noreferrer">DNB Annual Report 2025 ↗</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section id="explanations" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>04</span> What are the competing explanations?</p>
+            <h2>Similar stress can arrive through different mechanisms.</h2>
+            <p>Leverage, income, rate reset, inflation, scarcity and repricing can reinforce or offset one another. Their labels below are part of the evidence, not decoration.</p>
+          </header>
+          <div id="explanation-grid" class="explanation-grid">
+            <article><span>Mechanism</span><h3>Leverage</h3><p>Large debts amplify income and valuation shocks even when collateral initially exceeds the loan.</p></article>
+            <article><span>Mechanism</span><h3>Income shock</h3><p>Job loss or real-income compression can produce stress without any interest-rate reset.</p></article>
+            <article><span>Exposure</span><h3>Rate reset</h3><p>New rates are visible; the missing join is the stock by remaining fixation and borrower capacity.</p></article>
+            <article><span>Mechanism</span><h3>Inflation</h3><p>Inflation can erode real fixed debt while compressing cash flow and lifting rates.</p></article>
+            <article><span>Association</span><h3>Housing scarcity</h3><p>Scarcity supports collateral values but can force new buyers toward larger loans.</p></article>
+            <article><span>Scenario</span><h3>Market repricing</h3><p>Fast yield moves can expose duration and liquidity mismatch before defaults rise.</p></article>
+          </div>
+        </section>
+
+        <section id="change" class="fragility-chapter">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>05</span> What would change the conclusion?</p>
+            <h2>Watch realised transmission, not a synthetic alarm.</h2>
+            <p>There is no financial-fragility composite or traffic-light total. These independent observations would change the current conditional conclusion.</p>
+          </header>
+          <ol id="reversal-list" class="reversal-list">
+            <li><span>01</span><div><h3>Persistent household defaults</h3><p>A broad rise under consistent default and cure definitions would overturn the aggregate-resilience read.</p></div></li>
+            <li><span>02</span><div><h3>Depleted liquid buffers</h3><p>Falling accessible assets among mortgagors and lower-income households would contradict comfort from national saving.</p></div></li>
+            <li><span>03</span><div><h3>Fiscal crowd-out</h3><p>Persistent interest/revenue pressure that displaces protective or productive spending would change the fiscal read.</p></div></li>
+            <li><span>04</span><div><h3>Bank losses</h3><p>Rising NPLs, Stage 2 exposures and losses alongside falling capital and liquidity would show safeguards being consumed.</p></div></li>
+            <li><span>05</span><div><h3>Restored affordability</h3><p>Lower new-borrower payments relative to income without looser risk layering would strengthen household resilience.</p></div></li>
+            <li><span>06</span><div><h3>Pension resilience</h3><p>Stable benefits and funding through transition and valuation shocks would strengthen the deferred-buffer case.</p></div></li>
+          </ol>
+        </section>
+
+        <section id="method" class="fragility-chapter method-section">
+          <header class="chapter-head"><p class="chapter-kicker"><span>Method</span> How to read this brief</p><h2>Definitions travel with every number.</h2></header>
+          <div class="method-grid">
+            <article><h3>Observation</h3><p>A measured stock, flow, ratio or supervisory aggregate under the cited scope.</p></article>
+            <article><h3>Exposure</h3><p>A channel through which a shock could transmit; not a realised loss.</p></article>
+            <article><h3>Mechanism</h3><p>A causal pathway to test, not proof that it dominates this period.</p></article>
+            <article><h3>Scenario</h3><p>A conditional possibility—not a forecast.</p></article>
+          </div>
+          <p>The updater owns only stable, no-key official series and validates identity, geography, unit, denominator and chronology before an atomic deterministic write. EBA annexes, ECB supervisory aggregates, CBS distributions and DNB pensions stay manually review-gated.</p>
+        </section>
+
+        <section id="sources" class="fragility-chapter sources-section">
+          <header class="chapter-head">
+            <p class="chapter-kicker"><span>Sources</span> Inspectable ledger</p>
+            <h2>Series, tables, methods, vintages and revisions.</h2>
+            <p>Each live evidence block resolves to one or more entries here. Derived ratios identify both inputs and the formula.</p>
+          </header>
+          <div id="source-ledger" class="source-ledger" aria-live="polite">
+            <noscript>
+              <ol>
+                <li><strong>BIS credit:</strong> WS_TC 2.0, Q.NL.H.A.M.770.A, household &amp; NPISH credit as % of GDP, adjusted for breaks.</li>
+                <li><strong>BIS debt service:</strong> WS_DSR 1.0, Q.NL.H, modelled household &amp; NPISH interest plus amortisation as % of income.</li>
+                <li><strong>ECB rates:</strong> MIR.M.NL.B.A2C.A.R.A.2250.EUR.N, annualised rate on new Dutch mortgage business.</li>
+                <li><strong>Eurostat:</strong> nasa_10_ki SRG_S14_S15, gov_10a_main S13 D41PAY/TR, and gov_10dd_edpt1 S13 GD.</li>
+                <li><strong>Supervision and distribution:</strong> ECB Q1 2026, EBA Q1 2026, CBS 2024 household distributions and DNB 2025 pension funding.</li>
+              </ol>
+              <p>Enable JavaScript for the complete field-by-field ledger. The citations above remain direct official links.</p>
+            </noscript>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+</SignalsLayout>

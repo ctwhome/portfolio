@@ -1,0 +1,48 @@
+{
+  "name": "ctw-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build && node scripts/covers.mjs && node scripts/preserve.mjs copy && node scripts/preserve.mjs verify",
+    "preview": "astro preview",
+    "test": "bun run test:ci",
+    "test:signals": "bun run build && bun run test:signals:built",
+    "test:signals:built": "node --test signals/tests/*.test.mjs",
+    "test:design": "bun run build && bun run test:design:built",
+    "test:design:built": "node --test design-system/tests/design-system.test.mjs",
+    "test:syntax": "node --check feedback.js && node --check signals/dashboard.js && node --check signals/subject-menu.js && node --check signals/food/food.js && node --check signals/housing/housing.js && node --check signals/science/science.js && node --check signals/healthspan/healthspan.js && node --check signals/real-time-ai/real-time-ai.js && node --check signals/demography/demography.js && node --check signals/education/education.js && node --check signals/financial-fragility/financial-fragility.js && python3 -m py_compile signals/scripts/*.py",
+    "test:dist": "bun run build && bun run test:dist:built",
+    "test:dist:built": "node --test tests/dist.test.mjs",
+    "test:e2e": "bun run build && bun run test:e2e:built",
+    "test:e2e:built": "playwright test tests/e2e --config tests/playwright.config.mjs",
+    "test:visual": "bun run build && bun run test:visual:built",
+    "test:visual:built": "playwright test tests/visual --config tests/playwright.config.mjs && playwright test --config design-system/tests/playwright.config.cjs",
+    "test:lighthouse": "bun run build && bun run test:lighthouse:built",
+    "test:lighthouse:built": "node tests/lighthouse.mjs",
+    "test:lighthouse:quick": "bun run build && bun run test:lighthouse:quick:built",
+    "test:lighthouse:quick:built": "node tests/lighthouse.mjs --runs=1",
+    "test:transfer": "bun run build && bun run test:transfer:built",
+    "test:transfer:built": "node tests/transfer.mjs",
+    "test:ci": "bun run check && bun run build && bun run test:signals:built && bun run test:design:built && bun run test:syntax && bun run test:dist:built && bun run test:e2e:built && bun run test:visual:built && bun run test:lighthouse:built"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "9.0.1",
+    "@floating-ui/dom": "1.8.0",
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource/dm-mono": "5.3.0",
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.1.4",
+    "svelte": "5.56.8",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.6",
+    "@jsquash/avif": "2.1.1",
+    "@playwright/test": "1.62.0",
+    "lighthouse": "13.4.1",
+    "sharp": "0.35.3",
+    "typescript": "5.9.3"
+  }
+}

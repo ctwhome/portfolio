@@ -13,6 +13,8 @@
       right: 1.25rem;
       bottom: 1.25rem;
       z-index: 260;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
       border: 1px solid rgba(247, 181, 0, 0.45);
       border-radius: 999px;
       background: rgba(12, 12, 10, 0.84);
@@ -142,7 +144,12 @@
     .ctw-feedback-status.is-error { color: #ffb4a8; }
     .ctw-feedback-status.is-success { color: #9fe6b8; }
     @media (max-width: 640px) {
-      .ctw-feedback-button { right: 0.9rem; bottom: 0.9rem; padding: 0.68rem 0.85rem; }
+      .ctw-feedback-button {
+        position: static;
+        display: block;
+        margin: 0.9rem 0.9rem 0.9rem auto;
+        padding: 0.68rem 0.85rem;
+      }
       .ctw-feedback-actions { flex-direction: column-reverse; align-items: stretch; }
     }
   `;

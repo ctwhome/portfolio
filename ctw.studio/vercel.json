@@ -1,7 +1,8 @@
 {
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "framework": null,
+  "buildCommand": "bun run build",
+  "installCommand": "bun install --frozen-lockfile",
+  "outputDirectory": "dist",
+  "framework": "astro",
   "redirects": [
     {
       "source": "/nlesc/home",

@@ -1,0 +1,61 @@
+{
+  "files": [
+    "favicon.png",
+    "og-image.png",
+    "feedback.js",
+    "nav.js",
+    "homepage.css",
+    "tailwind.css",
+    "index-0.html",
+    "index-1.html",
+    "index-1a.html",
+    "index-2.html",
+    "design-system/guide.css",
+    "design-system/tokens.css",
+    "design-system/components.css",
+    "design-system/compositions.css",
+    "design-system/compat.css",
+    "design-system/tokens.json"
+  ],
+  "trees": [
+    "new",
+    "nlesc",
+    "portfolio/projects",
+    "signals",
+    "workshop"
+  ],
+  "treeExcludes": [
+    "signals/README.md",
+    "signals/scripts",
+    "signals/tests",
+    "signals/index.html",
+    "signals/ai-work/index.html",
+    "signals/food/index.html",
+    "signals/housing/index.html",
+    "signals/healthspan/index.html",
+    "signals/real-time-ai/index.html",
+    "signals/demography/index.html",
+    "signals/education/index.html",
+    "signals/science/index.html",
+    "signals/financial-fragility/index.html",
+    "design-system/tests",
+    "design-system/test-results"
+  ],
+  "routeContract": {
+    "excludedTrees": [
+      "nlesc"
+    ],
+    "preservedRoutes": [
+      "/index-0.html",
+      "/index-1.html",
+      "/index-1a.html",
+      "/index-2.html",
+      "/new/",
+      "/workshop/pitch/",
+      "/workshop/slides/"
+    ],
+    "redirectSources": [
+      "/signals/roadmap/"
+    ]
+  }
+}

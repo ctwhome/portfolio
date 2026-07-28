@@ -1,0 +1,44 @@
+---
+type Subject =
+  | 'housing'
+  | 'food'
+  | 'healthspan'
+  | 'capability'
+  | 'prosperity'
+  | 'demography'
+  | 'science';
+
+interface Props {
+  current?: Subject;
+  class?: string;
+}
+
+const { current, class: className = '' } = Astro.props;
+const subjects: readonly { id: string; label: string; href?: string }[] = [
+  { id: 'housing', label: 'Housing & affordability', href: '/signals/housing/' },
+  { id: 'food', label: 'Food, animals & planet', href: '/signals/food/' },
+  { id: 'healthspan', label: 'Healthspan & care', href: '/signals/healthspan/' },
+  { id: 'capability', label: 'Work, education & human capability', href: '/signals/ai-work/' },
+  { id: 'prosperity', label: 'Prosperity & financial security', href: '/signals/financial-fragility/' },
+  { id: 'energy', label: 'Energy, compute & infrastructure' },
+  { id: 'demography', label: 'Demography, migration & aging', href: '/signals/demography/' },
+  { id: 'democracy', label: 'Democracy, trust & information' },
+  { id: 'science', label: 'Science, discovery & AI systems', href: '/signals/science/' },
+  { id: 'resilience', label: 'Global resilience' }
+];
+---
+<nav class:list={['subject-menu', className]} aria-label="CTW Signals subjects">
+  <a class="subject-menu__brand" href="/signals/" data-astro-reload>Signals /</a>
+  {subjects.map((subject) => subject.href ? (
+    <a
+      class="subject-menu__option"
+      href={subject.href}
+      aria-current={current === subject.id ? 'location' : undefined}
+      data-astro-reload
+    >{subject.label}</a>
+  ) : (
+    <span class="subject-menu__option subject-menu__option--planned">
+      {subject.label} <span class="subject-menu__badge">Planned</span>
+    </span>
+  ))}
+</nav>

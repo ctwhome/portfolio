@@ -1,0 +1,63 @@
+---
+import DocumentHead from '../components/DocumentHead.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/fonts.css';
+import '../styles/global.css';
+import '../styles/transitions.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogDescription?: string;
+  ogType?: 'article' | 'website';
+  themeColor?: string;
+  htmlClass?: string;
+  htmlStyle?: string;
+  bodyClass?: string;
+  pageCssUrls: string[];
+  pageScriptUrls: string[];
+  skipLabel?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogDescription = description,
+  ogType = 'article',
+  themeColor,
+  htmlClass = '',
+  htmlStyle,
+  bodyClass = '',
+  pageCssUrls,
+  pageScriptUrls,
+  skipLabel = 'Skip to the evidence'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en" class={htmlClass} style={htmlStyle}>
+  <head>
+    <script is:inline>document.documentElement.classList.add('subject-menu-pending');</script>
+    <DocumentHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogDescription={ogDescription}
+      ogType={ogType}
+      themeColor={themeColor}
+      pageCssUrls={pageCssUrls}
+      pageScriptUrls={pageScriptUrls}
+      transitions={false}
+    />
+  </head>
+  <body class={bodyClass || undefined}>
+    <a class:list={[bodyClass.includes('ctw-scope') ? 'ctw-skip-link' : 'skip-link']} href="#main-content">{skipLabel}</a>
+    <div class="ctw-scope">
+      <SiteHeader current="signals" />
+    </div>
+    <slot />
+    <script is:inline>window.__ctwFeedbackLoaded = false;</script>
+    <script is:inline src="/feedback.js"></script>
+  </body>
+</html>

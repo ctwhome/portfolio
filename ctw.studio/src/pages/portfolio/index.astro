@@ -1,0 +1,32 @@
+---
+import PortfolioController from '../../components/PortfolioController.svelte';
+import ProjectDetails from '../../components/ProjectDetails.astro';
+import ProjectGrid from '../../components/ProjectGrid.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { projects } from '../../data/projects';
+import '../../styles/portfolio.css';
+
+const orderedProjects = [...projects].sort((a, b) => b.date.localeCompare(a.date));
+---
+<SiteLayout
+  title="Work — CTW Studio"
+  description="Selected projects by CTW Studio. Applied research software, scientific visualization, and digital experiences."
+  canonical="/portfolio/"
+  current="portfolio"
+>
+  <main id="main-content" class="portfolio-page">
+    <div class="ctw-container">
+      <header class="portfolio-lead" transition:name="portfolio-lead">
+        <p class="ctw-section-number">Selected work / 2013—2025</p>
+        <h1>Research software as cultural practice.</h1>
+        <div class="portfolio-lead__meta">
+          <span>{orderedProjects.length} projects</span>
+          <span>Amsterdam · global</span>
+        </div>
+      </header>
+      <ProjectGrid projects={orderedProjects} />
+      <ProjectDetails projects={orderedProjects} />
+    </div>
+    <PortfolioController client:load />
+  </main>
+</SiteLayout>

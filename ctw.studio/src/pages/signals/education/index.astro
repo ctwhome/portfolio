@@ -1,0 +1,351 @@
+---
+import SignalSubjectMenu from '../../../components/SignalSubjectMenu.astro';
+import SignalsLayout from '../../../layouts/SignalsLayout.astro';
+---
+<SignalsLayout
+  title="Are people gaining the capabilities needed to adapt? — CTW Signals"
+  description="A source-auditable brief separating foundational proficiency, pathways, adult learning, teacher capacity and bounded AI-tutor evidence."
+  canonical="/signals/education/"
+  htmlClass="scroll-smooth evidence-page education-page"
+  htmlStyle="background:#050505"
+  pageCssUrls={["/tailwind.css","/signals/signals.css?v=6","/signals/education/education.css","/signals/subject-menu.css"]}
+  pageScriptUrls={["/signals/education/education.js","/signals/subject-menu.js"]}
+>
+<main id="main-content">
+    <header class="evidence-hero">
+      <div class="signal-shell">
+        <SignalSubjectMenu current="capability" class="evidence-topics" />
+        <div class="evidence-hero-grid">
+          <div>
+            <p class="evidence-kicker">Brief 008 · Education &amp; human capability</p>
+            <h1>Are people gaining the capabilities needed to <em>adapt?</em></h1>
+            <p class="evidence-deck">Foundational outcomes, pathway access, adult participation, teacher capacity and AI-tutor experiments answer different questions. This brief keeps them separate.</p>
+            <div class="evidence-meta">
+              <span>Evidence reviewed <strong id="education-data-date">2026-07-26</strong></span>
+              <span>World → Netherlands → selected studies</span>
+              <a href="#sources">Inspect sources</a>
+            </div>
+          </div>
+          <aside class="evidence-verdict" aria-label="Current verdict">
+            <span>Current read · conditional</span>
+            <strong>Foundations weakened in many measured systems. Pathways help, but adaptation is not yet demonstrated.</strong>
+            <p>Persistent gaps and local teacher constraints matter. AI tutors are promising on bounded tasks, not established teacher or institution substitutes.</p>
+          </aside>
+        </div>
+        <ol class="question-rail" aria-label="Five questions">
+          <li><span>01</span>Where are we now?</li>
+          <li><span>02</span>What direction?</li>
+          <li><span>03</span>Who gains?</li>
+          <li><span>04</span>What else explains it?</li>
+          <li><span>05</span>What changes our mind?</li>
+        </ol>
+      </div>
+    </header>
+
+    <div class="evidence-layout">
+      <aside class="evidence-index" aria-label="Brief chapters">
+        <p>The five questions</p>
+        <nav>
+          <a href="#where"><span>01</span> Where now?</a>
+          <a href="#direction"><span>02</span> Direction</a>
+          <a href="#distribution"><span>03</span> Distribution</a>
+          <a href="#explanations"><span>04</span> Explanations</a>
+          <a href="#change"><span>05</span> Change evidence</a>
+          <a href="#sources"><span>→</span> Sources</a>
+        </nav>
+      </aside>
+
+      <article>
+        <section id="where" class="evidence-chapter">
+          <p class="evidence-label">01 · Where are we now?</p>
+          <h2>Capability is a sequence,<br><em>not a single score.</em></h2>
+          <p class="evidence-intro">A learner can enter school without reaching minimum proficiency, complete a programme without finding matched work, or join training without demonstrating a new skill. No capability composite is reported.</p>
+
+          <div class="lens-grid">
+            <article><span>World</span><h3>Foundational learning</h3><p>The 2022 learning-poverty update estimated 70% of children at late-primary age in low- and middle-income countries could not read and understand a simple text.</p></article>
+            <article><span>Europe / Netherlands</span><h3>Outcomes and access</h3><p>PISA 2022 recorded lower Dutch mathematics, reading and science scores than 2018, alongside large within-country gaps.</p></article>
+            <article><span>Selected studies</span><h3>Intervention mechanisms</h3><p>Pathways and tutoring studies identify bounded mechanisms; they do not form a country ranking.</p></article>
+          </div>
+
+          <div class="evidence-card evidence-bearing learning-poverty-card" data-source-id="world-bank-learning-poverty-2022">
+            <span class="evidence-type">Modelled estimate · low- and middle-income countries · 2022</span>
+            <div><strong>70%</strong><h3>Estimated learning poverty</h3></div>
+            <p>Children at late-primary age unable to read and understand a simple text. This harmonised construct combines schooling deprivation, assessment evidence and simulation; it is not a direct universal observation.</p>
+            <footer class="proximate-citation" data-citation-source-id="world-bank-learning-poverty-2022">Source: <a href="https://www.worldbank.org/en/topic/education/publication/state-of-global-learning-poverty" target="_blank" rel="noreferrer">World Bank et al., 2022 update ↗</a> · <a href="#source-world-bank-learning-poverty-2022">Scope &amp; caveats ↓</a></footer>
+          </div>
+
+          <div class="boundary-grid education-boundaries">
+            <article><span>Foundations</span><h3>Can learners perform?</h3><p>Proficiency distributions within a named assessment.</p></article>
+            <article><span>Pathways</span><h3>Can learners progress?</h3><p>Enrollment, completion and labour outcomes remain separate.</p></article>
+            <article><span>Adult learning</span><h3>Can adults adapt?</h3><p>Participation alone cannot answer the question.</p></article>
+            <article><span>Capacity</span><h3>Can systems deliver?</h3><p>Staffing constructs are local and non-interchangeable.</p></article>
+            <article><span>AI tutoring</span><h3>Can a task improve?</h3><p>Effects need duration, comparator, costs and equity.</p></article>
+          </div>
+        </section>
+
+        <section id="direction" class="evidence-chapter">
+          <p class="evidence-label">02 · What direction are we moving?</p>
+          <h2>Measured foundations fell.<br><em>Recovery remains unproven.</em></h2>
+          <p class="evidence-intro">Within OECD PISA—15-year-olds, the same three domains, four named cycles—Dutch mean scores fell in mathematics, reading and science between 2018 and 2022. PISA must not be joined to PIRLS, TIMSS, national assessments or adult PIAAC.</p>
+
+          <div class="trajectory-panel evidence-bearing" data-source-id="oecd-pisa-nl-2022">
+            <div class="series-panel__head">
+              <div><p class="evidence-label">Foundational trajectory · OECD PISA</p><h3 id="trajectory-title">Netherlands · mathematics · age 15</h3></div>
+              <div class="series-switcher" role="group" aria-label="Choose PISA domain">
+                <button type="button" data-domain="mathematics" aria-pressed="true">Mathematics</button>
+                <button type="button" data-domain="reading" aria-pressed="false">Reading</button>
+                <button type="button" data-domain="science" aria-pressed="false">Science</button>
+              </div>
+            </div>
+            <svg id="trajectory-chart" viewBox="0 0 720 260" role="img" aria-labelledby="trajectory-svg-title trajectory-svg-desc">
+              <title id="trajectory-svg-title">Netherlands PISA mathematics scores, 2012 to 2022</title>
+              <desc id="trajectory-svg-desc">Mathematics mean scores were 523 in 2012, 512 in 2015, 519 in 2018 and 493 in 2022.</desc>
+              <line x1="55" y1="210" x2="680" y2="210"></line>
+              <line x1="55" y1="30" x2="55" y2="210"></line>
+              <polyline points="55,57 263,94 472,70 680,157"></polyline>
+              <g><circle cx="55" cy="57" r="6"></circle><circle cx="263" cy="94" r="6"></circle><circle cx="472" cy="70" r="6"></circle><circle cx="680" cy="157" r="6"></circle></g>
+              <g class="chart-labels"><text x="42" y="238">2012</text><text x="250" y="238">2015</text><text x="459" y="238">2018</text><text x="667" y="238">2022</text><text x="42" y="47">523</text><text x="250" y="84">512</text><text x="459" y="60">519</text><text x="655" y="147">493</text></g>
+            </svg>
+            <details open>
+              <summary>View chart as data</summary>
+              <div class="table-scroll">
+                <table id="trajectory-table">
+                  <caption>Netherlands PISA mathematics mean score, 15-year-old students</caption>
+                  <thead><tr><th>Cycle</th><th>Framework</th><th>Age</th><th>Domain</th><th>Mean score</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">2012</th><td>OECD PISA</td><td>15</td><td>Mathematics</td><td>523</td></tr>
+                    <tr><th scope="row">2015</th><td>OECD PISA</td><td>15</td><td>Mathematics</td><td>512</td></tr>
+                    <tr><th scope="row">2018</th><td>OECD PISA</td><td>15</td><td>Mathematics</td><td>519</td></tr>
+                    <tr><th scope="row">2022</th><td>OECD PISA</td><td>15</td><td>Mathematics</td><td>493</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+            <p class="scope-warning"><strong>Comparability:</strong> PISA 2022 mathematics was the major domain. The Dutch exclusion rate exceeded the technical standard and may bias results upward. Test mode, cohort coverage and domain emphasis remain plausible influences.</p>
+            <p class="proximate-citation" data-citation-source-id="oecd-pisa-nl-2022">Source: <a href="https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/netherlands_0941b029-en.html" target="_blank" rel="noreferrer">OECD, PISA 2022 Netherlands note ↗</a> · <a href="#source-oecd-pisa-nl-2022">Scope &amp; caveats ↓</a></p>
+          </div>
+
+          <div class="pathway-panel">
+            <div class="series-panel__head"><div><p class="evidence-label">Pathway sequence</p><h3>Access is not outcome</h3></div><span>No collapsed funnel</span></div>
+            <ol class="pathway-sequence" aria-label="Education pathway measures">
+              <li><span>01</span><strong>Enrollment</strong><small>entered</small></li>
+              <li><span>02</span><strong>Completion</strong><small>credentialed</small></li>
+              <li><span>03</span><strong>Employment</strong><small>working</small></li>
+              <li><span>04</span><strong>Earnings</strong><small>return</small></li>
+              <li><span>05</span><strong>Job match</strong><small>skills used</small></li>
+            </ol>
+            <div class="table-scroll">
+              <table id="pathway-table">
+                <caption>Pathway stages and the distinctions required for interpretation</caption>
+                <thead><tr><th>Stage</th><th>Question</th><th>Measure</th><th>Not equivalent to</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Enrollment</th><td>Did a learner enter?</td><td>Participants or entrants</td><td>Completion</td></tr>
+                  <tr><th scope="row">Completion</th><td>Was the credential completed?</td><td>Graduates or completers</td><td>Employment</td></tr>
+                  <tr><th scope="row">Employment</th><td>Was a recent graduate employed?</td><td>Employment in a defined window</td><td>Earnings or job match</td></tr>
+                  <tr><th scope="row">Earnings</th><td>What return followed?</td><td>Earnings with a comparison group</td><td>Skill use or job quality</td></tr>
+                  <tr><th scope="row">Job match</th><td>Are acquired capabilities used?</td><td>Field or skill match</td><td>Adaptability</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="series-panel evidence-bearing" data-source-id="world-bank-primary-enrollment-nl">
+            <div class="series-panel__head">
+              <div><p class="evidence-label">Official annual context · Netherlands</p><h3 id="official-series-title">Primary gross enrollment · access proxy</h3></div>
+              <span>Enrollment ≠ outcome</span>
+            </div>
+            <div id="official-series-bars" class="bar-list" role="img" aria-label="Selected annual Netherlands primary gross enrollment observations">
+              <div class="bar-row"><span>2016</span><div class="bar-row__track"><i style="width:100%"></i></div><strong>105.7</strong></div>
+              <div class="bar-row"><span>2018</span><div class="bar-row__track"><i style="width:99%"></i></div><strong>104.6</strong></div>
+              <div class="bar-row"><span>2020</span><div class="bar-row__track"><i style="width:98.7%"></i></div><strong>104.3</strong></div>
+              <div class="bar-row"><span>2022</span><div class="bar-row__track"><i style="width:98.6%"></i></div><strong>104.2</strong></div>
+              <div class="bar-row"><span>2023</span><div class="bar-row__track"><i style="width:98.6%"></i></div><strong>104.2</strong></div>
+            </div>
+            <details><summary>View complete selected series</summary><div class="table-scroll"><table id="official-series-table"><caption>Netherlands primary gross enrollment ratio, annual observations</caption><thead><tr><th>Year</th><th>Value</th><th>Unit</th><th>Evidence</th></tr></thead><tbody><tr><th scope="row">2016</th><td>105.7</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2017</th><td>105.0</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2018</th><td>104.6</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2019</th><td>104.6</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2020</th><td>104.3</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2021</th><td>104.4</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2022</th><td>104.2</td><td>% gross enrollment ratio</td><td>Observation</td></tr><tr><th scope="row">2023</th><td>104.2</td><td>% gross enrollment ratio</td><td>Observation</td></tr></tbody></table></div></details>
+            <p id="official-series-caveat" class="scope-warning"><strong>Definition:</strong> Total primary enrollment, regardless of age, divided by the official primary-school-age population. The ratio can exceed 100; enrollment is not attendance, completion or proficiency.</p>
+            <p id="official-series-citation" class="proximate-citation" data-citation-source-id="world-bank-primary-enrollment-nl">Source: <a href="https://api.worldbank.org/v2/country/NLD/indicator/SE.PRM.ENRR?format=json" target="_blank" rel="noreferrer">World Bank / UNESCO UIS, SE.PRM.ENRR ↗</a> · <a href="#source-world-bank-primary-enrollment-nl">Scope &amp; caveats ↓</a></p>
+          </div>
+        </section>
+
+        <section id="distribution" class="evidence-chapter">
+          <p class="evidence-label">03 · Who gains or remains excluded?</p>
+          <h2>Averages conceal<br><em>different capability gaps.</em></h2>
+          <p class="evidence-intro">Each gap below retains its own domain, subgroup definition and denominator. The adjusted migration-background result remains an association, not a causal estimate.</p>
+
+          <div class="distribution-grid evidence-bearing" data-source-id="oecd-pisa-nl-2022">
+            <article><span>Minimum proficiency</span><strong>73%</strong><p>At or above PISA Level 2 in mathematics; all represented Dutch 15-year-old students.</p></article>
+            <article><span>Minimum proficiency</span><strong>65%</strong><p>At or above PISA Level 2 in reading; all represented Dutch 15-year-old students.</p></article>
+            <article><span>Socioeconomic status</span><strong>106 pts</strong><p>Mathematics gap: top versus bottom national quartile of PISA ESCS.</p></article>
+            <article><span>Migration background</span><strong>27 pts</strong><p>Mathematics gap favouring non-immigrant students after adjustment for socioeconomic profile.</p></article>
+            <article><span>Gender</span><strong>26 pts</strong><p>Reading gap favouring girls over boys in the represented population.</p></article>
+          </div>
+          <div class="table-scroll">
+            <table id="distribution-table">
+              <caption>Netherlands PISA 2022 proficiency distribution and gaps</caption>
+              <thead><tr><th>Measure</th><th>Domain</th><th>Value</th><th>Subgroup denominator</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">At or above Level 2</th><td>Mathematics</td><td>73%</td><td>All represented 15-year-old students</td></tr>
+                <tr><th scope="row">At or above Level 2</th><td>Reading</td><td>65%</td><td>All represented 15-year-old students</td></tr>
+                <tr><th scope="row">Advantaged–disadvantaged gap</th><td>Mathematics</td><td>106 score points</td><td>Top vs bottom national ESCS quartile</td></tr>
+                <tr><th scope="row">Adjusted non-immigrant–immigrant gap</th><td>Mathematics</td><td>27 score points</td><td>Migration-background groups after ESCS adjustment</td></tr>
+                <tr><th scope="row">Girls–boys gap</th><td>Reading</td><td>26 score points</td><td>Represented girls vs represented boys</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="proximate-citation" data-citation-source-id="oecd-pisa-nl-2022">Source: <a href="https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/netherlands_0941b029-en.html" target="_blank" rel="noreferrer">OECD, PISA 2022 Netherlands note ↗</a> · <a href="#source-oecd-pisa-nl-2022">Scope &amp; caveats ↓</a></p>
+
+          <div class="adult-panel evidence-bearing" data-source-id="eurostat-lfs-adult-learning eurostat-aes-2022">
+            <div class="series-panel__head"><div><p class="evidence-label">Adult learning &amp; adaptation</p><h3>Participation is the first column, not the verdict</h3></div><span>Two windows · do not splice</span></div>
+            <div class="adult-window-grid">
+              <article><span>EU-LFS · four weeks · 2021</span><strong>27%</strong><p>Netherlands, ages 25–64, formal or non-formal education and training. EU: 11%. A 2021 methodology break applies.</p></article>
+              <article><span>AES · twelve months · 2022</span><strong>25.1%</strong><p>EU adults aged 25–64 with low prior attainment participated. This is a different survey and reference window.</p></article>
+            </div>
+            <div class="table-scroll">
+              <table id="adult-learning-table">
+                <caption>Adult-learning participation evidence; reference windows are not comparable</caption>
+                <thead><tr><th>Source</th><th>Geography / subgroup</th><th>Age</th><th>Window</th><th>Value</th><th>What it does not show</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">EU-LFS 2021</th><td>Netherlands</td><td>25–64</td><td>Previous 4 weeks</td><td>27%</td><td>Completion, skill gain or transition</td></tr>
+                  <tr><th scope="row">EU-LFS 2021</th><td>European Union</td><td>25–64</td><td>Previous 4 weeks</td><td>11%</td><td>Completion, skill gain or transition</td></tr>
+                  <tr><th scope="row">AES 2022</th><td>EU, low prior attainment</td><td>25–64 comparison</td><td>Previous 12 months</td><td>25.1%</td><td>Measured reskilling or job change</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="scope-warning"><strong>Boundary:</strong> participation ≠ completion ≠ skill gain ≠ occupational transition. The AES and LFS windows cannot be treated as a trend.</p>
+            <p class="proximate-citation" data-citation-source-id="eurostat-lfs-adult-learning eurostat-aes-2022">Sources: <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20230130-1" target="_blank" rel="noreferrer">Eurostat EU-LFS ↗</a> + <a href="https://ec.europa.eu/eurostat/web/microdata/collections-research/adult-education-survey" target="_blank" rel="noreferrer">AES ↗</a></p>
+          </div>
+
+          <div class="capacity-panel evidence-bearing" data-source-id="oecd-pisa-nl-2022">
+            <div><p class="evidence-label">Teacher capacity · local construct</p><h3>72% of represented Dutch students were in schools where principals said staff shortages hindered instruction.</h3><p>The corresponding share was 36% in 2018; 46% in 2022 were in schools reporting inadequate or poorly qualified staff as a constraint.</p></div>
+            <div class="capacity-meter" aria-hidden="true"><i style="width:72%"></i><span>72%</span></div>
+            <div class="table-scroll">
+              <table id="teacher-capacity-table">
+                <caption>Principal-reported teaching-staff constraints, Netherlands PISA</caption>
+                <thead><tr><th>Construct</th><th>Year</th><th>Value</th><th>Denominator</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Lack of teaching staff hinders instruction</th><td>2018</td><td>36%</td><td>Represented students, weighted by principal response</td></tr>
+                  <tr><th scope="row">Lack of teaching staff hinders instruction</th><td>2022</td><td>72%</td><td>Represented students, weighted by principal response</td></tr>
+                  <tr><th scope="row">Inadequate or poorly qualified staff hinder instruction</th><td>2022</td><td>46%</td><td>Represented students, weighted by principal response</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="scope-warning"><strong>Construct boundary:</strong> principal-reported constraint ≠ pupil-teacher ratio ≠ vacancy ≠ unqualified teaching ≠ workload ≠ forecast shortage. Cumulative spending of about USD 119,600 PPP per Dutch student from ages 6–15 is allocation context, not proof of outcomes.</p>
+            <p class="proximate-citation" data-citation-source-id="oecd-pisa-nl-2022">Source: <a href="https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/netherlands_0941b029-en.html" target="_blank" rel="noreferrer">OECD, PISA 2022 Netherlands note ↗</a> · <a href="#source-oecd-pisa-nl-2022">Scope &amp; caveats ↓</a></p>
+          </div>
+        </section>
+
+        <section id="explanations" class="evidence-chapter">
+          <p class="evidence-label">04 · Competing explanations</p>
+          <h2>Decline and gaps have<br><em>more than one mechanism.</em></h2>
+          <div class="explanation-grid">
+            <article><span>Coverage</span><h3>Cohort composition</h3><p>Enrollment, exclusions and migration alter who a test represents.</p></article>
+            <article><span>Measurement</span><h3>Mode and framework</h3><p>Digital mode, domain emphasis and framework changes can affect comparisons.</p></article>
+            <article><span>Disruption</span><h3>School closures</h3><p>Closures matter, but several pre-2020 trends were already negative.</p></article>
+            <article><span>Resources</span><h3>Household conditions</h3><p>Language, income, devices, study space and parental time shape opportunity.</p></article>
+            <article><span>Sorting</span><h3>Pathway selection</h3><p>Raw graduate outcomes mix programme effects with who enters each route.</p></article>
+            <article><span>Economy</span><h3>Labour demand</h3><p>Employment can rise or fall without a change in training quality.</p></article>
+            <article><span>Delivery</span><h3>Institutional capacity</h3><p>Staffing, curriculum, procurement and timetable determine implementation.</p></article>
+          </div>
+          <div class="data-gap"><strong>Identification limit:</strong> timing alone does not isolate closures, household shocks, institutional capacity or cohort composition. A descriptive trend is not a causal decomposition.</div>
+        </section>
+
+        <section id="change" class="evidence-chapter">
+          <p class="evidence-label">05 · What would change our conclusion?</p>
+          <h2>Show durable gains,<br><em>not a promising demo.</em></h2>
+          <p class="evidence-intro">The AI studies below are deliberately not pooled. Their populations, interventions, randomisation units, comparators, durations and outcomes are incompatible.</p>
+
+          <div class="ai-matrix evidence-bearing" data-source-id="kestin-2025 tutor-copilot-2025 world-bank-nigeria-ai-2025 scale-access-2026">
+            <div class="series-panel__head"><div><p class="evidence-label">Structured AI-tutor evidence matrix</p><h3>Four experiments · four different claims</h3></div><span>No forest plot · no pooled effect</span></div>
+            <div class="table-scroll">
+              <table id="ai-study-table">
+                <caption>AI tutoring and tutor-support studies; effects are not commensurable</caption>
+                <thead><tr><th>Study</th><th>Design &amp; sample</th><th>Comparator</th><th>Duration</th><th>Outcome &amp; uncertainty</th><th>Funding / conflicts</th><th>Generalizability</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Harvard physics AI tutor</th>
+                    <td>Randomized crossover; 194 eligible students in one introductory course</td>
+                    <td>Bespoke AI tutor at home vs same content in active-learning class</td>
+                    <td>Two lessons in consecutive weeks</td>
+                    <td>Immediate post-test: 0.63 SD linear estimate; quantile range 0.73–1.3 under ceiling effects; p&lt;10<sup>−8</sup></td>
+                    <td>No dedicated funding statement on article page; Harvard production support; authors declared no competing interests</td>
+                    <td>One selective university, course and immediate outcome; no retention, equity, cost or substitution test</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tutor CoPilot</th>
+                    <td>Preregistered tutor-level RCT; 783 tutors, 1,000+ K–12 students</td>
+                    <td>Human tutors with optional AI suggestions vs tutors without them</td>
+                    <td>About 7 weeks</td>
+                    <td>Unconditional session exit-ticket passing +4 pp (SE 1.5 pp); no significant end-of-year MAP effect</td>
+                    <td>FEV Tutor and partner district collaboration; no standalone funding/conflict declaration</td>
+                    <td>Human-AI support, one provider/district, low student exposure, proximal outcome</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nigeria Copilot programme</th>
+                    <td>School-level RCT; first-year secondary students in 12 Edo State public schools</td>
+                    <td>Teacher-facilitated after-school Copilot programme vs usual schooling</td>
+                    <td>6 weeks</td>
+                    <td>0.31 SD on combined English, AI-knowledge and digital-skills assessment; study-specific standardization</td>
+                    <td>World Bank working paper tied to Edo education operation; Microsoft product used</td>
+                    <td>One state, facilitated programme, mixed assessment; no autonomous or long-run system test</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SCALE access + human support</th>
+                    <td>Two RCTs; about 350 elementary students in two unnamed U.S. districts</td>
+                    <td>Independent AI literacy access vs access plus human engagement tutor</td>
+                    <td>14–31 week windows; typical active use 4–5 weeks</td>
+                    <td>Engagement +71–80%; low usage persisted and reading achievement did not improve</td>
+                    <td>Stanford SCALE / EdWorkingPapers; platform unnamed; no standalone funding/conflict statement in public summary</td>
+                    <td>Implementation evidence, not general instructional efficacy</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="scope-warning"><strong>Boundary:</strong> AI task effect ≠ durable learning ≠ teacher substitution ≠ cost reduction ≠ system equity. No pooled estimate is defensible.</p>
+            <p class="proximate-citation" data-citation-source-id="kestin-2025 tutor-copilot-2025 world-bank-nigeria-ai-2025 scale-access-2026">Primary sources: <a href="https://doi.org/10.1038/s41598-025-97652-6" target="_blank" rel="noreferrer">Kestin et al. ↗</a> · <a href="https://edworkingpapers.com/sites/default/files/ai24_1054_v2.pdf" target="_blank" rel="noreferrer">Tutor CoPilot ↗</a> · <a href="https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099548105192529324" target="_blank" rel="noreferrer">Nigeria RCT ↗</a> · <a href="https://scale.stanford.edu/publications/access-not-enough-human-support-improves-engagement-ai-tutoring" target="_blank" rel="noreferrer">SCALE access RCTs ↗</a></p>
+          </div>
+
+          <ol class="reversal-grid">
+            <li>Sustained recovery within the same assessment framework, age, domain and mode.</li>
+            <li>Narrower gaps under stable subgroup definitions and denominators.</li>
+            <li>Pathway evidence connecting enrollment, completion, employment, earnings and job match without collapsing them.</li>
+            <li>Measured adult skill gains and occupational transitions, especially for adults with low prior attainment.</li>
+            <li>Reduced vacancies, unqualified teaching and workload constraints under local measures.</li>
+            <li>Independent, replicated, long-duration AI trials with retention, equity, total cost and safe system integration.</li>
+          </ol>
+
+          <div class="possibility-list">
+            <article><strong>Hypothesis</strong><p>AI may extend feedback and practice when teachers and institutions can integrate it.</p></article>
+            <article><strong>Possibility</strong><p>Work-based pathways may improve transitions when employer demand and credential quality align.</p></article>
+            <article><strong>Data gap</strong><p>No defensible composite joins proficiency, adult skill gain, pathway outcomes and teacher capacity.</p></article>
+          </div>
+        </section>
+
+        <section id="sources" class="evidence-chapter">
+          <p class="evidence-label">Method &amp; source ledger</p>
+          <h2>Scope travels<br><em>with every number.</em></h2>
+          <p class="evidence-intro">Only stable World Bank/UIS series refresh automatically. PISA, learning poverty, Eurostat survey extracts, pathway evidence, teacher constraints and AI studies remain edition-pinned and review-gated.</p>
+          <div class="method-note">
+            <strong>Updater boundary</strong>
+            <p>The updater validates indicator identity, geography, definition, unit, chronology and observation count before an atomic write. A network failure preserves the reviewed file byte-for-byte; a schema or definition failure stops. Curated evidence is never rewritten.</p>
+          </div>
+          <div id="education-source-list" class="source-ledger-static" aria-live="polite">
+            <article id="source-oecd-pisa-nl-2022"><h3>PISA 2022 Results, Netherlands</h3><p>OECD · observation · 15-year-old students · 2012–2022 cycles</p><a href="https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/netherlands_0941b029-en.html" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-world-bank-learning-poverty-2022"><h3>State of Global Learning Poverty: 2022 Update</h3><p>World Bank et al. · modelled estimate · late-primary age</p><a href="https://www.worldbank.org/en/topic/education/publication/state-of-global-learning-poverty" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-eurostat-lfs-adult-learning"><h3>Adult participation in learning (trng_lfse_01)</h3><p>Eurostat EU-LFS · survey observation · four-week window</p><a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20230130-1" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-eurostat-aes-2022"><h3>Adult Education Survey 2022</h3><p>Eurostat · survey observation · twelve-month window</p><a href="https://ec.europa.eu/eurostat/web/microdata/collections-research/adult-education-survey" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-eurostat-graduate-employment-2025"><h3>Employment of recent graduates (edat_lfse_24)</h3><p>Eurostat · observation · ages 20–34 · 2025</p><a href="https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20260615-1" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-eurostat-education-policy"><h3>European Education Area policy context</h3><p>European Commission / Eurostat · policy target</p><a href="https://ec.europa.eu/eurostat/web/education-and-training/information-data/policy-context" target="_blank" rel="noreferrer">Open source ↗</a></article>
+            <article id="source-world-bank-primary-enrollment-nl"><h3>Primary gross enrollment (SE.PRM.ENRR)</h3><p>World Bank / UNESCO UIS · official annual observation · Netherlands</p><a href="https://api.worldbank.org/v2/country/NLD/indicator/SE.PRM.ENRR?format=json" target="_blank" rel="noreferrer">Open API ↗</a></article>
+            <article id="source-kestin-2025"><h3>AI tutoring outperforms in-class active learning</h3><p>Scientific Reports · randomized crossover experiment · 2025</p><a href="https://doi.org/10.1038/s41598-025-97652-6" target="_blank" rel="noreferrer">Open study ↗</a></article>
+            <article id="source-tutor-copilot-2025"><h3>Tutor CoPilot</h3><p>Stanford SCALE / EdWorkingPapers · preregistered RCT</p><a href="https://edworkingpapers.com/sites/default/files/ai24_1054_v2.pdf" target="_blank" rel="noreferrer">Open paper ↗</a></article>
+            <article id="source-world-bank-nigeria-ai-2025"><h3>From Chalkboards to Chatbots</h3><p>World Bank · school-level randomized experiment · 2025</p><a href="https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099548105192529324" target="_blank" rel="noreferrer">Open paper ↗</a></article>
+            <article id="source-scale-access-2026"><h3>Access is Not Enough</h3><p>Stanford SCALE / EdWorkingPapers · two RCTs · 2026</p><a href="https://scale.stanford.edu/publications/access-not-enough-human-support-improves-engagement-ai-tutoring" target="_blank" rel="noreferrer">Open study ↗</a></article>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="evidence-footer"><div class="signal-shell"><span>Brief 008 · Education &amp; human capability</span><a href="../">Explore Signals atlas →</a></div></footer>
+  <noscript><div class="noscript-note">JavaScript is unavailable. The verdict, all core values, semantic tables, caveats and source links remain available above.</div></noscript>
+</SignalsLayout>

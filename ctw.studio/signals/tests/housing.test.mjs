@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/housing.json', root), 'utf8'));
-const html = await readFile(new URL('housing/index.html', root), 'utf8');
+const html = await readFile(new URL('housing/index.html', dist), 'utf8');
 const script = await readFile(new URL('housing/housing.js', root), 'utf8');
 
 function isSorted(rows) {
@@ -91,7 +92,7 @@ test('housing source ledger is unique, secure, and fully referenced', () => {
 });
 
 test('housing page exposes every required chapter, lens, chart alternative, and possibility section', () => {
-  assert.match(html, /data-active="signals"/);
+  assert.doesNotMatch(html, /nav\.js|data-active="signals"/);
   for (const id of ['where-now', 'direction', 'distribution', 'explanations', 'change-evidence', 'possibilities', 'sources']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }

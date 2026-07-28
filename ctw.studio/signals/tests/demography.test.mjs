@@ -5,8 +5,9 @@ import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/demography.json', root), 'utf8'));
-const html = await readFile(new URL('demography/index.html', root), 'utf8');
+const html = await readFile(new URL('demography/index.html', dist), 'utf8');
 const script = await readFile(new URL('demography/demography.js', root), 'utf8');
 const updater = await readFile(new URL('scripts/update_demography_data.py', root), 'utf8');
 const updaterPath = fileURLToPath(new URL('scripts/update_demography_data.py', root));
@@ -146,8 +147,8 @@ test('page carries substantive no-JS evidence and six accessible component table
   assert.match(html, /UN DESA Population Division · WPP 2024 · Medium variant/);
   assert.match(html, /No demographic burden score is created/i);
   assert.match(html, /Gross immigration and gross emigration remain visible/i);
-  assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/demography\/" aria-current="location"/);
+  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+  assert.match(html, /href="\/signals\/demography\/" aria-current="location" data-astro-reload/);
 });
 
 test('renderer is dependency-free, uses baked JSON, handles missing data, and updater fails closed', () => {

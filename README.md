@@ -1,185 +1,199 @@
-# Portfolio Monorepo
+# Portfolio monorepo
 
-Portfolio monorepo containing several independently built and deployed applications:
+Independent applications sharing one repository:
 
-- `about/`: Next.js NLeSC portfolio
-- `ctw.studio/`: static CTW Studio portfolio and Signals pages
-- `ctw.studio2/`: alternate static portfolio
-- `dashboard/`: Bun Signals dashboard
-- `jessegonzalez.dev/`: SvelteKit portfolio
-- `ctw-kit/`: shared Svelte library used by `jessegonzalez.dev/`
+- `ctw.studio/`: Astro static site for CTW Studio, portfolio, Signals, workshop,
+  legal pages, and design guide.
+- `about/`: canonical Next.js source for NLeSC; exports the committed
+  `ctw.studio/nlesc/` subtree.
+- `jessegonzalez.dev/`: SvelteKit portfolio.
+- `dashboard/`: Bun Signals dashboard.
+- `ctw-kit/`: shared Svelte library used by `jessegonzalez.dev/`.
+- `ctw.studio2/`: historical alternate static portfolio.
 
-Root `package.json` and `bun.lock` define Bun workspaces only for `ctw-kit/` and
-`jessegonzalez.dev/`. Independent applications use their own app-local setup and
-lockfiles.
-
-## Vercel deployments
-
-Each Vercel project must set its Root Directory to its application directory.
-Framework-specific configuration belongs inside that application; do not add a
-repository-root `vercel.json`. `about/` uses native Next.js/Vercel defaults,
-`ctw.studio/` owns its static configuration, and `jessegonzalez.dev/` owns its
-SvelteKit configuration.
-
-### NLeSC route migration
-
-`about/` is the canonical NLeSC source. Its default build preserves the legacy
-Next.js deployment behavior. `ctw.studio/nlesc/` is the generated, committed
-static export served at [ctw.studio/nlesc/](https://ctw.studio/nlesc/). Never
-edit that generated subtree by hand.
-
-Regenerate and synchronize the artifact:
-
-```bash
-cd about
-bun install --frozen-lockfile
-bun run static:sync
-```
-
-Rebuild and byte-compare the committed artifact:
-
-```bash
-cd about
-bun run static:check
-```
-
-The `about/` app and its `nlesc-portfolio` Vercel project remain active until a
-separate cutover is approved.
-
-Keep cutover rollback-safe:
-
-1. Verify a preview of the CTW Studio route.
-2. Merge and deploy the CTW Studio route, then verify it in production.
-3. Separately approve the legacy-domain redirect, then verify it.
-4. After redirect verification, retire the legacy `nlesc-portfolio` Vercel
-   project. Keep `about/` as the canonical source for `/nlesc/`.
+Root `package.json` and `bun.lock` cover only `ctw-kit/` and
+`jessegonzalez.dev/`. Every independent app uses its own root and lockfile.
+Never add a repository-root `vercel.json`.
 
 ## CTW Studio
 
-Static portfolio site for [ctw.studio](https://ctw.studio). No build framework — plain HTML, CSS, and vanilla JS.
+Astro builds a static artifact from `ctw.studio/`. Browser code remains
+progressive enhancement: every route has substantive HTML, Signals reads
+committed JSON, and historical pages pass through byte-identically.
+
+```bash
+cd ctw.studio
+bun install --frozen-lockfile
+bun run dev
+bun run check
+bun run build
+bun run preview
+```
+
+`bun run preview` is canonical built-output preview. `astro dev` is source
+development only.
+
+### Architecture and route ownership
+
+Sixteen Astro pages own maintained output:
+
+- `/`, `/portfolio/`, `/signals/`
+- `/signals/ai-work/`, `/signals/demography/`, `/signals/education/`,
+  `/signals/financial-fragility/`, `/signals/food/`, `/signals/healthspan/`,
+  `/signals/housing/`, `/signals/real-time-ai/`, `/signals/science/`
+- `/workshop/`, `/workshop/privacy/`, `/workshop/terms/`
+- `/design-system/`
+
+`src/pages/` owns route content; `src/layouts/` owns document shells;
+`src/components/DocumentHead.astro` owns canonical metadata.
+`SiteLayout.astro` enables Astro `ClientRouter` only for safe landing/portfolio
+navigation. Signals keeps native reload boundaries. Workshop and design guide
+use native navigation.
+
+`preserve.manifest.json` owns deterministic passthrough. Historical root
+experiments, `/new/`, workshop pitch/slides, stable runtime assets, and the
+generated NLeSC export remain source bytes copied into `dist/`. The preserved
+`/signals/roadmap/` source is a permanent redirect source, not one of the 23
+deployed content routes. Maintained source HTML is not preserved.
+
+Legal pages use Astro directory output, matching stable production URLs.
+Tests reject dotted files, redirects, and extra aliases.
+
+Maintained Astro routes self-host variable Inter and DM Mono 400/500 through
+app-local Fontsource packages. Historical preserved pages retain their original
+bytes and font links.
+
+`@floating-ui/dom` stays pinned but contributes zero output bytes until a real
+positioned interaction needs it. Svelte is limited to explicit islands; current
+portfolio controller is the only interactive island.
 
 ### Design system
 
-The static [design-system guide](https://ctw.studio/design-system/) documents
-shared CTW roles and components. It is intentionally absent from public
-navigation while adoption remains staged.
+Authority order:
 
-Source hierarchy:
+1. `DESIGN.md`: normative language and exportable tokens.
+2. `design-system/tokens.css`: browser roles.
+3. `design-system/components.css`: shared components.
+4. `design-system/compositions.css`: opt-in expressive compositions.
+5. `src/pages/design-system/index.astro`: human guide specimens.
+6. `design-system/tokens.json`: generated DTCG output; never hand-edit.
 
-1. Root `DESIGN.md` owns normative intent and exportable token values.
-2. `ctw.studio/design-system/tokens.css` implements browser role tokens;
-   `components.css` implements framework-neutral components; `compositions.css`
-   adds the scoped expressive tier.
-3. `ctw.studio/design-system/index.html` owns reusable specimens and rules.
-4. The guide plus `ctw.studio/index.html` and
-   `ctw.studio/signals/index.html` collectively demonstrate shared contracts;
-   the latter two are real pilots, and Signals maps its family accent to
-   canonical cyan.
-5. `ctw.studio/design-system/tokens.json` is generated DTCG output, not a
-   hand-edited source.
+The guide stays absent from public navigation until separately approved.
+Signals accents remain page-scoped.
 
-Verify the contract from the repository root:
+From repository root:
 
 ```bash
 npx --yes @google/design.md@0.3.0 lint DESIGN.md
 npx --yes @google/design.md@0.3.0 export --format dtcg DESIGN.md > /tmp/ctw-design-tokens.json
 diff -u ctw.studio/design-system/tokens.json /tmp/ctw-design-tokens.json
-node --test ctw.studio/design-system/tests/design-system.test.mjs
-npx --yes @playwright/test@1.62.0 install chromium
-npx --yes --package=@playwright/test@1.62.0 -- sh -c 'NODE_PATH="$(dirname "$(dirname "$(command -v playwright)")")" playwright test --config ctw.studio/design-system/tests/playwright.config.cjs'
-(cd ctw.studio && node --test signals/tests/*.test.mjs)
 ```
 
-Visual audit writes compact and wide screenshots plus HTML report under
-`ctw.studio/design-system/test-results/`. CI uploads that directory, including
-first-retry traces, as `ctw-design-system-visual-audit` for 14 days.
+### Signals data
 
-Adoption is opt-in: wrap migrated markup in `.ctw-scope`, load role tokens and
-components, then load compositions only where expressive contracts are used.
-`compat.css` provides only
-approved role-backed aliases for existing variable names. Keep Signals
-page-scoped accents local. This route adds no SvelteKit or other framework,
-deployment, Vercel, or public-navigation change.
+Browser routes read committed JSON only. No visitor-time evidence API or chart
+runtime belongs in Signals.
 
-## Tech Stack
-
-- **HTML/CSS/JS** — Static pages, no framework
-- **Tailwind CSS** — Legacy/historical routes only; current landing does not depend on it
-- **Google Fonts** — Inter and DM Mono with system fallbacks
-- **Vercel** — Hosting and deployment
-
-## Structure
-
-```
-ctw.studio/
-├── index.html              # Landing page
-├── homepage.css            # Thin landing-only layout
-├── design-system/          # Tokens, components, compositions, guide, tests
-├── tailwind.css             # Generated Tailwind CSS (do not edit directly)
-├── tailwind.config.js       # Tailwind configuration
-├── portfolio/
-│   ├── index.html           # Portfolio grid page
-│   ├── portfolio.css        # Portfolio styles + utility classes
-│   ├── projects.js          # Project data
-│   └── projects/            # Project media assets
-├── favicon.png
-└── og-image.png
-```
-
-## Adding a New Project
-
-Edit `ctw.studio/portfolio/projects.js`. Each project object supports these fields:
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | yes | URL-friendly slug (used in `#hash` routing) |
-| `title` | string | yes | Project name |
-| `client` | string | yes | Client or institution name |
-| `category` | string | yes | Short category label (e.g. "Climate Science") |
-| `headline` | string | yes | Detail page headline |
-| `description` | string | yes | Multi-paragraph description (template literal) |
-| `coverImage` | string\|null | yes | Path to cover image (relative to portfolio/), or `null` for gradient |
-| `gradientFrom` | string | - | Gradient start color (when `coverImage` is null) |
-| `gradientTo` | string | - | Gradient end color (when `coverImage` is null) |
-| `gridSpan` | number | yes | Grid width: `1` (1/3), `3` (1/2), or `4` (2/3) |
-| `liveUrl` | string\|null | - | Live site URL |
-| `repoUrl` | string | - | GitHub repository URL |
-| `blogUrl` | string | - | Related blog post URL |
-| `tags` | string[] | yes | Technology/topic tags |
-| `institution` | string\|null | - | Associated institution badge |
-| `gallery` | array | yes | Media items for detail view (see below) |
-
-### Gallery items
-
-```js
-{ type: 'image', src: 'projects/my-project/img.avif', caption: 'Optional caption' }
-{ type: 'video', src: 'projects/my-project/demo.mp4', caption: 'Optional caption' }
-{ type: 'pair',  src: 'projects/my-project/a.avif', src2: 'projects/my-project/b.avif', caption: 'Optional caption' }
-```
-
-### Image guidelines
-
-- Use **AVIF** format for all images (convert with `avifenc --min 20 --max 40 input.png output.avif`)
-- Place media in `ctw.studio/portfolio/projects/<project-id>/`
-- Cover images are displayed in the grid; gallery images appear in the detail view
-- Images use `loading="lazy"`, `decoding="async"`, and CSS fade-in on load
-- The first 3 grid cards use `fetchpriority="high"` instead of lazy loading
-
-## Landing page
-
-`ctw.studio/index.html` is static HTML styled by scoped design-system CSS and
-`homepage.css`. It has no JavaScript rendering dependency or app bundler.
-Google Fonts use normal preconnect and stylesheet links, and `feedback.js` is
-progressive enhancement.
-
-`ctw.studio/tailwind.css` remains generated for legacy routes. Do not edit it
-directly. When changing Tailwind classes on those routes, rebuild from
-`ctw.studio/`; `tailwind.config.js` owns the scanned route list:
+Run family gates from `ctw.studio/`:
 
 ```bash
-cd ctw.studio
-bunx tailwindcss -i <(echo '@tailwind base; @tailwind components; @tailwind utilities;') -o tailwind.css --minify
+bun run test:signals
+bun run test:syntax
 ```
+
+Official no-key data refreshes are explicit maintainer actions:
+
+```bash
+python3 signals/scripts/update_fred.py
+python3 signals/scripts/update_food_data.py
+python3 signals/scripts/update_housing_data.py
+python3 signals/scripts/update_science_data.py
+python3 signals/scripts/update_healthspan_data.py
+python3 signals/scripts/update_demography_data.py
+python3 signals/scripts/update_education_data.py
+python3 signals/scripts/update_financial_fragility_data.py
+```
+
+Review JSON diffs, definitions, units, geography, period, chronology, and source
+URLs before accepting output. Papers, forecasts, experiments, interpretations,
+and maturity judgments remain manually curated.
+
+### Verification
+
+Public targeted scripts build fresh output before testing:
+
+```bash
+bun run check
+bun run build
+bun run test:signals
+bun run test:design
+bun run test:syntax
+bun run test:dist
+bun run test:e2e
+bun run test:visual
+bun run test:lighthouse
+bun run test:transfer
+```
+
+`bun run test:ci` runs `check`, one canonical build, then internal `:built`
+variants to avoid repeated builds. Use `test:signals:built`,
+`test:design:built`, `test:dist:built`, `test:e2e:built`,
+`test:visual:built`, `test:lighthouse:built`,
+`test:lighthouse:quick:built`, and `test:transfer:built` only in a workflow
+that has just completed `bun run build`. `test:syntax` remains source-only.
+Browser gates require installed Chromium:
+
+```bash
+bunx playwright install chromium
+```
+
+Lighthouse defaults to three runs per page and checks median values.
+`bun run test:lighthouse:quick` is one-run local feedback only.
+
+Budgets:
+
+| Page | Performance | Accessibility | Extra |
+|---|---:|---:|---|
+| `/` | ≥90 | 1.0 | CLS ≤0.01 |
+| `/portfolio/` | ≥80 | 1.0 | LCP ≤2500ms, TBT ≤200ms, CLS ≤0.1, transfer ≤1.25MiB |
+| `/signals/` | ≥90 | 1.0 | CLS ≤0.01 |
+| representative Signals brief | ≥80 | 1.0 | CLS ≤0.1 |
+| `/workshop/` | ≥90 | 1.0 | CLS ≤0.01 |
+| `/design-system/` | ≥90 | 1.0 | CLS ≤0.01 |
+
+`test:dist` verifies exact 23-route contract, stable legal directories,
+preservation hashes, metadata, legacy `nav.js` absence on Astro pages, and zero
+Floating UI output.
+
+### Deployment
+
+Vercel project `ctw.studio` uses Root Directory `ctw.studio`, framework Astro,
+`bun run build`, and output `dist`. App-local `vercel.json` owns redirects and
+headers. Local success does not authorize deployment, DNS/domain changes,
+redirect changes, or project deletion.
+
+## NLeSC export
+
+`about/` remains canonical and its legacy Vercel project stays active until
+separate cutover approval.
+
+```bash
+cd about
+bun install --frozen-lockfile
+bun run static:sync
+bun run static:check
+```
+
+Never edit `ctw.studio/nlesc/` by hand. Safe cutover order: preview, deploy CTW
+route, verify production, separately approve redirect, verify redirect, then
+retire legacy project.
+
+## Portfolio projects
+
+Project copy lives in `ctw.studio/src/data/projects.ts`; stable media lives in
+`ctw.studio/portfolio/projects/<project-id>/`. Use AVIF covers and preserve
+public media URLs. Build generates responsive cover variants without changing
+source media.
 
 ## License
 

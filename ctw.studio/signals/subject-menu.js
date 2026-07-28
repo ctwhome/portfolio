@@ -73,5 +73,6 @@
     });
   });
 
+  document.documentElement.classList.remove('subject-menu-pending');
   document.documentElement.classList.add('subject-menu-ready');
 })();

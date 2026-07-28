@@ -457,6 +457,7 @@
 }
 
 .metric-tabs button {
+  min-height: 44px;
   padding: 10px 15px;
   border: 0;
   background: transparent;

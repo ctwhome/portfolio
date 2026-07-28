@@ -49,9 +49,7 @@ for (const viewport of viewports) {
     test(`${viewport.name} ${route.name} visual and accessibility audit`, async ({ browser, page }, testInfo) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.emulateMedia({ reducedMotion: "reduce" });
-      const routePath = route.name === "guide" && viewport.name === "compact"
-        ? "/design-system"
-        : route.path;
+      const routePath = route.path;
       const runtimeErrors = [];
       const localStyles = [];
 
