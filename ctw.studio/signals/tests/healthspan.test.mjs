@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/healthspan.json', root), 'utf8'));
-const html = await readFile(new URL('healthspan/index.html', root), 'utf8');
+const html = await readFile(new URL('healthspan/index.html', dist), 'utf8');
 const script = await readFile(new URL('healthspan/healthspan.js', root), 'utf8');
 const updater = await readFile(new URL('scripts/update_healthspan_data.py', root), 'utf8');
 
@@ -75,8 +76,8 @@ test('healthspan page exposes substantive no-JS evidence, accessible tables, and
   assert.match(html, /id="health-data-table"/);
   assert.match(html, /<noscript>/);
   assert.match(html, /prevention or treatment spending records allocation/i);
-  assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/healthspan\/" aria-current="location"/);
+  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+  assert.match(html, /href="\/signals\/healthspan\/" aria-current="location" data-astro-reload/);
 });
 
 test('health renderer and updater have no chart runtime and fail closed on schema gaps', () => {

@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/science.json', root), 'utf8'));
-const html = await readFile(new URL('science/index.html', root), 'utf8');
+const html = await readFile(new URL('science/index.html', dist), 'utf8');
 const script = await readFile(new URL('science/science.js', root), 'utf8');
 const updater = await readFile(new URL('scripts/update_science_data.py', root), 'utf8');
 
@@ -69,8 +70,8 @@ test('science page contains substantive no-JS evidence, tables, sources, and com
   assert.match(html, /id="science-data-table"/);
   assert.match(html, /<noscript>/);
   assert.match(html, /Publication volume is not meaningful discovery/i);
-  assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/science\/" aria-current="location"/);
+  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+  assert.match(html, /href="\/signals\/science\/" aria-current="location" data-astro-reload/);
 });
 
 test('science renderer and updater are dependency-free and fail closed', () => {

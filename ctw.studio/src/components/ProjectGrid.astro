@@ -1,0 +1,42 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  projects: readonly Project[];
+}
+
+const { projects } = Astro.props;
+const coverUrl = (id: string, width: number) => `/portfolio/covers/${id}-${width}.webp`;
+---
+<ol class="portfolio-grid" aria-label="Selected projects">
+  {projects.map((project, index) => (
+    <li class:list={['project-card', `project-card--span-${project.gridSpan}`]}>
+      <a
+        class="project-card__link"
+        href={`#${project.id}`}
+        data-project-link={project.id}
+        aria-haspopup="dialog"
+      >
+        <img
+          class="project-card__image"
+          src={coverUrl(project.id, 960)}
+          srcset={`${coverUrl(project.id, 480)} 480w, ${coverUrl(project.id, 960)} 960w`}
+          sizes={index === 0
+            ? '(max-width: 48rem) calc(100vw - 2rem), min(calc(100vw - 2rem), 75rem)'
+            : `(max-width: 48rem) calc(100vw - 2rem), ${Math.round(project.gridSpan / 6 * 100)}vw`}
+          alt=""
+          width="960"
+          height="600"
+          loading={index === 0 ? 'eager' : 'lazy'}
+          fetchpriority={index === 0 ? 'high' : 'auto'}
+          decoding={index === 0 ? 'sync' : 'async'}
+        />
+        <span class="project-card__index">{String(index + 1).padStart(2, '0')}</span>
+        <span class="project-card__copy">
+          <strong>{project.title}</strong>
+          <span>{project.category} · {new Date(project.date).getUTCFullYear()}</span>
+        </span>
+      </a>
+    </li>
+  ))}
+</ol>

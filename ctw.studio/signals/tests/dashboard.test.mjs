@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/ai-jobs.json', root), 'utf8'));
-const html = await readFile(new URL('ai-work/index.html', root), 'utf8');
+const html = await readFile(new URL('ai-work/index.html', dist), 'utf8');
 const script = await readFile(new URL('dashboard.js', root), 'utf8');
 
 const requiredSeries = ['openings', 'hires', 'unemployment'];
@@ -95,7 +96,8 @@ test('source ledger is auditable and uses secure links', () => {
 });
 
 test('page exposes the story, active navigation, chart alternatives, and method', () => {
-  assert.match(html, /data-active="signals"/);
+  assert.doesNotMatch(html, /nav\.js|data-active="signals"/);
+  assert.match(html, /href="\/signals\/" aria-current="page" data-astro-reload/);
   assert.match(html, /id="big-picture"/);
   assert.match(html, /id="exposure"/);
   assert.match(html, /id="uneven"/);

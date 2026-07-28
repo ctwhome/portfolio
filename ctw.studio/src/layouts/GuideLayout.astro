@@ -1,0 +1,49 @@
+---
+import DocumentHead from '../components/DocumentHead.astro';
+import '../styles/fonts.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+<!doctype html>
+<html lang="en" class="ctw-theme-coal">
+  <head>
+    <DocumentHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      pageCssUrls={['/design-system/guide.css']}
+      transitions={false}
+    />
+  </head>
+  <body class="guide-page">
+    <a class="ctw-skip-link" href="#main">Skip to design system</a>
+    <div class="ctw-scope ctw-shell">
+      <header class="ctw-masthead">
+        <div class="ctw-container ctw-masthead__inner">
+          <a class="ctw-wordmark" href="#top" aria-label="CTW Studio design system home">CTW<span aria-hidden="true">/</span>system</a>
+          <nav class="ctw-primary-nav" aria-label="Design system sections">
+            <a class="ctw-primary-nav__link" href="#top" aria-current="location">Header + nav</a>
+            <a class="ctw-primary-nav__link" href="#components">Components</a>
+            <a class="ctw-primary-nav__link" href="#compositions">Compositions</a>
+            <a class="ctw-primary-nav__link" href="#charts">Charts</a>
+            <a class="ctw-primary-nav__link" href="#feedback">Feedback</a>
+            <a class="ctw-primary-nav__link" href="#adoption">Adoption</a>
+          </nav>
+        </div>
+      </header>
+      <slot />
+      <footer class="ctw-footer">
+        <div class="ctw-container ctw-cluster">
+          <strong>CTW Studio design system</strong>
+          <span>Alpha contract · maintained with routes, not above them</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

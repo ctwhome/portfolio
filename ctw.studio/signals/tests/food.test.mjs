@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/food-system.json', root), 'utf8'));
-const html = await readFile(new URL('food/index.html', root), 'utf8');
+const html = await readFile(new URL('food/index.html', dist), 'utf8');
 const script = await readFile(new URL('food/food.js', root), 'utf8');
 const nav = await readFile(new URL('../nav.js', root), 'utf8');
 
@@ -81,13 +82,13 @@ test('agriculture-wide numbers are explicitly not presented as livestock-only', 
 });
 
 test('food page exposes the complete storyboard, chart alternatives, and active topic', () => {
-  assert.match(html, /data-active="signals"/);
+  assert.doesNotMatch(html, /nav\.js|data-active="signals"/);
   for (const id of ['lives', 'climate', 'land', 'water', 'oceans', 'health', 'answer', 'sources']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
-  assert.match(html, /href="\/signals\/">Signals \//);
+  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
   assert.match(html, /href="\/signals\/food\/"[^>]*aria-current="location"/);
-  assert.match(html, /<a class="subject-menu__option" href="\/signals\/food\/" aria-current="location">/);
+  assert.match(html, /<a class="subject-menu__option" href="\/signals\/food\/" aria-current="location" data-astro-reload/);
   assert.match(html, /species-table/);
   assert.match(html, /footprint-table/);
   assert.match(html, /Scenario, not forecast/);

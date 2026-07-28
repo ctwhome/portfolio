@@ -15,11 +15,19 @@ const tokensCss = read(join(designDir, "tokens.css"));
 const componentsCss = read(join(designDir, "components.css"));
 const compositionsCss = read(join(designDir, "compositions.css"));
 const compatCss = read(join(designDir, "compat.css"));
-const guide = read(join(designDir, "index.html"));
+const guide = read(join(studioDir, "dist/design-system/index.html"));
 const guideCss = read(join(designDir, "guide.css"));
-const homepage = read(join(studioDir, "index.html"));
+const manifest = JSON.parse(read(join(studioDir, "preserve.manifest.json")));
+const vercel = JSON.parse(read(join(studioDir, "vercel.json")));
+const homepage = [
+  read(join(studioDir, "src/components/DocumentHead.astro")),
+  read(join(studioDir, "src/layouts/SiteLayout.astro")),
+  read(join(studioDir, "src/components/SiteHeader.astro")),
+  read(join(studioDir, "src/pages/index.astro")),
+  read(join(studioDir, "src/components/SiteFooter.astro")),
+].join("\n");
 const homepageCss = read(join(studioDir, "homepage.css"));
-const atlas = read(join(studioDir, "signals/index.html"));
+const atlas = read(join(studioDir, "dist/signals/index.html"));
 const atlasCss = read(join(studioDir, "signals/atlas.css"));
 const workflow = read(join(rootDir, ".github/workflows/check-ctw-design-system.yml"));
 const tokens = JSON.parse(read(join(designDir, "tokens.json")));
@@ -102,39 +110,45 @@ function resolveCssProperty(name, properties, seen = new Set()) {
   return resolveCssProperty(target, properties, new Set([...seen, name]));
 }
 
-const routeFamilies = {
-  "Studio landing": ["/", "/index-0.html", "/index-1.html", "/index-1a.html", "/index-2.html"],
-  Portfolio: ["/new/", "/portfolio/"],
-  Signals: [
-    "/signals/",
-    "/signals/ai-work/",
-    "/signals/demography/",
-    "/signals/education/",
-    "/signals/financial-fragility/",
-    "/signals/food/",
-    "/signals/healthspan/",
-    "/signals/housing/",
-    "/signals/real-time-ai/",
-    "/signals/roadmap/",
-    "/signals/science/",
-  ],
-  Workshop: [
-    "/workshop/",
-    "/workshop/pitch/",
-    "/workshop/privacy/",
-    "/workshop/slides/",
-    "/workshop/terms/",
-  ],
-};
-const expectedRoutes = Object.values(routeFamilies).flat().sort();
+const routeAudit = design.match(/### Current-state route and family audit([\s\S]*?)## Colors/)?.[1] ?? "";
+const routeFamilies = [...routeAudit.matchAll(/^\| ([^|]+?) \| `([^`]+)` \|/gm)]
+  .reduce((families, [, family, route]) => {
+    (families[family] ??= []).push(route);
+    return families;
+  }, {});
+const expectedRoutes = [
+  "/",
+  "/design-system/",
+  "/index-0.html",
+  "/index-1.html",
+  "/index-1a.html",
+  "/index-2.html",
+  "/new/",
+  "/portfolio/",
+  "/signals/",
+  "/signals/ai-work/",
+  "/signals/demography/",
+  "/signals/education/",
+  "/signals/financial-fragility/",
+  "/signals/food/",
+  "/signals/healthspan/",
+  "/signals/housing/",
+  "/signals/real-time-ai/",
+  "/signals/science/",
+  "/workshop/",
+  "/workshop/pitch/",
+  "/workshop/privacy/",
+  "/workshop/slides/",
+  "/workshop/terms/",
+].sort();
 
-function discoverHtmlRoutes(dir, prefix = "") {
+function discoverHtmlRoutes(dir, prefix = "", excludedTrees = []) {
   return readdirSync(dir)
     .flatMap((name) => {
-      if (!prefix && ["design-system", "nlesc"].includes(name)) return [];
+      if (!prefix && excludedTrees.includes(name)) return [];
       const path = join(dir, name);
       const next = join(prefix, name);
-      if (statSync(path).isDirectory()) return discoverHtmlRoutes(path, next);
+      if (statSync(path).isDirectory()) return discoverHtmlRoutes(path, next, excludedTrees);
       if (!name.endsWith(".html")) return [];
       return [next === "index.html" ? "/" : `/${next.replace(/\/index\.html$/, "/")}`];
     });
@@ -169,22 +183,56 @@ test("DESIGN.md follows alpha section order and owns machine-readable roles", ()
   }
 });
 
-test("route audit covers exactly 23 handwritten routes by family", () => {
-  assert.equal(expectedRoutes.length, 23);
-  assert.deepEqual(discoverHtmlRoutes(studioDir).sort(), expectedRoutes);
+test("route audit covers exactly 23 deployed routes by family", () => {
+  const actualRoutes = discoverHtmlRoutes(
+    join(studioDir, "dist"),
+    "",
+    manifest.routeContract.excludedTrees,
+  ).sort();
+  const redirectSources = [...manifest.routeContract.redirectSources].sort();
+  const preservedRoutes = [...manifest.routeContract.preservedRoutes].sort();
+  const contentRoutes = actualRoutes.filter((route) => !redirectSources.includes(route));
 
-  const audit = design.match(/### Current-state route and family audit([\s\S]*?)## Colors/)?.[1] ?? "";
-  const audited = [...audit.matchAll(/\| `([^`]+)` \|/g)].map((match) => match[1]).sort();
+  assert.equal(expectedRoutes.length, 23);
+  assert.deepEqual(manifest.routeContract.excludedTrees, ["nlesc"]);
+  assert.deepEqual(redirectSources, ["/signals/roadmap/"]);
+  assert.ok(preservedRoutes.every((route) => expectedRoutes.includes(route)));
+  assert.deepEqual(contentRoutes, expectedRoutes);
+  assert.ok(actualRoutes.includes("/design-system/"));
+  assert.ok(actualRoutes.includes("/signals/roadmap/"));
+  assert.ok(existsSync(join(studioDir, "dist/workshop/privacy/index.html")));
+  assert.ok(existsSync(join(studioDir, "dist/workshop/terms/index.html")));
+  assert.ok(!existsSync(join(studioDir, "dist/workshop/privacy.html")));
+  assert.ok(!existsSync(join(studioDir, "dist/workshop/terms.html")));
+
+  const audited = [...routeAudit.matchAll(/\| `([^`]+)` \|/g)].map((match) => match[1]).sort();
   assert.deepEqual(audited, expectedRoutes);
-  assert.doesNotMatch(audit, /\/nlesc\//);
+  assert.doesNotMatch(routeAudit, /\/nlesc\//);
+  assert.match(routeAudit, /\/signals\/roadmap\/.*redirect source, not deployed\s+content/s);
 
   const guideAudit = guide.match(/<section[^>]+id="ownership"([\s\S]*?)<\/section>/)?.[1] ?? "";
+  const guideTable = guideAudit.match(/<tbody>([\s\S]*?)<\/tbody>/)?.[1] ?? "";
   for (const [family, routes] of Object.entries(routeFamilies)) {
     assert.match(guideAudit, new RegExp(`>${family}<`));
     for (const route of routes) assert.ok(guideAudit.includes(`<code>${route}</code>`), route);
   }
   assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 23);
+  assert.deepEqual(
+    [...guideTable.matchAll(/<code>([^<]+)<\/code>/g)].map((match) => match[1]).sort(),
+    expectedRoutes,
+  );
   assert.doesNotMatch(guideAudit, /\/nlesc\//);
+  assert.match(guideAudit, /\/signals\/roadmap\/.*redirect source, not deployed content/);
+
+  assert.deepEqual(
+    readFileSync(join(studioDir, "signals/roadmap/index.html")),
+    readFileSync(join(studioDir, "dist/signals/roadmap/index.html")),
+  );
+  assert.ok(vercel.redirects.some((redirect) =>
+    redirect.source === "/signals/roadmap/"
+    && redirect.destination === "/signals/"
+    && redirect.permanent === true
+  ));
 });
 
 test("browser tokens expose themes and components consume roles", () => {
@@ -428,22 +476,24 @@ test("workflow pins actions and resolves a fail-closed history base", () => {
   for (const expected of [
     "actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4",
     "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4",
+    "oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2",
     "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4",
-    "@playwright/test@1.62.0 install --with-deps chromium",
-    "--package=@playwright/test@1.62.0",
-    "NODE_PATH=",
-    "playwright test --config ctw.studio/design-system/tests/playwright.config.cjs",
+    "bunx playwright install --with-deps chromium",
+    "bun run test:e2e:built",
+    "bun run test:visual:built",
+    "bun run test:lighthouse:built",
     "retention-days: 14",
-    "if-no-files-found: error",
+    "if-no-files-found: ignore",
     "- 'AGENTS.md'",
     "- 'README.md'",
-    "- 'ctw.studio/index.html'",
-    "- 'ctw.studio/signals/index.html'",
-    "DESIGN_SYSTEM_BASE_SHA=$base_sha",
+    "- 'ctw.studio/**'",
+    "bun install --frozen-lockfile",
+    "bun run build",
+    "CTW_STUDIO_BASE_SHA=$base_sha",
     "PUSH_REF_NAME:",
     'git fetch --no-tags origin "$candidate_base" || true',
     "refusing a partial comparison",
-    'git diff --quiet "$DESIGN_SYSTEM_BASE_SHA" HEAD -- ctw.studio/nlesc',
+    'git diff --quiet "$CTW_STUDIO_BASE_SHA" HEAD -- ctw.studio/nlesc',
   ]) {
     assert.ok(workflow.includes(expected), expected);
   }
@@ -527,8 +577,10 @@ test("guide is static, semantic, accessible, and complete without JavaScript", (
     assert.ok(guide.includes(requirement), requirement);
   }
   assert.doesNotMatch(guide, /glassmorphism|lorem ipsum|AI-powered/i);
-  assert.match(guide, /fonts\.googleapis\.com\/[^"]+&amp;family=[^"]+&amp;display=swap/);
-  assert.doesNotMatch(guide, /fonts\.googleapis\.com\/[^"]+&(?:family|display)=/);
+  assert.match(guide, /@font-face\{font-family:Inter Variable/);
+  assert.match(guide, /@font-face\{font-family:DM Mono/);
+  assert.match(guide, /url\(\/_astro\/inter-latin-wght-normal\.[^)]+\.woff2\)/);
+  assert.doesNotMatch(guide, /fonts\.(?:googleapis|gstatic)\.com/);
   assert.match(
     guide,
     /<input id="boundary"[^>]*\brequired\b[^>]*\bpattern="[^"]*\[12\]\[0-9\]\{3\}[^"]*"[^>]*\btitle="[^"]*1000 to 2999[^"]*"/,
@@ -550,8 +602,8 @@ test("guide local paths stay inside worktree and resolve", () => {
     if (value.startsWith("#") || /^https:\/\//.test(value)) continue;
     assert.doesNotMatch(value, /^(?:file:|javascript:)|(?:^|\/)\.\.(?:\/\.\.){3,}/);
     const target = value.startsWith("/")
-      ? resolve(studioDir, `.${value.split("#")[0]}`)
-      : resolve(designDir, value.split("#")[0]);
+      ? resolve(studioDir, "dist", `.${value.split("#")[0]}`)
+      : resolve(studioDir, "dist/design-system", value.split("#")[0]);
     assert.ok(target === rootDir || target.startsWith(`${rootDir}${sep}`), value);
     assert.ok(existsSync(target), `${value} -> ${relative(rootDir, target)}`);
   }
@@ -637,7 +689,7 @@ test("homepage pilot preserves content and removes legacy runtime treatments", (
     assert.ok(homepage.includes(text), text);
   }
   assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
-  assert.match(homepage, /<script src="\/feedback\.js"><\/script>/);
+  assert.match(homepage, /<script is:inline src="\/feedback\.js" data-astro-rerun><\/script>/);
   assert.doesNotMatch(homepage, /tailwind\.css|anime(?:\.min)?\.js|three(?:\.min)?\.js|blueprint-canvas|onclick=|opacity-0|glass|bento/i);
   assert.doesNotMatch(homepage, /<script[^>]+src="nav\.js"/);
   assert.match(homepage, /id="product-index-hint"[^>]*>Swipe products to explore/);
@@ -659,9 +711,9 @@ test("Signals atlas pilot opts into shared cyan composition without changing tax
     "/design-system/tokens.css",
     "/design-system/components.css",
     "/design-system/compositions.css",
-    "signals.css",
-    "atlas.css",
-    "subject-menu.css",
+    "/signals/signals.css",
+    "/signals/atlas.css",
+    "/signals/subject-menu.css",
   ]) {
     assert.match(atlas, new RegExp(`href="${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
   }
@@ -680,7 +732,7 @@ test("Signals atlas pilot opts into shared cyan composition without changing tax
   assert.match(atlas, /subject-menu\.js/);
   assert.match(atlas, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
   assert.doesNotMatch(atlas, /\.\.\/nav\.js/);
-  assert.match(atlas, /\.\.\/feedback\.js/);
+  assert.match(atlas, /src="\/feedback\.js"/);
 });
 
 test("generated NLeSC subtree has no local changes", () => {
