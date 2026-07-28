@@ -2,19 +2,30 @@
   navigation: auto;
 }
 
+.ctw-wordmark {
+  view-transition-name: site-mark;
+}
+
+.ctw-hero__title,
+.portfolio-lead {
+  view-transition-name: portfolio-lead;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: var(--ctw-motion-deliberate);
   animation-timing-function: var(--ctw-ease-out);
 }
 
-::view-transition-old(site-mark),
-::view-transition-new(site-mark),
 ::view-transition-old(portfolio-lead),
 ::view-transition-new(portfolio-lead) {
   animation-duration: var(--ctw-motion-fast);
 }
 
+::view-transition-old(site-mark),
+::view-transition-new(site-mark) {
+  animation: none;
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

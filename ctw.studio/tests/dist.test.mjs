@@ -54,10 +54,10 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
   assert.match(home, /Software for research and society/);
   assert.match(portfolio, /Research software as cultural practice/);
   assert.match(portfolio, /<dialog[^>]+data-project-dialog="data-storytelling"/);
-  assert.match(portfolio, /<a class="ctw-button" href="\/nlesc\/" data-astro-reload(?:="true")?>Visit project ↗<\/a>/);
+  assert.match(portfolio, /<a class="ctw-button" href="\/nlesc\/">Visit project ↗<\/a>/);
 });
 
-test('Astro emits all ten Signals routes with shared reload navigation and canonical metadata', async () => {
+test('Astro emits all ten Signals routes with native navigation and canonical metadata', async () => {
   const routes = [
     '',
     'ai-work/',
@@ -79,7 +79,8 @@ test('Astro emits all ten Signals routes with shared reload navigation and canon
     assert.match(html, /<meta property="og:type" content="(?:article|website)">/);
     assert.equal((html.match(/<nav class="subject-menu\b/g) ?? []).length, 1, `${pathname} subject menu`);
     assert.equal((html.match(/class="subject-menu__option/g) ?? []).length, 10, `${pathname} subject options`);
-    assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+    assert.match(html, /href="\/signals\/">Signals \//);
+    assert.doesNotMatch(html, /data-astro-(?:reload|rerun)/);
     assert.match(html, /src="\/signals\/subject-menu\.js" defer/);
     assert.doesNotMatch(html, /(?:src="[^"]*)?nav\.js|data-active="signals"/);
   }
@@ -182,7 +183,7 @@ test('preservation manifest has exact byte-identical output counterparts', async
   assert.ok(!sourceEntries.includes('design-system/index.html'));
 });
 
-test('portfolio keeps stable media URLs and ships no Floating UI code', async () => {
+test('portfolio keeps stable media URLs and owns its controller code', async () => {
   const portfolio = await readFile(new URL('portfolio/index.html', dist), 'utf8');
   const source = await readFile(new URL('../portfolio/projects.js', import.meta.url), 'utf8');
   const media = [...source.matchAll(/\b(?:coverImage|src|src2|pdfUrl): '([^']+)'/g)].map((match) => match[1]);
@@ -190,7 +191,52 @@ test('portfolio keeps stable media URLs and ships no Floating UI code', async ()
     assert.match(portfolio, new RegExp(`/portfolio/${path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
 
+  assert.match(portfolio, /portfolio-enhanced/);
+  for (const file of [
+    'index.html',
+    'signals/index.html',
+    'workshop/index.html',
+    'design-system/index.html'
+  ]) {
+    assert.doesNotMatch(await readFile(new URL(file, dist), 'utf8'), /portfolio-enhanced/, file);
+  }
+});
+
+test('source and maintained output contain no removed client runtime', async () => {
+  const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+  assert.deepEqual(Object.keys(packageJson.dependencies).sort(), [
+    '@fontsource-variable/inter',
+    '@fontsource/dm-mono',
+    '@tailwindcss/vite',
+    'astro',
+    'tailwindcss'
+  ]);
+
+  const runtimeSources = [
+    new URL('../astro.config.mjs', import.meta.url),
+    ...await filesBelow(new URL('../src/components/', import.meta.url)),
+    ...await filesBelow(new URL('../src/layouts/', import.meta.url)),
+    ...await filesBelow(new URL('../src/pages/', import.meta.url)),
+    ...await filesBelow(new URL('../src/scripts/', import.meta.url)),
+    ...await filesBelow(new URL('../src/styles/', import.meta.url))
+  ];
+  const runtimeSource = (await Promise.all(runtimeSources.map((path) => readFile(path, 'utf8')))).join('\n');
+  assert.doesNotMatch(runtimeSource, /@astrojs\/svelte|from ['"]svelte['"]|ClientRouter|data-astro-(?:reload|rerun)|transition:(?:name|animate)/);
+
+  const maintained = [
+    'index.html',
+    'portfolio/index.html',
+    'signals/index.html',
+    'signals/ai-work/index.html',
+    'workshop/index.html',
+    'workshop/privacy/index.html',
+    'workshop/terms/index.html',
+    'design-system/index.html'
+  ];
   const chunks = await filesBelow(new URL('_astro/', dist));
-  const code = (await Promise.all(chunks.map((path) => readFile(path, 'utf8')))).join('\n');
-  assert.doesNotMatch(code, /@floating-ui\/dom|computePosition|autoUpdate/);
+  const output = (await Promise.all([
+    ...maintained.map((file) => readFile(new URL(file, dist), 'utf8')),
+    ...chunks.map((path) => readFile(path, 'utf8'))
+  ])).join('\n');
+  assert.doesNotMatch(output, /@astrojs\/svelte|@floating-ui\/dom|svelte\/internal|astro-island|ClientRouter|data-astro-(?:reload|rerun)|renderer\.js/);
 });

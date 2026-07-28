@@ -97,7 +97,7 @@ test('source ledger is auditable and uses secure links', () => {
 
 test('page exposes the story, active navigation, chart alternatives, and method', () => {
   assert.doesNotMatch(html, /nav\.js|data-active="signals"/);
-  assert.match(html, /href="\/signals\/" aria-current="page" data-astro-reload/);
+  assert.match(html, /href="\/signals\/" aria-current="page">Signals/);
   assert.match(html, /id="big-picture"/);
   assert.match(html, /id="exposure"/);
   assert.match(html, /id="uneven"/);

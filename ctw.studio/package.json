@@ -28,13 +28,10 @@
     "test:ci": "bun run check && bun run build && bun run test:signals:built && bun run test:design:built && bun run test:syntax && bun run test:dist:built && bun run test:e2e:built && bun run test:visual:built && bun run test:lighthouse:built"
   },
   "dependencies": {
-    "@astrojs/svelte": "9.0.1",
-    "@floating-ui/dom": "1.8.0",
     "@fontsource-variable/inter": "5.3.0",
     "@fontsource/dm-mono": "5.3.0",
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.1.4",
-    "svelte": "5.56.8",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {

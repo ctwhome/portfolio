@@ -86,9 +86,9 @@ test('food page exposes the complete storyboard, chart alternatives, and active 
   for (const id of ['lives', 'climate', 'land', 'water', 'oceans', 'health', 'answer', 'sources']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
-  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+  assert.match(html, /href="\/signals\/">Signals \//);
   assert.match(html, /href="\/signals\/food\/"[^>]*aria-current="location"/);
-  assert.match(html, /<a class="subject-menu__option" href="\/signals\/food\/" aria-current="location" data-astro-reload/);
+  assert.match(html, /<a class="subject-menu__option" href="\/signals\/food\/" aria-current="location"/);
   assert.match(html, /species-table/);
   assert.match(html, /footprint-table/);
   assert.match(html, /Scenario, not forecast/);

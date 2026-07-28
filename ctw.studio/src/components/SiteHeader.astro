@@ -4,8 +4,6 @@ interface Props {
 }
 
 const { current } = Astro.props;
-const passthrough = { 'data-astro-reload': true };
-const fromSignals = current === 'signals' ? passthrough : {};
 ---
 <header class="ctw-masthead">
   <div class="ctw-container ctw-masthead__inner">
@@ -13,16 +11,13 @@ const fromSignals = current === 'signals' ? passthrough : {};
       class="ctw-wordmark"
       href="/"
       aria-current={current === 'home' ? 'page' : undefined}
-      {...fromSignals}
-      transition:name="site-mark"
-      transition:animate="none"
     >CTW Studio</a>
     <nav class="ctw-primary-nav" aria-label="Primary navigation">
-      <a class="ctw-primary-nav__link" href="/portfolio/" aria-current={current === 'portfolio' ? 'page' : undefined} {...fromSignals}>Projects</a>
-      <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined} {...passthrough}>Signals</a>
-      <a class="ctw-primary-nav__link" href="/nlesc/" {...passthrough}>NLeSC</a>
-      <a class="ctw-primary-nav__link" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined} {...passthrough}>Workshop</a>
-      <a class="ctw-primary-nav__link" href="/#contact" {...fromSignals}>Contact</a>
+      <a class="ctw-primary-nav__link" href="/portfolio/" aria-current={current === 'portfolio' ? 'page' : undefined}>Projects</a>
+      <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
+      <a class="ctw-primary-nav__link" href="/nlesc/">NLeSC</a>
+      <a class="ctw-primary-nav__link" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined}>Workshop</a>
+      <a class="ctw-primary-nav__link" href="/#contact">Contact</a>
     </nav>
   </div>
 </header>
