@@ -1,6 +1,6 @@
 # ADR 0001: Astro static architecture
 
-- Status: Accepted
+- Status: Superseded in part by ADR 0002
 - Date: 2026-07-28
 
 ## Context

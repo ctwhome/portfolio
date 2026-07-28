@@ -28,13 +28,12 @@ const subjects: readonly { id: string; label: string; href?: string }[] = [
 ];
 ---
 <nav class:list={['subject-menu', className]} aria-label="CTW Signals subjects">
-  <a class="subject-menu__brand" href="/signals/" data-astro-reload>Signals /</a>
+  <a class="subject-menu__brand" href="/signals/">Signals /</a>
   {subjects.map((subject) => subject.href ? (
     <a
       class="subject-menu__option"
       href={subject.href}
       aria-current={current === subject.id ? 'location' : undefined}
-      data-astro-reload
     >{subject.label}</a>
   ) : (
     <span class="subject-menu__option subject-menu__option--planned">

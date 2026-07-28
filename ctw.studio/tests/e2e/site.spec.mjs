@@ -121,18 +121,46 @@ for (const malformedHash of ['#%', '#%E0%A4%A']) {
   });
 }
 
-test('ClientRouter enhances maintained routes while passthrough links reload', async ({ page }) => {
-  await page.goto('/portfolio/');
+test('home and portfolio use full document navigation with one feedback control', async ({ page }) => {
+  await page.goto('/');
   await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
-  await page.evaluate(() => { window.__ctwNavigationMarker = 'alive'; });
+  await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
+  await page.evaluate(() => { window.__ctwNavigationMarker = 'home'; });
+  await page.getByRole('link', { name: 'Projects' }).first().click();
+  await expect(page).toHaveURL(/\/portfolio\/$/);
+  expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
+  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
+  await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
+
+  await page.evaluate(() => { window.__ctwNavigationMarker = 'portfolio'; });
   await page.getByRole('link', { name: 'CTW Studio' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Applied research software.');
-  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
-  expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBe('alive');
-
-  await page.getByRole('link', { name: 'Signals' }).first().click();
-  await expect(page).toHaveURL(/\/signals\/$/);
   expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
+  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
+  await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
+});
+
+test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
+  await page.goto('/portfolio/');
+  const first = page.locator('[data-project-link="data-storytelling"]').first();
+  const away = page.locator('.ctw-footer').getByRole('link', { name: 'Signals' });
+  await away.evaluate((element) => element.scrollIntoView());
+  const savedScrollY = await page.evaluate(() => window.scrollY);
+
+  await away.click();
+  await expect(page).toHaveURL(/\/signals\/$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/portfolio\/$/);
+  await expect(page.locator('body')).not.toHaveClass(/project-dialog-open/);
+  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
+  expect(Math.abs((await page.evaluate(() => window.scrollY)) - savedScrollY)).toBeLessThanOrEqual(2);
+
+  await first.click();
+  await page.locator('dialog#data-storytelling .project-next').click();
+  await page.keyboard.press('Escape');
+  await expect(page).toHaveURL(/\/portfolio\/$/);
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await expect(page.locator('body')).not.toHaveClass(/project-dialog-open/);
 });
 
 test('reduced motion disables nonessential animation', async ({ browser }) => {

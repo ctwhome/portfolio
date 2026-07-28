@@ -66,7 +66,7 @@ const legacyNavClasses = [
 
 function subjectOptions(markup) {
   const options = [];
-  const pattern = /<a class="([^"]*\bsubject-menu__option\b[^"]*)" href="([^"]+)"(?: aria-current="([^"]+)")? data-astro-reload(?:="true")?>([^<]+)<\/a>|<span class="([^"]*\bsubject-menu__option--planned\b[^"]*)">([^<]+) <span class="subject-menu__badge">Planned<\/span><\/span>/g;
+  const pattern = /<a class="([^"]*\bsubject-menu__option\b[^"]*)" href="([^"]+)"(?: aria-current="([^"]+)")?>([^<]+)<\/a>|<span class="([^"]*\bsubject-menu__option--planned\b[^"]*)">([^<]+) <span class="subject-menu__badge">Planned<\/span><\/span>/g;
 
   for (const match of markup.matchAll(pattern)) {
     const [, classes = '', href, current, linkLabel, plannedClasses, plannedLabel] = match;
@@ -92,7 +92,7 @@ function assertStaticContract(route, markup) {
 
   const navClasses = nav.match(/^<nav class="([^"]+)"/)?.[1].split(/\s+/) || [];
   assert.deepEqual(navClasses, ['subject-menu', placementClasses.get(route)], `${route} has wrong nav classes`);
-  assert.match(nav, /<a class="subject-menu__brand" href="\/signals\/" data-astro-reload(?:="true")?>Signals \/<\/a>/);
+  assert.match(nav, /<a class="subject-menu__brand" href="\/signals\/">Signals \/<\/a>/);
   for (const legacyClass of legacyNavClasses) {
     assert.doesNotMatch(nav, new RegExp(`class="[^"]*\\b${legacyClass}\\b`), `${route} retains ${legacyClass}`);
   }
@@ -101,8 +101,8 @@ function assertStaticContract(route, markup) {
   assert.deepEqual(options.map(({ label }) => label), expectedLabels, `${route} subject order differs`);
   assert.deepEqual(options.map(({ route: optionRoute }) => optionRoute), expectedRoutes, `${route} subject routes differ`);
   assert.equal(options.length, 10, `${route} must have ten options`);
-    assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
-  assert.equal((nav.match(/data-astro-reload/g) ?? []).length, 8, `${route} links must force full reload`);
+  assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
+  assert.doesNotMatch(nav, /data-astro-reload/, `${route} links use native navigation without router attributes`);
   assert.equal(options.filter(({ tag }) => tag === 'span').length, 3, `${route} must have three planned rows`);
   return { nav, options };
 }

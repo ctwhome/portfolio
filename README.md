@@ -46,9 +46,9 @@ Sixteen Astro pages own maintained output:
 
 `src/pages/` owns route content; `src/layouts/` owns document shells;
 `src/components/DocumentHead.astro` owns canonical metadata.
-`SiteLayout.astro` enables Astro `ClientRouter` only for safe landing/portfolio
-navigation. Signals keeps native reload boundaries. Workshop and design guide
-use native navigation.
+Every route uses native document navigation. Home and portfolio retain native
+cross-document view transitions; portfolio interaction is one page-local,
+processed TypeScript module over server-rendered HTML.
 
 `preserve.manifest.json` owns deterministic passthrough. Historical root
 experiments, `/new/`, workshop pitch/slides, stable runtime assets, and the
@@ -63,9 +63,8 @@ Maintained Astro routes self-host variable Inter and DM Mono 400/500 through
 app-local Fontsource packages. Historical preserved pages retain their original
 bytes and font links.
 
-`@floating-ui/dom` stays pinned but contributes zero output bytes until a real
-positioned interaction needs it. Svelte is limited to explicit islands; current
-portfolio controller is the only interactive island.
+CTW Studio has no client UI framework or client router. Feedback initializes
+once per document and portfolio remains progressive enhancement.
 
 ### Design system
 
@@ -162,8 +161,8 @@ Budgets:
 | `/design-system/` | ≥90 | 1.0 | CLS ≤0.01 |
 
 `test:dist` verifies exact 23-route contract, stable legal directories,
-preservation hashes, metadata, legacy `nav.js` absence on Astro pages, and zero
-Floating UI output.
+preservation hashes, metadata, legacy `nav.js` absence, removed-runtime
+absence, and portfolio-only controller ownership.
 
 ### Deployment
 
