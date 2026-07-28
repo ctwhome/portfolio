@@ -5,9 +5,10 @@ import {fileURLToPath} from 'node:url';
 import {readFile} from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const rawData = await readFile(new URL('data/financial-fragility.json', root), 'utf8');
 const data = JSON.parse(rawData);
-const html = await readFile(new URL('financial-fragility/index.html', root), 'utf8');
+const html = await readFile(new URL('financial-fragility/index.html', dist), 'utf8');
 const script = await readFile(new URL('financial-fragility/financial-fragility.js', root), 'utf8');
 const css = await readFile(new URL('financial-fragility/financial-fragility.css', root), 'utf8');
 const updater = await readFile(new URL('scripts/update_financial_fragility_data.py', root), 'utf8');
@@ -148,8 +149,8 @@ test('page provides substantive no-JS evidence and every required component', ()
   assert.match(html, /Arrears are not defaults/);
   assert.match(html, /One interest bill\. Two denominators\./);
   assert.match(html, /There is no financial-fragility composite or traffic-light total/);
-  assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/financial-fragility\/" aria-current="location"/);
+  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+  assert.match(html, /href="\/signals\/financial-fragility\/" aria-current="location" data-astro-reload/);
 });
 
 test('renderer is dependency-free, defensive, and preserves accessible equivalents', () => {

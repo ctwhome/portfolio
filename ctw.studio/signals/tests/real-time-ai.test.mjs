@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/real-time-ai.json', root), 'utf8'));
-const html = await readFile(new URL('real-time-ai/index.html', root), 'utf8');
+const html = await readFile(new URL('real-time-ai/index.html', dist), 'utf8');
 const script = await readFile(new URL('real-time-ai/real-time-ai.js', root), 'utf8');
 const css = await readFile(new URL('real-time-ai/real-time-ai.css', root), 'utf8');
 

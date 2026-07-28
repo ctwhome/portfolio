@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-surface: var(--ctw-color-surface);
+  --color-surface-raised: var(--ctw-color-surface-raised);
+  --color-ink: var(--ctw-color-text);
+  --color-muted: var(--ctw-color-text-muted);
+  --color-rule: var(--ctw-color-border);
+  --color-action: var(--ctw-color-action);
+  --color-action-ink: var(--ctw-color-action-text);
+  --color-focus: var(--ctw-color-focus);
+  --font-sans: var(--ctw-font-sans);
+  --font-mono: var(--ctw-font-mono);
+  --spacing-1: var(--ctw-space-1);
+  --spacing-2: var(--ctw-space-2);
+  --spacing-3: var(--ctw-space-3);
+  --spacing-4: var(--ctw-space-4);
+  --spacing-5: var(--ctw-space-5);
+  --spacing-6: var(--ctw-space-6);
+  --radius-control: var(--ctw-radius-control);
+  --radius-card: var(--ctw-radius-card);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+}

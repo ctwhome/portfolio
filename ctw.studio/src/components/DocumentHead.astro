@@ -1,0 +1,64 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import dmMono400Latin from '@fontsource/dm-mono/files/dm-mono-latin-400-normal.woff2?url';
+import dmMono500Latin from '@fontsource/dm-mono/files/dm-mono-latin-500-normal.woff2?url';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogDescription?: string;
+  ogType?: 'article' | 'website';
+  themeColor?: string;
+  homepageStyles?: boolean;
+  pageCssUrls?: string[];
+  pageScriptUrls?: string[];
+  transitions?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogDescription = description,
+  ogType = 'website',
+  themeColor,
+  homepageStyles = false,
+  pageCssUrls = [],
+  pageScriptUrls = [],
+  transitions = false
+} = Astro.props;
+const canonicalUrl = new URL(canonical, Astro.site);
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{themeColor && <meta name="theme-color" content={themeColor} />}
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content="https://ctw.studio/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="CTW Studio" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={ogDescription} />
+<meta name="twitter:image" content="https://ctw.studio/og-image.png" />
+<meta name="twitter:image:alt" content={title} />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href={dmMono400Latin} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href={dmMono500Latin} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="stylesheet" href="/design-system/tokens.css" />
+<link rel="stylesheet" href="/design-system/components.css" />
+<link rel="stylesheet" href="/design-system/compositions.css" />
+{homepageStyles && <link rel="stylesheet" href="/homepage.css" />}
+{pageCssUrls.map((href) => <link rel="stylesheet" href={href} />)}
+{pageScriptUrls.map((src) => <script is:inline src={src} defer></script>)}
+{transitions && <ClientRouter />}

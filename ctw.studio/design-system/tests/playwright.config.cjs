@@ -3,6 +3,7 @@ const { join, resolve } = require("node:path");
 
 const here = __dirname;
 const designDir = resolve(here, "..");
+const studioDir = resolve(designDir, "..");
 const rootDir = resolve(here, "../../..");
 const outputRoot = join(designDir, "test-results");
 const outputDir = join(outputRoot, "results");
@@ -27,8 +28,8 @@ module.exports = defineConfig({
   },
   projects: [{ name: "chromium", use: { browserName: "chromium" } }],
   webServer: {
-    command: "python3 -m http.server 4173 --directory ctw.studio --bind 127.0.0.1",
-    cwd: rootDir,
+    command: "bun run preview -- --host 127.0.0.1 --port 4173",
+    cwd: studioDir,
     url: "http://127.0.0.1:4173/design-system/",
     reuseExistingServer: !process.env.CI,
   },

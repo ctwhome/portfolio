@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const pages = [
   ['ai-work/index.html', 'data/ai-jobs.json'],
   ['food/index.html', 'data/food-system.json'],
@@ -24,7 +25,7 @@ function idsFrom(html, attribute) {
 
 for (const [pagePath, dataPath] of pages) {
   test(`${pagePath} evidence components have valid proximate citations and ledger targets`, async () => {
-    const html = await readFile(new URL(pagePath, root), 'utf8');
+    const html = await readFile(new URL(pagePath, dist), 'utf8');
     const data = JSON.parse(await readFile(new URL(dataPath, root), 'utf8'));
     const known = new Set(data.sources.map((source) => source.id));
     const evidenceIds = idsFrom(html, 'data-source-id');
@@ -51,7 +52,7 @@ for (const [pagePath, dataPath] of pages) {
 
 for (const [pagePath, dataPath, scriptPath] of newPages) {
   test(`${pagePath} resolves every evidence marker through a proximate HTTPS citation and source ledger`, async () => {
-    const html = await readFile(new URL(pagePath, root), 'utf8');
+    const html = await readFile(new URL(pagePath, dist), 'utf8');
     const data = JSON.parse(await readFile(new URL(dataPath, root), 'utf8'));
     const script = await readFile(new URL(scriptPath, root), 'utf8');
     const known = new Set(data.sources.map((source) => source.id));
@@ -94,7 +95,7 @@ test('dynamic series switchers update source identity, external URL, and ledger 
 });
 
 test('Science publication labels, periods, counts, shares, and static tables reconcile', async () => {
-  const html = await readFile(new URL('science/index.html', root), 'utf8');
+  const html = await readFile(new URL('science/index.html', dist), 'utf8');
   const data = JSON.parse(await readFile(new URL('data/science.json', root), 'utf8'));
   const ai = data.aiPublications;
   assert.equal(ai.period, '2013–2024');

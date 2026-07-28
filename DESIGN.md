@@ -212,7 +212,7 @@ restrained CSS-first motion supplies kinetic emphasis.
 | `ctw.studio/design-system/components.css` | Framework-neutral shared classes | CTW Studio maintainers | Components use role tokens only |
 | `ctw.studio/design-system/compositions.css` | Expressive page-level contracts | CTW Studio maintainers | Scoped, opt-in, specimen-backed |
 | `ctw.studio/design-system/compat.css` | Approved migration aliases | Route owner + design-system owner | Add aliases deliberately |
-| `ctw.studio/design-system/index.html` | Human examples and adoption guide | CTW Studio maintainers | Examples must match contracts |
+| `ctw.studio/src/pages/design-system/index.astro` + `GuideLayout.astro` | Human examples and adoption guide | CTW Studio maintainers | Built examples must match contracts |
 | Route-local CSS | Intentional exceptions and topic data accents | Route/family owner | Never promoted by accident |
 
 Generated `ctw.studio/nlesc` output remains owned by `about/` and outside this
@@ -220,8 +220,9 @@ system. Unrelated application roots keep their own design decisions.
 
 ### Current-state route and family audit
 
-Exactly 23 handwritten HTML routes are in scope. “Observe” means documented
-current state, not automatic migration.
+Exactly 23 deployed routes are in scope. Maintained routes render through Astro;
+manifest-owned historical routes remain byte-identical. “Observe” means
+documented current state, not automatic migration.
 
 | Family | Route | Current state | Owner | Adoption |
 |---|---|---|---|---|
@@ -230,6 +231,7 @@ current state, not automatic migration.
 | Studio landing | `/index-1.html` | Historical landing experiment | Studio | Observe |
 | Studio landing | `/index-1a.html` | Historical landing experiment | Studio | Observe |
 | Studio landing | `/index-2.html` | Historical landing experiment | Studio | Observe |
+| Design system | `/design-system/` | Maintained Astro guide | Design system | Wave 1 |
 | Portfolio | `/new/` | Editorial portfolio exploration | Portfolio | Wave 3 |
 | Portfolio | `/portfolio/` | Project grid and detail surface | Portfolio | Wave 3 |
 | Signals | `/signals/` | Atlas and topic switcher | Signals | Wave 1 |
@@ -241,13 +243,15 @@ current state, not automatic migration.
 | Signals | `/signals/healthspan/` | Evidence brief | Signals | Wave 2 |
 | Signals | `/signals/housing/` | Evidence brief | Signals | Wave 2 |
 | Signals | `/signals/real-time-ai/` | Evidence brief | Signals | Wave 2 |
-| Signals | `/signals/roadmap/` | Redirect explanation | Signals | Observe |
 | Signals | `/signals/science/` | Evidence brief | Signals | Wave 2 |
 | Workshop | `/workshop/` | Course landing | Workshop | Wave 3 |
 | Workshop | `/workshop/pitch/` | Reveal presentation | Workshop | Observe |
 | Workshop | `/workshop/privacy/` | Legal content | Workshop | Wave 3 |
 | Workshop | `/workshop/slides/` | Reveal presentation | Workshop | Observe |
 | Workshop | `/workshop/terms/` | Legal content | Workshop | Wave 3 |
+
+`/signals/roadmap/` remains a byte-preserved redirect source, not deployed
+content; Vercel permanently redirects it to `/signals/`.
 
 ## Colors
 
@@ -275,8 +279,9 @@ pairs, not isolated swatches.
 
 Inter carries narrative, navigation, headings, and controls. DM Mono carries
 metadata, evidence labels, units, timestamps, and small system annotations.
-Fallback stacks are mandatory; content remains complete while web fonts load or
-fail.
+Maintained Astro routes self-host variable Inter and DM Mono 400/500 through
+pinned app-local Fontsource packages. Fallback stacks are mandatory; content
+remains complete while web fonts load or fail.
 
 Display type is reserved for one page proposition. Use sentence case and tight
 tracking. Body copy stays at least 16px for primary reading. Metadata may be
@@ -449,8 +454,8 @@ ethical choice. Do not ship placeholder banners.
       no-JS reading.
 - [ ] Inspect compact and wide layouts with 44px touch targets.
 - [ ] Run design-system and affected family tests.
-- [ ] Confirm `ctw.studio/nlesc`, current route assets, navigation scripts,
-      package manifests, and deployment configuration did not change.
+- [ ] Confirm `ctw.studio/nlesc`, preserved route assets, committed evidence,
+      updater semantics, and deployment configuration remain in scope.
 
 ## Do's and Don'ts
 

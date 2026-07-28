@@ -5,8 +5,9 @@ import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
+const dist = new URL('../../dist/signals/', import.meta.url);
 const data = JSON.parse(await readFile(new URL('data/education.json', root), 'utf8'));
-const html = await readFile(new URL('education/index.html', root), 'utf8');
+const html = await readFile(new URL('education/index.html', dist), 'utf8');
 const script = await readFile(new URL('education/education.js', root), 'utf8');
 const css = await readFile(new URL('education/education.css', root), 'utf8');
 const updater = await readFile(new URL('scripts/update_education_data.py', root), 'utf8');
@@ -228,8 +229,8 @@ test('page has substantive no-JS content, semantic tables, components, and navig
   ]) assert.match(html, new RegExp(phrase, 'i'));
   assert.match(html, /<noscript>/);
   assert.match(html, /No capability composite is reported/i);
-  assert.match(html, /href="\/signals\/">Signals \//);
-  assert.match(html, /href="\/signals\/ai-work\/" aria-current="location"/);
+  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
+  assert.match(html, /href="\/signals\/ai-work\/" aria-current="location" data-astro-reload/);
   assert.match(css, /@media \(max-width: 600px\)/);
 });
 
