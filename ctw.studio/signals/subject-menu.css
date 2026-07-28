@@ -5,6 +5,7 @@
   --subject-menu-border: rgba(255, 255, 255, 0.36);
   --subject-menu-accent: #f7b500;
   --subject-menu-accent-soft: rgba(247, 181, 0, 0.11);
+  --subject-menu-focus: var(--ctw-color-focus, #f7b500);
   --subject-menu-font: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   display: flex;
   flex-wrap: wrap;
@@ -14,6 +15,11 @@
   font: 500 0.72rem/1.3 var(--subject-menu-font);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.roadmap-page .subject-menu {
+  --subject-menu-accent: var(--ctw-accent-cyan, #57d7ff);
+  --subject-menu-accent-soft: color-mix(in srgb, var(--subject-menu-accent) 11%, transparent);
 }
 
 .subject-menu .subject-menu__brand {
@@ -46,7 +52,7 @@
 
 .subject-menu__brand:focus-visible,
 .subject-menu__option:focus-visible {
-  outline: 3px solid var(--subject-menu-accent);
+  outline: 3px solid var(--subject-menu-focus);
   outline-offset: 2px;
 }
 
@@ -81,6 +87,12 @@
 }
 
 @media (max-width: 760px) {
+  .subject-menu .subject-menu__brand {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
   html:not(.subject-menu-ready) .subject-menu {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -148,9 +160,9 @@
 
   .subject-menu-ready .subject-menu__trigger:focus-visible,
   .subject-menu-ready .subject-menu__panel a:focus-visible {
-    border-color: var(--subject-menu-accent);
+    border-color: var(--subject-menu-focus);
     color: var(--subject-menu-text);
-    outline: 3px solid var(--subject-menu-accent);
+    outline: 3px solid var(--subject-menu-focus);
     outline-offset: 2px;
   }
 
@@ -224,6 +236,19 @@
     border-color: var(--subject-menu-accent);
     color: var(--subject-menu-accent);
     box-shadow: inset 0 0 0 1px var(--subject-menu-accent);
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu__trigger {
+    border-radius: 2px;
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu__panel {
+    border-radius: 2px;
+    box-shadow: none;
+  }
+
+  .roadmap-page.subject-menu-ready .subject-menu__panel > .subject-menu__option {
+    border-radius: 0;
   }
 
   .subject-menu-open .ctw-feedback-button {

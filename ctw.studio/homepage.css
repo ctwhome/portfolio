@@ -1,0 +1,129 @@
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+}
+
+.studio-accent {
+  color: var(--ctw-accent);
+}
+
+.studio-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-inline: 1px solid var(--ctw-composition-rule);
+}
+
+.studio-stats .ctw-stat {
+  padding-inline: var(--ctw-space-4);
+}
+
+.studio-stats .ctw-stat + .ctw-stat {
+  border-left: 1px solid var(--ctw-composition-rule);
+}
+
+.studio-stats .ctw-stat__value {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.studio-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(14rem, 0.85fr);
+  border-block: 1px solid var(--ctw-composition-rule);
+}
+
+.studio-founder,
+.studio-mission {
+  padding: var(--ctw-space-6);
+}
+
+.studio-mission {
+  align-content: end;
+  border-left: 1px solid var(--ctw-composition-rule);
+  background: var(--ctw-color-surface-raised);
+}
+
+.studio-process {
+  margin: var(--ctw-space-7) 0 0;
+}
+
+.studio-process strong {
+  font-size: var(--ctw-type-heading-md);
+}
+
+.studio-products {
+  margin-top: var(--ctw-space-7);
+  padding-left: max(1rem, calc((100vw - var(--ctw-size-container)) / 2));
+}
+
+.studio-quotes {
+  display: grid;
+  gap: var(--ctw-space-7);
+}
+
+@media (min-width: 64rem) {
+  .studio-quotes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .studio-quotes .ctw-quote:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+.studio-partners {
+  padding-block: var(--ctw-space-6);
+  border-block: 1px solid var(--ctw-composition-rule);
+}
+
+.ctw-scope .ctw-feedback-button,
+.ctw-scope .ctw-feedback-close,
+.ctw-scope .ctw-feedback-action {
+  min-height: 44px;
+  border-radius: var(--ctw-radius-control);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.ctw-scope .ctw-feedback-button,
+.ctw-scope .ctw-feedback-card {
+  background: var(--ctw-color-surface-raised);
+}
+
+.ctw-scope .ctw-feedback-card,
+.ctw-scope .ctw-feedback-textarea {
+  border-radius: var(--ctw-radius-control);
+  box-shadow: none;
+}
+
+.ctw-scope .ctw-feedback-modal {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@media (max-width: 47.99rem) {
+  .studio-stats,
+  .studio-about {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-stats .ctw-stat + .ctw-stat {
+    border-left: 0;
+  }
+
+  .studio-mission {
+    border-top: 1px solid var(--ctw-composition-rule);
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

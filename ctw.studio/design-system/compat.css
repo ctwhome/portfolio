@@ -1,0 +1,16 @@
+/*
+ * Explicit migration aliases only. Load after tokens.css.
+ * Signals topic, chart, and page variables remain route-local.
+ */
+.ctw-compat-landing {
+  --coal: var(--ctw-color-surface);
+  --ink: var(--ctw-color-text);
+  --amber: var(--ctw-color-action);
+}
+
+.ctw-compat-portfolio {
+  --bg: var(--ctw-color-surface);
+  --text: var(--ctw-color-text);
+  --muted: var(--ctw-color-text-muted);
+  --border: var(--ctw-color-border);
+}

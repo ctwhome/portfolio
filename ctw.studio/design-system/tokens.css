@@ -1,0 +1,90 @@
+/*
+ * CTW Studio canonical browser tokens.
+ * Source: /DESIGN.md. Components consume --ctw-color-* roles only.
+ */
+:root,
+.ctw-theme-coal,
+[data-ctw-theme="coal"] {
+  --ctw-color-scheme: dark;
+
+  --ctw-palette-coal: #050505;
+  --ctw-palette-coal-raised: #11110f;
+  --ctw-palette-chalk: #f4f1e8;
+  --ctw-palette-paper: #fffdf6;
+  --ctw-palette-amber: #f7b500;
+  --ctw-palette-cyan: #57d7ff;
+  --ctw-palette-coral: #ff6b5f;
+  --ctw-palette-violet: #a58bff;
+  --ctw-palette-positive: #61d095;
+  --ctw-palette-critical: #ff6b5f;
+  --ctw-coal-control-border: #6f6c63;
+  --ctw-chalk-control-border: #88847b;
+  --ctw-chalk-positive: #12663d;
+  --ctw-chalk-critical: #a3231e;
+
+  --ctw-color-surface: var(--ctw-palette-coal);
+  --ctw-color-surface-raised: var(--ctw-palette-coal-raised);
+  --ctw-color-text: var(--ctw-palette-chalk);
+  --ctw-color-text-muted: #aaa79f;
+  --ctw-color-border: #3b3a36;
+  --ctw-color-control-border: var(--ctw-coal-control-border);
+  --ctw-color-action: var(--ctw-palette-amber);
+  --ctw-color-action-text: var(--ctw-palette-coal);
+  --ctw-color-focus: var(--ctw-palette-amber);
+  --ctw-color-positive: var(--ctw-palette-positive);
+  --ctw-color-critical: var(--ctw-palette-critical);
+
+  --ctw-font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ctw-font-mono: "DM Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  --ctw-type-display: clamp(2.75rem, 7vw, 4rem);
+  --ctw-type-heading-lg: clamp(2rem, 5vw, 2.5rem);
+  --ctw-type-heading-md: 1.5rem;
+  --ctw-type-body-lg: 1.25rem;
+  --ctw-type-body: 1rem;
+  --ctw-type-body-sm: 0.875rem;
+  --ctw-type-label: 0.75rem;
+  --ctw-type-button: 1rem;
+  --ctw-type-badge: 0.75rem;
+
+  --ctw-space-0: 0;
+  --ctw-space-1: 0.25rem;
+  --ctw-space-2: 0.5rem;
+  --ctw-space-3: 0.75rem;
+  --ctw-space-4: 1rem;
+  --ctw-space-5: 1.5rem;
+  --ctw-space-6: 2rem;
+  --ctw-space-7: 3rem;
+  --ctw-space-8: 4rem;
+  --ctw-space-9: 6rem;
+
+  --ctw-radius-control: 2px;
+  --ctw-radius-card: 4px;
+  --ctw-radius-pill: 9999px;
+  --ctw-size-touch: 44px;
+  --ctw-size-container: 75rem;
+  --ctw-size-reading: 70ch;
+  --ctw-motion-fast: 140ms;
+  --ctw-motion-deliberate: 220ms;
+  --ctw-ease-out: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.ctw-theme-chalk,
+[data-ctw-theme="chalk"] {
+  --ctw-color-scheme: light;
+
+  --ctw-color-surface: var(--ctw-palette-chalk);
+  --ctw-color-surface-raised: var(--ctw-palette-paper);
+  --ctw-color-text: var(--ctw-palette-coal);
+  --ctw-color-text-muted: #5f5c55;
+  --ctw-color-border: #b8b3a8;
+  --ctw-color-control-border: var(--ctw-chalk-control-border);
+  --ctw-color-action: #8a5f00;
+  --ctw-color-action-text: var(--ctw-palette-paper);
+  --ctw-color-focus: #8a5f00;
+  --ctw-color-positive: var(--ctw-chalk-positive);
+  --ctw-color-critical: var(--ctw-chalk-critical);
+}
+
+.ctw-scope {
+  color-scheme: var(--ctw-color-scheme);
+}

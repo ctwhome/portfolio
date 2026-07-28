@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth roadmap-page" style="background:#080907">
+<html lang="en" class="roadmap-page ctw-theme-coal">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +12,31 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ctw.studio/signals/">
   <link rel="icon" href="../favicon.png">
-  <link rel="stylesheet" href="../tailwind.css">
+  <link rel="stylesheet" href="/design-system/tokens.css">
+  <link rel="stylesheet" href="/design-system/components.css">
+  <link rel="stylesheet" href="/design-system/compositions.css">
   <link rel="stylesheet" href="signals.css">
   <link rel="stylesheet" href="atlas.css">
   <link rel="stylesheet" href="subject-menu.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script defer src="../nav.js" data-base="../" data-active="signals"></script>
   <script defer src="subject-menu.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to the atlas</a>
+<body class="ctw-scope ctw-accent--cyan">
+  <a class="ctw-skip-link" href="#main-content">Skip to the atlas</a>
+  <header class="ctw-masthead">
+    <div class="ctw-container ctw-masthead__inner">
+      <a class="ctw-wordmark" href="/">CTW Studio</a>
+      <nav class="ctw-primary-nav" aria-label="Primary navigation">
+        <a class="ctw-primary-nav__link" href="/portfolio/">Projects</a>
+        <a class="ctw-primary-nav__link" href="/signals/" aria-current="page">Signals</a>
+        <a class="ctw-primary-nav__link" href="/nlesc/">NLeSC</a>
+        <a class="ctw-primary-nav__link" href="/workshop/">Workshop</a>
+        <a class="ctw-primary-nav__link" href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
   <main id="main-content">
     <header class="atlas-hero">
       <div class="atlas-shell">
