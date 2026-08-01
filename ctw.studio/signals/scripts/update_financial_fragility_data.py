@@ -262,10 +262,17 @@ def refresh_bis(data: dict) -> None:
 def refresh_ecb(data: dict) -> None:
     observations = parse_ecb(fetch_bytes(ECB_URL, "text/csv"))
     series = data["series"]["newMortgageRate"]
+    changed = series["observations"] != observations
     series["observations"] = observations
     series["latest"] = observations[-1]
     source = next(item for item in data["sources"] if item["id"] == "ecb-mortgage-rate")
     source["period"] = f"Monthly; latest displayed {observations[-1]['period']}"
+    if changed:
+        source["date"] = f"Series through {observations[-1]['period']}"
+        source["vintageRetrieved"] = (
+            f"Latest observation {observations[-1]['period']}; "
+            f"retrieved {date.today().isoformat()}"
+        )
 
 
 def refresh_saving(data: dict) -> None:
@@ -297,10 +304,18 @@ def refresh_saving(data: dict) -> None:
     observations.sort(key=lambda item: item["period"])
     if len(observations) < 8:
         raise RuntimeError("Eurostat saving series has too few observations")
-    data["series"]["householdSaving"]["observations"] = observations
-    data["series"]["householdSaving"]["latest"] = observations[-1]
+    series = data["series"]["householdSaving"]
+    changed = series["observations"] != observations
+    series["observations"] = observations
+    series["latest"] = observations[-1]
     source = next(item for item in data["sources"] if item["id"] == "eurostat-saving")
     source["period"] = f"Annual, 2015–{observations[-1]['period']} on page"
+    if changed:
+        source["date"] = f"Annual sector accounts through {observations[-1]['period']}"
+        source["vintageRetrieved"] = (
+            f"Series through {observations[-1]['period']}; "
+            f"retrieved {date.today().isoformat()}"
+        )
 
 
 def only(
@@ -533,8 +548,11 @@ def updater_owned_snapshot(data: dict) -> str:
         for item in data["balanceSheets"]
         if item["id"] in {"household", "government"}
     }
-    source_periods = {
-        item["id"]: item["period"]
+    source_provenance = {
+        item["id"]: {
+            field: item[field]
+            for field in ("date", "period", "vintageRetrieved")
+        }
         for item in data["sources"]
         if item["id"] in {"ecb-mortgage-rate", "eurostat-saving"}
     }
@@ -543,7 +561,7 @@ def updater_owned_snapshot(data: dict) -> str:
             "series": data["series"],
             "balanceSheets": balance_sheets,
             "verdictText": data["verdict"]["text"],
-            "sourcePeriods": source_periods,
+            "sourceProvenance": source_provenance,
         },
         sort_keys=True,
         ensure_ascii=False,

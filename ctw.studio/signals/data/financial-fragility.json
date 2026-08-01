@@ -3,7 +3,7 @@
     "topic": "Financial fragility",
     "brief": "008",
     "atlasPosition": "09",
-    "dataUpdated": "2026-07-26",
+    "dataUpdated": "2026-08-01",
     "editorialReview": "2026-07-26",
     "updateStatus": "BIS, ECB and Eurostat stable official series refreshed; review-gated evidence unchanged",
     "scope": "World structural context, Europe, the Netherlands, and selected-country mechanisms",
@@ -1054,11 +1054,15 @@
         {
           "period": "2026-05",
           "value": 3.67
+        },
+        {
+          "period": "2026-06",
+          "value": 3.73
         }
       ],
       "latest": {
-        "period": "2026-05",
-        "value": 3.67
+        "period": "2026-06",
+        "value": 3.73
       },
       "caveat": "New-business pricing is not the effective rate on the outstanding mortgage stock and does not reveal each loan's reset date."
     },
@@ -1074,7 +1078,7 @@
       "observations": [
         {
           "period": "2015",
-          "value": 14.0
+          "value": 14.1
         },
         {
           "period": "2016",
@@ -1082,44 +1086,44 @@
         },
         {
           "period": "2017",
-          "value": 12.9
+          "value": 13.0
         },
         {
           "period": "2018",
-          "value": 13.6
+          "value": 13.7
         },
         {
           "period": "2019",
-          "value": 15.8
+          "value": 16.0
         },
         {
           "period": "2020",
-          "value": 22.0
+          "value": 22.1
         },
         {
           "period": "2021",
-          "value": 19.0
+          "value": 19.1
         },
         {
           "period": "2022",
-          "value": 14.4
+          "value": 14.6
         },
         {
           "period": "2023",
-          "value": 14.8
+          "value": 15.1
         },
         {
           "period": "2024",
-          "value": 16.5
+          "value": 16.7
         },
         {
           "period": "2025",
-          "value": 17.3
+          "value": 17.4
         }
       ],
       "latest": {
         "period": "2025",
-        "value": 17.3
+        "value": 17.4
       },
       "caveat": "A national saving flow is not a stock of liquid emergency funds and says nothing about who saved."
     },
@@ -1443,16 +1447,16 @@
       "institution": "European Central Bank / De Nederlandsche Bank",
       "title": "MFI interest rates: new loans to households for house purchase",
       "seriesTableId": "MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
-      "date": "Last updated 2026-06-05",
+      "date": "Series through 2026-06",
       "url": "https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
       "geographyPopulation": "Netherlands; households and NPISH; new euro-denominated mortgage business",
-      "period": "Monthly; latest displayed 2026-05",
+      "period": "Monthly; latest displayed 2026-06",
       "denominatorUnit": "Percent per annum, annualised agreed rate / narrowly defined effective rate",
       "evidenceType": "Observation",
       "role": "Price of new mortgage funding",
       "methodology": "Deposit-taking corporations excluding the central bank; all initial fixation periods and amount categories.",
       "transformation": "Updater filters the exact series key, sorts monthly observations and rounds to two decimals.",
-      "vintageRetrieved": "2026-06-05 vintage; retrieved 2026-07-26",
+      "vintageRetrieved": "Latest observation 2026-06; retrieved 2026-08-01",
       "revisionPolicy": "Refresh monthly; replace history after key and unit validation.",
       "interpretation": "Shows marginal borrowing cost faced by new business.",
       "caveat": "Not the effective rate, reset schedule or debt service of the outstanding stock."
@@ -1462,7 +1466,7 @@
       "institution": "Eurostat",
       "title": "Key indicators: gross household saving rate",
       "seriesTableId": "nasa_10_ki; SRG_S14_S15; S14_S15",
-      "date": "Annual sector accounts available 2026-07",
+      "date": "Annual sector accounts through 2025",
       "url": "https://ec.europa.eu/eurostat/databrowser/view/nasa_10_ki/default/table?lang=en",
       "geographyPopulation": "Netherlands; households including NPISH",
       "period": "Annual, 2015–2025 on page",
@@ -1471,7 +1475,7 @@
       "role": "Saving flow",
       "methodology": "ESA 2010 sector accounts key indicator: B8G / (B6G + D8rec − D8pay) × 100.",
       "transformation": "Updater filters SRG_S14_S15 for NL, annual frequency, then sorts and rounds to one decimal.",
-      "vintageRetrieved": "Retrieved 2026-07-26",
+      "vintageRetrieved": "Series through 2025; retrieved 2026-08-01",
       "revisionPolicy": "Refresh annually; preserve historical revisions after dimension checks.",
       "interpretation": "Shows the national flow not consumed from adjusted disposable income.",
       "caveat": "Saving flow is not liquid wealth, an emergency buffer or a distribution."
