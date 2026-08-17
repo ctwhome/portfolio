@@ -1,6 +1,4 @@
 (() => {
-  const mobile = matchMedia('(max-width: 760px)');
-
   document.querySelectorAll('.subject-menu').forEach((nav, index) => {
     if (nav.dataset.subjectMenuEnhanced === 'true') return;
 
@@ -13,6 +11,10 @@
     nav.dataset.subjectMenuEnhanced = 'true';
 
     const current = options.find((option) => option.matches('a[aria-current="location"]'));
+    const currentIcon = current?.querySelector('.subject-menu__icon');
+    const currentClass = [...(current?.classList || [])].find((name) =>
+      name.startsWith('subject-menu__option--')
+    );
     const panel = document.createElement('div');
     const trigger = document.createElement('button');
     const label = document.createElement('span');
@@ -21,32 +23,30 @@
 
     panel.id = panelId;
     panel.className = 'subject-menu__panel';
-    panel.setAttribute('aria-hidden', String(mobile.matches));
+    panel.setAttribute('aria-hidden', 'true');
     options.forEach((option) => panel.append(option));
 
     trigger.type = 'button';
     trigger.className = 'subject-menu__trigger';
+    if (currentClass) trigger.classList.add(currentClass);
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-controls', panelId);
     label.className = 'subject-menu__trigger-label';
     label.textContent = current?.textContent.trim() || 'Explore subjects';
     icon.setAttribute('aria-hidden', 'true');
     icon.textContent = '▾';
+    if (currentIcon) trigger.append(currentIcon.cloneNode(true));
     trigger.append(label, icon);
 
     nav.append(trigger, panel);
 
     const sizePanel = () => {
-      if (!mobile.matches) {
-        panel.style.removeProperty('max-height');
-        return;
-      }
       panel.style.maxHeight = `${Math.max(44, innerHeight - nav.getBoundingClientRect().bottom - 24)}px`;
     };
 
     const close = (restoreFocus = false) => {
       trigger.setAttribute('aria-expanded', 'false');
-      panel.setAttribute('aria-hidden', String(mobile.matches));
+      panel.setAttribute('aria-hidden', 'true');
       document.documentElement.classList.remove('subject-menu-open');
       if (restoreFocus) trigger.focus();
     };
@@ -67,7 +67,6 @@
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') close(true);
     });
-    mobile.addEventListener('change', () => close());
     addEventListener('resize', () => {
       if (trigger.getAttribute('aria-expanded') === 'true') sizePanel();
     });

@@ -38,7 +38,6 @@ const {
 <!doctype html>
 <html lang="en" class={htmlClass} style={htmlStyle}>
   <head>
-    <script is:inline>document.documentElement.classList.add('subject-menu-pending');</script>
     <DocumentHead
       title={title}
       description={description}
@@ -48,7 +47,6 @@ const {
       themeColor={themeColor}
       pageCssUrls={pageCssUrls}
       pageScriptUrls={pageScriptUrls}
-      transitions={false}
     />
   </head>
   <body class={bodyClass || undefined}>
@@ -57,7 +55,6 @@ const {
       <SiteHeader current="signals" />
     </div>
     <slot />
-    <script is:inline>window.__ctwFeedbackLoaded = false;</script>
     <script is:inline src="/feedback.js"></script>
   </body>
 </html>

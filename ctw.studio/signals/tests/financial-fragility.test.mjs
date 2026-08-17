@@ -149,8 +149,8 @@ test('page provides substantive no-JS evidence and every required component', ()
   assert.match(html, /Arrears are not defaults/);
   assert.match(html, /One interest bill\. Two denominators\./);
   assert.match(html, /There is no financial-fragility composite or traffic-light total/);
-  assert.match(html, /href="\/signals\/" data-astro-reload(?:="true")?>Signals \//);
-  assert.match(html, /href="\/signals\/financial-fragility\/" aria-current="location" data-astro-reload/);
+  assert.match(html, /href="\/signals\/">Signals \//);
+  assert.match(html, /href="\/signals\/financial-fragility\/" aria-current="location"/);
 });
 
 test('renderer is dependency-free, defensive, and preserves accessible equivalents', () => {

@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
-import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
+import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
   site: 'https://ctw.studio',
@@ -10,8 +10,7 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  integrations: [svelte()],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss(), Icons({ compiler: 'astro' })]
   }
 });
