@@ -14,11 +14,36 @@ body {
 }
 
 .studio-hero {
+  --hero-x: 50%;
+  --hero-y: 38%;
   position: relative;
+  isolation: isolate;
   display: grid;
   min-height: min(43.5rem, calc(100svh - 5rem));
   align-content: space-between;
+  overflow: hidden;
   padding-top: clamp(var(--ctw-space-8), 12vh, var(--ctw-space-9));
+}
+
+.studio-hero::before,
+.studio-hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+.studio-hero::before {
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--studio-amber) 24%, transparent) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+  opacity: 0.22;
+}
+
+.studio-hero::after {
+  background: radial-gradient(30rem circle at var(--hero-x) var(--hero-y), color-mix(in srgb, var(--studio-amber) 10%, transparent), transparent 70%);
+  transition: background-position var(--ctw-motion-fast) var(--ctw-ease-out);
 }
 
 .studio-hero__body {
@@ -45,6 +70,14 @@ body {
   color: var(--studio-amber);
 }
 
+.studio-hero__title span {
+  background: linear-gradient(100deg, var(--studio-amber) 25%, #ffe08a 50%, var(--studio-amber) 75%);
+  background-size: 200% 100%;
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
 .studio-hero__lede {
   margin-top: var(--ctw-space-5);
   text-wrap: balance;
@@ -62,10 +95,29 @@ body {
 }
 
 .studio-home .ctw-button {
+  position: relative;
   min-height: 3.5rem;
   height: auto;
+  overflow: hidden;
   padding-inline: var(--ctw-space-6);
   border-radius: var(--ctw-radius-pill);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--studio-amber) 30%, transparent);
+  transition:
+    background-color var(--ctw-motion-fast) var(--ctw-ease-out),
+    border-color var(--ctw-motion-fast) var(--ctw-ease-out),
+    color var(--ctw-motion-fast) var(--ctw-ease-out),
+    box-shadow var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    transform var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.studio-home .ctw-button:hover {
+  box-shadow: 0 0 0 0.35rem color-mix(in srgb, var(--studio-amber) 16%, transparent);
+  transform: translateY(-2px);
+}
+
+.studio-home .ctw-button:active {
+  box-shadow: 0 0 0 0.15rem color-mix(in srgb, var(--studio-amber) 18%, transparent);
+  transform: translateY(0) scale(0.98);
 }
 
 .studio-availability {
@@ -82,6 +134,8 @@ body {
   height: var(--ctw-space-2);
   border-radius: var(--ctw-radius-pill);
   background: var(--ctw-color-positive);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--ctw-color-positive) 50%, transparent);
+  animation: studio-status-pulse 2.4s var(--ctw-ease-out) infinite;
 }
 
 .studio-facts {
@@ -120,6 +174,15 @@ body {
   white-space: nowrap;
 }
 
+.studio-facts__stats > div {
+  transition: color var(--ctw-motion-fast) var(--ctw-ease-out), transform var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.studio-facts__stats > div:hover {
+  color: var(--ctw-color-text);
+  transform: translateY(-2px);
+}
+
 .studio-facts__stats strong {
   color: var(--ctw-color-text);
   font-size: var(--ctw-type-body-lg);
@@ -144,6 +207,11 @@ body {
   border: 1px solid var(--studio-rule);
   border-radius: 1rem;
   background: var(--ctw-color-surface);
+  transition:
+    background-color var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    border-color var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    box-shadow var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
 }
 
 .studio-about {
@@ -178,6 +246,11 @@ body {
   flex: 0 0 auto;
   border-radius: var(--ctw-radius-pill);
   object-fit: cover;
+  transition: transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
+}
+
+.studio-founder:hover .studio-founder__mark {
+  transform: rotate(-4deg) scale(1.08);
 }
 
 .studio-mission {
@@ -234,6 +307,21 @@ body {
   padding: clamp(var(--ctw-space-5), 4vw, var(--ctw-space-7));
 }
 
+.studio-offerings li:hover {
+  border-color: color-mix(in srgb, var(--studio-amber) 50%, var(--studio-rule));
+  background: color-mix(in srgb, var(--studio-amber) 4%, var(--ctw-color-surface));
+  box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 22%);
+  transform: translateX(-0.4rem);
+}
+
+.studio-offerings li > span {
+  transition: transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
+}
+
+.studio-offerings li:hover > span {
+  transform: translateX(0.3rem);
+}
+
 .studio-offerings li > span,
 .studio-process summary > span {
   color: var(--studio-amber);
@@ -262,14 +350,42 @@ body {
   padding: var(--ctw-space-5);
 }
 
+.studio-process details:hover,
+.studio-process details[open] {
+  border-color: color-mix(in srgb, var(--studio-amber) 45%, var(--studio-rule));
+  background: var(--ctw-color-surface-raised);
+  transform: translateY(-0.25rem);
+}
+
 .studio-process summary {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem;
   min-height: var(--ctw-size-touch);
   cursor: pointer;
-  list-style-position: outside;
+  list-style: none;
+}
+
+.studio-process summary::-webkit-details-marker {
+  display: none;
+}
+
+.studio-process summary::after {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: var(--studio-amber);
+  content: "+";
+  font: 400 1.5rem/1 var(--ctw-font-sans);
+  text-align: center;
+  transition: transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
+}
+
+.studio-process details[open] summary::after {
+  transform: rotate(45deg);
 }
 
 .studio-process summary strong {
+  grid-column: 1;
   padding-top: var(--ctw-space-2);
   padding-right: var(--ctw-space-4);
   font-size: var(--ctw-type-body-lg);
@@ -303,6 +419,18 @@ body {
   border-radius: var(--ctw-radius-card);
   color: var(--ctw-color-text);
   text-decoration: none;
+  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 0%);
+  transition:
+    border-color var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    box-shadow var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
+}
+
+.studio-product:hover,
+.studio-product:focus-visible {
+  border-color: color-mix(in srgb, var(--studio-amber) 55%, var(--studio-rule));
+  box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 35%);
+  transform: translateY(-0.35rem);
 }
 
 .studio-product--primary {
@@ -316,10 +444,16 @@ body {
   height: 100%;
   object-fit: contain;
   background: var(--ctw-color-surface);
+  transition: filter var(--ctw-motion-deliberate) var(--ctw-ease-out), transform 500ms var(--ctw-ease-out);
 }
 
-.studio-visually-hidden,
-.studio-product__label {
+.studio-product:hover img,
+.studio-product:focus-visible img {
+  filter: brightness(0.72);
+  transform: scale(1.025);
+}
+
+.studio-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -328,6 +462,30 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.studio-product__label {
+  grid-area: 1 / 1;
+  z-index: 1;
+  align-self: end;
+  margin: var(--ctw-space-3);
+  padding: var(--ctw-space-3) var(--ctw-space-4);
+  border: 1px solid color-mix(in srgb, var(--ctw-color-text) 24%, transparent);
+  border-radius: var(--ctw-radius-pill);
+  background: color-mix(in srgb, var(--ctw-color-surface) 78%, transparent);
+  color: var(--ctw-color-text);
+  font: 500 var(--ctw-type-body-sm)/1.3 var(--ctw-font-sans);
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity var(--ctw-motion-deliberate) var(--ctw-ease-out), transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.studio-product:hover .studio-product__label,
+.studio-product:focus-visible .studio-product__label {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .studio-quotes {
@@ -351,6 +509,7 @@ body {
   font: 500 var(--ctw-type-label)/1.4 var(--ctw-font-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  animation: studio-cue 1.8s var(--ctw-ease-out) infinite;
 }
 
 .studio-quotes blockquote {
@@ -364,6 +523,13 @@ body {
   margin: 0;
   padding: var(--ctw-space-5);
   scroll-snap-align: start;
+}
+
+.studio-quotes blockquote:hover {
+  border-color: color-mix(in srgb, var(--studio-amber) 45%, var(--studio-rule));
+  background: var(--ctw-color-surface-raised);
+  box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 28%);
+  transform: translateY(-0.35rem);
 }
 
 .studio-quotes blockquote > p {
@@ -403,6 +569,64 @@ body {
   max-width: 64rem;
   padding: clamp(var(--ctw-space-6), 6vw, var(--ctw-space-9));
   text-align: center;
+}
+
+.studio-home .studio-contact:hover {
+  border-color: color-mix(in srgb, var(--studio-amber) 55%, var(--studio-rule));
+  box-shadow: 0 0 5rem color-mix(in srgb, var(--studio-amber) 7%, transparent);
+}
+
+.studio-home .ctw-link--standalone {
+  background-image: linear-gradient(var(--studio-amber), var(--studio-amber));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  text-decoration: none;
+  transition: background-size var(--ctw-motion-deliberate) var(--ctw-ease-out), color var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.studio-home .ctw-link--standalone:hover {
+  background-size: 100% 1px;
+}
+
+@keyframes studio-status-pulse {
+  50% { box-shadow: 0 0 0 0.35rem transparent; }
+}
+
+@keyframes studio-cue {
+  50% { transform: translateX(0.35rem); }
+}
+
+@keyframes studio-arrive {
+  from { opacity: 0; translate: 0 1rem; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes studio-shimmer {
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .studio-hero__title,
+  .studio-hero__lede,
+  .studio-hero__actions {
+    opacity: 0;
+    animation: studio-arrive 700ms var(--ctw-ease-out) forwards;
+  }
+
+  .studio-hero__lede { animation-delay: 120ms; }
+  .studio-hero__actions { animation-delay: 220ms; }
+  .studio-hero__title span { animation: studio-shimmer 4s 900ms var(--ctw-ease-out) 1; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .studio-section :where(.ctw-section-number, .studio-section__title, .studio-mission, .studio-founder, .studio-intro, .studio-offerings li, .studio-process details, .studio-product, .studio-quotes blockquote, .studio-contact) {
+      animation: studio-arrive linear both;
+      animation-range: entry 0% entry 30%;
+      animation-timeline: view();
+    }
+  }
 }
 
 .studio-home .studio-contact::after {
@@ -482,5 +706,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .studio-availability span,
+  .studio-notes__cue {
+    animation: none;
+  }
+
+  .studio-home :where(.studio-card, .studio-product, .ctw-button, .studio-founder__mark, .studio-facts__stats > div) {
+    transform: none !important;
   }
 }

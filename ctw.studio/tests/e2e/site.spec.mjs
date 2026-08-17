@@ -4,7 +4,7 @@ test('home remains substantive without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Applied Research\s+Software/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Interaction Design\s+Engineering/);
   await expect(page.getByRole('link', { name: 'CTW Studio' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Work', exact: true }).first()).toHaveAttribute('href', '/portfolio/');
   await expect(page.getByRole('link', { name: 'contact@ctw.studio' }).first()).toHaveAttribute('href', 'mailto:contact@ctw.studio');
@@ -250,7 +250,7 @@ test('home and portfolio use full document navigation with one feedback control'
 
   await page.evaluate(() => { window.__ctwNavigationMarker = 'portfolio'; });
   await page.getByRole('link', { name: 'CTW Studio' }).click();
-  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Applied Research\s+Software/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Interaction Design\s+Engineering/);
   expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
   await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
