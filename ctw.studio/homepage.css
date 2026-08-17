@@ -338,7 +338,6 @@ body {
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  scrollbar-color: var(--studio-amber) var(--ctw-color-surface-raised);
 }
 
 .studio-quotes:focus-visible {
