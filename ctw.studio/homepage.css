@@ -211,6 +211,14 @@ body {
   margin-block: 0;
 }
 
+@media (min-width: 64rem) {
+  .studio-collaborations .studio-intro {
+    position: sticky;
+    top: 7rem;
+    align-self: start;
+  }
+}
+
 .studio-offerings {
   display: grid;
   gap: var(--ctw-space-5);
