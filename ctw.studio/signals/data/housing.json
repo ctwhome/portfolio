@@ -2,7 +2,7 @@
   "meta": {
     "topic": "Housing & affordability",
     "brief": "003",
-    "dataUpdated": "2026-07-23",
+    "dataUpdated": "2026-08-01",
     "editorialReview": "2026-07-23",
     "question": "Is an ordinary life becoming more or less attainable?",
     "scope": "World structure; Europe and the Netherlands in detail; selected-country comparisons",
@@ -2692,10 +2692,14 @@
         {
           "period": "2026-05",
           "value": 3.7
+        },
+        {
+          "period": "2026-06",
+          "value": 3.7
         }
       ],
       "latest": {
-        "period": "2026-05",
+        "period": "2026-06",
         "value": 3.7
       },
       "lowSince2015": {
@@ -2931,7 +2935,7 @@
       "title": "Population living in slums (% of urban population)",
       "publisher": "World Bank, sourced from UN-Habitat",
       "url": "https://data.worldbank.org/indicator/EN.POP.SLUM.UR.ZS",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "World housing-adequacy lens and derived affected-population estimate",
       "kind": "SDG indicator"
     },
@@ -2940,7 +2944,7 @@
       "title": "Analytical house price indicators",
       "publisher": "OECD",
       "url": "https://sdmx.oecd.org/public/rest/v1/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "Harmonized house-price, rent, price-to-income and price-to-rent indices",
       "kind": "Official comparative statistics"
     },
@@ -2949,7 +2953,7 @@
       "title": "Housing cost overburden rate by tenure status",
       "publisher": "Eurostat",
       "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_lvho07c/default/table?lang=en",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "Distribution of housing-cost burden across Dutch tenure groups",
       "kind": "EU-SILC survey statistic"
     },
@@ -2958,7 +2962,7 @@
       "title": "Population by tenure status",
       "publisher": "Eurostat",
       "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_lvho02/default/table?lang=en",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "Owner and renter population shares in the Netherlands and EU",
       "kind": "EU-SILC survey statistic"
     },
@@ -2967,7 +2971,7 @@
       "title": "Existing own homes; purchase prices, price indices 2020=100",
       "publisher": "Statistics Netherlands (CBS)",
       "url": "https://opendata.cbs.nl/statline/#/CBS/en/dataset/85773ENG",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "Current Dutch existing-home prices, transactions and average purchase price",
       "kind": "Administrative transaction statistics"
     },
@@ -2976,7 +2980,7 @@
       "title": "Housing stock; levels and changes since 1921",
       "publisher": "Statistics Netherlands (CBS)",
       "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/82235NED",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "New construction and net dwelling-stock additions",
       "kind": "Administrative BAG statistics"
     },
@@ -2985,7 +2989,7 @@
       "title": "Households; composition, size, region, 1 January",
       "publisher": "Statistics Netherlands (CBS)",
       "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/71486NED",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "Annual Dutch private-household formation",
       "kind": "Population statistics"
     },
@@ -2994,7 +2998,7 @@
       "title": "Bank interest rates — loans to households for house purchase (new business)",
       "publisher": "European Central Bank / De Nederlandsche Bank",
       "url": "https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.NL.B.A2C.A.R.A.2250.EUR.N",
-      "accessed": "2026-07-23",
+      "accessed": "2026-08-01",
       "role": "Dutch new-mortgage interest-rate conditions",
       "kind": "Monetary financial statistics"
     }

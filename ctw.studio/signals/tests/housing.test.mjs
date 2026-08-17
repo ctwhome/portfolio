@@ -87,6 +87,14 @@ test('housing source ledger is unique, secure, and fully referenced', () => {
     for (const field of ['title', 'publisher', 'role', 'kind', 'accessed']) {
       assert.ok(source[field], `${source.id} missing ${field}`);
     }
+    const article = html.match(
+      new RegExp(`<article id="source-${source.id}">[\\s\\S]*?</article>`)
+    )?.[0];
+    assert.ok(article, `${source.id} static ledger entry missing`);
+    assert.ok(
+      article.includes(`${source.publisher} · ${source.accessed}`),
+      `${source.id} static ledger date differs from baked data`
+    );
   }
   assert.ok(data.sources.length >= 7);
 });
