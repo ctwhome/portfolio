@@ -18,7 +18,7 @@ const routes = [
     name: "homepage",
     path: "/",
     title: "CTW Studio – Applied Research Software",
-    heading: /Applied research software/,
+    heading: /Applied Research Software/i,
     core: /Research Data Infrastructure/,
     minimumStyles: 4,
   },
@@ -168,20 +168,14 @@ for (const viewport of viewports) {
         }
       }
       if (route.name === "homepage") {
-        await expect(page.locator(".studio-products")).toHaveAttribute("aria-describedby", "product-index-hint");
-        const productHint = page.locator("#product-index-hint");
-        if (viewport.name === "compact") await expect(productHint).toBeVisible();
-        else await expect(productHint).toBeHidden();
-        const quoteColumns = await page.locator(".studio-quotes").evaluate(
-          (element) => getComputedStyle(element).gridTemplateColumns.split(" ").length,
-        );
-        expect(quoteColumns).toBe(viewport.name === "compact" ? 1 : 2);
-        if (viewport.name === "compact") {
-          const lineHeightRatio = await page.locator("#process-title").evaluate((element) => {
-            const style = getComputedStyle(element);
-            return Number.parseFloat(style.lineHeight) / Number.parseFloat(style.fontSize);
-          });
-          expect(lineHeightRatio).toBeGreaterThanOrEqual(0.96);
+        await expect(page.locator(".studio-process details")).toHaveCount(4);
+        await expect(page.locator(".studio-quotes blockquote")).toHaveCount(5);
+        await expect(page.locator(".studio-product img")).toHaveCount(3);
+        await page.locator(".studio-products").scrollIntoViewIfNeeded();
+        for (const image of await page.locator(".studio-product img").all()) {
+          await expect(image).toHaveAttribute("alt", /.+/);
+          await expect(image).toHaveAttribute("loading", "lazy");
+          await expect(image).toHaveJSProperty("complete", true);
         }
       }
       if (route.name === "atlas") {

@@ -49,7 +49,7 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
   assert.match(portfolio, /<link rel="canonical" href="https:\/\/ctw\.studio\/portfolio\/">/);
   assert.equal(
     sha256(visibleMainText(home)),
-    'd67f001f7bc23f8d78f25fc830dce8ae7c11dd672d24d227d6b2c228ccf402e2'
+    'e7feb44edbc3f0dc71c16a29951ffa1b03d8c8616d36a8a0fde17b7119a8f9be'
   );
   assert.match(home, /Software for research and society/);
   assert.match(portfolio, /Research software as cultural practice/);

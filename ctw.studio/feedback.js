@@ -188,7 +188,9 @@
   button.textContent = 'Feedback';
   button.setAttribute('aria-haspopup', 'dialog');
 
-  document.body.append(modal, button);
+  const buttonHost = document.querySelector('[data-feedback-host]');
+  document.body.append(modal);
+  (buttonHost || document.body).append(button);
 
   const textarea = modal.querySelector('.ctw-feedback-textarea');
   const form = modal.querySelector('form');

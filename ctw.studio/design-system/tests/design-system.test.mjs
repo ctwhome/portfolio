@@ -651,7 +651,7 @@ test("standalone links opt into touch targets while prose links remain inline", 
   );
 });
 
-test("homepage pilot preserves content and removes legacy runtime treatments", () => {
+test("homepage restores historical composition through current static design system", () => {
   for (const href of [
     "/design-system/tokens.css",
     "/design-system/components.css",
@@ -661,7 +661,7 @@ test("homepage pilot preserves content and removes legacy runtime treatments", (
     assert.match(homepage, new RegExp(`href="${href}"`));
   }
   for (const text of [
-    "Applied research",
+    "Applied Research",
     "17+ years in software engineering",
     "50+",
     "15",
@@ -690,6 +690,14 @@ test("homepage pilot preserves content and removes legacy runtime treatments", (
     assert.ok(homepage.includes(text), text);
   }
   assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
+  for (const href of ["/portfolio/", "/signals/", "/nlesc/", "/workshop/", "/#contact"]) {
+    assert.match(homepage, new RegExp(`href="${href.replaceAll("/", "\\/")}"`));
+  }
+  assert.match(homepage, /bodyClass="studio-home"/);
+  assert.match(homepageCss, /\.studio-home \.ctw-wordmark::before/);
+  assert.doesNotMatch(homepageCss, /\.studio-home \.ctw-wordmark[^}]*font-size:\s*0/s);
+  assert.match(homepageCss, /\.studio-home \.ctw-primary-nav__link[^}]*text-transform:\s*none/s);
+  assert.match(homepageCss, /\.studio-home \.ctw-primary-nav__link:last-child[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
   assert.match(homepage, /<script is:inline src="\/feedback\.js"><\/script>/);
   assert.doesNotMatch(homepage, /ClientRouter|data-astro-(?:reload|rerun)|transition:(?:name|animate)/);
   assert.match(transitionsCss, /@view-transition\s*\{\s*navigation:\s*auto;/s);
@@ -698,10 +706,37 @@ test("homepage pilot preserves content and removes legacy runtime treatments", (
   assert.match(transitionsCss, /::view-transition-old\(site-mark\),\s*::view-transition-new\(site-mark\)\s*\{\s*animation:\s*none;/s);
   assert.doesNotMatch(homepage, /tailwind\.css|anime(?:\.min)?\.js|three(?:\.min)?\.js|blueprint-canvas|onclick=|opacity-0|glass|bento/i);
   assert.doesNotMatch(homepage, /<script[^>]+src="nav\.js"/);
-  assert.match(homepage, /id="product-index-hint"[^>]*>Swipe products to explore/);
-  assert.match(homepage, /class="ctw-project-index studio-products"[^>]*aria-describedby="product-index-hint"/);
-  assert.match(homepageCss, /@media \(min-width: 64rem\)[\s\S]*\.studio-quotes\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
-  assert.match(compositionsCss, /@media \(max-width: 47\.99rem\)[\s\S]*\.ctw-display--fluid\s*\{[^}]*line-height:\s*0\.98/s);
+  assert.equal((homepage.match(/<details class="studio-card">/g) ?? []).length, 4);
+  assert.equal((homepage.match(/<summary>/g) ?? []).length, 4);
+  assert.equal((homepage.match(/<blockquote class="studio-card">/g) ?? []).length, 5);
+  assert.match(homepage, /id="field-notes-cue">Scroll field notes →<\/p>/);
+  assert.match(homepage, /<section class="studio-facts" aria-labelledby="studio-facts-title">/);
+  assert.match(homepage, /<dl class="studio-facts__stats ctw-coordinate">/);
+  assert.match(homepage, /class="ctw-container studio-feedback-host" data-feedback-host/);
+  assert.match(homepage, /<section class="studio-section studio-notes" id="methodology">/);
+  assert.match(homepage, /class="studio-quotes" role="region" tabindex="0" aria-labelledby="notes-title" aria-describedby="field-notes-cue"/);
+  assert.match(homepageCss, /\.studio-quotes:focus-visible\s*\{[^}]*outline:/s);
+  assert.match(homepageCss, /\.studio-feedback-host \.ctw-feedback-button[^}]*position:\s*static/s);
+  assert.match(homepageCss, /\.studio-quotes\s*\{[^}]*overflow-x:\s*auto[^}]*scroll-snap-type:\s*inline mandatory/s);
+  assert.match(homepageCss, /\.studio-home \.ctw-button\s*\{[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
+  assert.match(homepageCss, /\.studio-product\s*\{[^}]*aspect-ratio:\s*5 \/ 3/s);
+  assert.match(homepageCss, /\.studio-product img\s*\{[^}]*object-fit:\s*contain/s);
+  for (const [name, width, height] of [
+    ["notidian", "1200", "720"],
+    ["ideasdiamond", "1200", "720"],
+    ["nexthuman", "1801", "1081"],
+  ]) {
+    assert.match(
+      homepage,
+      new RegExp(`<img src="\\/homepage\\/${name}\\.avif" width="${width}" height="${height}" alt="[^"]+" loading="lazy" decoding="async" \\/>`),
+    );
+    assert.ok(existsSync(join(studioDir, `public/homepage/${name}.avif`)), name);
+  }
+  assert.doesNotMatch(homepage, /<img[^>]+src="https?:\/\//);
+  assert.doesNotMatch(homepageCss, /(^|\n)\s*:root\b/);
+  for (const value of homepageCss.matchAll(/var\((--[^,)]+)/g)) {
+    assert.match(value[1], /^--(?:ctw|studio)-/);
+  }
   for (const tag of homepage.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
     assert.match(tag[0], /rel="noopener noreferrer"/);
   }
