@@ -14,7 +14,7 @@ const { current } = Astro.props;
       href="/"
       aria-current={current === 'home' ? 'page' : undefined}
       aria-label="CTW Studio"
-    ><span class="ctw-wordmark__label">CTW.studio</span></a>
+    ><span class="ctw-wordmark__label" aria-hidden="true">CTW<span class="ctw-wordmark__dot">.</span>studio</span></a>
     <nav class="ctw-primary-nav" aria-label="Primary navigation">
       <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
       <a class="ctw-primary-nav__link studio-nav-workshop ctw-nav-glitch" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined} aria-label="AI Workshop" data-text="AI Workshop" data-mobile-text="AI"><span>AI Workshop</span></a>

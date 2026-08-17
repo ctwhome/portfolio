@@ -159,23 +159,11 @@
 }
 
 .ctw-masthead--studio .ctw-wordmark {
-  gap: var(--ctw-space-3);
   font-size: 1.125rem;
 }
 
-.ctw-masthead--studio .ctw-wordmark::before {
-  content: "CTW";
-  display: inline-flex;
-  width: 2.5rem;
-  height: 2.5rem;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--ctw-color-action);
-  border-radius: var(--ctw-radius-pill);
+.ctw-wordmark__dot {
   color: var(--ctw-color-action);
-  font: 750 var(--ctw-type-body-sm)/1 var(--ctw-font-sans);
-  letter-spacing: -0.04em;
 }
 
 .ctw-masthead--studio .ctw-primary-nav {
@@ -298,17 +286,6 @@
 }
 
 @media (max-width: 30rem) {
-  .ctw-wordmark__label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
   .ctw-masthead--studio .ctw-primary-nav {
     gap: 0.7rem;
   }

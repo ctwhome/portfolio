@@ -694,15 +694,13 @@ test("homepage restores historical composition through current static design sys
     assert.match(homepage, new RegExp(`href="${href.replaceAll("/", "\\/")}"`));
   }
   assert.match(homepage, /bodyClass="studio-home"/);
-  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-wordmark::before/);
-  assert.doesNotMatch(componentsCss, /\.ctw-masthead--studio \.ctw-wordmark[^}]*font-size:\s*0/s);
+  assert.match(componentsCss, /\.ctw-wordmark__dot\s*\{[^}]*color:\s*var\(--ctw-color-action\)/s);
   assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link[^}]*text-transform:\s*none/s);
   assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link:last-child[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
   assert.match(componentsCss, /\.ctw-nav-glitch:hover::before[^}]*animation:\s*ctw-nav-glitch-1/s);
   assert.match(componentsCss, /\.ctw-nav-glitch:hover::after[^}]*animation:\s*ctw-nav-glitch-2/s);
   assert.match(componentsCss, /\.ctw-masthead__glass[^}]*backdrop-filter:\s*blur\(24px\)/s);
   assert.match(componentsCss, /\.ctw-masthead__glass-edge[^}]*blur\(60px\) saturate\(140%\) brightness\(1\.2\)/s);
-  assert.match(componentsCss, /@media \(max-width: 30rem\)[\s\S]*\.ctw-wordmark__label/s);
   assert.match(homepage, /<script is:inline src="\/feedback\.js"><\/script>/);
   assert.doesNotMatch(homepage, /ClientRouter|data-astro-(?:reload|rerun)|transition:(?:name|animate)/);
   assert.match(transitionsCss, /@view-transition\s*\{\s*navigation:\s*auto;/s);
