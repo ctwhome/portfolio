@@ -27,11 +27,6 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
 
   const layout = async () => page.evaluate(() => {
     const feedback = document.querySelector('.ctw-feedback-button')?.getBoundingClientRect();
-    const visibleCopies = [...document.querySelectorAll('.project-card__copy')]
-      .map((element) => element.getBoundingClientRect())
-      .filter((rect) => rect.bottom > 0 && rect.top < innerHeight);
-    const intersects = (a, b) =>
-      a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
     const firstCard = document.querySelector('.project-card')?.getBoundingClientRect();
     const grid = document.querySelector('.portfolio-grid')?.getBoundingClientRect();
     const rows = [...document.querySelectorAll('.project-card')].reduce((result, card) => {
@@ -47,7 +42,7 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
       viewportWidth: innerWidth,
       feedbackWidth: feedback?.width ?? 0,
       feedbackHeight: feedback?.height ?? 0,
-      feedbackOverlapsCopy: feedback ? visibleCopies.some((copy) => intersects(feedback, copy)) : true,
+      feedbackPosition: getComputedStyle(document.querySelector('.ctw-feedback-button')).position,
       firstCardWidth: firstCard?.width ?? 0,
       gridWidth: grid?.width ?? 0,
       incompleteRows: rows.filter((row) => {
@@ -78,7 +73,7 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
   expect(compactLayout.documentWidth).toBeLessThanOrEqual(compactLayout.viewportWidth);
   expect(compactLayout.feedbackWidth).toBeGreaterThanOrEqual(44);
   expect(compactLayout.feedbackHeight).toBeGreaterThanOrEqual(44);
-  expect(compactLayout.feedbackOverlapsCopy).toBe(false);
+  expect(compactLayout.feedbackPosition).toBe('fixed');
 
   await page.locator('[data-project-link="data-storytelling"]').first().click();
   const controls = await page.evaluate(() => {

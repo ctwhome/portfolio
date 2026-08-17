@@ -690,21 +690,26 @@ test("homepage restores historical composition through current static design sys
     assert.ok(homepage.includes(text), text);
   }
   assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
-  for (const href of ["/portfolio/", "/signals/", "/nlesc/", "/workshop/", "/#contact"]) {
+  for (const href of ["/portfolio/", "/signals/", "/workshop/", "/#about", "/#contact"]) {
     assert.match(homepage, new RegExp(`href="${href.replaceAll("/", "\\/")}"`));
   }
   assert.match(homepage, /bodyClass="studio-home"/);
-  assert.match(homepageCss, /\.studio-home \.ctw-wordmark::before/);
-  assert.doesNotMatch(homepageCss, /\.studio-home \.ctw-wordmark[^}]*font-size:\s*0/s);
-  assert.match(homepageCss, /\.studio-home \.ctw-primary-nav__link[^}]*text-transform:\s*none/s);
-  assert.match(homepageCss, /\.studio-home \.ctw-primary-nav__link:last-child[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
+  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-wordmark::before/);
+  assert.doesNotMatch(componentsCss, /\.ctw-masthead--studio \.ctw-wordmark[^}]*font-size:\s*0/s);
+  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link[^}]*text-transform:\s*none/s);
+  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link:last-child[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
+  assert.match(componentsCss, /\.ctw-nav-glitch:hover::before[^}]*animation:\s*ctw-nav-glitch-1/s);
+  assert.match(componentsCss, /\.ctw-nav-glitch:hover::after[^}]*animation:\s*ctw-nav-glitch-2/s);
+  assert.match(componentsCss, /\.ctw-masthead__glass[^}]*backdrop-filter:\s*blur\(24px\)/s);
+  assert.match(componentsCss, /\.ctw-masthead__glass-edge[^}]*blur\(60px\) saturate\(140%\) brightness\(1\.2\)/s);
+  assert.match(componentsCss, /@media \(max-width: 30rem\)[\s\S]*\.ctw-wordmark__label/s);
   assert.match(homepage, /<script is:inline src="\/feedback\.js"><\/script>/);
   assert.doesNotMatch(homepage, /ClientRouter|data-astro-(?:reload|rerun)|transition:(?:name|animate)/);
   assert.match(transitionsCss, /@view-transition\s*\{\s*navigation:\s*auto;/s);
   assert.match(transitionsCss, /\.ctw-wordmark\s*\{\s*view-transition-name:\s*site-mark;/s);
   assert.match(transitionsCss, /\.ctw-hero__title,\s*\.portfolio-lead\s*\{\s*view-transition-name:\s*portfolio-lead;/s);
   assert.match(transitionsCss, /::view-transition-old\(site-mark\),\s*::view-transition-new\(site-mark\)\s*\{\s*animation:\s*none;/s);
-  assert.doesNotMatch(homepage, /tailwind\.css|anime(?:\.min)?\.js|three(?:\.min)?\.js|blueprint-canvas|onclick=|opacity-0|glass|bento/i);
+  assert.doesNotMatch(homepage, /tailwind\.css|anime(?:\.min)?\.js|three(?:\.min)?\.js|blueprint-canvas|onclick=|opacity-0|bento/i);
   assert.doesNotMatch(homepage, /<script[^>]+src="nav\.js"/);
   assert.equal((homepage.match(/<details class="studio-card">/g) ?? []).length, 4);
   assert.equal((homepage.match(/<summary>/g) ?? []).length, 4);
@@ -712,11 +717,10 @@ test("homepage restores historical composition through current static design sys
   assert.match(homepage, /id="field-notes-cue">Scroll field notes →<\/p>/);
   assert.match(homepage, /<section class="studio-facts" aria-labelledby="studio-facts-title">/);
   assert.match(homepage, /<dl class="studio-facts__stats ctw-coordinate">/);
-  assert.match(homepage, /class="ctw-container studio-feedback-host" data-feedback-host/);
+  assert.doesNotMatch(homepage, /data-feedback-host/);
   assert.match(homepage, /<section class="studio-section studio-notes" id="methodology">/);
   assert.match(homepage, /class="studio-quotes" role="region" tabindex="0" aria-labelledby="notes-title" aria-describedby="field-notes-cue"/);
   assert.match(homepageCss, /\.studio-quotes:focus-visible\s*\{[^}]*outline:/s);
-  assert.match(homepageCss, /\.studio-feedback-host \.ctw-feedback-button[^}]*position:\s*static/s);
   assert.match(homepageCss, /\.studio-quotes\s*\{[^}]*overflow-x:\s*auto[^}]*scroll-snap-type:\s*inline mandatory/s);
   assert.match(homepageCss, /\.studio-home \.ctw-button\s*\{[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
   assert.match(homepageCss, /\.studio-product\s*\{[^}]*aspect-ratio:\s*5 \/ 3/s);

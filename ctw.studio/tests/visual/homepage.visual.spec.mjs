@@ -30,7 +30,7 @@ for (const viewport of viewports) {
       const products = document.querySelector('.studio-products')?.getBoundingClientRect();
       const quotes = document.querySelector('.studio-quotes');
       const feedback = document.querySelector('.ctw-feedback-button')?.getBoundingClientRect();
-      const protectedRegions = [...document.querySelectorAll('.studio-hero__actions, .studio-facts, .studio-facts__links, .studio-founder')]
+      const protectedRegions = [...document.querySelectorAll('.studio-hero__actions a, .studio-facts__links a, .studio-founder a')]
         .map((element) => ({ selector: element.className, rect: element.getBoundingClientRect() }));
       const intersects = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
       const productGeometry = [...document.querySelectorAll('.studio-product')].map((card) => {

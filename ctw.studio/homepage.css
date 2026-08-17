@@ -172,16 +172,12 @@ body {
 }
 
 .studio-founder__mark {
-  display: inline-flex;
+  display: block;
   width: 3.5rem;
   height: 3.5rem;
   flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
   border-radius: var(--ctw-radius-pill);
-  background: var(--studio-amber);
-  color: var(--ctw-color-action-text);
-  font-weight: 700;
+  object-fit: cover;
 }
 
 .studio-mission {
@@ -411,52 +407,6 @@ body {
 .studio-contact h2,
 .studio-contact .ctw-lede {
   max-width: 24ch;
-}
-
-.ctw-scope .ctw-feedback-button,
-.ctw-scope .ctw-feedback-close,
-.ctw-scope .ctw-feedback-action {
-  min-height: var(--ctw-size-touch);
-  border-radius: var(--ctw-radius-control);
-  box-shadow: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
-.ctw-scope .ctw-feedback-button,
-.ctw-scope .ctw-feedback-card {
-  background: var(--ctw-color-surface-raised);
-}
-
-.ctw-scope .ctw-feedback-card,
-.ctw-scope .ctw-feedback-textarea {
-  border-radius: var(--ctw-radius-control);
-  box-shadow: none;
-}
-
-.ctw-scope .ctw-feedback-modal {
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
-.studio-feedback-host:empty {
-  display: none;
-}
-
-.studio-feedback-host:not(:empty) {
-  display: flex;
-  min-height: var(--ctw-size-touch);
-  align-items: center;
-  justify-content: flex-end;
-  padding-block: var(--ctw-space-4);
-}
-
-.studio-feedback-host .ctw-feedback-button,
-.studio-feedback-host .ctw-feedback-button:hover,
-.studio-feedback-host .ctw-feedback-button:focus-visible {
-  position: static;
-  margin: 0;
-  transform: none;
 }
 
 @media (max-width: 63.99rem) {
