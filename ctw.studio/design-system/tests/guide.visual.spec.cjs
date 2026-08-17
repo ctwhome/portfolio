@@ -170,7 +170,7 @@ for (const viewport of viewports) {
       if (route.name === "homepage") {
         await expect(page.locator(".studio-process details")).toHaveCount(4);
         await expect(page.locator(".studio-quotes blockquote")).toHaveCount(5);
-        await expect(page.locator(".studio-product img")).toHaveCount(3);
+        await expect(page.locator(".studio-product img")).toHaveCount(5);
         await page.locator(".studio-products").scrollIntoViewIfNeeded();
         for (const image of await page.locator(".studio-product img").all()) {
           await expect(image).toHaveAttribute("alt", /.+/);
