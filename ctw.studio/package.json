@@ -36,10 +36,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.6",
+    "@iconify-json/ph": "1.2.2",
     "@jsquash/avif": "2.1.1",
     "@playwright/test": "1.62.0",
     "lighthouse": "13.4.1",
     "sharp": "0.35.3",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "unplugin-icons": "0.22.0"
   }
 }

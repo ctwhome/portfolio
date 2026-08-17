@@ -1,4 +1,15 @@
 ---
+import IconCapability from '~icons/ph/student-duotone';
+import IconDemocracy from '~icons/ph/chat-circle-dots-duotone';
+import IconDemography from '~icons/ph/users-three-duotone';
+import IconEnergy from '~icons/ph/lightning-duotone';
+import IconFood from '~icons/ph/plant-duotone';
+import IconHealthspan from '~icons/ph/heartbeat-duotone';
+import IconHousing from '~icons/ph/house-duotone';
+import IconProsperity from '~icons/ph/chart-line-up-duotone';
+import IconResilience from '~icons/ph/shield-check-duotone';
+import IconScience from '~icons/ph/flask-duotone';
+
 type Subject =
   | 'housing'
   | 'food'
@@ -14,30 +25,35 @@ interface Props {
 }
 
 const { current, class: className = '' } = Astro.props;
-const subjects: readonly { id: string; label: string; href?: string }[] = [
-  { id: 'housing', label: 'Housing & affordability', href: '/signals/housing/' },
-  { id: 'food', label: 'Food, animals & planet', href: '/signals/food/' },
-  { id: 'healthspan', label: 'Healthspan & care', href: '/signals/healthspan/' },
-  { id: 'capability', label: 'Work, education & human capability', href: '/signals/ai-work/' },
-  { id: 'prosperity', label: 'Prosperity & financial security', href: '/signals/financial-fragility/' },
-  { id: 'energy', label: 'Energy, compute & infrastructure' },
-  { id: 'demography', label: 'Demography, migration & aging', href: '/signals/demography/' },
-  { id: 'democracy', label: 'Democracy, trust & information' },
-  { id: 'science', label: 'Science, discovery & AI systems', href: '/signals/science/' },
-  { id: 'resilience', label: 'Global resilience' }
+const subjects = [
+  { id: 'housing', label: 'Housing & affordability', icon: IconHousing, href: '/signals/housing/' },
+  { id: 'food', label: 'Food, animals & planet', icon: IconFood, href: '/signals/food/' },
+  { id: 'healthspan', label: 'Healthspan & care', icon: IconHealthspan, href: '/signals/healthspan/' },
+  { id: 'capability', label: 'Work, education & human capability', icon: IconCapability, href: '/signals/ai-work/' },
+  { id: 'prosperity', label: 'Prosperity & financial security', icon: IconProsperity, href: '/signals/financial-fragility/' },
+  { id: 'energy', label: 'Energy, compute & infrastructure', icon: IconEnergy },
+  { id: 'demography', label: 'Demography, migration & aging', icon: IconDemography, href: '/signals/demography/' },
+  { id: 'democracy', label: 'Democracy, trust & information', icon: IconDemocracy },
+  { id: 'science', label: 'Science, discovery & AI systems', icon: IconScience, href: '/signals/science/' },
+  { id: 'resilience', label: 'Global resilience', icon: IconResilience }
 ];
 ---
 <nav class:list={['subject-menu', className]} aria-label="CTW Signals subjects">
   <a class="subject-menu__brand" href="/signals/">Signals /</a>
   {subjects.map((subject) => subject.href ? (
     <a
-      class="subject-menu__option"
+      class:list={['subject-menu__option', `subject-menu__option--${subject.id}`]}
       href={subject.href}
       aria-current={current === subject.id ? 'location' : undefined}
-    >{subject.label}</a>
+    >
+      <subject.icon class="subject-menu__icon" aria-hidden="true" />
+      <span class="subject-menu__option-label">{subject.label}</span>
+    </a>
   ) : (
-    <span class="subject-menu__option subject-menu__option--planned">
-      {subject.label} <span class="subject-menu__badge">Planned</span>
+    <span class:list={['subject-menu__option', 'subject-menu__option--planned', `subject-menu__option--${subject.id}`]}>
+      <subject.icon class="subject-menu__icon" aria-hidden="true" />
+      <span class="subject-menu__option-label">{subject.label}</span>
+      <span class="subject-menu__badge">Planned</span>
     </span>
   ))}
 </nav>

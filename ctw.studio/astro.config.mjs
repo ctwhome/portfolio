@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
   site: 'https://ctw.studio',
@@ -10,6 +11,6 @@ export default defineConfig({
     format: 'directory'
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss(), Icons({ compiler: 'astro' })]
   }
 });

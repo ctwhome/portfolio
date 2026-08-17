@@ -88,7 +88,7 @@ test('food page exposes the complete storyboard, chart alternatives, and active 
   }
   assert.match(html, /href="\/signals\/">Signals \//);
   assert.match(html, /href="\/signals\/food\/"[^>]*aria-current="location"/);
-  assert.match(html, /<a class="subject-menu__option" href="\/signals\/food\/" aria-current="location"/);
+  assert.match(html, /<a class="subject-menu__option subject-menu__option--food" href="\/signals\/food\/" aria-current="location"/);
   assert.match(html, /species-table/);
   assert.match(html, /footprint-table/);
   assert.match(html, /Scenario, not forecast/);
