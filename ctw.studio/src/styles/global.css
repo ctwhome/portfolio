@@ -23,6 +23,7 @@
 
 html {
   scrollbar-gutter: stable;
+  scrollbar-color: var(--ctw-color-action) var(--ctw-color-surface-raised);
 }
 
 body {

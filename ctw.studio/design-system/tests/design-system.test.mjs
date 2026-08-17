@@ -27,6 +27,7 @@ const homepage = [
   read(join(studioDir, "src/components/SiteFooter.astro")),
 ].join("\n");
 const homepageCss = read(join(studioDir, "homepage.css"));
+const globalCss = read(join(studioDir, "src/styles/global.css"));
 const transitionsCss = read(join(studioDir, "src/styles/transitions.css"));
 const atlas = read(join(studioDir, "dist/signals/index.html"));
 const atlasCss = read(join(studioDir, "signals/atlas.css"));
@@ -625,7 +626,10 @@ test("responsive, touch-target, focus, and reduced-motion contracts exist", () =
   assert.match(componentsCss, /\.ctw-link--standalone\s*\{[^}]*display:\s*inline-flex[^}]*min-height:\s*var\(--ctw-size-touch\)[^}]*align-items:\s*center/s);
   assert.match(componentsCss, /\.ctw-scroll-hint\s*\{[^}]*display:\s*none/s);
   assert.match(componentsCss, /@media \(max-width: 48rem\)[\s\S]*\.ctw-scroll-hint\s*\{[^}]*display:\s*block/s);
-  assert.match(componentsCss, /scrollbar-color:\s*var\(--ctw-color-action\)/);
+  for (const css of [componentsCss, compositionsCss, homepageCss]) {
+    assert.doesNotMatch(css, /scrollbar-color:/);
+  }
+  assert.match(globalCss, /html\s*\{[^}]*scrollbar-color:\s*var\(--ctw-color-action\) var\(--ctw-color-surface-raised\)/s);
   assert.match(componentsCss, /\.ctw-scope \.ctw-feedback-button:focus-visible,\s*\.ctw-scope \.ctw-feedback-textarea:focus-visible\s*\{[^}]*outline:\s*3px solid var\(--ctw-color-focus\)[^}]*outline-offset:\s*3px/s);
   assert.match(componentsCss, /outline:\s*3px solid var\(--ctw-color-focus\)/);
   assert.match(componentsCss, /animation-duration:\s*0\.01ms !important/);

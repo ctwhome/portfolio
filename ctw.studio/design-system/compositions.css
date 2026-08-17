@@ -282,7 +282,6 @@
   padding: 0;
   border-block: 1px solid var(--ctw-composition-rule);
   list-style: none;
-  scrollbar-color: var(--ctw-accent) var(--ctw-color-surface-raised);
 }
 
 .ctw-scope .ctw-project-index > li {

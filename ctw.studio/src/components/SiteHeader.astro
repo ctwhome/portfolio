@@ -6,15 +6,13 @@ interface Props {
 const { current } = Astro.props;
 ---
 <header class="ctw-masthead ctw-masthead--studio">
-  <div class="ctw-masthead__glass" aria-hidden="true"></div>
-  <div class="ctw-masthead__glass-edge" aria-hidden="true"></div>
   <div class="ctw-container ctw-masthead__inner">
     <a
       class="ctw-wordmark"
       href="/"
       aria-current={current === 'home' ? 'page' : undefined}
       aria-label="CTW Studio"
-    ><span class="ctw-wordmark__label" aria-hidden="true">CTW<span class="ctw-wordmark__dot">.</span>studio</span></a>
+    ><span class="ctw-wordmark__label" aria-hidden="true">CTW<span class="ctw-wordmark__dot">.</span><span class="ctw-wordmark__studio">studio</span></span></a>
     <nav class="ctw-primary-nav" aria-label="Primary navigation">
       <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
       <a class="ctw-primary-nav__link studio-nav-workshop ctw-nav-glitch" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined} aria-label="AI Workshop" data-text="AI Workshop" data-mobile-text="AI"><span>AI Workshop</span></a>
