@@ -7,7 +7,6 @@ interface Props {
 
 const { projects } = Astro.props;
 const mediaUrl = (path: string) => `/portfolio/${path}`;
-const isPassthroughUrl = (url: string) => url === '/nlesc/';
 ---
 <div class="project-details">
   {projects.map((project, index) => {
@@ -45,7 +44,7 @@ const isPassthroughUrl = (url: string) => url === '/nlesc/';
 
           {(project.liveUrl || project.repoUrl || project.pdfUrl) && (
             <nav class="project-dialog__links" aria-label={`${project.title} links`}>
-              {project.liveUrl && <a class="ctw-button" href={project.liveUrl} target={project.liveUrl.startsWith('/') ? undefined : '_blank'} rel={project.liveUrl.startsWith('/') ? undefined : 'noopener noreferrer'} {...(isPassthroughUrl(project.liveUrl) ? { 'data-astro-reload': true } : {})}>Visit project ↗</a>}
+              {project.liveUrl && <a class="ctw-button" href={project.liveUrl} target={project.liveUrl.startsWith('/') ? undefined : '_blank'} rel={project.liveUrl.startsWith('/') ? undefined : 'noopener noreferrer'}>Visit project ↗</a>}
               {project.repoUrl && <a class="ctw-button ctw-button--secondary" href={project.repoUrl} target="_blank" rel="noopener noreferrer">Source ↗</a>}
               {project.pdfUrl && <a class="ctw-button ctw-button--secondary" href={mediaUrl(project.pdfUrl)} target="_blank" rel="noopener noreferrer">Read PDF ↗</a>}
             </nav>

@@ -7,132 +7,156 @@ import SiteLayout from "../layouts/SiteLayout.astro";
   ogDescription="Software for research and society."
   canonical="/"
   current="home"
+  bodyClass="studio-home"
   homepageStyles
 >
-    <main id="main-content">
-      <section class="ctw-hero ctw-instrument" aria-labelledby="hero-title">
-        <div class="ctw-container ctw-stack">
-          <div class="ctw-coordinate"><span>52.3676° N / 4.9041° E</span><span>Amsterdam · working globally</span></div>
-          <div class="ctw-hero__grid">
-            <div class="ctw-stack">
-              <p class="ctw-section-number">01 / Applied practice</p>
-              <h1 class="ctw-hero__title" id="hero-title" transition:name="portfolio-lead">Applied research <span class="ctw-display--outline">software.</span></h1>
-              <p class="ctw-lede">Software for research and society. Data infrastructure, ML systems, and tools that create <strong>lasting impact</strong>.</p>
-              <div class="ctw-cluster">
-                <a class="ctw-button" href="#contact">Get in touch →</a>
-                <span class="ctw-meta">Available for collaborations</span>
-              </div>
-            </div>
-            <div class="studio-stats" aria-label="Studio facts">
-              <div class="ctw-stat"><strong class="ctw-stat__value">17</strong><p class="ctw-stat__label">years</p></div>
-              <div class="ctw-stat"><strong class="ctw-stat__value">50+</strong><p class="ctw-stat__label">projects</p></div>
-              <div class="ctw-stat"><strong class="ctw-stat__value">15</strong><p class="ctw-stat__label">institutions</p></div>
-            </div>
-          </div>
-          <div class="ctw-cluster">
+  <main id="main-content">
+    <section class="studio-hero" aria-labelledby="hero-title">
+      <div class="ctw-container studio-hero__body">
+        <h1 class="ctw-hero__title studio-hero__title" id="hero-title">
+          Applied Research<br />{" "}<span>Software</span>
+        </h1>
+        <p class="ctw-lede studio-hero__lede">
+          Software for research and society. Data infrastructure, ML systems, and tools that create <strong>lasting impact</strong>.
+        </p>
+        <div class="ctw-cluster studio-hero__actions">
+          <a class="ctw-button" href="#contact">Get in touch →</a>
+          <span class="studio-availability"><span aria-hidden="true"></span>Available for collaborations</span>
+        </div>
+      </div>
+      <section class="studio-facts" aria-labelledby="studio-facts-title">
+        <h2 class="studio-visually-hidden" id="studio-facts-title">Studio facts</h2>
+        <div class="ctw-container studio-facts__inner">
+          <dl class="studio-facts__stats ctw-coordinate">
+            <div><dt class="studio-visually-hidden">Experience</dt><dd><strong>17</strong> years</dd></div>
+            <div><dt class="studio-visually-hidden">Projects</dt><dd><strong>50+</strong> projects</dd></div>
+            <div><dt class="studio-visually-hidden">Institutions</dt><dd><strong>15</strong> institutions</dd></div>
+            <div><dt class="studio-visually-hidden">Location</dt><dd>Amsterdam</dd></div>
+          </dl>
+          <nav class="studio-facts__links" aria-label="Homepage shortcuts">
             <a class="ctw-link ctw-link--standalone" href="/portfolio/">All projects →</a>
             <a class="ctw-link ctw-link--standalone" href="#about">About →</a>
-          </div>
+          </nav>
         </div>
       </section>
+    </section>
 
-      <section class="ctw-section" id="about" aria-labelledby="about-title">
-        <div class="ctw-container ctw-chapter">
-          <div class="ctw-chapter__label ctw-stack">
-            <p class="ctw-section-number">02 / About</p>
-            <p class="ctw-coordinate"><span>Founder</span><span>CTW</span></p>
-          </div>
-          <div class="studio-about">
-            <article class="ctw-stack studio-founder">
-              <p class="ctw-label">Jesse Gonzalez</p>
-              <h2 class="ctw-heading-lg" id="about-title">Creating a <span class="studio-accent">Technological World.</span></h2>
-              <p class="ctw-lede">Founder · Senior Research Software Engineer</p>
-              <p>17+ years in software engineering. Currently at Netherlands eScience Center. Master's in Artificial Intelligence and Computer Science.</p>
-              <p>Based in Amsterdam, working globally with research institutions and cultural organizations.</p>
-              <a class="ctw-link ctw-link--standalone" href="https://jessegonzalez.dev" target="_blank" rel="noopener noreferrer">Full bio &amp; portfolio ↗</a>
-            </article>
-            <div class="ctw-stack studio-mission">
-              <p class="ctw-label">About CTW Studio</p>
-              <p class="ctw-lede">Software for research and society. Tools that help scientists do better research and communities have more voice.</p>
-              <p>Open science, sustainable software, technology that serves human flourishing.</p>
+    <section class="studio-section" id="about" aria-labelledby="about-title">
+      <div class="ctw-container studio-about">
+        <article class="studio-card studio-founder">
+          <div class="studio-founder__identity">
+            <img class="studio-founder__mark" src="/homepage/jesse-avatar.webp" width="460" height="460" alt="" loading="lazy" decoding="async" />
+            <div>
+              <p class="ctw-heading-md">Jesse Gonzalez</p>
+              <p class="ctw-meta">Founder · Senior Research Software Engineer</p>
             </div>
           </div>
+          <p>17+ years in software engineering. Currently at Netherlands eScience Center. Master's in Artificial Intelligence and Computer Science.</p>
+          <p>Based in Amsterdam, working globally with research institutions and cultural organizations.</p>
+          <a class="ctw-link ctw-link--standalone" href="https://jessegonzalez.dev" target="_blank" rel="noopener noreferrer">Full bio &amp; portfolio ↗</a>
+        </article>
+        <div class="studio-mission">
+          <p class="ctw-section-number">About CTW Studio</p>
+          <h2 class="ctw-heading-lg" id="about-title">Creating a<br /><span>Technological World.</span></h2>
+          <p class="ctw-lede">Software for research and society. Tools that help scientists do better research and communities have more voice.</p>
+          <p>Open science, sustainable software, technology that serves human flourishing.</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="ctw-section" id="collaborations" aria-labelledby="collaborations-title">
-        <div class="ctw-container ctw-chapter">
-          <div class="ctw-chapter__label ctw-stack">
-            <p class="ctw-section-number">03 / Collaborations</p>
-            <h2 class="ctw-heading-lg" id="collaborations-title">Research software <span class="ctw-display--outline">engineering.</span></h2>
-            <p>Partnering with funded research projects to build sustainable, open-source software that advances scientific discovery.</p>
-            <a class="ctw-button" href="#contact">Start a collaboration</a>
-          </div>
-          <ol class="ctw-observations">
-            <li class="ctw-observation"><span class="ctw-observation__number">01</span><div><h3 class="ctw-heading-md">Research Data Infrastructure</h3><p>FAIR-compliant data pipelines and architectures for reproducible research at scale.</p></div></li>
-            <li class="ctw-observation"><span class="ctw-observation__number">02</span><div><h3 class="ctw-heading-md">ML Systems &amp; Responsible AI</h3><p>Validated, explainable ML systems with proper governance for research and clinical contexts.</p></div></li>
-            <li class="ctw-observation"><span class="ctw-observation__number">03</span><div><h3 class="ctw-heading-md">Scientific Visualization &amp; Digital Exhibits</h3><p>Interactive visualizations, 3D environments, and museum-ready digital experiences.</p></div></li>
-            <li class="ctw-observation"><span class="ctw-observation__number">04</span><div><h3 class="ctw-heading-md">Collaborative Research Platforms</h3><p>Open-source tools and platforms that support distributed research teams and long-term scholarship.</p></div></li>
-          </ol>
+    <section class="studio-section studio-collaborations" id="collaborations" aria-labelledby="collaborations-title">
+      <div class="ctw-container studio-split">
+        <div class="studio-intro">
+          <p class="ctw-section-number">Collaborations</p>
+          <h2 class="ctw-heading-lg" id="collaborations-title">Research software<br /><span>engineering.</span></h2>
+          <p class="ctw-lede">Partnering with funded research projects to build sustainable, open-source software that advances scientific discovery.</p>
+          <a class="ctw-button" href="#contact">Start a collaboration →</a>
         </div>
-      </section>
+        <ol class="studio-offerings">
+          <li class="studio-card"><span>01</span><div><h3 class="ctw-heading-md">Research Data Infrastructure</h3><p>FAIR-compliant data pipelines and architectures for reproducible research at scale.</p></div></li>
+          <li class="studio-card"><span>02</span><div><h3 class="ctw-heading-md">ML Systems &amp; Responsible AI</h3><p>Validated, explainable ML systems with proper governance for research and clinical contexts.</p></div></li>
+          <li class="studio-card"><span>03</span><div><h3 class="ctw-heading-md">Scientific Visualization &amp; Digital Exhibits</h3><p>Interactive visualizations, 3D environments, and museum-ready digital experiences.</p></div></li>
+          <li class="studio-card"><span>04</span><div><h3 class="ctw-heading-md">Collaborative Research Platforms</h3><p>Open-source tools and platforms that support distributed research teams and long-term scholarship.</p></div></li>
+        </ol>
+      </div>
+    </section>
 
-      <section class="ctw-section" id="how-we-work" aria-labelledby="process-title">
-        <div class="ctw-container ctw-stack">
-          <p class="ctw-section-number">04 / Our process</p>
-          <h2 class="ctw-display--fluid" id="process-title">Working closely with <span class="ctw-display--inverted">research teams.</span></h2>
-          <dl class="studio-process">
-            <div class="ctw-argument"><dt>01 / Planning</dt><dd><strong>Research goals drive technical strategy.</strong><p>We start with your grant narrative and scientific objectives. Collaborative roadmapping ensures every technical decision serves the research.</p></dd></div>
-            <div class="ctw-argument"><dt>02 / Visibility</dt><dd><strong>Transparency at every stage.</strong><p>Regular demos, shared documentation, and open communication. You always know where the project stands and what's next.</p></dd></div>
-            <div class="ctw-argument"><dt>03 / Implementation</dt><dd><strong>Design thinking, iterative delivery.</strong><p>Prototypes before polish. We build, test, and refine with your team—solutions shaped by real researcher feedback.</p></dd></div>
-            <div class="ctw-argument"><dt>04 / Sustainability</dt><dd><strong>Built to outlast the grant.</strong><p>Open source by default, documentation-first, knowledge transfer. Software that serves the community long after the project ends.</p></dd></div>
-          </dl>
+    <section class="studio-section" id="how-we-work" aria-labelledby="process-title">
+      <div class="ctw-container">
+        <p class="ctw-section-number">Our process</p>
+        <h2 class="ctw-heading-lg studio-section__title" id="process-title">Working closely with<br /><span>research teams.</span></h2>
+        <div class="studio-process">
+          <details class="studio-card">
+            <summary><span>01 / Planning</span><strong>Research goals drive technical strategy.</strong></summary>
+            <p>We start with your grant narrative and scientific objectives. Collaborative roadmapping ensures every technical decision serves the research.</p>
+          </details>
+          <details class="studio-card">
+            <summary><span>02 / Visibility</span><strong>Transparency at every stage.</strong></summary>
+            <p>Regular demos, shared documentation, and open communication. You always know where the project stands and what's next.</p>
+          </details>
+          <details class="studio-card">
+            <summary><span>03 / Implementation</span><strong>Design thinking, iterative delivery.</strong></summary>
+            <p>Prototypes before polish. We build, test, and refine with your team—solutions shaped by real researcher feedback.</p>
+          </details>
+          <details class="studio-card">
+            <summary><span>04 / Sustainability</span><strong>Built to outlast the grant.</strong></summary>
+            <p>Open source by default, documentation-first, knowledge transfer. Software that serves the community long after the project ends.</p>
+          </details>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="ctw-section" aria-labelledby="products-title">
-        <div class="ctw-container ctw-stack">
-          <p class="ctw-section-number">05 / Products</p>
-          <h2 class="ctw-display--fluid" id="products-title">Tools we're building <span class="studio-accent">for society.</span></h2>
+    <section class="studio-section studio-products-section" aria-labelledby="products-title">
+      <div class="ctw-container">
+        <p class="ctw-section-number">Products</p>
+        <h2 class="ctw-heading-lg studio-section__title" id="products-title">Tools we're building<br /><span>for society.</span></h2>
+        <div class="studio-products">
+          <a class="studio-product studio-product--primary" href="https://notidian.com" target="_blank" rel="noopener noreferrer">
+            <img src="/homepage/notidian.avif" width="1200" height="720" alt="Notidian spatial knowledge workspace product interface" loading="lazy" decoding="async" />
+            <span class="studio-product__label">Notidian — Knowledge workspace</span>
+          </a>
+          <a class="studio-product" href="https://ideasdiamond.com" target="_blank" rel="noopener noreferrer">
+            <img src="/homepage/ideasdiamond.avif" width="1200" height="720" alt="IdeasDiamond idea development product interface" loading="lazy" decoding="async" />
+            <span class="studio-product__label">IdeasDiamond — Ideas platform</span>
+          </a>
+          <a class="studio-product" href="https://nexthuman.app" target="_blank" rel="noopener noreferrer">
+            <img src="/homepage/nexthuman.avif" width="1801" height="1081" alt="NextHuman personal capability product artwork" loading="lazy" decoding="async" />
+            <span class="studio-product__label">NextHuman — Coming soon</span>
+          </a>
         </div>
-        <p class="ctw-scroll-hint ctw-container" id="product-index-hint">Swipe products to explore →</p>
-        <ul class="ctw-project-index studio-products" aria-label="Product index" aria-describedby="product-index-hint">
-          <li><a href="https://notidian.com" target="_blank" rel="noopener noreferrer"><span class="ctw-label">01 / Knowledge</span><strong class="ctw-heading-md">Notidian</strong><span>Open product ↗</span></a></li>
-          <li><a href="https://ideasdiamond.com" target="_blank" rel="noopener noreferrer"><span class="ctw-label">02 / Ideas</span><strong class="ctw-heading-md">IdeasDiamond</strong><span>Open product ↗</span></a></li>
-          <li><a href="https://nexthuman.app" target="_blank" rel="noopener noreferrer"><span class="ctw-label">03 / Capability</span><strong class="ctw-heading-md">NextHuman</strong><span>Coming soon ↗</span></a></li>
-          <li><a href="/portfolio/"><span class="ctw-label">Index / Research</span><strong class="ctw-heading-md">Selected projects</strong><span>View all →</span></a></li>
-        </ul>
-      </section>
+      </div>
+    </section>
 
-      <section class="ctw-section" id="methodology" aria-labelledby="notes-title">
-        <div class="ctw-container ctw-stack">
-          <p class="ctw-section-number">06 / What collaborators say</p>
-          <h2 class="ctw-display--fluid" id="notes-title">Field notes.</h2>
-          <div class="studio-quotes">
-            <blockquote class="ctw-quote"><p>“Jesse has really been instrumental and decisive in getting our dashboard off the ground. Right from the start, he grasped the overarching concept and got straight down to business.”</p><footer><cite>Josh Colston, PhD</cite><br>Co-Lead, Mine-DD · University of Virginia</footer></blockquote>
-            <blockquote class="ctw-quote"><p>“The research tool Collens has proven to be a significant contribution to our research field. We are thoroughly impressed with Jesse's work and work ethic.”</p><footer><cite>Elli Bleeker, PhD</cite><br>Lead Applicant, COLLaiTE · Huygens Institute (KNAW)</footer></blockquote>
-            <blockquote class="ctw-quote"><p>“This is what we want as the eScience Center. Work that can have large and long-lasting impact, beyond the project and beyond the discipline.”</p><footer><cite>Valentina Azzara, PhD</cite><br>Section Head · Netherlands eScience Center</footer></blockquote>
-            <blockquote class="ctw-quote"><p>“His leadership, initiative, and technical excellence make him a valuable asset to any team he joins.”</p><footer><cite>Kody Moodley, PhD</cite><br>Senior Researcher · Maastricht University</footer></blockquote>
-            <blockquote class="ctw-quote"><p>“This is chef's kiss.”</p><footer><cite>Veronica Pang</cite><br>Communication Advisor · Netherlands eScience Center</footer></blockquote>
-          </div>
-          <div class="ctw-stack studio-partners">
-            <p class="ctw-label">Selected partners</p>
-            <p>Netherlands eScience Center · KNAW · KNMI · University of Virginia · Maastricht University · Smithsonian Institution</p>
-          </div>
-        </div>
-      </section>
+    <section class="studio-section studio-notes" id="methodology">
+      <div class="ctw-container">
+        <p class="ctw-section-number">What collaborators say</p>
+        <h2 class="ctw-heading-lg studio-section__title" id="notes-title">Field notes.</h2>
+        <p class="studio-notes__cue" id="field-notes-cue">Scroll field notes →</p>
+      </div>
+      <div class="studio-quotes" role="region" tabindex="0" aria-labelledby="notes-title" aria-describedby="field-notes-cue">
+        <blockquote class="studio-card"><p>“Jesse has really been <strong>instrumental and decisive</strong> in getting our dashboard off the ground. Right from the start, he grasped the overarching concept and got straight down to business.”</p><footer><cite>Josh Colston, PhD</cite><br />Co-Lead, Mine-DD · University of Virginia</footer></blockquote>
+        <blockquote class="studio-card"><p>“The research tool Collens has proven to be a <strong>significant contribution</strong> to our research field. We are thoroughly impressed with Jesse's work and work ethic.”</p><footer><cite>Elli Bleeker, PhD</cite><br />Lead Applicant, COLLaiTE · Huygens Institute (KNAW)</footer></blockquote>
+        <blockquote class="studio-card"><p>“This is what we want as the eScience Center. Work that can have <strong>large and long-lasting impact</strong>, beyond the project and beyond the discipline.”</p><footer><cite>Valentina Azzara, PhD</cite><br />Section Head · Netherlands eScience Center</footer></blockquote>
+        <blockquote class="studio-card"><p>“His <strong>leadership, initiative, and technical excellence</strong> make him a valuable asset to any team he joins.”</p><footer><cite>Kody Moodley, PhD</cite><br />Senior Researcher · Maastricht University</footer></blockquote>
+        <blockquote class="studio-card"><p>“This is <strong>chef's kiss.</strong>”</p><footer><cite>Veronica Pang</cite><br />Communication Advisor · Netherlands eScience Center</footer></blockquote>
+      </div>
+      <div class="ctw-container studio-partners">
+        <p class="ctw-label">Selected partners</p>
+        <p>Netherlands eScience Center · KNAW · KNMI · University of Virginia · Maastricht University · Smithsonian Institution</p>
+      </div>
+    </section>
 
-      <section class="ctw-closing" id="contact" aria-labelledby="contact-title">
-        <div class="ctw-container ctw-stack">
-          <p class="ctw-section-number">07 / Collaborate</p>
-          <h2 class="ctw-display--fluid" id="contact-title">We partner with research institutions, cultural heritage organizations, and public-interest initiatives.</h2>
-          <p class="ctw-lede">Introduce us to your grant narrative, draft syllabus, or curatorial brief. We reply with a study plan and references.</p>
-          <div class="ctw-cluster">
-            <a class="ctw-button" href="mailto:contact@ctw.studio">contact@ctw.studio</a>
-            <a class="ctw-button ctw-button--secondary" href="https://linkedin.com/in/ctwhome" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          </div>
-          <p class="ctw-meta">Amsterdam · working globally · accepting projects 2026-2027</p>
+    <section class="studio-section" id="contact" aria-labelledby="contact-title">
+      <div class="ctw-container ctw-closing studio-contact studio-card">
+        <p class="ctw-section-number">Collaborate</p>
+        <h2 class="ctw-heading-lg" id="contact-title">We partner with research institutions, cultural heritage organizations, and public-interest initiatives.</h2>
+        <p class="ctw-lede">Introduce us to your grant narrative, draft syllabus, or curatorial brief. We reply with a study plan and references.</p>
+        <div class="ctw-cluster">
+          <a class="ctw-button" href="mailto:contact@ctw.studio">contact@ctw.studio</a>
+          <a class="ctw-button ctw-button--secondary" href="https://linkedin.com/in/ctwhome" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
-      </section>
-    </main>
+        <p class="ctw-meta">Amsterdam · working globally · accepting projects 2026-2027</p>
+      </div>
+    </section>
+  </main>
 </SiteLayout>

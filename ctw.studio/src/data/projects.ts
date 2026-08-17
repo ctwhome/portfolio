@@ -106,7 +106,7 @@ The platform combines a static-first deployment model with an LLM-powered agent 
 
 The product challenge was to make machine-learning assistance feel like a practical scholarly instrument rather than a black box. The interface focuses on direct manipulation: drag documents in, compare variants, inspect alignment, and keep the critical reading workflow visible throughout.`,
     coverImage: 'projects/collaite/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/collaite/collens',
     tags: ['ML', 'Digital Humanities', 'SvelteKit', 'NLP'],
@@ -194,7 +194,7 @@ The rendering pipeline converts compressed Zarr data into interactive 3D volumes
 
 The redesign introduced a new logotype, cleaner information architecture, stronger comparison views, and a more deliberate visual hierarchy. It makes the tool easier for non-technical stakeholders to scan, discuss, and trust while keeping the underlying data visible.`,
     coverImage: 'projects/carbon-budget-explorer/cover.avif',
-    gridSpan: 4,
+    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/pbl-nl/website-carbon-budget-explorer',
     tags: ['UI/UX Design', 'Climate Policy', 'Data Visualization'],
@@ -262,7 +262,7 @@ Presented at het Valkhof Museum in Nijmegen, this gamified experience connects y
 
 Built with NuxtJS, ThreeJS, PotreeJS, and a Git-based content management system for dynamic point views and story pages.`,
     coverImage: 'projects/via-appia/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: 'https://via-appia.netlify.app/',
     repoUrl: 'https://github.com/Via-Appia/via-appia-online-viewer',
     tags: ['3D Visualization', 'VR', 'Point Cloud', 'WebGL'],
@@ -358,7 +358,7 @@ I developed the UI from scratch with a focus on scene-to-scene continuity: keepi
 
 The visual identity blends a modern aesthetic with a green narrative, paired with a full-stack web platform at mistergreen.nl. The branding now offers a cohesive identity across all touchpoints, promoting sustainable mobility solutions.`,
     coverImage: 'projects/mistergreen/cover.avif',
-    gridSpan: 4,
+    gridSpan: 3,
     liveUrl: 'https://mistergreen.nl',
     tags: ['Branding', 'Web Platform', 'Design System'],
     institution: null,
@@ -422,7 +422,7 @@ The point was not only technical feasibility; it was product imagination. The pr
 
 This entry now links to the original PDF archive so the piece has a concrete artifact, not just a single image. It shows the longer arc: interface design, illustration, product thinking, and the gradual shift from visual execution toward full-stack product building.`,
     coverImage: 'projects/illustrated-portfolio/cover.avif',
-    gridSpan: 1,
+    gridSpan: 3,
     liveUrl: null,
     pdfUrl: 'projects/illustrated-portfolio/Illustrated_Portfolio_UX_Jesus_Garcia_en_2014.pdf',
     tags: ['Web', 'Design', 'Native App', 'UX Archive'],

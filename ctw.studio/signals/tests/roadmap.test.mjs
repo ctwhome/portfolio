@@ -66,14 +66,15 @@ const legacyNavClasses = [
 
 function subjectOptions(markup) {
   const options = [];
-  const pattern = /<a class="([^"]*\bsubject-menu__option\b[^"]*)" href="([^"]+)"(?: aria-current="([^"]+)")? data-astro-reload(?:="true")?>([^<]+)<\/a>|<span class="([^"]*\bsubject-menu__option--planned\b[^"]*)">([^<]+) <span class="subject-menu__badge">Planned<\/span><\/span>/g;
+  const pattern = /<a class="([^"]*\bsubject-menu__option\b[^"]*)" href="([^"]+)"(?: aria-current="([^"]+)")?>([\s\S]*?)<\/a>|<span class="([^"]*\bsubject-menu__option--planned\b[^"]*)">([\s\S]*?<span class="subject-menu__badge">Planned<\/span>)\s*<\/span>/g;
 
   for (const match of markup.matchAll(pattern)) {
-    const [, classes = '', href, current, linkLabel, plannedClasses, plannedLabel] = match;
+    const [, classes = '', href, current, linkContent, plannedClasses, plannedContent] = match;
+    const content = href ? linkContent : plannedContent;
     options.push({
       classes: href ? classes : plannedClasses,
       current,
-      label: href ? linkLabel : plannedLabel,
+      label: content.match(/<span class="subject-menu__option-label">([^<]+)<\/span>/)?.[1],
       route: href || null,
       tag: href ? 'a' : 'span',
       markup: match[0]
@@ -92,7 +93,7 @@ function assertStaticContract(route, markup) {
 
   const navClasses = nav.match(/^<nav class="([^"]+)"/)?.[1].split(/\s+/) || [];
   assert.deepEqual(navClasses, ['subject-menu', placementClasses.get(route)], `${route} has wrong nav classes`);
-  assert.match(nav, /<a class="subject-menu__brand" href="\/signals\/" data-astro-reload(?:="true")?>Signals \/<\/a>/);
+  assert.match(nav, /<a class="subject-menu__brand" href="\/signals\/">Signals \/<\/a>/);
   for (const legacyClass of legacyNavClasses) {
     assert.doesNotMatch(nav, new RegExp(`class="[^"]*\\b${legacyClass}\\b`), `${route} retains ${legacyClass}`);
   }
@@ -101,9 +102,10 @@ function assertStaticContract(route, markup) {
   assert.deepEqual(options.map(({ label }) => label), expectedLabels, `${route} subject order differs`);
   assert.deepEqual(options.map(({ route: optionRoute }) => optionRoute), expectedRoutes, `${route} subject routes differ`);
   assert.equal(options.length, 10, `${route} must have ten options`);
-    assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
-  assert.equal((nav.match(/data-astro-reload/g) ?? []).length, 8, `${route} links must force full reload`);
+  assert.equal(options.filter(({ tag }) => tag === 'a').length, 7, `${route} must have seven subject links`);
+  assert.doesNotMatch(nav, /data-astro-reload/, `${route} links use native navigation without router attributes`);
   assert.equal(options.filter(({ tag }) => tag === 'span').length, 3, `${route} must have three planned rows`);
+  assert.ok(options.every(({ markup: option }) => /<svg class="subject-menu__icon"/.test(option)), `${route} options need icons`);
   return { nav, options };
 }
 
@@ -199,7 +201,7 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
     assert.match(page, /<script\b[^>]*src="\/signals\/subject-menu\.js"[^>]*\bdefer[^>]*><\/script>/, `${route} missing deferred subject menu script`);
   });
 
-  assert.match(subjectMenuCss, /@media \(max-width: 760px\)/);
+  assert.doesNotMatch(subjectMenuCss, /@media \(max-width: 760px\)/);
   assert.match(subjectMenuCss, /\.subject-menu__panel\[aria-hidden="false"\]/);
   assert.match(cssRule('.subject-menu'), /--subject-menu-border:\s*rgba\(255, 255, 255, 0\.36\)/);
   assert.match(cssRule('.subject-menu'), /--subject-menu-accent:\s*#f7b500/);
@@ -268,17 +270,15 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(subjectMenuJs, /option\.matches\('\.subject-menu__option'\)/);
   assert.match(subjectMenuJs, /options\.length !== 10/);
   assert.match(subjectMenuJs, /option\.matches\('a\[aria-current="location"\]'\)/);
+  assert.match(subjectMenuJs, /currentIcon\.cloneNode\(true\)/);
   assert.match(subjectMenuJs, /options\.forEach\(\(option\) => panel\.append\(option\)\)/);
   assert.match(subjectMenuJs, /\|\| 'Explore subjects'/);
   assert.match(subjectMenuJs, /event\.target\.closest\('a'\)/);
   assert.match(subjectMenuJs, /event\.key === 'Escape'/);
 });
 
-test('mobile subject menu brand provides a shared 44px touch target', () => {
-  const rule = subjectMenuCss.match(
-    /@media \(max-width: 760px\)[\s\S]*?\.subject-menu \.subject-menu__brand\s*\{([^}]+)\}/
-  )?.[1] || '';
-
+test('subject menu brand provides a shared 44px touch target', () => {
+  const rule = cssRule('.subject-menu .subject-menu__brand');
   assert.match(rule, /display:\s*inline-flex/);
   assert.match(rule, /min-height:\s*44px/);
   assert.match(rule, /align-items:\s*center/);

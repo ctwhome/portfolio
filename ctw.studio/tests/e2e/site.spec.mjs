@@ -4,11 +4,117 @@ test('home remains substantive without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Applied research software.');
-  await expect(page.getByRole('link', { name: 'Projects' }).first()).toHaveAttribute('href', '/portfolio/');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Applied Research\s+Software/);
+  await expect(page.getByRole('link', { name: 'CTW Studio' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Work', exact: true }).first()).toHaveAttribute('href', '/portfolio/');
   await expect(page.getByRole('link', { name: 'contact@ctw.studio' }).first()).toHaveAttribute('href', 'mailto:contact@ctw.studio');
+  await expect(page.locator('.studio-offerings li')).toHaveCount(4);
+  await expect(page.locator('.studio-process details')).toHaveCount(4);
+  await page.locator('.studio-process summary').first().click();
+  await expect(page.locator('.studio-process details').first()).toHaveAttribute('open', '');
+  await expect(page.locator('.studio-quotes blockquote')).toHaveCount(5);
+  await expect(page.locator('.studio-product img')).toHaveCount(3);
   await context.close();
 });
+
+for (const viewport of [
+  { name: 'wide', width: 1440, height: 900 },
+  { name: 'desktop', width: 1366, height: 900 },
+  { name: 'tablet-wide', width: 1024, height: 900 },
+  { name: 'tablet', width: 768, height: 1024 },
+  { name: 'compact', width: 390, height: 844 },
+  { name: 'compact-short-reflow', width: 390, height: 667, rootFontScale: 1.25 }
+]) {
+  test(`homepage ${viewport.name} layout stays accessible and error-free`, async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text());
+    });
+
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await page.goto('/', { waitUntil: 'networkidle' });
+    if (viewport.rootFontScale) {
+      await page.addStyleTag({ content: `html { font-size: ${viewport.rootFontScale * 100}% !important; }` });
+    }
+
+    const feedbackButton = page.locator('body > .ctw-feedback-button');
+    await expect(feedbackButton).toHaveCount(1);
+    await expect(feedbackButton).toHaveCSS('position', 'fixed');
+
+    const overflow = await page.evaluate(() => ({
+      documentWidth: document.documentElement.scrollWidth,
+      viewportWidth: innerWidth,
+      elements: [...document.querySelectorAll('*')]
+        .filter((element) => element.getBoundingClientRect().right > innerWidth + 0.5)
+        .map((element) => `${element.tagName.toLowerCase()}.${element.className}`)
+        .slice(0, 10)
+    }));
+    expect(overflow.documentWidth, overflow.elements.join(', ')).toBeLessThanOrEqual(overflow.viewportWidth);
+
+    await page.keyboard.press('Tab');
+    const skip = page.getByRole('link', { name: 'Skip to content' });
+    await expect(skip).toBeFocused();
+    await skip.press('Enter');
+    await expect(page).toHaveURL(/#main-content$/);
+
+    const feedbackOverlaps = await page.evaluate(() => {
+      const feedback = document.querySelector('.ctw-feedback-button')?.getBoundingClientRect();
+      if (!feedback) return ['missing feedback'];
+      const intersects = (rect) => rect.left < feedback.right && rect.right > feedback.left && rect.top < feedback.bottom && rect.bottom > feedback.top;
+      return [...document.querySelectorAll('.studio-hero__actions a, .studio-facts__links a, .studio-founder a')]
+        .filter((element) => {
+          const rect = element.getBoundingClientRect();
+          return intersects(rect);
+        })
+        .map((element) => element.className);
+    });
+    if (!viewport.rootFontScale) expect(feedbackOverlaps).toEqual([]);
+
+    const firstProcess = page.locator('.studio-process details').first();
+    await firstProcess.locator('summary').click();
+    await expect(firstProcess).toHaveAttribute('open', '');
+    await firstProcess.locator('summary').click();
+    await expect(firstProcess).not.toHaveAttribute('open', '');
+
+    await page.locator('.studio-products').scrollIntoViewIfNeeded();
+    for (const image of await page.locator('.studio-product img').all()) {
+      await expect(image).toHaveJSProperty('complete', true);
+      expect(await image.evaluate((element) => element.naturalWidth)).toBeGreaterThan(0);
+      const geometry = await image.evaluate((element) => {
+        const imageRect = element.getBoundingClientRect();
+        const cardRect = element.parentElement.getBoundingClientRect();
+        return {
+          objectFit: getComputedStyle(element).objectFit,
+          ratioDelta: Math.abs(imageRect.width / imageRect.height - element.naturalWidth / element.naturalHeight),
+          mediaDelta: Math.abs(imageRect.width / imageRect.height - cardRect.width / cardRect.height)
+        };
+      });
+      expect(geometry.objectFit).toBe('contain');
+      expect(geometry.ratioDelta).toBeLessThan(0.01);
+      expect(geometry.mediaDelta).toBeLessThan(0.01);
+    }
+
+    const notes = page.locator('.studio-quotes');
+    await expect(notes).toHaveAttribute('role', 'region');
+    await expect(notes).toHaveAttribute('aria-labelledby', 'notes-title');
+    await notes.scrollIntoViewIfNeeded();
+    await notes.focus();
+    await expect(notes).toBeFocused();
+    const initialNotesScroll = await notes.evaluate((element) => element.scrollLeft);
+    await page.keyboard.press('ArrowRight');
+    await expect.poll(() => notes.evaluate((element) => element.scrollLeft)).toBeGreaterThan(initialNotesScroll);
+    expect(await notes.evaluate((element) => getComputedStyle(element).outlineStyle)).not.toBe('none');
+
+    for (const control of await page.locator('.studio-home .ctw-button, .studio-process summary').all()) {
+      const box = await control.boundingBox();
+      expect(box?.width ?? 0).toBeGreaterThanOrEqual(44);
+      expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+    }
+
+    expect(errors).toEqual([]);
+  });
+}
 
 test('portfolio details remain reachable without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -121,18 +227,46 @@ for (const malformedHash of ['#%', '#%E0%A4%A']) {
   });
 }
 
-test('ClientRouter enhances maintained routes while passthrough links reload', async ({ page }) => {
-  await page.goto('/portfolio/');
+test('home and portfolio use full document navigation with one feedback control', async ({ page }) => {
+  await page.goto('/');
   await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
-  await page.evaluate(() => { window.__ctwNavigationMarker = 'alive'; });
-  await page.getByRole('link', { name: 'CTW Studio' }).click();
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Applied research software.');
-  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
-  expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBe('alive');
-
-  await page.getByRole('link', { name: 'Signals' }).first().click();
-  await expect(page).toHaveURL(/\/signals\/$/);
+  await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
+  await page.evaluate(() => { window.__ctwNavigationMarker = 'home'; });
+  await page.getByRole('link', { name: 'Work', exact: true }).first().click();
+  await expect(page).toHaveURL(/\/portfolio\/$/);
   expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
+  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
+  await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
+
+  await page.evaluate(() => { window.__ctwNavigationMarker = 'portfolio'; });
+  await page.getByRole('link', { name: 'CTW Studio' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Applied Research\s+Software/);
+  expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
+  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
+  await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
+});
+
+test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
+  await page.goto('/portfolio/');
+  const first = page.locator('[data-project-link="data-storytelling"]').first();
+  const away = page.locator('.ctw-footer').getByRole('link', { name: 'Signals' });
+  await away.evaluate((element) => element.scrollIntoView());
+  const savedScrollY = await page.evaluate(() => window.scrollY);
+
+  await away.click();
+  await expect(page).toHaveURL(/\/signals\/$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/portfolio\/$/);
+  await expect(page.locator('body')).not.toHaveClass(/project-dialog-open/);
+  await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
+  expect(Math.abs((await page.evaluate(() => window.scrollY)) - savedScrollY)).toBeLessThanOrEqual(2);
+
+  await first.click();
+  await page.locator('dialog#data-storytelling .project-next').click();
+  await page.keyboard.press('Escape');
+  await expect(page).toHaveURL(/\/portfolio\/$/);
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await expect(page.locator('body')).not.toHaveClass(/project-dialog-open/);
 });
 
 test('reduced motion disables nonessential animation', async ({ browser }) => {

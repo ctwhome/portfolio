@@ -71,6 +71,7 @@ test('Signals runtimes enhance committed data without browser errors', async ({ 
 test('Signals subject links force a full reload', async ({ page }) => {
   await page.goto('/signals/food/');
   await page.evaluate(() => { window.__ctwNavigationMarker = 'alive'; });
+  await page.locator('.subject-menu__trigger').click();
   await page.locator('.subject-menu__option[href="/signals/housing/"]').click();
   await expect(page).toHaveURL(/\/signals\/housing\/$/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('ordinary life');

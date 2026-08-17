@@ -65,17 +65,16 @@ bun run static:check
 ## Architecture contracts
 
 - Sixteen maintained Astro pages share `DocumentHead.astro`.
-- `SiteLayout.astro` enables `ClientRouter` for safe landing/portfolio
-  navigation. Signals uses native reload boundaries. Workshop/guide remain
-  native unless transition behavior is explicitly proven.
+- All route navigation is native. Home and portfolio use CSS-only
+  cross-document view transitions; portfolio behavior lives in one page-local
+  processed TypeScript module.
 - Reduced motion disables nonessential motion.
 - Legal pages use Astro directory output at `/workshop/privacy/` and
   `/workshop/terms/`.
 - Historical root experiments, `/new/`, workshop pitch/slides, and `/nlesc/`
   remain passthrough. `/signals/roadmap/` remains a byte-preserved permanent
   redirect source, not deployed content.
-- `@floating-ui/dom` stays pinned and must remain absent from built code until a
-  real positioned interaction uses it.
+- CTW Studio has no client UI framework, client router, or Floating UI runtime.
 - `DESIGN.md` owns roles; `tokens.css` implements roles; `components.css` owns
   shared components; `compositions.css` owns opt-in compositions; `compat.css`
   owns approved aliases; `tokens.json` is generated.

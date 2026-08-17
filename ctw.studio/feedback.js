@@ -145,9 +145,8 @@
     .ctw-feedback-status.is-success { color: #9fe6b8; }
     @media (max-width: 640px) {
       .ctw-feedback-button {
-        position: static;
-        display: block;
-        margin: 0.9rem 0.9rem 0.9rem auto;
+        right: 0.9rem;
+        bottom: 0.9rem;
         padding: 0.68rem 0.85rem;
       }
       .ctw-feedback-actions { flex-direction: column-reverse; align-items: stretch; }
