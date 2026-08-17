@@ -280,6 +280,63 @@ different_date["meta"]["dataUpdated"] = "1900-01-01"
 assert module.updater_owned_snapshot(data) == module.updater_owned_snapshot(different_date)
 different_date["series"]["householdCredit"]["latest"]["value"] += 1
 assert module.updater_owned_snapshot(data) != module.updater_owned_snapshot(different_date)
+different_provenance = copy.deepcopy(data)
+next(
+    source for source in different_provenance["sources"]
+    if source["id"] == "ecb-mortgage-rate"
+)["vintageRetrieved"] = "tampered"
+assert module.updater_owned_snapshot(data) != module.updater_owned_snapshot(different_provenance)
+
+ecb_unchanged = copy.deepcopy(data)
+ecb_source = next(
+    source for source in ecb_unchanged["sources"]
+    if source["id"] == "ecb-mortgage-rate"
+)
+ecb_source["vintageRetrieved"] = "preserve-on-identical-series"
+module.fetch_bytes = lambda *args, **kwargs: b"stub"
+module.parse_ecb = lambda payload: copy.deepcopy(
+    ecb_unchanged["series"]["newMortgageRate"]["observations"]
+)
+module.refresh_ecb(ecb_unchanged)
+assert ecb_source["vintageRetrieved"] == "preserve-on-identical-series"
+
+ecb_changed = copy.deepcopy(ecb_unchanged)
+revised_ecb = copy.deepcopy(ecb_changed["series"]["newMortgageRate"]["observations"])
+revised_ecb[-1]["value"] += 0.01
+module.parse_ecb = lambda payload: revised_ecb
+module.refresh_ecb(ecb_changed)
+assert next(
+    source for source in ecb_changed["sources"]
+    if source["id"] == "ecb-mortgage-rate"
+)["vintageRetrieved"] != "preserve-on-identical-series"
+
+saving_rows = [
+    {
+        "freq": "A", "geo": "NL", "sector": "S14_S15",
+        "na_item": "SRG_S14_S15", "unit": "PC",
+        "time": row["period"], "value": row["value"],
+    }
+    for row in data["series"]["householdSaving"]["observations"]
+]
+saving_unchanged = copy.deepcopy(data)
+saving_source = next(
+    source for source in saving_unchanged["sources"]
+    if source["id"] == "eurostat-saving"
+)
+saving_source["vintageRetrieved"] = "preserve-on-identical-series"
+module.parse_eurostat = lambda *args, **kwargs: copy.deepcopy(saving_rows)
+module.refresh_saving(saving_unchanged)
+assert saving_source["vintageRetrieved"] == "preserve-on-identical-series"
+
+saving_changed = copy.deepcopy(saving_unchanged)
+revised_saving_rows = copy.deepcopy(saving_rows)
+revised_saving_rows[-1]["value"] += 0.1
+module.parse_eurostat = lambda *args, **kwargs: revised_saving_rows
+module.refresh_saving(saving_changed)
+assert next(
+    source for source in saving_changed["sources"]
+    if source["id"] == "eurostat-saving"
+)["vintageRetrieved"] != "preserve-on-identical-series"
 for field in ("sourceId", "denominator"):
     tampered = copy.deepcopy(data)
     tampered["series"]["householdCredit"][field] = "tampered"
@@ -308,6 +365,15 @@ test('static no-JS headlines and selected fiscal rows match refreshed JSON', () 
   assert.match(html, new RegExp(`${fiscal.period}</td><td>${fiscal.interestMioEur.toLocaleString('en-US')}</td>`));
   assert.match(html, new RegExp(`${fiscal.revenueMioEur.toLocaleString('en-US')}</td><td>${fiscal.interestToRevenuePct.toFixed(1)}%`));
   assert.match(data.verdict.text, new RegExp(`${dsr.value.toFixed(1)}% of income`));
+
+  const ecbSource = data.sources.find((source) => source.id === 'ecb-mortgage-rate');
+  const savingSource = data.sources.find((source) => source.id === 'eurostat-saving');
+  assert.match(ecbSource.date, new RegExp(rate.period));
+  assert.match(ecbSource.vintageRetrieved, new RegExp(rate.period));
+  assert.match(savingSource.date, new RegExp(saving.period));
+  assert.match(savingSource.vintageRetrieved, new RegExp(saving.period));
+  assert.match(updater, /sourceProvenance/);
+  assert.match(updater, /source\["vintageRetrieved"\]/);
 });
 
 test('four-balance-sheet overview is bound to exact ledger sources', () => {
