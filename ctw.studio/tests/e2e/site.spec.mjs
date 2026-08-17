@@ -6,7 +6,7 @@ test('home remains substantive without JavaScript', async ({ browser }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Applied Research\s+Software/);
   await expect(page.getByRole('link', { name: 'CTW Studio' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Projects' }).first()).toHaveAttribute('href', '/portfolio/');
+  await expect(page.getByRole('link', { name: 'Work', exact: true }).first()).toHaveAttribute('href', '/portfolio/');
   await expect(page.getByRole('link', { name: 'contact@ctw.studio' }).first()).toHaveAttribute('href', 'mailto:contact@ctw.studio');
   await expect(page.locator('.studio-offerings li')).toHaveCount(4);
   await expect(page.locator('.studio-process details')).toHaveCount(4);
@@ -256,7 +256,7 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
   await page.evaluate(() => { window.__ctwNavigationMarker = 'home'; });
-  await page.getByRole('link', { name: 'Projects' }).first().click();
+  await page.getByRole('link', { name: 'Work', exact: true }).first().click();
   await expect(page).toHaveURL(/\/portfolio\/$/);
   expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
   await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);

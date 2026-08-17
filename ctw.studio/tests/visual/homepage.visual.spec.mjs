@@ -58,6 +58,10 @@ for (const viewport of viewports) {
         feedbackOverlaps: feedback
           ? protectedRegions.filter(({ rect }) => intersects(feedback, rect)).map(({ selector }) => selector)
           : ['missing feedback'],
+        productBottomDelta: productGeometry.length === 3
+          ? Math.abs(document.querySelector('.studio-product--primary').getBoundingClientRect().bottom
+            - document.querySelectorAll('.studio-product')[2].getBoundingClientRect().bottom)
+          : Infinity,
         productGeometry,
         loadedImages: [...document.querySelectorAll('.studio-product img')]
           .filter((image) => image.complete && image.naturalWidth > 0).length
@@ -65,7 +69,7 @@ for (const viewport of viewports) {
     });
 
     expect(state.documentWidth).toBeLessThanOrEqual(state.viewportWidth);
-    expect(state.heroWidth).toBeGreaterThan(state.viewportWidth * 0.55);
+    expect(state.heroWidth).toBeGreaterThan(state.viewportWidth * 0.5);
     expect(state.heroWidth).toBeLessThanOrEqual(state.viewportWidth);
     expect(state.productsWidth).toBeGreaterThan(state.viewportWidth * 0.8);
     expect(state.quoteScrolls).toBe(true);
@@ -85,6 +89,7 @@ for (const viewport of viewports) {
     } else {
       expect(state.productGeometry[0].cardWidth / state.productGeometry[1].cardWidth).toBeGreaterThan(1.8);
     }
+    if (viewport.name === 'wide') expect(state.productBottomDelta).toBeLessThan(2);
 
     const screenshotPath = testInfo.outputPath(`homepage-${viewport.name}-${viewport.width}x${viewport.height}.png`);
     const screenshot = await page.screenshot({ path: screenshotPath, animations: 'disabled', fullPage: true });

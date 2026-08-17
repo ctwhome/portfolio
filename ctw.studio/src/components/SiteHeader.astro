@@ -5,18 +5,19 @@ interface Props {
 
 const { current } = Astro.props;
 ---
-<header class="ctw-masthead">
+<header class="ctw-masthead ctw-masthead--studio">
   <div class="ctw-container ctw-masthead__inner">
     <a
       class="ctw-wordmark"
       href="/"
       aria-current={current === 'home' ? 'page' : undefined}
-    >CTW Studio</a>
+      aria-label="CTW Studio"
+    >CTW.studio</a>
     <nav class="ctw-primary-nav" aria-label="Primary navigation">
-      <a class="ctw-primary-nav__link" href="/portfolio/" aria-current={current === 'portfolio' ? 'page' : undefined}>Projects</a>
       <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
-      <a class="ctw-primary-nav__link" href="/nlesc/">NLeSC</a>
-      <a class="ctw-primary-nav__link" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined}>Workshop</a>
+      <a class="ctw-primary-nav__link studio-nav-workshop ctw-nav-glitch" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined} aria-label="AI Workshop" data-text="AI Workshop" data-mobile-text="AI"><span>AI Workshop</span></a>
+      <a class="ctw-primary-nav__link" href="/portfolio/" aria-current={current === 'portfolio' ? 'page' : undefined}>Work</a>
+      <a class="ctw-primary-nav__link studio-nav-founder" href="/#about">Founder</a>
       <a class="ctw-primary-nav__link" href="/#contact">Contact</a>
     </nav>
   </div>
