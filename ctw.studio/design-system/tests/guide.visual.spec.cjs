@@ -17,9 +17,9 @@ const routes = [
   {
     name: "homepage",
     path: "/",
-    title: "CTW Studio – Applied Research Software",
-    heading: /Applied Research Software/i,
-    core: /Research Data Infrastructure/,
+    title: "CTW Studio – Interaction Design Engineering",
+    heading: /Interaction Design Engineering/i,
+    core: /Interaction Strategy & Prototyping/,
     minimumStyles: 4,
   },
   {
