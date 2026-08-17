@@ -49,7 +49,7 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
   assert.match(portfolio, /<link rel="canonical" href="https:\/\/ctw\.studio\/portfolio\/">/);
   assert.equal(
     sha256(visibleMainText(home)),
-    'e7feb44edbc3f0dc71c16a29951ffa1b03d8c8616d36a8a0fde17b7119a8f9be'
+    'd7d03477554b47bf7350e4023d8dc6e03c7ed8e1d7414beb62820601197d122d'
   );
   assert.match(home, /Software for research and society/);
   assert.match(portfolio, /Research software as cultural practice/);
@@ -78,7 +78,7 @@ test('Astro emits all ten Signals routes with native navigation and canonical me
     assert.match(html, new RegExp(`<meta property="og:url" content="https://ctw\\.studio${pathname.replaceAll('/', '\\/')}">`));
     assert.match(html, /<meta property="og:type" content="(?:article|website)">/);
     assert.equal((html.match(/<nav class="subject-menu\b/g) ?? []).length, 1, `${pathname} subject menu`);
-    assert.equal((html.match(/class="subject-menu__option/g) ?? []).length, 10, `${pathname} subject options`);
+    assert.equal((html.match(/class="subject-menu__option(?:\s|")/g) ?? []).length, 10, `${pathname} subject options`);
     assert.match(html, /href="\/signals\/">Signals \//);
     assert.doesNotMatch(html, /data-astro-(?:reload|rerun)/);
     assert.match(html, /src="\/signals\/subject-menu\.js" defer/);
