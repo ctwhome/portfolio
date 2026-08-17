@@ -77,6 +77,16 @@ for (const viewport of [
     await firstProcess.locator('summary').click();
     await expect(firstProcess).not.toHaveAttribute('open', '');
 
+    const collaborationIntro = page.locator('.studio-collaborations .studio-intro');
+    if (viewport.width >= 1024) {
+      await expect(collaborationIntro).toHaveCSS('position', 'sticky');
+      await page.locator('.studio-collaborations').scrollIntoViewIfNeeded();
+      await page.evaluate(() => scrollBy(0, 240));
+      expect(await collaborationIntro.evaluate((element) => element.getBoundingClientRect().top)).toBeCloseTo(112, 0);
+    } else {
+      await expect(collaborationIntro).toHaveCSS('position', 'static');
+    }
+
     await page.locator('.studio-products').scrollIntoViewIfNeeded();
     for (const image of await page.locator('.studio-product img').all()) {
       await expect(image).toHaveJSProperty('complete', true);
