@@ -13,8 +13,10 @@ import SiteLayout from "../layouts/SiteLayout.astro";
   <main id="main-content">
     <section class="studio-hero" aria-labelledby="hero-title">
       <div class="ctw-container studio-hero__body">
-        <h1 class="ctw-hero__title studio-hero__title" id="hero-title">
-          Interaction Design<br />{" "}<span>Engineering</span>
+        <h1 class="ctw-hero__title studio-hero__title" id="hero-title" aria-label="Interaction Design Engineering">
+          <span class="studio-title-line" aria-hidden="true">Interaction</span>{" "}<br aria-hidden="true" />
+          <span class="studio-title-line" aria-hidden="true">Design</span>{" "}<br aria-hidden="true" />
+          <span class="studio-title-line studio-hero__accent" aria-hidden="true">Engineering</span>
         </h1>
         <p class="ctw-lede studio-hero__lede">
           From interaction concept to production, we build intelligent applications that turn complex models, data, and workflows into <strong>clear, useful experiences</strong>.
@@ -114,23 +116,18 @@ import SiteLayout from "../layouts/SiteLayout.astro";
         <div class="studio-products">
           <a class="studio-product studio-product--primary" href="https://notidian.com" target="_blank" rel="noopener noreferrer">
             <img src="/homepage/notidian.avif" width="1200" height="720" alt="Notidian spatial knowledge workspace product interface" loading="lazy" decoding="async" />
-            <span class="studio-product__label">Notidian — Knowledge workspace</span>
           </a>
           <a class="studio-product" href="https://ebookgarden.com" target="_blank" rel="noopener noreferrer">
             <img src="/homepage/ebookgarden.avif" width="1200" height="720" alt="eBookGarden personal ebook library and reader" loading="lazy" decoding="async" />
-            <span class="studio-product__label">eBookGarden — Personal ebook library and reader</span>
           </a>
           <a class="studio-product" href="https://www.supertaal.com" target="_blank" rel="noopener noreferrer">
             <img src="/homepage/supertaal.avif" width="1200" height="720" alt="SuperTaal multilingual learning application" loading="lazy" decoding="async" />
-            <span class="studio-product__label">SuperTaal — Language learning</span>
           </a>
           <a class="studio-product" href="https://ideasdiamond.com" target="_blank" rel="noopener noreferrer">
             <img src="/homepage/ideasdiamond.avif" width="1200" height="720" alt="IdeasDiamond idea development product interface" loading="lazy" decoding="async" />
-            <span class="studio-product__label">IdeasDiamond — Ideas platform</span>
           </a>
           <a class="studio-product" href="https://nexthuman.app" target="_blank" rel="noopener noreferrer">
             <img src="/homepage/nexthuman.avif" width="1801" height="1081" alt="NextHuman personal capability product artwork" loading="lazy" decoding="async" />
-            <span class="studio-product__label">NextHuman — Coming soon</span>
           </a>
         </div>
       </div>
@@ -168,16 +165,5 @@ import SiteLayout from "../layouts/SiteLayout.astro";
       </div>
     </section>
   </main>
-  <script>
-    const hero = document.querySelector<HTMLElement>('.studio-hero');
-    const followsPointer = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
-
-    if (hero && followsPointer.matches) {
-      hero.addEventListener('pointermove', ({ clientX, clientY }) => {
-        const bounds = hero.getBoundingClientRect();
-        hero.style.setProperty('--hero-x', `${clientX - bounds.left}px`);
-        hero.style.setProperty('--hero-y', `${clientY - bounds.top}px`);
-      });
-    }
-  </script>
+  <script src="../scripts/home-interactions.ts"></script>
 </SiteLayout>
