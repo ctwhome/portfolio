@@ -270,6 +270,11 @@
 }
 
 @media (max-width: 39.99rem) {
+  .ctw-masthead--studio .studio-nav-workshop {
+    min-width: var(--ctw-size-touch);
+    justify-content: center;
+  }
+
   .ctw-masthead--studio .studio-nav-workshop span {
     font-size: 0;
   }
