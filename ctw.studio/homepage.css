@@ -280,8 +280,9 @@ body {
 
 .studio-products {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
-  gap: var(--ctw-space-5);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--ctw-space-5);
+  row-gap: calc(var(--ctw-space-5) * 0.6);
   margin-top: var(--ctw-space-7);
 }
 
@@ -297,6 +298,7 @@ body {
 }
 
 .studio-product--primary {
+  grid-column: span 2;
   grid-row: span 2;
 }
 
@@ -420,7 +422,7 @@ body {
   }
 
   .studio-product--primary {
-    grid-column: 1 / -1;
+    grid-column: span 2;
     grid-row: auto;
   }
 }

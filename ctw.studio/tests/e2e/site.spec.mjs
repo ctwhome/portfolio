@@ -13,7 +13,7 @@ test('home remains substantive without JavaScript', async ({ browser }) => {
   await page.locator('.studio-process summary').first().click();
   await expect(page.locator('.studio-process details').first()).toHaveAttribute('open', '');
   await expect(page.locator('.studio-quotes blockquote')).toHaveCount(5);
-  await expect(page.locator('.studio-product img')).toHaveCount(3);
+  await expect(page.locator('.studio-product img')).toHaveCount(5);
   await context.close();
 });
 

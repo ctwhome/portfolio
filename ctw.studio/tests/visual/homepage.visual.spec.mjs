@@ -58,9 +58,9 @@ for (const viewport of viewports) {
         feedbackOverlaps: feedback
           ? protectedRegions.filter(({ rect }) => intersects(feedback, rect)).map(({ selector }) => selector)
           : ['missing feedback'],
-        productBottomDelta: productGeometry.length === 3
+        productBottomDelta: productGeometry.length === 5
           ? Math.abs(document.querySelector('.studio-product--primary').getBoundingClientRect().bottom
-            - document.querySelectorAll('.studio-product')[2].getBoundingClientRect().bottom)
+            - document.querySelectorAll('.studio-product')[4].getBoundingClientRect().bottom)
           : Infinity,
         productGeometry,
         loadedImages: [...document.querySelectorAll('.studio-product img')]
@@ -76,7 +76,7 @@ for (const viewport of viewports) {
     expect(state.feedbackWidth).toBeGreaterThanOrEqual(44);
     expect(state.feedbackHeight).toBeGreaterThanOrEqual(44);
     expect(state.feedbackOverlaps).toEqual([]);
-    expect(state.loadedImages).toBe(3);
+    expect(state.loadedImages).toBe(5);
     for (const geometry of state.productGeometry) {
       expect(geometry.objectFit).toBe('contain');
       expect(geometry.contained).toBe(true);
