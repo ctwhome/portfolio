@@ -666,12 +666,12 @@ test("homepage restores historical composition through current static design sys
   }
   for (const text of [
     "Interaction Design",
-    "17+ years in software engineering",
+    "Interaction Design Engineer with 17+ years in software",
     "50+",
     "15",
     "Jesse Gonzalez",
     "Interaction Strategy &amp; Prototyping",
-    "Intelligent Interfaces &amp; Systems",
+    "Human–AI Interaction &amp; Systems",
     "Data-rich Applications &amp; Visualization",
     "Production Engineering &amp; Product Delivery",
     "Frame",
@@ -703,8 +703,8 @@ test("homepage restores historical composition through current static design sys
   assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link:last-child[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
   assert.match(componentsCss, /\.ctw-nav-glitch:hover::before[^}]*animation:\s*ctw-nav-glitch-1/s);
   assert.match(componentsCss, /\.ctw-nav-glitch:hover::after[^}]*animation:\s*ctw-nav-glitch-2/s);
-  assert.match(componentsCss, /\.ctw-masthead__glass[^}]*backdrop-filter:\s*blur\(24px\)/s);
-  assert.match(componentsCss, /\.ctw-masthead__glass-edge[^}]*blur\(60px\) saturate\(140%\) brightness\(1\.2\)/s);
+  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-masthead__inner[^}]*background:\s*color-mix\(in srgb, var\(--ctw-color-surface\) 84%, transparent\)/s);
+  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-masthead__inner[^}]*backdrop-filter:\s*blur\(20px\) saturate\(130%\)/s);
   assert.match(homepage, /<script is:inline src="\/feedback\.js"><\/script>/);
   assert.doesNotMatch(homepage, /ClientRouter|data-astro-(?:reload|rerun)|transition:(?:name|animate)/);
   assert.match(transitionsCss, /@view-transition\s*\{\s*navigation:\s*auto;/s);
@@ -746,11 +746,8 @@ test("homepage restores historical composition through current static design sys
   for (const tag of homepage.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
     assert.match(tag[0], /rel="noopener noreferrer"/);
   }
-  const homepageEffects = homepageCss
-    .replaceAll("box-shadow: none", "")
-    .replaceAll("-webkit-backdrop-filter: none", "")
-    .replaceAll("backdrop-filter: none", "");
-  assert.doesNotMatch(homepageEffects, /(?:linear|radial)-gradient|backdrop-filter|box-shadow/);
+  assert.match(homepageCss, /\.studio-hero::after\s*\{[^}]*radial-gradient\([^)]*var\(--studio-hero-x\) var\(--studio-hero-y\)/s);
+  assert.doesNotMatch(homepageCss, /(?:-webkit-)?backdrop-filter/);
 });
 
 test("Signals atlas pilot opts into shared cyan composition without changing taxonomy", () => {
