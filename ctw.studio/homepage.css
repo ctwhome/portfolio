@@ -24,8 +24,8 @@ body {
 }
 
 .studio-hero {
-  --hero-x: 50%;
-  --hero-y: 38%;
+  --studio-hero-x: 50%;
+  --studio-hero-y: 38%;
   position: relative;
   isolation: isolate;
   display: grid;
@@ -52,7 +52,7 @@ body {
 }
 
 .studio-hero::after {
-  background: radial-gradient(30rem circle at var(--hero-x) var(--hero-y), color-mix(in srgb, var(--studio-amber) 10%, transparent), transparent 70%);
+  background: radial-gradient(30rem circle at var(--studio-hero-x) var(--studio-hero-y), color-mix(in srgb, var(--studio-amber) 10%, transparent), transparent 70%);
   transition: background-position var(--ctw-motion-fast) var(--ctw-ease-out);
 }
 
@@ -75,16 +75,16 @@ body {
 }
 
 .studio-home .studio-hero__title {
-  --title-shift: 0;
-  --title-spacing: -0.03em;
+  --studio-title-shift: 0;
+  --studio-title-spacing: -0.03em;
   position: relative;
   width: min(100%, 12ch);
   max-width: 12ch;
   margin: 0;
   color: var(--ctw-color-text);
   font: 750 clamp(3.5rem, 7vw, 6rem)/0.98 var(--ctw-font-sans);
-  letter-spacing: var(--title-spacing);
-  transform: translateY(var(--title-shift));
+  letter-spacing: var(--studio-title-spacing);
+  transform: translateY(var(--studio-title-shift));
   transition: letter-spacing var(--ctw-motion-deliberate) var(--ctw-ease-out), transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
   text-wrap: balance;
 }
