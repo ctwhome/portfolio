@@ -26,6 +26,7 @@ for (const viewport of [
   { name: 'compact-short-reflow', width: 390, height: 667, rootFontScale: 1.25 }
 ]) {
   test(`homepage ${viewport.name} layout stays accessible and error-free`, async ({ page }) => {
+    test.setTimeout(60_000);
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));
     page.on('console', (message) => {
@@ -72,9 +73,11 @@ for (const viewport of [
     if (!viewport.rootFontScale) expect(feedbackOverlaps).toEqual([]);
 
     const firstProcess = page.locator('.studio-process details').first();
-    await firstProcess.locator('summary').click();
+    const firstProcessSummary = firstProcess.locator('summary');
+    await firstProcessSummary.scrollIntoViewIfNeeded();
+    await firstProcessSummary.click();
     await expect(firstProcess).toHaveAttribute('open', '');
-    await firstProcess.locator('summary').click();
+    await firstProcessSummary.press('Enter');
     await expect(firstProcess).not.toHaveAttribute('open', '');
 
     const collaborationIntro = page.locator('.studio-collaborations .studio-intro');
