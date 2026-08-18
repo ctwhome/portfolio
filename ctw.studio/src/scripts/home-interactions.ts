@@ -12,8 +12,8 @@ const FORCE = 8;
 if (hero && precisePointer.matches && !reducedMotion.matches) {
   hero.addEventListener('pointermove', ({ clientX, clientY }) => {
     const bounds = hero.getBoundingClientRect();
-    hero.style.setProperty('--hero-x', `${clientX - bounds.left}px`);
-    hero.style.setProperty('--hero-y', `${clientY - bounds.top}px`);
+    hero.style.setProperty('--studio-hero-x', `${clientX - bounds.left}px`);
+    hero.style.setProperty('--studio-hero-y', `${clientY - bounds.top}px`);
   });
 }
 
@@ -215,8 +215,8 @@ if (title && !reducedMotion.matches) {
   const updateTitleOnScroll = () => {
     scrollFrame = 0;
     const progress = Math.min(scrollY / 420, 1);
-    title.style.setProperty('--title-shift', `${progress * -10}px`);
-    title.style.setProperty('--title-spacing', `${-0.03 - progress * 0.012}em`);
+    title.style.setProperty('--studio-title-shift', `${progress * -10}px`);
+    title.style.setProperty('--studio-title-spacing', `${-0.03 - progress * 0.012}em`);
   };
   addEventListener('scroll', () => {
     if (!scrollFrame) scrollFrame = requestAnimationFrame(updateTitleOnScroll);
