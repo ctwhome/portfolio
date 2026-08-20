@@ -12,7 +12,6 @@ export interface Project {
   headline: string;
   description: string;
   coverImage: string;
-  gridSpan: number;
   liveUrl: string | null;
   repoUrl?: string;
   pdfUrl?: string;
@@ -42,7 +41,6 @@ export const projects = [
 
 Cloud Optimized GeoTIFFs load in the browser for layered map inspection. Machine-learning-supported anomaly exploration can draw attention to unusual areas, while expert labels remain interpretation rather than automated truth. A dedicated 2D/3D presentation route and static deployment keep the maps easy to share.`,
     coverImage: 'projects/droneatlas/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://droneml.github.io/DroneAtlas/',
     repoUrl: 'https://github.com/DroneML/DroneAtlas',
     tags: ['SvelteKit', 'MapLibre', 'Cloud Optimized GeoTIFF', 'Machine Learning', '3D Visualization'],
@@ -64,7 +62,6 @@ Cloud Optimized GeoTIFFs load in the browser for layered map inspection. Machine
 
 At the 14-hour Ajax Hackathon, our multidisciplinary team used TF15 data from Ajax vs Fortuna Sittard to explore another use. We reconstructed 22 players from 21 body points per player at 25 fps, then built 3D playback, player POV, head-to-ball angle, scan rate, and fixation analysis. Our team won an award.`,
     coverImage: 'projects/ajax-visual-intelligence/cover.avif',
-    gridSpan: 2,
     liveUrl: null,
     repoUrl: 'https://github.com/El-Machin-Team/football-body-kinematics',
     tags: ['Three.js', 'Python', 'Bun', 'Skeletal Tracking', 'Football Analytics', '3D Visualization'],
@@ -87,7 +84,6 @@ At the 14-hour Ajax Hackathon, our multidisciplinary team used TF15 data from Aj
 
 After an audience mode is selected, Google Gemini streams a narrative from the project record. SvelteKit and Threlte, Three.js for Svelte, keep the source metadata, 3D browsing, and generated text in one browser experience.`,
     coverImage: 'projects/data-storytelling/cover.avif',
-    gridSpan: 4,
     liveUrl: 'https://nlesc.github.io/data-storytelling/',
     repoUrl: 'https://github.com/NLeSC/data-storytelling',
     tags: ['AI', 'Three.js', 'SvelteKit', 'Gemini', 'LLM'],
@@ -110,7 +106,6 @@ After an audience mode is selected, Google Gemini streams a narrative from the p
 
 Each story links back to its people, software, and research. Lightweight authoring lets teams add material without taking on a heavy content management process.`,
     coverImage: 'projects/nlesc-portfolio/cover.avif',
-    gridSpan: 3,
     liveUrl: '/nlesc/',
     tags: ['Next.js', 'React', 'WebGL', 'Portfolio'],
     institution: 'Netherlands eScience Center',
@@ -130,7 +125,6 @@ Each story links back to its people, software, and research. Lightweight authori
 
 A natural-language agent works beside the map controls, giving researchers another way to query the loaded data. The deployment remains static while COGs provide the map layers directly.`,
     coverImage: 'projects/plan-eo/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     tags: ['GIS', 'MapLibre', 'Svelte', 'COGTIFF', 'AI Agent'],
     institution: 'Netherlands eScience Center',
@@ -150,7 +144,6 @@ A natural-language agent works beside the map controls, giving researchers anoth
 
 Machine-learning assistance stays inside the reading flow. Scholars drag documents in, compare variants, inspect their alignment, and keep annotations visible while they read.`,
     coverImage: 'projects/collaite/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/collaite/collens',
     tags: ['ML', 'Digital Humanities', 'SvelteKit', 'NLP'],
@@ -172,7 +165,6 @@ Machine-learning assistance stays inside the reading flow. Scholars drag documen
 
 The watch keeps participant input brief and glanceable. Data stays on the device and can be extracted offline for privacy-conscious fieldwork.`,
     coverImage: 'projects/smartplay/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/ctwhome/SmartPlay',
     tags: ['WearOS', 'Android', 'Research', 'Child Development', 'Sensors'],
@@ -193,7 +185,6 @@ The watch keeps participant input brief and glanceable. Data stays on the device
     headline: 'Validation records for healthcare AI',
     description: `FAIVOR is a FAIR validation platform for medical machine-learning systems. It supports documented validation workflows with provenance, protocols, model outputs, and explainability material for reviewers.`,
     coverImage: 'projects/faivor/cover.jpg',
-    gridSpan: 1,
     liveUrl: 'https://research-software-directory.org/projects/faivor',
     tags: ['ML', 'FAIR', 'Healthcare', 'Validation', 'MLOps'],
     institution: 'Netherlands eScience Center',
@@ -213,7 +204,6 @@ The watch keeps participant input brief and glanceable. Data stays on the device
 
 Compressed Zarr data feeds timeline playback, a map, and cloud-point inspection. Researchers can move through changes in the boundary layer without leaving the browser.`,
     coverImage: 'projects/ruisdael-observatory/cover.avif',
-    gridSpan: 4,
     liveUrl: null,
     repoUrl: 'https://github.com/NLeSC/zarrviz',
     tags: ['Three.js', 'WebGL', 'Zarr', 'Climate Science'],
@@ -236,7 +226,6 @@ Compressed Zarr data feeds timeline playback, a map, and cloud-point inspection.
 
 Work covered a new logotype, clearer navigation, side-by-side comparison views, and a tighter information hierarchy.`,
     coverImage: 'projects/carbon-budget-explorer/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/pbl-nl/website-carbon-budget-explorer',
     tags: ['UI/UX Design', 'Climate Policy', 'Data Visualization'],
@@ -256,7 +245,6 @@ Work covered a new logotype, clearer navigation, side-by-side comparison views, 
     headline: 'Notes, drawings, and media in folders you own',
     description: `Notidian is a local-first workspace in development for notes, documents, drawings, and media. It is built around user-owned files, fast local interaction, private sync, and a canvas/editor intended to extend into diagrams, presentations, and multimedia work.`,
     coverImage: 'projects/notidian/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://notidian.com',
     tags: ['SvelteKit', 'Tauri', 'Local-first', 'PKM', 'WebGPU'],
     institution: null,
@@ -276,7 +264,6 @@ Work covered a new logotype, clearer navigation, side-by-side comparison views, 
 
 Each space can be customized with its own name, imagery, and structure. The same card format works for personal collections and organization pages.`,
     coverImage: 'projects/ideasdiamond/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://ideasdiamond.com',
     tags: ['SvelteKit', 'Creativity', 'Productivity', 'Community'],
     institution: null,
@@ -298,7 +285,6 @@ Each space can be customized with its own name, imagery, and structure. The same
 
 NuxtJS, ThreeJS, and PotreeJS render the scans. A Git-based content management system supplies the point views and story content.`,
     coverImage: 'projects/via-appia/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://via-appia.netlify.app/',
     repoUrl: 'https://github.com/Via-Appia/via-appia-online-viewer',
     tags: ['3D Visualization', 'VR', 'Point Cloud', 'WebGL'],
@@ -323,7 +309,6 @@ NuxtJS, ThreeJS, and PotreeJS render the scans. A Git-based content management s
 
 I worked on the research-software product layer, building the clinical imaging flow as a C++/Qt/VTK application for macOS, Windows, and Linux. Researchers can inspect grayscale scans, review color overlays, edit contours, and compare panels before deciding what to make of an experimental model output.`,
     coverImage: 'projects/fedmix-clinical-viewer/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     repoUrl: 'https://github.com/FEDMix/eshmun',
     tags: ['C++', 'Qt', 'VTK', 'Medical Imaging', 'AI Validation'],
@@ -346,7 +331,6 @@ I worked on the research-software product layer, building the clinical imaging f
 
 NuxtJS and Nuxt Content generate the static site. Reusable content patterns keep volunteer updates manageable, while custom animations give each section its own pace.`,
     coverImage: 'projects/nl-rse/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://nl-rse.org',
     repoUrl: 'https://github.com/nl-rse/nl-rse.github.io',
     tags: ['NuxtJS', 'Community', 'Web Design', 'Static Site'],
@@ -369,7 +353,6 @@ NuxtJS and Nuxt Content generate the static site. Reusable content patterns keep
 
 I developed the UI from scratch. Scene continuity preserves place and story position as people move between those materials, so a discussion can follow the storyline without losing its thread.`,
     coverImage: 'projects/receipt/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     tags: ['3D Visualization', 'Climate Change', 'Web', 'Research'],
     institution: 'Netherlands eScience Center',
@@ -390,7 +373,6 @@ I developed the UI from scratch. Scene continuity preserves place and story posi
     headline: 'Brand and website for electric leasing',
     description: `As Lead Software Engineer and Designer, I created MisterGreen Electric's logo, palette, typography, and design system, then built those decisions into mistergreen.nl.`,
     coverImage: 'projects/mistergreen/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://mistergreen.nl',
     tags: ['Branding', 'Web Platform', 'Design System'],
     institution: null,
@@ -412,7 +394,6 @@ I developed the UI from scratch. Scene continuity preserves place and story posi
 
 During a session, a capture list holds distractions for later. Named block patterns show focused time and breaks before work starts.`,
     coverImage: 'projects/focusdiamond/cover.jpg',
-    gridSpan: 3,
     liveUrl: null,
     tags: ['Web', 'Productivity', 'PWA', 'Focus'],
     institution: null,
@@ -433,7 +414,6 @@ During a session, a capture list holds distractions for later. Named block patte
 
 The browser app works offline, installs on a device, and opens augmented-reality scenes without a native app.`,
     coverImage: 'projects/pioneering-pwa/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     tags: ['PWA', 'AR.js', 'ReactJS', 'XR', 'Prototype'],
     institution: null,
@@ -454,7 +434,6 @@ The browser app works offline, installs on a device, and opens augmented-reality
 
 The original PDF preserves the raw illustrated archive as it was assembled at the time.`,
     coverImage: 'projects/illustrated-portfolio/cover.avif',
-    gridSpan: 3,
     liveUrl: null,
     pdfUrl: 'projects/illustrated-portfolio/Illustrated_Portfolio_UX_Jesus_Garcia_en_2014.pdf',
     tags: ['Web', 'Design', 'Native App', 'UX Archive'],
@@ -475,7 +454,6 @@ The original PDF preserves the raw illustrated archive as it was assembled at th
 
 The design applies End User Development and Programming by Example. A modified $1 recognizer interprets each gesture while the screens show the recorded 3D motion for review.`,
     coverImage: 'projects/leaplearn/cover.avif',
-    gridSpan: 3,
     liveUrl: 'https://ctwhome.github.io/leaplearn.github.io/',
     repoUrl: 'https://github.com/ctwhome/leaplearn',
     pdfUrl: 'projects/leaplearn/leaplearn_garcia_gonzalez.pdf',

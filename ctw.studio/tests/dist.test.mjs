@@ -189,6 +189,7 @@ test('preservation manifest has exact byte-identical output counterparts', async
 
 test('portfolio keeps stable media URLs and owns its controller code', async () => {
   const portfolio = await readFile(new URL('portfolio/index.html', dist), 'utf8');
+  const gridSource = await readFile(new URL('../src/components/ProjectGrid.astro', import.meta.url), 'utf8');
   const source = await readFile(new URL('../portfolio/projects.js', import.meta.url), 'utf8');
   const media = [...source.matchAll(/\b(?:coverImage|src|src2|pdfUrl): '([^']+)'/g)].map((match) => match[1]);
   for (const path of new Set(media)) {
@@ -196,9 +197,24 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
   }
   assert.match(portfolio, /\/portfolio\/covers\/droneatlas-720\.webp 720w/);
   await access(new URL('portfolio/covers/droneatlas-720.webp', dist));
+  const coverMetadata = await sharp(await readFile(new URL('portfolio/covers/droneatlas-960.webp', dist))).metadata();
+  assert.deepEqual([coverMetadata.width, coverMetadata.height], [960, 640]);
   for (const deleted of ['workspace.webp', 'local-first.webp', 'drawing.webp', 'ai.webp']) {
     assert.doesNotMatch(portfolio, new RegExp(`/portfolio/projects/notidian/${deleted}`));
   }
+
+  assert.equal(projects.length, 21);
+  assert.equal((portfolio.match(/<li class="project-card">/g) ?? []).length, projects.length);
+  assert.doesNotMatch(gridSource, /project-card--span-|gridSpan/);
+  assert.doesNotMatch(portfolio, /project-card--span-/);
+  assert.match(
+    gridSource,
+    /<span class="project-card__media">[\s\S]*?<img[\s\S]*?<\/span>\s*<span class="project-card__copy">/
+  );
+  assert.match(
+    portfolio,
+    /<span class="project-card__media"><img[\s\S]*?<\/span>\s*<span class="project-card__copy">/
+  );
 
   assert.match(portfolio, /portfolio-enhanced/);
   for (const file of [

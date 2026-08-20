@@ -27,15 +27,19 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
 
   const layout = async () => page.evaluate(() => {
     const feedback = document.querySelector('.ctw-feedback-button')?.getBoundingClientRect();
-    const firstCard = document.querySelector('.project-card')?.getBoundingClientRect();
     const grid = document.querySelector('.portfolio-grid')?.getBoundingClientRect();
-    const rows = [...document.querySelectorAll('.project-card')].reduce((result, card) => {
+    const cards = [...document.querySelectorAll('.project-card')].slice(0, 4).map((card) => {
       const rect = card.getBoundingClientRect();
-      const row = result.find((items) => Math.abs(items[0].top - rect.top) < 2);
-      if (row) row.push(rect);
-      else result.push([rect]);
-      return result;
-    }, []);
+      const media = card.querySelector('.project-card__media')?.getBoundingClientRect();
+      return {
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        left: rect.left,
+        width: rect.width,
+        mediaRatio: media ? media.width / media.height : 0
+      };
+    });
     return {
       cardCount: document.querySelectorAll('.project-card').length,
       documentWidth: document.documentElement.scrollWidth,
@@ -43,13 +47,8 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
       feedbackWidth: feedback?.width ?? 0,
       feedbackHeight: feedback?.height ?? 0,
       feedbackPosition: getComputedStyle(document.querySelector('.ctw-feedback-button')).position,
-      firstCardWidth: firstCard?.width ?? 0,
       gridWidth: grid?.width ?? 0,
-      incompleteRows: rows.filter((row) => {
-        const left = Math.min(...row.map((rect) => rect.left));
-        const right = Math.max(...row.map((rect) => rect.right));
-        return Math.abs((right - left) - ((grid?.width ?? 0) - 2)) > 3;
-      }).length
+      cards
     };
   });
 
@@ -59,8 +58,15 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
   const wideLayout = await layout();
   expect(wideLayout.cardCount).toBe(21);
   expect(wideLayout.documentWidth).toBeLessThanOrEqual(wideLayout.viewportWidth);
-  expect(Math.abs(wideLayout.firstCardWidth - wideLayout.gridWidth)).toBeLessThanOrEqual(3);
-  expect(wideLayout.incompleteRows).toBe(0);
+  expect(wideLayout.cards).toHaveLength(4);
+  expect(Math.max(...wideLayout.cards.map(({ width }) => width)) - Math.min(...wideLayout.cards.map(({ width }) => width))).toBeLessThanOrEqual(2);
+  expect(wideLayout.cards[1].left - wideLayout.cards[0].right).toBeGreaterThanOrEqual(20);
+  expect(wideLayout.cards[0].width).toBeLessThan(wideLayout.gridWidth - 20);
+  expect(Math.abs(wideLayout.cards[0].top - wideLayout.cards[1].top)).toBeLessThanOrEqual(2);
+  expect(Math.abs(wideLayout.cards[2].top - wideLayout.cards[3].top)).toBeLessThanOrEqual(2);
+  expect(Math.abs(wideLayout.cards[0].left - wideLayout.cards[2].left)).toBeLessThanOrEqual(2);
+  expect(Math.abs(wideLayout.cards[1].left - wideLayout.cards[3].left)).toBeLessThanOrEqual(2);
+  for (const card of wideLayout.cards) expect(card.mediaRatio).toBeCloseTo(1.5, 2);
   expect(wideLayout.feedbackWidth).toBeGreaterThanOrEqual(44);
   expect(wideLayout.feedbackHeight).toBeGreaterThanOrEqual(44);
   await prepareCapture();
@@ -71,6 +77,14 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
   await page.reload();
   const compactLayout = await layout();
   expect(compactLayout.documentWidth).toBeLessThanOrEqual(compactLayout.viewportWidth);
+  expect(compactLayout.cards).toHaveLength(4);
+  expect(Math.max(...compactLayout.cards.map(({ width }) => width)) - Math.min(...compactLayout.cards.map(({ width }) => width))).toBeLessThanOrEqual(2);
+  expect(Math.abs(compactLayout.cards[0].width - compactLayout.gridWidth)).toBeLessThanOrEqual(2);
+  for (const card of compactLayout.cards) {
+    expect(card.left).toBeGreaterThanOrEqual(0);
+    expect(card.right).toBeLessThanOrEqual(compactLayout.viewportWidth + 1);
+    expect(card.mediaRatio).toBeCloseTo(1.5, 2);
+  }
   expect(compactLayout.feedbackWidth).toBeGreaterThanOrEqual(44);
   expect(compactLayout.feedbackHeight).toBeGreaterThanOrEqual(44);
   expect(compactLayout.feedbackPosition).toBe('fixed');

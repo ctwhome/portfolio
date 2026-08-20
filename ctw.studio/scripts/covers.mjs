@@ -38,7 +38,7 @@ for (const { id, path } of covers) {
     await mkdir(dirname(output), { recursive: true });
     await sourceImage
       .clone()
-      .resize(width, Math.round(width * 10 / 16), { fit: 'cover', position: 'centre' })
+      .resize(width, Math.round(width * 2 / 3), { fit: 'cover', position: 'centre' })
       .webp({ quality: 78, effort: 6, smartSubsample: true })
       .toFile(output);
   }
