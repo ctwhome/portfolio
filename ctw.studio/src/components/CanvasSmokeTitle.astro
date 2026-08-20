@@ -1,0 +1,73 @@
+---
+interface Props {
+  lines: string[];
+  accentLine?: number;
+  class?: string;
+  level?: 1 | 2 | 3;
+}
+
+const {
+  lines,
+  accentLine = -1,
+  class: className = '',
+  level = 2,
+} = Astro.props;
+const Tag = `h${level}` as const;
+const label = lines.join(' ');
+---
+
+<Tag class:list={['canvas-smoke-title', className]} data-canvas-smoke-component aria-label={label}>
+  {lines.map((line, index) => (
+    <>
+      <span
+        data-canvas-smoke-line
+        class:list={['canvas-smoke-title__line', { 'canvas-smoke-title__line--accent': index === accentLine }]}
+        aria-hidden="true"
+      >{line}</span>
+      {index < lines.length - 1 && <br aria-hidden="true" />}
+    </>
+  ))}
+</Tag>
+
+<script>
+  import { mountCanvasSmokeTitle } from '../scripts/canvas-smoke-title';
+
+  document.querySelectorAll<HTMLElement>('[data-canvas-smoke-component]').forEach((heading) => {
+    mountCanvasSmokeTitle(heading, { animateIntro: true, interactive: true });
+  });
+</script>
+
+<style>
+  .canvas-smoke-title {
+    position: relative;
+    user-select: none;
+  }
+
+  .canvas-smoke-title__line,
+  :global(.canvas-smoke-title__glyph) {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .canvas-smoke-title__line--accent {
+    color: var(--ctw-color-action);
+  }
+
+  :global(.canvas-smoke-title__canvas) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .canvas-smoke-title.is-canvas-smoke-active .canvas-smoke-title__line {
+    visibility: hidden;
+    user-select: none;
+  }
+
+  .canvas-smoke-title.is-canvas-smoke-active :global(.canvas-smoke-title__canvas) {
+    opacity: 1;
+  }
+</style>

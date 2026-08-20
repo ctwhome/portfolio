@@ -115,7 +115,7 @@ body {
   transform-origin: 50% 75%;
 }
 
-.studio-title-canvas {
+.canvas-smoke-title__canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -124,12 +124,12 @@ body {
   pointer-events: none;
 }
 
-.studio-hero__title.has-title-canvas .studio-title-line {
+.studio-hero__title.is-canvas-smoke-active .studio-title-line {
   visibility: hidden;
   user-select: none;
 }
 
-.studio-hero__title.has-title-canvas .studio-title-canvas {
+.studio-hero__title.is-canvas-smoke-active .canvas-smoke-title__canvas {
   opacity: 1;
 }
 
@@ -656,6 +656,30 @@ body {
   to { opacity: 1; translate: 0 0; }
 }
 
+@keyframes studio-title-smoke-reveal {
+  from {
+    opacity: 0;
+    filter: blur(1.15rem);
+    text-shadow:
+      -0.9em var(--studio-smoke-y) 0.38em currentColor,
+      -1.75em var(--studio-smoke-y-soft) 0.9em currentColor;
+    transform: translate3d(-1.15em, var(--studio-smoke-y), 0) skewX(-18deg) scale(0.76);
+  }
+  42% {
+    opacity: 0.66;
+    filter: blur(0.42rem);
+    text-shadow:
+      -0.34em var(--studio-smoke-y-soft) 0.46em currentColor,
+      -0.8em 0 1.1em currentColor;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 0 transparent;
+    transform: translate3d(0, 0, 0) skewX(0) scale(1);
+  }
+}
+
 @keyframes studio-masthead-arrive {
   from { opacity: 0; translate: 0 -0.75rem; }
   to { opacity: 1; translate: 0 0; }
@@ -669,6 +693,20 @@ body {
   .studio-facts__links > a {
     opacity: 0;
     animation: studio-arrive 700ms var(--ctw-ease-out) forwards;
+  }
+
+  .studio-hero__title:not(.is-canvas-smoke-active) .studio-title-glyph {
+    --studio-smoke-y: 0.16em;
+    --studio-smoke-y-soft: -0.08em;
+    opacity: 0;
+    animation: studio-title-smoke-reveal 1350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--ctw-canvas-smoke-delay);
+    will-change: transform, opacity, filter;
+  }
+
+  .studio-hero__title:not(.is-canvas-smoke-active) .studio-title-glyph:nth-child(even) {
+    --studio-smoke-y: -0.16em;
+    --studio-smoke-y-soft: 0.08em;
   }
 
   .studio-home .ctw-masthead__inner {
