@@ -137,6 +137,7 @@ const expectedRoutes = [
   "/signals/housing/",
   "/signals/real-time-ai/",
   "/signals/science/",
+  "/stand-out/",
   "/workshop/",
   "/workshop/pitch/",
   "/workshop/privacy/",
@@ -185,7 +186,7 @@ test("DESIGN.md follows alpha section order and owns machine-readable roles", ()
   }
 });
 
-test("route audit covers exactly 23 deployed routes by family", () => {
+test("route audit covers exactly 24 deployed routes by family", () => {
   const actualRoutes = discoverHtmlRoutes(
     join(studioDir, "dist"),
     "",
@@ -195,7 +196,7 @@ test("route audit covers exactly 23 deployed routes by family", () => {
   const preservedRoutes = [...manifest.routeContract.preservedRoutes].sort();
   const contentRoutes = actualRoutes.filter((route) => !redirectSources.includes(route));
 
-  assert.equal(expectedRoutes.length, 23);
+  assert.equal(expectedRoutes.length, 24);
   assert.deepEqual(manifest.routeContract.excludedTrees, ["nlesc"]);
   assert.deepEqual(redirectSources, ["/signals/roadmap/"]);
   assert.ok(preservedRoutes.every((route) => expectedRoutes.includes(route)));
@@ -218,7 +219,7 @@ test("route audit covers exactly 23 deployed routes by family", () => {
     assert.match(guideAudit, new RegExp(`>${family}<`));
     for (const route of routes) assert.ok(guideAudit.includes(`<code>${route}</code>`), route);
   }
-  assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 23);
+  assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 24);
   assert.deepEqual(
     [...guideTable.matchAll(/<code>([^<]+)<\/code>/g)].map((match) => match[1]).sort(),
     expectedRoutes,

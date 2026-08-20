@@ -194,22 +194,26 @@ const initPageFluid = () => {
 initPageFluid();
 
 if (title && !reducedMotion.matches) {
+  let glyphIndex = 0;
   for (const line of title.querySelectorAll<HTMLElement>('.studio-title-line')) {
     const characters = Array.from(line.textContent ?? '');
     line.replaceChildren(...characters.map((character) => {
       const glyph = document.createElement('span');
       glyph.className = 'studio-title-glyph';
       glyph.textContent = character === ' ' ? '\u00a0' : character;
+      glyph.style.setProperty('--studio-glyph-delay', `${90 + glyphIndex * 43}ms`);
+      glyph.style.setProperty('--studio-smoke-y', glyphIndex % 2 ? '-0.16em' : '0.16em');
+      glyph.style.setProperty('--studio-smoke-y-soft', glyphIndex % 2 ? '0.08em' : '-0.08em');
+      glyphIndex += 1;
       return glyph;
     }));
   }
 
   title.classList.add('is-resolved');
-  requestAnimationFrame(() => initTitleMesh(title));
   setTimeout(() => {
     document.body.classList.add('studio-hero-complete');
     dispatchEvent(new Event('studio-hero-complete'));
-  }, 2800);
+  }, 2900);
 
   let scrollFrame = 0;
   const updateTitleOnScroll = () => {
@@ -529,7 +533,7 @@ const initProductLens = () => {
       vec4 base = texture2D(uImage, vUv + offset);
       float red = texture2D(uImage, vUv + offset + direction * split).r;
       float blue = texture2D(uImage, vUv + offset - direction * split).b;
-      gl_FragColor = vec4(vec3(red, base.g, blue) * 0.78, 1.0);
+      gl_FragColor = vec4(red, base.g, blue, 1.0);
     }
   `);
   if (!vertex || !fragment) return;

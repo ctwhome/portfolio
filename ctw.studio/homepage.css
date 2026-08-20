@@ -114,24 +114,6 @@ body {
   transform-origin: 50% 75%;
 }
 
-.studio-title-mesh {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 360ms var(--ctw-ease-out);
-}
-
-.studio-hero__title.has-mesh .studio-title-line {
-  opacity: 0;
-}
-
-.studio-hero__title.has-mesh .studio-title-mesh {
-  opacity: 1;
-}
-
 @media (hover: hover) and (pointer: fine) {
   .studio-home {
     cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2020%2020'%3E%3Cpath%20d='M3%202.7%2016.3%207.4Q17.5%207.9%2016.35%208.75L10.8%2010.85%208.1%2016Q7.45%2017.2%206.85%2015.85L2.35%204Q1.95%202.55%203%202.7Z'%20fill='%23161616'%20stroke='%23aeb0b4'%20stroke-width='1.5'%20stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, default !important;
@@ -506,7 +488,7 @@ body {
   height: 100%;
   object-fit: contain;
   background: var(--ctw-color-surface);
-  transition: filter var(--ctw-motion-deliberate) var(--ctw-ease-out), transform 500ms var(--ctw-ease-out);
+  transition: transform 500ms var(--ctw-ease-out);
 }
 
 .studio-product__webgl {
@@ -527,7 +509,6 @@ body {
 
 .studio-product:hover img,
 .studio-product:focus-visible img {
-  filter: brightness(0.72);
   transform: scale(1.025);
 }
 
@@ -656,18 +637,27 @@ body {
   to { opacity: 1; translate: 0 0; }
 }
 
-@keyframes studio-title-wave-reveal {
+@keyframes studio-title-smoke-reveal {
   from {
     opacity: 0;
-    clip-path: polygon(0 0, 0 0, 0 24%, 0 50%, 0 76%, 0 100%, 0 100%);
+    filter: blur(1.15rem);
+    text-shadow:
+      -0.9em var(--studio-smoke-y) 0.38em currentColor,
+      -1.75em var(--studio-smoke-y-soft) 0.9em currentColor;
+    transform: translate3d(-1.15em, var(--studio-smoke-y), 0) skewX(-18deg) scale(0.76);
   }
-  50% {
-    opacity: 0.78;
-    clip-path: polygon(0 0, 52% 0, 46% 24%, 57% 50%, 48% 76%, 54% 100%, 0 100%);
+  42% {
+    opacity: 0.66;
+    filter: blur(0.42rem);
+    text-shadow:
+      -0.34em var(--studio-smoke-y-soft) 0.46em currentColor,
+      -0.8em 0 1.1em currentColor;
   }
   to {
     opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 24%, 100% 50%, 100% 76%, 100% 100%, 0 100%);
+    filter: blur(0);
+    text-shadow: 0 0 0 transparent;
+    transform: translate3d(0, 0, 0) skewX(0) scale(1);
   }
 }
 
@@ -686,8 +676,11 @@ body {
     animation: studio-arrive 700ms var(--ctw-ease-out) forwards;
   }
 
-  .studio-hero__title {
-    animation: studio-title-wave-reveal 1800ms var(--ctw-ease-out) both;
+  .studio-hero__title.is-resolved .studio-title-glyph {
+    opacity: 0;
+    animation: studio-title-smoke-reveal 1350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--studio-glyph-delay);
+    will-change: transform, opacity, filter;
   }
 
   .studio-home .ctw-masthead__inner {
@@ -695,14 +688,14 @@ body {
     animation-delay: 40ms;
   }
 
-  .studio-hero__lede { animation-delay: 900ms; }
-  .studio-hero__actions { animation-delay: 1100ms; }
-  .studio-facts__stats > div:nth-child(1) { animation-delay: 1550ms; }
-  .studio-facts__stats > div:nth-child(2) { animation-delay: 1640ms; }
-  .studio-facts__stats > div:nth-child(3) { animation-delay: 1730ms; }
-  .studio-facts__stats > div:nth-child(4) { animation-delay: 1820ms; }
-  .studio-facts__links > a:nth-child(1) { animation-delay: 1910ms; }
-  .studio-facts__links > a:nth-child(2) { animation-delay: 2000ms; }
+  .studio-hero__lede { animation-delay: 1900ms; }
+  .studio-hero__actions { animation-delay: 2100ms; }
+  .studio-facts__stats > div:nth-child(1) { animation-delay: 2380ms; }
+  .studio-facts__stats > div:nth-child(2) { animation-delay: 2470ms; }
+  .studio-facts__stats > div:nth-child(3) { animation-delay: 2560ms; }
+  .studio-facts__stats > div:nth-child(4) { animation-delay: 2650ms; }
+  .studio-facts__links > a:nth-child(1) { animation-delay: 2740ms; }
+  .studio-facts__links > a:nth-child(2) { animation-delay: 2830ms; }
 }
 
 .studio-scroll-reveal {

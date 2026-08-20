@@ -15,7 +15,7 @@ framework migration.
 
 Use Astro static output with `ctw.studio/` as project root.
 
-- Astro pages and reusable layouts own 16 maintained routes.
+- Astro pages and reusable layouts own 17 maintained routes.
 - `DocumentHead.astro` owns canonical, Open Graph, Twitter, font, icon, and
   design-system metadata.
 - Every Astro layout imports one shared Fontsource stylesheet. Variable Inter
