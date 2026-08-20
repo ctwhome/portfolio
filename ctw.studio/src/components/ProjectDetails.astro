@@ -55,7 +55,7 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
               {project.gallery.map((item) => (
                 item.type === 'video' ? (
                   <figure class="project-gallery__item">
-                    <video controls playsinline preload="none" width="1600" height="900">
+                    <video controls playsinline preload="none" width={item.width ?? 1600} height={item.height ?? 900} data-poster={item.poster ? mediaUrl(item.poster) : undefined}>
                       <source data-src={mediaUrl(item.src)} type="video/mp4" />
                     </video>
                     <noscript><a class="project-gallery__source" href={mediaUrl(item.src)}>Open original video</a></noscript>

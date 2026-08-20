@@ -166,6 +166,44 @@ test('gallery media loads only for opened dialog', async ({ page }) => {
   expect(galleryRequests.every((path) => path.includes('/data-storytelling/'))).toBe(true);
 });
 
+test('Ajax video and poster load only after its dialog opens', async ({ page }) => {
+  const targets = new Set([
+    '/portfolio/projects/ajax-visual-intelligence/demo.mp4',
+    '/portfolio/projects/ajax-visual-intelligence/video-poster.avif'
+  ]);
+  const requested = [];
+  const available = [];
+  page.on('request', (request) => {
+    const pathname = new URL(request.url()).pathname;
+    if (targets.has(pathname)) requested.push(pathname);
+  });
+  page.on('response', (response) => {
+    const pathname = new URL(response.url()).pathname;
+    if (targets.has(pathname) && response.ok()) available.push(pathname);
+  });
+
+  await page.goto('/portfolio/', { waitUntil: 'networkidle' });
+  expect(requested).toEqual([]);
+  expect(available).toEqual([]);
+
+  await page.locator('[data-project-link="ajax-visual-intelligence"]').first().click();
+  await expect.poll(() => [...new Set(requested)].sort()).toEqual([...targets].sort());
+  await expect.poll(() => [...new Set(available)].sort()).toEqual([...targets].sort());
+});
+
+test('switching projects pauses Ajax video playback', async ({ page }) => {
+  await page.goto('/portfolio/');
+  await page.locator('[data-project-link="ajax-visual-intelligence"]').first().click();
+  const dialog = page.locator('dialog#ajax-visual-intelligence');
+  const video = dialog.locator('video');
+
+  await video.evaluate((element) => element.play());
+  await expect(video).toHaveJSProperty('paused', false);
+
+  await dialog.locator('.project-next').click();
+  await expect(video).toHaveJSProperty('paused', true);
+});
+
 test('native dialog uses one gallery history entry and restores focus on Escape', async ({ page }) => {
   await page.goto('/portfolio/');
   const first = page.locator('[data-project-link="data-storytelling"]').first();

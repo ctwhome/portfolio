@@ -220,7 +220,7 @@ test('portfolio data includes DroneAtlas and Visual Intelligence Profile source 
       date: '2026-03-07',
       liveUrl: null,
       repoUrl: 'https://github.com/El-Machin-Team/football-body-kinematics',
-      media: ['cover.avif', 'gallery-1.avif', 'gallery-2.avif']
+      media: ['cover.avif', 'demo.mp4', 'gallery-1.avif', 'gallery-2.avif']
     }
   ];
 
@@ -239,7 +239,34 @@ test('portfolio data includes DroneAtlas and Visual Intelligence Profile source 
   const ajax = projects.find(({ id }) => id === 'ajax-visual-intelligence');
   assert.match(ajax.description, /award-winning Ajax Hackathon project/);
   assert.match(ajax.description, /multidisciplinary team/);
-  for (const item of ajax.gallery) {
+  const video = ajax.gallery.find(({ type }) => type === 'video');
+  assert.deepEqual(video, {
+    type: 'video',
+    src: 'projects/ajax-visual-intelligence/demo.mp4',
+    poster: 'projects/ajax-visual-intelligence/video-poster.avif',
+    caption: 'Thirty-second walkthrough of the 3D match-awareness prototype',
+    width: 1920,
+    height: 1080
+  });
+  const videoFile = new URL('../portfolio/projects/ajax-visual-intelligence/demo.mp4', import.meta.url);
+  const videoSize = (await stat(videoFile)).size;
+  assert.ok(videoSize > 1024 ** 2, `expected demo.mp4 > 1 MiB, received ${videoSize} bytes`);
+  assert.ok(videoSize <= 8 * 1024 ** 2, `expected demo.mp4 <= 8 MiB, received ${videoSize} bytes`);
+  const posterFile = new URL('../portfolio/projects/ajax-visual-intelligence/video-poster.avif', import.meta.url);
+  const posterMetadata = await sharp(await readFile(posterFile)).metadata();
+  assert.deepEqual(
+    { width: posterMetadata.width, height: posterMetadata.height },
+    { width: 1920, height: 1080 }
+  );
+
+  const portfolio = await readFile(new URL('portfolio/index.html', dist), 'utf8');
+  const ajaxDialog = portfolio.match(/<dialog[^>]+data-project-dialog="ajax-visual-intelligence"[\s\S]*?<\/dialog>/)?.[0];
+  assert.ok(ajaxDialog, 'Ajax project dialog missing');
+  assert.match(ajaxDialog, /<video controls playsinline preload="none" width="1920" height="1080" data-poster="\/portfolio\/projects\/ajax-visual-intelligence\/video-poster\.avif">/);
+  assert.doesNotMatch(ajaxDialog, /<video\b[^>]*\sposter=/);
+  assert.match(ajaxDialog, /<source data-src="\/portfolio\/projects\/ajax-visual-intelligence\/demo\.mp4" type="video\/mp4">/);
+
+  for (const item of ajax.gallery.filter(({ type }) => type === 'image')) {
     const source = await readFile(new URL(`../portfolio/${item.src}`, import.meta.url));
     const metadata = await sharp(source).metadata();
     assert.deepEqual(

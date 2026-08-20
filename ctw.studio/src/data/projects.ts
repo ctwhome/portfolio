@@ -1,5 +1,6 @@
 export type GalleryItem =
-  | { type: 'image' | 'video'; src: string; caption?: string; width?: number; height?: number }
+  | { type: 'image'; src: string; caption?: string; width?: number; height?: number }
+  | { type: 'video'; src: string; poster?: string; caption?: string; width?: number; height?: number }
   | { type: 'pair'; src: string; src2: string; caption?: string };
 
 export interface Project {
@@ -70,6 +71,7 @@ It turns movement into coaching signals by computing head-to-ball angle, scan ra
     institution: null,
     gallery: [
       { type: 'image', src: 'projects/ajax-visual-intelligence/cover.avif', caption: 'Live playback', width: 1600, height: 1000 },
+      { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4', poster: 'projects/ajax-visual-intelligence/video-poster.avif', caption: 'Thirty-second walkthrough of the 3D match-awareness prototype', width: 1920, height: 1080 },
       { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-1.avif', caption: 'Analytics profile', width: 1600, height: 1000 },
       { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-2.avif', caption: 'Initial 3D view', width: 1600, height: 1000 }
     ]
