@@ -211,7 +211,7 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
   }
 });
 
-test('portfolio data includes DroneAtlas and Visual Intelligence Profile source evidence', async () => {
+test('portfolio data includes DroneAtlas and 3D Skeletal Tracking in Football source evidence', async () => {
   const expected = [
     {
       id: 'droneatlas',
@@ -242,14 +242,20 @@ test('portfolio data includes DroneAtlas and Visual Intelligence Profile source 
   }
 
   const ajax = projects.find(({ id }) => id === 'ajax-visual-intelligence');
-  assert.match(ajax.description, /award-winning Ajax Hackathon project/);
-  assert.match(ajax.description, /multidisciplinary team/);
+  assert.equal(ajax.title, '3D Skeletal Tracking in Football');
+  assert.equal(ajax.headline, 'What 21 tracked body points reveal about player orientation');
+  assert.match(ajax.description, /FIFA calls the technology skeletal tracking/);
+  assert.match(ajax.description, /2026 World Cup[\s\S]*AI-enabled 3D player avatars[\s\S]*semi-automated offside replays/);
+  assert.match(ajax.description, /Ajax Hackathon[\s\S]*explore another use/);
+  assert.match(ajax.description, /21 body points per player at 25 fps/);
+  assert.match(ajax.description, /our multidisciplinary team/);
+  assert.match(ajax.description, /Our team won an award\./);
   const video = ajax.gallery.find(({ type }) => type === 'video');
   assert.deepEqual(video, {
     type: 'video',
     src: 'projects/ajax-visual-intelligence/demo.mp4',
     poster: 'projects/ajax-visual-intelligence/video-poster.avif',
-    caption: 'Thirty-second walkthrough of 3D match playback and player metrics',
+    caption: 'Thirty-second walkthrough of skeletal tracking, player POV, and comparison metrics',
     width: 1920,
     height: 1080
   });

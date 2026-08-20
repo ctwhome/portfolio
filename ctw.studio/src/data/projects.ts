@@ -55,23 +55,23 @@ Cloud Optimized GeoTIFFs load in the browser for layered map inspection. Machine
   },
   {
     id: 'ajax-visual-intelligence',
-    title: 'Visual Intelligence Profile',
+    title: '3D Skeletal Tracking in Football',
     date: '2026-03-07',
     client: 'AFC Ajax · Team Rockstars IT',
-    category: 'Sports Analytics · 3D Visualization',
-    headline: '3D match playback with player-level viewing metrics',
-    description: `Visual Intelligence Profile is an award-winning Ajax Hackathon project. A multidisciplinary team built it in 14 hours at Johan Cruijff ArenA. The prototype reconstructs Ajax vs Fortuna Sittard TF15 tracking as a 22-player 3D scene, using 21 skeleton joints per player at 25fps.
+    category: 'Football technology · Skeletal tracking',
+    headline: 'What 21 tracked body points reveal about player orientation',
+    description: `Modern football can track each player as a moving 3D skeleton rather than a single dot. FIFA calls the technology skeletal tracking. It supports tactical and performance analysis as well as officiating; at the 2026 World Cup, player tracking was also combined with AI-enabled 3D player avatars for semi-automated offside replays.
 
-The prototype measures head-to-ball angle, scan rate, and fixation. Those metrics describe viewing behavior, not awareness itself. Live playback, a POV camera, a shared timeline, and player comparisons keep each measurement tied to the moment it came from.`,
+At the 14-hour Ajax Hackathon, our multidisciplinary team used TF15 data from Ajax vs Fortuna Sittard to explore another use. We reconstructed 22 players from 21 body points per player at 25 fps, then built 3D playback, player POV, head-to-ball angle, scan rate, and fixation analysis. Our team won an award.`,
     coverImage: 'projects/ajax-visual-intelligence/cover.avif',
     gridSpan: 2,
     liveUrl: null,
     repoUrl: 'https://github.com/El-Machin-Team/football-body-kinematics',
-    tags: ['Three.js', 'Python', 'Bun', 'Sports Analytics', '3D Tracking'],
+    tags: ['Three.js', 'Python', 'Bun', 'Skeletal Tracking', 'Football Analytics', '3D Visualization'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/ajax-visual-intelligence/cover.avif', caption: '3D match playback with 22 tracked players and metric panels', width: 1600, height: 1000 },
-      { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4', poster: 'projects/ajax-visual-intelligence/video-poster.avif', caption: 'Thirty-second walkthrough of 3D match playback and player metrics', width: 1920, height: 1080 },
+      { type: 'image', src: 'projects/ajax-visual-intelligence/cover.avif', caption: '3D playback of Ajax vs Fortuna Sittard with tracked skeletons and player metrics', width: 1600, height: 1000 },
+      { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4', poster: 'projects/ajax-visual-intelligence/video-poster.avif', caption: 'Thirty-second walkthrough of skeletal tracking, player POV, and comparison metrics', width: 1920, height: 1080 },
       { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-1.avif', caption: 'Player comparison charts for head-to-ball angle, scan rate, and fixation', width: 1600, height: 1000 },
       { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-2.avif', caption: 'Pitch playback with player POV and shared timeline', width: 1600, height: 1000 }
     ]
