@@ -54,7 +54,9 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
     'bcaed40baf8f78b413f9c5afc0fb890643ec1011e95131f6092e25dfef0e5c12'
   );
   assert.match(home, /Interaction design engineering for systems people need to understand and control/);
-  assert.match(portfolio, /Research software as cultural practice/);
+  assert.match(portfolio, /Work \/ 2013–2026/);
+  assert.match(portfolio, /Software and design work\./);
+  assert.match(portfolio, /Based in Amsterdam/);
   assert.match(portfolio, /<dialog[^>]+data-project-dialog="data-storytelling"/);
   assert.match(portfolio, /<a class="ctw-button" href="\/nlesc\/">Visit project ↗<\/a>/);
 });
@@ -194,6 +196,9 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
   }
   assert.match(portfolio, /\/portfolio\/covers\/droneatlas-720\.webp 720w/);
   await access(new URL('portfolio/covers/droneatlas-720.webp', dist));
+  for (const deleted of ['workspace.webp', 'local-first.webp', 'drawing.webp', 'ai.webp']) {
+    assert.doesNotMatch(portfolio, new RegExp(`/portfolio/projects/notidian/${deleted}`));
+  }
 
   assert.match(portfolio, /portfolio-enhanced/);
   for (const file of [
@@ -244,7 +249,7 @@ test('portfolio data includes DroneAtlas and Visual Intelligence Profile source 
     type: 'video',
     src: 'projects/ajax-visual-intelligence/demo.mp4',
     poster: 'projects/ajax-visual-intelligence/video-poster.avif',
-    caption: 'Thirty-second walkthrough of the 3D match-awareness prototype',
+    caption: 'Thirty-second walkthrough of 3D match playback and player metrics',
     width: 1920,
     height: 1080
   });

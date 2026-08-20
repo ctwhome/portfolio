@@ -200,9 +200,7 @@ The product direction emphasizes user-owned data, fast local interaction, privat
     institution: null,
     gallery: [
       { type: 'image', src: 'projects/notidian/cover.avif', caption: 'Notidian — daily knowledge management' },
-      { type: 'image', src: 'projects/notidian/live-site.jpg', caption: 'Public product site for Notidian' },
-      { type: 'pair', src: 'projects/notidian/workspace.webp', src2: 'projects/notidian/local-first.webp', caption: 'Workspace-first information architecture and local-first ownership' },
-      { type: 'pair', src: 'projects/notidian/drawing.webp', src2: 'projects/notidian/ai.webp', caption: 'Drawing and AI-assisted workflows planned as native workspace primitives' }
+      { type: 'image', src: 'projects/notidian/live-site.jpg', caption: 'Public product site for Notidian' }
     ]
   },
   {
