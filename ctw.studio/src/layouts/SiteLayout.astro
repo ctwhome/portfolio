@@ -36,6 +36,16 @@ const {
       ogDescription={ogDescription}
       homepageStyles={homepageStyles}
     />
+    <script is:inline>
+      (() => {
+        let preference = 'system';
+        try {
+          const stored = localStorage.getItem('ctw-motion-preference');
+          if (stored === 'full' || stored === 'reduced') preference = stored;
+        } catch {}
+        document.documentElement.dataset.motionPreference = preference;
+      })();
+    </script>
   </head>
   <body class:list={['ctw-scope', bodyClass]}>
     <a class="ctw-skip-link" href="#main-content">Skip to content</a>

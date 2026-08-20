@@ -29,6 +29,8 @@ export const mountCanvasSmokeTitle = (
     onActivate,
   } = options;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const motionPreference = document.documentElement.dataset.motionPreference ?? 'system';
+  const motionReduced = motionPreference === 'reduced' || (motionPreference !== 'full' && reducedMotion.matches);
   const precisePointer = matchMedia('(hover: hover) and (pointer: fine)');
   const lines = [...heading.querySelectorAll<HTMLElement>('[data-canvas-smoke-line]')];
   if (!lines.length) return () => {};
@@ -188,14 +190,14 @@ export const mountCanvasSmokeTitle = (
       let alpha = 1;
       let smoke = 0;
 
-      if (!reducedMotion.matches && animateIntro) {
+      if (!motionReduced && animateIntro) {
         const intro = clamp01((now - introStart - glyph.delay) / introDuration);
         if (intro < 1) active = true;
         alpha = easeOut(intro);
         smoke = Math.sin(Math.PI * intro) * (1 - intro * 0.25);
       }
 
-      if (!reducedMotion.matches) {
+      if (!motionReduced) {
         const centerX = (glyph.left + glyph.right) / 2;
         const centerY = (glyph.top + glyph.bottom) / 2;
         const distance = Math.hypot(centerX - pointerX, centerY - pointerY);
@@ -241,7 +243,7 @@ export const mountCanvasSmokeTitle = (
 
   const onPointerInput = ({ clientX, clientY, pointerType }: PointerEvent) => {
     const touchInput = pointerType === 'touch';
-    if (!activated || !interactive || reducedMotion.matches || (!touchInput && !precisePointer.matches)) return;
+    if (!activated || !interactive || motionReduced || (!touchInput && !precisePointer.matches)) return;
     const bounds = heading.getBoundingClientRect();
     const x = clientX - bounds.left;
     const y = clientY - bounds.top;
@@ -295,7 +297,7 @@ export const mountCanvasSmokeTitle = (
         start();
         onActivate?.();
       });
-    }, reducedMotion.matches ? 0 : activateAfter);
+    }, motionReduced ? 0 : activateAfter);
   });
 
   heading.addEventListener('pointerdown', onPointerInput);
