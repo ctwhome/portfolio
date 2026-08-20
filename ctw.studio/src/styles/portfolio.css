@@ -234,6 +234,10 @@
   background: var(--ctw-color-surface);
 }
 
+.project-gallery__item--featured {
+  margin-bottom: var(--ctw-space-8);
+}
+
 .project-gallery__item > img,
 .project-gallery__item video,
 .project-gallery__item--pair > div img {
@@ -248,7 +252,8 @@
   gap: 1px;
 }
 
-.project-gallery figcaption {
+.project-gallery figcaption,
+.project-gallery__item--featured figcaption {
   padding: var(--ctw-space-3);
   color: var(--ctw-color-text-muted);
   font: 500 var(--ctw-type-label)/1.4 var(--ctw-font-mono);

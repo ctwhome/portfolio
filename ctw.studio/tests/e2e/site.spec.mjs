@@ -187,6 +187,14 @@ test('Ajax video and poster load only after its dialog opens', async ({ page }) 
   expect(available).toEqual([]);
 
   await page.locator('[data-project-link="ajax-visual-intelligence"]').first().click();
+  const dialog = page.locator('dialog#ajax-visual-intelligence');
+  await expect(dialog.locator('video')).toHaveCount(1);
+  await expect(dialog.locator('.project-dialog__body > .project-gallery__item--featured')).toHaveCount(1);
+  expect(await dialog.evaluate((element) => {
+    const featured = element.querySelector('.project-gallery__item--featured');
+    const lead = element.querySelector('.project-dialog__lead');
+    return Boolean(featured && lead && (featured.compareDocumentPosition(lead) & Node.DOCUMENT_POSITION_FOLLOWING));
+  })).toBe(true);
   await expect.poll(() => [...new Set(requested)].sort()).toEqual([...targets].sort());
   await expect.poll(() => [...new Set(available)].sort()).toEqual([...targets].sort());
 });
