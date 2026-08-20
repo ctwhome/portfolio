@@ -695,9 +695,10 @@ test("homepage restores historical composition through current static design sys
     assert.ok(homepage.includes(text), text);
   }
   assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
-  for (const href of ["/portfolio/", "/signals/", "/workshop/", "/#about", "/#contact"]) {
+  for (const href of ["/portfolio/", "/signals/", "/workshop/", "/#about"]) {
     assert.match(homepage, new RegExp(`href="${href.replaceAll("/", "\\/")}"`));
   }
+  assert.doesNotMatch(homepage, /href="\/#contact">Contact<\/a>/);
   assert.match(homepage, /bodyClass="studio-home"/);
   assert.match(componentsCss, /\.ctw-wordmark__dot\s*\{[^}]*color:\s*var\(--ctw-color-action\)/s);
   assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link[^}]*text-transform:\s*none/s);

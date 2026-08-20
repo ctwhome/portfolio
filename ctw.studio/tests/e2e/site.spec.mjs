@@ -259,6 +259,25 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
 });
 
+test('homepage contact targets the founder and hero glyphs replay smoke on hover', async ({ page }) => {
+  await page.goto('/');
+  const navigation = page.locator('.ctw-primary-nav');
+  await expect(navigation.getByRole('link', { name: 'Founder', exact: true })).toHaveCount(0);
+  const contact = navigation.getByRole('link', { name: 'Contact', exact: true });
+  await expect(contact).toHaveAttribute('href', '/#about');
+  await contact.click();
+  await expect(page).toHaveURL(/\/#about$/);
+  await expect(page.locator('#about')).toBeInViewport();
+
+  await page.goto('/');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  const glyph = page.locator('.studio-title-glyph').nth(4);
+  await glyph.hover();
+  await expect(glyph).toHaveClass(/is-smoking/);
+  expect(await glyph.evaluate((element) => getComputedStyle(element).animationName)).toContain('studio-title-smoke-hover');
+  await expect(glyph).not.toHaveClass(/is-smoking/, { timeout: 2_000 });
+});
+
 test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
   await page.goto('/portfolio/');
   const first = page.locator('[data-project-link="data-storytelling"]').first();

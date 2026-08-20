@@ -215,6 +215,36 @@ if (title && !reducedMotion.matches) {
     dispatchEvent(new Event('studio-hero-complete'));
   }, 2900);
 
+  if (precisePointer.matches) {
+    const glyphs = [...title.querySelectorAll<HTMLElement>('.studio-title-glyph')];
+    let lastGlyph: HTMLElement | null = null;
+    const smoke = (glyph: HTMLElement) => {
+      glyph.classList.remove('is-smoking');
+      requestAnimationFrame(() => glyph.classList.add('is-smoking'));
+    };
+    const onPointerMove = ({ target }: PointerEvent) => {
+      if (!document.body.classList.contains('studio-hero-complete')) return;
+      const glyph = (target as HTMLElement).closest<HTMLElement>('.studio-title-glyph');
+      if (!glyph || glyph === lastGlyph) return;
+      lastGlyph = glyph;
+      const index = glyphs.indexOf(glyph);
+      smoke(glyph);
+      const before = glyphs[index - 1];
+      const after = glyphs[index + 1];
+      if (before) setTimeout(() => smoke(before), 55);
+      if (after) setTimeout(() => smoke(after), 95);
+    };
+    const onPointerLeave = () => { lastGlyph = null; };
+    const onAnimationEnd = ({ animationName, target }: AnimationEvent) => {
+      if (animationName === 'studio-title-smoke-hover') {
+        (target as HTMLElement).classList.remove('is-smoking');
+      }
+    };
+    title.addEventListener('pointermove', onPointerMove);
+    title.addEventListener('pointerleave', onPointerLeave);
+    title.addEventListener('animationend', onAnimationEnd);
+  }
+
   let scrollFrame = 0;
   const updateTitleOnScroll = () => {
     scrollFrame = 0;
