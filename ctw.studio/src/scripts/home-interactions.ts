@@ -187,57 +187,201 @@ const initPageFluid = () => {
 
 initPageFluid();
 
-if (title && !reducedMotion.matches) {
+const initTitleCanvas = (heading: HTMLElement) => {
+  const lines = [...heading.querySelectorAll<HTMLElement>('.studio-title-line')];
+  if (!lines.length) return;
+
   let glyphIndex = 0;
-  for (const line of title.querySelectorAll<HTMLElement>('.studio-title-line')) {
+  for (const line of lines) {
     const characters = Array.from(line.textContent ?? '');
     line.replaceChildren(...characters.map((character) => {
       const glyph = document.createElement('span');
       glyph.className = 'studio-title-glyph';
       glyph.textContent = character === ' ' ? '\u00a0' : character;
-      glyph.style.setProperty('--studio-glyph-delay', `${90 + glyphIndex * 43}ms`);
-      glyph.style.setProperty('--studio-smoke-y', glyphIndex % 2 ? '-0.16em' : '0.16em');
-      glyph.style.setProperty('--studio-smoke-y-soft', glyphIndex % 2 ? '0.08em' : '-0.08em');
+      glyph.dataset.glyphIndex = `${glyphIndex}`;
       glyphIndex += 1;
       return glyph;
     }));
   }
 
-  title.classList.add('is-resolved');
-  setTimeout(() => {
-    document.body.classList.add('studio-hero-complete');
-    dispatchEvent(new Event('studio-hero-complete'));
-  }, 2900);
+  const canvas = document.createElement('canvas');
+  canvas.className = 'studio-title-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  canvas.dataset.renderMode = 'canvas';
+  canvas.dataset.smokeActive = 'false';
+  const context = canvas.getContext('2d');
+  if (!context) return;
+  heading.append(canvas);
 
-  if (precisePointer.matches) {
-    const glyphs = [...title.querySelectorAll<HTMLElement>('.studio-title-glyph')];
-    let lastGlyph: HTMLElement | null = null;
-    const smoke = (glyph: HTMLElement) => {
-      glyph.classList.remove('is-smoking');
-      requestAnimationFrame(() => glyph.classList.add('is-smoking'));
-    };
-    const onPointerMove = ({ target }: PointerEvent) => {
-      if (!document.body.classList.contains('studio-hero-complete')) return;
-      const glyph = (target as HTMLElement).closest<HTMLElement>('.studio-title-glyph');
-      if (!glyph || glyph === lastGlyph) return;
-      lastGlyph = glyph;
-      const index = glyphs.indexOf(glyph);
-      smoke(glyph);
-      const before = glyphs[index - 1];
-      const after = glyphs[index + 1];
-      if (before) setTimeout(() => smoke(before), 55);
-      if (after) setTimeout(() => smoke(after), 95);
-    };
-    const onPointerLeave = () => { lastGlyph = null; };
-    const onAnimationEnd = ({ animationName, target }: AnimationEvent) => {
-      if (animationName === 'studio-title-smoke-hover') {
-        (target as HTMLElement).classList.remove('is-smoking');
+  type Glyph = {
+    character: string;
+    x: number;
+    baseline: number;
+    left: number;
+    right: number;
+    top: number;
+    bottom: number;
+    color: string;
+    delay: number;
+    hoverStart: number;
+  };
+
+  let glyphs: Glyph[] = [];
+  let font = '';
+  let frame = 0;
+  let lastIndex = -1;
+  let introStart = 0;
+  const introDuration = 1350;
+  const hoverDuration = 780;
+  const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
+  const easeOut = (value: number) => 1 - Math.pow(1 - value, 4);
+
+  const layout = () => {
+    const bounds = heading.getBoundingClientRect();
+    const scale = Math.min(devicePixelRatio, 1.5);
+    canvas.width = Math.max(1, Math.round(bounds.width * scale));
+    canvas.height = Math.max(1, Math.round(bounds.height * scale));
+    context.setTransform(scale, 0, 0, scale, 0, 0);
+
+    const style = getComputedStyle(heading);
+    font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+    context.font = font;
+    context.textBaseline = 'alphabetic';
+    const metrics = context.measureText('Hg');
+
+    glyphs = [...heading.querySelectorAll<HTMLElement>('.studio-title-glyph')].map((glyph, index) => {
+      const glyphBounds = glyph.getBoundingClientRect();
+      const line = glyph.closest<HTMLElement>('.studio-title-line') ?? glyph;
+      const lineBounds = line.getBoundingClientRect();
+      return {
+        character: glyph.textContent ?? '',
+        x: glyphBounds.left - bounds.left,
+        baseline: lineBounds.top - bounds.top + lineBounds.height / 2
+          + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2,
+        left: glyphBounds.left - bounds.left,
+        right: glyphBounds.right - bounds.left,
+        top: glyphBounds.top - bounds.top,
+        bottom: glyphBounds.bottom - bounds.top,
+        color: getComputedStyle(glyph).color,
+        delay: 90 + index * 43,
+        hoverStart: glyphs[index]?.hoverStart ?? -1,
+      };
+    });
+  };
+
+  const drawGlyph = (glyph: Glyph, alpha: number, smoke: number, index: number) => {
+    context.save();
+    context.font = font;
+    context.textBaseline = 'alphabetic';
+    context.fillStyle = glyph.color;
+
+    if (smoke > 0.01) {
+      const direction = index % 2 ? -1 : 1;
+      context.shadowColor = glyph.color;
+      context.shadowBlur = 8 + smoke * 22;
+      for (let layer = 0; layer < 3; layer += 1) {
+        context.globalAlpha = smoke * (0.12 - layer * 0.025);
+        const drift = smoke * (5 + layer * 7);
+        context.fillText(
+          glyph.character,
+          glyph.x + direction * drift,
+          glyph.baseline + (layer - 1) * smoke * 3
+        );
       }
-    };
-    title.addEventListener('pointermove', onPointerMove);
-    title.addEventListener('pointerleave', onPointerLeave);
-    title.addEventListener('animationend', onAnimationEnd);
-  }
+    }
+
+    context.globalAlpha = alpha;
+    context.shadowColor = glyph.color;
+    context.shadowBlur = smoke * 10;
+    context.fillText(glyph.character, glyph.x, glyph.baseline);
+    context.restore();
+  };
+
+  const render = (now: number) => {
+    frame = 0;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    let active = false;
+    let hoverActive = false;
+
+    glyphs.forEach((glyph, index) => {
+      let alpha = 1;
+      let smoke = 0;
+
+      if (!reducedMotion.matches) {
+        const intro = clamp01((now - introStart - glyph.delay) / introDuration);
+        if (intro < 1) active = true;
+        alpha = easeOut(intro);
+        smoke = Math.sin(Math.PI * intro) * (1 - intro * 0.25);
+
+        if (glyph.hoverStart >= 0) {
+          const hover = clamp01((now - glyph.hoverStart) / hoverDuration);
+          if (hover < 1) {
+            active = true;
+            hoverActive = true;
+          }
+          else glyph.hoverStart = -1;
+          const hoverSmoke = Math.sin(Math.PI * hover);
+          smoke = Math.max(smoke, hoverSmoke);
+          alpha *= 1 - hoverSmoke * 0.72;
+        }
+      }
+
+      drawGlyph(glyph, alpha, smoke, index);
+    });
+
+    canvas.dataset.smokeActive = hoverActive ? 'true' : 'false';
+
+    if (active && !document.hidden) frame = requestAnimationFrame(render);
+  };
+
+  const start = () => {
+    if (!frame && !document.hidden) frame = requestAnimationFrame(render);
+  };
+
+  const triggerSmoke = (index: number, delay = 0) => {
+    const glyph = glyphs[index];
+    if (!glyph) return;
+    glyph.hoverStart = performance.now() + delay;
+    start();
+  };
+
+  const onPointerMove = ({ clientX, clientY }: PointerEvent) => {
+    if (!precisePointer.matches || reducedMotion.matches || !document.body.classList.contains('studio-hero-complete')) return;
+    const bounds = heading.getBoundingClientRect();
+    const x = clientX - bounds.left;
+    const y = clientY - bounds.top;
+    const index = glyphs.findIndex((glyph) => x >= glyph.left && x <= glyph.right && y >= glyph.top && y <= glyph.bottom);
+    if (index < 0 || index === lastIndex) return;
+    lastIndex = index;
+    triggerSmoke(index);
+    triggerSmoke(index - 1, 55);
+    triggerSmoke(index + 1, 95);
+  };
+
+  const onPointerLeave = () => { lastIndex = -1; };
+  const resize = () => {
+    layout();
+    start();
+  };
+
+  document.fonts.ready.then(() => {
+    layout();
+    introStart = performance.now();
+    heading.classList.add('has-title-canvas');
+    start();
+    setTimeout(() => {
+      document.body.classList.add('studio-hero-complete');
+      dispatchEvent(new Event('studio-hero-complete'));
+    }, reducedMotion.matches ? 0 : 2900);
+  });
+
+  heading.addEventListener('pointermove', onPointerMove);
+  heading.addEventListener('pointerleave', onPointerLeave);
+  new ResizeObserver(resize).observe(heading);
+};
+
+if (title) {
+  initTitleCanvas(title);
 
   let scrollFrame = 0;
   const updateTitleOnScroll = () => {

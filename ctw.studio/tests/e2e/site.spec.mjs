@@ -259,7 +259,7 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
 });
 
-test('homepage contact targets the founder and hero glyphs replay smoke on hover', async ({ page }) => {
+test('homepage contact targets the founder and canvas title replays smoke on hover', async ({ page }) => {
   await page.goto('/');
   const navigation = page.locator('.ctw-primary-nav');
   await expect(navigation.getByRole('link', { name: 'Founder', exact: true })).toHaveCount(0);
@@ -271,21 +271,25 @@ test('homepage contact targets the founder and hero glyphs replay smoke on hover
 
   await page.goto('/');
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
-  await expect(page.locator('.studio-title-mesh')).toHaveCount(0);
-  expect(await page.locator('.studio-title-glyph').evaluateAll((elements) => [
-    ...new Set(elements.map((element) => element.tagName))
-  ])).toEqual(['SPAN']);
+  const canvas = page.locator('.studio-title-canvas');
+  await expect(canvas).toBeVisible();
+  await expect(canvas).toHaveAttribute('data-render-mode', 'canvas');
+  expect(await page.locator('.studio-title-line').evaluateAll((elements) => elements.map((element) => {
+    const style = getComputedStyle(element);
+    return { visibility: style.visibility, userSelect: style.userSelect };
+  }))).toEqual([
+    { visibility: 'hidden', userSelect: 'none' },
+    { visibility: 'hidden', userSelect: 'none' },
+    { visibility: 'hidden', userSelect: 'none' }
+  ]);
   const glyph = page.locator('.studio-title-glyph').nth(4);
-  await glyph.hover();
-  await expect(glyph).toHaveClass(/is-smoking/);
-  await expect.poll(
-    () => glyph.evaluate((element) => {
-      const style = getComputedStyle(element);
-      return { animationName: style.animationName, transform: style.transform };
-    }),
-    { timeout: 1_000 }
-  ).toEqual({ animationName: 'studio-title-smoke-hover', transform: 'none' });
-  await expect(glyph).not.toHaveClass(/is-smoking/, { timeout: 2_000 });
+  const glyphBounds = await glyph.boundingBox();
+  await page.mouse.move(
+    (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
+    (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
+  );
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 2_000 });
 });
 
 test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {

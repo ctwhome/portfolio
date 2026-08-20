@@ -87,6 +87,7 @@ body {
   transform: translateY(var(--studio-title-shift));
   transition: letter-spacing var(--ctw-motion-deliberate) var(--ctw-ease-out), transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
   text-wrap: balance;
+  user-select: none;
 }
 
 .studio-hero__accent,
@@ -112,6 +113,24 @@ body {
 
 .studio-title-glyph {
   transform-origin: 50% 75%;
+}
+
+.studio-title-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.studio-hero__title.has-title-canvas .studio-title-line {
+  visibility: hidden;
+  user-select: none;
+}
+
+.studio-hero__title.has-title-canvas .studio-title-canvas {
+  opacity: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -637,50 +656,6 @@ body {
   to { opacity: 1; translate: 0 0; }
 }
 
-@keyframes studio-title-smoke-reveal {
-  from {
-    opacity: 0;
-    filter: blur(1.15rem);
-    text-shadow:
-      -0.9em var(--studio-smoke-y) 0.38em currentColor,
-      -1.75em var(--studio-smoke-y-soft) 0.9em currentColor;
-    transform: translate3d(-1.15em, var(--studio-smoke-y), 0) skewX(-18deg) scale(0.76);
-  }
-  42% {
-    opacity: 0.66;
-    filter: blur(0.42rem);
-    text-shadow:
-      -0.34em var(--studio-smoke-y-soft) 0.46em currentColor,
-      -0.8em 0 1.1em currentColor;
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    text-shadow: 0 0 0 transparent;
-    transform: translate3d(0, 0, 0) skewX(0) scale(1);
-  }
-}
-
-@keyframes studio-title-smoke-hover {
-  from {
-    opacity: 1;
-    filter: blur(0);
-    text-shadow: 0 0 0 transparent;
-  }
-  38% {
-    opacity: 0.28;
-    filter: blur(0.62rem);
-    text-shadow:
-      0.38em var(--studio-smoke-y) 0.42em currentColor,
-      0.88em var(--studio-smoke-y-soft) 1em currentColor;
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    text-shadow: 0 0 0 transparent;
-  }
-}
-
 @keyframes studio-masthead-arrive {
   from { opacity: 0; translate: 0 -0.75rem; }
   to { opacity: 1; translate: 0 0; }
@@ -694,27 +669,6 @@ body {
   .studio-facts__links > a {
     opacity: 0;
     animation: studio-arrive 700ms var(--ctw-ease-out) forwards;
-  }
-
-  .studio-hero__title.is-resolved .studio-title-glyph {
-    opacity: 0;
-    animation: studio-title-smoke-reveal 1350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: var(--studio-glyph-delay);
-    will-change: transform, opacity, filter;
-  }
-
-  .studio-hero-complete .studio-hero__title.is-resolved .studio-title-glyph {
-    animation: none;
-    opacity: 1;
-    filter: blur(0);
-    text-shadow: 0 0 0 transparent;
-    transform: none;
-    will-change: auto;
-  }
-
-  .studio-hero-complete .studio-hero__title.is-resolved .studio-title-glyph.is-smoking {
-    animation: studio-title-smoke-hover 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    will-change: transform, opacity, filter;
   }
 
   .studio-home .ctw-masthead__inner {
