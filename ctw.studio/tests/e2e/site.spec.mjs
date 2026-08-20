@@ -393,8 +393,27 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
   const fluid = page.locator('.studio-page-fluid');
   await expect(fluid).toBeVisible();
   await expect(fluid).toHaveAttribute('data-motion-mode', 'touch-scroll');
+  expect(Number(await fluid.evaluate((element) => getComputedStyle(element).opacity))).toBeGreaterThanOrEqual(0.6);
   const canvas = page.locator('.canvas-smoke-title__canvas');
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  await page.waitForTimeout(900);
+  const idleFrame = Number(await fluid.getAttribute('data-frame-count'));
+  await page.waitForTimeout(1_100);
+  const continuedFrames = Number(await fluid.getAttribute('data-frame-count')) - idleFrame;
+  expect(continuedFrames).toBeGreaterThanOrEqual(7);
+  expect(continuedFrames).toBeLessThanOrEqual(15);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  const hiddenFrame = Number(await fluid.getAttribute('data-frame-count'));
+  await page.waitForTimeout(400);
+  expect(Number(await fluid.getAttribute('data-frame-count'))).toBe(hiddenFrame);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await expect.poll(async () => Number(await fluid.getAttribute('data-frame-count'))).toBeGreaterThan(hiddenFrame);
   const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
   await page.touchscreen.tap(
     (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
@@ -410,6 +429,7 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
   await expect(scrollReveal).toHaveClass(/is-visible/);
   await expect(scrollReveal).toHaveCSS('opacity', '1');
   await expect.poll(async () => Number(await fluid.getAttribute('data-scroll-progress'))).toBeGreaterThan(0.1);
+  await expect.poll(async () => Number(await fluid.getAttribute('data-energy'))).toBeGreaterThan(0.3);
   await context.close();
 });
 
