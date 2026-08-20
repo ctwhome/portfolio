@@ -271,6 +271,10 @@ test('homepage contact targets the founder and hero glyphs replay smoke on hover
 
   await page.goto('/');
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  await expect(page.locator('.studio-title-mesh')).toHaveCount(0);
+  expect(await page.locator('.studio-title-glyph').evaluateAll((elements) => [
+    ...new Set(elements.map((element) => element.tagName))
+  ])).toEqual(['SPAN']);
   const glyph = page.locator('.studio-title-glyph').nth(4);
   await glyph.hover();
   await expect(glyph).toHaveClass(/is-smoking/);
