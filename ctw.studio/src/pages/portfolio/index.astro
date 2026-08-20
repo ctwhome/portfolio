@@ -9,18 +9,18 @@ const orderedProjects = [...projects].sort((a, b) => b.date.localeCompare(a.date
 ---
 <SiteLayout
   title="Work — CTW Studio"
-  description="Selected projects by CTW Studio. Applied research software, scientific visualization, and digital experiences."
+  description="CTW Studio portfolio of research software and independent product experiments."
   canonical="/portfolio/"
   current="portfolio"
 >
   <main id="main-content" class="portfolio-page">
     <div class="ctw-container">
       <header class="portfolio-lead">
-        <p class="ctw-section-number">Selected work / 2013—2025</p>
-        <h1>Research software as cultural practice.</h1>
+        <p class="ctw-section-number">Work / 2013–2026</p>
+        <h1>Software and design work.</h1>
         <div class="portfolio-lead__meta">
           <span>{orderedProjects.length} projects</span>
-          <span>Amsterdam · global</span>
+          <span>Based in Amsterdam</span>
         </div>
       </header>
       <ProjectGrid projects={orderedProjects} />

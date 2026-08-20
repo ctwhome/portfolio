@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { access, readFile, readdir, stat } from 'node:fs/promises';
 import test from 'node:test';
+import sharp from 'sharp';
+import { projects } from '../src/data/projects.ts';
 
 const dist = new URL('../dist/', import.meta.url);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -52,7 +54,9 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
     'bcaed40baf8f78b413f9c5afc0fb890643ec1011e95131f6092e25dfef0e5c12'
   );
   assert.match(home, /Interaction design engineering for systems people need to understand and control/);
-  assert.match(portfolio, /Research software as cultural practice/);
+  assert.match(portfolio, /Work \/ 2013–2026/);
+  assert.match(portfolio, /Software and design work\./);
+  assert.match(portfolio, /Based in Amsterdam/);
   assert.match(portfolio, /<dialog[^>]+data-project-dialog="data-storytelling"/);
   assert.match(portfolio, /<a class="ctw-button" href="\/nlesc\/">Visit project ↗<\/a>/);
 });
@@ -185,11 +189,32 @@ test('preservation manifest has exact byte-identical output counterparts', async
 
 test('portfolio keeps stable media URLs and owns its controller code', async () => {
   const portfolio = await readFile(new URL('portfolio/index.html', dist), 'utf8');
+  const gridSource = await readFile(new URL('../src/components/ProjectGrid.astro', import.meta.url), 'utf8');
   const source = await readFile(new URL('../portfolio/projects.js', import.meta.url), 'utf8');
   const media = [...source.matchAll(/\b(?:coverImage|src|src2|pdfUrl): '([^']+)'/g)].map((match) => match[1]);
   for (const path of new Set(media)) {
     assert.match(portfolio, new RegExp(`/portfolio/${path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
+  assert.match(portfolio, /\/portfolio\/covers\/droneatlas-720\.webp 720w/);
+  await access(new URL('portfolio/covers/droneatlas-720.webp', dist));
+  const coverMetadata = await sharp(await readFile(new URL('portfolio/covers/droneatlas-960.webp', dist))).metadata();
+  assert.deepEqual([coverMetadata.width, coverMetadata.height], [960, 640]);
+  for (const deleted of ['workspace.webp', 'local-first.webp', 'drawing.webp', 'ai.webp']) {
+    assert.doesNotMatch(portfolio, new RegExp(`/portfolio/projects/notidian/${deleted}`));
+  }
+
+  assert.equal(projects.length, 21);
+  assert.equal((portfolio.match(/<li class="project-card">/g) ?? []).length, projects.length);
+  assert.doesNotMatch(gridSource, /project-card--span-|gridSpan/);
+  assert.doesNotMatch(portfolio, /project-card--span-/);
+  assert.match(
+    gridSource,
+    /<span class="project-card__media">[\s\S]*?<img[\s\S]*?<\/span>\s*<span class="project-card__copy">/
+  );
+  assert.match(
+    portfolio,
+    /<span class="project-card__media"><img[\s\S]*?<\/span>\s*<span class="project-card__copy">/
+  );
 
   assert.match(portfolio, /portfolio-enhanced/);
   for (const file of [
@@ -199,6 +224,87 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
     'design-system/index.html'
   ]) {
     assert.doesNotMatch(await readFile(new URL(file, dist), 'utf8'), /portfolio-enhanced/, file);
+  }
+});
+
+test('portfolio data includes DroneAtlas and 3D Skeletal Tracking in Football source evidence', async () => {
+  const expected = [
+    {
+      id: 'droneatlas',
+      date: '2026-06-13',
+      liveUrl: 'https://droneml.github.io/DroneAtlas/',
+      repoUrl: 'https://github.com/DroneML/DroneAtlas',
+      media: ['cover.avif', 'gallery-1.avif', 'gallery-2.avif']
+    },
+    {
+      id: 'ajax-visual-intelligence',
+      date: '2026-03-07',
+      liveUrl: null,
+      repoUrl: 'https://github.com/El-Machin-Team/football-body-kinematics',
+      media: ['cover.avif', 'demo.mp4', 'gallery-1.avif', 'gallery-2.avif']
+    }
+  ];
+
+  for (const evidence of expected) {
+    const project = projects.find(({ id }) => id === evidence.id);
+    assert.ok(project, evidence.id);
+    assert.deepEqual(
+      { date: project.date, liveUrl: project.liveUrl, repoUrl: project.repoUrl },
+      { date: evidence.date, liveUrl: evidence.liveUrl, repoUrl: evidence.repoUrl }
+    );
+    const media = [project.coverImage, ...project.gallery.map(({ src }) => src)];
+    assert.deepEqual([...new Set(media)], evidence.media.map((file) => `projects/${evidence.id}/${file}`));
+    await Promise.all(media.map((path) => access(new URL(`../portfolio/${path}`, import.meta.url))));
+  }
+
+  const ajax = projects.find(({ id }) => id === 'ajax-visual-intelligence');
+  assert.deepEqual(
+    { type: ajax.gallery[0].type, src: ajax.gallery[0].src },
+    { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4' }
+  );
+  assert.equal(ajax.title, '3D Skeletal Tracking in Football');
+  assert.equal(ajax.headline, 'What 21 tracked body points reveal about player orientation');
+  assert.match(ajax.description, /FIFA calls the technology skeletal tracking/);
+  assert.match(ajax.description, /2026 World Cup[\s\S]*AI-enabled 3D player avatars[\s\S]*semi-automated offside replays/);
+  assert.match(ajax.description, /Ajax Hackathon[\s\S]*explore another use/);
+  assert.match(ajax.description, /21 body points per player at 25 fps/);
+  assert.match(ajax.description, /our multidisciplinary team/);
+  assert.match(ajax.description, /Our team won an award\./);
+  const video = ajax.gallery.find(({ type }) => type === 'video');
+  assert.deepEqual(video, {
+    type: 'video',
+    src: 'projects/ajax-visual-intelligence/demo.mp4',
+    poster: 'projects/ajax-visual-intelligence/video-poster.avif',
+    caption: 'Thirty-second walkthrough of skeletal tracking, player POV, and comparison metrics',
+    width: 1920,
+    height: 1080
+  });
+  const videoFile = new URL('../portfolio/projects/ajax-visual-intelligence/demo.mp4', import.meta.url);
+  const videoSize = (await stat(videoFile)).size;
+  assert.ok(videoSize > 1024 ** 2, `expected demo.mp4 > 1 MiB, received ${videoSize} bytes`);
+  assert.ok(videoSize <= 8 * 1024 ** 2, `expected demo.mp4 <= 8 MiB, received ${videoSize} bytes`);
+  const posterFile = new URL('../portfolio/projects/ajax-visual-intelligence/video-poster.avif', import.meta.url);
+  const posterMetadata = await sharp(await readFile(posterFile)).metadata();
+  assert.deepEqual(
+    { width: posterMetadata.width, height: posterMetadata.height },
+    { width: 1920, height: 1080 }
+  );
+
+  const portfolio = await readFile(new URL('portfolio/index.html', dist), 'utf8');
+  const ajaxDialog = portfolio.match(/<dialog[^>]+data-project-dialog="ajax-visual-intelligence"[\s\S]*?<\/dialog>/)?.[0];
+  assert.ok(ajaxDialog, 'Ajax project dialog missing');
+  assert.match(ajaxDialog, /<video controls playsinline preload="none" width="1920" height="1080" data-poster="\/portfolio\/projects\/ajax-visual-intelligence\/video-poster\.avif">/);
+  assert.doesNotMatch(ajaxDialog, /<video\b[^>]*\sposter=/);
+  assert.match(ajaxDialog, /<source data-src="\/portfolio\/projects\/ajax-visual-intelligence\/demo\.mp4" type="video\/mp4">/);
+
+  for (const item of ajax.gallery.filter(({ type }) => type === 'image')) {
+    const source = await readFile(new URL(`../portfolio/${item.src}`, import.meta.url));
+    const metadata = await sharp(source).metadata();
+    assert.deepEqual(
+      { width: item.width, height: item.height },
+      { width: metadata.width, height: metadata.height },
+      item.src
+    );
   }
 });
 

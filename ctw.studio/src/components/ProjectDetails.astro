@@ -27,7 +27,7 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
 
         <div class="project-dialog__body">
           <div class="project-dialog__lead">
-            <p class="ctw-section-number">{String(index + 1).padStart(2, '0')} / Project</p>
+            <p class="ctw-section-number">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</p>
             <h2 class="project-dialog__title" id={`${project.id}-title`}>{project.title}</h2>
             <p class="project-dialog__headline">{project.headline}</p>
           </div>
@@ -39,13 +39,13 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
           <dl class="project-dialog__facts">
             <div><dt>Client</dt><dd>{project.client}</dd></div>
             {project.institution && <div><dt>Institution</dt><dd>{project.institution}</dd></div>}
-            <div><dt>Methods</dt><dd>{project.tags.join(' · ')}</dd></div>
+            <div><dt>Tools &amp; disciplines</dt><dd>{project.tags.join(' · ')}</dd></div>
           </dl>
 
           {(project.liveUrl || project.repoUrl || project.pdfUrl) && (
             <nav class="project-dialog__links" aria-label={`${project.title} links`}>
               {project.liveUrl && <a class="ctw-button" href={project.liveUrl} target={project.liveUrl.startsWith('/') ? undefined : '_blank'} rel={project.liveUrl.startsWith('/') ? undefined : 'noopener noreferrer'}>Visit project ↗</a>}
-              {project.repoUrl && <a class="ctw-button ctw-button--secondary" href={project.repoUrl} target="_blank" rel="noopener noreferrer">Source ↗</a>}
+              {project.repoUrl && <a class="ctw-button ctw-button--secondary" href={project.repoUrl} target="_blank" rel="noopener noreferrer">View source ↗</a>}
               {project.pdfUrl && <a class="ctw-button ctw-button--secondary" href={mediaUrl(project.pdfUrl)} target="_blank" rel="noopener noreferrer">Read PDF ↗</a>}
             </nav>
           )}
@@ -55,7 +55,7 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
               {project.gallery.map((item) => (
                 item.type === 'video' ? (
                   <figure class="project-gallery__item">
-                    <video controls playsinline preload="none" width="1600" height="900">
+                    <video controls playsinline preload="none" width={item.width ?? 1600} height={item.height ?? 900} data-poster={item.poster ? mediaUrl(item.poster) : undefined}>
                       <source data-src={mediaUrl(item.src)} type="video/mp4" />
                     </video>
                     <noscript><a class="project-gallery__source" href={mediaUrl(item.src)}>Open original video</a></noscript>
@@ -78,7 +78,7 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
                   </figure>
                 ) : (
                   <figure class="project-gallery__item">
-                    <img data-src={mediaUrl(item.src)} alt={item.caption ?? ''} width="1600" height="900" decoding="async" />
+                    <img data-src={mediaUrl(item.src)} alt={item.caption ?? ''} width={item.width ?? 1600} height={item.height ?? 900} decoding="async" />
                     <noscript><a class="project-gallery__source" href={mediaUrl(item.src)}>Open original image</a></noscript>
                     {item.caption && <figcaption>{item.caption}</figcaption>}
                   </figure>
