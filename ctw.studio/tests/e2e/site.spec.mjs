@@ -280,6 +280,18 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   await expect(canvas).toBeVisible();
   await expect(canvas).toHaveAttribute('data-render-mode', 'canvas');
   expect(await page.locator('.studio-hero__title').evaluate((heading) => {
+    const canvasBounds = heading.querySelector('canvas')?.getBoundingClientRect();
+    const glyphBounds = [...heading.querySelectorAll('[data-canvas-smoke-glyph]')]
+      .map((glyph) => glyph.getBoundingClientRect());
+    if (!canvasBounds || !glyphBounds.length) return false;
+    return Math.min(
+      Math.min(...glyphBounds.map((bounds) => bounds.left)) - canvasBounds.left,
+      canvasBounds.right - Math.max(...glyphBounds.map((bounds) => bounds.right)),
+      Math.min(...glyphBounds.map((bounds) => bounds.top)) - canvasBounds.top,
+      canvasBounds.bottom - Math.max(...glyphBounds.map((bounds) => bounds.bottom))
+    ) >= 40;
+  })).toBe(true);
+  expect(await page.locator('.studio-hero__title').evaluate((heading) => {
     const top = heading.getBoundingClientRect().top;
     const htmlBaselines = [...heading.querySelectorAll('[data-canvas-smoke-baseline]')]
       .map((marker) => Number((marker.getBoundingClientRect().top - top).toFixed(2)));

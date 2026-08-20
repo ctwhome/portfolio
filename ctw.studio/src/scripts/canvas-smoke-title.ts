@@ -78,11 +78,15 @@ export const mountCanvasSmokeTitle = (
   const layout = () => {
     const bounds = heading.getBoundingClientRect();
     const scale = Math.min(devicePixelRatio, 1.5);
-    canvas.width = Math.max(1, Math.round(bounds.width * scale));
-    canvas.height = Math.max(1, Math.round(bounds.height * scale));
+    const style = getComputedStyle(heading);
+    const overscan = Math.min(96, Math.max(48, Number.parseFloat(style.fontSize) * 0.75));
+    const canvasWidth = bounds.width + overscan * 2;
+    const canvasHeight = bounds.height + overscan * 2;
+    canvas.style.setProperty('--ctw-canvas-smoke-overscan', `${overscan}px`);
+    canvas.width = Math.max(1, Math.round(canvasWidth * scale));
+    canvas.height = Math.max(1, Math.round(canvasHeight * scale));
     context.setTransform(scale, 0, 0, scale, 0, 0);
 
-    const style = getComputedStyle(heading);
     font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
     context.font = font;
     context.textBaseline = 'alphabetic';
@@ -96,8 +100,8 @@ export const mountCanvasSmokeTitle = (
       const line = glyph.closest<HTMLElement>('[data-canvas-smoke-line]') ?? glyph;
       return {
         character: glyph.textContent ?? '',
-        x: glyphBounds.left - bounds.left,
-        baseline: baselineByLine.get(line) ?? glyphBounds.bottom - bounds.top,
+        x: glyphBounds.left - bounds.left + overscan,
+        baseline: (baselineByLine.get(line) ?? glyphBounds.bottom - bounds.top) + overscan,
         left: glyphBounds.left - bounds.left,
         right: glyphBounds.right - bounds.left,
         top: glyphBounds.top - bounds.top,

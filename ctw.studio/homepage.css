@@ -116,10 +116,11 @@ body {
 }
 
 .canvas-smoke-title__canvas {
+  --ctw-canvas-smoke-overscan: 0px;
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: calc(0px - var(--ctw-canvas-smoke-overscan));
+  width: calc(100% + var(--ctw-canvas-smoke-overscan) + var(--ctw-canvas-smoke-overscan));
+  height: calc(100% + var(--ctw-canvas-smoke-overscan) + var(--ctw-canvas-smoke-overscan));
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms var(--ctw-ease-out);
