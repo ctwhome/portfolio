@@ -87,6 +87,7 @@ body {
   transform: translateY(var(--studio-title-shift));
   transition: letter-spacing var(--ctw-motion-deliberate) var(--ctw-ease-out), transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
   text-wrap: balance;
+  touch-action: pan-y;
   user-select: none;
 }
 

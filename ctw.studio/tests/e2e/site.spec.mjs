@@ -325,6 +325,31 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 3_000 });
 });
 
+test('homepage smoke intro and touch interaction run on mobile', async ({ browser }) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true
+  });
+  const page = await context.newPage();
+  await page.goto('/');
+  await expect.poll(
+    () => page.locator('.studio-title-glyph').first().evaluate((element) => getComputedStyle(element).animationName),
+    { timeout: 1_000 }
+  ).toBe('studio-title-smoke-reveal');
+
+  const canvas = page.locator('.canvas-smoke-title__canvas');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
+  await page.touchscreen.tap(
+    (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
+    (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
+  );
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 3_000 });
+  await context.close();
+});
+
 test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
   await page.goto('/portfolio/');
   const first = page.locator('[data-project-link="data-storytelling"]').first();

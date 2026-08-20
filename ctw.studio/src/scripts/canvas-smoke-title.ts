@@ -179,8 +179,9 @@ export const mountCanvasSmokeTitle = (
     if (!frame && !document.hidden && !disposed) frame = requestAnimationFrame(render);
   };
 
-  const onPointerMove = ({ clientX, clientY }: PointerEvent) => {
-    if (!activated || !interactive || !precisePointer.matches || reducedMotion.matches) return;
+  const onPointerInput = ({ clientX, clientY, pointerType }: PointerEvent) => {
+    const touchInput = pointerType === 'touch';
+    if (!activated || !interactive || reducedMotion.matches || (!touchInput && !precisePointer.matches)) return;
     const bounds = heading.getBoundingClientRect();
     const x = clientX - bounds.left;
     const y = clientY - bounds.top;
@@ -190,7 +191,7 @@ export const mountCanvasSmokeTitle = (
     hasPointer = true;
     canvas.dataset.smokeX = x.toFixed(1);
     canvas.dataset.smokeY = y.toFixed(1);
-    const energy = Math.min(1, 0.56 + velocity / 20);
+    const energy = Math.min(1, (touchInput ? 0.78 : 0.56) + velocity / 20);
 
     glyphs.forEach((glyph) => {
       const centerX = (glyph.left + glyph.right) / 2;
@@ -231,14 +232,16 @@ export const mountCanvasSmokeTitle = (
     }, reducedMotion.matches ? 0 : activateAfter);
   });
 
-  heading.addEventListener('pointermove', onPointerMove);
+  heading.addEventListener('pointerdown', onPointerInput);
+  heading.addEventListener('pointermove', onPointerInput);
   heading.addEventListener('pointerleave', onPointerLeave);
 
   return () => {
     disposed = true;
     cancelAnimationFrame(frame);
     resizeObserver.disconnect();
-    heading.removeEventListener('pointermove', onPointerMove);
+    heading.removeEventListener('pointerdown', onPointerInput);
+    heading.removeEventListener('pointermove', onPointerInput);
     heading.removeEventListener('pointerleave', onPointerLeave);
     canvas.remove();
   };
