@@ -124,13 +124,6 @@ body {
   height: calc(100% + var(--ctw-canvas-smoke-overscan) + var(--ctw-canvas-smoke-overscan));
   opacity: 0;
   pointer-events: none;
-  transition: opacity 180ms var(--ctw-ease-out);
-}
-
-.studio-hero__title.is-canvas-smoke-handoff .studio-title-line {
-  opacity: 0;
-  user-select: none;
-  transition: opacity 180ms var(--ctw-ease-out);
 }
 
 .studio-hero__title.is-canvas-smoke-active .studio-title-line {
@@ -139,7 +132,6 @@ body {
   user-select: none;
 }
 
-.studio-hero__title.is-canvas-smoke-handoff .canvas-smoke-title__canvas,
 .studio-hero__title.is-canvas-smoke-active .canvas-smoke-title__canvas {
   opacity: 1;
 }

@@ -279,6 +279,10 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
   await expect(canvas).toBeVisible();
   await expect(canvas).toHaveAttribute('data-render-mode', 'canvas');
+  await expect(canvas).toHaveAttribute('data-frame-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-handoff-ready', 'true');
+  await expect(canvas).toHaveCSS('transition-duration', '0s');
+  await expect(page.locator('.studio-title-line').first()).toHaveCSS('transition-duration', '0s');
   expect(await page.locator('.studio-hero__title').evaluate((heading) => {
     const canvasBounds = heading.querySelector('canvas')?.getBoundingClientRect();
     const glyphBounds = [...heading.querySelectorAll('[data-canvas-smoke-glyph]')]

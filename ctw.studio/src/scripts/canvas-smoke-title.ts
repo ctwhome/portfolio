@@ -58,6 +58,7 @@ export const mountCanvasSmokeTitle = (
   canvas.setAttribute('aria-hidden', 'true');
   canvas.dataset.renderMode = 'canvas';
   canvas.dataset.smokeActive = 'false';
+  canvas.dataset.frameReady = 'false';
   const context = canvas.getContext('2d');
   if (!context) return () => {};
   heading.append(canvas);
@@ -178,6 +179,7 @@ export const mountCanvasSmokeTitle = (
     });
 
     canvas.dataset.smokeActive = hoverActive ? 'true' : 'false';
+    canvas.dataset.frameReady = 'true';
     if (active && !document.hidden && !disposed) frame = requestAnimationFrame(render);
   };
 
@@ -226,15 +228,15 @@ export const mountCanvasSmokeTitle = (
     window.setTimeout(() => {
       if (disposed) return;
       introStart = performance.now();
-      heading.classList.add('is-canvas-smoke-handoff');
-      start();
-      window.setTimeout(() => {
+      render(introStart);
+      window.requestAnimationFrame(() => {
         if (disposed) return;
+        canvas.dataset.handoffReady = canvas.dataset.frameReady;
         activated = true;
-        heading.classList.remove('is-canvas-smoke-handoff');
         heading.classList.add('is-canvas-smoke-active');
+        start();
         onActivate?.();
-      }, reducedMotion.matches ? 0 : 180);
+      });
     }, reducedMotion.matches ? 0 : activateAfter);
   });
 
