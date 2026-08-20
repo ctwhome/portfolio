@@ -142,9 +142,10 @@ const initPageFluid = () => {
   let lastRendered = 0;
   let frame = 0;
   let running = false;
+  let mobileMotionUntil = touchScrollMotion ? performance.now() + 1800 : Number.POSITIVE_INFINITY;
 
   const resize = () => {
-    const scale = Math.min(devicePixelRatio, touchScrollMotion ? 1 : 1.25);
+    const scale = Math.min(devicePixelRatio, touchScrollMotion ? 0.75 : 1.25);
     canvas.width = Math.max(1, Math.round(innerWidth * scale));
     canvas.height = Math.max(1, Math.round(innerHeight * scale));
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -152,8 +153,11 @@ const initPageFluid = () => {
 
   const render = (timestamp: number) => {
     if (!running) return;
-    frame = requestAnimationFrame(render);
-    if (timestamp - lastRendered < (touchScrollMotion ? 42 : 33)) return;
+    frame = 0;
+    if (timestamp - lastRendered < (touchScrollMotion ? 50 : 33)) {
+      frame = requestAnimationFrame(render);
+      return;
+    }
     if (lastTimestamp) elapsed += Math.min(timestamp - lastTimestamp, 50) / 1000;
     lastTimestamp = timestamp;
     lastRendered = timestamp;
@@ -167,10 +171,24 @@ const initPageFluid = () => {
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (touchScrollMotion && timestamp >= mobileMotionUntil && pointerEnergy < 0.035) {
+      running = false;
+      return;
+    }
+    frame = requestAnimationFrame(render);
+  };
+
+  const wakeMobileMotion = (duration = 700) => {
+    if (!touchScrollMotion || document.hidden) return;
+    mobileMotionUntil = Math.max(mobileMotionUntil, performance.now() + duration);
+    if (running) return;
+    running = true;
+    lastTimestamp = 0;
+    frame = requestAnimationFrame(render);
   };
 
   const syncRendering = () => {
-    const shouldRun = !document.hidden;
+    const shouldRun = !document.hidden && (!touchScrollMotion || performance.now() < mobileMotionUntil);
     if (shouldRun === running) return;
     running = shouldRun;
     lastTimestamp = 0;
@@ -191,6 +209,7 @@ const initPageFluid = () => {
       canvas.dataset.scrollProgress = progress.toFixed(3);
       hero?.style.setProperty('--studio-hero-x', `${targetX * 100}%`);
       hero?.style.setProperty('--studio-hero-y', `${targetY * 100}%`);
+      wakeMobileMotion(distance > 4 ? 750 : 1800);
     };
     addEventListener('scroll', updateFromScroll, { passive: true });
     addEventListener('pointermove', ({ clientX, clientY, pointerType }) => {
@@ -198,6 +217,7 @@ const initPageFluid = () => {
       targetX = clientX / innerWidth;
       targetY = clientY / innerHeight;
       pointerEnergy = Math.min(1, pointerEnergy + 0.32);
+      wakeMobileMotion(800);
     }, { passive: true });
     updateFromScroll();
   } else {
