@@ -294,6 +294,15 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
     (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
   );
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  const firstSmokeX = Number(await canvas.getAttribute('data-smoke-x'));
+  const laterGlyphBounds = await page.locator('.studio-title-glyph').nth(9).boundingBox();
+  await page.mouse.move(
+    (laterGlyphBounds?.x ?? 0) + (laterGlyphBounds?.width ?? 0) / 2,
+    (laterGlyphBounds?.y ?? 0) + (laterGlyphBounds?.height ?? 0) / 2,
+    { steps: 8 }
+  );
+  await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 80);
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 2_000 });
 });
 

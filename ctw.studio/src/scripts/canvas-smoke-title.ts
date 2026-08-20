@@ -15,7 +15,7 @@ type Glyph = {
   bottom: number;
   color: string;
   delay: number;
-  hoverStart: number;
+  hoverSmoke: number;
 };
 
 export const mountCanvasSmokeTitle = (
@@ -59,12 +59,13 @@ export const mountCanvasSmokeTitle = (
   let glyphs: Glyph[] = [];
   let font = '';
   let frame = 0;
-  let lastIndex = -1;
+  let pointerX = 0;
+  let pointerY = 0;
+  let hasPointer = false;
   let introStart = 0;
   let activated = false;
   let disposed = false;
   const introDuration = 1350;
-  const hoverDuration = 780;
   const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
   const easeOut = (value: number) => 1 - Math.pow(1 - value, 4);
 
@@ -96,7 +97,7 @@ export const mountCanvasSmokeTitle = (
         bottom: glyphBounds.bottom - bounds.top,
         color: getComputedStyle(glyph).color,
         delay: 90 + index * 43,
-        hoverStart: glyphs[index]?.hoverStart ?? -1,
+        hoverSmoke: glyphs[index]?.hoverSmoke ?? 0,
       };
     });
   };
@@ -146,17 +147,14 @@ export const mountCanvasSmokeTitle = (
         smoke = Math.sin(Math.PI * intro) * (1 - intro * 0.25);
       }
 
-      if (!reducedMotion.matches && glyph.hoverStart >= 0) {
-        const hover = clamp01((now - glyph.hoverStart) / hoverDuration);
-        if (hover < 1) {
-          active = true;
-          hoverActive = true;
-        } else {
-          glyph.hoverStart = -1;
-        }
-        const hoverSmoke = Math.sin(Math.PI * hover);
-        smoke = Math.max(smoke, hoverSmoke);
-        alpha *= 1 - hoverSmoke * 0.72;
+      if (!reducedMotion.matches && glyph.hoverSmoke > 0.01) {
+        active = true;
+        hoverActive = true;
+        smoke = Math.max(smoke, glyph.hoverSmoke);
+        alpha *= 1 - glyph.hoverSmoke * 0.72;
+        glyph.hoverSmoke *= 0.91;
+      } else {
+        glyph.hoverSmoke = 0;
       }
 
       drawGlyph(glyph, alpha, smoke, index);
@@ -170,27 +168,33 @@ export const mountCanvasSmokeTitle = (
     if (!frame && !document.hidden && !disposed) frame = requestAnimationFrame(render);
   };
 
-  const triggerSmoke = (index: number, delay = 0) => {
-    const glyph = glyphs[index];
-    if (!glyph) return;
-    glyph.hoverStart = performance.now() + delay;
-    start();
-  };
-
   const onPointerMove = ({ clientX, clientY }: PointerEvent) => {
     if (!activated || !interactive || !precisePointer.matches || reducedMotion.matches) return;
     const bounds = heading.getBoundingClientRect();
     const x = clientX - bounds.left;
     const y = clientY - bounds.top;
-    const index = glyphs.findIndex((glyph) => x >= glyph.left && x <= glyph.right && y >= glyph.top && y <= glyph.bottom);
-    if (index < 0 || index === lastIndex) return;
-    lastIndex = index;
-    triggerSmoke(index);
-    triggerSmoke(index - 1, 55);
-    triggerSmoke(index + 1, 95);
+    const velocity = hasPointer ? Math.hypot(x - pointerX, y - pointerY) : 0;
+    pointerX = x;
+    pointerY = y;
+    hasPointer = true;
+    canvas.dataset.smokeX = x.toFixed(1);
+    canvas.dataset.smokeY = y.toFixed(1);
+    const energy = Math.min(1, 0.38 + velocity / 28);
+
+    glyphs.forEach((glyph) => {
+      const centerX = (glyph.left + glyph.right) / 2;
+      const centerY = (glyph.top + glyph.bottom) / 2;
+      const radiusX = Math.max(28, (glyph.right - glyph.left) * 1.8);
+      const radiusY = Math.max(42, (glyph.bottom - glyph.top) * 0.8);
+      const dx = (centerX - x) / radiusX;
+      const dy = (centerY - y) / radiusY;
+      const influence = Math.exp(-(dx * dx + dy * dy) * 2.2);
+      glyph.hoverSmoke = Math.max(glyph.hoverSmoke, influence * energy);
+    });
+    start();
   };
 
-  const onPointerLeave = () => { lastIndex = -1; };
+  const onPointerLeave = () => { hasPointer = false; };
   const resize = () => {
     layout();
     if (activated) start();
