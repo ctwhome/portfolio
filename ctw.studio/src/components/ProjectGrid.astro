@@ -20,7 +20,7 @@ const coverUrl = (id: string, width: number) => `/portfolio/covers/${id}-${width
         <img
           class="project-card__image"
           src={coverUrl(project.id, 960)}
-          srcset={`${coverUrl(project.id, 480)} 480w, ${coverUrl(project.id, 960)} 960w`}
+          srcset={`${coverUrl(project.id, 480)} 480w, ${coverUrl(project.id, 720)} 720w, ${coverUrl(project.id, 960)} 960w`}
           sizes={index === 0
             ? '(max-width: 48rem) calc(100vw - 2rem), min(calc(100vw - 2rem), 75rem)'
             : `(max-width: 48rem) calc(100vw - 2rem), ${Math.round(project.gridSpan / 6 * 100)}vw`}

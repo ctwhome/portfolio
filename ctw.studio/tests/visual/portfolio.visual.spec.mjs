@@ -57,7 +57,7 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
   await page.goto('/portfolio/');
   await expect(page.locator('.ctw-feedback-button')).toBeVisible();
   const wideLayout = await layout();
-  expect(wideLayout.cardCount).toBe(19);
+  expect(wideLayout.cardCount).toBe(21);
   expect(wideLayout.documentWidth).toBeLessThanOrEqual(wideLayout.viewportWidth);
   expect(Math.abs(wideLayout.firstCardWidth - wideLayout.gridWidth)).toBeLessThanOrEqual(3);
   expect(wideLayout.incompleteRows).toBe(0);

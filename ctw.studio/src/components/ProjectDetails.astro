@@ -78,7 +78,7 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
                   </figure>
                 ) : (
                   <figure class="project-gallery__item">
-                    <img data-src={mediaUrl(item.src)} alt={item.caption ?? ''} width="1600" height="900" decoding="async" />
+                    <img data-src={mediaUrl(item.src)} alt={item.caption ?? ''} width={item.width ?? 1600} height={item.height ?? 900} decoding="async" />
                     <noscript><a class="project-gallery__source" href={mediaUrl(item.src)}>Open original image</a></noscript>
                     {item.caption && <figcaption>{item.caption}</figcaption>}
                   </figure>

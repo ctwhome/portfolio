@@ -8,9 +8,9 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const source = await readFile(join(root, 'src/data/projects.ts'), 'utf8');
 const covers = [...source.matchAll(/id: '([^']+)'[\s\S]*?coverImage: '([^']+)'/g)]
   .map(([, id, path]) => ({ id, path }));
-const widths = [480, 960];
+const widths = [480, 720, 960];
 
-if (covers.length !== 19) throw new Error(`expected 19 project covers, found ${covers.length}`);
+if (covers.length !== 21) throw new Error(`expected 21 project covers, found ${covers.length}`);
 
 let avifReady = false;
 async function image(path) {

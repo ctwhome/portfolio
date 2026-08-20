@@ -1,5 +1,5 @@
 export type GalleryItem =
-  | { type: 'image' | 'video'; src: string; caption?: string }
+  | { type: 'image' | 'video'; src: string; caption?: string; width?: number; height?: number }
   | { type: 'pair'; src: string; src2: string; caption?: string };
 
 export interface Project {
@@ -30,6 +30,50 @@ export interface Project {
  * - 'pair': two images side-by-side
  */
 export const projects = [
+  {
+    id: 'droneatlas',
+    title: 'DroneAtlas',
+    date: '2026-06-13',
+    client: 'Netherlands eScience Center · University of Amsterdam',
+    category: 'Geospatial ML · Research Platform',
+    headline: 'Multi-sensor drone evidence, mapped for discovery',
+    description: `DroneAtlas supports expert-led discovery across large RGB, thermal, multispectral, LiDAR, and elevation drone datasets. Developed by the Netherlands eScience Center with the University of Amsterdam's 4D Research Lab, the team created the platform for archaeological research first, with a workflow reusable beyond it.
+
+Browser-side Cloud Optimized GeoTIFF inspection powers map-based case studies and multi-sensor layers, alongside machine-learning-supported anomaly exploration. A dedicated 2D/3D presentation route and static deployment turn complex source material into an accessible research workspace.`,
+    coverImage: 'projects/droneatlas/cover.avif',
+    gridSpan: 3,
+    liveUrl: 'https://droneml.github.io/DroneAtlas/',
+    repoUrl: 'https://github.com/DroneML/DroneAtlas',
+    tags: ['SvelteKit', 'MapLibre', 'Cloud Optimized GeoTIFF', 'Machine Learning', '3D Visualization'],
+    institution: 'Netherlands eScience Center',
+    gallery: [
+      { type: 'image', src: 'projects/droneatlas/cover.avif', caption: 'Activated multi-sensor evidence stack at Weesp' },
+      { type: 'image', src: 'projects/droneatlas/gallery-1.avif', caption: 'Netherlands case-location overview with 3D drone' },
+      { type: 'image', src: 'projects/droneatlas/gallery-2.avif', caption: 'Weesp case-study workspace with evidence workflow and layer controls' }
+    ]
+  },
+  {
+    id: 'ajax-visual-intelligence',
+    title: 'Visual Intelligence Profile',
+    date: '2026-03-07',
+    client: 'AFC Ajax · Team Rockstars IT',
+    category: 'Sports Analytics · 3D Visualization',
+    headline: 'Match awareness, visible from every angle',
+    description: `Visual Intelligence Profile is an award-winning Ajax Hackathon project built by a multidisciplinary team during the 14-hour Ajax Hackathon at Johan Cruijff ArenA. The prototype reconstructs Ajax vs Fortuna Sittard TF15 tracking as a 22-player 3D scene, using 21 skeleton joints per player at 25fps.
+
+It turns movement into coaching signals by computing head-to-ball angle, scan rate, and fixation. Live playback, a POV camera, a shared timeline, and comparison analytics connect each player's view of the match to their measured awareness.`,
+    coverImage: 'projects/ajax-visual-intelligence/cover.avif',
+    gridSpan: 2,
+    liveUrl: null,
+    repoUrl: 'https://github.com/El-Machin-Team/football-body-kinematics',
+    tags: ['Three.js', 'Python', 'Bun', 'Sports Analytics', '3D Tracking'],
+    institution: null,
+    gallery: [
+      { type: 'image', src: 'projects/ajax-visual-intelligence/cover.avif', caption: 'Live playback', width: 1600, height: 1000 },
+      { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-1.avif', caption: 'Analytics profile', width: 1600, height: 1000 },
+      { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-2.avif', caption: 'Initial 3D view', width: 1600, height: 1000 }
+    ]
+  },
   {
     id: 'data-storytelling',
     title: 'Data Storytelling',

@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { access, readFile, readdir, stat } from 'node:fs/promises';
 import test from 'node:test';
+import sharp from 'sharp';
+import { projects } from '../src/data/projects.ts';
 
 const dist = new URL('../dist/', import.meta.url);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -190,6 +192,8 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
   for (const path of new Set(media)) {
     assert.match(portfolio, new RegExp(`/portfolio/${path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
+  assert.match(portfolio, /\/portfolio\/covers\/droneatlas-720\.webp 720w/);
+  await access(new URL('portfolio/covers/droneatlas-720.webp', dist));
 
   assert.match(portfolio, /portfolio-enhanced/);
   for (const file of [
@@ -199,6 +203,50 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
     'design-system/index.html'
   ]) {
     assert.doesNotMatch(await readFile(new URL(file, dist), 'utf8'), /portfolio-enhanced/, file);
+  }
+});
+
+test('portfolio data includes DroneAtlas and Visual Intelligence Profile source evidence', async () => {
+  const expected = [
+    {
+      id: 'droneatlas',
+      date: '2026-06-13',
+      liveUrl: 'https://droneml.github.io/DroneAtlas/',
+      repoUrl: 'https://github.com/DroneML/DroneAtlas',
+      media: ['cover.avif', 'gallery-1.avif', 'gallery-2.avif']
+    },
+    {
+      id: 'ajax-visual-intelligence',
+      date: '2026-03-07',
+      liveUrl: null,
+      repoUrl: 'https://github.com/El-Machin-Team/football-body-kinematics',
+      media: ['cover.avif', 'gallery-1.avif', 'gallery-2.avif']
+    }
+  ];
+
+  for (const evidence of expected) {
+    const project = projects.find(({ id }) => id === evidence.id);
+    assert.ok(project, evidence.id);
+    assert.deepEqual(
+      { date: project.date, liveUrl: project.liveUrl, repoUrl: project.repoUrl },
+      { date: evidence.date, liveUrl: evidence.liveUrl, repoUrl: evidence.repoUrl }
+    );
+    const media = [project.coverImage, ...project.gallery.map(({ src }) => src)];
+    assert.deepEqual([...new Set(media)], evidence.media.map((file) => `projects/${evidence.id}/${file}`));
+    await Promise.all(media.map((path) => access(new URL(`../portfolio/${path}`, import.meta.url))));
+  }
+
+  const ajax = projects.find(({ id }) => id === 'ajax-visual-intelligence');
+  assert.match(ajax.description, /award-winning Ajax Hackathon project/);
+  assert.match(ajax.description, /multidisciplinary team/);
+  for (const item of ajax.gallery) {
+    const source = await readFile(new URL(`../portfolio/${item.src}`, import.meta.url));
+    const metadata = await sharp(source).metadata();
+    assert.deepEqual(
+      { width: item.width, height: item.height },
+      { width: metadata.width, height: metadata.height },
+      item.src
+    );
   }
 });
 
