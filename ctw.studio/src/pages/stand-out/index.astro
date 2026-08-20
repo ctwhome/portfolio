@@ -1,0 +1,261 @@
+---
+import DocumentHead from '../../components/DocumentHead.astro';
+import '../../styles/fonts.css';
+import '../../styles/global.css';
+import '../../styles/stand-out.css';
+
+const email = 'mailto:contact@ctw.studio?subject=What%20gets%20lost%20online';
+---
+<!doctype html>
+<html lang="en" class="ctw-theme-coal">
+  <head>
+    <DocumentHead
+      title="Stand Out — Bring your real business online"
+      description="A personal CTW Studio story about rebrands, useful websites, and promotion that help a good local business feel recognizable online."
+      canonical="/stand-out/"
+      themeColor="#0b0b0a"
+    />
+  </head>
+  <body class="ctw-scope stand-out-page">
+    <a class="so-skip" href="#main-content">Skip to content</a>
+
+    <div class="so-field" data-canvas-stage aria-hidden="true">
+      <div class="so-field__poster"></div>
+      <canvas class="so-field__canvas" data-signal-canvas></canvas>
+    </div>
+
+    <header class="so-header" aria-label="CTW Studio Stand Out" data-entry="identity" data-entry-order="2">
+      <a class="so-wordmark" href="/" aria-label="CTW Studio home">
+        CTW<span aria-hidden="true">.</span><small>studio</small>
+      </a>
+      <nav class="so-nav" aria-label="Stand Out sections">
+        <a href="#transformation">What changes</a>
+        <a href="#approach">How we work</a>
+        <a class="so-nav__contact" href="#contact">Talk to Jesse</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="so-hero" data-field-zone aria-labelledby="stand-out-title">
+        <div class="so-hero__signal" data-entry="signal" data-entry-order="1" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="so-hero__grid">
+          <p class="so-kicker" data-entry="identity" data-entry-order="2">A note from Jesse / CTW Studio</p>
+          <h1 id="stand-out-title" aria-label="What you built in person should not disappear online.">
+            <span class="so-line-mask"><span class="so-line" data-entry="headline" data-entry-order="3">What you built in person</span></span>
+            <span class="so-line-mask"><span class="so-line" data-entry="headline" data-entry-order="3">should not <em>disappear online.</em></span></span>
+          </h1>
+          <div class="so-hero__intro" data-entry="intro" data-entry-order="4">
+            <p>
+              You already did the hard part: the care, craft, rhythm, trust, and reputation people experience when they meet you.
+            </p>
+            <a class="so-action" href="#transformation" data-magnetic>
+              See what could carry through <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+          <p class="so-hero__aside" data-entry="intro" data-entry-order="4">The work is real already. The online version should feel real too.</p>
+        </div>
+      </section>
+
+      <section class="so-letter" aria-labelledby="letter-title">
+        <p class="so-eyebrow" data-reveal>From Jesse</p>
+        <div>
+          <h2 id="letter-title" data-motion-lines>
+            I’m Jesse, the designer and engineer behind CTW Studio.
+          </h2>
+          <div class="so-letter__copy" data-reveal>
+            <p>
+              I’m interested in the gap between a good business and the small, flattened version people meet on a phone. A familiar welcome becomes a logo. Careful advice becomes a list. Years of trust become a few hurried photos and a contact form.
+            </p>
+            <p>
+              A thoughtful rebrand is not a costume. It gives people a clearer way to recognize what was there all along. The website makes choices easier. Promotion gives the change a public beginning people can understand. Then you keep a system that still feels like yours when the launch is over.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="so-story" id="transformation" data-story data-field-zone aria-labelledby="story-title">
+        <header class="so-story__intro">
+          <p class="so-eyebrow">One change at a time</p>
+          <h2 id="story-title">From flattened online<br />to felt by people.</h2>
+          <p>Four human shifts. Three speculative worlds showing how they might take form.</p>
+        </header>
+
+        <div class="so-story__stage" data-story-stage>
+          <ol class="so-story__progress" aria-label="Transformation chapters">
+            <li aria-current="step"><span>01</span> Seen</li>
+            <li><span>02</span> Understood</li>
+            <li><span>03</span> Chosen</li>
+            <li><span>04</span> Remembered</li>
+          </ol>
+
+          <div class="so-story__panels">
+            <article class="so-scene" id="story-seen" data-story-panel data-chapter="0" aria-labelledby="seen-title">
+              <div class="so-scene__copy">
+                <p class="so-scene__number">01 / Seen</p>
+                <h3 id="seen-title">“That feels like the place I know.”</h3>
+                <p>
+                  Your warmth stops disappearing between the front door and the screen. A distinct identity gives regulars something familiar and new customers something they can recognize with confidence.
+                </p>
+                <p class="so-scene__result"><strong>What changes:</strong> voice, color, type, photography direction, and small details begin telling the same story.</p>
+              </div>
+              <figure class="so-scene__figure" data-image-reveal>
+                <img
+                  src="/stand-out/beauty-material.avif"
+                  width="1600"
+                  height="1200"
+                  alt="Abstract burgundy and coral folds created as an illustrative material study"
+                  loading="eager"
+                  decoding="async"
+                />
+                <figcaption><strong>The Quiet Appointment</strong> / speculative beauty concept. Atmosphere becomes a calm, recognizable welcome; no person or result is shown.</figcaption>
+              </figure>
+            </article>
+
+            <article class="so-scene" id="story-understood" data-story-panel data-chapter="1" aria-labelledby="understood-title">
+              <div class="so-scene__copy">
+                <p class="so-scene__number">02 / Understood</p>
+                <h3 id="understood-title">“I know what to expect—and it suits me.”</h3>
+                <p>
+                  People should not have to decode what you offer. A clear website turns your way of working into useful choices, while keeping enough atmosphere to make the decision feel human.
+                </p>
+                <p class="so-scene__result"><strong>What changes:</strong> important questions surface early; hours, fit, context, and next steps stop hiding.</p>
+              </div>
+              <figure class="so-scene__figure" data-image-reveal>
+                <img
+                  src="/stand-out/restaurant-material.avif"
+                  width="1600"
+                  height="1200"
+                  alt="Abstract amber light pool and textile texture created as an illustrative material study"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption><strong>One Table, Right Now</strong> / speculative restaurant concept. Feeling leads into menu context, dietary guidance, hours, and an honest reservation path; no dish or venue is shown.</figcaption>
+              </figure>
+            </article>
+
+            <article class="so-scene" id="story-chosen" data-story-panel data-chapter="2" aria-labelledby="chosen-title">
+              <div class="so-scene__copy">
+                <p class="so-scene__number">03 / Chosen</p>
+                <h3 id="chosen-title">“This is easy. I know what to do next.”</h3>
+                <p>
+                  Confidence grows when the next step respects people’s time. Booking, reserving, asking for a quote, or simply making contact should feel like a continuation of your care—not a hurdle after it.
+                </p>
+                <p class="so-scene__result"><strong>What changes:</strong> fewer dead ends, smoother first contact, and information shaped around how you can genuinely respond.</p>
+              </div>
+              <figure class="so-scene__figure" data-image-reveal>
+                <img
+                  src="/stand-out/home-services-material.avif"
+                  width="1600"
+                  height="1200"
+                  alt="Abstract blue structural grid and orange line created as an illustrative material study"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption><strong>From Problem to Plan</strong> / speculative home-services concept. A photo-ready quote path captures useful first information; no property or completed work is shown.</figcaption>
+              </figure>
+            </article>
+
+            <article class="so-scene so-scene--remembered" id="story-remembered" data-story-panel data-chapter="3" aria-labelledby="remembered-title">
+              <div class="so-scene__copy">
+                <p class="so-scene__number">04 / Remembered</p>
+                <h3 id="remembered-title">“I’ll remember them—and I know what to tell someone else.”</h3>
+                <p>
+                  A launch gives the new story a clear first outing. The same recognizable idea can move through the window, street, feed, menu, workwear, or follow-up without turning into noise.
+                </p>
+                <p class="so-scene__result"><strong>What remains:</strong> a public presence you can use, adapt, and keep alive after the first announcement.</p>
+              </div>
+              <div class="so-scene__echo" aria-hidden="true">
+                <span>Seen</span><span>Understood</span><span>Chosen</span><strong>Remembered</strong>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="so-future" aria-labelledby="future-title">
+        <p class="so-eyebrow" data-reveal>What this can give you</p>
+        <div>
+          <h2 id="future-title" data-motion-lines>A clearer public version of the business you already believe in.</h2>
+          <div class="so-future__thoughts">
+            <article data-reveal>
+              <span>Recognition</span>
+              <h3>People notice the right things.</h3>
+              <p>Your character comes through before anyone walks in, calls, or asks a friend.</p>
+            </article>
+            <article data-reveal>
+              <span>Confidence</span>
+              <h3>You stop apologizing for the website.</h3>
+              <p>The public face feels considered, current, and close to how you want to welcome people.</p>
+            </article>
+            <article data-reveal>
+              <span>Continuity</span>
+              <h3>The work keeps working after launch.</h3>
+              <p>You have practical patterns for pages, posts, print, and updates—not a reveal you cannot maintain.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="so-approach" id="approach" aria-labelledby="approach-title">
+        <header class="so-approach__head">
+          <p class="so-eyebrow" data-reveal>How I would work with you</p>
+          <h2 id="approach-title" data-motion-lines>Keep what is true. Make the next step together.</h2>
+        </header>
+        <ol class="so-approach__steps">
+          <li data-reveal>
+            <span>01</span>
+            <div><h3>Listen in the real place.</h3><p>Understand what customers value, how the day actually runs, and what should never be polished away.</p></div>
+          </li>
+          <li data-reveal>
+            <span>02</span>
+            <div><h3>Make one direction tangible.</h3><p>Use your facts and real assets to explore identity, page, customer path, and promotion as one connected idea. Assumptions stay visible.</p></div>
+          </li>
+          <li data-reveal>
+            <span>03</span>
+            <div><h3>Build only what helps.</h3><p>That might be a rebrand and website, or one missing booking, reservation, or quote path. Existing strengths stay.</p></div>
+          </li>
+          <li data-reveal>
+            <span>04</span>
+            <div><h3>Launch, learn, and leave you in control.</h3><p>Promotion explains the change. Accessible, responsive tools make it usable. Clear handover and agreed care keep it dependable.</p></div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="so-truth" aria-labelledby="truth-title">
+        <div class="so-truth__title" data-reveal>
+          <p class="so-eyebrow">Proof stays proof</p>
+          <h2 id="truth-title">Beautiful should still be honest.</h2>
+        </div>
+        <div class="so-truth__copy" data-reveal>
+          <p>These three worlds are <strong>speculative studio concepts</strong>, not customers, case studies, or promised results.</p>
+          <p>AI-assisted or illustrative imagery never stands in as an actual dish, staff member, customer result, premises, property, or completed work. When reality matters, we use reality and label anything else.</p>
+        </div>
+      </section>
+
+      <section class="so-contact" id="contact" aria-labelledby="contact-title">
+        <div class="so-contact__signal" aria-hidden="true">*</div>
+        <p class="so-eyebrow">A direct conversation with Jesse</p>
+        <h2 id="contact-title">What gets lost<br /><em>when people meet you online?</em></h2>
+        <p>Send me your website and a few honest lines about the business. I’ll read them and tell you whether I see a useful next step.</p>
+        <a class="so-contact__email" href={email} data-magnetic>Write to Jesse <span>contact@ctw.studio ↗</span></a>
+      </section>
+    </main>
+
+    <footer class="so-footer">
+      <div>
+        <a class="so-wordmark" href="/" aria-label="CTW Studio home">CTW<span aria-hidden="true">.</span><small>studio</small></a>
+        <p>Jesse’s independent design and engineering studio.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/">Studio home</a>
+        <a href="/portfolio/">Existing work</a>
+        <a href={email}>Email Jesse</a>
+      </nav>
+      <p>Concept imagery is original, locally controlled, and disclosed above. © 2026 CTW Studio.</p>
+    </footer>
+
+    <script src="../../scripts/stand-out.ts"></script>
+  </body>
+</html>

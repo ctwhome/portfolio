@@ -64,7 +64,7 @@ bun run static:check
 
 ## Architecture contracts
 
-- Sixteen maintained Astro pages share `DocumentHead.astro`.
+- Seventeen maintained Astro pages share `DocumentHead.astro`.
 - All route navigation is native. Home and portfolio use CSS-only
   cross-document view transitions; portfolio behavior lives in one page-local
   processed TypeScript module.
@@ -103,7 +103,7 @@ bun run static:check
 ## Preservation and review
 
 - Route audit comes from built output plus manifest-declared preserved routes,
-  excluding declared redirect sources. Assert exact 23 content routes,
+  excluding declared redirect sources. Assert exact 24 content routes,
   directory legal URLs, and absent dotted aliases.
 - Preserve NLeSC and historical hashes. Never hand-edit `dist/`.
 - Protect Signals JSON facts and updater semantics unless task explicitly

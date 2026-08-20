@@ -43,9 +43,10 @@ function readableMainText(html) {
 }
 
 test('Astro emits directory routes with canonical metadata and preserved homepage copy', async () => {
-  const [home, portfolio] = await Promise.all([
+  const [home, portfolio, standOut] = await Promise.all([
     readFile(new URL('index.html', dist), 'utf8'),
-    readFile(new URL('portfolio/index.html', dist), 'utf8')
+    readFile(new URL('portfolio/index.html', dist), 'utf8'),
+    readFile(new URL('stand-out/index.html', dist), 'utf8')
   ]);
   assert.match(home, /<link rel="canonical" href="https:\/\/ctw\.studio\/">/);
   assert.match(portfolio, /<link rel="canonical" href="https:\/\/ctw\.studio\/portfolio\/">/);
@@ -59,6 +60,13 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
   assert.match(portfolio, /Based in Amsterdam/);
   assert.match(portfolio, /<dialog[^>]+data-project-dialog="data-storytelling"/);
   assert.match(portfolio, /<a class="ctw-button" href="\/nlesc\/">Visit project ↗<\/a>/);
+  assert.match(standOut, /<link rel="canonical" href="https:\/\/ctw\.studio\/stand-out\/">/);
+  assert.equal((standOut.match(/speculative (?:beauty|restaurant|home-services) concept/gi) ?? []).length, 3);
+  assert.match(standOut, /What you built in person/);
+  assert.match(standOut, /I’m Jesse, the designer and engineer behind CTW Studio/);
+  assert.match(standOut, /AI-assisted or illustrative imagery never stands in as an actual dish/);
+  assert.match(standOut, /contact@ctw\.studio/);
+  assert.doesNotMatch(standOut, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
 });
 
 test('Astro emits all ten Signals routes with native navigation and canonical metadata', async () => {
@@ -90,7 +98,36 @@ test('Astro emits all ten Signals routes with native navigation and canonical me
   }
 });
 
-test('all 16 maintained routes share metadata and exclude legacy navigation', async () => {
+test('stand-out keeps its transformation story, disclosure, and local media in static output', async () => {
+  const html = await readFile(new URL('stand-out/index.html', dist), 'utf8');
+
+  for (const text of [
+    '01 / Seen',
+    '02 / Understood',
+    '03 / Chosen',
+    '04 / Remembered',
+    'Recognition',
+    'Confidence',
+    'Continuity',
+    'Listen in the real place',
+    'Make one direction tangible',
+    'Build only what helps',
+    'Launch, learn, and leave you in control',
+    'These three worlds are <strong>speculative studio concepts</strong>',
+  ]) assert.ok(html.includes(text), text);
+
+  assert.equal((html.match(/data-story-panel/g) ?? []).length, 4);
+  assert.equal((html.match(/src="\/stand-out\/[^"]+\.avif"/g) ?? []).length, 3);
+  assert.doesNotMatch(html, /<img[^>]+src="https?:\/\//);
+  assert.match(html, /data-signal-canvas/);
+  assert.match(html, /data-entry="signal" data-entry-order="1"/);
+  assert.match(html, /data-entry="identity" data-entry-order="2"/);
+  assert.match(html, /data-entry="headline" data-entry-order="3"/);
+  assert.match(html, /data-entry="intro" data-entry-order="4"/);
+  assert.doesNotMatch(html, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
+});
+
+test('all 17 maintained routes share metadata and exclude legacy navigation', async () => {
   const routes = [
     ['index.html', '/'],
     ['portfolio/index.html', '/portfolio/'],
@@ -104,6 +141,7 @@ test('all 16 maintained routes share metadata and exclude legacy navigation', as
     ['signals/housing/index.html', '/signals/housing/'],
     ['signals/real-time-ai/index.html', '/signals/real-time-ai/'],
     ['signals/science/index.html', '/signals/science/'],
+    ['stand-out/index.html', '/stand-out/'],
     ['workshop/index.html', '/workshop/'],
     ['workshop/privacy/index.html', '/workshop/privacy/'],
     ['workshop/terms/index.html', '/workshop/terms/'],
@@ -142,7 +180,7 @@ test('workshop, directory legal pages, and guide keep substantive accessible out
   assert.match(terms, /id="cancellation-policy"/);
   assert.match(guide, /<main id="main">/);
   assert.match(guide, /Design for decisions/);
-  assert.match(guide, /<caption>All 23 deployed CTW Studio routes/);
+  assert.match(guide, /<caption>All 24 deployed CTW Studio routes/);
   assert.doesNotMatch(guide, /<script\b/i);
   assert.deepEqual(
     [workshop, privacy, terms].map((html) => sha256(readableMainText(html))),
@@ -315,6 +353,8 @@ test('source and maintained output contain no removed client runtime', async () 
     '@fontsource/dm-mono',
     '@tailwindcss/vite',
     'astro',
+    'gsap',
+    'lenis',
     'tailwindcss'
   ]);
 
@@ -334,6 +374,7 @@ test('source and maintained output contain no removed client runtime', async () 
     'portfolio/index.html',
     'signals/index.html',
     'signals/ai-work/index.html',
+    'stand-out/index.html',
     'workshop/index.html',
     'workshop/privacy/index.html',
     'workshop/terms/index.html',
