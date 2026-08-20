@@ -74,6 +74,7 @@ export const mountCanvasSmokeTitle = (
   let hasPointer = false;
   let pointerActive = false;
   let introStart = 0;
+  let lastRenderTime = 0;
   let activated = false;
   let disposed = false;
   let touchReleaseTimer = 0;
@@ -173,6 +174,8 @@ export const mountCanvasSmokeTitle = (
 
   const render = (now: number) => {
     frame = 0;
+    const deltaTime = lastRenderTime ? Math.min(1000, Math.max(0, now - lastRenderTime)) : 16.67;
+    lastRenderTime = now;
     context.clearRect(0, 0, canvas.width, canvas.height);
     let active = false;
     let hoverActive = false;
@@ -207,7 +210,8 @@ export const mountCanvasSmokeTitle = (
         const targetSmoke = pointerActive ? Math.exp(-(dx * dx + dy * dy) * 1.55) * pointerEnergy : 0;
         const difference = targetSmoke - glyph.hoverSmoke;
         if (Math.abs(difference) > 0.008) {
-          glyph.hoverSmoke += difference * (difference > 0 ? 0.34 : 0.18);
+          const responseTime = difference > 0 ? 70 : 180;
+          glyph.hoverSmoke += difference * (1 - Math.exp(-deltaTime / responseTime));
           active = true;
         } else {
           glyph.hoverSmoke = targetSmoke;
