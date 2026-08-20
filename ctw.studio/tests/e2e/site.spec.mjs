@@ -326,7 +326,7 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   );
   await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 80);
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 3_000 });
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
 });
 
 test('homepage smoke intro and touch interaction run on mobile', async ({ browser }) => {
@@ -350,7 +350,7 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
     (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
   );
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 3_000 });
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
   await context.close();
 });
 

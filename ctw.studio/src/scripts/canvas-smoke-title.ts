@@ -116,34 +116,31 @@ export const mountCanvasSmokeTitle = (
     });
   };
 
-  const drawGlyph = (glyph: Glyph, alpha: number, smoke: number, index: number) => {
+  const drawGlyph = (glyph: Glyph, alpha: number, smoke: number) => {
     context.save();
     context.font = font;
     context.textBaseline = 'alphabetic';
     context.fillStyle = glyph.color;
 
     if (smoke > 0.01) {
-      const verticalDirection = index % 2 ? -1 : 1;
       const smokeLayers = [
-        { x: -0.34, y: -0.08 * verticalDirection, blur: 0.46, alpha: 0.24 },
-        { x: -0.8, y: 0, blur: 1.1, alpha: 0.15 },
-        { x: -1.15, y: 0.16 * verticalDirection, blur: 1.15, alpha: 0.1 },
+        { blur: 0.24, alpha: 0.22 },
+        { blur: 0.52, alpha: 0.14 },
+        { blur: 0.82, alpha: 0.08 },
       ];
       context.shadowColor = glyph.color;
       smokeLayers.forEach((layer) => {
         context.globalAlpha = smoke * layer.alpha;
         context.shadowBlur = fontSize * layer.blur * smoke;
-        context.fillText(
-          glyph.character,
-          glyph.x + fontSize * layer.x * smoke,
-          glyph.baseline + fontSize * layer.y * smoke
-        );
+        context.filter = `blur(${fontSize * 0.08 * smoke}px)`;
+        context.fillText(glyph.character, glyph.x, glyph.baseline);
       });
     }
 
     context.globalAlpha = alpha;
     context.shadowColor = glyph.color;
-    context.shadowBlur = smoke * fontSize * 0.42;
+    context.shadowBlur = smoke * fontSize * 0.3;
+    context.filter = smoke > 0.01 ? `blur(${fontSize * 0.12 * smoke}px)` : 'none';
     context.fillText(glyph.character, glyph.x, glyph.baseline);
     context.restore();
   };
@@ -154,7 +151,7 @@ export const mountCanvasSmokeTitle = (
     let active = false;
     let hoverActive = false;
 
-    glyphs.forEach((glyph, index) => {
+    glyphs.forEach((glyph) => {
       let alpha = 1;
       let smoke = 0;
 
@@ -169,13 +166,13 @@ export const mountCanvasSmokeTitle = (
         active = true;
         hoverActive = true;
         smoke = Math.max(smoke, glyph.hoverSmoke);
-        alpha *= 1 - glyph.hoverSmoke * 0.86;
+        alpha *= 1 - glyph.hoverSmoke * 0.38;
         glyph.hoverSmoke *= 0.84;
       } else {
         glyph.hoverSmoke = 0;
       }
 
-      drawGlyph(glyph, alpha, smoke, index);
+      drawGlyph(glyph, alpha, smoke);
     });
 
     canvas.dataset.smokeActive = hoverActive ? 'true' : 'false';
