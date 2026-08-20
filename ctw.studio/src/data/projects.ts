@@ -70,8 +70,8 @@ At the 14-hour Ajax Hackathon, our multidisciplinary team used TF15 data from Aj
     tags: ['Three.js', 'Python', 'Bun', 'Skeletal Tracking', 'Football Analytics', '3D Visualization'],
     institution: null,
     gallery: [
-      { type: 'image', src: 'projects/ajax-visual-intelligence/cover.avif', caption: '3D playback of Ajax vs Fortuna Sittard with tracked skeletons and player metrics', width: 1600, height: 1000 },
       { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4', poster: 'projects/ajax-visual-intelligence/video-poster.avif', caption: 'Thirty-second walkthrough of skeletal tracking, player POV, and comparison metrics', width: 1920, height: 1080 },
+      { type: 'image', src: 'projects/ajax-visual-intelligence/cover.avif', caption: '3D playback of Ajax vs Fortuna Sittard with tracked skeletons and player metrics', width: 1600, height: 1000 },
       { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-1.avif', caption: 'Player comparison charts for head-to-ball angle, scan rate, and fixation', width: 1600, height: 1000 },
       { type: 'image', src: 'projects/ajax-visual-intelligence/gallery-2.avif', caption: 'Pitch playback with player POV and shared timeline', width: 1600, height: 1000 }
     ]

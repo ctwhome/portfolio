@@ -242,6 +242,10 @@ test('portfolio data includes DroneAtlas and 3D Skeletal Tracking in Football so
   }
 
   const ajax = projects.find(({ id }) => id === 'ajax-visual-intelligence');
+  assert.deepEqual(
+    { type: ajax.gallery[0].type, src: ajax.gallery[0].src },
+    { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4' }
+  );
   assert.equal(ajax.title, '3D Skeletal Tracking in Football');
   assert.equal(ajax.headline, 'What 21 tracked body points reveal about player orientation');
   assert.match(ajax.description, /FIFA calls the technology skeletal tracking/);
