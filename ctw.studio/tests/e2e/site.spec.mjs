@@ -390,6 +390,9 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
     { timeout: 1_000 }
   ).toBe('studio-title-smoke-reveal');
 
+  const fluid = page.locator('.studio-page-fluid');
+  await expect(fluid).toBeVisible();
+  await expect(fluid).toHaveAttribute('data-motion-mode', 'touch-scroll');
   const canvas = page.locator('.canvas-smoke-title__canvas');
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
   const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
@@ -399,6 +402,56 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
   );
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
+
+  const scrollReveal = page.locator('.studio-products-section .ctw-lede');
+  await expect(scrollReveal).toHaveClass(/studio-scroll-reveal/);
+  await expect(scrollReveal).toHaveCSS('opacity', '0');
+  await scrollReveal.scrollIntoViewIfNeeded();
+  await expect(scrollReveal).toHaveClass(/is-visible/);
+  await expect(scrollReveal).toHaveCSS('opacity', '1');
+  await expect.poll(async () => Number(await fluid.getAttribute('data-scroll-progress'))).toBeGreaterThan(0.1);
+  await context.close();
+});
+
+test('homepage motion preference can override the device setting', async ({ browser }) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true,
+    reducedMotion: 'reduce'
+  });
+  const page = await context.newPage();
+  await page.goto('/');
+  const preference = page.getByLabel('Motion preference');
+  await expect(preference).toHaveValue('system');
+  expect((await preference.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
+  await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'system');
+  await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.studio-page-fluid')).toHaveCount(0);
+
+  await Promise.all([
+    page.waitForEvent('load'),
+    preference.selectOption('full')
+  ]);
+  await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'full');
+  await expect(page.getByLabel('Motion preference')).toHaveValue('full');
+  await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'studio-title-smoke-reveal');
+  await expect(page.locator('.studio-page-fluid')).toBeVisible();
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  const card = page.locator('.studio-offerings li').first();
+  await expect(card).toHaveClass(/studio-scroll-reveal/);
+  await expect(card).toHaveCSS('opacity', '0');
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toHaveClass(/is-visible/);
+  await expect(card).toHaveCSS('opacity', '1');
+
+  await Promise.all([
+    page.waitForEvent('load'),
+    page.getByLabel('Motion preference').selectOption('reduced')
+  ]);
+  await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'reduced');
+  await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.studio-page-fluid')).toHaveCount(0);
   await context.close();
 });
 

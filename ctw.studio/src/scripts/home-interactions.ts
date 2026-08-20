@@ -1,11 +1,13 @@
 import { mountCanvasSmokeTitle } from './canvas-smoke-title';
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const motionPreference = document.documentElement.dataset.motionPreference ?? 'system';
+const motionReduced = motionPreference === 'reduced' || (motionPreference !== 'full' && reducedMotion.matches);
 const precisePointer = matchMedia('(hover: hover) and (pointer: fine)');
 const hero = document.querySelector<HTMLElement>('.studio-hero');
 const title = document.querySelector<HTMLElement>('.studio-hero__title');
 
-if (hero && precisePointer.matches && !reducedMotion.matches) {
+if (hero && precisePointer.matches && !motionReduced) {
   hero.addEventListener('pointermove', ({ clientX, clientY }) => {
     const bounds = hero.getBoundingClientRect();
     hero.style.setProperty('--studio-hero-x', `${clientX - bounds.left}px`);
@@ -14,11 +16,13 @@ if (hero && precisePointer.matches && !reducedMotion.matches) {
 }
 
 const initPageFluid = () => {
-  if (!precisePointer.matches || reducedMotion.matches) return;
+  if (motionReduced) return;
+  const touchScrollMotion = !precisePointer.matches;
 
   const canvas = document.createElement('canvas');
   canvas.className = 'studio-page-fluid';
   canvas.setAttribute('aria-hidden', 'true');
+  canvas.dataset.motionMode = touchScrollMotion ? 'touch-scroll' : 'pointer';
   const gl = canvas.getContext('webgl2', {
     alpha: true,
     premultipliedAlpha: true,
@@ -134,15 +138,16 @@ const initPageFluid = () => {
   let targetY = 0.46;
   let currentX = targetX;
   let currentY = targetY;
-  let pointerEnergy = 0;
+  let pointerEnergy = touchScrollMotion ? 0.2 : 0;
   let elapsed = 0;
   let lastTimestamp = 0;
   let lastRendered = 0;
   let frame = 0;
   let running = false;
+  let mobileMotionUntil = touchScrollMotion ? performance.now() + 1800 : Number.POSITIVE_INFINITY;
 
   const resize = () => {
-    const scale = Math.min(devicePixelRatio, 1.25);
+    const scale = Math.min(devicePixelRatio, touchScrollMotion ? 0.75 : 1.25);
     canvas.width = Math.max(1, Math.round(innerWidth * scale));
     canvas.height = Math.max(1, Math.round(innerHeight * scale));
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -150,8 +155,11 @@ const initPageFluid = () => {
 
   const render = (timestamp: number) => {
     if (!running) return;
-    frame = requestAnimationFrame(render);
-    if (timestamp - lastRendered < 33) return;
+    frame = 0;
+    if (timestamp - lastRendered < (touchScrollMotion ? 50 : 33)) {
+      frame = requestAnimationFrame(render);
+      return;
+    }
     if (lastTimestamp) elapsed += Math.min(timestamp - lastTimestamp, 50) / 1000;
     lastTimestamp = timestamp;
     lastRendered = timestamp;
@@ -165,10 +173,24 @@ const initPageFluid = () => {
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (touchScrollMotion && timestamp >= mobileMotionUntil && pointerEnergy < 0.035) {
+      running = false;
+      return;
+    }
+    frame = requestAnimationFrame(render);
+  };
+
+  const wakeMobileMotion = (duration = 700) => {
+    if (!touchScrollMotion || document.hidden) return;
+    mobileMotionUntil = Math.max(mobileMotionUntil, performance.now() + duration);
+    if (running) return;
+    running = true;
+    lastTimestamp = 0;
+    frame = requestAnimationFrame(render);
   };
 
   const syncRendering = () => {
-    const shouldRun = !document.hidden;
+    const shouldRun = !document.hidden && (!touchScrollMotion || performance.now() < mobileMotionUntil);
     if (shouldRun === running) return;
     running = shouldRun;
     lastTimestamp = 0;
@@ -176,11 +198,37 @@ const initPageFluid = () => {
     else cancelAnimationFrame(frame);
   };
 
-  addEventListener('pointermove', ({ clientX, clientY }) => {
-    targetX = clientX / innerWidth;
-    targetY = clientY / innerHeight;
-    pointerEnergy = Math.min(1, pointerEnergy + 0.24);
-  });
+  if (touchScrollMotion) {
+    let previousScrollY = scrollY;
+    const updateFromScroll = () => {
+      const maximum = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const progress = Math.min(1, Math.max(0, scrollY / maximum));
+      const distance = Math.abs(scrollY - previousScrollY);
+      previousScrollY = scrollY;
+      targetX = 0.5 + Math.sin(progress * Math.PI * 2) * 0.18;
+      targetY = 0.32 + progress * 0.42;
+      pointerEnergy = Math.min(0.72, Math.max(pointerEnergy, 0.14 + distance / 150));
+      canvas.dataset.scrollProgress = progress.toFixed(3);
+      hero?.style.setProperty('--studio-hero-x', `${targetX * 100}%`);
+      hero?.style.setProperty('--studio-hero-y', `${targetY * 100}%`);
+      wakeMobileMotion(distance > 4 ? 750 : 1800);
+    };
+    addEventListener('scroll', updateFromScroll, { passive: true });
+    addEventListener('pointermove', ({ clientX, clientY, pointerType }) => {
+      if (pointerType !== 'touch') return;
+      targetX = clientX / innerWidth;
+      targetY = clientY / innerHeight;
+      pointerEnergy = Math.min(0.78, pointerEnergy + 0.22);
+      wakeMobileMotion(800);
+    }, { passive: true });
+    updateFromScroll();
+  } else {
+    addEventListener('pointermove', ({ clientX, clientY }) => {
+      targetX = clientX / innerWidth;
+      targetY = clientY / innerHeight;
+      pointerEnergy = Math.min(1, pointerEnergy + 0.24);
+    });
+  }
   addEventListener('resize', resize);
   document.addEventListener('visibilitychange', syncRendering);
   resize();
@@ -213,7 +261,7 @@ if (title) {
 }
 
 const initProductLens = () => {
-  if (reducedMotion.matches) return;
+  if (motionReduced) return;
 
   const cards = [...document.querySelectorAll<HTMLElement>('.studio-product')];
   if (!cards.length) return;
@@ -377,7 +425,7 @@ const initProductLens = () => {
 };
 
 const initScrollReveals = () => {
-  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  if (motionReduced || !('IntersectionObserver' in window)) return;
   const elements = document.querySelectorAll<HTMLElement>([
     '.studio-section .ctw-section-number',
     '.studio-section .ctw-heading-lg',
