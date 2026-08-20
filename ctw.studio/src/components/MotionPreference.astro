@@ -1,0 +1,56 @@
+<div class="ctw-motion-preference">
+  <label for="ctw-motion-preference">Motion</label>
+  <select id="ctw-motion-preference" data-motion-preference-control aria-label="Motion preference">
+    <option value="system">System</option>
+    <option value="full">Full</option>
+    <option value="reduced">Reduced</option>
+  </select>
+</div>
+
+<script>
+  const select = document.querySelector<HTMLSelectElement>('[data-motion-preference-control]');
+  if (select) {
+    const preference = document.documentElement.dataset.motionPreference;
+    select.value = ['full', 'reduced'].includes(preference ?? '') ? preference! : 'system';
+    select.addEventListener('change', () => {
+      try {
+        if (select.value === 'system') localStorage.removeItem('ctw-motion-preference');
+        else localStorage.setItem('ctw-motion-preference', select.value);
+      } catch {}
+      location.reload();
+    });
+  }
+</script>
+
+<style>
+  .ctw-motion-preference {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: var(--ctw-space-2);
+  }
+
+  .ctw-motion-preference label {
+    color: var(--ctw-color-text-muted);
+    font: 600 0.68rem/1.2 var(--ctw-font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ctw-motion-preference select {
+    width: min(100%, 12rem);
+    min-width: 7.5rem;
+    min-height: 44px;
+    justify-self: start;
+    padding-inline: 0.75rem 2rem;
+    border: 1px solid var(--ctw-color-border);
+    border-radius: 0;
+    background: var(--ctw-color-surface);
+    color: var(--ctw-color-text);
+    font: inherit;
+  }
+
+  .ctw-motion-preference select:focus-visible {
+    outline: 3px solid var(--ctw-color-action);
+    outline-offset: 2px;
+  }
+</style>

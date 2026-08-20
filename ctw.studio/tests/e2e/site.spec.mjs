@@ -413,6 +413,48 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
   await context.close();
 });
 
+test('homepage motion preference can override the device setting', async ({ browser }) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true,
+    reducedMotion: 'reduce'
+  });
+  const page = await context.newPage();
+  await page.goto('/');
+  const preference = page.getByLabel('Motion preference');
+  await expect(preference).toHaveValue('system');
+  expect((await preference.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
+  await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'system');
+  await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.studio-page-fluid')).toHaveCount(0);
+
+  await Promise.all([
+    page.waitForEvent('load'),
+    preference.selectOption('full')
+  ]);
+  await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'full');
+  await expect(page.getByLabel('Motion preference')).toHaveValue('full');
+  await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'studio-title-smoke-reveal');
+  await expect(page.locator('.studio-page-fluid')).toBeVisible();
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  const card = page.locator('.studio-offerings li').first();
+  await expect(card).toHaveClass(/studio-scroll-reveal/);
+  await expect(card).toHaveCSS('opacity', '0');
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toHaveClass(/is-visible/);
+  await expect(card).toHaveCSS('opacity', '1');
+
+  await Promise.all([
+    page.waitForEvent('load'),
+    page.getByLabel('Motion preference').selectOption('reduced')
+  ]);
+  await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'reduced');
+  await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.studio-page-fluid')).toHaveCount(0);
+  await context.close();
+});
+
 test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
   await page.goto('/portfolio/');
   const first = page.locator('[data-project-link="data-storytelling"]').first();

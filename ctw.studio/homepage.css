@@ -727,6 +727,58 @@ body {
   .studio-facts__links > a:nth-child(2) { animation-delay: 2830ms; }
 }
 
+html[data-motion-preference="full"] .studio-home .ctw-masthead__inner,
+html[data-motion-preference="full"] .studio-hero__lede,
+html[data-motion-preference="full"] .studio-hero__actions,
+html[data-motion-preference="full"] .studio-facts__stats > div,
+html[data-motion-preference="full"] .studio-facts__links > a {
+  opacity: 0;
+  animation: studio-arrive 700ms var(--ctw-ease-out) forwards;
+}
+
+html[data-motion-preference="full"] .studio-hero__title:not(.is-canvas-smoke-active) .studio-title-glyph {
+  --studio-smoke-y: 0.16em;
+  --studio-smoke-y-soft: -0.08em;
+  opacity: 0;
+  animation: studio-title-smoke-reveal 1350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--ctw-canvas-smoke-delay);
+  will-change: transform, opacity, filter;
+}
+
+html[data-motion-preference="full"] .studio-hero__title:not(.is-canvas-smoke-active) .studio-title-glyph:nth-child(even) {
+  --studio-smoke-y: -0.16em;
+  --studio-smoke-y-soft: 0.08em;
+}
+
+html[data-motion-preference="full"] .studio-home .ctw-masthead__inner {
+  animation-name: studio-masthead-arrive;
+  animation-delay: 40ms;
+}
+
+html[data-motion-preference="full"] .studio-hero__lede { animation-delay: 1900ms; }
+html[data-motion-preference="full"] .studio-hero__actions { animation-delay: 2100ms; }
+html[data-motion-preference="full"] .studio-facts__stats > div:nth-child(1) { animation-delay: 2380ms; }
+html[data-motion-preference="full"] .studio-facts__stats > div:nth-child(2) { animation-delay: 2470ms; }
+html[data-motion-preference="full"] .studio-facts__stats > div:nth-child(3) { animation-delay: 2560ms; }
+html[data-motion-preference="full"] .studio-facts__stats > div:nth-child(4) { animation-delay: 2650ms; }
+html[data-motion-preference="full"] .studio-facts__links > a:nth-child(1) { animation-delay: 2740ms; }
+html[data-motion-preference="full"] .studio-facts__links > a:nth-child(2) { animation-delay: 2830ms; }
+
+html[data-motion-preference="reduced"] :is(
+  .studio-home .ctw-masthead__inner,
+  .studio-hero__lede,
+  .studio-hero__actions,
+  .studio-facts__stats > div,
+  .studio-facts__links > a,
+  .studio-title-glyph
+) {
+  opacity: 1;
+  animation: none;
+  filter: none;
+  text-shadow: none;
+  transform: none;
+}
+
 .studio-scroll-reveal {
   opacity: 0;
   translate: 0 1.25rem;
@@ -770,6 +822,10 @@ body {
 }
 
 @media (max-width: 47.99rem) {
+  .studio-page-fluid {
+    opacity: 0.48;
+  }
+
   .studio-hero {
     min-height: auto;
     padding-top: var(--ctw-space-8);

@@ -1,11 +1,13 @@
 import { mountCanvasSmokeTitle } from './canvas-smoke-title';
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const motionPreference = document.documentElement.dataset.motionPreference ?? 'system';
+const motionReduced = motionPreference === 'reduced' || (motionPreference !== 'full' && reducedMotion.matches);
 const precisePointer = matchMedia('(hover: hover) and (pointer: fine)');
 const hero = document.querySelector<HTMLElement>('.studio-hero');
 const title = document.querySelector<HTMLElement>('.studio-hero__title');
 
-if (hero && precisePointer.matches && !reducedMotion.matches) {
+if (hero && precisePointer.matches && !motionReduced) {
   hero.addEventListener('pointermove', ({ clientX, clientY }) => {
     const bounds = hero.getBoundingClientRect();
     hero.style.setProperty('--studio-hero-x', `${clientX - bounds.left}px`);
@@ -14,7 +16,7 @@ if (hero && precisePointer.matches && !reducedMotion.matches) {
 }
 
 const initPageFluid = () => {
-  if (reducedMotion.matches) return;
+  if (motionReduced) return;
   const touchScrollMotion = !precisePointer.matches;
 
   const canvas = document.createElement('canvas');
@@ -136,7 +138,7 @@ const initPageFluid = () => {
   let targetY = 0.46;
   let currentX = targetX;
   let currentY = targetY;
-  let pointerEnergy = touchScrollMotion ? 0.34 : 0;
+  let pointerEnergy = touchScrollMotion ? 0.2 : 0;
   let elapsed = 0;
   let lastTimestamp = 0;
   let lastRendered = 0;
@@ -205,7 +207,7 @@ const initPageFluid = () => {
       previousScrollY = scrollY;
       targetX = 0.5 + Math.sin(progress * Math.PI * 2) * 0.18;
       targetY = 0.32 + progress * 0.42;
-      pointerEnergy = Math.min(1, Math.max(pointerEnergy, 0.24 + distance / 90));
+      pointerEnergy = Math.min(0.72, Math.max(pointerEnergy, 0.14 + distance / 150));
       canvas.dataset.scrollProgress = progress.toFixed(3);
       hero?.style.setProperty('--studio-hero-x', `${targetX * 100}%`);
       hero?.style.setProperty('--studio-hero-y', `${targetY * 100}%`);
@@ -216,7 +218,7 @@ const initPageFluid = () => {
       if (pointerType !== 'touch') return;
       targetX = clientX / innerWidth;
       targetY = clientY / innerHeight;
-      pointerEnergy = Math.min(1, pointerEnergy + 0.32);
+      pointerEnergy = Math.min(0.78, pointerEnergy + 0.22);
       wakeMobileMotion(800);
     }, { passive: true });
     updateFromScroll();
@@ -259,7 +261,7 @@ if (title) {
 }
 
 const initProductLens = () => {
-  if (reducedMotion.matches) return;
+  if (motionReduced) return;
 
   const cards = [...document.querySelectorAll<HTMLElement>('.studio-product')];
   if (!cards.length) return;
@@ -423,7 +425,7 @@ const initProductLens = () => {
 };
 
 const initScrollReveals = () => {
-  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  if (motionReduced || !('IntersectionObserver' in window)) return;
   const elements = document.querySelectorAll<HTMLElement>([
     '.studio-section .ctw-section-number',
     '.studio-section .ctw-heading-lg',
