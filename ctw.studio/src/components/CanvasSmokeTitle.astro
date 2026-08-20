@@ -60,13 +60,22 @@ const label = lines.join(' ');
     height: 100%;
     opacity: 0;
     pointer-events: none;
+    transition: opacity 180ms var(--ctw-ease-out);
+  }
+
+  .canvas-smoke-title.is-canvas-smoke-handoff .canvas-smoke-title__line {
+    opacity: 0;
+    user-select: none;
+    transition: opacity 180ms var(--ctw-ease-out);
   }
 
   .canvas-smoke-title.is-canvas-smoke-active .canvas-smoke-title__line {
+    opacity: 0;
     visibility: hidden;
     user-select: none;
   }
 
+  .canvas-smoke-title.is-canvas-smoke-handoff :global(.canvas-smoke-title__canvas),
   .canvas-smoke-title.is-canvas-smoke-active :global(.canvas-smoke-title__canvas) {
     opacity: 1;
   }

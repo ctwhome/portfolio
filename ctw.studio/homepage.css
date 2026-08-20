@@ -122,13 +122,22 @@ body {
   height: 100%;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 180ms var(--ctw-ease-out);
+}
+
+.studio-hero__title.is-canvas-smoke-handoff .studio-title-line {
+  opacity: 0;
+  user-select: none;
+  transition: opacity 180ms var(--ctw-ease-out);
 }
 
 .studio-hero__title.is-canvas-smoke-active .studio-title-line {
+  opacity: 0;
   visibility: hidden;
   user-select: none;
 }
 
+.studio-hero__title.is-canvas-smoke-handoff .canvas-smoke-title__canvas,
 .studio-hero__title.is-canvas-smoke-active .canvas-smoke-title__canvas {
   opacity: 1;
 }

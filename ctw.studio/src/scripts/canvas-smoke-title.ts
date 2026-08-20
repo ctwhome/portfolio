@@ -214,11 +214,16 @@ export const mountCanvasSmokeTitle = (
     resizeObserver.observe(heading);
     window.setTimeout(() => {
       if (disposed) return;
-      activated = true;
       introStart = performance.now();
-      heading.classList.add('is-canvas-smoke-active');
+      heading.classList.add('is-canvas-smoke-handoff');
       start();
-      onActivate?.();
+      window.setTimeout(() => {
+        if (disposed) return;
+        activated = true;
+        heading.classList.remove('is-canvas-smoke-handoff');
+        heading.classList.add('is-canvas-smoke-active');
+        onActivate?.();
+      }, reducedMotion.matches ? 0 : 180);
     }, reducedMotion.matches ? 0 : activateAfter);
   });
 
