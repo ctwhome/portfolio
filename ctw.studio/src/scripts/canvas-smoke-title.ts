@@ -111,21 +111,21 @@ export const mountCanvasSmokeTitle = (
     if (smoke > 0.01) {
       const direction = index % 2 ? -1 : 1;
       context.shadowColor = glyph.color;
-      context.shadowBlur = 8 + smoke * 22;
-      for (let layer = 0; layer < 3; layer += 1) {
-        context.globalAlpha = smoke * (0.12 - layer * 0.025);
-        const drift = smoke * (5 + layer * 7);
+      context.shadowBlur = 12 + smoke * 38;
+      for (let layer = 0; layer < 5; layer += 1) {
+        context.globalAlpha = smoke * (0.16 - layer * 0.022);
+        const drift = smoke * (7 + layer * 9);
         context.fillText(
           glyph.character,
           glyph.x + direction * drift,
-          glyph.baseline + (layer - 1) * smoke * 3
+          glyph.baseline + (layer - 2) * smoke * 4.5
         );
       }
     }
 
     context.globalAlpha = alpha;
     context.shadowColor = glyph.color;
-    context.shadowBlur = smoke * 10;
+    context.shadowBlur = smoke * 18;
     context.fillText(glyph.character, glyph.x, glyph.baseline);
     context.restore();
   };
@@ -147,12 +147,12 @@ export const mountCanvasSmokeTitle = (
         smoke = Math.sin(Math.PI * intro) * (1 - intro * 0.25);
       }
 
-      if (!reducedMotion.matches && glyph.hoverSmoke > 0.01) {
+      if (!reducedMotion.matches && glyph.hoverSmoke > 0.025) {
         active = true;
         hoverActive = true;
         smoke = Math.max(smoke, glyph.hoverSmoke);
-        alpha *= 1 - glyph.hoverSmoke * 0.72;
-        glyph.hoverSmoke *= 0.91;
+        alpha *= 1 - glyph.hoverSmoke * 0.86;
+        glyph.hoverSmoke *= 0.84;
       } else {
         glyph.hoverSmoke = 0;
       }
@@ -179,13 +179,13 @@ export const mountCanvasSmokeTitle = (
     hasPointer = true;
     canvas.dataset.smokeX = x.toFixed(1);
     canvas.dataset.smokeY = y.toFixed(1);
-    const energy = Math.min(1, 0.38 + velocity / 28);
+    const energy = Math.min(1, 0.56 + velocity / 20);
 
     glyphs.forEach((glyph) => {
       const centerX = (glyph.left + glyph.right) / 2;
       const centerY = (glyph.top + glyph.bottom) / 2;
-      const radiusX = Math.max(28, (glyph.right - glyph.left) * 1.8);
-      const radiusY = Math.max(42, (glyph.bottom - glyph.top) * 0.8);
+      const radiusX = Math.max(34, (glyph.right - glyph.left) * 2.15);
+      const radiusY = Math.max(48, (glyph.bottom - glyph.top) * 0.92);
       const dx = (centerX - x) / radiusX;
       const dy = (centerY - y) / radiusY;
       const influence = Math.exp(-(dx * dx + dy * dy) * 2.2);

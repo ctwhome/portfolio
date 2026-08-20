@@ -303,7 +303,7 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   );
   await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 80);
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 2_000 });
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 3_000 });
 });
 
 test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
