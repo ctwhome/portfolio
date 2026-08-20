@@ -37,14 +37,24 @@
   }
 
   .ctw-motion-preference select {
+    appearance: none;
     width: min(100%, 12rem);
     min-width: 7.5rem;
+    height: 44px;
     min-height: 44px;
     justify-self: start;
     padding-inline: 0.75rem 2rem;
     border: 1px solid var(--ctw-color-border);
     border-radius: 0;
-    background: var(--ctw-color-surface);
+    background-color: var(--ctw-color-surface);
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--ctw-color-text-muted) 50%),
+      linear-gradient(135deg, var(--ctw-color-text-muted) 50%, transparent 50%);
+    background-position:
+      calc(100% - 1rem) calc(50% - 0.125rem),
+      calc(100% - 0.7rem) calc(50% - 0.125rem);
+    background-repeat: no-repeat;
+    background-size: 0.32rem 0.32rem;
     color: var(--ctw-color-text);
     font: inherit;
   }
