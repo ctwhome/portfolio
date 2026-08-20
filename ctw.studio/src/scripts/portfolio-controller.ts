@@ -41,6 +41,10 @@ function restoreOriginFromHistory() {
 }
 
 function loadDialogMedia(dialog: HTMLDialogElement) {
+  dialog.querySelectorAll<HTMLVideoElement>('video[data-poster]').forEach((video) => {
+    video.poster = video.dataset.poster ?? '';
+    video.removeAttribute('data-poster');
+  });
   dialog.querySelectorAll<HTMLImageElement>('img[data-src]').forEach((image) => {
     image.src = image.dataset.src ?? '';
     image.removeAttribute('data-src');
@@ -123,6 +127,9 @@ function onClick(event: MouseEvent) {
 }
 
 function onDialogClose(event: Event) {
+  (event.currentTarget as HTMLDialogElement)
+    .querySelectorAll<HTMLVideoElement>('video')
+    .forEach((video) => video.pause());
   if (syncingHistory || event.target !== active) return;
   if (idFromHash() && history.state?.[galleryStateKey]) {
     history.back();

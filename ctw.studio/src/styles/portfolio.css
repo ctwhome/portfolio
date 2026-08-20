@@ -30,91 +30,107 @@
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: clamp(3.5rem, 7vw, 7rem);
   margin: var(--ctw-space-8) 0 0;
-  padding: 1px;
-  background: var(--ctw-color-border);
+  padding: 0;
+  background: transparent;
   list-style: none;
 }
 
 .project-card {
-  grid-column: span 2;
   min-width: 0;
-  background: var(--ctw-color-surface);
-}
-
-.project-card--span-3 {
-  grid-column: span 3;
-}
-
-.project-card--span-4 {
-  grid-column: span 4;
-}
-
-.project-card:first-child {
-  grid-column: 1 / -1;
+  background: transparent;
 }
 
 .project-card__link {
-  position: relative;
   display: grid;
-  min-height: 18rem;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
+  gap: var(--ctw-space-4);
   color: var(--ctw-color-text);
   text-decoration: none;
 }
 
+.project-card__media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border: 1px solid var(--ctw-color-border);
+  border-radius: var(--ctw-radius-card);
+}
+
 .project-card__image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  grid-area: 1 / 1;
-  filter: saturate(0.78) contrast(1.04);
-  transition: filter var(--ctw-motion-deliberate) var(--ctw-ease-out);
+  filter: saturate(0.92) contrast(1.02);
+  transition:
+    filter var(--ctw-motion-deliberate) var(--ctw-ease-out),
+    transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
 }
 
-.project-card__link::after {
-  position: absolute;
-  inset: 0;
-  background: rgb(5 5 5 / 0.42);
-  content: "";
+.project-card__link:hover .project-card__image,
+.project-card:focus-within .project-card__image {
+  transform: scale(1.02);
+  filter: saturate(1) contrast(1.02);
 }
 
-.project-card__link:hover .project-card__image {
-  filter: saturate(1) contrast(1.04);
-}
-
-.project-card__index,
 .project-card__copy {
-  position: absolute;
-  z-index: 1;
+  display: grid;
+  gap: var(--ctw-space-3);
+}
+
+.project-card__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--ctw-space-4);
+  color: var(--ctw-color-text-muted);
+  font: 500 var(--ctw-type-label)/1.4 var(--ctw-font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .project-card__index {
-  top: var(--ctw-space-4);
-  right: var(--ctw-space-4);
-  font: 500 var(--ctw-type-label)/1 var(--ctw-font-mono);
+  white-space: nowrap;
 }
 
-.project-card__copy {
-  right: var(--ctw-space-5);
-  bottom: var(--ctw-space-5);
-  left: var(--ctw-space-5);
+.project-card__title {
   display: grid;
-  gap: var(--ctw-space-2);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--ctw-space-4);
 }
 
-.project-card__copy strong {
-  font-size: clamp(1.5rem, 4vw, 3.5rem);
-  line-height: 0.95;
+.project-card__title strong {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
-.project-card__copy span {
-  font: 500 var(--ctw-type-label)/1.4 var(--ctw-font-mono);
-  text-transform: uppercase;
+.project-card__arrow {
+  color: var(--ctw-color-text-muted);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1;
+  transition:
+    color var(--ctw-motion-fast) var(--ctw-ease-out),
+    transform var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.project-card__link:hover .project-card__arrow,
+.project-card:focus-within .project-card__arrow {
+  transform: translate(0.125rem, -0.125rem);
+  color: var(--ctw-color-text);
+}
+
+.project-card__link:focus-visible {
+  outline: none;
+}
+
+.project-card__link:focus-visible .project-card__media {
+  outline: 3px solid var(--ctw-color-focus);
+  outline-offset: 3px;
 }
 
 .project-dialog {
@@ -292,23 +308,7 @@ body.project-dialog-open {
 @media (max-width: 48rem) {
   .portfolio-grid {
     grid-template-columns: 1fr;
-  }
-
-  .project-card,
-  .project-card--span-3,
-  .project-card--span-4 {
-    grid-column: 1;
-  }
-
-  .project-card__link {
-    width: 100%;
-    min-height: 15rem;
-    height: min(22rem, 80vw);
-    aspect-ratio: auto;
-  }
-
-  .project-card__copy {
-    bottom: 5.5rem;
+    row-gap: clamp(3rem, 12vw, 5rem);
   }
 
   .project-dialog__facts {
@@ -326,7 +326,8 @@ body.project-dialog-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card__image {
+  .project-card__image,
+  .project-card__arrow {
     transition: none;
   }
 }
