@@ -275,9 +275,12 @@ test('homepage contact targets the founder and hero glyphs replay smoke on hover
   await glyph.hover();
   await expect(glyph).toHaveClass(/is-smoking/);
   await expect.poll(
-    () => glyph.evaluate((element) => getComputedStyle(element).animationName),
+    () => glyph.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { animationName: style.animationName, transform: style.transform };
+    }),
     { timeout: 1_000 }
-  ).toContain('studio-title-smoke-hover');
+  ).toEqual({ animationName: 'studio-title-smoke-hover', transform: 'none' });
   await expect(glyph).not.toHaveClass(/is-smoking/, { timeout: 2_000 });
 });
 

@@ -666,7 +666,6 @@ body {
     opacity: 1;
     filter: blur(0);
     text-shadow: 0 0 0 transparent;
-    transform: translate3d(0, 0, 0) skewX(0) scale(1);
   }
   38% {
     opacity: 0.28;
@@ -674,13 +673,11 @@ body {
     text-shadow:
       0.38em var(--studio-smoke-y) 0.42em currentColor,
       0.88em var(--studio-smoke-y-soft) 1em currentColor;
-    transform: translate3d(0.24em, var(--studio-smoke-y), 0) skewX(15deg) scale(0.86);
   }
   to {
     opacity: 1;
     filter: blur(0);
     text-shadow: 0 0 0 transparent;
-    transform: translate3d(0, 0, 0) skewX(0) scale(1);
   }
 }
 
@@ -711,7 +708,7 @@ body {
     opacity: 1;
     filter: blur(0);
     text-shadow: 0 0 0 transparent;
-    transform: translate3d(0, 0, 0);
+    transform: none;
     will-change: auto;
   }
 
