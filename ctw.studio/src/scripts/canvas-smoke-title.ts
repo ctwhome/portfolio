@@ -64,6 +64,7 @@ export const mountCanvasSmokeTitle = (
 
   let glyphs: Glyph[] = [];
   let font = '';
+  let fontSize = 0;
   let frame = 0;
   let pointerX = 0;
   let pointerY = 0;
@@ -79,7 +80,8 @@ export const mountCanvasSmokeTitle = (
     const bounds = heading.getBoundingClientRect();
     const scale = Math.min(devicePixelRatio, 1.5);
     const style = getComputedStyle(heading);
-    const overscan = Math.min(96, Math.max(48, Number.parseFloat(style.fontSize) * 0.75));
+    fontSize = Number.parseFloat(style.fontSize);
+    const overscan = Math.min(160, Math.max(64, fontSize * 1.5));
     const canvasWidth = bounds.width + overscan * 2;
     const canvasHeight = bounds.height + overscan * 2;
     canvas.style.setProperty('--ctw-canvas-smoke-overscan', `${overscan}px`);
@@ -120,23 +122,27 @@ export const mountCanvasSmokeTitle = (
     context.fillStyle = glyph.color;
 
     if (smoke > 0.01) {
-      const direction = index % 2 ? -1 : 1;
+      const verticalDirection = index % 2 ? -1 : 1;
+      const smokeLayers = [
+        { x: -0.34, y: -0.08 * verticalDirection, blur: 0.46, alpha: 0.24 },
+        { x: -0.8, y: 0, blur: 1.1, alpha: 0.15 },
+        { x: -1.15, y: 0.16 * verticalDirection, blur: 1.15, alpha: 0.1 },
+      ];
       context.shadowColor = glyph.color;
-      context.shadowBlur = 12 + smoke * 38;
-      for (let layer = 0; layer < 5; layer += 1) {
-        context.globalAlpha = smoke * (0.16 - layer * 0.022);
-        const drift = smoke * (7 + layer * 9);
+      smokeLayers.forEach((layer) => {
+        context.globalAlpha = smoke * layer.alpha;
+        context.shadowBlur = fontSize * layer.blur * smoke;
         context.fillText(
           glyph.character,
-          glyph.x + direction * drift,
-          glyph.baseline + (layer - 2) * smoke * 4.5
+          glyph.x + fontSize * layer.x * smoke,
+          glyph.baseline + fontSize * layer.y * smoke
         );
-      }
+      });
     }
 
     context.globalAlpha = alpha;
     context.shadowColor = glyph.color;
-    context.shadowBlur = smoke * 18;
+    context.shadowBlur = smoke * fontSize * 0.42;
     context.fillText(glyph.character, glyph.x, glyph.baseline);
     context.restore();
   };
