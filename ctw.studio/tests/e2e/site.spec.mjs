@@ -304,6 +304,104 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
 });
 
+test('homepage contact targets the founder and canvas title replays smoke on hover', async ({ page }) => {
+  await page.goto('/');
+  const navigation = page.locator('.ctw-primary-nav');
+  await expect(navigation.getByRole('link', { name: 'Founder', exact: true })).toHaveCount(0);
+  const contact = navigation.getByRole('link', { name: 'Contact', exact: true });
+  await expect(contact).toHaveAttribute('href', '/#about');
+  await contact.click();
+  await expect(page).toHaveURL(/\/#about$/);
+  await expect(page.locator('#about')).toBeInViewport();
+
+  await page.goto('/');
+  const canvas = page.locator('.canvas-smoke-title__canvas');
+  await expect(canvas).toHaveCSS('opacity', '0');
+  await expect.poll(
+    () => page.locator('.studio-title-glyph').first().evaluate((element) => getComputedStyle(element).animationName),
+    { timeout: 1_000 }
+  ).toBe('studio-title-smoke-reveal');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  await expect(canvas).toBeVisible();
+  await expect(canvas).toHaveAttribute('data-render-mode', 'canvas');
+  await expect(canvas).toHaveAttribute('data-frame-ready', 'true');
+  await expect(canvas).toHaveAttribute('data-handoff-ready', 'true');
+  await expect(canvas).toHaveCSS('transition-duration', '0s');
+  await expect(page.locator('.studio-title-line').first()).toHaveCSS('transition-duration', '0s');
+  expect(await page.locator('.studio-hero__title').evaluate((heading) => {
+    const canvasBounds = heading.querySelector('canvas')?.getBoundingClientRect();
+    const glyphBounds = [...heading.querySelectorAll('[data-canvas-smoke-glyph]')]
+      .map((glyph) => glyph.getBoundingClientRect());
+    if (!canvasBounds || !glyphBounds.length) return false;
+    return Math.min(
+      Math.min(...glyphBounds.map((bounds) => bounds.left)) - canvasBounds.left,
+      canvasBounds.right - Math.max(...glyphBounds.map((bounds) => bounds.right)),
+      Math.min(...glyphBounds.map((bounds) => bounds.top)) - canvasBounds.top,
+      canvasBounds.bottom - Math.max(...glyphBounds.map((bounds) => bounds.bottom))
+    ) >= 40;
+  })).toBe(true);
+  expect(await page.locator('.studio-hero__title').evaluate((heading) => {
+    const top = heading.getBoundingClientRect().top;
+    const htmlBaselines = [...heading.querySelectorAll('[data-canvas-smoke-baseline]')]
+      .map((marker) => Number((marker.getBoundingClientRect().top - top).toFixed(2)));
+    const canvasBaselines = JSON.parse(heading.querySelector('canvas')?.dataset.baselines ?? '[]');
+    return htmlBaselines.every((baseline, index) => Math.abs(baseline - canvasBaselines[index]) < 0.5);
+  })).toBe(true);
+  expect(await page.locator('.studio-title-line').evaluateAll((elements) => elements.map((element) => {
+    const style = getComputedStyle(element);
+    return { visibility: style.visibility, userSelect: style.userSelect };
+  }))).toEqual([
+    { visibility: 'hidden', userSelect: 'none' },
+    { visibility: 'hidden', userSelect: 'none' },
+    { visibility: 'hidden', userSelect: 'none' }
+  ]);
+  const glyph = page.locator('.studio-title-glyph').nth(4);
+  const glyphBounds = await glyph.boundingBox();
+  await page.mouse.move(
+    (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
+    (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
+  );
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  const firstSmokeX = Number(await canvas.getAttribute('data-smoke-x'));
+  const laterGlyphBounds = await page.locator('.studio-title-glyph').nth(9).boundingBox();
+  await page.mouse.move(
+    (laterGlyphBounds?.x ?? 0) + (laterGlyphBounds?.width ?? 0) / 2,
+    (laterGlyphBounds?.y ?? 0) + (laterGlyphBounds?.height ?? 0) / 2,
+    { steps: 8 }
+  );
+  await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 80);
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await page.waitForTimeout(750);
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await page.mouse.move(10, 10);
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
+});
+
+test('homepage smoke intro and touch interaction run on mobile', async ({ browser }) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true
+  });
+  const page = await context.newPage();
+  await page.goto('/');
+  await expect.poll(
+    () => page.locator('.studio-title-glyph').first().evaluate((element) => getComputedStyle(element).animationName),
+    { timeout: 1_000 }
+  ).toBe('studio-title-smoke-reveal');
+
+  const canvas = page.locator('.canvas-smoke-title__canvas');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+  const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
+  await page.touchscreen.tap(
+    (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
+    (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
+  );
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
+  await context.close();
+});
+
 test('portfolio away and Back restore without duplicate handlers or body lock', async ({ page }) => {
   await page.goto('/portfolio/');
   const first = page.locator('[data-project-link="data-storytelling"]').first();
