@@ -66,13 +66,17 @@ export const mountCanvasSmokeTitle = (
   let glyphs: Glyph[] = [];
   let font = '';
   let fontSize = 0;
+  let overscan = 0;
   let frame = 0;
   let pointerX = 0;
   let pointerY = 0;
+  let pointerEnergy = 0;
   let hasPointer = false;
+  let pointerActive = false;
   let introStart = 0;
   let activated = false;
   let disposed = false;
+  let touchReleaseTimer = 0;
   const introDuration = 1350;
   const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
   const easeOut = (value: number) => 1 - Math.pow(1 - value, 4);
@@ -82,7 +86,7 @@ export const mountCanvasSmokeTitle = (
     const scale = Math.min(devicePixelRatio, 1.5);
     const style = getComputedStyle(heading);
     fontSize = Number.parseFloat(style.fontSize);
-    const overscan = Math.min(160, Math.max(64, fontSize * 1.5));
+    overscan = Math.min(160, Math.max(64, fontSize * 1.5));
     const canvasWidth = bounds.width + overscan * 2;
     const canvasHeight = bounds.height + overscan * 2;
     canvas.style.setProperty('--ctw-canvas-smoke-overscan', `${overscan}px`);
@@ -145,11 +149,37 @@ export const mountCanvasSmokeTitle = (
     context.restore();
   };
 
+  const drawSmokeField = (strength: number, color: string) => {
+    if (strength <= 0.01) return;
+    const [red = 255, green = 255, blue = 255] = color.match(/[\d.]+/g)?.slice(0, 3).map(Number) ?? [];
+    const radius = fontSize * 1.05;
+    const gradient = context.createRadialGradient(0, 0, 0, 0, 0, radius);
+    gradient.addColorStop(0, `rgba(${red}, ${green}, ${blue}, 0.2)`);
+    gradient.addColorStop(0.38, `rgba(${red}, ${green}, ${blue}, 0.11)`);
+    gradient.addColorStop(0.72, `rgba(${red}, ${green}, ${blue}, 0.035)`);
+    gradient.addColorStop(1, `rgba(${red}, ${green}, ${blue}, 0)`);
+
+    context.save();
+    context.translate(pointerX + overscan, pointerY + overscan);
+    context.scale(1.45, 0.78);
+    context.globalAlpha = strength;
+    context.filter = `blur(${fontSize * 0.09 * strength}px)`;
+    context.fillStyle = gradient;
+    context.beginPath();
+    context.arc(0, 0, radius, 0, Math.PI * 2);
+    context.fill();
+    context.restore();
+  };
+
   const render = (now: number) => {
     frame = 0;
     context.clearRect(0, 0, canvas.width, canvas.height);
     let active = false;
     let hoverActive = false;
+    let fieldStrength = 0;
+    let fieldColor = glyphs[0]?.color ?? 'rgb(255, 255, 255)';
+    let nearestDistance = Number.POSITIVE_INFINITY;
+    const preparedGlyphs: Array<{ glyph: Glyph; alpha: number; smoke: number }> = [];
 
     glyphs.forEach((glyph) => {
       let alpha = 1;
@@ -162,18 +192,39 @@ export const mountCanvasSmokeTitle = (
         smoke = Math.sin(Math.PI * intro) * (1 - intro * 0.25);
       }
 
-      if (!reducedMotion.matches && glyph.hoverSmoke > 0.025) {
-        active = true;
-        hoverActive = true;
-        smoke = Math.max(smoke, glyph.hoverSmoke);
-        alpha *= 1 - glyph.hoverSmoke * 0.38;
-        glyph.hoverSmoke *= 0.84;
-      } else {
-        glyph.hoverSmoke = 0;
+      if (!reducedMotion.matches) {
+        const centerX = (glyph.left + glyph.right) / 2;
+        const centerY = (glyph.top + glyph.bottom) / 2;
+        const distance = Math.hypot(centerX - pointerX, centerY - pointerY);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          fieldColor = glyph.color;
+        }
+        const radiusX = Math.max(fontSize * 1.12, 64);
+        const radiusY = Math.max(fontSize * 0.72, 52);
+        const dx = (centerX - pointerX) / radiusX;
+        const dy = (centerY - pointerY) / radiusY;
+        const targetSmoke = pointerActive ? Math.exp(-(dx * dx + dy * dy) * 1.55) * pointerEnergy : 0;
+        const difference = targetSmoke - glyph.hoverSmoke;
+        if (Math.abs(difference) > 0.008) {
+          glyph.hoverSmoke += difference * (difference > 0 ? 0.34 : 0.18);
+          active = true;
+        } else {
+          glyph.hoverSmoke = targetSmoke;
+        }
+        if (glyph.hoverSmoke > 0.015) {
+          hoverActive = true;
+          fieldStrength = Math.max(fieldStrength, glyph.hoverSmoke);
+          smoke = Math.max(smoke, glyph.hoverSmoke);
+          alpha *= 1 - glyph.hoverSmoke * 0.38;
+        }
       }
 
-      drawGlyph(glyph, alpha, smoke);
+      preparedGlyphs.push({ glyph, alpha, smoke });
     });
+
+    drawSmokeField(fieldStrength, fieldColor);
+    preparedGlyphs.forEach(({ glyph, alpha, smoke }) => drawGlyph(glyph, alpha, smoke));
 
     canvas.dataset.smokeActive = hoverActive ? 'true' : 'false';
     canvas.dataset.frameReady = 'true';
@@ -193,25 +244,31 @@ export const mountCanvasSmokeTitle = (
     const velocity = hasPointer ? Math.hypot(x - pointerX, y - pointerY) : 0;
     pointerX = x;
     pointerY = y;
+    if (touchInput) window.clearTimeout(touchReleaseTimer);
     hasPointer = true;
+    pointerActive = true;
     canvas.dataset.smokeX = x.toFixed(1);
     canvas.dataset.smokeY = y.toFixed(1);
-    const energy = Math.min(1, (touchInput ? 0.78 : 0.56) + velocity / 20);
-
-    glyphs.forEach((glyph) => {
-      const centerX = (glyph.left + glyph.right) / 2;
-      const centerY = (glyph.top + glyph.bottom) / 2;
-      const radiusX = Math.max(34, (glyph.right - glyph.left) * 2.15);
-      const radiusY = Math.max(48, (glyph.bottom - glyph.top) * 0.92);
-      const dx = (centerX - x) / radiusX;
-      const dy = (centerY - y) / radiusY;
-      const influence = Math.exp(-(dx * dx + dy * dy) * 2.2);
-      glyph.hoverSmoke = Math.max(glyph.hoverSmoke, influence * energy);
-    });
+    pointerEnergy = Math.min(1, (touchInput ? 0.82 : 0.68) + velocity / 24);
     start();
   };
 
-  const onPointerLeave = () => { hasPointer = false; };
+  const releasePointer = () => {
+    pointerActive = false;
+    hasPointer = false;
+    start();
+  };
+  const scheduleTouchRelease = () => {
+    window.clearTimeout(touchReleaseTimer);
+    touchReleaseTimer = window.setTimeout(releasePointer, 650);
+  };
+  const onPointerLeave = ({ pointerType }: PointerEvent) => {
+    if (pointerType === 'touch') scheduleTouchRelease();
+    else releasePointer();
+  };
+  const onPointerEnd = ({ pointerType }: PointerEvent) => {
+    if (pointerType === 'touch') scheduleTouchRelease();
+  };
   const resize = () => {
     layout();
     if (activated) start();
@@ -240,14 +297,19 @@ export const mountCanvasSmokeTitle = (
   heading.addEventListener('pointerdown', onPointerInput);
   heading.addEventListener('pointermove', onPointerInput);
   heading.addEventListener('pointerleave', onPointerLeave);
+  heading.addEventListener('pointerup', onPointerEnd);
+  heading.addEventListener('pointercancel', onPointerEnd);
 
   return () => {
     disposed = true;
+    window.clearTimeout(touchReleaseTimer);
     cancelAnimationFrame(frame);
     resizeObserver.disconnect();
     heading.removeEventListener('pointerdown', onPointerInput);
     heading.removeEventListener('pointermove', onPointerInput);
     heading.removeEventListener('pointerleave', onPointerLeave);
+    heading.removeEventListener('pointerup', onPointerEnd);
+    heading.removeEventListener('pointercancel', onPointerEnd);
     canvas.remove();
   };
 };

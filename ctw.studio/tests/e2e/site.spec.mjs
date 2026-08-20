@@ -326,6 +326,9 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   );
   await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 80);
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await page.waitForTimeout(750);
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await page.mouse.move(10, 10);
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
 });
 
