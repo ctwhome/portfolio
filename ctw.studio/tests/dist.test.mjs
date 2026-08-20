@@ -243,8 +243,8 @@ test('portfolio data includes DroneAtlas and 3D Skeletal Tracking in Football so
 
   const ajax = projects.find(({ id }) => id === 'ajax-visual-intelligence');
   assert.deepEqual(
-    { type: ajax.gallery[0].type, src: ajax.gallery[0].src, featured: ajax.gallery[0].featured },
-    { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4', featured: true }
+    { type: ajax.gallery[0].type, src: ajax.gallery[0].src },
+    { type: 'video', src: 'projects/ajax-visual-intelligence/demo.mp4' }
   );
   assert.equal(ajax.title, '3D Skeletal Tracking in Football');
   assert.equal(ajax.headline, 'What 21 tracked body points reveal about player orientation');
@@ -261,8 +261,7 @@ test('portfolio data includes DroneAtlas and 3D Skeletal Tracking in Football so
     poster: 'projects/ajax-visual-intelligence/video-poster.avif',
     caption: 'Thirty-second walkthrough of skeletal tracking, player POV, and comparison metrics',
     width: 1920,
-    height: 1080,
-    featured: true
+    height: 1080
   });
   const videoFile = new URL('../portfolio/projects/ajax-visual-intelligence/demo.mp4', import.meta.url);
   const videoSize = (await stat(videoFile)).size;
@@ -278,16 +277,6 @@ test('portfolio data includes DroneAtlas and 3D Skeletal Tracking in Football so
   const portfolio = await readFile(new URL('portfolio/index.html', dist), 'utf8');
   const ajaxDialog = portfolio.match(/<dialog[^>]+data-project-dialog="ajax-visual-intelligence"[\s\S]*?<\/dialog>/)?.[0];
   assert.ok(ajaxDialog, 'Ajax project dialog missing');
-  assert.ok(
-    ajaxDialog.indexOf('/portfolio/projects/ajax-visual-intelligence/demo.mp4')
-      < ajaxDialog.indexOf('class="project-dialog__lead"'),
-    'Ajax featured video must precede project lead'
-  );
-  assert.equal(
-    (ajaxDialog.match(/<source[^>]+demo\.mp4/g) ?? []).length,
-    1,
-    'Ajax dialog must render demo.mp4 once'
-  );
   assert.match(ajaxDialog, /<video controls playsinline preload="none" width="1920" height="1080" data-poster="\/portfolio\/projects\/ajax-visual-intelligence\/video-poster\.avif">/);
   assert.doesNotMatch(ajaxDialog, /<video\b[^>]*\sposter=/);
   assert.match(ajaxDialog, /<source data-src="\/portfolio\/projects\/ajax-visual-intelligence\/demo\.mp4" type="video\/mp4">/);

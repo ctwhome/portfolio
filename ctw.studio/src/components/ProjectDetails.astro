@@ -1,5 +1,5 @@
 ---
-import type { GalleryItem, Project } from '../data/projects';
+import type { Project } from '../data/projects';
 
 interface Props {
   projects: readonly Project[];
@@ -7,15 +7,10 @@ interface Props {
 
 const { projects } = Astro.props;
 const mediaUrl = (path: string) => `/portfolio/${path}`;
-type VideoGalleryItem = Extract<GalleryItem, { type: 'video' }>;
-const isFeaturedVideo = (item: GalleryItem): item is VideoGalleryItem =>
-  item.type === 'video' && item.featured === true;
 ---
 <div class="project-details">
   {projects.map((project, index) => {
     const next = projects[(index + 1) % projects.length];
-    const featuredVideo = project.gallery.find(isFeaturedVideo);
-    const galleryItems = project.gallery.filter((item) => item !== featuredVideo);
     return (
       <dialog
         class="project-dialog"
@@ -31,16 +26,6 @@ const isFeaturedVideo = (item: GalleryItem): item is VideoGalleryItem =>
         </header>
 
         <div class="project-dialog__body">
-          {featuredVideo && (
-            <figure class="project-gallery__item project-gallery__item--featured">
-              <video controls playsinline preload="none" width={featuredVideo.width ?? 1600} height={featuredVideo.height ?? 900} data-poster={featuredVideo.poster ? mediaUrl(featuredVideo.poster) : undefined}>
-                <source data-src={mediaUrl(featuredVideo.src)} type="video/mp4" />
-              </video>
-              <noscript><a class="project-gallery__source" href={mediaUrl(featuredVideo.src)}>Open original video</a></noscript>
-              {featuredVideo.caption && <figcaption>{featuredVideo.caption}</figcaption>}
-            </figure>
-          )}
-
           <div class="project-dialog__lead">
             <p class="ctw-section-number">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</p>
             <h2 class="project-dialog__title" id={`${project.id}-title`}>{project.title}</h2>
@@ -65,9 +50,9 @@ const isFeaturedVideo = (item: GalleryItem): item is VideoGalleryItem =>
             </nav>
           )}
 
-          {galleryItems.length > 0 && (
+          {project.gallery.length > 0 && (
             <div class="project-gallery" aria-label={`${project.title} gallery`}>
-              {galleryItems.map((item) => (
+              {project.gallery.map((item) => (
                 item.type === 'video' ? (
                   <figure class="project-gallery__item">
                     <video controls playsinline preload="none" width={item.width ?? 1600} height={item.height ?? 900} data-poster={item.poster ? mediaUrl(item.poster) : undefined}>
