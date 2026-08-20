@@ -822,8 +822,8 @@ html[data-motion-preference="reduced"] :is(
 }
 
 @media (max-width: 47.99rem) {
-  .studio-page-fluid {
-    opacity: 0.48;
+  .studio-page-fluid[data-motion-mode="touch-scroll"] {
+    opacity: 0.64;
   }
 
   .studio-hero {
