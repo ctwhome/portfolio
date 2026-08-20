@@ -36,7 +36,7 @@ export const mountCanvasSmokeTitle = (
   let glyphIndex = 0;
   for (const line of lines) {
     const characters = Array.from(line.textContent ?? '');
-    line.replaceChildren(...characters.map((character) => {
+    const glyphElements = characters.map((character) => {
       const glyph = document.createElement('span');
       glyph.className = 'canvas-smoke-title__glyph studio-title-glyph';
       glyph.textContent = character === ' ' ? '\u00a0' : character;
@@ -44,7 +44,13 @@ export const mountCanvasSmokeTitle = (
       glyph.style.setProperty('--ctw-canvas-smoke-delay', `${90 + glyphIndex * 43}ms`);
       glyphIndex += 1;
       return glyph;
-    }));
+    });
+    const baselineMarker = document.createElement('span');
+    baselineMarker.className = 'canvas-smoke-title__baseline';
+    baselineMarker.dataset.canvasSmokeBaseline = '';
+    baselineMarker.setAttribute('aria-hidden', 'true');
+    baselineMarker.style.cssText = 'display:inline-block;width:0;height:0;margin:0;padding:0;border:0;overflow:hidden;';
+    line.replaceChildren(...glyphElements, baselineMarker);
   }
 
   const canvas = document.createElement('canvas');
@@ -80,17 +86,18 @@ export const mountCanvasSmokeTitle = (
     font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
     context.font = font;
     context.textBaseline = 'alphabetic';
-    const metrics = context.measureText('Hg');
-
+    const baselineByLine = new Map(lines.map((line) => {
+      const marker = line.querySelector<HTMLElement>('[data-canvas-smoke-baseline]');
+      return [line, (marker?.getBoundingClientRect().top ?? line.getBoundingClientRect().bottom) - bounds.top];
+    }));
+    canvas.dataset.baselines = JSON.stringify([...baselineByLine.values()].map((value) => Number(value.toFixed(2))));
     glyphs = [...heading.querySelectorAll<HTMLElement>('[data-canvas-smoke-glyph]')].map((glyph, index) => {
       const glyphBounds = glyph.getBoundingClientRect();
       const line = glyph.closest<HTMLElement>('[data-canvas-smoke-line]') ?? glyph;
-      const lineBounds = line.getBoundingClientRect();
       return {
         character: glyph.textContent ?? '',
         x: glyphBounds.left - bounds.left,
-        baseline: lineBounds.top - bounds.top + lineBounds.height / 2
-          + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2,
+        baseline: baselineByLine.get(line) ?? glyphBounds.bottom - bounds.top,
         left: glyphBounds.left - bounds.left,
         right: glyphBounds.right - bounds.left,
         top: glyphBounds.top - bounds.top,

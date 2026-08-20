@@ -279,6 +279,13 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
   await expect(canvas).toBeVisible();
   await expect(canvas).toHaveAttribute('data-render-mode', 'canvas');
+  expect(await page.locator('.studio-hero__title').evaluate((heading) => {
+    const top = heading.getBoundingClientRect().top;
+    const htmlBaselines = [...heading.querySelectorAll('[data-canvas-smoke-baseline]')]
+      .map((marker) => Number((marker.getBoundingClientRect().top - top).toFixed(2)));
+    const canvasBaselines = JSON.parse(heading.querySelector('canvas')?.dataset.baselines ?? '[]');
+    return htmlBaselines.every((baseline, index) => Math.abs(baseline - canvasBaselines[index]) < 0.5);
+  })).toBe(true);
   expect(await page.locator('.studio-title-line').evaluateAll((elements) => elements.map((element) => {
     const style = getComputedStyle(element);
     return { visibility: style.visibility, userSelect: style.userSelect };
