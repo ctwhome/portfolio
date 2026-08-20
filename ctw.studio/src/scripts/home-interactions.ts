@@ -241,6 +241,7 @@ if (title) {
   mountCanvasSmokeTitle(title, {
     activateAfter: 2900,
     animateIntro: false,
+    finePointerInteractive: false,
     interactive: true,
     onActivate: () => {
       document.body.classList.add('studio-hero-complete');

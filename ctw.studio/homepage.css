@@ -146,6 +146,18 @@ body {
   }
 }
 
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html:not([data-motion-preference="reduced"]) .studio-home .studio-hero__title.is-canvas-smoke-active:hover {
+    transform: translateY(var(--studio-title-shift)) scale(1.025);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-motion-preference="full"] .studio-home .studio-hero__title.is-canvas-smoke-active:hover {
+    transform: translateY(var(--studio-title-shift)) scale(1.025);
+  }
+}
+
 .studio-hero__lede {
   margin-top: var(--ctw-space-5);
   text-wrap: balance;

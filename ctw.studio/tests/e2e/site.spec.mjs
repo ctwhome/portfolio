@@ -304,7 +304,7 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
 });
 
-test('homepage contact targets the founder and canvas title replays smoke on hover', async ({ page }) => {
+test('homepage contact targets the founder and canvas title stays static with lightweight hover', async ({ page }) => {
   await page.goto('/');
   const navigation = page.locator('.ctw-primary-nav');
   await expect(navigation.getByRole('link', { name: 'Founder', exact: true })).toHaveCount(0);
@@ -321,6 +321,15 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
     () => page.locator('.studio-title-glyph').first().evaluate((element) => getComputedStyle(element).animationName),
     { timeout: 1_000 }
   ).toBe('studio-title-smoke-reveal');
+  const title = page.locator('.studio-hero__title');
+  await expect(title).not.toHaveClass(/is-canvas-smoke-active/);
+  await title.hover();
+  await page.waitForTimeout(250);
+  expect(await title.evaluate((heading) => {
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(heading).transform);
+    return Math.hypot(matrix.a, matrix.b);
+  })).toBeCloseTo(1, 2);
+  await page.mouse.move(10, 10);
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
   await expect(canvas).toBeVisible();
   await expect(canvas).toHaveAttribute('data-render-mode', 'canvas');
@@ -361,20 +370,17 @@ test('homepage contact targets the founder and canvas title replays smoke on hov
     (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
     (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
   );
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
-  const firstSmokeX = Number(await canvas.getAttribute('data-smoke-x'));
-  const laterGlyphBounds = await page.locator('.studio-title-glyph').nth(9).boundingBox();
-  await page.mouse.move(
-    (laterGlyphBounds?.x ?? 0) + (laterGlyphBounds?.width ?? 0) / 2,
-    (laterGlyphBounds?.y ?? 0) + (laterGlyphBounds?.height ?? 0) / 2,
-    { steps: 8 }
-  );
-  await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 80);
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false');
+  await expect(canvas).not.toHaveAttribute('data-smoke-x', /.+/);
+  await expect(canvas).not.toHaveAttribute('data-smoke-y', /.+/);
+  await expect.poll(() => title.evaluate((heading) => {
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(heading).transform);
+    return Math.hypot(matrix.a, matrix.b);
+  })).toBeCloseTo(1.025, 2);
   await page.waitForTimeout(750);
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
-  await page.mouse.move(10, 10);
-  await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'false');
+  await expect(canvas).not.toHaveAttribute('data-smoke-x', /.+/);
+  await expect(canvas).not.toHaveAttribute('data-smoke-y', /.+/);
 });
 
 test('homepage smoke intro and touch interaction run on mobile', async ({ browser }) => {
@@ -395,12 +401,40 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
   await expect(fluid).toHaveAttribute('data-motion-mode', 'touch-scroll');
   const canvas = page.locator('.canvas-smoke-title__canvas');
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
-  const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
-  await page.touchscreen.tap(
-    (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
-    (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
-  );
+  const firstGlyph = page.locator('.studio-title-glyph').nth(2);
+  const laterGlyph = page.locator('.studio-title-glyph').nth(10);
+  const firstBounds = await firstGlyph.boundingBox();
+  const laterBounds = await laterGlyph.boundingBox();
+  const firstX = (firstBounds?.x ?? 0) + (firstBounds?.width ?? 0) / 2;
+  const firstY = (firstBounds?.y ?? 0) + (firstBounds?.height ?? 0) / 2;
+  const laterX = (laterBounds?.x ?? 0) + (laterBounds?.width ?? 0) / 2;
+  const laterY = (laterBounds?.y ?? 0) + (laterBounds?.height ?? 0) / 2;
+  const touchPointer = { bubbles: true, isPrimary: true, pointerId: 1, pointerType: 'touch' };
+  await firstGlyph.dispatchEvent('pointerdown', {
+    ...touchPointer,
+    buttons: 1,
+    clientX: firstX,
+    clientY: firstY,
+    pressure: 0.5
+  });
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  const firstSmokeX = Number(await canvas.getAttribute('data-smoke-x'));
+  await laterGlyph.dispatchEvent('pointermove', {
+    ...touchPointer,
+    buttons: 1,
+    clientX: laterX,
+    clientY: laterY,
+    pressure: 0.5
+  });
+  await expect.poll(async () => Number(await canvas.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 60);
+  await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
+  await laterGlyph.dispatchEvent('pointerup', {
+    ...touchPointer,
+    buttons: 0,
+    clientX: laterX,
+    clientY: laterY,
+    pressure: 0
+  });
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
 
   const scrollReveal = page.locator('.studio-products-section .ctw-lede');
