@@ -390,6 +390,9 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
     { timeout: 1_000 }
   ).toBe('studio-title-smoke-reveal');
 
+  const fluid = page.locator('.studio-page-fluid');
+  await expect(fluid).toBeVisible();
+  await expect(fluid).toHaveAttribute('data-motion-mode', 'touch-scroll');
   const canvas = page.locator('.canvas-smoke-title__canvas');
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
   const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
@@ -399,6 +402,14 @@ test('homepage smoke intro and touch interaction run on mobile', async ({ browse
   );
   await expect(canvas).toHaveAttribute('data-smoke-active', 'true');
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
+
+  const scrollReveal = page.locator('.studio-products-section .ctw-lede');
+  await expect(scrollReveal).toHaveClass(/studio-scroll-reveal/);
+  await expect(scrollReveal).toHaveCSS('opacity', '0');
+  await scrollReveal.scrollIntoViewIfNeeded();
+  await expect(scrollReveal).toHaveClass(/is-visible/);
+  await expect(scrollReveal).toHaveCSS('opacity', '1');
+  await expect.poll(async () => Number(await fluid.getAttribute('data-scroll-progress'))).toBeGreaterThan(0.1);
   await context.close();
 });
 

@@ -14,11 +14,13 @@ if (hero && precisePointer.matches && !reducedMotion.matches) {
 }
 
 const initPageFluid = () => {
-  if (!precisePointer.matches || reducedMotion.matches) return;
+  if (reducedMotion.matches) return;
+  const touchScrollMotion = !precisePointer.matches;
 
   const canvas = document.createElement('canvas');
   canvas.className = 'studio-page-fluid';
   canvas.setAttribute('aria-hidden', 'true');
+  canvas.dataset.motionMode = touchScrollMotion ? 'touch-scroll' : 'pointer';
   const gl = canvas.getContext('webgl2', {
     alpha: true,
     premultipliedAlpha: true,
@@ -134,7 +136,7 @@ const initPageFluid = () => {
   let targetY = 0.46;
   let currentX = targetX;
   let currentY = targetY;
-  let pointerEnergy = 0;
+  let pointerEnergy = touchScrollMotion ? 0.34 : 0;
   let elapsed = 0;
   let lastTimestamp = 0;
   let lastRendered = 0;
@@ -142,7 +144,7 @@ const initPageFluid = () => {
   let running = false;
 
   const resize = () => {
-    const scale = Math.min(devicePixelRatio, 1.25);
+    const scale = Math.min(devicePixelRatio, touchScrollMotion ? 1 : 1.25);
     canvas.width = Math.max(1, Math.round(innerWidth * scale));
     canvas.height = Math.max(1, Math.round(innerHeight * scale));
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -151,7 +153,7 @@ const initPageFluid = () => {
   const render = (timestamp: number) => {
     if (!running) return;
     frame = requestAnimationFrame(render);
-    if (timestamp - lastRendered < 33) return;
+    if (timestamp - lastRendered < (touchScrollMotion ? 42 : 33)) return;
     if (lastTimestamp) elapsed += Math.min(timestamp - lastTimestamp, 50) / 1000;
     lastTimestamp = timestamp;
     lastRendered = timestamp;
@@ -176,11 +178,35 @@ const initPageFluid = () => {
     else cancelAnimationFrame(frame);
   };
 
-  addEventListener('pointermove', ({ clientX, clientY }) => {
-    targetX = clientX / innerWidth;
-    targetY = clientY / innerHeight;
-    pointerEnergy = Math.min(1, pointerEnergy + 0.24);
-  });
+  if (touchScrollMotion) {
+    let previousScrollY = scrollY;
+    const updateFromScroll = () => {
+      const maximum = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const progress = Math.min(1, Math.max(0, scrollY / maximum));
+      const distance = Math.abs(scrollY - previousScrollY);
+      previousScrollY = scrollY;
+      targetX = 0.5 + Math.sin(progress * Math.PI * 2) * 0.18;
+      targetY = 0.32 + progress * 0.42;
+      pointerEnergy = Math.min(1, Math.max(pointerEnergy, 0.24 + distance / 90));
+      canvas.dataset.scrollProgress = progress.toFixed(3);
+      hero?.style.setProperty('--studio-hero-x', `${targetX * 100}%`);
+      hero?.style.setProperty('--studio-hero-y', `${targetY * 100}%`);
+    };
+    addEventListener('scroll', updateFromScroll, { passive: true });
+    addEventListener('pointermove', ({ clientX, clientY, pointerType }) => {
+      if (pointerType !== 'touch') return;
+      targetX = clientX / innerWidth;
+      targetY = clientY / innerHeight;
+      pointerEnergy = Math.min(1, pointerEnergy + 0.32);
+    }, { passive: true });
+    updateFromScroll();
+  } else {
+    addEventListener('pointermove', ({ clientX, clientY }) => {
+      targetX = clientX / innerWidth;
+      targetY = clientY / innerHeight;
+      pointerEnergy = Math.min(1, pointerEnergy + 0.24);
+    });
+  }
   addEventListener('resize', resize);
   document.addEventListener('visibilitychange', syncRendering);
   resize();
