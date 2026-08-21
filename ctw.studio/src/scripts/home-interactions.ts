@@ -1,4 +1,5 @@
 import { mountCanvasSmokeTitle } from './canvas-smoke-title';
+import { mountTitleRipple } from './title-ripple';
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const motionPreference = document.documentElement.dataset.motionPreference ?? 'system';
@@ -238,6 +239,7 @@ const initPageFluid = () => {
 initPageFluid();
 
 if (title) {
+  let disposeTitleRipple = () => {};
   mountCanvasSmokeTitle(title, {
     activateAfter: 2900,
     animateIntro: false,
@@ -246,7 +248,12 @@ if (title) {
     onActivate: () => {
       document.body.classList.add('studio-hero-complete');
       dispatchEvent(new Event('studio-hero-complete'));
+      const source = title.querySelector<HTMLCanvasElement>('.canvas-smoke-title__canvas');
+      if (source) disposeTitleRipple = mountTitleRipple(title, source);
     },
+  });
+  addEventListener('pagehide', (event) => {
+    if (!event.persisted) disposeTitleRipple();
   });
 
   let scrollFrame = 0;

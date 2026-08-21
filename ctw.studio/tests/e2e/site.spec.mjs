@@ -304,7 +304,7 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
 });
 
-test('homepage contact targets the founder and canvas title stays static with lightweight hover', async ({ page }) => {
+test('homepage contact targets the founder and canvas title gains local ripple without scaling or smoke hover', async ({ page }) => {
   await page.goto('/');
   const navigation = page.locator('.ctw-primary-nav');
   await expect(navigation.getByRole('link', { name: 'Founder', exact: true })).toHaveCount(0);
@@ -322,13 +322,15 @@ test('homepage contact targets the founder and canvas title stays static with li
     { timeout: 1_000 }
   ).toBe('studio-title-smoke-reveal');
   const title = page.locator('.studio-hero__title');
+  const titleScale = () => title.evaluate((heading) => {
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(heading).transform);
+    return Math.hypot(matrix.a, matrix.b);
+  });
   await expect(title).not.toHaveClass(/is-canvas-smoke-active/);
   await title.hover();
   await page.waitForTimeout(250);
-  expect(await title.evaluate((heading) => {
-    const matrix = new DOMMatrixReadOnly(getComputedStyle(heading).transform);
-    return Math.hypot(matrix.a, matrix.b);
-  })).toBeCloseTo(1, 2);
+  expect(await titleScale()).toBeCloseTo(1, 2);
+  const initialTitleBounds = await title.boundingBox();
   await page.mouse.move(10, 10);
   await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
   await expect(canvas).toBeVisible();
@@ -364,7 +366,12 @@ test('homepage contact targets the founder and canvas title stays static with li
     { visibility: 'hidden', userSelect: 'none' },
     { visibility: 'hidden', userSelect: 'none' }
   ]);
+  const ripple = page.locator('.studio-title-ripple');
+  await expect(ripple).toHaveCount(1);
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  await expect(ripple).toHaveCSS('opacity', '0');
   const glyph = page.locator('.studio-title-glyph').nth(4);
+  const laterGlyph = page.locator('.studio-title-glyph').nth(9);
   const glyphBounds = await glyph.boundingBox();
   await page.mouse.move(
     (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
@@ -373,14 +380,162 @@ test('homepage contact targets the founder and canvas title stays static with li
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false');
   await expect(canvas).not.toHaveAttribute('data-smoke-x', /.+/);
   await expect(canvas).not.toHaveAttribute('data-smoke-y', /.+/);
-  await expect.poll(() => title.evaluate((heading) => {
-    const matrix = new DOMMatrixReadOnly(getComputedStyle(heading).transform);
-    return Math.hypot(matrix.a, matrix.b);
-  })).toBeCloseTo(1.025, 2);
+  await page.waitForTimeout(300);
+  expect.soft(await titleScale()).toBeCloseTo(1, 2);
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'true');
+  await expect(ripple).toHaveAttribute('data-ripple-x', /.+/);
+  await expect(ripple).toHaveAttribute('data-ripple-y', /.+/);
+  await expect(ripple).toHaveCSS('opacity', '1');
+  await expect(canvas).toHaveCSS('opacity', '0');
+  const firstRippleX = Number(await ripple.getAttribute('data-ripple-x'));
+  const laterGlyphBounds = await laterGlyph.boundingBox();
+  await page.mouse.move(
+    (laterGlyphBounds?.x ?? 0) + (laterGlyphBounds?.width ?? 0) / 2,
+    (laterGlyphBounds?.y ?? 0) + (laterGlyphBounds?.height ?? 0) / 2,
+    { steps: 8 }
+  );
+  await expect.poll(async () => Number(await ripple.getAttribute('data-ripple-x'))).toBeGreaterThan(firstRippleX + 80);
+  const ripplePixels = await ripple.evaluate((rippleCanvas) => new Promise((resolve) => {
+    const gl = rippleCanvas.getContext('webgl');
+    if (!gl) {
+      resolve({ visible: 0, antialiased: 0, premultiplicationViolations: 1, transparentColorViolations: 1 });
+      return;
+    }
+
+    const stats = { visible: 0, antialiased: 0, premultiplicationViolations: 0, transparentColorViolations: 0 };
+    let samples = 0;
+    const readAfterRenderer = () => {
+      const pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+      gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+      let visible = 0;
+      let antialiased = 0;
+      let premultiplicationViolations = 0;
+      let transparentColorViolations = 0;
+      for (let offset = 0; offset < pixels.length; offset += 4) {
+        const red = pixels[offset];
+        const green = pixels[offset + 1];
+        const blue = pixels[offset + 2];
+        const alpha = pixels[offset + 3];
+        if (alpha > 8) visible += 1;
+        if (alpha > 8 && alpha < 247) antialiased += 1;
+        if (red > alpha + 2 || green > alpha + 2 || blue > alpha + 2) premultiplicationViolations += 1;
+        if (alpha === 0 && (red !== 0 || green !== 0 || blue !== 0)) transparentColorViolations += 1;
+      }
+      stats.visible = Math.max(stats.visible, visible);
+      stats.antialiased = Math.max(stats.antialiased, antialiased);
+      stats.premultiplicationViolations = Math.max(stats.premultiplicationViolations, premultiplicationViolations);
+      stats.transparentColorViolations = Math.max(stats.transparentColorViolations, transparentColorViolations);
+      samples += 1;
+      if (samples < 4) requestAnimationFrame(readAfterRenderer);
+      else resolve(stats);
+    };
+    requestAnimationFrame(readAfterRenderer);
+  }));
+  expect(ripplePixels.visible).toBeGreaterThan(10_000);
+  expect(ripplePixels.antialiased).toBeGreaterThan(1_000);
+  expect(ripplePixels.premultiplicationViolations).toBe(0);
+  expect(ripplePixels.transparentColorViolations).toBe(0);
+  const activeTitleBounds = await title.boundingBox();
+  expect(activeTitleBounds?.width).toBeCloseTo(initialTitleBounds?.width ?? 0, 0);
+  expect(activeTitleBounds?.height).toBeCloseTo(initialTitleBounds?.height ?? 0, 0);
+  expect(await titleScale()).toBeCloseTo(1, 2);
   await page.waitForTimeout(750);
   await expect(canvas).toHaveAttribute('data-smoke-active', 'false');
   await expect(canvas).not.toHaveAttribute('data-smoke-x', /.+/);
   await expect(canvas).not.toHaveAttribute('data-smoke-y', /.+/);
+  await page.mouse.move(10, 10);
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  await expect(ripple).toHaveCSS('opacity', '0');
+  await expect(canvas).toHaveCSS('opacity', '1');
+  expect(await titleScale()).toBeCloseTo(1, 2);
+});
+
+test('homepage fine-pointer handoff keeps synthetic touch on title smoke', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+
+  const ripple = page.locator('.studio-title-ripple');
+  const smoke = page.locator('.canvas-smoke-title__canvas');
+  const firstGlyph = page.locator('.studio-title-glyph').nth(2);
+  const laterGlyph = page.locator('.studio-title-glyph').nth(10);
+  const firstBounds = await firstGlyph.boundingBox();
+  const laterBounds = await laterGlyph.boundingBox();
+  const firstX = (firstBounds?.x ?? 0) + (firstBounds?.width ?? 0) / 2;
+  const firstY = (firstBounds?.y ?? 0) + (firstBounds?.height ?? 0) / 2;
+  const laterX = (laterBounds?.x ?? 0) + (laterBounds?.width ?? 0) / 2;
+  const laterY = (laterBounds?.y ?? 0) + (laterBounds?.height ?? 0) / 2;
+  const touchPointer = { bubbles: true, isPrimary: true, pointerId: 1, pointerType: 'touch' };
+
+  await page.mouse.move(firstX, firstY);
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'true');
+  await expect(ripple).toHaveCSS('opacity', '1');
+  await expect(smoke).toHaveCSS('opacity', '0');
+
+  await firstGlyph.dispatchEvent('pointerenter', {
+    ...touchPointer,
+    buttons: 0,
+    clientX: firstX,
+    clientY: firstY,
+    pressure: 0
+  });
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  await expect(ripple).toHaveCSS('opacity', '0');
+  await expect(smoke).toHaveCSS('opacity', '1');
+
+  await firstGlyph.dispatchEvent('pointerdown', {
+    ...touchPointer,
+    buttons: 1,
+    clientX: firstX,
+    clientY: firstY,
+    pressure: 0.5
+  });
+  await expect(smoke).toHaveAttribute('data-smoke-active', 'true');
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  const firstSmokeX = Number(await smoke.getAttribute('data-smoke-x'));
+  await laterGlyph.dispatchEvent('pointermove', {
+    ...touchPointer,
+    buttons: 1,
+    clientX: laterX,
+    clientY: laterY,
+    pressure: 0.5
+  });
+  await expect.poll(async () => Number(await smoke.getAttribute('data-smoke-x'))).toBeGreaterThan(firstSmokeX + 60);
+  await expect(smoke).toHaveAttribute('data-smoke-active', 'true');
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  await laterGlyph.dispatchEvent('pointerup', {
+    ...touchPointer,
+    buttons: 0,
+    clientX: laterX,
+    clientY: laterY,
+    pressure: 0
+  });
+  await expect(smoke).toHaveAttribute('data-smoke-active', 'false', { timeout: 5_000 });
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  await expect(ripple).toHaveCSS('opacity', '0');
+});
+
+test('homepage active title ripple deactivates when scroll shifts title', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/, { timeout: 5_000 });
+
+  const title = page.locator('.studio-hero__title');
+  const ripple = page.locator('.studio-title-ripple');
+  const smoke = page.locator('.canvas-smoke-title__canvas');
+  const glyphBounds = await page.locator('.studio-title-glyph').nth(4).boundingBox();
+  await page.mouse.move(
+    (glyphBounds?.x ?? 0) + (glyphBounds?.width ?? 0) / 2,
+    (glyphBounds?.y ?? 0) + (glyphBounds?.height ?? 0) / 2
+  );
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'true');
+  await expect(smoke).toHaveCSS('opacity', '0');
+
+  await page.evaluate(() => scrollTo(0, 20));
+  await expect.poll(() => title.evaluate((heading) => Math.abs(Number.parseFloat(
+    getComputedStyle(heading).getPropertyValue('--studio-title-shift')
+  )))).toBeGreaterThan(0.4);
+  await expect(ripple).toHaveAttribute('data-ripple-active', 'false');
+  await expect(ripple).toHaveCSS('opacity', '0');
+  await expect(smoke).toHaveCSS('opacity', '1');
 });
 
 test('homepage smoke intro and touch interaction run on mobile', async ({ browser }) => {
@@ -486,6 +641,17 @@ test('homepage motion preference can override the device setting', async ({ brow
   await expect(page.locator('html')).toHaveAttribute('data-motion-preference', 'reduced');
   await expect(page.locator('.studio-title-glyph').first()).toHaveCSS('animation-name', 'none');
   await expect(page.locator('.studio-page-fluid')).toHaveCount(0);
+  await expect(page.locator('.studio-title-ripple')).toHaveCount(0);
+  await context.close();
+});
+
+test('homepage reduced motion omits title ripple on fine pointers', async ({ browser }) => {
+  const context = await browser.newContext({ reducedMotion: 'reduce' });
+  const page = await context.newPage();
+  await page.goto('/');
+  await expect(page.locator('body')).toHaveClass(/studio-hero-complete/);
+  await expect(page.locator('.canvas-smoke-title__canvas')).toBeVisible();
+  await expect(page.locator('.studio-title-ripple')).toHaveCount(0);
   await context.close();
 });
 
