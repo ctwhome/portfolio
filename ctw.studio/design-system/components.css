@@ -171,19 +171,122 @@
   color: var(--ctw-color-action);
 }
 
-.ctw-masthead--studio .ctw-primary-nav__link:last-child {
+.ctw-masthead--studio .ctw-liquid-contact {
+  --ctw-liquid-x: 50%;
+  --ctw-liquid-y: 50%;
+  isolation: isolate;
+  position: relative;
+  gap: 0.4rem;
+  overflow: visible;
   padding-inline: var(--ctw-space-3);
-  border: 1px solid var(--ctw-color-action);
+  border: 0;
   border-radius: var(--ctw-radius-pill);
-  background: var(--ctw-color-action);
-  color: var(--ctw-color-action-text);
+  background: #050505;
+  color: #fff;
   font-weight: 650;
+  text-decoration: none;
 }
 
-.ctw-masthead--studio .ctw-primary-nav__link:last-child:hover {
-  background: var(--ctw-color-text);
-  border-color: var(--ctw-color-text);
-  color: var(--ctw-color-surface);
+.ctw-masthead--studio .ctw-liquid-contact:hover {
+  background: #050505;
+  color: #fff;
+}
+
+.ctw-liquid-contact::after {
+  position: absolute;
+  z-index: -1;
+  right: 16%;
+  bottom: -0.4rem;
+  left: 16%;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgb(87 215 255 / 35%), rgb(255 255 255 / 50%), rgb(247 181 0 / 30%));
+  content: "";
+  filter: blur(0.55rem);
+  opacity: 0.16;
+  pointer-events: none;
+  transition: opacity var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.ctw-liquid-contact__rim,
+.ctw-liquid-contact__surface,
+.ctw-liquid-contact__ripple {
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.ctw-liquid-contact__rim {
+  z-index: 0;
+  inset: 0;
+  background: conic-gradient(from 105deg, #57d7ff, #f8ffff 24%, #756e5d 48%, #f7b500 66%, #f5f1e8 82%, #57d7ff);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 18%);
+  opacity: 0.78;
+  transition: filter var(--ctw-motion-fast) var(--ctw-ease-out), opacity var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.ctw-liquid-contact__surface {
+  z-index: 1;
+  inset: 1px;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 150% at var(--ctw-liquid-x) var(--ctw-liquid-y), rgb(255 255 255 / 18%) 0 10%, rgb(191 201 202 / 12%) 24%, transparent 58%),
+    linear-gradient(180deg, #0d0d0d, #020202);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%), inset 0 -1px 0 rgb(0 0 0 / 80%);
+  transition: filter var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.ctw-liquid-contact__ripple {
+  z-index: 2;
+  inset: 1px;
+  overflow: hidden;
+  background: radial-gradient(circle at var(--ctw-liquid-x) var(--ctw-liquid-y), rgb(255 255 255 / 40%) 0, rgb(216 244 247 / 28%) 9%, rgb(87 215 255 / 14%) 20%, transparent 38%);
+  opacity: 0;
+}
+
+.ctw-liquid-contact__plus,
+.ctw-liquid-contact__label {
+  position: relative;
+  z-index: 3;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 90%), 0 0 3px rgb(0 0 0 / 70%);
+}
+
+.ctw-liquid-contact__plus {
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.ctw-liquid-contact:is(:hover, :focus-visible) .ctw-liquid-contact__rim,
+.ctw-liquid-contact[data-liquid-active="true"] .ctw-liquid-contact__rim {
+  filter: brightness(1.25) saturate(1.05);
+  opacity: 1;
+}
+
+.ctw-liquid-contact:is(:hover, :focus-visible) .ctw-liquid-contact__surface,
+.ctw-liquid-contact[data-liquid-active="true"] .ctw-liquid-contact__surface {
+  /* 40% white cap keeps moving metal subordinate to white label contrast. */
+  background:
+    radial-gradient(48% 165% at var(--ctw-liquid-x) var(--ctw-liquid-y), rgb(255 255 255 / 40%) 0 8%, rgb(213 222 223 / 28%) 18%, rgb(111 122 124 / 18%) 34%, rgb(10 10 10 / 84%) 62%, transparent 78%),
+    linear-gradient(180deg, #101010, #020202);
+  filter: contrast(1.08);
+}
+
+.ctw-liquid-contact:is(:hover, :focus-visible)::after,
+.ctw-liquid-contact[data-liquid-active="true"]::after {
+  opacity: 0.48;
+}
+
+.ctw-liquid-contact[data-liquid-pressing="true"] .ctw-liquid-contact__ripple {
+  animation: ctw-liquid-contact-ripple 360ms var(--ctw-ease-out) both;
+}
+
+@keyframes ctw-liquid-contact-ripple {
+  0% { opacity: 0; transform: scale(0.35); }
+  28% { opacity: 0.8; }
+  100% { opacity: 0.16; transform: scale(1); }
 }
 
 .ctw-nav-glitch {
@@ -260,7 +363,7 @@
     font-size: var(--ctw-type-label);
   }
 
-  .ctw-masthead--studio .ctw-primary-nav__link:last-child {
+  .ctw-masthead--studio .ctw-liquid-contact {
     padding-inline: var(--ctw-space-3);
   }
 
@@ -304,7 +407,7 @@
     gap: 0;
   }
 
-  .ctw-masthead--studio .ctw-primary-nav__link:last-child {
+  .ctw-masthead--studio .ctw-liquid-contact {
     padding-inline: 0.8rem;
   }
 }
@@ -705,4 +808,24 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  html[data-motion-preference="full"] .ctw-liquid-contact,
+  html[data-motion-preference="full"] .ctw-liquid-contact::after,
+  html[data-motion-preference="full"] .ctw-liquid-contact__rim,
+  html[data-motion-preference="full"] .ctw-liquid-contact__surface {
+    transition-duration: var(--ctw-motion-fast) !important;
+  }
+
+  html[data-motion-preference="full"] .ctw-liquid-contact[data-liquid-pressing="true"] .ctw-liquid-contact__ripple {
+    animation: ctw-liquid-contact-ripple 360ms var(--ctw-ease-out) both !important;
+  }
+}
+
+html[data-motion-preference="reduced"] .ctw-liquid-contact,
+html[data-motion-preference="reduced"] .ctw-liquid-contact::after,
+html[data-motion-preference="reduced"] .ctw-liquid-contact__rim,
+html[data-motion-preference="reduced"] .ctw-liquid-contact__surface,
+html[data-motion-preference="reduced"] .ctw-liquid-contact__ripple {
+  animation: none !important;
+  transition: none !important;
 }

@@ -17,7 +17,95 @@ const { current } = Astro.props;
       <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
       <a class="ctw-primary-nav__link studio-nav-workshop ctw-nav-glitch" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined} aria-label="AI Workshop" data-text="AI Workshop" data-mobile-text="AI"><span>AI Workshop</span></a>
       <a class="ctw-primary-nav__link" href="/portfolio/" aria-current={current === 'portfolio' ? 'page' : undefined}>Work</a>
-      <a class="ctw-primary-nav__link" href="/#about">Contact</a>
+      <a
+        class="ctw-primary-nav__link ctw-liquid-contact"
+        href="/#about"
+        aria-label="Contact"
+        data-liquid-contact
+        data-liquid-mode="static"
+        data-liquid-active="false"
+        data-liquid-pressing="false"
+        data-liquid-x="50"
+        data-liquid-y="50"
+      >
+        <span class="ctw-liquid-contact__rim" aria-hidden="true"></span>
+        <span class="ctw-liquid-contact__surface" aria-hidden="true"></span>
+        <span class="ctw-liquid-contact__ripple" aria-hidden="true"></span>
+        <span class="ctw-liquid-contact__plus" aria-hidden="true">+</span>
+        <span class="ctw-liquid-contact__label">Contact</span>
+      </a>
     </nav>
   </div>
 </header>
+
+<script>
+  const root = document.documentElement;
+  if (!root.dataset.motionPreference) {
+    let preference = 'system';
+    try {
+      const stored = localStorage.getItem('ctw-motion-preference');
+      if (stored === 'full' || stored === 'reduced') preference = stored;
+    } catch {}
+    root.dataset.motionPreference = preference;
+  }
+
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(pointer: fine)');
+  const motionPreference = root.dataset.motionPreference;
+  const motionEnabled = motionPreference === 'full'
+    || (motionPreference !== 'reduced' && !reducedMotion.matches);
+
+  for (const contact of document.querySelectorAll<HTMLAnchorElement>('[data-liquid-contact]')) {
+    const dynamic = finePointer.matches && motionEnabled;
+    contact.dataset.liquidMode = dynamic ? 'dynamic' : 'static';
+    if (!dynamic) continue;
+
+    const listeners = new AbortController();
+    const options = { signal: listeners.signal };
+    const setPosition = ({ clientX, clientY }: PointerEvent) => {
+      const bounds = contact.getBoundingClientRect();
+      const x = Math.max(0, Math.min(100, ((clientX - bounds.left) / bounds.width) * 100));
+      const y = Math.max(0, Math.min(100, ((clientY - bounds.top) / bounds.height) * 100));
+      contact.style.setProperty('--ctw-liquid-x', `${x.toFixed(2)}%`);
+      contact.style.setProperty('--ctw-liquid-y', `${y.toFixed(2)}%`);
+      contact.dataset.liquidX = x.toFixed(2);
+      contact.dataset.liquidY = y.toFixed(2);
+    };
+    const activate = (event: PointerEvent) => {
+      setPosition(event);
+      contact.dataset.liquidActive = 'true';
+    };
+    const center = () => {
+      contact.style.removeProperty('--ctw-liquid-x');
+      contact.style.removeProperty('--ctw-liquid-y');
+      contact.dataset.liquidX = '50';
+      contact.dataset.liquidY = '50';
+    };
+    const reset = () => {
+      contact.dataset.liquidActive = 'false';
+      contact.dataset.liquidPressing = 'false';
+      center();
+    };
+    const press = (event: PointerEvent) => {
+      activate(event);
+      contact.dataset.liquidPressing = 'true';
+      try { contact.setPointerCapture(event.pointerId); } catch {}
+    };
+    const release = (event: PointerEvent) => {
+      contact.dataset.liquidPressing = 'false';
+      try { contact.releasePointerCapture(event.pointerId); } catch {}
+    };
+
+    contact.addEventListener('pointerenter', activate, options);
+    contact.addEventListener('pointermove', activate, options);
+    contact.addEventListener('pointerleave', reset, options);
+    contact.addEventListener('pointerdown', press, options);
+    contact.addEventListener('pointerup', release, options);
+    contact.addEventListener('pointercancel', release, options);
+    contact.addEventListener('focus', center, options);
+    addEventListener('pagehide', (event) => {
+      reset();
+      if (!event.persisted) listeners.abort();
+    }, { signal: listeners.signal });
+  }
+</script>

@@ -702,7 +702,8 @@ test("homepage restores historical composition through current static design sys
   assert.match(homepage, /bodyClass="studio-home"/);
   assert.match(componentsCss, /\.ctw-wordmark__dot\s*\{[^}]*color:\s*var\(--ctw-color-action\)/s);
   assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link[^}]*text-transform:\s*none/s);
-  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link:last-child[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
+  assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-liquid-contact[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
+  assert.doesNotMatch(componentsCss, /\.ctw-masthead--studio \.ctw-primary-nav__link:last-child/);
   assert.match(componentsCss, /\.ctw-nav-glitch:hover::before[^}]*animation:\s*ctw-nav-glitch-1/s);
   assert.match(componentsCss, /\.ctw-nav-glitch:hover::after[^}]*animation:\s*ctw-nav-glitch-2/s);
   assert.match(componentsCss, /\.ctw-masthead--studio \.ctw-masthead__inner[^}]*background:\s*color-mix\(in srgb, var\(--ctw-color-surface\) 84%, transparent\)/s);
