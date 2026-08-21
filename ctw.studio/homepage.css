@@ -116,7 +116,8 @@ body {
   transform-origin: 50% 75%;
 }
 
-.canvas-smoke-title__canvas {
+.canvas-smoke-title__canvas,
+.studio-title-ripple {
   --ctw-canvas-smoke-overscan: 0px;
   position: absolute;
   inset: calc(0px - var(--ctw-canvas-smoke-overscan));
@@ -133,6 +134,14 @@ body {
 }
 
 .studio-hero__title.is-canvas-smoke-active .canvas-smoke-title__canvas {
+  opacity: 1;
+}
+
+.studio-hero__title.is-title-ripple-active .canvas-smoke-title__canvas {
+  opacity: 0;
+}
+
+.studio-title-ripple.is-active {
   opacity: 1;
 }
 
