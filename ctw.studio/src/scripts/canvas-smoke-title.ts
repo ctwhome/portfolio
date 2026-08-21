@@ -1,6 +1,7 @@
 export type CanvasSmokeTitleOptions = {
   activateAfter?: number;
   animateIntro?: boolean;
+  finePointerInteractive?: boolean;
   interactive?: boolean;
   onActivate?: () => void;
 };
@@ -25,6 +26,7 @@ export const mountCanvasSmokeTitle = (
   const {
     activateAfter = 0,
     animateIntro = true,
+    finePointerInteractive = true,
     interactive = true,
     onActivate,
   } = options;
@@ -243,7 +245,7 @@ export const mountCanvasSmokeTitle = (
 
   const onPointerInput = ({ clientX, clientY, pointerType }: PointerEvent) => {
     const touchInput = pointerType === 'touch';
-    if (!activated || !interactive || motionReduced || (!touchInput && !precisePointer.matches)) return;
+    if (!activated || !interactive || motionReduced || (!touchInput && (!finePointerInteractive || !precisePointer.matches))) return;
     const bounds = heading.getBoundingClientRect();
     const x = clientX - bounds.left;
     const y = clientY - bounds.top;
@@ -268,12 +270,35 @@ export const mountCanvasSmokeTitle = (
     window.clearTimeout(touchReleaseTimer);
     touchReleaseTimer = window.setTimeout(releasePointer, 650);
   };
+  let touchDragListenersRegistered = false;
+  const removeTouchDragListeners = () => {
+    if (!touchDragListenersRegistered) return;
+    heading.removeEventListener('pointermove', onPointerInput);
+    heading.removeEventListener('pointerleave', onPointerLeave);
+    touchDragListenersRegistered = false;
+  };
   const onPointerLeave = ({ pointerType }: PointerEvent) => {
-    if (pointerType === 'touch') scheduleTouchRelease();
+    if (pointerType === 'touch') {
+      removeTouchDragListeners();
+      scheduleTouchRelease();
+    }
     else releasePointer();
   };
   const onPointerEnd = ({ pointerType }: PointerEvent) => {
-    if (pointerType === 'touch') scheduleTouchRelease();
+    if (pointerType === 'touch') {
+      removeTouchDragListeners();
+      scheduleTouchRelease();
+    }
+  };
+  const addTouchDragListeners = () => {
+    if (finePointerInteractive || touchDragListenersRegistered) return;
+    heading.addEventListener('pointermove', onPointerInput);
+    heading.addEventListener('pointerleave', onPointerLeave);
+    touchDragListenersRegistered = true;
+  };
+  const onPointerDown = (event: PointerEvent) => {
+    if (event.pointerType === 'touch') addTouchDragListeners();
+    onPointerInput(event);
   };
   const resize = () => {
     layout();
@@ -300,9 +325,11 @@ export const mountCanvasSmokeTitle = (
     }, motionReduced ? 0 : activateAfter);
   });
 
-  heading.addEventListener('pointerdown', onPointerInput);
-  heading.addEventListener('pointermove', onPointerInput);
-  heading.addEventListener('pointerleave', onPointerLeave);
+  heading.addEventListener('pointerdown', onPointerDown);
+  if (finePointerInteractive) {
+    heading.addEventListener('pointermove', onPointerInput);
+    heading.addEventListener('pointerleave', onPointerLeave);
+  }
   heading.addEventListener('pointerup', onPointerEnd);
   heading.addEventListener('pointercancel', onPointerEnd);
 
@@ -311,9 +338,12 @@ export const mountCanvasSmokeTitle = (
     window.clearTimeout(touchReleaseTimer);
     cancelAnimationFrame(frame);
     resizeObserver.disconnect();
-    heading.removeEventListener('pointerdown', onPointerInput);
-    heading.removeEventListener('pointermove', onPointerInput);
-    heading.removeEventListener('pointerleave', onPointerLeave);
+    heading.removeEventListener('pointerdown', onPointerDown);
+    removeTouchDragListeners();
+    if (finePointerInteractive) {
+      heading.removeEventListener('pointermove', onPointerInput);
+      heading.removeEventListener('pointerleave', onPointerLeave);
+    }
     heading.removeEventListener('pointerup', onPointerEnd);
     heading.removeEventListener('pointercancel', onPointerEnd);
     canvas.remove();
