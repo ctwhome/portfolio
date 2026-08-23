@@ -21,6 +21,11 @@ test('shared header exposes one native Contact link with decorative liquid layer
     await expect(contact.locator('.ctw-liquid-contact__plus')).toHaveAttribute('aria-hidden', 'true');
     await expect(contact.locator('.ctw-liquid-contact__label')).toHaveText('Contact');
     await expect(contact.locator('canvas')).toHaveCount(0);
+
+    const standOut = page.getByRole('navigation', { name: 'Primary navigation' })
+      .getByRole('link', { name: 'Stand Out', exact: true });
+    await expect(standOut).toHaveCount(1);
+    await expect(standOut).toHaveAttribute('href', '/stand-out/');
   }
 
   await page.goto('/portfolio/');
@@ -29,6 +34,15 @@ test('shared header exposes one native Contact link with decorative liquid layer
     .click();
   await expect(page).toHaveURL(/\/#about$/);
   await expect(page.locator('#about')).toBeInViewport();
+});
+
+test('shared header Stand Out link opens the canonical landing page', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('navigation', { name: 'Primary navigation' })
+    .getByRole('link', { name: 'Stand Out', exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/stand-out\/$/);
+  await expect(page).toHaveTitle('Stand Out — Bring your real business online');
 });
 
 test('fine pointer tracks metal position and clears active state on leave', async ({ page }) => {
@@ -287,10 +301,35 @@ for (const width of [390, 320]) {
     expect(box?.width ?? 0).toBeGreaterThanOrEqual(43.99);
     expect(box?.height ?? 0).toBeGreaterThanOrEqual(43.99);
     expect(await contact.locator('.ctw-liquid-contact__label').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+    const contactCopy = await contact.locator('.ctw-liquid-contact__label').evaluate((element) => ({
+      fontSize: Number.parseFloat(getComputedStyle(element).fontSize),
+      compactContent: getComputedStyle(element, '::after').content
+    }));
+    if (width === 320) {
+      expect(contactCopy.fontSize).toBe(0);
+      expect(contactCopy.compactContent).toBe('"Talk"');
+    } else {
+      expect(contactCopy.fontSize).toBeGreaterThan(0);
+      expect(contactCopy.compactContent).toBe('none');
+    }
     const navigationLabels = await page.getByRole('navigation', { name: 'Primary navigation' })
       .getByRole('link')
       .evaluateAll((links) => links.map((link) => link.getAttribute('aria-label') ?? link.textContent.trim()));
-    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Contact']);
+    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Stand Out', 'Contact']);
+    const navigationBoxes = await page.getByRole('navigation', { name: 'Primary navigation' })
+      .getByRole('link')
+      .evaluateAll((links) => links.map((link) => {
+        const box = link.getBoundingClientRect();
+        return { name: link.getAttribute('aria-label') ?? link.textContent.trim(), width: box.width, height: box.height };
+      }));
+    for (const target of navigationBoxes) {
+      expect(target.width, target.name).toBeGreaterThanOrEqual(43.99);
+      expect(target.height, target.name).toBeGreaterThanOrEqual(43.99);
+    }
+    const standOut = page.getByRole('navigation', { name: 'Primary navigation' })
+      .getByRole('link', { name: 'Stand Out', exact: true });
+    await expect(standOut).toHaveCSS('white-space', 'nowrap');
+    expect(await standOut.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
     await context.close();
   });
 }
