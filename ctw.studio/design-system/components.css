@@ -170,6 +170,11 @@
   background: color-mix(in srgb, var(--ctw-color-text) 8%, transparent);
 }
 
+.ctw-masthead--studio .ctw-primary-nav__link--stand-out {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .ctw-masthead--studio .ctw-primary-nav__link[aria-current] {
   background: color-mix(in srgb, var(--ctw-color-action) 12%, transparent);
   color: var(--ctw-color-action);
@@ -429,6 +434,21 @@
 
   .ctw-masthead--studio .ctw-liquid-contact {
     padding-inline: 0.5rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .ctw-masthead--studio .ctw-liquid-contact__plus {
+    display: none;
+  }
+
+  .ctw-masthead--studio .ctw-liquid-contact__label {
+    font-size: 0;
+  }
+
+  .ctw-masthead--studio .ctw-liquid-contact__label::after {
+    content: "Talk";
+    font-size: 0.7rem;
   }
 }
 

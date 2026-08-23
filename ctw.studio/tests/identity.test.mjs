@@ -11,8 +11,9 @@ test('header presents Jesse identity and exact primary navigation while retainin
   assert.match(source, />Jesse Gonzalez</);
   const nav = source.slice(source.indexOf('<nav class="ctw-primary-nav"'), source.indexOf('</nav>'));
   assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map((match) => match[1]), [
-    '/portfolio/', '/writing/', '/signals/', '/#about'
+    '/portfolio/', '/writing/', '/signals/', '/stand-out/', '/#about'
   ]);
+  assert.match(nav, /href="\/stand-out\/"[^>]*aria-label="Stand Out"/);
   assert.doesNotMatch(nav, /AI Workshop|\/workshop\//);
   for (const sentinel of [
     'ctw-liquid-contact', 'data-liquid-contact', 'data-liquid-mode="static"',
