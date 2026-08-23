@@ -17,7 +17,7 @@ const routes = [
   {
     name: "homepage",
     path: "/",
-    title: "CTW Studio – Interaction Design Engineering",
+    title: "Jesse Gonzalez — Interaction Design Engineer",
     heading: /Interaction Design Engineering/i,
     core: /Interaction Strategy & Prototyping/,
     minimumStyles: 4,
@@ -52,6 +52,7 @@ for (const viewport of viewports) {
       const routePath = route.path;
       const runtimeErrors = [];
       const localStyles = [];
+      const expectedOrigin = new URL(testInfo.project.use.baseURL).origin;
 
       page.on("pageerror", (error) => runtimeErrors.push(`pageerror: ${error.message}`));
       page.on("console", (message) => {
@@ -59,7 +60,7 @@ for (const viewport of viewports) {
       });
       page.on("response", (response) => {
         const url = new URL(response.url());
-        if (url.origin === "http://127.0.0.1:4173" && response.request().resourceType() === "stylesheet") {
+        if (url.origin === expectedOrigin && response.request().resourceType() === "stylesheet") {
           localStyles.push({ path: url.pathname, status: response.status(), ok: response.ok() });
         }
       });

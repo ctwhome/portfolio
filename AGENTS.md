@@ -64,13 +64,15 @@ bun run static:check
 
 ## Architecture contracts
 
-- Seventeen maintained Astro pages share `DocumentHead.astro`.
+- Thirty-five maintained Astro pages share `DocumentHead.astro`.
 - All route navigation is native. Home and portfolio use CSS-only
   cross-document view transitions; portfolio behavior lives in one page-local
   processed TypeScript module.
 - Reduced motion disables nonessential motion.
 - Legal pages use Astro directory output at `/workshop/privacy/` and
   `/workshop/terms/`.
+- Writing owns `/writing/` plus 17 direct Astro Markdown archive routes and
+  self-contained media under `public/writing/`.
 - Historical root experiments, `/new/`, workshop pitch/slides, and `/nlesc/`
   remain passthrough. `/signals/roadmap/` remains a byte-preserved permanent
   redirect source, not deployed content.
@@ -103,7 +105,7 @@ bun run static:check
 ## Preservation and review
 
 - Route audit comes from built output plus manifest-declared preserved routes,
-  excluding declared redirect sources. Assert exact 24 content routes,
+  excluding declared redirect sources. Assert exact 42 content routes,
   directory legal URLs, and absent dotted aliases.
 - Preserve NLeSC and historical hashes. Never hand-edit `dist/`.
 - Protect Signals JSON facts and updater semantics unless task explicitly

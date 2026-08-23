@@ -12,6 +12,7 @@
     "test:signals:built": "node --test signals/tests/*.test.mjs",
     "test:design": "bun run build && bun run test:design:built",
     "test:design:built": "node --test design-system/tests/design-system.test.mjs",
+    "test:content": "node --test tests/identity.test.mjs tests/writing.test.mjs",
     "test:syntax": "node --check feedback.js && node --check signals/dashboard.js && node --check signals/subject-menu.js && node --check signals/food/food.js && node --check signals/housing/housing.js && node --check signals/science/science.js && node --check signals/healthspan/healthspan.js && node --check signals/real-time-ai/real-time-ai.js && node --check signals/demography/demography.js && node --check signals/education/education.js && node --check signals/financial-fragility/financial-fragility.js && python3 -m py_compile signals/scripts/*.py",
     "test:dist": "bun run build && bun run test:dist:built",
     "test:dist:built": "node --test tests/dist.test.mjs",
@@ -25,7 +26,7 @@
     "test:lighthouse:quick:built": "node tests/lighthouse.mjs --runs=1",
     "test:transfer": "bun run build && bun run test:transfer:built",
     "test:transfer:built": "node tests/transfer.mjs",
-    "test:ci": "bun run check && bun run build && bun run test:signals:built && bun run test:design:built && bun run test:syntax && bun run test:dist:built && bun run test:e2e:built && bun run test:visual:built && bun run test:lighthouse:built"
+    "test:ci": "bun run check && bun run build && bun run test:content && bun run test:signals:built && bun run test:design:built && bun run test:syntax && bun run test:dist:built && bun run test:e2e:built && bun run test:visual:built && bun run test:lighthouse:built"
   },
   "dependencies": {
     "@fontsource-variable/inter": "5.3.0",

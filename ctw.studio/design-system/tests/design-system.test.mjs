@@ -4,6 +4,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
+import { writingRoutes } from "../../tests/personal-portfolio-routes.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const designDir = resolve(here, "..");
@@ -127,6 +128,8 @@ const expectedRoutes = [
   "/index-2.html",
   "/new/",
   "/portfolio/",
+  "/writing/",
+  ...writingRoutes.map(({ slug }) => `/writing/${slug}/`),
   "/signals/",
   "/signals/ai-work/",
   "/signals/demography/",
@@ -186,7 +189,7 @@ test("DESIGN.md follows alpha section order and owns machine-readable roles", ()
   }
 });
 
-test("route audit covers exactly 24 deployed routes by family", () => {
+test("route audit covers exactly 42 deployed routes by family", () => {
   const actualRoutes = discoverHtmlRoutes(
     join(studioDir, "dist"),
     "",
@@ -196,7 +199,7 @@ test("route audit covers exactly 24 deployed routes by family", () => {
   const preservedRoutes = [...manifest.routeContract.preservedRoutes].sort();
   const contentRoutes = actualRoutes.filter((route) => !redirectSources.includes(route));
 
-  assert.equal(expectedRoutes.length, 24);
+  assert.equal(expectedRoutes.length, 42);
   assert.deepEqual(manifest.routeContract.excludedTrees, ["nlesc"]);
   assert.deepEqual(redirectSources, ["/signals/roadmap/"]);
   assert.ok(preservedRoutes.every((route) => expectedRoutes.includes(route)));
@@ -219,7 +222,7 @@ test("route audit covers exactly 24 deployed routes by family", () => {
     assert.match(guideAudit, new RegExp(`>${family}<`));
     for (const route of routes) assert.ok(guideAudit.includes(`<code>${route}</code>`), route);
   }
-  assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 24);
+  assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 42);
   assert.deepEqual(
     [...guideTable.matchAll(/<code>([^<]+)<\/code>/g)].map((match) => match[1]).sort(),
     expectedRoutes,
@@ -638,7 +641,7 @@ test("responsive, touch-target, focus, and reduced-motion contracts exist", () =
 
 test("standalone links opt into touch targets while prose links remain inline", () => {
   for (const [markup, labels] of [
-    [homepage, ["All projects →", "About →", "Full bio &amp; portfolio ↗"]],
+    [homepage, ["All projects →", "About →", "See selected work →"]],
     [guide, ["Trace evidence", "Check access", "Read case-study contract →"]],
   ]) {
     for (const label of labels) {
@@ -695,7 +698,7 @@ test("homepage restores historical composition through current static design sys
     assert.ok(homepage.includes(text), text);
   }
   assert.match(homepage, /<nav class="ctw-primary-nav" aria-label="Primary navigation">/);
-  for (const href of ["/portfolio/", "/signals/", "/workshop/", "/#about"]) {
+  for (const href of ["/portfolio/", "/writing/", "/signals/", "/workshop/", "/#about"]) {
     assert.match(homepage, new RegExp(`href="${href.replaceAll("/", "\\/")}"`));
   }
   assert.doesNotMatch(homepage, /href="\/#contact">Contact<\/a>/);
