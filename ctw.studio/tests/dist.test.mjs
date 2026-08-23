@@ -4,6 +4,7 @@ import { access, readFile, readdir, stat } from 'node:fs/promises';
 import test from 'node:test';
 import sharp from 'sharp';
 import { projects } from '../src/data/projects.ts';
+import { writingRoutes } from './personal-portfolio-routes.mjs';
 
 const dist = new URL('../dist/', import.meta.url);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -16,17 +17,6 @@ async function filesBelow(directory) {
     return [path];
   }));
   return nested.flat();
-}
-
-function visibleMainText(html) {
-  const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1];
-  assert.ok(main, 'main element missing');
-  return main
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&[a-zA-Z#0-9]+;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
 }
 
 function readableMainText(html) {
@@ -42,7 +32,7 @@ function readableMainText(html) {
     .trim();
 }
 
-test('Astro emits directory routes with canonical metadata and preserved homepage copy', async () => {
+test('Astro emits directory routes with personal homepage identity', async () => {
   const [home, portfolio, standOut] = await Promise.all([
     readFile(new URL('index.html', dist), 'utf8'),
     readFile(new URL('portfolio/index.html', dist), 'utf8'),
@@ -50,11 +40,11 @@ test('Astro emits directory routes with canonical metadata and preserved homepag
   ]);
   assert.match(home, /<link rel="canonical" href="https:\/\/ctw\.studio\/">/);
   assert.match(portfolio, /<link rel="canonical" href="https:\/\/ctw\.studio\/portfolio\/">/);
-  assert.equal(
-    sha256(visibleMainText(home)),
-    'bcaed40baf8f78b413f9c5afc0fb890643ec1011e95131f6092e25dfef0e5c12'
-  );
-  assert.match(home, /Interaction design engineering for systems people need to understand and control/);
+  assert.match(home, /<title>Jesse Gonzalez — Interaction Design Engineer<\/title>/);
+  assert.match(home, /I design and build applications that help people understand and work with complex AI, data, and workflows/);
+  assert.match(home, /CTW Studio is my independent commercial practice and legal vehicle/);
+  assert.match(home, /Tell me what you’re trying to make/);
+  assert.doesNotMatch(home, /AI Product Architect|https?:\/\/(?:www\.)?jessegonzalez\.dev/i);
   assert.match(portfolio, /Work \/ 2013–2026/);
   assert.match(portfolio, /Software and design work\./);
   assert.match(portfolio, /Based in Amsterdam/);
@@ -127,7 +117,7 @@ test('stand-out keeps its transformation story, disclosure, and local media in s
   assert.doesNotMatch(html, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
 });
 
-test('all 17 maintained routes share metadata and exclude legacy navigation', async () => {
+test('all 35 maintained routes share metadata and exclude legacy navigation', async () => {
   const routes = [
     ['index.html', '/'],
     ['portfolio/index.html', '/portfolio/'],
@@ -145,7 +135,9 @@ test('all 17 maintained routes share metadata and exclude legacy navigation', as
     ['workshop/index.html', '/workshop/'],
     ['workshop/privacy/index.html', '/workshop/privacy/'],
     ['workshop/terms/index.html', '/workshop/terms/'],
-    ['design-system/index.html', '/design-system/']
+    ['design-system/index.html', '/design-system/'],
+    ['writing/index.html', '/writing/'],
+    ...writingRoutes.map(({ slug }) => [`writing/${slug}/index.html`, `/writing/${slug}/`])
   ];
 
   for (const [file, pathname] of routes) {
@@ -180,7 +172,7 @@ test('workshop, directory legal pages, and guide keep substantive accessible out
   assert.match(terms, /id="cancellation-policy"/);
   assert.match(guide, /<main id="main">/);
   assert.match(guide, /Design for decisions/);
-  assert.match(guide, /<caption>All 24 deployed CTW Studio routes/);
+  assert.match(guide, /<caption>All 42 deployed CTW Studio routes/);
   assert.doesNotMatch(guide, /<script\b/i);
   assert.deepEqual(
     [workshop, privacy, terms].map((html) => sha256(readableMainText(html))),

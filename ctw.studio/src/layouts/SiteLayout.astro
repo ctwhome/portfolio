@@ -10,8 +10,15 @@ interface Props {
   title: string;
   description: string;
   canonical: string;
-  current?: 'home' | 'portfolio';
+  current?: 'home' | 'portfolio' | 'writing';
   ogDescription?: string;
+  ogType?: 'article' | 'website';
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  articleAuthor?: string;
+  publishedTime?: string;
   bodyClass?: string;
   homepageStyles?: boolean;
 }
@@ -22,6 +29,13 @@ const {
   canonical,
   current,
   ogDescription = description,
+  ogType = 'website',
+  ogImage,
+  ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
+  articleAuthor,
+  publishedTime,
   bodyClass = '',
   homepageStyles = false
 } = Astro.props;
@@ -34,6 +48,13 @@ const {
       description={description}
       canonical={canonical}
       ogDescription={ogDescription}
+      ogType={ogType}
+      ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
+      ogImageWidth={ogImageWidth}
+      ogImageHeight={ogImageHeight}
+      articleAuthor={articleAuthor}
+      publishedTime={publishedTime}
       homepageStyles={homepageStyles}
     />
     <script is:inline>
