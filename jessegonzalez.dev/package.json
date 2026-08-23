@@ -10,6 +10,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
+    "test:redirects": "node --test tests/redirects.test.mjs",
     "postbuild": "vite build --mode preview"
   },
   "devDependencies": {

@@ -2,11 +2,12 @@
 
 Independent applications sharing one repository:
 
-- `ctw.studio/`: Astro static site for CTW Studio, portfolio, Signals, workshop,
-  legal pages, and design guide.
+- `ctw.studio/`: Astro static site for Jesse Gonzalez, CTW Studio, portfolio,
+  Writing, Signals, workshop, legal pages, and design guide.
 - `about/`: canonical Next.js source for NLeSC; exports the committed
   `ctw.studio/nlesc/` subtree.
-- `jessegonzalez.dev/`: SvelteKit portfolio.
+- `jessegonzalez.dev/`: retired SvelteKit portfolio; Vercel config redirects
+  migrated writing and remaining routes to CTW Studio.
 - `dashboard/`: Bun Signals dashboard.
 - `ctw-kit/`: shared Svelte library used by `jessegonzalez.dev/`.
 - `ctw.studio2/`: historical alternate static portfolio.
@@ -160,7 +161,7 @@ Budgets:
 | `/workshop/` | ≥90 | 1.0 | CLS ≤0.01 |
 | `/design-system/` | ≥90 | 1.0 | CLS ≤0.01 |
 
-`test:dist` verifies exact 24-route contract, stable legal directories,
+`test:dist` verifies exact 42-route contract, stable legal directories,
 preservation hashes, metadata, legacy `nav.js` absence, removed-runtime
 absence, and portfolio-only controller ownership.
 

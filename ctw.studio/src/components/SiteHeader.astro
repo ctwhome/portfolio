@@ -1,6 +1,6 @@
 ---
 interface Props {
-  current?: 'home' | 'portfolio' | 'signals' | 'workshop';
+  current?: 'home' | 'portfolio' | 'writing' | 'signals' | 'workshop';
 }
 
 const { current } = Astro.props;
@@ -11,12 +11,12 @@ const { current } = Astro.props;
       class="ctw-wordmark"
       href="/"
       aria-current={current === 'home' ? 'page' : undefined}
-      aria-label="CTW Studio"
-    ><span class="ctw-wordmark__label" aria-hidden="true">CTW<span class="ctw-wordmark__dot">.</span><span class="ctw-wordmark__studio">studio</span></span></a>
+      aria-label="Jesse Gonzalez, home"
+    ><span class="ctw-wordmark__label" aria-hidden="true"><span class="ctw-wordmark__full">Jesse Gonzalez</span><span class="ctw-wordmark__compact">JG</span><span class="ctw-wordmark__dot">.</span></span></a>
     <nav class="ctw-primary-nav" aria-label="Primary navigation">
-      <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
-      <a class="ctw-primary-nav__link studio-nav-workshop ctw-nav-glitch" href="/workshop/" aria-current={current === 'workshop' ? 'page' : undefined} aria-label="AI Workshop" data-text="AI Workshop" data-mobile-text="AI"><span>AI Workshop</span></a>
       <a class="ctw-primary-nav__link" href="/portfolio/" aria-current={current === 'portfolio' ? 'page' : undefined}>Work</a>
+      <a class="ctw-primary-nav__link" href="/writing/" aria-current={current === 'writing' ? 'page' : undefined}>Writing</a>
+      <a class="ctw-primary-nav__link" href="/signals/" aria-current={current === 'signals' ? 'page' : undefined}>Signals</a>
       <a
         class="ctw-primary-nav__link ctw-liquid-contact"
         href="/#about"

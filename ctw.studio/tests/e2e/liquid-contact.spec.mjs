@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
-const routes = ['/', '/portfolio/', '/signals/', '/workshop/'];
+const routes = ['/', '/portfolio/', '/writing/', '/signals/', '/workshop/'];
 
 test('shared header exposes one native Contact link with decorative liquid layers', async ({ page }) => {
   const packageJson = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
@@ -287,10 +287,10 @@ for (const width of [390, 320]) {
     expect(box?.width ?? 0).toBeGreaterThanOrEqual(43.99);
     expect(box?.height ?? 0).toBeGreaterThanOrEqual(43.99);
     expect(await contact.locator('.ctw-liquid-contact__label').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
-    await expect(page.locator('.studio-nav-workshop')).toHaveAttribute('href', '/workshop/');
-    await expect(page.locator('.studio-nav-workshop span')).toHaveCSS('font-size', '0px');
-    expect(await page.locator('.studio-nav-workshop span').evaluate((element) => getComputedStyle(element, '::after').content)).toBe('"AI"');
-    await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link')).toHaveCount(4);
+    const navigationLabels = await page.getByRole('navigation', { name: 'Primary navigation' })
+      .getByRole('link')
+      .evaluateAll((links) => links.map((link) => link.getAttribute('aria-label') ?? link.textContent.trim()));
+    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Contact']);
     await context.close();
   });
 }

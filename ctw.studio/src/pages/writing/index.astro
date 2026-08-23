@@ -1,0 +1,53 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import '../../styles/writing.css';
+
+interface WritingModule {
+  frontmatter: {
+    title: string;
+    description: string;
+    date: string;
+    category: string;
+  };
+  url: string;
+}
+
+const posts = Object.values(import.meta.glob<WritingModule>('./*/index.md', { eager: true }))
+  .map(({ frontmatter, url }) => ({ ...frontmatter, url }))
+  .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+
+const formatDate = (date: string) => new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC'
+}).format(new Date(`${date}T00:00:00Z`));
+---
+<SiteLayout
+  title="Writing — Jesse Gonzalez"
+  description="Archived essays and digital garden notes by Jesse Gonzalez on interaction design, software, AI, and ways of working."
+  canonical="/writing/"
+  current="writing"
+  bodyClass="writing-page"
+>
+  <main id="main-content" class="ctw-container writing-main writing-index">
+    <header class="writing-index__header">
+      <p class="ctw-section-number">Archive · {posts.length} entries</p>
+      <h1 class="ctw-heading-lg">Writing</h1>
+      <p class="ctw-lede">Essays and digital garden notes on interaction design, software, AI, and ways of working, preserved from Jesse’s earlier site.</p>
+    </header>
+    <ol class="writing-index__list">
+      {posts.map((post) => (
+        <li class="writing-index__item">
+          <a href={post.url}>
+            <span class="writing-index__title">{post.title}</span>
+            <span class="ctw-meta writing-index__meta">
+              <span>{post.category}</span>
+              <time datetime={post.date}>{formatDate(post.date)}</time>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </main>
+</SiteLayout>

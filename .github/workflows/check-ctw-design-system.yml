@@ -7,6 +7,9 @@ on:
       - 'DESIGN.md'
       - 'README.md'
       - 'ctw.studio/**'
+      - 'jessegonzalez.dev/package.json'
+      - 'jessegonzalez.dev/vercel.json'
+      - 'jessegonzalez.dev/tests/**'
       - '.github/workflows/check-ctw-design-system.yml'
   push:
     paths:
@@ -14,6 +17,9 @@ on:
       - 'DESIGN.md'
       - 'README.md'
       - 'ctw.studio/**'
+      - 'jessegonzalez.dev/package.json'
+      - 'jessegonzalez.dev/vercel.json'
+      - 'jessegonzalez.dev/tests/**'
       - '.github/workflows/check-ctw-design-system.yml'
 
 permissions:
@@ -126,6 +132,14 @@ jobs:
       - name: Test design system
         working-directory: ctw.studio
         run: bun run test:design:built
+
+      - name: Test identity and writing source contracts
+        working-directory: ctw.studio
+        run: bun run test:content
+
+      - name: Test retired portfolio redirects
+        working-directory: jessegonzalez.dev
+        run: bun run test:redirects
 
       - name: Check runtime syntax
         working-directory: ctw.studio

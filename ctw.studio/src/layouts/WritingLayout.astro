@@ -1,0 +1,57 @@
+---
+import SiteLayout from './SiteLayout.astro';
+import '../styles/writing.css';
+
+const { frontmatter } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC'
+}).format(new Date(`${frontmatter.date}T00:00:00Z`));
+---
+<SiteLayout
+  title={`${frontmatter.title} — Jesse Gonzalez`}
+  description={frontmatter.description}
+  canonical={Astro.url.pathname}
+  current="writing"
+  bodyClass="writing-page"
+  ogType="article"
+  ogImage={frontmatter.cover}
+  ogImageAlt={frontmatter.coverAlt}
+  ogImageWidth={frontmatter.coverWidth}
+  ogImageHeight={frontmatter.coverHeight}
+  articleAuthor="Jesse Gonzalez"
+  publishedTime={`${frontmatter.date}T00:00:00.000Z`}
+>
+  <main id="main-content" class="ctw-container writing-main">
+    <article class="writing-article">
+      <header class="writing-article__header">
+        <a class="ctw-link ctw-link--standalone" href="/writing/">← All writing</a>
+        <p class="ctw-meta writing-article__meta">
+          <span>{frontmatter.category}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={frontmatter.date}>{formattedDate}</time>
+          {frontmatter.archive && <><span aria-hidden="true">·</span><span>Archive</span></>}
+        </p>
+        <h1>{frontmatter.title}</h1>
+        {frontmatter.description && <p class="ctw-lede">{frontmatter.description}</p>}
+      </header>
+      {frontmatter.cover && (
+        <img
+          class="writing-article__cover"
+          src={frontmatter.cover}
+          alt={frontmatter.coverAlt}
+          width={frontmatter.coverWidth}
+          height={frontmatter.coverHeight}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      )}
+      <div class="writing-prose">
+        <slot />
+      </div>
+    </article>
+  </main>
+</SiteLayout>

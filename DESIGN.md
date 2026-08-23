@@ -220,7 +220,7 @@ system. Unrelated application roots keep their own design decisions.
 
 ### Current-state route and family audit
 
-Exactly 24 deployed routes are in scope. Maintained routes render through Astro;
+Exactly 42 deployed routes are in scope. Maintained routes render through Astro;
 manifest-owned historical routes remain byte-identical. “Observe” means
 documented current state, not automatic migration.
 
@@ -235,6 +235,24 @@ documented current state, not automatic migration.
 | Design system | `/design-system/` | Maintained Astro guide | Design system | Wave 1 |
 | Portfolio | `/new/` | Editorial portfolio exploration | Portfolio | Wave 3 |
 | Portfolio | `/portfolio/` | Project grid and detail surface | Portfolio | Wave 3 |
+| Writing | `/writing/` | Archive index | Writing | Wave 1 |
+| Writing | `/writing/2018-03-11-webpack-problem-with-source-maps-mapping-in-chrome-devtools-fixed/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2018-07-10-focusdiamond/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2018-09-11-beginning-to-understand-the-regular-expressions-in-javascript/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2019-10-08-the-ultimate-infographic-for-seo/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2020-09-01-the-53-rule-the-ultimate-productivity-schedule-a-game-changer-for-your-day/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2021-03-12-nuxt-with-supabase-template-recipe/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2023-07-11-vps-home-server-with-docker-compose-reverse-proxy-and-automatic-ssl/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2023-09-17-prevention-is-the-new-medicine-welcome-to-medicine-3-0/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2023-10-13-the-power-of-interaction-design-ixd-sketching-wireframing-and-prototyping-in-digital-product-development/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2023-11-11-post-google-era-how-google-shaped-the-way-we-create-and-consume-knowledge-and-how-chatgpt-is-revolutionizing-it/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2024-04-26-the-future-of-image-and-video-format/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2024-10-06-modern-education-system/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2024-10-10-my-blueprint/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2025-01-27-the-archaitect-era/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2025-05-30-call-me-jesse/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2025-07-08-media-noise-and-oncemag/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically/` | Archived article | Writing | Wave 1 |
 | Signals | `/signals/` | Atlas and topic switcher | Signals | Wave 1 |
 | Signals | `/signals/ai-work/` | Evidence brief | Signals | Wave 2 |
 | Signals | `/signals/demography/` | Evidence brief | Signals | Wave 2 |
