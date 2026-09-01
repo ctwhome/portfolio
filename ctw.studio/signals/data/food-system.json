@@ -2,8 +2,8 @@
   "meta": {
     "topic": "Food, animals & the planet",
     "brief": "002",
-    "dataUpdated": "2026-07-22",
-    "editorialReview": "2026-07-22",
+    "dataUpdated": "2026-09-01",
+    "editorialReview": "2026-09-01",
     "updateMode": "Curated evidence; FAO slaughter and Poore–Nemecek product-footprint data refreshable by script",
     "scope": "Global unless a card says otherwise"
   },
@@ -126,13 +126,13 @@
     "note": "Both are agriculture-wide shares. AQUASTAT's agriculture category includes irrigation, livestock and aquaculture; the sources do not assign the full global share to animal farming."
   },
   "oceans": {
-    "marineStocksSustainablePct": 62.3,
-    "marineStocksUnsustainablePct": 37.7,
-    "stockYear": 2021,
-    "captureMillionTonnes": 92.3,
-    "aquacultureAquaticAnimalsMillionTonnes": 94.4,
-    "productionYear": 2022,
-    "sourceId": "fao-sofia-2024",
+    "marineStocksSustainablePct": 62.4,
+    "marineStocksUnsustainablePct": 37.6,
+    "stockYear": 2023,
+    "captureMillionTonnes": 92,
+    "aquacultureAquaticAnimalsMillionTonnes": 103,
+    "productionYear": 2024,
+    "sourceId": "fao-sofia-2026",
     "note": "Stock status is the unweighted share of marine stocks monitored by FAO. Production-weighted results are more favorable; the two measures answer different questions."
   },
   "health": {
@@ -273,12 +273,12 @@
       "kind": "UN methodology and statistics"
     },
     {
-      "id": "fao-sofia-2024",
-      "title": "The State of World Fisheries and Aquaculture 2024",
+      "id": "fao-sofia-2026",
+      "title": "The State of World Fisheries and Aquaculture 2026",
       "publisher": "Food and Agriculture Organization of the United Nations",
-      "url": "https://www.fao.org/newsroom/detail/fao-report-global-fisheries-and-aquaculture-production-reaches-a-new-record-high/en",
-      "publicationDate": "2024-06-07",
-      "accessed": "2026-07-22",
+      "url": "https://doi.org/10.4060/cd8357en",
+      "publicationDate": "2026-06-16",
+      "accessed": "2026-09-01",
       "role": "Marine-stock status and fisheries/aquaculture production",
       "kind": "UN assessment"
     },
