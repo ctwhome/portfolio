@@ -3,7 +3,7 @@
     "topic": "AI and the job market",
     "edition": 1,
     "updated": "2026-07-22",
-    "seriesUpdated": "2026-07-23",
+    "seriesUpdated": "2026-09-01",
     "geography": "Global evidence with live U.S. labour-market indicators",
     "verdict": "Early transformation is visible; broad AI-driven mass displacement is not yet established.",
     "method": "Separate observed outcomes, occupational exposure, controlled experiments, and forecasts. Never use one as a proxy for another."
@@ -323,13 +323,17 @@
         },
         {
           "date": "2026-05-01",
-          "value": 7.594
+          "value": 7.537
+        },
+        {
+          "date": "2026-06-01",
+          "value": 7.359
         }
       ],
       "unavailable": [],
       "latest": {
-        "date": "2026-05-01",
-        "value": 7.594
+        "date": "2026-06-01",
+        "value": 7.359
       }
     },
     "hires": {
@@ -646,13 +650,17 @@
         },
         {
           "date": "2026-05-01",
-          "value": 5.17
+          "value": 5.252
+        },
+        {
+          "date": "2026-06-01",
+          "value": 5.348
         }
       ],
       "unavailable": [],
       "latest": {
-        "date": "2026-05-01",
-        "value": 5.17
+        "date": "2026-06-01",
+        "value": 5.348
       }
     },
     "unemployment": {
@@ -970,6 +978,10 @@
         {
           "date": "2026-06-01",
           "value": 4.2
+        },
+        {
+          "date": "2026-07-01",
+          "value": 4.1
         }
       ],
       "unavailable": [
@@ -979,8 +991,8 @@
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": 4.2
+        "date": "2026-07-01",
+        "value": 4.1
       }
     }
   },
@@ -991,28 +1003,28 @@
       "value": 10.632
     },
     "openingsLatest": {
-      "date": "2026-05-01",
-      "value": 7.594
+      "date": "2026-06-01",
+      "value": 7.359
     },
-    "openingsChangeSinceBaselinePct": -28.6,
+    "openingsChangeSinceBaselinePct": -30.8,
     "preChatgptOpeningsPeak": {
       "date": "2022-03-01",
       "value": 12.301
     },
-    "openingsChangeFromPreChatgptPeakPct": -38.3,
+    "openingsChangeFromPreChatgptPeakPct": -40.2,
     "hiresLatest": {
-      "date": "2026-05-01",
-      "value": 5.17
+      "date": "2026-06-01",
+      "value": 5.348
     },
     "unemploymentAtBaseline": {
       "date": "2022-11-01",
       "value": 3.6
     },
     "unemploymentLatest": {
-      "date": "2026-06-01",
-      "value": 4.2
+      "date": "2026-07-01",
+      "value": 4.1
     },
-    "unemploymentChangeSinceBaselinePoints": 0.6
+    "unemploymentChangeSinceBaselinePoints": 0.5
   },
   "evidence": {
     "iloExposure": {
