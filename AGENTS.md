@@ -43,6 +43,12 @@ Public targeted `test:*` commands above and `test:transfer` build first.
 Use matching `:built` variants only inside a workflow that has just completed
 canonical `bun run build`; `test:syntax` remains source-only.
 
+CTW Studio is project 03 in the local port registry. Astro development and
+preview use `55030`; `55034` is reserved without a separate HMR server; main
+Playwright, Lighthouse, transfer, design-system Playwright, and the manual
+Signals server use `55035` through `55039`, respectively. Keep
+`CTW_PREVIEW_URL` overrides and dynamically assigned Chrome ports.
+
 Use targeted gates while editing. Before handoff run applicable broad gates,
 `git diff --check`, protected-path checks, and `git status --short`. Report
 exact counts, metrics, exit failures, and warnings.

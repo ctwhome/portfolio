@@ -188,7 +188,7 @@ node --check signals/demography/demography.js
 node --check signals/education/education.js
 node --check signals/financial-fragility/financial-fragility.js
 python3 -m py_compile signals/scripts/*.py
-python3 -m http.server 4173
+python3 -m http.server 55039
 ```
 
 Probe `/signals/`, `/signals/ai-work/`, `/signals/food/`, `/signals/housing/`, `/signals/science/`, `/signals/healthspan/`, `/signals/real-time-ai/`, `/signals/demography/`, `/signals/education/` and `/signals/financial-fragility/`. Confirm `/signals/roadmap` and `/signals/roadmap/` redirect exactly to `/signals/`. The updater list is the eight commands under “Refreshing the data”; run them only when intentionally refreshing committed evidence. Inspect desktop and true-mobile viewports for console errors and horizontal overflow. Visitors receive baked JSON; no page calls upstream evidence APIs.

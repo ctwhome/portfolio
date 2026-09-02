@@ -20,7 +20,7 @@ module.exports = defineConfig({
     ["html", { outputFolder: join(outputRoot, "report"), open: "never" }],
   ],
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: "http://127.0.0.1:55038",
     locale: "en-GB",
     timezoneId: "Europe/Amsterdam",
     reducedMotion: "reduce",
@@ -28,9 +28,9 @@ module.exports = defineConfig({
   },
   projects: [{ name: "chromium", use: { browserName: "chromium" } }],
   webServer: {
-    command: "bun run preview -- --host 127.0.0.1 --port 4173",
+    command: "bun run preview:test -- --host 127.0.0.1 --port 55038",
     cwd: studioDir,
-    url: "http://127.0.0.1:4173/design-system/",
+    url: "http://127.0.0.1:55038/design-system/",
     reuseExistingServer: !process.env.CI,
   },
 });

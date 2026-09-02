@@ -6,12 +6,12 @@ import { chromium } from '@playwright/test';
 import { launch } from 'chrome-launcher';
 import lighthouse from 'lighthouse';
 
-const baseUrl = process.env.CTW_PREVIEW_URL ?? 'http://127.0.0.1:4322';
+const baseUrl = process.env.CTW_PREVIEW_URL ?? 'http://127.0.0.1:55036';
 const runsArg = process.argv.find((argument) => argument.startsWith('--runs='));
 const runs = Number(process.env.LIGHTHOUSE_RUNS ?? runsArg?.split('=')[1] ?? 3);
 const server = process.env.CTW_PREVIEW_URL
   ? null
-  : spawn('bun', ['run', 'preview', '--', '--host', '127.0.0.1', '--port', '4322'], { stdio: 'ignore' });
+  : spawn('bun', ['run', 'preview:test', '--', '--host', '127.0.0.1', '--port', '55036'], { stdio: 'ignore' });
 const outputDir = resolve('lighthouse-results');
 const pages = {
   home: {
