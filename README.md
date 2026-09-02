@@ -34,6 +34,21 @@ bun run preview
 `bun run preview` is canonical built-output preview. `astro dev` is source
 development only.
 
+Project 03 uses the following local ports:
+
+| Purpose | Port |
+|---|---:|
+| Astro development and preview | 55030 |
+| Reserved (no separate HMR server) | 55034 |
+| Main Playwright | 55035 |
+| Lighthouse | 55036 |
+| Transfer check | 55037 |
+| Design-system Playwright | 55038 |
+| Manual Signals server | 55039 |
+
+`CTW_PREVIEW_URL` still overrides the Lighthouse and transfer preview server.
+Chrome debugging ports remain dynamically assigned.
+
 ### Architecture and route ownership
 
 Sixteen Astro pages own maintained output:

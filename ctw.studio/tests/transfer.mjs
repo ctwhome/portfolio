@@ -2,10 +2,10 @@ import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
 
-const url = process.env.CTW_PREVIEW_URL ?? 'http://127.0.0.1:4322/portfolio/';
+const url = process.env.CTW_PREVIEW_URL ?? 'http://127.0.0.1:55037/portfolio/';
 const server = process.env.CTW_PREVIEW_URL
   ? null
-  : spawn('bun', ['run', 'preview', '--', '--host', '127.0.0.1', '--port', '4322'], { stdio: 'ignore' });
+  : spawn('bun', ['run', 'preview:test', '--', '--host', '127.0.0.1', '--port', '55037'], { stdio: 'ignore' });
 
 try {
   if (server) {

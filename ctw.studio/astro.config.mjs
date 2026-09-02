@@ -11,6 +11,8 @@ export default defineConfig({
     format: 'directory'
   },
   vite: {
-    plugins: [tailwindcss(), Icons({ compiler: 'astro' })]
+    plugins: [tailwindcss(), Icons({ compiler: 'astro' })],
+    server: { strictPort: true },
+    preview: { strictPort: true }
   }
 });

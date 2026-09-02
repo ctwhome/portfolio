@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --port 55030",
     "check": "astro check",
     "build": "astro build && node scripts/covers.mjs && node scripts/preserve.mjs copy && node scripts/preserve.mjs verify",
-    "preview": "astro preview",
+    "preview": "astro preview --port 55030",
+    "preview:test": "astro preview",
     "test": "bun run test:ci",
     "test:signals": "bun run build && bun run test:signals:built",
     "test:signals:built": "node --test signals/tests/*.test.mjs",
