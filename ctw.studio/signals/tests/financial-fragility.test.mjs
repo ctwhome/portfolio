@@ -9,6 +9,7 @@ const dist = new URL('../../dist/signals/', import.meta.url);
 const rawData = await readFile(new URL('data/financial-fragility.json', root), 'utf8');
 const data = JSON.parse(rawData);
 const html = await readFile(new URL('financial-fragility/index.html', dist), 'utf8');
+const main = html.slice(html.indexOf('<main'), html.indexOf('</main>') + '</main>'.length);
 const script = await readFile(new URL('financial-fragility/financial-fragility.js', root), 'utf8');
 const css = await readFile(new URL('financial-fragility/financial-fragility.css', root), 'utf8');
 const updater = await readFile(new URL('scripts/update_financial_fragility_data.py', root), 'utf8');
@@ -160,7 +161,7 @@ test('renderer is dependency-free, defensive, and preserves accessible equivalen
   assert.match(script, /renderSources/);
   assert.match(script, /validateSourceResolution/);
   assert.doesNotMatch(script, /chart\.js|d3\.js|plotly|highcharts/i);
-  assert.doesNotMatch(html, /<canvas/i);
+  assert.doesNotMatch(main, /<canvas/i);
   assert.match(css, /@media \(max-width: 700px\)/);
   assert.match(css, /prefers-reduced-motion/);
 });

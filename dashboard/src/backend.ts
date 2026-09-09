@@ -1,7 +1,7 @@
 import { Database } from "bun:sqlite"
 
 export const DB_PATH = process.env.DB_PATH || "./dashboard.sqlite"
-export const PORT = Number(process.env.PORT || 3000)
+export const PORT = Number(process.env.PORT || 44040)
 export const STATIC_DIR = "./public"
 
 const db = new Database(DB_PATH, { create: true, strict: true })

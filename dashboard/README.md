@@ -26,6 +26,8 @@ bun run build:css
 bun run dev
 ```
 
+Open `http://127.0.0.1:44040`.
+
 Manual refresh:
 
 ```bash
@@ -35,7 +37,7 @@ bun run collect
 ## Environment variables
 
 ```bash
-PORT=3000
+PORT=44040
 DB_PATH=./dashboard.sqlite
 DASHBOARD_USERNAME=admin
 DASHBOARD_PASSWORD=change-me

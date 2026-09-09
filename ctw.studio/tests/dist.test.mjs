@@ -346,7 +346,6 @@ test('source and maintained output contain no removed client runtime', async () 
     '@tailwindcss/vite',
     'astro',
     'gsap',
-    'lenis',
     'tailwindcss'
   ]);
 

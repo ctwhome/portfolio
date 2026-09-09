@@ -82,7 +82,7 @@ for (const viewport of sizes) {
 
     if (viewport.width < 1024) {
       await expect(page.locator('[data-story]')).not.toHaveClass(/so-story--enhanced/);
-      await expect(page.locator('body')).not.toHaveAttribute('data-smooth-scroll', 'active');
+      await expect(page.locator('body')).toHaveAttribute('data-scroll-mode', 'native');
     }
 
     const dimensions = await page.evaluate(() => ({
@@ -117,12 +117,15 @@ test('stand-out desktop runs ordered entry, pinned chapters, and reactive WebGL 
   await loadStandOut(page);
 
   await expect(page.locator('body')).toHaveAttribute('data-entry-state', 'settled', { timeout: 5000 });
-  await expect(page.locator('body')).toHaveAttribute('data-smooth-scroll', 'active');
+  await expect(page.locator('body')).toHaveAttribute('data-scroll-mode', 'native');
+  await page.mouse.wheel(0, 1000);
+  await expect.poll(() => page.evaluate(() => window.scrollY), { timeout: 5000, intervals: [50, 100, 250] }).toBeGreaterThanOrEqual(900);
+  await page.evaluate(() => window.scrollTo(0, 0));
   await expect(page.locator('[data-story]')).toHaveClass(/so-story--enhanced/);
   await expect(page.locator('[data-canvas-stage]')).toHaveAttribute('data-webgl', /ready|failed/);
   if (await page.locator('[data-canvas-stage]').getAttribute('data-webgl') === 'ready') {
     await expect(page.locator('[data-canvas-stage]')).toHaveAttribute('data-webgl-inputs', 'pointer scroll chapter');
-    await expect(page.locator('[data-canvas-stage]')).toHaveAttribute('data-webgl-dpr-cap', '1.5');
+    await expect(page.locator('[data-canvas-stage]')).toHaveAttribute('data-webgl-dpr-cap', '1.25');
   }
 
   await page.locator('[data-story-stage]').scrollIntoViewIfNeeded();
@@ -151,7 +154,7 @@ test('stand-out reduced motion renders settled content without smooth scroll or 
   await expect(page).toHaveURL(/#main-content$/);
   await expect(page.locator('body')).toHaveAttribute('data-motion', 'reduced');
   await expect(page.locator('html')).not.toHaveClass(/so-motion/);
-  await expect(page.locator('body')).not.toHaveAttribute('data-smooth-scroll', 'active');
+  await expect(page.locator('body')).toHaveAttribute('data-scroll-mode', 'native');
   await expect(page.locator('[data-signal-canvas]')).toHaveCSS('display', 'none');
   await expect(page.locator('[data-entry="headline"]').first()).toHaveCSS('opacity', '1');
   await expect(page.locator('[data-story-panel]')).toHaveCount(4);
@@ -183,7 +186,7 @@ test('stand-out coarse-pointer mobile keeps native scrolling and 44px controls',
   const page = await context.newPage();
   await loadStandOut(page);
 
-  await expect(page.locator('body')).not.toHaveAttribute('data-smooth-scroll', 'active');
+  await expect(page.locator('body')).toHaveAttribute('data-scroll-mode', 'native');
   await expect(page.locator('[data-story]')).not.toHaveClass(/so-story--enhanced/);
   const action = page.locator('.so-action');
   const box = await action.boundingBox();

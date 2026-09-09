@@ -7,6 +7,7 @@ const read = (path) => readFile(new URL(path, src), 'utf8');
 
 test('header presents Jesse identity and exact primary navigation while retaining liquid contact contract', async () => {
   const source = await read('components/SiteHeader.astro');
+  const liquid = await read('scripts/liquid-contact.ts');
   assert.match(source, /aria-label="Jesse Gonzalez, home"/);
   assert.match(source, />Jesse Gonzalez</);
   const nav = source.slice(source.indexOf('<nav class="ctw-primary-nav"'), source.indexOf('</nav>'));
@@ -20,9 +21,12 @@ test('header presents Jesse identity and exact primary navigation while retainin
     'data-liquid-active="false"', 'data-liquid-pressing="false"',
     'ctw-liquid-contact__rim', 'ctw-liquid-contact__surface',
     'ctw-liquid-contact__ripple', 'ctw-liquid-contact__plus',
-    "localStorage.getItem('ctw-motion-preference')", "addEventListener('pagehide'",
-    "if (!event.persisted) listeners.abort()"
+    'mountLiquidContacts'
   ]) assert.ok(source.includes(sentinel), sentinel);
+  for (const sentinel of [
+    "localStorage.getItem('ctw-motion-preference')", "addEventListener('pagehide'",
+    'if (event.persisted) return', 'listeners.abort()'
+  ]) assert.ok(liquid.includes(sentinel), sentinel);
 });
 
 test('homepage is Jesse-first, first-person, and frames CTW Studio as secondary practice', async () => {

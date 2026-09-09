@@ -1,4 +1,3 @@
-import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -50,6 +49,7 @@ function splitWords(element: HTMLElement) {
 }
 
 function initMotion() {
+  body.dataset.scrollMode = 'native';
   if (reducedMotion.matches) {
     body.dataset.motion = 'reduced';
     return;
@@ -58,8 +58,6 @@ function initMotion() {
   const story = document.querySelector<HTMLElement>('[data-story]');
   const stage = document.querySelector<HTMLElement>('[data-story-stage]');
   const panels = gsap.utils.toArray<HTMLElement>('[data-story-panel]');
-  let lenis: Lenis | undefined;
-  let lenisRaf: ((time: number) => void) | undefined;
   let fallbackTimer = 0;
 
   try {
@@ -119,7 +117,7 @@ function initMotion() {
       gsap.fromTo(image, { yPercent: 0 }, {
         yPercent: -4,
         ease: 'none',
-        scrollTrigger: { trigger: figure, start: 'top bottom', end: 'bottom top', scrub: 1.1 },
+        scrollTrigger: { trigger: figure, start: 'top bottom', end: 'bottom top', scrub: 0.3 },
       });
     }
 
@@ -135,7 +133,7 @@ function initMotion() {
           start: 'top top',
           end: () => `+=${window.innerHeight * 3.5}`,
           pin: stage,
-          scrub: 1.05,
+          scrub: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: () => {
@@ -169,14 +167,6 @@ function initMotion() {
       cleanups.push(() => observer.disconnect());
     }
 
-    if (finePointer.matches && desktopStory.matches) {
-      lenis = new Lenis({ lerp: 0.075, smoothWheel: true, wheelMultiplier: 0.88, anchors: true });
-      body.dataset.smoothScroll = 'active';
-      lenis.on('scroll', ScrollTrigger.update);
-      lenisRaf = (time) => lenis?.raf(time * 1000);
-      gsap.ticker.add(lenisRaf);
-      gsap.ticker.lagSmoothing(0);
-    }
 
     if (finePointer.matches) {
       for (const element of gsap.utils.toArray<HTMLElement>('[data-magnetic]')) {
@@ -211,9 +201,7 @@ function initMotion() {
 
   cleanups.push(() => {
     window.clearTimeout(fallbackTimer);
-    if (lenisRaf) gsap.ticker.remove(lenisRaf);
-    lenis?.destroy();
-    delete body.dataset.smoothScroll;
+    delete body.dataset.scrollMode;
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     gsap.killTweensOf('*');
     root.classList.remove('so-motion');
@@ -360,6 +348,7 @@ function initCanvas() {
   let progressCurrent = pageProgressTarget;
   let velocityCurrent = 0;
   let frame = 0;
+  let previousDraw = 0;
   let disposed = false;
   const visibleZones = new Set<Element>();
 
@@ -370,7 +359,7 @@ function initCanvas() {
   gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
 
   const resize = () => {
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
     const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
     if (canvas.width === width && canvas.height === height) return;
@@ -383,6 +372,11 @@ function initCanvas() {
   const render = (now: number) => {
     frame = 0;
     if (disposed || document.hidden || visibleZones.size === 0) return;
+    if (now - previousDraw < 1000 / 60) {
+      frame = requestAnimationFrame(render);
+      return;
+    }
+    previousDraw = now;
     pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.065;
     pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.065;
     chapterCurrent += (chapterTarget - chapterCurrent) * 0.045;
@@ -440,7 +434,7 @@ function initCanvas() {
 
   stage.dataset.webgl = 'ready';
   stage.dataset.webglInputs = 'pointer scroll chapter';
-  stage.dataset.webglDprCap = '1.5';
+  stage.dataset.webglDprCap = '1.25';
   resize();
   start();
 

@@ -25,7 +25,7 @@ for (const viewport of viewports) {
     const navigationLabels = await page.getByRole('navigation', { name: 'Primary navigation' })
       .getByRole('link')
       .evaluateAll((links) => links.map((link) => link.getAttribute('aria-label') ?? link.textContent.trim()));
-    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Contact']);
+    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Stand Out', 'Contact']);
     await expect(page.getByRole('link', { name: 'Writing', exact: true }).first()).toHaveAttribute('aria-current', 'page');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
 

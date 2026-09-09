@@ -181,24 +181,53 @@
 }
 
 .ctw-masthead--studio .ctw-liquid-contact {
+  --ctw-liquid-height: 52px;
+  --ctw-liquid-pad: calc(var(--ctw-liquid-height) * 900 / 516);
   --ctw-liquid-x: 50%;
   --ctw-liquid-y: 50%;
   isolation: isolate;
   position: relative;
-  gap: 0.4rem;
+  flex: none;
+  width: calc(var(--ctw-liquid-height) * 1407 / 516);
+  height: var(--ctw-liquid-height);
+  justify-content: center;
+  gap: calc(var(--ctw-liquid-height) * 88 / 516);
   overflow: visible;
-  padding-inline: var(--ctw-space-3);
+  padding: 0;
   border: 0;
   border-radius: var(--ctw-radius-pill);
-  background: #050505;
+  background: #0b0c0e;
+  box-shadow:
+    0 calc(var(--ctw-liquid-height) * .10) calc(var(--ctw-liquid-height) * .22) rgb(0 0 0 / 72%),
+    0 calc(var(--ctw-liquid-height) * .30) calc(var(--ctw-liquid-height) * .66) rgb(0 0 0 / 62%),
+    0 calc(var(--ctw-liquid-height) * .62) calc(var(--ctw-liquid-height) * 1.30) rgb(0 0 0 / 42%);
+  transition: box-shadow .38s cubic-bezier(.22,.61,.36,1), background .38s cubic-bezier(.22,.61,.36,1);
+  touch-action: manipulation;
   color: #fff;
-  font-weight: 650;
+  font-family: 'Inter Variable', Inter, sans-serif;
+  font-size: calc(var(--ctw-liquid-height) * 207 / 516);
+  font-weight: 500;
+  line-height: 1;
+  font-optical-sizing: auto;
   text-decoration: none;
 }
 
-.ctw-masthead--studio .ctw-liquid-contact:hover {
-  background: #050505;
+.ctw-masthead--studio .ctw-liquid-contact:is(:hover, :focus-visible, [data-liquid-hot="true"]) {
+  background: #08090a;
   color: #fff;
+  box-shadow:
+    0 calc(var(--ctw-liquid-height) * .12) calc(var(--ctw-liquid-height) * .26) rgb(0 0 0 / 80%),
+    0 calc(var(--ctw-liquid-height) * .40) calc(var(--ctw-liquid-height) * .86) rgb(0 0 0 / 72%),
+    0 calc(var(--ctw-liquid-height) * .86) calc(var(--ctw-liquid-height) * 1.80) rgb(0 0 0 / 55%);
+}
+
+.ctw-masthead--studio .ctw-liquid-contact[data-liquid-pressing="true"] {
+  background: #070809;
+  box-shadow:
+    0 calc(var(--ctw-liquid-height) * .05) calc(var(--ctw-liquid-height) * .13) rgb(0 0 0 / 82%),
+    0 calc(var(--ctw-liquid-height) * .16) calc(var(--ctw-liquid-height) * .40) rgb(0 0 0 / 70%),
+    0 calc(var(--ctw-liquid-height) * .34) calc(var(--ctw-liquid-height) * .80) rgb(0 0 0 / 50%);
+  transition-duration: .10s;
 }
 
 .ctw-liquid-contact::after {
@@ -215,6 +244,33 @@
   opacity: 0.16;
   pointer-events: none;
   transition: opacity var(--ctw-motion-fast) var(--ctw-ease-out);
+}
+
+.ctw-liquid-contact__canvas {
+  position: absolute;
+  z-index: 2;
+  display: none;
+  top: calc(-1 * var(--ctw-liquid-pad));
+  left: calc(-1 * var(--ctw-liquid-pad));
+  width: calc(100% + 2 * var(--ctw-liquid-pad));
+  height: calc(100% + 2 * var(--ctw-liquid-pad));
+  pointer-events: none;
+}
+
+.ctw-liquid-contact[data-liquid-renderer="webgl2"] .ctw-liquid-contact__canvas {
+  display: block;
+}
+
+.ctw-liquid-contact:focus-visible {
+  outline: 2px solid var(--ctw-color-action);
+  outline-offset: 4px;
+}
+
+.ctw-liquid-contact[data-liquid-renderer="webgl2"]::after,
+.ctw-liquid-contact[data-liquid-renderer="webgl2"] .ctw-liquid-contact__rim,
+.ctw-liquid-contact[data-liquid-renderer="webgl2"] .ctw-liquid-contact__surface,
+.ctw-liquid-contact[data-liquid-renderer="webgl2"] .ctw-liquid-contact__ripple {
+  display: none;
 }
 
 .ctw-liquid-contact__rim,
@@ -256,16 +312,22 @@
 .ctw-liquid-contact__plus,
 .ctw-liquid-contact__label {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   white-space: nowrap;
   text-shadow: 0 1px 2px rgb(0 0 0 / 90%), 0 0 3px rgb(0 0 0 / 70%);
 }
 
 .ctw-liquid-contact__plus {
   color: #fff;
-  font-size: 1.1em;
-  font-weight: 500;
-  line-height: 1;
+  width: calc(var(--ctw-liquid-height) * 115 / 516);
+  height: calc(var(--ctw-liquid-height) * 115 / 516);
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+
+.ctw-liquid-contact__label {
+  transform: translateY(calc(var(--ctw-liquid-height) * 2 / 516));
 }
 
 .ctw-liquid-contact:is(:hover, :focus-visible) .ctw-liquid-contact__rim,
@@ -388,7 +450,8 @@
   }
 
   .ctw-masthead--studio .ctw-liquid-contact {
-    padding-inline: var(--ctw-space-3);
+    padding: 0;
+    font-size: calc(var(--ctw-liquid-height) * 207 / 516);
   }
 
   .ctw-masthead--studio .studio-nav-founder {
@@ -433,22 +496,33 @@
   }
 
   .ctw-masthead--studio .ctw-liquid-contact {
-    padding-inline: 0.5rem;
+    --ctw-liquid-height: 44px;
+    width: 86px;
+    padding: 0;
+    gap: 5px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 22rem) {
+  .ctw-masthead--studio .ctw-masthead__inner {
+    gap: 0;
+    padding-inline: var(--ctw-space-1);
+  }
+
+  .ctw-masthead--studio .ctw-primary-nav__link {
+    padding-inline: 2px;
+    font-size: 10px;
+  }
+
   .ctw-masthead--studio .ctw-liquid-contact__plus {
     display: none;
   }
 
-  .ctw-masthead--studio .ctw-liquid-contact__label {
-    font-size: 0;
-  }
-
-  .ctw-masthead--studio .ctw-liquid-contact__label::after {
-    content: "Talk";
-    font-size: 0.7rem;
+  .ctw-masthead--studio .ctw-liquid-contact {
+    width: 64px;
+    padding: 0;
+    font-size: 13px;
   }
 }
 
