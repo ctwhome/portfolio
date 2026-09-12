@@ -15,5 +15,6 @@ export const writingRoutes = [
   { slug: '2025-01-27-the-archaitect-era', title: 'The Arch-AI-Tect Era', category: 'Digital Garden', date: '2025-01-27' },
   { slug: '2025-05-30-call-me-jesse', oldSlug: '30-05-2025-jesse', title: 'Call Me Jesse', category: 'Digital Garden', date: '2025-05-30' },
   { slug: '2025-07-08-media-noise-and-oncemag', title: 'The Problem of Media Noise', category: 'Digital Garden', date: '2025-07-08' },
-  { slug: '2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically', oldSlug: '2025-10-05-Remote work drives productivity and wellbeing while cutting costs dramatically', title: 'Remote work drives productivity and wellbeing while cutting costs dramatically', category: 'Digital Garden', date: '2025-10-05' }
+  { slug: '2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically', oldSlug: '2025-10-05-Remote work drives productivity and wellbeing while cutting costs dramatically', title: 'Remote work drives productivity and wellbeing while cutting costs dramatically', category: 'Digital Garden', date: '2025-10-05' },
+  { slug: '2026-09-12-realtime-ai-from-prediction-to-generated-worlds', title: 'Realtime AI: From Prediction to Generated Worlds', category: 'Digital Garden', date: '2026-09-12' }
 ];

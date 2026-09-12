@@ -21,11 +21,11 @@ for (const viewport of viewports) {
 
     await page.setViewportSize(viewport);
     await page.goto('/writing/', { waitUntil: 'networkidle' });
-    await expect(page.locator('.writing-index__item')).toHaveCount(17);
+    await expect(page.locator('.writing-index__item')).toHaveCount(18);
     const navigationLabels = await page.getByRole('navigation', { name: 'Primary navigation' })
       .getByRole('link')
       .evaluateAll((links) => links.map((link) => link.getAttribute('aria-label') ?? link.textContent.trim()));
-    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Contact']);
+    expect(navigationLabels).toEqual(['Work', 'Writing', 'Signals', 'Stand Out', 'Contact']);
     await expect(page.getByRole('link', { name: 'Writing', exact: true }).first()).toHaveAttribute('aria-current', 'page');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
 
@@ -46,7 +46,7 @@ test('Writing remains substantive and navigable without JavaScript', async ({ br
   const page = await context.newPage();
   await page.goto('/writing/');
   await expect(page.getByRole('heading', { level: 1, name: 'Writing' })).toBeVisible();
-  await expect(page.locator('.writing-index__item')).toHaveCount(17);
+  await expect(page.locator('.writing-index__item')).toHaveCount(18);
   await expect(page.getByRole('link', { name: 'Jesse Gonzalez, home' })).toBeVisible();
   await page.getByRole('link', { name: 'Call Me Jesse' }).first().click();
   await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jesse' })).toBeVisible();

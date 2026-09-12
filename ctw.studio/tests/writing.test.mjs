@@ -6,9 +6,9 @@ import { writingRoutes } from './personal-portfolio-routes.mjs';
 const pages = new URL('../src/pages/writing/', import.meta.url);
 const mediaRoot = new URL('../public/writing/', import.meta.url);
 
-test('writing manifest defines exactly 17 unique safe normalized routes', () => {
-  assert.equal(writingRoutes.length, 17);
-  assert.equal(new Set(writingRoutes.map(({ slug }) => slug)).size, 17);
+test('writing manifest defines exactly 18 unique safe normalized routes', () => {
+  assert.equal(writingRoutes.length, 18);
+  assert.equal(new Set(writingRoutes.map(({ slug }) => slug)).size, 18);
   for (const { slug } of writingRoutes) assert.match(slug, /^\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/);
   assert.ok(writingRoutes.some(({ slug }) => slug === '2025-05-30-call-me-jesse'));
   assert.ok(!writingRoutes.some(({ slug }) => slug === '30-05-2025-jesse'));
@@ -87,7 +87,7 @@ test('writing content uses safe semantic HTML, valid headings, alt text, and loc
     }
   }
   await walk(mediaRoot);
-  assert.equal(files.length, 54);
+  assert.equal(files.length, 55);
   assert.deepEqual(new Set(files), referenced);
   assert.ok(!files.some((path) => path.endsWith('/Prototyping.png')));
   for (const path of referenced) await access(new URL(`..${path}`, mediaRoot));
@@ -110,8 +110,8 @@ test('writing index derives its archive count and personal note retires obsolete
     readFile(new URL('index.astro', pages), 'utf8'),
     readFile(new URL('2025-05-30-call-me-jesse/index.md', pages), 'utf8')
   ]);
-  assert.match(index, /Archive · \{posts\.length\} entries/);
-  assert.doesNotMatch(index, /Archive · 17 entries/);
+  assert.match(index, /Collection · \{posts\.length\} entries/);
+  assert.doesNotMatch(index, /Collection · 18 entries/);
   assert.doesNotMatch(personalNote, /jessegonzalez\.dev|ctwhome\.com/i);
   assert.match(personalNote, /ctw\.studio/);
 });
