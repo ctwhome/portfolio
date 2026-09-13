@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { access, readFile, readdir, stat } from 'node:fs/promises';
 import test from 'node:test';
+import sharp from 'sharp';
 import { writingRoutes } from './personal-portfolio-routes.mjs';
 
 const pages = new URL('../src/pages/writing/', import.meta.url);
@@ -117,7 +118,7 @@ test('writing index derives its archive count and personal note retires obsolete
 });
 
 const realtimeSlug = '2026-09-12-realtime-ai-from-prediction-to-generated-worlds';
-const realtimeSketches = ['interaction-loop.svg', 'stable-foundations.svg', 'agency-or-attention.svg'];
+const realtimeSketches = ['interaction-loop.avif', 'stable-foundations.avif', 'agency-or-attention.avif'];
 
 test('realtime essay sketches have captions, alt text, and matching intrinsic dimensions', async () => {
   const markdown = await readFile(new URL(`${realtimeSlug}/index.md`, pages), 'utf8');
@@ -126,33 +127,38 @@ test('realtime essay sketches have captions, alt text, and matching intrinsic di
   for (const [index, [, figure]] of figures.entries()) {
     const filename = realtimeSketches[index];
     assert.ok(figure.includes(`src="/writing/${realtimeSlug}/media/${filename}"`), filename);
+    assert.match(figure, /\bclass="writing-sketch"/);
     assert.match(figure, /\balt="[^"]+"/);
     assert.match(figure, /\bloading="lazy"/);
     assert.match(figure, /\bdecoding="async"/);
     assert.match(figure, /<figcaption>[^<]+<\/figcaption>/);
-    const width = figure.match(/\bwidth="(\d+)"/)?.[1];
-    const height = figure.match(/\bheight="(\d+)"/)?.[1];
-    assert.ok(Number(width) > 0 && Number(height) > 0, filename);
-    const svg = await readFile(new URL(`${realtimeSlug}/media/${filename}`, mediaRoot), 'utf8');
-    assert.ok(svg.includes(`viewBox="0 0 ${width} ${height}"`), `${filename}: aspect ratio`);
-    assert.match(svg, /<title id="title">[^<]+<\/title>/);
-    assert.match(svg, /<desc id="desc">[^<]+<\/desc>/);
-    assert.match(svg, /aria-labelledby="title desc"/);
+    const width = Number(figure.match(/\bwidth="(\d+)"/)?.[1]);
+    const height = Number(figure.match(/\bheight="(\d+)"/)?.[1]);
+    const image = await readFile(new URL(`${realtimeSlug}/media/${filename}`, mediaRoot));
+    const metadata = await sharp(image).metadata();
+    assert.ok(width > 0 && height > 0, filename);
+    assert.equal(metadata.width, width, `${filename}: width`);
+    assert.equal(metadata.height, height, `${filename}: height`);
+    assert.equal(metadata.compression, 'av1', `${filename}: AVIF encoding`);
+    assert.equal(metadata.pages ?? 1, 1, `${filename}: still image`);
   }
 });
 
-test('realtime essay sketches are lightweight, monochrome, and self-contained', async () => {
+test('realtime essay sketches are lightweight monochrome images with tonal shading', async () => {
   let totalBytes = 0;
   for (const filename of realtimeSketches) {
-    const svg = await readFile(new URL(`${realtimeSlug}/media/${filename}`, mediaRoot), 'utf8');
-    const bytes = Buffer.byteLength(svg);
-    totalBytes += bytes;
-    assert.ok(bytes <= 12_000, `${filename}: exceeds 12 KB`);
-    assert.match(svg, /^<svg\b/);
-    assert.doesNotMatch(svg, /<(?:script|foreignObject|image|style|use|animate|set)\b|\son[a-z]+\s*=|(?:href|style)\s*=|url\(|<!DOCTYPE|<!ENTITY/i, filename);
-    for (const [, paint] of svg.matchAll(/(?:fill|stroke)="([^"]+)"/g)) {
-      assert.ok(['none', '#111', '#fff'].includes(paint), `${filename}: non-monochrome paint ${paint}`);
+    const image = await readFile(new URL(`${realtimeSlug}/media/${filename}`, mediaRoot));
+    totalBytes += image.length;
+    assert.ok(image.length <= 50_000, `${filename}: exceeds 50 KB`);
+    assert.equal(image.toString('ascii', 4, 12), 'ftypavif', `${filename}: AVIF signature`);
+    const { data, info } = await sharp(image).removeAlpha().toColourspace('srgb').raw().toBuffer({ resolveWithObject: true });
+    assert.equal(info.channels, 3, filename);
+    const tones = new Set();
+    for (let index = 0; index < data.length; index += info.channels) {
+      assert.ok(Math.abs(data[index] - data[index + 1]) <= 1 && Math.abs(data[index] - data[index + 2]) <= 1, `${filename}: non-monochrome pixel`);
+      tones.add(data[index]);
     }
+    assert.ok(tones.size > 64, `${filename}: missing tonal shading`);
   }
-  assert.ok(totalBytes <= 30_000, 'combined sketch budget exceeds 30 KB');
+  assert.ok(totalBytes <= 120_000, 'combined graphite artwork exceeds 120 KB');
 });

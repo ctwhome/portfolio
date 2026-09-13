@@ -26,7 +26,7 @@ Software already adapts to us. Search results change, dashboards update, and gam
 The loop is simple: **you act → the system generates → you respond**. Instead of being the end of a request, the output becomes the starting point for your next action.
 
 <figure>
-  <img src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/interaction-loop.svg" alt="A cursor leads to a generated interface, then to a new scene; a returning arrow closes the interaction loop." width="1200" height="520" loading="lazy" decoding="async" />
+  <img class="writing-sketch" src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/interaction-loop.avif" alt="Graphite drawing of a person sketching at a desk, with interface panels and a landscape spiralling above the page." width="474" height="808" loading="lazy" decoding="async" />
   <figcaption>You act. The system generates. You respond. The result becomes part of the next interaction, rather than a finished artefact.</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ This is a design scenario, not a claim that a particular product handles the who
 But notice what must **not** be generated: people’s actual availability, their permissions, or whether an invitation was sent. Those facts must come from connected systems and confirmed results. The layout may be temporary; the records cannot be imaginary.
 
 <figure>
-  <img src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/stable-foundations.svg" alt="Two different interface sketches sit above the same solid foundation, supported by a database, a lock, and a confirmed record." width="1200" height="600" loading="lazy" decoding="async" />
+  <img class="writing-sketch" src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/stable-foundations.avif" alt="Graphite drawing of a glass workspace resting on stone layers marked for persistent data, permissions, and meaningful actions." width="482" height="808" loading="lazy" decoding="async" />
   <figcaption>Let the interface adapt. Keep the foundations dependable: real records, enforced permissions, and actions whose results can be checked.</figcaption>
 </figure>
 
@@ -74,7 +74,7 @@ Change the goal from understanding to time spent, and the same adaptability coul
 These are possible uses of the capability, not evidence that every system already works this way. But they expose the choice clearly: **personalization for whose benefit?**
 
 <figure>
-  <img src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/agency-or-attention.svg" alt="On the left, arrows circle an endless stack of content cards. On the right, a path leads through an open door and out of the system." width="1200" height="560" loading="lazy" decoding="async" />
+  <img class="writing-sketch" src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/agency-or-attention.avif" alt="Graphite drawing of a person resting beneath a tree, looking over a sunlit mountain valley without a screen." width="480" height="808" loading="lazy" decoding="async" />
   <figcaption>More interaction is not always a better outcome. A useful system should make it easy to finish, stop, or leave.</figcaption>
 </figure>
 
