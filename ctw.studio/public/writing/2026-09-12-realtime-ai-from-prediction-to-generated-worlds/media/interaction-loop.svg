@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-labelledby="title desc">
+  <title id="title">Act, generate, respond</title>
+  <desc id="desc">A hand-drawn cursor, an interface, and a landscape are connected by arrows. A long returning arrow makes the sequence an ongoing loop.</desc>
+  <rect width="1200" height="520" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M117 143 L123 315 L166 276 L202 343 L232 326 L194 262 L251 254 Z" fill="#fff"/>
+    <path d="M125 158 L131 297 M176 285 L202 331" stroke-width="1.5"/>
+    <path d="M113 113 L101 85 M144 107 L149 73 M89 137 L57 128 M173 120 L196 97"/>
+    <path d="M298 220 Q334 215 382 222 M367 207 L384 222 L366 237"/>
+    <path d="M434 125 Q555 120 674 127 L677 308 Q551 314 432 307 Z" fill="#fff"/>
+    <path d="M438 167 Q551 163 675 168 M447 315 L668 319" stroke-width="2"/>
+    <circle cx="455" cy="147" r="4"/><circle cx="473" cy="147" r="4"/><circle cx="491" cy="147" r="4"/>
+    <path d="M457 189 L509 190 L509 224 L457 226 Z M528 193 L647 193 M529 211 L612 212 M457 248 L551 247 M457 267 L532 268"/>
+    <path d="M578 241 L646 242 L646 280 L578 279 Z M594 260 L607 270 L630 251"/>
+    <path d="M726 220 Q763 215 810 222 M795 207 L812 222 L794 237"/>
+    <path d="M853 299 Q867 244 892 230 L928 266 L983 175 L1048 258 L1084 217 L1127 298"/>
+    <path d="M891 230 L900 259 L914 252 M983 175 L977 222 L997 214 L1008 227" stroke-width="2"/>
+    <path d="M865 312 Q980 299 1131 314 M993 291 Q935 320 991 337 Q1040 355 986 382 M1027 294 Q984 320 1038 337 Q1091 357 1044 384"/>
+    <path d="M906 291 L918 275 M915 294 L931 273 M1043 291 L1054 277 M1055 295 L1067 276" stroke-width="1.5"/>
+    <path d="M925 190 Q930 165 951 171 M1058 164 Q1073 147 1090 164 L1113 165" stroke-dasharray="4 9" stroke-width="2"/>
+    <path d="M982 410 C808 472 384 473 209 409 M222 393 L205 409 L228 419"/>
+    <path d="M408 440 Q546 460 672 445" stroke-width="1.5"/>
+  </g>
+</svg>

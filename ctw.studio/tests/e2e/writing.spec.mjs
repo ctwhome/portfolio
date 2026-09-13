@@ -95,8 +95,59 @@ test('all Writing routes expose article metadata and reachable local media', asy
       expect(image, `${slug}: image height`).toMatch(/\bheight="\d+"/);
       if (!image.includes('writing-article__cover')) expect(image, `${slug}: image lazy`).toContain('loading="lazy"');
     }
-    for (const [, path] of html.matchAll(/(?:src|href)="(\/writing\/[^"#?]+\.(?:avif|gif|jpe?g|png|webp|pdf|mp4))"/gi)) {
+    for (const [, path] of html.matchAll(/(?:src|href)="(\/writing\/[^"#?]+\.(?:avif|gif|jpe?g|png|webp|svg|pdf|mp4))"/gi)) {
       expect((await request.get(path)).ok(), path).toBe(true);
     }
+  }
+});
+
+const realtimePath = '/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/';
+
+for (const viewport of viewports) {
+  test(`Realtime essay sketches load without overflow on ${viewport.name}`, async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text());
+    });
+    page.on('response', (response) => {
+      if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`);
+    });
+    await page.setViewportSize(viewport);
+    await page.goto(realtimePath, { waitUntil: 'networkidle' });
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Realtime AI: From Prediction to Generated Worlds');
+    const figures = page.locator('.writing-prose figure');
+    await expect(figures).toHaveCount(3);
+    for (const figure of await figures.all()) {
+      const image = figure.locator('img');
+      await image.scrollIntoViewIfNeeded();
+      await expect.poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0)).toBe(true);
+      await expect(image).toHaveAttribute('loading', 'lazy');
+      await expect(image).toHaveAttribute('alt', /\S/);
+      await expect(figure.locator('figcaption')).toHaveText(/\S/);
+      const box = await image.boundingBox();
+      expect(box?.width ?? 0).toBeGreaterThan(0);
+      expect(box?.width ?? Infinity).toBeLessThanOrEqual(viewport.width);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
+    expect(errors).toEqual([]);
+  });
+}
+
+test('Realtime essay and its sketches remain readable without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 568 } });
+  try {
+    const page = await context.newPage();
+    await page.goto(realtimePath);
+    await expect(page.locator('.writing-prose figure')).toHaveCount(3);
+    await expect(page.locator('.writing-prose figcaption')).toHaveCount(3);
+    expect((await page.locator('.writing-prose').innerText()).length).toBeGreaterThan(5_000);
+    for (const image of await page.locator('.writing-prose figure img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await expect.poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0)).toBe(true);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+  } finally {
+    await context.close();
   }
 });

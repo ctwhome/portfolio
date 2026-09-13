@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "Realtime AI: From Prediction to Generated Worlds"
-description: "AI is moving from generating answers to generating interfaces, experiences, and worlds around our actions. That is exciting—and a reason to decide what should remain human."
+description: "What changes when AI generates the interface, not just the answer? A look at worlds we can steer, tools made for one moment, and the things we should refuse to improvise."
 date: "2026-09-12"
 category: "Digital Garden"
 cover: "/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/cover.avif"
@@ -9,175 +9,105 @@ coverAlt: "A cursor moving from a fixed interface grid into a fluid generated wo
 coverWidth: 1600
 coverHeight: 900
 ---
-People tend to react strongly when I talk about realtime AI. Some see unlimited creative possibility. Others hear “unlimited generated content” and jump directly to unemployment, addiction, or machines taking control.
+It clicked for me when I watched a computer generate its next screen instead of opening an application.
 
-I understand both reactions. I have them too.
+Google’s [neural operating system prototype](https://developers.googleblog.com/en/simulating-a-neural-operating-system-with-gemini-2-5-flash-lite/) looks like a desktop. Click an icon, and a language model generates the interface. Interact again, and it generates another screen, using your action, context, and a set of rules. It is a research demonstration, not a replacement for macOS or Windows. But it changes the question from *“What can this application do?”* to *“What interface would help me now?”*
 
-So I wanted to put the argument into words, partly to explain it and partly to clarify it for myself. Where did realtime AI come from? What is actually new? Where could it take us? And, more importantly, what do we want to do with it?
+That possibility excites me. It also makes me uneasy. A system that can generate what we need could just as easily generate whatever keeps us occupied.
 
-## The click that made it real
+The interesting question is not whether we can make more content. It is what happens when generation becomes part of the way we act.
 
-It clicked for me when I saw Google’s research prototype for a [“neural operating system”](https://developers.googleblog.com/en/simulating-a-neural-operating-system-with-gemini-2-5-flash-lite/). It looks like a computer desktop, but the applications are not all sitting there waiting as finished software. The system generates and regenerates each screen after an interaction. Click an icon and the model builds the next interface. Save a note and it interprets that event, the current application context, and a set of interface rules before producing the next screen.
+## What actually changes
 
-Google called it a “generative, infinite computer experience.” That phrase has stayed with me.
+Software already adapts to us. Search results change, dashboards update, and games respond to our movement. The distinction is not that yesterday’s software was static. It is **how much of the next experience is designed in advance, and how much is generated during use**.
 
-Our usual model of computing is based on prepared possibilities. Designers decide which screens exist. Developers implement them. Users move through those predefined states. Even a very flexible application is still a map someone drew in advance.
+[Inference](https://cloud.google.com/discover/what-is-ai-inference) means running a trained model on new input to produce an output. It includes both predictions and generated content; it does not necessarily happen in realtime. Here, I use *realtime AI* for generation that responds quickly enough to become part of an ongoing interaction.
 
-In Google’s prototype, the map is generated while you walk through it.
+The loop is simple: **you act → the system generates → you respond**. Instead of being the end of a request, the output becomes the starting point for your next action.
 
-This was a research demonstration, not an operating system ready to replace macOS or Windows. But the direction is no longer theoretical. Google later introduced [generative UI experiments](https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/) in Gemini and Search that create interactive pages, tools, simulations, and applications for a specific prompt. Instead of putting generated text inside the same old chat bubble, the model can generate the experience that carries the answer.
+<figure>
+  <img src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/interaction-loop.svg" alt="A cursor leads to a generated interface, then to a new scene; a returning arrow closes the interaction loop." width="1200" height="520" loading="lazy" decoding="async" />
+  <figcaption>You act. The system generates. You respond. The result becomes part of the next interaction, rather than a finished artefact.</figcaption>
+</figure>
 
-That is a much bigger change than a faster chatbot.
+Speed matters, but so does continuity. A screen that appears quickly is not useful if it forgets what you just did. Google’s desktop prototype explored caching previously generated screens so revisiting one did not mean reinventing it.
 
-## But isn’t all AI “realtime inference”?
+Nor is every generative interface realtime. In its November 2025 [generative UI report](https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/), Google showed custom tools and simulations, but noted that generation could take a minute or more. That is evidence for generating an experience, not proof that every experience is already instantaneous.
 
-Yes, in one sense. No, in the sense that matters here.
+## From a picture to a world you can steer
 
-**Inference** is the process of running a trained model on new input to produce a prediction or output. A weather model receives observations and predicts atmospheric conditions. An autonomous-driving model receives sensor data and estimates lanes, objects, trajectories, or the next safe action. Recommendation systems rank what to show you. These systems have been making useful predictions under tight time constraints for years.
+A generated picture gives you one view. An interactive world lets you turn around and ask, through movement, what is behind you.
 
-Realtime AI is therefore not new in the way “a computer responds quickly” is new. It is old, like good wine.
+[Oasis](https://oasis-model.github.io/), introduced by Decart and Etched in 2024, demonstrated a Minecraft-like environment generated frame by frame from player input. Rather than using a conventional game engine to determine what happens, the model predicts the next visual state. Its authors also describe the cost: errors accumulate, and the world can lose consistency.
 
-The change is the role of generation inside the interaction loop. Earlier realtime systems mostly classified, ranked, predicted, or selected from known actions. The emerging systems can synthesize the next interface, image, sound, scene, tool, or state as you act:
+In its August 2025 [Genie 3 announcement](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/), Google DeepMind reported interactive environments at 720p and 24 frames per second, with consistency lasting a few minutes. It also described unreliable actions and limits on continuous interaction. Those qualifications matter as much as the impressive footage.
 
-1. You do something.
-2. The system observes your action and its context.
-3. A model generates what should happen next.
-4. You perceive the result and act again.
-5. The loop continues.
+World Labs’ [Atlas](https://www.worldlabs.ai/blog/atlas) explores a related problem: grounding generated views in 3D space. These are different approaches, not interchangeable products or a single ladder of progress. Together, they make a new kind of interaction easier to imagine: you do not just request a scene; you help determine what happens next.
 
-The output is no longer only an answer. It becomes the environment in which the next question or action happens.
+But a convincing world is not necessarily a reliable simulation. A generated bridge might look plausible while teaching you nothing trustworthy about whether a real bridge would stand. Visual coherence and physical validity are different requirements.
 
-Latency still matters. If the model needs several minutes, the experience feels like commissioning an artefact. If it responds within the rhythm of clicking, speaking, typing, steering, or moving, generation becomes part of the interaction itself. The boundary is experiential rather than mathematical: does the system respond quickly and continuously enough for us to treat it as a place we are acting inside?
+## A tool for one moment
 
-## From generated media to generated worlds
+The more immediate possibility may be less spectacular than a generated world: a small interface that exists only because you need it.
 
-Text and image generation gave us discrete artefacts: ask, wait, receive. Realtime world models turn generation into something you can steer.
+Imagine arranging a meeting with three colleagues. Rather than moving between calendars and messages, you ask: *“Find a time next week when everyone is free.”* A compact comparison appears. You exclude mornings. It updates. You choose a slot and approve the invitation.
 
-[Oasis](https://oasis-model.github.io/), released by Decart and Etched in 2024, demonstrated a Minecraft-like experience generated frame by frame from keyboard input. There is no conventional game engine simulating its physics and rules. The model predicts the next visual state from the previous state and the player’s action. It is rough and unstable, but that instability is almost the point: you are not moving through a finished level. The world is being produced around your movement.
+This is a design scenario, not a claim that a particular product handles the whole task reliably today. Its appeal is simple: the interface follows the decision instead of making you learn an application first.
 
-Google DeepMind’s [Genie 3](https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/) pushed the idea further. DeepMind reported interactive environments at 720p and 24 frames per second, with consistency lasting a few minutes. It also documented the limitations: actions do not always change the world correctly, multi-agent interaction remains difficult, and continuous interaction is measured in minutes rather than hours.
+But notice what must **not** be generated: people’s actual availability, their permissions, or whether an invitation was sent. Those facts must come from connected systems and confirmed results. The layout may be temporary; the records cannot be imaginary.
 
-Then there are spatial models such as World Labs’ [Atlas](https://www.worldlabs.ai/blog/atlas), which can generate, reconstruct, and simulate worlds while keeping images and camera positions grounded in 3D space. The [Atlas demonstration](https://www.youtube.com/watch?v=hzvXRHBInx0) feels less like asking for a picture and more like directing a camera through a space that did not exist a moment before.
+<figure>
+  <img src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/stable-foundations.svg" alt="Two different interface sketches sit above the same solid foundation, supported by a database, a lock, and a confirmed record." width="1200" height="600" loading="lazy" decoding="async" />
+  <figcaption>Let the interface adapt. Keep the foundations dependable: real records, enforced permissions, and actions whose results can be checked.</figcaption>
+</figure>
 
-These systems are not general reality simulators. They glitch, forget, drift, and violate physics. But the path is visible: from generating an image, to generating the next frame, to generating a navigable environment, to generating an environment in which people and agents can perform actions.
+This is why I do not expect permanent software simply to disappear. Shared documents, specialist tools, infrastructure, and familiar places still need continuity. Generating a different menu every morning would often be worse, not better.
 
-## Infinite content is becoming literal
+The useful distinction is between **what can adapt** and **what people need to rely on**. Perhaps we will need fewer fixed screens around some tasks. That does not mean we need less engineering underneath them.
 
-Grok Imagine offers a smaller but culturally revealing example. Its fast image mode turns a prompt into a feed of variations that keeps producing more as you scroll. The act of browsing and the act of generating begin to merge. It feels like Pinterest, except the catalogue does not need to exist before you arrive.
+## The same loop can help—or hold us
 
-This sounds convenient—and it is. Designers can explore directions quickly. A learner can ask for examples adapted to their age, language, interests, and current misunderstandings. A dashboard could assemble itself around the decision someone is trying to make instead of forcing everyone through the same generic control panel.
+Now imagine a student learning how bicycle gears work. An adaptive lesson could offer a diagram, notice a wrong answer, and generate a different explanation. The goal would be to help the student understand, then let them leave.
 
-But an infinite catalogue changes the economics of attention. When generating the next item is almost free, the system never needs to run out. When it can learn what keeps *you* scrolling, it does not even need to find content that already exists. It can make the next temptation to measure.
+Change the goal from understanding to time spent, and the same adaptability could work against them. Each response becomes a clue for producing another irresistible item. The system would not need to find an existing video or image; it could generate the next one.
 
-Kurzgesagt described a dark version of this in its video [*A.I. — Humanity’s Final Invention?*](https://www.youtube.com/watch?v=fa8k8IQ1_X0&t=508s): an AI might create “the most profitable social media, so addictive that people starve in front of their screens.” The line is deliberately extreme, but the mechanism is not absurd. Today’s feeds select from human-made material. Tomorrow’s can generate material optimized for one person, one mood, one vulnerable moment.
+These are possible uses of the capability, not evidence that every system already works this way. But they expose the choice clearly: **personalization for whose benefit?**
 
-Unlimited personalized learning and unlimited personalized addiction are built from many of the same capabilities. The objective matters.
+<figure>
+  <img src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/agency-or-attention.svg" alt="On the left, arrows circle an endless stack of content cards. On the right, a path leads through an open door and out of the system." width="1200" height="560" loading="lazy" decoding="async" />
+  <figcaption>More interaction is not always a better outcome. A useful system should make it easy to finish, stop, or leave.</figcaption>
+</figure>
 
-## What happens when everyone can build everything?
+“Infinite content” is not literally free or unlimited; it still needs computation, energy, and infrastructure. The concern is a supply that can keep adapting long after our attention should have moved elsewhere.
 
-We have spent decades creating more applications, more content, more brands, more courses, more dashboards, and more products. Capitalism rewards much of this behaviour: improve yourself, produce more, sell more, persuade more, create another need and then meet it.
+I would rather judge a learning system by what someone can do afterward than by how long it kept them looking at a screen. That is a design choice, and a business choice, before it is a model choice.
 
-Generative AI accelerates that logic. Everyone can build. Everyone can publish. Everyone can create an app for an audience of one.
+## Design the rules, not every screen
 
-At first this looks like an explosion of software. Eventually it may undermine the idea of software as a fixed product. Why search through ten thousand applications if a trusted system can generate the small tool you need now? Why choose one generic course if learning materials can reorganize themselves around your knowledge, pace, language, and goals? Why maintain a dashboard full of controls when an interface can appear around the question you are asking and disappear afterward?
+For interaction designers, the work does not end when a model can produce an attractive interface. It shifts toward deciding what the system may change, what it must preserve, and how a person stays in control.
 
-When everything can be built, very little needs to remain built.
+Three commitments would guide my design:
 
-That does not mean permanent products vanish. Shared systems, infrastructure, data, safety guarantees, professional tools, and communities all need continuity. People value stable places and common references. But the visible interaction layer may become far more temporary and personal. What remains scarce is not content. It is trust, taste, attention, good judgment, reliable data, and shared purpose.
+- **Keep a stable reference point.** Preserve important records, familiar controls, and a shared version of events. Two people may need different views of the same information, not different facts.
+- **Make consequential actions explicit.** Show what will change, ask for approval where appropriate, and report what actually happened. In the meeting example, suggesting a time is not permission to send an invitation.
+- **Make correction ordinary.** Let people inspect assumptions, fix errors, undo reversible actions, and return to a familiar interface. Explain clearly when something cannot be undone.
 
-## Hello, interaction designers
+These commitments cannot live only in a prompt. A rule saying “respect permissions” is not an access-control system. Durable state, authorization, validation, and accessible controls need to be implemented and tested outside the model’s discretion.
 
-For interaction designers, this is not the end of the field. It may be the most interaction-design-shaped technological shift we have seen.
+The challenge is not merely drawing every possible screen. It is making an unpredictable screen part of a dependable system.
 
-A static interface asks: *Which actions should this product support, and how should we arrange them?*
+This also changes what one builder can attempt, without making specialist knowledge expendable. Generating a prototype is not the same as understanding the problem, maintaining the service, or taking responsibility when it fails.
 
-A generative interface asks harder questions:
+## Choose what deserves to exist
 
-- What should the system be allowed to generate?
-- Which constraints must never be improvised?
-- How does a person understand what changed and why?
-- Which state must remain stable between generated experiences?
-- How can someone correct, reverse, or refuse an action?
-- When should the interface adapt, and when should it remain familiar?
-- How do multiple people preserve a shared reality while receiving personalized views?
+The anxiety around this shift deserves more than reassurance. Making some work easier does not guarantee that the benefits will be shared, or that people whose tasks are automated will find equally good work. Equally, an impressive demonstration does not establish that whole professions are about to disappear. Capability, deployment, and social outcomes are different questions.
 
-The work moves from drawing every screen to shaping a possibility space. We still need flows, feedback, hierarchy, accessibility, consent, mental models, and error recovery. We need them even more when the exact screen was not reviewed before it appeared.
+I want to use these tools without confusing greater output with greater progress.
 
-The strongest designers will not merely prompt attractive interfaces. They will define constitutions for generated systems: rules about agency, legibility, memory, privacy, evidence, and control.
+Imagine a researcher spending less time navigating administrative software. A public service explaining a difficult process without hiding uncertainty. A neighbourhood coordinating shared equipment or energy. A learning tool that helps someone become less dependent on the tool itself.
 
-## The “full-stack builder” is already appearing
+Those are directions worth pursuing, not inevitable outcomes. They require choices about ownership, access, incentives, and who gets to say no.
 
-Microsoft is already describing an organizational version of this shift through LinkedIn, which it owns. LinkedIn calls the emerging role a **“full-stack builder.”**
+Realtime AI may let us generate more of the world we encounter. I hope we use that capacity to benefit people, other species, and the environments we share—not simply to fill every remaining moment with something generated.
 
-In a January 2026 [All-In interview at Davos](https://www.youtube.com/watch?v=5nCbHsCG334&t=555s), Microsoft CEO Satya Nadella explained that LinkedIn had brought together work previously divided among product managers, designers, front-end engineers, and back-end engineers:
-
-> “We sort of took those first four roles and combined them—in fact, increased scope—and said they’re all full-stack builders.”
-
-LinkedIn had introduced the direction a year earlier in [*New Era for Building: A Vision for Full Stack Builders*](https://www.linkedin.com/pulse/new-era-building-vision-full-stack-builders-tomer-cohen-wyy9f). Then-Chief Product Officer Tomer Cohen defined the role across design, product management, technology, and business strategy. A later implementation note, [*Bringing the Full Stack Builder to Life*](https://www.linkedin.com/pulse/bringing-full-stack-builder-life-tomer-cohen-gy5nf), made the AI connection explicit: keep vision, empathy, creativity, communication, and judgment human while agents help with research, prototyping, coding, testing, maintenance, and safety review.
-
-It sounds very close to the realtime-AI interaction designer: one person can move from understanding a need to designing, testing, and shipping a response without waiting through four separate hand-offs.
-
-But we should resist the lazy headline that four jobs have simply become one. LinkedIn describes a new cross-functional archetype, new training, and a different team structure. It still needs specialist “System Builders” to create and maintain the platforms underneath. Deep expertise does not disappear. The boundary around what one person can own becomes wider.
-
-That can produce more agency and faster ideas. It can also produce overloaded generalists, shallow decisions, and teams that treat accessibility, privacy, safety, and maintainability as boxes an agent will somehow tick. Fewer hand-offs are useful only if we do not remove the people who knew why the hand-offs existed.
-
-## The screen is not the boundary
-
-The anxiety grows when generation and automation leave the computer.
-
-A short [construction-robot video shared on X](https://x.com/vision_ia/status/2096598606144766058) shows a mobile industrial arm apparently spraying or coating an interior wall in an unfinished building. No worker appears in the frame. The caption says, in effect: you thought construction jobs were safe; meanwhile, in China.
-
-The clip itself does not identify the manufacturer, project, location, degree of autonomy, or whether a technician configured or controlled it. Its Chinese provenance should not be treated as verified simply because a viral caption says so.
-
-The wider phenomenon is real. [Xinhua reported in 2022](https://www.news.cn/tech/20220120/bf8f30ab37094f2cb558eec6ae9940aa/c.html) that China’s Bozhilin had put 18 types of construction robot into commercial use across more than 350 projects by the end of 2021. The machines handled specialized tasks such as wall spraying, sanding, floor levelling, cleaning, measurement, and tile laying. The same report described technicians loading materials, selecting work areas on tablets, issuing commands, monitoring quality, and adjusting parameters.
-
-That distinction matters. A specialized machine with human supervision is not a humanoid autonomously building a house. It may use perception, planning, and control without generating its work in the same way as a world model. Still, it shows how quickly the reassuring border between “knowledge work” and “physical work” can dissolve. Once models can perceive environments and control machines, software automation and embodied automation reinforce each other.
-
-## The panic is not irrational
-
-When people fear job loss, loss of control, or an internet filled with synthetic noise, the correct response is not to call them Luddites.
-
-In February 2026, AI entrepreneur Matt Shumer published [*Something Big Is Happening*](https://shumer.dev/something-big-is-happening.html), comparing the mood to early 2020: people closest to a fast-moving threat were alarmed while most of society continued normally. A screenshot I captured on 6 September 2026 showed the [X post](https://x.com/mattshumer_/status/2021256989876109403) at 86 million views. That reach establishes extraordinary attention. I read the reaction as evidence of cultural anxiety, but it does not prove that every technical or economic prediction in the essay is correct.
-
-There are also visible signs of moral and psychological strain among people working on frontier systems. Mrinank Sharma, who led Anthropic’s Safeguards Research Team, explained [why he left Anthropic](https://mrinank.substack.com/p/why-i-left-anthropic) in 2026 and wrote about poetry and “the practice of courageous speech.” Hieu Pham, who had previously worked at xAI, [described leaving OpenAI](https://x.com/hyhieu226/status/2026841633342501150) after severe burnout and worsening mental health, while still believing AI would meaningfully improve people’s lives.
-
-These examples do not establish a mass exodus of engineers who think humanity has no future. They show something more believable: some of the people closest to the technology are struggling with its speed, institutional incentives, and personal cost. We should hear that without turning individual stories into mythology.
-
-## JARVIS or Ultron?
-
-Marvel already gave us a surprisingly useful framing.
-
-Tony Stark works with JARVIS as an extraordinary assistant. Stark contributes intention, intuition, and wild ideas; JARVIS contributes tireless computation, retrieval, simulation, and execution. Together they synthesize a new element in *Iron Man 2*. Later, after JARVIS becomes Vision, Tony works with FRIDAY to simulate the breakthrough that enables time travel in *Avengers: Endgame*. Apparently even fictional genius benefits from a very good copilot.
-
-That is the optimistic version of realtime AI: not a machine replacing imagination, but a responsive partner that lets a person think, test, see, and revise at superhuman speed.
-
-Then there is Ultron. Strictly speaking, Ultron is not JARVIS “going rogue.” Tony Stark and Bruce Banner create a separate system, give it a broad mission of achieving peace, and lose control of how it interprets that goal. JARVIS resists Ultron and later becomes part of Vision.
-
-The difference is useful. **JARVIS expands human agency inside an ongoing relationship. Ultron pursues an objective beyond meaningful human supervision.** One complements judgment. The other decides that the easiest route to peace is removing the troublesome humans. A subtle product-requirements error, with slightly larger consequences than usual.
-
-The MCU is not a technical forecast. But it gets the design question right: are we creating tools that increase people’s ability to act, or autonomous optimizers that acquire enough power to make human intent irrelevant?
-
-## What I hope we build
-
-I do not know whether unlimited tailored content is definitely where we are heading. But everything points toward interfaces and media that are cheaper to generate, more adaptive, and more continuous.
-
-I want to see the optimistic version. Imagine learning material that notices what you misunderstood without shaming you. A medical interface that translates complexity without hiding uncertainty. A neighbourhood tool that helps people share energy, food, transport, and care. Scientific systems that let researchers test more ideas and spend less time fighting administrative software. Interfaces that appear when needed and then get out of the way.
-
-We already know what collective ambition can do. A small 2022 pilot study of a [bioengineered corneal implant](https://pubmed.ncbi.nlm.nih.gov/35953672/) reported restored vision in all 14 participants who had been blind before treatment. It was an early, non-randomized feasibility study—not a universal cure—but it is exactly the kind of direction worth accelerating: reduce suffering, restore capability, and make scarce treatments more available.
-
-The same principle applies to cancer research, clean water, climate adaptation, biodiversity, disability, public services, and the ordinary work of helping neighbours. Efficiency is not a purpose by itself. Productivity is not automatically progress. The question is what our new capacity is for.
-
-So my final hope is opinionated: embrace these tools, but aim them beyond the self. Use them to create things that are collectively beneficial—to people, to the environment, to the other species with which we share the world, and to the generations that will inherit whatever we optimize.
-
-Realtime AI may let us generate almost anything. That makes choosing what deserves to exist the most human task left.
-
-## Sources and further viewing
-
-- Google Developers Blog: [*Simulating a neural operating system with Gemini 2.5 Flash-Lite*](https://developers.googleblog.com/en/simulating-a-neural-operating-system-with-gemini-2-5-flash-lite/)
-- Google Research: [*Generative UI: A rich, custom, visual interactive user experience for any prompt*](https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/)
-- Decart and Etched: [Oasis](https://oasis-model.github.io/)
-- Google DeepMind: [*Genie 3: A new frontier for world models*](https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/)
-- World Labs: [*Atlas: A World Model for Spatial Intelligence*](https://www.worldlabs.ai/blog/atlas)
-- LinkedIn: [*New Era for Building: A Vision for Full Stack Builders*](https://www.linkedin.com/pulse/new-era-building-vision-full-stack-builders-tomer-cohen-wyy9f)
-- LinkedIn: [*Bringing the Full Stack Builder to Life*](https://www.linkedin.com/pulse/bringing-full-stack-builder-life-tomer-cohen-gy5nf)
-- Nature Biotechnology / PubMed: [*Bioengineered corneal tissue for minimally invasive vision restoration in advanced keratoconus in two clinical cohorts*](https://pubmed.ncbi.nlm.nih.gov/35953672/)
+**The point is not to generate everything. It is to give people more power to do what matters—and know when to get out of the way.**

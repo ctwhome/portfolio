@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="title desc">
+  <title id="title">Flexible interfaces, dependable foundations</title>
+  <desc id="desc">A calendar and a comparison interface stand on the same solid platform. Underneath are a database, a lock, and a checked record: durable information, permissions, and confirmed actions.</desc>
+  <rect width="1200" height="600" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M216 97 Q351 91 474 98 L478 283 L214 279 Z M219 143 L475 145" fill="#fff"/>
+    <path d="M264 78 L265 111 M426 77 L425 111"/>
+    <path d="M245 171 L445 171 L445 252 L246 251 Z M295 172 L295 251 M345 172 L346 251 M396 172 L396 251 M246 211 L445 211" stroke-width="2"/>
+    <path d="M354 218 L364 230 L385 213 M353 220 L364 234 L387 214"/>
+    <path d="M252 185 L275 200 M305 180 L330 201 M255 180 L280 195" stroke-width="1.5"/>
+    <path d="M724 97 Q851 91 983 98 L986 280 L722 283 Z M726 142 L983 144" fill="#fff"/>
+    <circle cx="744" cy="119" r="4"/><circle cx="762" cy="119" r="4"/>
+    <path d="M752 170 L812 170 M752 207 L807 207 M752 246 L814 246 M836 162 L836 180 L921 180 L921 162 Z M836 199 L836 217 L949 217 L949 199 Z M836 238 L836 256 L895 256 L895 238 Z" stroke-width="3"/>
+    <path d="M549 181 Q594 155 646 182 M631 167 L648 183 L629 191 M648 218 Q599 241 550 217 M565 209 L547 217 L562 233" stroke-width="3"/>
+    <path d="M346 305 L345 348 M334 335 L345 351 L357 335 M852 305 L853 348 M841 335 L853 351 L864 335"/>
+    <path d="M147 374 Q592 367 1053 374 L1051 408 Q598 415 148 407 Z" fill="#fff"/>
+    <path d="M168 397 L185 381 M190 398 L207 381 M212 398 L229 381 M970 399 L988 380 M993 398 L1011 381 M1016 398 L1033 381" stroke-width="1.5"/>
+    <path d="M289 434 C289 417 395 417 395 434 C395 453 289 453 289 434 Z M289 434 L289 518 C289 538 395 538 395 518 L395 434 M290 464 C290 483 394 483 394 464 M290 491 C290 510 394 510 394 491"/>
+    <path d="M555 472 L645 472 L645 531 L555 531 Z M572 470 L572 450 C572 413 628 413 628 450 L628 470" fill="#fff"/>
+    <circle cx="600" cy="494" r="6"/><path d="M600 501 L600 515"/>
+    <path d="M815 427 L876 427 L904 454 L904 535 L815 534 Z M876 428 L876 454 L903 454 M837 490 L852 505 L882 475" fill="#fff"/>
+    <path d="M262 551 Q600 560 936 550" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="title desc">
+  <title id="title">An endless feed or a clear exit</title>
+  <desc id="desc">On one side, circulating arrows keep returning to a stack of content cards. On the other, a clear path passes through an open door. The contrast is continued attention versus completing a task and leaving.</desc>
+  <rect width="1200" height="560" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M149 222 C185 71 416 67 469 213 M446 202 L472 218 L477 188"/>
+    <path d="M476 347 C434 487 210 493 150 354 M173 365 L147 348 L142 378"/>
+    <path d="M238 151 L381 155 L375 316 L232 312 Z" fill="#fff"/>
+    <path d="M215 181 L362 182 L361 351 L216 349 Z" fill="#fff"/>
+    <path d="M247 212 L393 215 L389 384 L246 382 Z" fill="#fff"/>
+    <path d="M264 236 L371 237 L370 305 L264 303 Z M267 292 L292 267 L316 289 L340 254 L368 291 M265 329 L370 330 M265 348 L343 350 M265 366 L320 367" stroke-width="2.5"/>
+    <circle cx="279" cy="251" r="6"/>
+    <path d="M135 270 L134 290 M489 270 L490 290" stroke-width="2"/>
+    <path d="M602 133 L599 423" stroke-dasharray="3 13" stroke-width="1.5"/>
+    <path d="M830 367 L831 139 L1001 140 L1000 368 M820 378 L831 369 M1000 369 L1012 378"/>
+    <path d="M845 155 L932 119 L933 365 L845 403 Z" fill="#fff"/>
+    <path d="M853 163 L921 136 L921 355 L854 383" stroke-width="1.5"/>
+    <circle cx="913" cy="271" r="5"/>
+    <path d="M692 457 Q789 421 851 416 M755 471 Q853 431 929 392 M953 364 Q1007 339 1055 340 M983 377 Q1040 351 1108 357"/>
+    <path d="M970 280 L1081 280 M1060 261 L1083 280 L1060 300"/>
+    <path d="M1026 178 L1042 163 M1057 218 L1083 211 M987 116 L991 91" stroke-width="2.5"/>
+    <path d="M706 479 Q805 491 922 478" stroke-width="1.5"/>
+  </g>
+</svg>
