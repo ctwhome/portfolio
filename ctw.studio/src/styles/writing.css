@@ -115,6 +115,13 @@
   height: auto;
 }
 
+/* Keep portrait artwork contained without affecting archived article media. */
+.writing-prose img.writing-sketch {
+  width: auto;
+  max-height: 36rem;
+  margin-inline: auto;
+}
+
 .writing-prose figure {
   margin-inline: 0;
 }

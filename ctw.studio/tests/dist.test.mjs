@@ -117,7 +117,7 @@ test('stand-out keeps its transformation story, disclosure, and local media in s
   assert.doesNotMatch(html, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
 });
 
-test('all 35 maintained routes share metadata and exclude legacy navigation', async () => {
+test('all 36 maintained routes share metadata and exclude legacy navigation', async () => {
   const routes = [
     ['index.html', '/'],
     ['portfolio/index.html', '/portfolio/'],
@@ -172,7 +172,7 @@ test('workshop, directory legal pages, and guide keep substantive accessible out
   assert.match(terms, /id="cancellation-policy"/);
   assert.match(guide, /<main id="main">/);
   assert.match(guide, /Design for decisions/);
-  assert.match(guide, /<caption>All 42 deployed CTW Studio routes/);
+  assert.match(guide, /<caption>All 43 deployed CTW Studio routes/);
   assert.doesNotMatch(guide, /<script\b/i);
   assert.deepEqual(
     [workshop, privacy, terms].map((html) => sha256(readableMainText(html))),

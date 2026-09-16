@@ -25,16 +25,16 @@ const formatDate = (date: string) => new Intl.DateTimeFormat('en-GB', {
 ---
 <SiteLayout
   title="Writing — Jesse Gonzalez"
-  description="Archived essays and digital garden notes by Jesse Gonzalez on interaction design, software, AI, and ways of working."
+  description="Current essays and archived digital garden notes by Jesse Gonzalez on interaction design, software, AI, and ways of working."
   canonical="/writing/"
   current="writing"
   bodyClass="writing-page"
 >
   <main id="main-content" class="ctw-container writing-main writing-index">
     <header class="writing-index__header">
-      <p class="ctw-section-number">Archive · {posts.length} entries</p>
+      <p class="ctw-section-number">Collection · {posts.length} entries</p>
       <h1 class="ctw-heading-lg">Writing</h1>
-      <p class="ctw-lede">Essays and digital garden notes on interaction design, software, AI, and ways of working, preserved from Jesse’s earlier site.</p>
+      <p class="ctw-lede">Current essays and archived digital garden notes on interaction design, software, AI, and ways of working.</p>
     </header>
     <ol class="writing-index__list">
       {posts.map((post) => (
