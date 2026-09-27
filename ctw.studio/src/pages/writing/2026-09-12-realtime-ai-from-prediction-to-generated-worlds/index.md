@@ -54,7 +54,14 @@ Worlds are not the only thing that can now be generated while you watch. So can 
 
 I keep seeing the same kind of clip: someone sits at a desk in front of an ordinary webcam, and the person who appears on screen is someone else entirely. A different face, a different body, a cartoon character, an elderly man, a woman in a spacesuit. They blink, laugh, turn their head, and the character does too—live, with no editing afterwards. Switch the reference image and they become someone else mid-sentence.
 
-This is not a special-effects studio. Decart’s [Lucy 2.1](https://decart.mintlify.app/models/realtime/overview) takes a live camera stream and a single reference image, then maps your expressions, head movements, and gestures onto that character in realtime. [MorphMe Live](https://morphmelive.com/), built on Decart’s models, sells full-body character swaps to streamers and pipes the result straight into OBS, Twitch, YouTube, or Zoom. The open-source [Deep-Live-Cam](https://github.com/XORandom/Deep-Live-Cam) reduces a live face swap to three steps: select a face, select a camera, press live.
+This is not a special-effects studio. Decart’s [Lucy 2.1](https://decart.mintlify.app/models/realtime/overview) takes a live camera stream and a single reference image, then maps your expressions, head movements, and gestures onto that character in realtime. [MorphMe Live](https://morphmelive.com/), built on Decart’s models, sells full-body character swaps to streamers and pipes the result straight into OBS, Twitch, YouTube, or Zoom. The open-source [Deep-Live-Cam](https://github.com/hacksider/Deep-Live-Cam) reduces a live face swap to three steps: select a face, select a camera, press live.
+
+<figure>
+  <video class="writing-clip" controls muted loop playsinline preload="none" poster="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/deep-live-cam-demo-poster.avif" width="600" height="338" aria-label="Screen recording: a man at a webcam appears in the preview window with a public figure’s face, which follows his expressions and head movements live.">
+    <source src="/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/deep-live-cam-demo.mp4" type="video/mp4" />
+  </video>
+  <figcaption>One photo on the left, one webcam on the right. The swapped face follows every laugh and head turn live. The public figure in the reference photo had nothing to do with this recording, which is the point. Demo recording from the <a href="https://github.com/hacksider/Deep-Live-Cam">Deep-Live-Cam</a> README by hacksider and contributors (AGPL-3.0), re-encoded without changes to the footage.</figcaption>
+</figure>
 
 At a glance, the result is increasingly hard to tell apart from a real person. And the creative side is wonderful. A shy person can perform without being seen. Someone who does not want their face online can still host a show—MorphMe explicitly markets to “privacy-first streamers.” A theatre group can cast a dragon. A teacher can become Marie Curie for an afternoon. One performer can voice and embody a whole cast.
 

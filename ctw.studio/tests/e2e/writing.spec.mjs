@@ -116,7 +116,7 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     await page.goto(realtimePath, { waitUntil: 'networkidle' });
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Realtime AI: From Prediction to Generated Worlds');
-    const figures = page.locator('.writing-prose figure');
+    const figures = page.locator('.writing-prose figure:has(img.writing-sketch)');
     await expect(figures).toHaveCount(3);
     for (const figure of await figures.all()) {
       const image = figure.locator('img');
@@ -129,6 +129,14 @@ for (const viewport of viewports) {
       expect(box?.width ?? 0).toBeGreaterThan(0);
       expect(box?.width ?? Infinity).toBeLessThanOrEqual(viewport.width);
     }
+    const clip = page.locator('.writing-prose video.writing-clip');
+    await clip.scrollIntoViewIfNeeded();
+    await expect(clip).toHaveAttribute('preload', 'none');
+    await expect.poll(() => clip.evaluate((element) => element.paused)).toBe(true);
+    const clipBox = await clip.boundingBox();
+    expect(clipBox?.width ?? Infinity).toBeLessThanOrEqual(viewport.width);
+    await clip.evaluate((element) => { element.preload = 'auto'; element.load(); });
+    await expect.poll(() => clip.evaluate((element) => element.readyState >= 2 && element.videoWidth === 600), { timeout: 10_000 }).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
     expect(errors).toEqual([]);
   });
@@ -139,10 +147,10 @@ test('Realtime essay and its sketches remain readable without JavaScript', async
   try {
     const page = await context.newPage();
     await page.goto(realtimePath);
-    await expect(page.locator('.writing-prose figure')).toHaveCount(3);
-    await expect(page.locator('.writing-prose figcaption')).toHaveCount(3);
+    await expect(page.locator('.writing-prose figure:has(img.writing-sketch)')).toHaveCount(3);
+    await expect(page.locator('.writing-prose figure:has(img.writing-sketch) figcaption')).toHaveCount(3);
     expect((await page.locator('.writing-prose').innerText()).length).toBeGreaterThan(5_000);
-    for (const image of await page.locator('.writing-prose figure img').all()) {
+    for (const image of await page.locator('.writing-prose figure img.writing-sketch').all()) {
       await image.scrollIntoViewIfNeeded();
       await expect.poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0)).toBe(true);
     }

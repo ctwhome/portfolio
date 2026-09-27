@@ -88,7 +88,7 @@ test('writing content uses safe semantic HTML, valid headings, alt text, and loc
     }
   }
   await walk(mediaRoot);
-  assert.equal(files.length, 58);
+  assert.equal(files.length, 60);
   assert.deepEqual(new Set(files), referenced);
   assert.ok(!files.some((path) => path.endsWith('/Prototyping.png')));
   for (const path of referenced) await access(new URL(`..${path}`, mediaRoot));
@@ -122,7 +122,7 @@ const realtimeSketches = ['interaction-loop.avif', 'stable-foundations.avif', 'a
 
 test('realtime essay sketches have captions, alt text, and matching intrinsic dimensions', async () => {
   const markdown = await readFile(new URL(`${realtimeSlug}/index.md`, pages), 'utf8');
-  const figures = [...markdown.matchAll(/<figure>\s*([\s\S]*?)<\/figure>/g)];
+  const figures = [...markdown.matchAll(/<figure>\s*([\s\S]*?)<\/figure>/g)].filter(([, figure]) => figure.includes('writing-sketch'));
   assert.equal(figures.length, realtimeSketches.length);
   for (const [index, [, figure]] of figures.entries()) {
     const filename = realtimeSketches[index];
@@ -161,4 +161,23 @@ test('realtime essay sketches are lightweight monochrome images with tonal shadi
     assert.ok(tones.size > 64, `${filename}: missing tonal shading`);
   }
   assert.ok(totalBytes <= 120_000, 'combined graphite artwork exceeds 120 KB');
+});
+
+test('realtime essay live face-swap clip is credited, lightweight, and loads on demand', async () => {
+  const markdown = await readFile(new URL(`${realtimeSlug}/index.md`, pages), 'utf8');
+  const figure = markdown.match(/<figure>\s*(<video[\s\S]*?)<\/figure>/)?.[1];
+  assert.ok(figure, 'missing video figure');
+  assert.match(figure, /\bclass="writing-clip"/);
+  for (const attribute of ['controls', 'muted', 'playsinline', 'preload="none"']) assert.ok(figure.includes(attribute), attribute);
+  assert.doesNotMatch(figure, /\bautoplay\b/);
+  assert.match(figure, /aria-label="[^"]+"/);
+  assert.match(figure, new RegExp(`poster="/writing/${realtimeSlug}/media/deep-live-cam-demo-poster\\.avif"`));
+  assert.match(figure, new RegExp(`src="/writing/${realtimeSlug}/media/deep-live-cam-demo\\.mp4" type="video/mp4"`));
+  assert.match(figure, /<figcaption>[\s\S]*href="https:\/\/github\.com\/hacksider\/Deep-Live-Cam"[\s\S]*hacksider and contributors \(AGPL-3\.0\)[\s\S]*<\/figcaption>/);
+  const video = await readFile(new URL(`${realtimeSlug}/media/deep-live-cam-demo.mp4`, mediaRoot));
+  assert.ok(video.length <= 600_000, `clip exceeds 600 KB: ${video.length}`);
+  assert.equal(video.toString('ascii', 4, 8), 'ftyp', 'MP4 signature');
+  const poster = await sharp(await readFile(new URL(`${realtimeSlug}/media/deep-live-cam-demo-poster.avif`, mediaRoot))).metadata();
+  assert.equal(poster.width, Number(figure.match(/\bwidth="(\d+)"/)?.[1]));
+  assert.equal(poster.height, Number(figure.match(/\bheight="(\d+)"/)?.[1]));
 });

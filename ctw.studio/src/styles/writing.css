@@ -122,6 +122,13 @@
   margin-inline: auto;
 }
 
+.writing-prose video.writing-clip {
+  width: 100%;
+  max-width: 37.5rem;
+  margin-inline: auto;
+  background: var(--ctw-color-surface-raised);
+}
+
 .writing-prose figure {
   margin-inline: 0;
 }
