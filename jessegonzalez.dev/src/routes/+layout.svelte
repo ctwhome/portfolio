@@ -19,7 +19,7 @@
 <Analytics />
 
 <svelte:head>
-	<title>Jesse Gonzalez - Building, learning, sharing</title>
+	<title>Jessie Gonzalez - Building, learning, sharing</title>
 </svelte:head>
 
 <div class="flex h-screen flex-col">

@@ -673,7 +673,7 @@ test("homepage restores historical composition through current static design sys
     "Interaction Design Engineer with 17+ years in software",
     "50+",
     "15",
-    "Jesse Gonzalez",
+    "Jessie Gonzalez",
     "Interaction Strategy &amp; Prototyping",
     "Human–AI Interaction &amp; Systems",
     "Data-rich Applications &amp; Visualization",

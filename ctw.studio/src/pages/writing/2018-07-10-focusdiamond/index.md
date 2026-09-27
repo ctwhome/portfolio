@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "FocusDiamond"
-description: "Archived blog entry by Jesse Gonzalez."
+description: "Archived blog entry by Jessie Gonzalez."
 date: "2018-07-10"
 category: "Blog"
 cover: "/writing/2018-07-10-focusdiamond/media/1_YtpHen1W6CIR3kyHT-SaYg.jpg"

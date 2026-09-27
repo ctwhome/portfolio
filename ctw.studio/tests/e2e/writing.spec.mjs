@@ -47,8 +47,8 @@ test('Writing remains substantive and navigable without JavaScript', async ({ br
   await page.goto('/writing/');
   await expect(page.getByRole('heading', { level: 1, name: 'Writing' })).toBeVisible();
   await expect(page.locator('.writing-index__item')).toHaveCount(18);
-  await expect(page.getByRole('link', { name: 'Jesse Gonzalez, home' })).toBeVisible();
-  await page.getByRole('link', { name: 'Call Me Jesse' }).first().click();
+  await expect(page.getByRole('link', { name: 'Jessie Gonzalez, home' })).toBeVisible();
+  await page.getByRole('link', { name: 'About my name' }).first().click();
   await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jesse' })).toBeVisible();
   expect((await page.locator('.writing-prose').innerText()).length).toBeGreaterThan(1_000);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
@@ -82,7 +82,7 @@ test('all Writing routes expose article metadata and reachable local media', asy
     const html = await response.text();
     expect(html).toContain(`<link rel="canonical" href="https://ctw.studio${pathname}">`);
     expect(html).toContain('<meta property="og:type" content="article">');
-    expect(html).toContain('<meta property="article:author" content="Jesse Gonzalez">');
+    expect(html).toContain('<meta property="article:author" content="Jessie Gonzalez">');
     expect(html).toContain(`<meta property="article:published_time" content="${date}T00:00:00.000Z">`);
     expect(html).toMatch(/<meta property="og:image" content="https:\/\/ctw\.studio\/writing\/.+\/media\/.+">/);
     expect(html).toMatch(/<meta property="og:image:alt" content="[^"]+">/);

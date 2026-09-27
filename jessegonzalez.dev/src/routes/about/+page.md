@@ -8,7 +8,7 @@
 
 <ProfilePicture/>
 
-# Hey, I'm Jesse
+# Hey, I'm Jessie
 
 I'm a Senior Research Software Engineer based in Amsterdam with over 17 years of experience turning complex research challenges into production-ready software.
 
@@ -17,7 +17,7 @@ I work as a **Research Software Engineer** at the [Netherlands eScience Center](
 Independently, I run **[CTW Studio](https://ctw.studio)**—building software for research and society, and developing my own products like IdeasDiamond and Notidian.
 
 <TiltContent>
-  <img draggable="false" src="/images/profile.avif" class="tilt rounded pointer-events-none h-[450px] aspect-video w-full object-cover" alt="Jesse Gonzalez Profile" />
+  <img draggable="false" src="/images/profile.avif" class="tilt rounded pointer-events-none h-[450px] aspect-video w-full object-cover" alt="Jessie Gonzalez Profile" />
 </TiltContent>
 
 ## Recent Work at eScience Center

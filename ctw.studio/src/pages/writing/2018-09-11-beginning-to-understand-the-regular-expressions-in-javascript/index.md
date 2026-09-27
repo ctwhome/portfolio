@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "Beginning to understand the Regular Expressions in JavaScript"
-description: "Archived blog entry by Jesse Gonzalez."
+description: "Archived blog entry by Jessie Gonzalez."
 date: "2018-09-11"
 category: "Blog"
 cover: "/writing/2018-09-11-beginning-to-understand-the-regular-expressions-in-javascript/media/129032492-b941fca2-ea99-44ba-803b-03158d6be03c.jpg"

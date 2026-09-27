@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "The ultimate infographic for SEO"
-description: "Archived blog entry by Jesse Gonzalez."
+description: "Archived blog entry by Jessie Gonzalez."
 date: "2019-10-08"
 category: "Blog"
 cover: "/writing/2019-10-08-the-ultimate-infographic-for-seo/media/cover.avif"

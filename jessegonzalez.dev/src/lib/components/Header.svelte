@@ -56,7 +56,7 @@
 		<header class="flex items-center gap-3">
 			<a class="mr-3 flex-initial group" href="/">
 				<span class="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
-					Jesse<span class="text-primary">.</span>Gonzalez
+					Jessie<span class="text-primary">.</span>Gonzalez
 				</span>
 			</a>
 			<!-- menu-->

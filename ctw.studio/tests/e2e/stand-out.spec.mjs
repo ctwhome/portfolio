@@ -173,7 +173,7 @@ test('stand-out retains full readable story without JavaScript', async ({ browse
   await expect(page.locator('main')).toContainText('You already did the hard part');
   await expect(page.locator('main')).toContainText('fewer dead ends, smoother first contact');
   await expect(page.locator('main')).toContainText('AI-assisted or illustrative imagery never stands in');
-  await expect(page.getByRole('link', { name: /Write to Jesse/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Write to Jessie/ })).toBeVisible();
   for (const scene of await page.locator('[data-story-panel]').all()) await expect(scene).toBeVisible();
   await context.close();
 });
