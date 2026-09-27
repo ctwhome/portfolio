@@ -17,7 +17,7 @@ const routes = [
   {
     name: "homepage",
     path: "/",
-    title: "Jesse Gonzalez — Interaction Design Engineer",
+    title: "Jessie Gonzalez — Interaction Design Engineer",
     heading: /Interaction Design Engineering/i,
     core: /Interaction Strategy & Prototyping/,
     minimumStyles: 4,
