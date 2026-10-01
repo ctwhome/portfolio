@@ -1,0 +1,84 @@
+- generic [active] [ref=f1e1] [box=0,0,1425,7510]:
+  - link "Skip to content" [ref=f1e2] [cursor=pointer] [box=12,-64,148,44]:
+    - /url: "#main-content"
+  - generic [ref=f1e3] [box=0,0,1425,7510]:
+    - banner [ref=f1e4] [box=0,16,1425,63]:
+      - generic [ref=f1e5] [box=137,16,1152,62]:
+        - link "Jessie Gonzalez, home" [ref=f1e6] [cursor=pointer] [box=162,25,144,44]:
+          - /url: /
+          - generic [aria-hidden] [ref=f1e7] [box=162,38,144,18]: Jessie Gonzalez .
+        - navigation "Primary navigation" [ref=f1e8] [box=821,25,459,44]:
+          - link "Work" [ref=f1e9] [cursor=pointer] [box=821,25,64,44]:
+            - /url: /portfolio/
+          - link "Writing" [ref=f1e10] [cursor=pointer] [box=893,25,79,44]:
+            - /url: /writing/
+          - link "Signals" [ref=f1e11] [cursor=pointer] [box=980,25,80,44]:
+            - /url: /signals/
+          - link "Stand Out" [ref=f1e12] [cursor=pointer] [box=1068,25,100,44]:
+            - /url: /stand-out/
+          - link "Contact" [ref=f1e13] [cursor=pointer] [box=1176,25,104,44]:
+            - /url: /#about
+    - main [ref=f1e16] [box=0,84,1425,6909]:
+      - generic [ref=f1e17] [box=113,228,1200,6621]:
+        - generic [ref=f1e18] [box=113,228,1200,419]:
+          - paragraph [ref=f1e19] [box=113,228,1200,17]: Work / 2013–2026
+          - heading "Software and design work." [level=1] [ref=f1e20] [box=113,277,1082,248]
+          - generic [ref=f1e21] [box=113,556,1200,26]
+        - list "Selected projects" [ref=f1e24] [box=113,711,1200,6138]:
+          - listitem [ref=f1e25] [box=113,711,578,466]
+          - listitem [ref=f1e35] [box=734,711,578,466]
+          - listitem [ref=f1e45] [box=113,1278,578,466]
+          - listitem [ref=f1e55] [box=734,1278,578,466]
+          - listitem [ref=f1e65] [box=113,1845,578,466]
+          - listitem [ref=f1e75] [box=734,1845,578,466]
+          - listitem [ref=f1e85] [box=113,2413,578,466]
+          - listitem [ref=f1e95] [box=734,2413,578,466]
+          - listitem [ref=f1e105] [box=113,2980,578,466]
+          - listitem [ref=f1e115] [box=734,2980,578,466]
+          - listitem [ref=f1e125] [box=113,3547,578,466]
+          - listitem [ref=f1e135] [box=734,3547,578,466]
+          - listitem [ref=f1e145] [box=113,4114,578,466]
+          - listitem [ref=f1e155] [box=734,4114,578,466]
+          - listitem [ref=f1e165] [box=113,4681,578,466]
+          - listitem [ref=f1e175] [box=734,4681,578,466]
+          - listitem [ref=f1e185] [box=113,5249,578,466]
+          - listitem [ref=f1e195] [box=734,5249,578,466]
+          - listitem [ref=f1e205] [box=113,5816,578,466]
+          - listitem [ref=f1e215] [box=734,5816,578,466]
+          - listitem [ref=f1e225] [box=113,6383,578,466]
+    - contentinfo [ref=f1e235] [box=0,6993,1425,516]:
+      - generic [ref=f1e236] [box=113,7026,1200,451]:
+        - generic [ref=f1e237] [box=113,7074,620,355]:
+          - strong [ref=f1e238] [box=113,7074,620,22]: Jessie Gonzalez
+          - generic [ref=f1e239] [box=113,7121,620,22]: Interaction Design Engineer
+          - generic [ref=f1e240] [box=113,7167,620,22]: CTW Studio is Jessie’s independent commercial practice.
+          - generic [ref=f1e241] [box=113,7213,620,22]: © 2026
+        - navigation "Studio destinations" [ref=f1e242] [box=764,7074,258,355]:
+          - generic [ref=f1e243] [box=764,7074,258,17]: Explore
+          - link "Work" [ref=f1e244] [cursor=pointer] [box=764,7099,258,44]:
+            - /url: /portfolio/
+          - link "Writing" [ref=f1e245] [cursor=pointer] [box=764,7151,258,44]:
+            - /url: /writing/
+          - link "Signals" [ref=f1e246] [cursor=pointer] [box=764,7203,258,44]:
+            - /url: /signals/
+          - link "AI Workshop" [ref=f1e247] [cursor=pointer] [box=764,7255,258,44]:
+            - /url: /workshop/
+          - link "NLeSC" [ref=f1e248] [cursor=pointer] [box=764,7307,258,44]:
+            - /url: /nlesc/
+          - generic [ref=f1e249] [box=764,7367,258,63]
+        - navigation "Contact destinations" [ref=f1e252] [box=1054,7074,258,355]:
+          - generic [ref=f1e253] [box=1054,7074,258,17]: Contact
+          - link "contact@ctw.studio" [ref=f1e254] [cursor=pointer] [box=1054,7099,258,44]:
+            - /url: mailto:contact@ctw.studio
+          - link "LinkedIn ↗" [ref=f1e255] [cursor=pointer] [box=1054,7151,258,44]:
+            - /url: https://linkedin.com/in/ctwhome
+          - link "GitHub ↗" [ref=f1e256] [cursor=pointer] [box=1054,7203,258,44]:
+            - /url: https://github.com/ctwhome
+          - link "About my name" [ref=f1e257] [cursor=pointer] [box=1054,7255,258,44]:
+            - /url: /writing/2025-05-30-call-me-jesse/
+  - button "Feedback" [ref=f1e258] [cursor=pointer] [box=1301,936,104,44]
+  - generic [ref=f1e261] [box=626,983,173,40]:
+    - button [ref=f1e262] [box=626,983,42,40]
+    - button [ref=f1e268] [box=668,983,44,40]
+    - button "Audit" [ref=f1e272] [box=712,983,44,40]
+    - button [ref=f1e277] [box=757,983,42,40]

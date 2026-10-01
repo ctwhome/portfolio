@@ -1,5 +1,5 @@
 .portfolio-page {
-  padding-block: clamp(4rem, 10vw, 9rem);
+  padding-block: clamp(3rem, 6vw, 6rem);
 }
 
 .portfolio-page > .ctw-container {
@@ -8,32 +8,38 @@
 
 .portfolio-lead {
   display: grid;
-  gap: var(--ctw-space-6);
-  padding-bottom: var(--ctw-space-8);
+  gap: clamp(var(--ctw-space-5), 2.5vw, var(--ctw-space-6));
+  padding-bottom: clamp(var(--ctw-space-6), 4vw, var(--ctw-space-7));
   border-bottom: 1px solid var(--ctw-color-border);
 }
 
 .portfolio-lead h1 {
   max-width: 11ch;
   margin: 0;
-  font: 750 clamp(3.5rem, 11vw, 9rem)/0.86 var(--ctw-font-sans);
-  letter-spacing: -0.075em;
+  font: 750 clamp(3.25rem, 10vw, 8rem)/0.9 var(--ctw-font-sans);
+  letter-spacing: -0.065em;
+  text-wrap: balance;
 }
 
 .portfolio-lead__meta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--ctw-space-4);
   color: var(--ctw-color-text-muted);
-  font-family: var(--ctw-font-mono);
+  font: 400 var(--ctw-type-body-sm)/1.4 var(--ctw-font-mono);
+}
+
+.portfolio-github {
+  justify-self: start;
 }
 
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: clamp(1.5rem, 3vw, 3rem);
-  row-gap: clamp(3.5rem, 7vw, 7rem);
-  margin: var(--ctw-space-8) 0 0;
+  row-gap: clamp(3rem, 6vw, 5rem);
+  margin: clamp(var(--ctw-space-6), 4vw, var(--ctw-space-7)) 0 0;
   padding: 0;
   background: transparent;
   list-style: none;
@@ -83,17 +89,10 @@
 }
 
 .project-card__meta {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--ctw-space-4);
   color: var(--ctw-color-text-muted);
   font: 500 var(--ctw-type-label)/1.4 var(--ctw-font-mono);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-.project-card__index {
-  white-space: nowrap;
 }
 
 .project-card__title {
@@ -104,8 +103,8 @@
 }
 
 .project-card__title strong {
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-  line-height: 1;
+  font-size: clamp(1.5rem, 2.25vw, 2.25rem);
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
@@ -163,13 +162,16 @@
 }
 
 .project-dialog__close {
+  flex-shrink: 0;
   min-width: var(--ctw-size-touch);
   min-height: var(--ctw-size-touch);
+  padding-inline: var(--ctw-space-3);
   border: 1px solid var(--ctw-color-control-border);
   border-radius: var(--ctw-radius-control);
   background: transparent;
   color: inherit;
   font: 500 var(--ctw-type-label)/1 var(--ctw-font-mono);
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -189,8 +191,10 @@
 .project-dialog__title {
   max-width: 12ch;
   margin: 0;
-  font: 750 clamp(3rem, 10vw, 8rem)/0.88 var(--ctw-font-sans);
-  letter-spacing: -0.07em;
+  font: 750 clamp(3rem, 8vw, 7rem)/0.9 var(--ctw-font-sans);
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .project-dialog__headline {
@@ -198,6 +202,7 @@
   margin: 0;
   color: var(--ctw-color-text-muted);
   font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
 }
 
 .project-dialog__narrative {
@@ -206,9 +211,17 @@
   font-size: var(--ctw-type-body-lg);
 }
 
+.project-dialog__narrative p {
+  margin: 0;
+}
+
+.project-dialog__narrative p + p {
+  margin-top: 1em;
+}
+
 .project-dialog__facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   margin: 0;
   border-block: 1px solid var(--ctw-color-border);
 }
@@ -306,9 +319,28 @@ body.project-dialog-open {
 }
 
 @media (max-width: 48rem) {
+  .portfolio-lead {
+    padding-bottom: var(--ctw-space-6);
+  }
+
   .portfolio-grid {
     grid-template-columns: 1fr;
+    margin-top: var(--ctw-space-6);
     row-gap: clamp(3rem, 12vw, 5rem);
+  }
+
+  .project-dialog__body {
+    padding-block: var(--ctw-space-6);
+  }
+
+  .project-dialog__lead {
+    gap: var(--ctw-space-4);
+    padding-bottom: var(--ctw-space-6);
+  }
+
+  .project-dialog__narrative {
+    padding-block: var(--ctw-space-7);
+    font-size: 1.125rem;
   }
 
   .project-dialog__facts {

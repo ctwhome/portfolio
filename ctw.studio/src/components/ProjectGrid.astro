@@ -34,7 +34,6 @@ const coverUrl = (id: string, width: number) => `/portfolio/covers/${id}-${width
         <span class="project-card__copy">
           <span class="project-card__meta">
             <span>{project.category} · {new Date(project.date).getUTCFullYear()}</span>
-            <span class="project-card__index">{String(index + 1).padStart(2, '0')}</span>
           </span>
           <span class="project-card__title">
             <strong>{project.title}</strong>

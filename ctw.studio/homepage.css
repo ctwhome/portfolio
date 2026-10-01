@@ -379,7 +379,7 @@ body {
 
 .studio-offerings li {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--ctw-space-4);
   padding: clamp(var(--ctw-space-5), 4vw, var(--ctw-space-7));
 }
@@ -391,15 +391,6 @@ body {
   transform: translateX(-0.4rem);
 }
 
-.studio-offerings li > span {
-  transition: transform var(--ctw-motion-deliberate) var(--ctw-ease-out);
-}
-
-.studio-offerings li:hover > span {
-  transform: translateX(0.3rem);
-}
-
-.studio-offerings li > span,
 .studio-process summary > span {
   color: var(--studio-amber);
   font: 500 var(--ctw-type-label)/1.4 var(--ctw-font-mono);

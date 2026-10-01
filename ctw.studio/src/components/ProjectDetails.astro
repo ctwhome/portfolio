@@ -27,7 +27,6 @@ const mediaUrl = (path: string) => `/portfolio/${path}`;
 
         <div class="project-dialog__body">
           <div class="project-dialog__lead">
-            <p class="ctw-section-number">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</p>
             <h2 class="project-dialog__title" id={`${project.id}-title`}>{project.title}</h2>
             <p class="project-dialog__headline">{project.headline}</p>
           </div>
