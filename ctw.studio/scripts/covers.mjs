@@ -10,7 +10,7 @@ const covers = [...source.matchAll(/id: '([^']+)'[\s\S]*?coverImage: '([^']+)'/g
   .map(([, id, path]) => ({ id, path }));
 const widths = [480, 720, 960];
 
-if (covers.length !== 21) throw new Error(`expected 21 project covers, found ${covers.length}`);
+if (covers.length !== 22) throw new Error(`expected 22 project covers, found ${covers.length}`);
 
 let avifReady = false;
 async function image(path) {

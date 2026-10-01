@@ -31,6 +31,27 @@ export interface Project {
  */
 export const projects = [
   {
+    id: 'dsa-case-law-tracker',
+    title: 'DSA Case Law Tracker',
+    date: '2026-10-01',
+    client: 'IViR · University of Amsterdam · DSA Observatory',
+    category: 'Legal research · Editorial system',
+    headline: 'Private enforcement case law, structured for public research',
+    description: `DSA Case Law Tracker is a public, open-access prototype for browsing private enforcement cases under the EU Digital Services Act. It is being prepared for the Institute for Information Law at the University of Amsterdam and the DSA Observatory as part of their 2026 private enforcement research work.
+
+The public interface turns structured case records into searchable, filterable cards and detail pages with jurisdictions, parties, legal classifications, timelines, and source references. A PocketBase editorial workflow separates review from publication, so researchers can prepare and check records before they appear in the public tracker.`,
+    coverImage: 'projects/dsa-case-law-tracker/cover.avif',
+    liveUrl: null,
+    tags: ['SvelteKit', 'Svelte', 'PocketBase', 'Legal Research', 'Search'],
+    institution: 'University of Amsterdam',
+    gallery: [
+      { type: 'image', src: 'projects/dsa-case-law-tracker/cover.avif', caption: 'Public landing page with the animated European case-distribution map', width: 1440, height: 900 },
+      { type: 'video', src: 'projects/dsa-case-law-tracker/demo.mp4', poster: 'projects/dsa-case-law-tracker/cover.avif', caption: 'Public walkthrough from the European overview to case search and a populated case record', width: 1280, height: 800 },
+      { type: 'image', src: 'projects/dsa-case-law-tracker/cases-search.avif', caption: 'Full-text search across published case cards, parties, legal tags, and sources', width: 1440, height: 900 },
+      { type: 'image', src: 'projects/dsa-case-law-tracker/case-detail.avif', caption: 'Public case record with a substantive summary, court metadata, legal classification, and primary source reference', width: 1440, height: 900 }
+    ]
+  },
+  {
     id: 'droneatlas',
     title: 'DroneAtlas',
     date: '2026-06-13',
