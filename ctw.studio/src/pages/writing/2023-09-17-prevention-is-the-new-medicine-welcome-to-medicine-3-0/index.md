@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "Prevention is the New Medicine 3.0"
-description: "Archived digital garden entry by Jesse Gonzalez."
+description: "Archived digital garden entry by Jessie Gonzalez."
 date: "2023-09-17"
 category: "Digital Garden"
 cover: "/writing/2023-09-17-prevention-is-the-new-medicine-welcome-to-medicine-3-0/media/7ty-unbr4mo.jpg"

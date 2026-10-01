@@ -62,7 +62,7 @@
 							 lg:h-[400px]
 							xl:h-[500px]
 							"
-					alt="Jesse Gonzalez Profile"
+					alt="Jessie Gonzalez Profile"
 				/>
 			</TiltContent>
 		</div>

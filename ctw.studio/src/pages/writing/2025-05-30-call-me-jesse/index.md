@@ -12,6 +12,8 @@ archive: true
 ---
 <!-- ++ -15  -->
 
+> **Update:** I now go by Jessie Gonzalez. This 2025 essay is kept as originally written.
+
 I go by Jesse Gonzalez now.
 
 Let’s get one thing straight. My passport name is Jesús García González. Born and raised in Madrid. Spanish as hell, a classic name. Common and Biblical.

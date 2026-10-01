@@ -40,7 +40,7 @@ test('Astro emits directory routes with personal homepage identity', async () =>
   ]);
   assert.match(home, /<link rel="canonical" href="https:\/\/ctw\.studio\/">/);
   assert.match(portfolio, /<link rel="canonical" href="https:\/\/ctw\.studio\/portfolio\/">/);
-  assert.match(home, /<title>Jesse Gonzalez — Interaction Design Engineer<\/title>/);
+  assert.match(home, /<title>Jessie Gonzalez — Interaction Design Engineer<\/title>/);
   assert.match(home, /I design and build applications that help people understand and work with complex AI, data, and workflows/);
   assert.match(home, /CTW Studio is my independent commercial practice and legal vehicle/);
   assert.match(home, /Tell me what you’re trying to make/);
@@ -53,7 +53,7 @@ test('Astro emits directory routes with personal homepage identity', async () =>
   assert.match(standOut, /<link rel="canonical" href="https:\/\/ctw\.studio\/stand-out\/">/);
   assert.equal((standOut.match(/speculative (?:beauty|restaurant|home-services) concept/gi) ?? []).length, 3);
   assert.match(standOut, /What you built in person/);
-  assert.match(standOut, /I’m Jesse, the designer and engineer behind CTW Studio/);
+  assert.match(standOut, /I’m Jessie, the designer and engineer behind CTW Studio/);
   assert.match(standOut, /AI-assisted or illustrative imagery never stands in as an actual dish/);
   assert.match(standOut, /contact@ctw\.studio/);
   assert.doesNotMatch(standOut, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
@@ -117,7 +117,7 @@ test('stand-out keeps its transformation story, disclosure, and local media in s
   assert.doesNotMatch(html, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
 });
 
-test('all 35 maintained routes share metadata and exclude legacy navigation', async () => {
+test('all 36 maintained routes share metadata and exclude legacy navigation', async () => {
   const routes = [
     ['index.html', '/'],
     ['portfolio/index.html', '/portfolio/'],
@@ -172,14 +172,14 @@ test('workshop, directory legal pages, and guide keep substantive accessible out
   assert.match(terms, /id="cancellation-policy"/);
   assert.match(guide, /<main id="main">/);
   assert.match(guide, /Design for decisions/);
-  assert.match(guide, /<caption>All 42 deployed CTW Studio routes/);
+  assert.match(guide, /<caption>All 43 deployed CTW Studio routes/);
   assert.doesNotMatch(guide, /<script\b/i);
   assert.deepEqual(
     [workshop, privacy, terms].map((html) => sha256(readableMainText(html))),
     [
-      '223636cd0621b0faecac96daf762436d93d95727a58904b4c5a142a5e816fddc',
-      '0c376840a864dfa48d2b4c2f0fdaef6c40bba9f220ca9b79ee58fc0e5107d818',
-      'd2e8056c5c516032bb755fe53e88ad72499c0f120193c43fcc6adae9c00f5a11'
+      '01241457ebecd45f38970f387d16267460db83bd5aef43de8cef1f03ccff9b2b',
+      'c517dd9f20a79075999ce79c4aae3f6b25884f3daedcf09b76aff74d836d7d6c',
+      '53412d8889392537b8bb83dca26a31e524767988072f4625cf332b4d3cd63557'
     ]
   );
 });

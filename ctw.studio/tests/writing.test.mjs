@@ -1,14 +1,15 @@
 import assert from 'node:assert/strict';
 import { access, readFile, readdir, stat } from 'node:fs/promises';
 import test from 'node:test';
+import sharp from 'sharp';
 import { writingRoutes } from './personal-portfolio-routes.mjs';
 
 const pages = new URL('../src/pages/writing/', import.meta.url);
 const mediaRoot = new URL('../public/writing/', import.meta.url);
 
-test('writing manifest defines exactly 17 unique safe normalized routes', () => {
-  assert.equal(writingRoutes.length, 17);
-  assert.equal(new Set(writingRoutes.map(({ slug }) => slug)).size, 17);
+test('writing manifest defines exactly 18 unique safe normalized routes', () => {
+  assert.equal(writingRoutes.length, 18);
+  assert.equal(new Set(writingRoutes.map(({ slug }) => slug)).size, 18);
   for (const { slug } of writingRoutes) assert.match(slug, /^\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/);
   assert.ok(writingRoutes.some(({ slug }) => slug === '2025-05-30-call-me-jesse'));
   assert.ok(!writingRoutes.some(({ slug }) => slug === '30-05-2025-jesse'));
@@ -87,7 +88,7 @@ test('writing content uses safe semantic HTML, valid headings, alt text, and loc
     }
   }
   await walk(mediaRoot);
-  assert.equal(files.length, 54);
+  assert.equal(files.length, 60);
   assert.deepEqual(new Set(files), referenced);
   assert.ok(!files.some((path) => path.endsWith('/Prototyping.png')));
   for (const path of referenced) await access(new URL(`..${path}`, mediaRoot));
@@ -110,8 +111,73 @@ test('writing index derives its archive count and personal note retires obsolete
     readFile(new URL('index.astro', pages), 'utf8'),
     readFile(new URL('2025-05-30-call-me-jesse/index.md', pages), 'utf8')
   ]);
-  assert.match(index, /Archive · \{posts\.length\} entries/);
-  assert.doesNotMatch(index, /Archive · 17 entries/);
+  assert.match(index, /Collection · \{posts\.length\} entries/);
+  assert.doesNotMatch(index, /Collection · 18 entries/);
   assert.doesNotMatch(personalNote, /jessegonzalez\.dev|ctwhome\.com/i);
   assert.match(personalNote, /ctw\.studio/);
+});
+
+const realtimeSlug = '2026-09-12-realtime-ai-from-prediction-to-generated-worlds';
+const realtimeSketches = ['interaction-loop.avif', 'stable-foundations.avif', 'agency-or-attention.avif'];
+
+test('realtime essay sketches have captions, alt text, and matching intrinsic dimensions', async () => {
+  const markdown = await readFile(new URL(`${realtimeSlug}/index.md`, pages), 'utf8');
+  const figures = [...markdown.matchAll(/<figure>\s*([\s\S]*?)<\/figure>/g)].filter(([, figure]) => figure.includes('writing-sketch'));
+  assert.equal(figures.length, realtimeSketches.length);
+  for (const [index, [, figure]] of figures.entries()) {
+    const filename = realtimeSketches[index];
+    assert.ok(figure.includes(`src="/writing/${realtimeSlug}/media/${filename}"`), filename);
+    assert.match(figure, /\bclass="writing-sketch"/);
+    assert.match(figure, /\balt="[^"]+"/);
+    assert.match(figure, /\bloading="lazy"/);
+    assert.match(figure, /\bdecoding="async"/);
+    assert.match(figure, /<figcaption>[^<]+<\/figcaption>/);
+    const width = Number(figure.match(/\bwidth="(\d+)"/)?.[1]);
+    const height = Number(figure.match(/\bheight="(\d+)"/)?.[1]);
+    const image = await readFile(new URL(`${realtimeSlug}/media/${filename}`, mediaRoot));
+    const metadata = await sharp(image).metadata();
+    assert.ok(width > 0 && height > 0, filename);
+    assert.equal(metadata.width, width, `${filename}: width`);
+    assert.equal(metadata.height, height, `${filename}: height`);
+    assert.equal(metadata.compression, 'av1', `${filename}: AVIF encoding`);
+    assert.equal(metadata.pages ?? 1, 1, `${filename}: still image`);
+  }
+});
+
+test('realtime essay sketches are lightweight monochrome images with tonal shading', async () => {
+  let totalBytes = 0;
+  for (const filename of realtimeSketches) {
+    const image = await readFile(new URL(`${realtimeSlug}/media/${filename}`, mediaRoot));
+    totalBytes += image.length;
+    assert.ok(image.length <= 50_000, `${filename}: exceeds 50 KB`);
+    assert.equal(image.toString('ascii', 4, 12), 'ftypavif', `${filename}: AVIF signature`);
+    const { data, info } = await sharp(image).removeAlpha().toColourspace('srgb').raw().toBuffer({ resolveWithObject: true });
+    assert.equal(info.channels, 3, filename);
+    const tones = new Set();
+    for (let index = 0; index < data.length; index += info.channels) {
+      assert.ok(Math.abs(data[index] - data[index + 1]) <= 1 && Math.abs(data[index] - data[index + 2]) <= 1, `${filename}: non-monochrome pixel`);
+      tones.add(data[index]);
+    }
+    assert.ok(tones.size > 64, `${filename}: missing tonal shading`);
+  }
+  assert.ok(totalBytes <= 120_000, 'combined graphite artwork exceeds 120 KB');
+});
+
+test('realtime essay live face-swap clip is credited, lightweight, and loads on demand', async () => {
+  const markdown = await readFile(new URL(`${realtimeSlug}/index.md`, pages), 'utf8');
+  const figure = markdown.match(/<figure>\s*(<video[\s\S]*?)<\/figure>/)?.[1];
+  assert.ok(figure, 'missing video figure');
+  assert.match(figure, /\bclass="writing-clip"/);
+  for (const attribute of ['controls', 'muted', 'playsinline', 'preload="none"']) assert.ok(figure.includes(attribute), attribute);
+  assert.doesNotMatch(figure, /\bautoplay\b/);
+  assert.match(figure, /aria-label="[^"]+"/);
+  assert.match(figure, new RegExp(`poster="/writing/${realtimeSlug}/media/deep-live-cam-demo-poster\\.avif"`));
+  assert.match(figure, new RegExp(`src="/writing/${realtimeSlug}/media/deep-live-cam-demo\\.mp4" type="video/mp4"`));
+  assert.match(figure, /<figcaption>[\s\S]*href="https:\/\/github\.com\/hacksider\/Deep-Live-Cam"[\s\S]*hacksider and contributors \(AGPL-3\.0\)[\s\S]*<\/figcaption>/);
+  const video = await readFile(new URL(`${realtimeSlug}/media/deep-live-cam-demo.mp4`, mediaRoot));
+  assert.ok(video.length <= 600_000, `clip exceeds 600 KB: ${video.length}`);
+  assert.equal(video.toString('ascii', 4, 8), 'ftyp', 'MP4 signature');
+  const poster = await sharp(await readFile(new URL(`${realtimeSlug}/media/deep-live-cam-demo-poster.avif`, mediaRoot))).metadata();
+  assert.equal(poster.width, Number(figure.match(/\bwidth="(\d+)"/)?.[1]));
+  assert.equal(poster.height, Number(figure.match(/\bheight="(\d+)"/)?.[1]));
 });

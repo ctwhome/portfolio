@@ -38,6 +38,8 @@
     { "source": "/work/2025-07-08-media-noise-and-oncemag/", "destination": "https://ctw.studio/writing/2025-07-08-media-noise-and-oncemag/", "permanent": true },
     { "source": "/work/2025-10-05-Remote work drives productivity and wellbeing while cutting costs dramatically", "destination": "https://ctw.studio/writing/2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically/", "permanent": true },
     { "source": "/work/2025-10-05-Remote work drives productivity and wellbeing while cutting costs dramatically/", "destination": "https://ctw.studio/writing/2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically/", "permanent": true },
+    { "source": "/work/2026-09-12-realtime-ai-from-prediction-to-generated-worlds", "destination": "https://ctw.studio/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/", "permanent": true },
+    { "source": "/work/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/", "destination": "https://ctw.studio/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/", "permanent": true },
     { "source": "/work", "destination": "https://ctw.studio/writing/", "permanent": true },
     { "source": "/work/", "destination": "https://ctw.studio/writing/", "permanent": true },
     { "source": "/work/:path*", "destination": "https://ctw.studio/portfolio/", "permanent": true },

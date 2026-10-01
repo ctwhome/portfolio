@@ -2,7 +2,7 @@
 
 Independent applications sharing one repository:
 
-- `ctw.studio/`: Astro static site for Jesse Gonzalez, CTW Studio, portfolio,
+- `ctw.studio/`: Astro static site for Jessie Gonzalez, CTW Studio, portfolio,
   Writing, Signals, workshop, legal pages, and design guide.
 - `about/`: canonical Next.js source for NLeSC; exports the committed
   `ctw.studio/nlesc/` subtree.
@@ -176,7 +176,7 @@ Budgets:
 | `/workshop/` | ≥90 | 1.0 | CLS ≤0.01 |
 | `/design-system/` | ≥90 | 1.0 | CLS ≤0.01 |
 
-`test:dist` verifies exact 42-route contract, stable legal directories,
+`test:dist` verifies exact 43-route contract, stable legal directories,
 preservation hashes, metadata, legacy `nav.js` absence, removed-runtime
 absence, and portfolio-only controller ownership.
 

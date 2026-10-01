@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "Nuxt with Supabase template recipe"
-description: "Archived blog entry by Jesse Gonzalez."
+description: "Archived blog entry by Jessie Gonzalez."
 date: "2021-03-12"
 category: "Blog"
 cover: "/writing/2021-03-12-nuxt-with-supabase-template-recipe/media/1_W7eF0tSg_y2LltTxRMFQ4A.png"

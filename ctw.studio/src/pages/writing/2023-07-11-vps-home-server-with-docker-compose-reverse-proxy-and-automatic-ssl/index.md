@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "VPS Home Server with Docker Compose, reverse proxy, and Automatic SSL"
-description: "Archived blog entry by Jesse Gonzalez."
+description: "Archived blog entry by Jessie Gonzalez."
 date: "2023-07-11"
 category: "Blog"
 cover: "/writing/2023-07-11-vps-home-server-with-docker-compose-reverse-proxy-and-automatic-ssl/media/6cfb3d14-38c8-4d8d-8ac3-6e75f52e4a1d-scaled.jpg"

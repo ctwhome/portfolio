@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "Post Google Era - LLMs as a search engine"
-description: "Archived digital garden entry by Jesse Gonzalez."
+description: "Archived digital garden entry by Jessie Gonzalez."
 date: "2023-11-11"
 category: "Digital Garden"
 cover: "/writing/2023-11-11-post-google-era-how-google-shaped-the-way-we-create-and-consume-knowledge-and-how-chatgpt-is-revolutionizing-it/media/cover.avif"

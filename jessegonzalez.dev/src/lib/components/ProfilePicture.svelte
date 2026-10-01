@@ -32,11 +32,11 @@
 			height="40"
 			class="mask mask-hexagon my-2"
 			src={ctwhomeProfile}
-			alt="Jesse Gonzalez profile picture"
+			alt="Jessie Gonzalez profile picture"
 			draggable="false"
 		/>
 		<div>
-			<div class="font-bold">Jesse Gonzalez</div>
+			<div class="font-bold">Jessie Gonzalez</div>
 			<div class="text-sm opacity-60">{displaySubtitle}</div>
 		</div>
 	</a>

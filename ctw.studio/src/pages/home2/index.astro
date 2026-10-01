@@ -1,0 +1,350 @@
+---
+import DocumentHead from '../../components/DocumentHead.astro';
+import MotionPreference from '../../components/MotionPreference.astro';
+import { projects, type Project } from '../../data/projects';
+import '../../styles/fonts.css';
+import '../../styles/home2.css';
+
+// Draft landing for CTW Studio. Every fact below comes from src/data/projects.ts
+// or the maintained homepage; notes paraphrase the project descriptions only.
+const project = (id: string): Project => {
+  const match = projects.find((entry) => entry.id === id);
+  if (!match) throw new Error(`home2: unknown project ${id}`);
+  return match;
+};
+
+const coverUrl = (id: string, width: number) => `/portfolio/covers/${id}-${width}.webp`;
+const coverAlt = (entry: Project) =>
+  entry.gallery.find((item) => item.src === entry.coverImage)?.caption ?? `${entry.title} cover`;
+const year = (entry: Project) => new Date(entry.date).getUTCFullYear();
+
+const cases = [
+  {
+    id: 'droneatlas',
+    note: 'RGB, thermal, multispectral, LiDAR, and elevation layers in one browser map for archaeological research. Machine learning can point at unusual areas; expert labels stay interpretation, not automated truth.'
+  },
+  {
+    id: 'ajax-visual-intelligence',
+    note: 'At the 14-hour Ajax Hackathon, my multidisciplinary team reconstructed 22 players from 21 body points each at 25 fps, then built 3D playback, player POV, and scan-rate analysis. The team won an award.'
+  },
+  {
+    id: 'data-storytelling',
+    note: 'One Research Software Directory record, told four ways: communications, academic, leadership, and quick overview. Projects can also be browsed as cards in a 3D field.'
+  },
+  {
+    id: 'collaite',
+    note: 'Collens lets scholars compare annotated TEI/XML variants side by side. Machine-learning assistance stays inside the reading flow, and sessions keep working offline.'
+  },
+  {
+    id: 'ruisdael-observatory',
+    note: 'Measured cloud points and DALES simulation output rendered as 3D volumes. Compressed Zarr data feeds timeline playback, so researchers can move through the boundary layer in a browser.'
+  },
+  {
+    id: 'via-appia',
+    note: 'The Roman Appian Way as a 3D point cloud for desktop, mobile, and VR, presented at Het Valkhof Museum in Nijmegen, connecting viewpoints and story pages to years of academic and artistic research.'
+  }
+].map(({ id, note }) => ({ ...project(id), note }));
+
+const heroPlate = project('droneatlas');
+
+const products = [
+  { name: 'Notidian', href: 'https://notidian.com', image: '/homepage/notidian.avif', width: 1200, height: 720, desc: 'Local-first workspace for notes, documents, drawings, and media. In development.', alt: 'Notidian spatial knowledge workspace product interface' },
+  { name: 'eBookGarden', href: 'https://ebookgarden.com', image: '/homepage/ebookgarden.avif', width: 1200, height: 720, desc: 'Personal ebook library and reader.', alt: 'eBookGarden personal ebook library and reader' },
+  { name: 'SuperTaal', href: 'https://www.supertaal.com', image: '/homepage/supertaal.avif', width: 1200, height: 720, desc: 'Multilingual learning application.', alt: 'SuperTaal multilingual learning application' },
+  { name: 'IdeasDiamond', href: 'https://ideasdiamond.com', image: '/homepage/ideasdiamond.avif', width: 1200, height: 720, desc: 'Visual idea cards for private and public spaces.', alt: 'IdeasDiamond idea development product interface' },
+  { name: 'NextHuman', href: 'https://nexthuman.app', image: '/homepage/nexthuman.avif', width: 1801, height: 1081, desc: 'Personal capability app.', alt: 'NextHuman personal capability product artwork' }
+];
+
+const layers = [
+  { n: '01', name: 'Interaction', desc: 'What people see, touch, and decide with.' },
+  { n: '02', name: 'Interface', desc: 'States, controls, feedback, and recovery.' },
+  { n: '03', name: 'Models & data', desc: 'What the system knows, and how sure it is.' },
+  { n: '04', name: 'Infrastructure', desc: 'What keeps it running after handoff.' }
+];
+---
+<!doctype html>
+<html lang="en" class="ctw-theme-coal">
+  <head>
+    <DocumentHead
+      title="CTW Studio — Interaction design engineering by Jessie Gonzalez"
+      description="CTW Studio is the independent practice of Jessie Gonzalez, who designs and builds applications for complex AI, data, and research workflows, from first interaction to production."
+      ogDescription="CTW Studio, founded by Jessie Gonzalez, designs and builds clear interactions for complex AI, data, and research software."
+      canonical="/home2/"
+      themeColor="#050505"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <script is:inline>
+      (() => {
+        let preference = 'system';
+        try {
+          const stored = localStorage.getItem('ctw-motion-preference');
+          if (stored === 'full' || stored === 'reduced') preference = stored;
+        } catch {}
+        const root = document.documentElement;
+        root.dataset.motionPreference = preference;
+        const reduced = preference === 'reduced'
+          || (preference !== 'full' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+        if (!reduced) root.classList.add('h2-motion');
+      })();
+    </script>
+  </head>
+  <body class="ctw-scope h2-page">
+    <a class="h2-skip" href="#main-content">Skip to content</a>
+
+    <header class="h2-mast">
+      <div class="h2-wrap h2-mast__inner">
+        <a class="h2-wordmark" href="/home2/">
+          <strong>CTW<span aria-hidden="true">/</span><span class="h2-sr"> </span>Studio</strong>
+          <small>Jessie Gonzalez, founder</small>
+        </a>
+        <nav class="h2-nav" aria-label="Page sections">
+          <ul>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#studio">Studio</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="h2-hero" aria-labelledby="h2-title">
+        <div class="h2-wrap h2-hero__grid">
+          <div class="h2-hero__copy">
+            <p class="h2-kicker"><b>Interaction design engineering</b><span>Amsterdam · working globally</span></p>
+            <h1 class="h2-hero__title" id="h2-title" aria-label="CTW Studio">
+              <span class="h2-hero__brand" data-canvas-smoke-line aria-hidden="true">CTW/Studio</span>
+            </h1>
+            <p class="h2-hero__claim">Making complex systems tangible.</p>
+            <p class="h2-lede h2-hero__lede">
+              I’m Jessie Gonzalez, founder of CTW Studio. I design and build applications that help people understand and work with complex AI, data, and research workflows — <strong>from first interaction to production</strong>.
+            </p>
+            <div class="h2-actions">
+              <a class="h2-button" href="mailto:contact@ctw.studio">Start a conversation</a>
+              <a class="h2-button h2-button--quiet" href="#work">See selected work ↓</a>
+            </div>
+            <p class="h2-availability">Accepting projects for 2026–2027</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="h2-method" aria-labelledby="h2-method-title">
+        <div class="h2-wrap h2-method__grid">
+          <div class="h2-method__copy">
+            <p class="h2-kicker"><b>Under the surface</b><span>How I work</span></p>
+            <h2 class="h2-heading" id="h2-method-title">One clear surface. <em>Many moving parts.</em></h2>
+            <p>Good software has a lot going on underneath. I work across the interaction, interface, data, and engineering so the person using it doesn’t have to think about the seams.</p>
+          </div>
+          <figure class="h2-stack" data-state="exploded" data-h2-stack>
+            <div class="h2-stack__stage" aria-hidden="true">
+              <div class="h2-stack__scene">
+                <div class="h2-plate" data-layer="4"><b>04</b></div>
+                <div class="h2-plate" data-layer="3"><b>03</b></div>
+                <div class="h2-plate" data-layer="2"><b>02</b></div>
+                <div class="h2-plate" data-layer="1">
+                  <img
+                    src={coverUrl(heroPlate.id, 720)}
+                    srcset={`${coverUrl(heroPlate.id, 480)} 480w, ${coverUrl(heroPlate.id, 720)} 720w, ${coverUrl(heroPlate.id, 960)} 960w`}
+                    sizes="(max-width: 64rem) 70vw, 34vw"
+                    width="720"
+                    height="480"
+                    alt=""
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                  <b>01</b>
+                </div>
+              </div>
+            </div>
+            <ol class="h2-stack__legend" aria-label="Layers of an application">
+              {layers.map((layer, index) => (
+                <li data-layer={String(index + 1)}>
+                  <span class="h2-legend__n">{layer.n}</span>
+                  <strong>{layer.name}</strong>
+                  <span class="h2-legend__desc">{layer.desc}</span>
+                </li>
+              ))}
+            </ol>
+            <figcaption class="h2-stack__footer">
+              <span class="h2-stack__caption">
+                Exploded view of the work: four layers under one clear surface. Top plate — {heroPlate.title}, {year(heroPlate)}: {heroPlate.headline.toLowerCase()}.
+              </span>
+              <button class="h2-toggle" type="button" aria-pressed="true" data-h2-toggle hidden>Stack layers</button>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="h2-work ctw-theme-chalk" id="work" aria-labelledby="h2-work-title">
+        <div class="h2-wrap">
+          <header class="h2-section-head">
+            <div>
+              <p class="h2-kicker"><b>Selected work</b><span>2022–2026</span></p>
+              <h2 class="h2-heading" id="h2-work-title">Six systems, <em>made usable.</em></h2>
+            </div>
+            <p>Drone layers, tracked skeletons, research metadata, manuscript variants, clouds, and point clouds, each turned into something people can explore. Five came out of my work at the Netherlands eScience Center; one out of a 14-hour hackathon.</p>
+          </header>
+
+          <ol class="h2-cases">
+            {cases.map((entry) => (
+              <li class="h2-case" data-h2-case>
+                <div class="h2-case__media">
+                  <div class="h2-case__plate">
+                    <img
+                      src={coverUrl(entry.id, 960)}
+                      srcset={`${coverUrl(entry.id, 480)} 480w, ${coverUrl(entry.id, 720)} 720w, ${coverUrl(entry.id, 960)} 960w`}
+                      sizes="(max-width: 48rem) calc(100vw - 2rem), 40vw"
+                      width="960"
+                      height="640"
+                      alt={coverAlt(entry)}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+                <article class="h2-case__body" aria-labelledby={`h2-case-${entry.id}`}>
+                  <p class="h2-case__meta"><span>{year(entry)}</span><span>{entry.category}</span></p>
+                  <h3 class="h2-case__title" id={`h2-case-${entry.id}`}>
+                    <a href={`/portfolio/#${entry.id}`}>{entry.title}</a>
+                  </h3>
+                  <p class="h2-case__headline">{entry.headline}</p>
+                  <p class="h2-case__note">{entry.note}</p>
+                  <p class="h2-case__client">With {entry.client}</p>
+                  <p class="h2-case__links">
+                    <a class="h2-link" href={`/portfolio/#${entry.id}`}>Case notes<span class="h2-sr"> for {entry.title}</span></a>
+                    {entry.liveUrl && (
+                      <a class="h2-link" href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Open project<span class="h2-sr"> {entry.title}, opens in a new tab</span> ↗</a>
+                    )}
+                    {entry.repoUrl && (
+                      <a class="h2-link" href={entry.repoUrl} target="_blank" rel="noopener noreferrer">Source<span class="h2-sr"> code for {entry.title}, opens in a new tab</span> ↗</a>
+                    )}
+                  </p>
+                </article>
+              </li>
+            ))}
+          </ol>
+
+          <p class="h2-work__more">
+            <a class="h2-button" href="/portfolio/">All {projects.length} projects, 2013–2026 →</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="h2-products" id="products" aria-labelledby="h2-products-title">
+        <div class="h2-wrap">
+          <header class="h2-section-head">
+            <div>
+              <p class="h2-kicker"><b>Products</b><span>Conceived, designed, engineered</span></p>
+              <h2 class="h2-heading" id="h2-products-title">Applications, <em>end to end.</em></h2>
+            </div>
+            <p>Products I conceived, designed, and engineered, from first interaction to production.</p>
+          </header>
+          <ul class="h2-shelf">
+            {products.map((item) => (
+              <li class="h2-shelf__item">
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  <span class="h2-shelf__cover">
+                    <img src={item.image} width={item.width} height={item.height} alt={item.alt} loading="lazy" decoding="async" />
+                  </span>
+                  <span class="h2-shelf__name">{item.name}<span aria-hidden="true">↗</span></span>
+                  <span class="h2-shelf__desc">{item.desc}<span class="h2-sr"> Opens in a new tab.</span></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="h2-studio" id="studio" aria-labelledby="h2-studio-title">
+        <div class="h2-wrap h2-studio__grid">
+          <figure class="h2-founder">
+            <div class="h2-founder__frame">
+              <img src="/homepage/jesse-avatar.webp" width="460" height="460" alt="Jessie Gonzalez smiling, arms crossed, in front of shipping containers" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>
+              <strong>Jessie Gonzalez</strong>
+              <span>Founder, CTW Studio · Interaction Design Engineer</span>
+            </figcaption>
+          </figure>
+
+          <div class="h2-studio__copy">
+            <p class="h2-kicker"><b>The studio</b><span>Creating a Technological World</span></p>
+            <h2 class="h2-heading" id="h2-studio-title">Who you’ll <em>work with.</em></h2>
+            <p>CTW Studio is my independent commercial practice. You work with me directly, and I bring in trusted designers, engineers, researchers, and domain specialists only when the work needs them.</p>
+            <p>I have 17+ years in software and a Master’s in Computer Science and Technology, specialising in Artificial Intelligence. I currently also work as a Senior Research Software Engineer at the Netherlands eScience Center. I make complex technology tangible through interaction, then engineer it for production.</p>
+            <div class="h2-offer">
+              <h3>What I take on</h3>
+              <ul>
+                <li><span>01</span>Interaction strategy &amp; prototyping</li>
+                <li><span>02</span>Human–AI interaction &amp; systems</li>
+                <li><span>03</span>Data-rich applications &amp; visualization</li>
+                <li><span>04</span>Production engineering &amp; delivery</li>
+              </ul>
+            </div>
+            <p><a class="h2-link" href="/writing/2025-05-30-call-me-jesse/">About my name →</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="h2-notes" aria-labelledby="h2-notes-title">
+        <div class="h2-wrap">
+          <p class="h2-kicker"><b>Field notes</b><span>From collaborators</span></p>
+          <h2 class="h2-heading" id="h2-notes-title">What it’s like <em>to build with me.</em></h2>
+          <div class="h2-notes__grid">
+            <blockquote class="h2-quote">
+              <p>“Jesse has really been instrumental and decisive in getting our dashboard off the ground. Right from the start, he grasped the overarching concept and got straight down to business.”</p>
+              <footer><cite>Josh Colston, PhD</cite> · Co-Lead, Mine-DD · University of Virginia</footer>
+            </blockquote>
+            <blockquote class="h2-quote">
+              <p>“The research tool Collens has proven to be a significant contribution to our research field. We are thoroughly impressed with Jesse's work and work ethic.”</p>
+              <footer><cite>Elli Bleeker, PhD</cite> · Lead Applicant, COLLaiTE · Huygens Institute (KNAW)</footer>
+            </blockquote>
+          </div>
+          <p class="h2-partners"><b>Selected partners</b>Netherlands eScience Center · KNAW · KNMI · University of Virginia · Maastricht University · Smithsonian Institution</p>
+        </div>
+      </section>
+
+      <section class="h2-contact" id="contact" aria-labelledby="h2-contact-title">
+        <div class="h2-wrap h2-contact__grid">
+          <p class="h2-kicker"><b>Contact</b><span>Amsterdam · working globally</span></p>
+          <h2 class="h2-heading" id="h2-contact-title">Bring me the part that’s hard to explain.</h2>
+          <p class="h2-lede">A workflow, model, dataset, or product idea that is difficult to understand or use. I’ll help you find the interaction at its center and turn it into a working application.</p>
+          <a class="h2-contact__email" href="mailto:contact@ctw.studio">contact@ctw.studio</a>
+          <p class="h2-contact__links">
+            <a class="h2-link" href="https://linkedin.com/in/ctwhome" target="_blank" rel="noopener noreferrer">LinkedIn<span class="h2-sr">, opens in a new tab</span> ↗</a>
+            <a class="h2-link" href="https://github.com/ctwhome" target="_blank" rel="noopener noreferrer">GitHub<span class="h2-sr">, opens in a new tab</span> ↗</a>
+          </p>
+          <p class="h2-contact__meta">Accepting projects for 2026–2027</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="h2-foot">
+      <div class="h2-wrap h2-foot__grid">
+        <div>
+          <strong>CTW Studio</strong>
+          <span>Independent practice of Jessie Gonzalez, Interaction Design Engineer.</span>
+          <span>© 2026</span>
+        </div>
+        <nav aria-label="Studio destinations">
+          <span class="h2-foot__label">Explore</span>
+          <a href="/portfolio/">Work</a>
+          <a href="/writing/">Writing</a>
+          <a href="/signals/">Signals</a>
+          <a href="/workshop/">AI Workshop</a>
+        </nav>
+        <div>
+          <span class="h2-foot__label">Contact</span>
+          <nav aria-label="Contact destinations">
+            <a href="mailto:contact@ctw.studio">contact@ctw.studio</a>
+          </nav>
+          <MotionPreference />
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../scripts/home2.ts"></script>
+  </body>
+</html>

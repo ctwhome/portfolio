@@ -631,7 +631,7 @@
   border-top: 1px solid var(--so-rule-dark);
   display: grid;
   gap: 2rem;
-  grid-template-columns: 4rem 1fr;
+  grid-template-columns: minmax(0, 1fr);
   padding-block: clamp(2rem, 4vw, 4rem);
 }
 
@@ -966,7 +966,7 @@
   }
 
   .so-approach__steps li {
-    grid-template-columns: 2.5rem 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .so-truth__copy {

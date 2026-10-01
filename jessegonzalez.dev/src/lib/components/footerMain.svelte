@@ -12,7 +12,7 @@
 		<div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 text-base-content text-opacity-70">
 			<div class="flex flex-col gap-2">
 				<span class="text-xl font-bold">
-					Jesse<span class="text-primary">.</span>Gonzalez
+					Jessie<span class="text-primary">.</span>Gonzalez
 				</span>
 				<span class="text-sm opacity-70">Building, learning, sharing.</span>
 			</div>
@@ -39,6 +39,6 @@
 	</div>
 
 	<div class="text-center text-xs opacity-50 pb-4">
-		&copy; {new Date().getFullYear()} Jesse Gonzalez &middot; Amsterdam, Netherlands
+		&copy; {new Date().getFullYear()} Jessie Gonzalez &middot; Amsterdam, Netherlands
 	</div>
 </section>

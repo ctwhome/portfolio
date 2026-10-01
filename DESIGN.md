@@ -220,7 +220,7 @@ system. Unrelated application roots keep their own design decisions.
 
 ### Current-state route and family audit
 
-Exactly 42 deployed routes are in scope. Maintained routes render through Astro;
+Exactly 43 deployed routes are in scope. Maintained routes render through Astro;
 manifest-owned historical routes remain byte-identical. “Observe” means
 documented current state, not automatic migration.
 
@@ -253,6 +253,7 @@ documented current state, not automatic migration.
 | Writing | `/writing/2025-05-30-call-me-jesse/` | Archived article | Writing | Wave 1 |
 | Writing | `/writing/2025-07-08-media-noise-and-oncemag/` | Archived article | Writing | Wave 1 |
 | Writing | `/writing/2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically/` | Archived article | Writing | Wave 1 |
+| Writing | `/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/` | Current article | Writing | Wave 1 |
 | Signals | `/signals/` | Atlas and topic switcher | Signals | Wave 1 |
 | Signals | `/signals/ai-work/` | Evidence brief | Signals | Wave 2 |
 | Signals | `/signals/demography/` | Evidence brief | Signals | Wave 2 |

@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/WritingLayout.astro
 title: "Webpack problem with source maps mapping in Chrome DevTools - Fixed"
-description: "Archived blog entry by Jesse Gonzalez."
+description: "Archived blog entry by Jessie Gonzalez."
 date: "2018-03-11"
 category: "Blog"
 cover: "/writing/2018-03-11-webpack-problem-with-source-maps-mapping-in-chrome-devtools-fixed/media/webpack-problem.png"
