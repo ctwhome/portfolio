@@ -153,7 +153,7 @@
 .standard-questions li {
   min-height: 4.625rem;
   display: grid;
-  grid-template-columns: 3.375rem 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
   border-bottom: 1px solid var(--atlas-line);
 }
@@ -463,11 +463,41 @@
   }
 
   .atlas-hero {
-    padding-top: 6.5rem;
+    padding: 8rem 0 3.5rem;
   }
 
   .atlas-topics {
-    padding-bottom: 3.5rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .atlas-hero h1 em {
+    color: var(--atlas-green);
+    -webkit-text-stroke: 0;
+  }
+
+  .atlas-deck {
+    margin-top: 1.75rem;
+  }
+
+  .atlas-status {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+  }
+
+  .atlas-status span {
+    min-height: 3rem;
+    padding: 0.7rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--atlas-line);
+  }
+
+  .atlas-status strong {
+    white-space: nowrap;
+  }
+
+  .atlas-status span:last-child {
+    border-bottom: 0;
   }
 
   .atlas-standard,

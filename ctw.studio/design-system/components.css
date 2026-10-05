@@ -147,9 +147,6 @@
   color: var(--ctw-color-action);
 }
 
-.ctw-wordmark__compact {
-  display: none;
-}
 
 .ctw-masthead--studio .ctw-primary-nav {
   align-items: center;
@@ -379,13 +376,6 @@
     justify-content: center;
   }
 
-  .ctw-masthead--studio .ctw-wordmark__full {
-    display: none;
-  }
-
-  .ctw-masthead--studio .ctw-wordmark__compact {
-    display: inline;
-  }
 
   .ctw-masthead--studio .ctw-liquid-contact {
     padding-inline: var(--ctw-space-3);
@@ -420,10 +410,13 @@
 
 @media (max-width: 30rem) {
   .ctw-masthead--studio .ctw-masthead__inner {
+    flex-wrap: wrap;
     gap: var(--ctw-space-1);
   }
 
   .ctw-masthead--studio .ctw-primary-nav {
+    width: 100%;
+    justify-content: space-between;
     gap: 0;
   }
 

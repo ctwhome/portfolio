@@ -41,13 +41,13 @@ test('Astro emits directory routes with personal homepage identity', async () =>
   assert.match(home, /<link rel="canonical" href="https:\/\/ctw\.studio\/">/);
   assert.match(portfolio, /<link rel="canonical" href="https:\/\/ctw\.studio\/portfolio\/">/);
   assert.match(home, /<title>Jessie Gonzalez — Interaction Design Engineer<\/title>/);
-  assert.match(home, /I design and build applications that help people understand and work with complex AI, data, and workflows/);
+  assert.match(home, /From research maps to AI tools and independent products, I design the interaction and build the software behind it/);
   assert.match(home, /CTW Studio is my independent commercial practice and legal vehicle/);
   assert.match(home, /Tell me what you’re trying to make/);
   assert.doesNotMatch(home, /AI Product Architect|https?:\/\/(?:www\.)?jessegonzalez\.dev/i);
-  assert.match(portfolio, /Work \/ 2013–2026/);
-  assert.match(portfolio, /Software and design work\./);
-  assert.match(portfolio, /Based in Amsterdam/);
+  assert.match(portfolio, /Selected work/);
+  assert.match(portfolio, /Complex work,<br>made usable\./);
+  assert.match(portfolio, /DroneAtlas/);
   assert.match(portfolio, /<dialog[^>]+data-project-dialog="data-storytelling"/);
   assert.match(portfolio, /<a class="ctw-button" href="\/nlesc\/">Visit project ↗<\/a>/);
   assert.match(standOut, /<link rel="canonical" href="https:\/\/ctw\.studio\/stand-out\/">/);
@@ -92,10 +92,10 @@ test('stand-out keeps its transformation story, disclosure, and local media in s
   const html = await readFile(new URL('stand-out/index.html', dist), 'utf8');
 
   for (const text of [
-    '01 / Seen',
-    '02 / Understood',
-    '03 / Chosen',
-    '04 / Remembered',
+    'class="so-scene__number">Seen',
+    'class="so-scene__number">Understood',
+    'class="so-scene__number">Chosen',
+    'class="so-scene__number">Remembered',
     'Recognition',
     'Confidence',
     'Continuity',
@@ -117,9 +117,10 @@ test('stand-out keeps its transformation story, disclosure, and local media in s
   assert.doesNotMatch(html, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
 });
 
-test('all 36 maintained routes share metadata and exclude legacy navigation', async () => {
+test('all 37 maintained routes share metadata and exclude legacy navigation', async () => {
   const routes = [
     ['index.html', '/'],
+    ['home2/index.html', '/home2/'],
     ['portfolio/index.html', '/portfolio/'],
     ['signals/index.html', '/signals/'],
     ['signals/ai-work/index.html', '/signals/ai-work/'],
@@ -172,7 +173,7 @@ test('workshop, directory legal pages, and guide keep substantive accessible out
   assert.match(terms, /id="cancellation-policy"/);
   assert.match(guide, /<main id="main">/);
   assert.match(guide, /Design for decisions/);
-  assert.match(guide, /<caption>All 43 deployed CTW Studio routes/);
+  assert.match(guide, /<caption>All 44 deployed CTW Studio routes/);
   assert.doesNotMatch(guide, /<script\b/i);
   assert.deepEqual(
     [workshop, privacy, terms].map((html) => sha256(readableMainText(html))),
@@ -233,7 +234,7 @@ test('portfolio keeps stable media URLs and owns its controller code', async () 
     assert.doesNotMatch(portfolio, new RegExp(`/portfolio/projects/notidian/${deleted}`));
   }
 
-  assert.equal(projects.length, 21);
+  assert.equal(projects.length, 22);
   assert.equal((portfolio.match(/<li class="project-card">/g) ?? []).length, projects.length);
   assert.doesNotMatch(gridSource, /project-card--span-|gridSpan/);
   assert.doesNotMatch(portfolio, /project-card--span-/);

@@ -9,33 +9,29 @@
   const style = document.createElement('style');
   style.textContent = `
     .ctw-feedback-button {
-      position: fixed;
-      right: 1.25rem;
-      bottom: 1.25rem;
-      z-index: 260;
-      min-width: 2.75rem;
+      display: inline-flex;
+      align-items: center;
       min-height: 2.75rem;
-      border: 1px solid rgba(247, 181, 0, 0.45);
-      border-radius: 999px;
-      background: rgba(12, 12, 10, 0.84);
+      border: 0;
+      border-bottom: 1px solid currentColor;
+      border-radius: 0;
+      background: transparent;
       color: #f2efe9;
-      padding: 0.72rem 1rem;
-      font: 600 0.74rem/1 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
-      -webkit-backdrop-filter: blur(18px);
-      backdrop-filter: blur(18px);
+      padding: 0;
+      font: 500 0.9rem/1.3 'Inter', system-ui, sans-serif;
       cursor: pointer;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+    .ctw-feedback-entry {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem max(1rem, calc((100vw - 75rem) / 2));
+      background: #050505;
     }
     .ctw-feedback-button:hover,
     .ctw-feedback-button:focus-visible {
-      transform: translateY(-2px);
-      border-color: #f7b500;
-      background: #f7b500;
-      color: #0c0c0a;
-      outline: none;
+      color: #f7b500;
+      outline: 2px solid #f7b500;
+      outline-offset: 3px;
     }
     .ctw-feedback-modal[hidden] { display: none; }
     .ctw-feedback-modal {
@@ -144,11 +140,6 @@
     .ctw-feedback-status.is-error { color: #ffb4a8; }
     .ctw-feedback-status.is-success { color: #9fe6b8; }
     @media (max-width: 640px) {
-      .ctw-feedback-button {
-        right: 0.9rem;
-        bottom: 0.9rem;
-        padding: 0.68rem 0.85rem;
-      }
       .ctw-feedback-actions { flex-direction: column-reverse; align-items: stretch; }
     }
   `;
@@ -187,7 +178,16 @@
   button.textContent = 'Feedback';
   button.setAttribute('aria-haspopup', 'dialog');
 
-  document.body.append(modal, button);
+  document.body.append(modal);
+  const contactNav = document.querySelector('.ctw-footer__links[aria-label="Contact destinations"]');
+  if (contactNav) {
+    contactNav.append(button);
+  } else {
+    const entry = document.createElement('div');
+    entry.className = 'ctw-feedback-entry';
+    entry.append(button);
+    document.body.append(entry);
+  }
 
   const textarea = modal.querySelector('.ctw-feedback-textarea');
   const form = modal.querySelector('form');
@@ -242,7 +242,7 @@
     setStatus('');
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
-    setTimeout(() => textarea.focus(), 0);
+    setTimeout(() => { if (!modal.hidden) textarea.focus(); }, 0);
   }
 
   function closeModal() {

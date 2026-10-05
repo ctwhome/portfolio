@@ -39,9 +39,8 @@ for (const viewport of viewports) {
         const imageRect = image.getBoundingClientRect();
         return {
           cardWidth: cardRect.width,
-          cardRatio: cardRect.width / cardRect.height,
-          imageRatio: imageRect.width / imageRect.height,
-          naturalRatio: image.naturalWidth / image.naturalHeight,
+          imageHeight: imageRect.height,
+          caption: card.querySelector('.studio-product__caption')?.innerText.trim(),
           objectFit: getComputedStyle(image).objectFit,
           contained: imageRect.left >= cardRect.left - 1 && imageRect.right <= cardRect.right + 1
             && imageRect.top >= cardRect.top - 1 && imageRect.bottom <= cardRect.bottom + 1
@@ -78,10 +77,10 @@ for (const viewport of viewports) {
     expect(state.feedbackOverlaps).toEqual([]);
     expect(state.loadedImages).toBe(5);
     for (const geometry of state.productGeometry) {
-      expect(geometry.objectFit).toBe('contain');
+      expect(geometry.objectFit).toBe('cover');
       expect(geometry.contained).toBe(true);
-      expect(Math.abs(geometry.cardRatio - geometry.imageRatio)).toBeLessThan(0.01);
-      expect(Math.abs(geometry.imageRatio - geometry.naturalRatio)).toBeLessThan(0.01);
+      expect(geometry.imageHeight).toBeGreaterThan(100);
+      expect(geometry.caption?.length ?? 0).toBeGreaterThan(10);
     }
     if (viewport.name === 'compact') {
       expect(Math.max(...state.productGeometry.map(({ cardWidth }) => cardWidth))

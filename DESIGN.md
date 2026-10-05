@@ -220,13 +220,14 @@ system. Unrelated application roots keep their own design decisions.
 
 ### Current-state route and family audit
 
-Exactly 43 deployed routes are in scope. Maintained routes render through Astro;
+Exactly 44 deployed routes are in scope. Maintained routes render through Astro;
 manifest-owned historical routes remain byte-identical. “Observe” means
 documented current state, not automatic migration.
 
 | Family | Route | Current state | Owner | Adoption |
 |---|---|---|---|---|
 | Studio landing | `/` | Current coal/amber landing | Studio | Wave 2 |
+| Studio landing | `/home2/` | Maintained alternate landing draft | Studio | Observe |
 | Studio landing | `/index-0.html` | Historical landing experiment | Studio | Observe |
 | Studio landing | `/index-1.html` | Historical landing experiment | Studio | Observe |
 | Studio landing | `/index-1a.html` | Historical landing experiment | Studio | Observe |

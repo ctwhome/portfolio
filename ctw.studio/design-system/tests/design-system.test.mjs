@@ -122,6 +122,7 @@ const routeFamilies = [...routeAudit.matchAll(/^\| ([^|]+?) \| `([^`]+)` \|/gm)]
 const expectedRoutes = [
   "/",
   "/design-system/",
+  "/home2/",
   "/index-0.html",
   "/index-1.html",
   "/index-1a.html",
@@ -189,7 +190,7 @@ test("DESIGN.md follows alpha section order and owns machine-readable roles", ()
   }
 });
 
-test("route audit covers exactly 43 deployed routes by family", () => {
+test("route audit covers exactly 44 deployed routes by family", () => {
   const actualRoutes = discoverHtmlRoutes(
     join(studioDir, "dist"),
     "",
@@ -199,7 +200,7 @@ test("route audit covers exactly 43 deployed routes by family", () => {
   const preservedRoutes = [...manifest.routeContract.preservedRoutes].sort();
   const contentRoutes = actualRoutes.filter((route) => !redirectSources.includes(route));
 
-  assert.equal(expectedRoutes.length, 43);
+  assert.equal(expectedRoutes.length, 44);
   assert.deepEqual(manifest.routeContract.excludedTrees, ["nlesc"]);
   assert.deepEqual(redirectSources, ["/signals/roadmap/"]);
   assert.ok(preservedRoutes.every((route) => expectedRoutes.includes(route)));
@@ -222,7 +223,7 @@ test("route audit covers exactly 43 deployed routes by family", () => {
     assert.match(guideAudit, new RegExp(`>${family}<`));
     for (const route of routes) assert.ok(guideAudit.includes(`<code>${route}</code>`), route);
   }
-  assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 43);
+  assert.equal((guideAudit.match(/<tr>/g) ?? []).length - 1, 44);
   assert.deepEqual(
     [...guideTable.matchAll(/<code>([^<]+)<\/code>/g)].map((match) => match[1]).sort(),
     expectedRoutes,
@@ -731,8 +732,9 @@ test("homepage restores historical composition through current static design sys
   assert.match(homepageCss, /\.studio-quotes:focus-visible\s*\{[^}]*outline:/s);
   assert.match(homepageCss, /\.studio-quotes\s*\{[^}]*overflow-x:\s*auto[^}]*scroll-snap-type:\s*inline mandatory/s);
   assert.match(homepageCss, /\.studio-home \.ctw-button\s*\{[^}]*border-radius:\s*var\(--ctw-radius-pill\)/s);
-  assert.match(homepageCss, /\.studio-product\s*\{[^}]*aspect-ratio:\s*5 \/ 3/s);
-  assert.match(homepageCss, /\.studio-product img\s*\{[^}]*object-fit:\s*contain/s);
+  assert.match(homepageCss, /\.studio-product img\s*\{[^}]*aspect-ratio:\s*5 \/ 3[^}]*object-fit:\s*cover/s);
+  assert.match(homepageCss, /\.studio-product__caption\s*\{[^}]*display:\s*grid/s);
+  assert.doesNotMatch(homepageCss, /\.studio-product:hover img[^}]*transform:\s*scale/s);
   for (const [name, width, height] of [
     ["notidian", "1200", "720"],
     ["ideasdiamond", "1200", "720"],
@@ -770,7 +772,8 @@ test("Signals atlas pilot opts into shared cyan composition without changing tax
   assert.match(atlas, /<body class="ctw-scope ctw-accent--cyan">/);
   assert.equal((atlas.match(/\bdata-status="published"/g) ?? []).length, 7);
   assert.equal((atlas.match(/\bdata-status="planned"/g) ?? []).length, 3);
-  assert.equal((atlas.match(/Brief 00[1-9]/g) ?? []).length >= 18, true);
+  assert.equal((atlas.match(/Brief 00[1-9]/g) ?? []).length, 0);
+  assert.equal((atlas.match(/<span>Brief<\/span>/g) ?? []).length, 9);
   assert.equal(cssDeclarations(atlasCss, ":root")["--atlas-green"], undefined);
   assert.equal(
     cssDeclarations(atlasCss, ".roadmap-page body")["--atlas-green"],

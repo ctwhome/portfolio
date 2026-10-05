@@ -5,10 +5,10 @@ import test from 'node:test';
 const src = new URL('../src/', import.meta.url);
 const read = (path) => readFile(new URL(path, src), 'utf8');
 
-test('header presents Jessie identity and exact primary navigation while retaining liquid contact contract', async () => {
+test('header presents ctw.studio branding and exact primary navigation while retaining liquid contact contract', async () => {
   const source = await read('components/SiteHeader.astro');
-  assert.match(source, /aria-label="Jessie Gonzalez, home"/);
-  assert.match(source, />Jessie Gonzalez</);
+  assert.match(source, /aria-label="ctw\.studio home"/);
+  assert.match(source, /ctw<span class="ctw-wordmark__dot">\.<\/span>studio/);
   const nav = source.slice(source.indexOf('<nav class="ctw-primary-nav"'), source.indexOf('</nav>'));
   assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map((match) => match[1]), [
     '/portfolio/', '/writing/', '/signals/', '/stand-out/', '/#about'
@@ -25,11 +25,12 @@ test('header presents Jessie identity and exact primary navigation while retaini
   ]) assert.ok(source.includes(sentinel), sentinel);
 });
 
-test('homepage is Jessie-first, first-person, and frames CTW Studio as secondary practice', async () => {
+test('homepage presents a one-person practice under the CTW Studio brand', async () => {
   const source = await read('pages/index.astro');
   assert.match(source, /title="Jessie Gonzalez — Interaction Design Engineer"/);
   assert.match(source, /description="Jessie Gonzalez[^\n]+"/);
   assert.match(source, /independent commercial practice/i);
+  assert.match(source, /I bring in trusted designers, engineers, researchers, and domain specialists only when work needs them/);
   assert.match(source, /\b(?:I|me|my)\b/);
   const visibleProse = source
     .replace(/<blockquote[\s\S]*?<\/blockquote>/g, '')
@@ -40,11 +41,10 @@ test('homepage is Jessie-first, first-person, and frames CTW Studio as secondary
   assert.match(source, /data-canvas-smoke-line/);
 });
 
-test('portfolio metadata keeps Jessie as the primary public identity', async () => {
+test('portfolio metadata names the practitioner behind CTW Studio', async () => {
   const source = await read('pages/portfolio/index.astro');
   assert.match(source, /title="Work — Jessie Gonzalez"/);
   assert.match(source, /description="Selected interaction design engineering and software work by Jessie Gonzalez/);
-  assert.doesNotMatch(source, /title="[^"]*CTW Studio|description="CTW Studio/);
 });
 
 test('footer has personal identity, complete destinations, and no AI Product Architect', async () => {

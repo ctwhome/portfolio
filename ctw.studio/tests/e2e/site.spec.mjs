@@ -5,7 +5,7 @@ test('home remains substantive without JavaScript', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Interaction Design\s+Engineering/);
-  await expect(page.getByRole('link', { name: 'Jessie Gonzalez, home' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'ctw.studio home' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Work', exact: true }).first()).toHaveAttribute('href', '/portfolio/');
   await expect(page.getByRole('link', { name: 'contact@ctw.studio' }).first()).toHaveAttribute('href', 'mailto:contact@ctw.studio');
   await expect(page.locator('.studio-offerings li')).toHaveCount(4);
@@ -39,9 +39,9 @@ for (const viewport of [
       await page.addStyleTag({ content: `html { font-size: ${viewport.rootFontScale * 100}% !important; }` });
     }
 
-    const feedbackButton = page.locator('body > .ctw-feedback-button');
+    const feedbackButton = page.locator('.ctw-footer__links[aria-label="Contact destinations"] .ctw-feedback-button');
     await expect(feedbackButton).toHaveCount(1);
-    await expect(feedbackButton).toHaveCSS('position', 'fixed');
+    await expect(feedbackButton).toHaveCSS('position', 'static');
 
     const overflow = await page.evaluate(() => ({
       documentWidth: document.documentElement.scrollWidth,
@@ -96,16 +96,20 @@ for (const viewport of [
       expect(await image.evaluate((element) => element.naturalWidth)).toBeGreaterThan(0);
       const geometry = await image.evaluate((element) => {
         const imageRect = element.getBoundingClientRect();
-        const cardRect = element.parentElement.getBoundingClientRect();
+        const caption = element.parentElement.querySelector('.studio-product__caption');
         return {
           objectFit: getComputedStyle(element).objectFit,
-          ratioDelta: Math.abs(imageRect.width / imageRect.height - element.naturalWidth / element.naturalHeight),
-          mediaDelta: Math.abs(imageRect.width / imageRect.height - cardRect.width / cardRect.height)
+          imageHeight: imageRect.height,
+          widthDelta: Math.abs(imageRect.width - element.parentElement.getBoundingClientRect().width),
+          caption: caption?.innerText.trim(),
+          captionVisible: caption ? getComputedStyle(caption).display !== 'none' : false
         };
       });
-      expect(geometry.objectFit).toBe('contain');
-      expect(geometry.ratioDelta).toBeLessThan(0.01);
-      expect(geometry.mediaDelta).toBeLessThan(0.01);
+      expect(geometry.objectFit).toBe('cover');
+      expect(geometry.imageHeight).toBeGreaterThan(100);
+      expect(geometry.widthDelta).toBeLessThan(2);
+      expect(geometry.caption?.length ?? 0).toBeGreaterThan(10);
+      expect(geometry.captionVisible).toBe(true);
     }
 
     const notes = page.locator('.studio-quotes');
@@ -297,7 +301,7 @@ test('home and portfolio use full document navigation with one feedback control'
   await expect(page.locator('.ctw-feedback-modal')).toHaveCount(1);
 
   await page.evaluate(() => { window.__ctwNavigationMarker = 'portfolio'; });
-  await page.getByRole('link', { name: 'Jessie Gonzalez, home' }).click();
+  await page.getByRole('link', { name: 'ctw.studio home' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Interaction Design\s+Engineering/);
   expect(await page.evaluate(() => window.__ctwNavigationMarker)).toBeUndefined();
   await expect(page.locator('.ctw-feedback-button')).toHaveCount(1);

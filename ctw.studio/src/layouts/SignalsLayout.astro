@@ -38,6 +38,14 @@ const {
 <!doctype html>
 <html lang="en" class={htmlClass} style={htmlStyle}>
   <head>
+    <script is:inline>
+      document.documentElement.classList.add('subject-menu-pending');
+      window.addEventListener('load', () => {
+        if (!document.documentElement.classList.contains('subject-menu-ready')) {
+          document.documentElement.classList.remove('subject-menu-pending');
+        }
+      });
+    </script>
     <DocumentHead
       title={title}
       description={description}

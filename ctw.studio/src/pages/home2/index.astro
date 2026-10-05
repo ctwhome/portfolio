@@ -56,10 +56,10 @@ const products = [
 ];
 
 const layers = [
-  { n: '01', name: 'Interaction', desc: 'What people see, touch, and decide with.' },
-  { n: '02', name: 'Interface', desc: 'States, controls, feedback, and recovery.' },
-  { n: '03', name: 'Models & data', desc: 'What the system knows, and how sure it is.' },
-  { n: '04', name: 'Infrastructure', desc: 'What keeps it running after handoff.' }
+  { name: 'Interaction', desc: 'What people see, touch, and decide with.' },
+  { name: 'Interface', desc: 'States, controls, feedback, and recovery.' },
+  { name: 'Models & data', desc: 'What the system knows, and how sure it is.' },
+  { name: 'Infrastructure', desc: 'What keeps it running after handoff.' }
 ];
 ---
 <!doctype html>
@@ -93,8 +93,8 @@ const layers = [
 
     <header class="h2-mast">
       <div class="h2-wrap h2-mast__inner">
-        <a class="h2-wordmark" href="/home2/">
-          <strong>CTW<span aria-hidden="true">/</span><span class="h2-sr"> </span>Studio</strong>
+        <a class="h2-wordmark" href="/home2/" aria-label="ctw.studio home">
+          <strong>ctw<span aria-hidden="true">.</span>studio</strong>
           <small>Jessie Gonzalez, founder</small>
         </a>
         <nav class="h2-nav" aria-label="Page sections">
@@ -113,8 +113,8 @@ const layers = [
         <div class="h2-wrap h2-hero__grid">
           <div class="h2-hero__copy">
             <p class="h2-kicker"><b>Interaction design engineering</b><span>Amsterdam · working globally</span></p>
-            <h1 class="h2-hero__title" id="h2-title" aria-label="CTW Studio">
-              <span class="h2-hero__brand" data-canvas-smoke-line aria-hidden="true">CTW/Studio</span>
+            <h1 class="h2-hero__title" id="h2-title" aria-label="ctw.studio">
+              <span class="h2-hero__brand" data-canvas-smoke-line aria-hidden="true">ctw.studio</span>
             </h1>
             <p class="h2-hero__claim">Making complex systems tangible.</p>
             <p class="h2-lede h2-hero__lede">
@@ -140,9 +140,9 @@ const layers = [
           <figure class="h2-stack" data-state="exploded" data-h2-stack>
             <div class="h2-stack__stage" aria-hidden="true">
               <div class="h2-stack__scene">
-                <div class="h2-plate" data-layer="4"><b>04</b></div>
-                <div class="h2-plate" data-layer="3"><b>03</b></div>
-                <div class="h2-plate" data-layer="2"><b>02</b></div>
+                <div class="h2-plate" data-layer="4"></div>
+                <div class="h2-plate" data-layer="3"></div>
+                <div class="h2-plate" data-layer="2"></div>
                 <div class="h2-plate" data-layer="1">
                   <img
                     src={coverUrl(heroPlate.id, 720)}
@@ -154,14 +154,12 @@ const layers = [
                     fetchpriority="high"
                     decoding="async"
                   />
-                  <b>01</b>
                 </div>
               </div>
             </div>
             <ol class="h2-stack__legend" aria-label="Layers of an application">
               {layers.map((layer, index) => (
                 <li data-layer={String(index + 1)}>
-                  <span class="h2-legend__n">{layer.n}</span>
                   <strong>{layer.name}</strong>
                   <span class="h2-legend__desc">{layer.desc}</span>
                 </li>
@@ -277,10 +275,10 @@ const layers = [
             <div class="h2-offer">
               <h3>What I take on</h3>
               <ul>
-                <li><span>01</span>Interaction strategy &amp; prototyping</li>
-                <li><span>02</span>Human–AI interaction &amp; systems</li>
-                <li><span>03</span>Data-rich applications &amp; visualization</li>
-                <li><span>04</span>Production engineering &amp; delivery</li>
+                <li>Interaction strategy &amp; prototyping</li>
+                <li>Human–AI interaction &amp; systems</li>
+                <li>Data-rich applications &amp; visualization</li>
+                <li>Production engineering &amp; delivery</li>
               </ul>
             </div>
             <p><a class="h2-link" href="/writing/2025-05-30-call-me-jesse/">About my name →</a></p>
@@ -324,7 +322,7 @@ const layers = [
     <footer class="h2-foot">
       <div class="h2-wrap h2-foot__grid">
         <div>
-          <strong>CTW Studio</strong>
+          <strong>ctw.studio</strong>
           <span>Independent practice of Jessie Gonzalez, Interaction Design Engineer.</span>
           <span>© 2026</span>
         </div>

@@ -124,6 +124,15 @@
   display: contents;
 }
 
+/* Reserve the enhanced menu's height before deferred JavaScript runs. */
+html.subject-menu-pending:not(.subject-menu-ready) .subject-menu {
+  min-height: 44px;
+}
+
+html.subject-menu-pending:not(.subject-menu-ready) .subject-menu .subject-menu__option {
+  display: none;
+}
+
   html:not(.subject-menu-ready) .subject-menu {
     display: grid;
     grid-template-columns: minmax(0, 1fr);

@@ -10,6 +10,7 @@ const vercel = JSON.parse(await readFile(new URL('../vercel.json', root), 'utf8'
 const atlasCss = await readFile(new URL('atlas.css', root), 'utf8');
 const subjectMenuCss = await readFile(new URL('subject-menu.css', root), 'utf8');
 const subjectMenuJs = await readFile(new URL('subject-menu.js', root), 'utf8');
+const signalsLayout = await readFile(new URL('../../src/layouts/SignalsLayout.astro', import.meta.url), 'utf8');
 const pageCssFiles = (await readdir(root, { recursive: true }))
   .filter((file) => file.endsWith('.css') && file !== 'subject-menu.css');
 const pageCss = await Promise.all(pageCssFiles.map(async (file) => ({
@@ -132,10 +133,11 @@ test('Atlas publishes exact canonical ten-subject taxonomy and anchors', () => {
 test('Atlas cards expose every mapped brief separately and planned subjects honestly', () => {
   subjects.forEach(({ anchor, status, briefs: mappings }, index) => {
     const card = atlasCard(anchor, subjects[index + 1]?.anchor);
-    const links = [...card.matchAll(/<a href="([^"]+)">Brief ([0-9]{3}) ·/g)]
-      .map(([, href, briefId]) => [href.replace(/\/$/, ''), briefId]);
+    const links = [...card.matchAll(/<a href="([^"]+)">Brief ·/g)]
+      .map(([, href]) => href.replace(/\/$/, ''));
 
-    assert.deepEqual(links, mappings, `${anchor} has incorrect brief links`);
+    assert.deepEqual(links, mappings.map(([route]) => route), `${anchor} has incorrect brief links`);
+    assert.doesNotMatch(card, /Brief [0-9]{3}/, `${anchor} retains a decorative brief number`);
     assert.equal(/Planned subject/.test(card), status === 'planned', `${anchor} has incorrect planned label`);
   });
 
@@ -159,14 +161,15 @@ test('Atlas top navigation uses exact canonical routes and native planned rows',
 });
 
 test('every brief switcher mirrors exact routes, planned rows and mapped current subject', () => {
-  briefPages.forEach(({ route, subjectRoute, briefId, html: page }) => {
+  briefPages.forEach(({ route, subjectRoute, html: page }) => {
     const { options } = assertStaticContract(route, page);
     const current = options.filter(({ current }) => current);
     assert.equal(current.length, 1, `${route} must have one mapped current subject`);
     assert.equal(current[0].tag, 'a', `${route} current subject must be a link`);
     assert.equal(current[0].route, subjectRoute, `${route} maps to wrong subject`);
     assert.equal(current[0].current, 'location', `${route} must use aria-current="location"`);
-    assert.match(page, new RegExp(`Brief ${briefId}\\b`), `${route} missing Brief ${briefId}`);
+    assert.match(page, /\bBrief\b/, `${route} missing briefing label`);
+    assert.doesNotMatch(page, /\bBrief 00[1-9]\b/, `${route} retains a decorative brief number`);
   });
 });
 
@@ -217,6 +220,9 @@ test('all taxonomy pages load shared progressive subject disclosure assets', () 
   assert.match(cssRule('html:not(.subject-menu-ready) .subject-menu'), /grid-template-columns:\s*minmax\(0, 1fr\)/);
   assert.match(cssRule('html:not(.subject-menu-ready) .subject-menu .subject-menu__option'), /min-height:\s*44px/);
   assert.match(cssRule('html:not(.subject-menu-ready) .subject-menu .subject-menu__option'), /overflow-wrap:\s*anywhere/);
+  assert.match(signalsLayout, /classList\.add\('subject-menu-pending'\)/);
+  assert.match(cssRule('html.subject-menu-pending:not(.subject-menu-ready) .subject-menu'), /min-height:\s*44px/);
+  assert.match(cssRule('html.subject-menu-pending:not(.subject-menu-ready) .subject-menu .subject-menu__option'), /display:\s*none/);
   assert.match(cssRule('.subject-menu__badge'), /white-space:\s*nowrap/);
   assert.match(cssRule('.subject-menu__option[aria-current="location"]'), /color:\s*var\(--subject-menu-accent\)/);
   for (const selector of [
@@ -316,11 +322,12 @@ test('first wave uses canonical vocabulary and truthful coverage state', () => {
   assert.doesNotMatch(section, /<small>Next<\/small>|Prosperity[^<]*Next/i);
 });
 
-test('published foundations preserve Briefs 001–009 and existing URLs', () => {
+test('published foundations preserve all nine mapped URLs without numbered display labels', () => {
   const foundations = html.match(/<section class="published-foundations"[\s\S]*?<\/section>/)?.[0] || '';
-  for (const { route, briefId } of briefs) {
-    assert.match(foundations, new RegExp(`<a href="${route}/"><span>Brief ${briefId}</span>`));
+  for (const { route } of briefs) {
+    assert.match(foundations, new RegExp(`<a href="${route}/"><span>Brief</span>`));
   }
+  assert.doesNotMatch(foundations, /Brief 00[1-9]/);
   assert.deepEqual(briefs.map(({ briefId }) => briefId), Array.from({ length: 9 }, (_, index) => String(index + 1).padStart(3, '0')));
 });
 

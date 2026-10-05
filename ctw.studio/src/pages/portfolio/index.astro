@@ -5,7 +5,9 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import { projects } from '../../data/projects';
 import '../../styles/portfolio.css';
 
-const orderedProjects = [...projects].sort((a, b) => b.date.localeCompare(a.date));
+const orderedProjects = [...projects].sort((a, b) =>
+  Number(b.id === 'droneatlas') - Number(a.id === 'droneatlas') || b.date.localeCompare(a.date)
+);
 ---
 <SiteLayout
   title="Work — Jessie Gonzalez"
@@ -16,12 +18,12 @@ const orderedProjects = [...projects].sort((a, b) => b.date.localeCompare(a.date
   <main id="main-content" class="portfolio-page">
     <div class="ctw-container">
       <header class="portfolio-lead">
-        <p class="ctw-section-number">Work / 2013–2026</p>
-        <h1>Software and design work.</h1>
-        <a class="ctw-button portfolio-github" href="https://github.com/ctwhome" target="_blank" rel="noopener noreferrer">GitHub · @ctwhome ↗</a>
+        <p class="ctw-section-number">Selected work</p>
+        <h1>Complex work,<br />made usable.</h1>
+        <p class="portfolio-lead__intro">From archaeological maps to research tools and independent products: I design the interaction and build the system behind it.</p>
         <div class="portfolio-lead__meta">
-          <span>{orderedProjects.length} projects</span>
-          <span>Based in Amsterdam</span>
+          <span>{orderedProjects.length} projects, selected from my practice</span>
+          <a href="https://github.com/ctwhome" target="_blank" rel="noopener noreferrer">Explore code on GitHub ↗</a>
         </div>
       </header>
       <ProjectGrid projects={orderedProjects} />

@@ -106,13 +106,16 @@ test('sensitive historical articles display required archive and provenance noti
   for (const [slug, pattern] of cases) assert.match(await readFile(new URL(`${slug}/index.md`, pages), 'utf8'), pattern, slug);
 });
 
-test('writing index derives its archive count and personal note retires obsolete domains', async () => {
+test('writing index features the latest essay, derives its archive count, and personal note retires obsolete domains', async () => {
   const [index, personalNote] = await Promise.all([
     readFile(new URL('index.astro', pages), 'utf8'),
     readFile(new URL('2025-05-30-call-me-jesse/index.md', pages), 'utf8')
   ]);
-  assert.match(index, /Collection · \{posts\.length\} entries/);
-  assert.doesNotMatch(index, /Collection · 18 entries/);
+  assert.match(index, /const \[featured, \.\.\.archive\] = posts/);
+  assert.match(index, /writing-feature__link" href=\{featured\.url\}/);
+  assert.match(index, /\{archive\.length\} pieces/);
+  assert.match(index, /archive\.map\(\(post\) =>/);
+  assert.doesNotMatch(index, /\b(?:Collection|Brief) · \d+ entries/);
   assert.doesNotMatch(personalNote, /jessegonzalez\.dev|ctwhome\.com/i);
   assert.match(personalNote, /ctw\.studio/);
 });

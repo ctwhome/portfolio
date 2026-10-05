@@ -22,15 +22,10 @@ body.guide-page {
 
 .guide-index-row {
   display: grid;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: 1fr;
   gap: var(--ctw-space-3);
   padding-block: var(--ctw-space-3);
   border-bottom: 1px solid var(--ctw-color-border);
-}
-
-.guide-index-row span:first-child {
-  color: var(--ctw-color-action);
-  font-family: var(--ctw-font-mono);
 }
 
 .guide-split {

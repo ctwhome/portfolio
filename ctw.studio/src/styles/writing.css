@@ -13,11 +13,125 @@
 }
 
 .writing-index__header {
+  max-width: 58rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.writing-index__header h1 {
+  margin: 0.1em 0 0.2em;
+  font-size: clamp(4.75rem, 12vw, 9rem);
+  line-height: 0.85;
+  letter-spacing: -0.075em;
+}
+
+.writing-index__header .ctw-lede {
   max-width: 48rem;
-  margin-bottom: var(--ctw-space-8);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.writing-feature {
+  border-block: 1px solid var(--ctw-color-border);
+}
+
+.writing-feature__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(1rem, 2.5vw, 2rem);
+  color: var(--ctw-color-text);
+  text-decoration: none;
+}
+
+.writing-feature__media {
+  display: block;
+  overflow: hidden;
+  background: var(--ctw-color-surface-raised);
+}
+
+.writing-feature__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.writing-feature__copy {
+  display: grid;
+  justify-items: start;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.writing-feature__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  color: var(--ctw-color-action);
+}
+
+.writing-feature__eyebrow time {
+  color: var(--ctw-color-text-muted);
+}
+
+.writing-feature__title {
+  max-width: 16ch;
+  font-size: clamp(2.1rem, 4vw, 4.25rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.writing-feature__excerpt {
+  max-width: 38ch;
+  color: var(--ctw-color-text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.writing-feature__action {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--ctw-color-action);
+  color: var(--ctw-color-action);
+  font-weight: 650;
+}
+
+.writing-feature__link:hover .writing-feature__action,
+.writing-feature__link:focus-visible .writing-feature__action {
+  border-bottom-width: 3px;
+}
+
+.writing-feature__link:focus-visible {
+  outline: 3px solid var(--ctw-color-focus);
+  outline-offset: 3px;
+}
+
+.writing-archive {
+  padding-top: clamp(3rem, 7vw, 6rem);
+}
+
+.writing-archive__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.writing-archive__heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.055em;
+}
+
+.writing-archive__heading .ctw-meta {
+  color: var(--ctw-color-text-muted);
 }
 
 .writing-index__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(1.5rem, 5vw, 5rem);
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--ctw-color-border);
@@ -30,11 +144,9 @@
 
 .writing-index__item > a {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--ctw-space-5);
-  align-items: center;
-  min-height: 5.5rem;
-  padding-inline-end: calc(var(--ctw-space-9) + var(--ctw-space-5));
+  gap: var(--ctw-space-4);
+  align-content: start;
+  min-height: 10rem;
   padding-block: var(--ctw-space-5);
   color: var(--ctw-color-text);
   text-decoration: none;
@@ -44,16 +156,26 @@
   color: var(--ctw-color-action);
 }
 
+.writing-index__item > a:focus-visible {
+  outline: 3px solid var(--ctw-color-focus);
+  outline-offset: -3px;
+}
+
 .writing-index__title {
-  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  max-width: 28ch;
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
   font-weight: 650;
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.writing-index__title span {
+  color: var(--ctw-color-action);
+  font-size: 0.7em;
 }
 
 .writing-index__meta {
-  display: grid;
-  gap: var(--ctw-space-2);
-  text-align: right;
+  color: var(--ctw-color-text-muted);
 }
 
 .writing-article {
@@ -211,6 +333,28 @@
 }
 
 @media (max-width: 47.99rem) {
+  .writing-index__header h1 {
+    font-size: clamp(4.25rem, 18vw, 6rem);
+  }
+
+  .writing-feature__link,
+  .writing-index__list {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-feature__link {
+    gap: var(--ctw-space-6);
+    padding-block: var(--ctw-space-4) var(--ctw-space-7);
+  }
+
+  .writing-feature__title {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .writing-index__item > a {
+    min-height: auto;
+  }
+
   .writing-prose table.writing-data-table,
   .writing-data-table :is(tbody, tr, th, td) {
     display: block;
@@ -260,14 +404,4 @@
     grid-template-columns: 1fr;
   }
 
-  .writing-index__item > a {
-    grid-template-columns: 1fr;
-    gap: var(--ctw-space-3);
-  }
-
-  .writing-index__meta {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-  }
 }

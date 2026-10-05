@@ -190,12 +190,18 @@ for (const viewport of viewports) {
             hasRenderedBox: element.getClientRects().length > 0 && rect.width > 0 && rect.height > 0,
             strokeColor: style.webkitTextStrokeColor,
             strokeWidth: Number.parseFloat(style.webkitTextStrokeWidth),
+            fillColor: style.color,
           };
         });
         expect(outlinedHeading.text.length).toBeGreaterThan(0);
         expect(outlinedHeading.hasRenderedBox).toBe(true);
         expect(outlinedHeading.strokeColor).toBe("rgb(87, 215, 255)");
-        expect(outlinedHeading.strokeWidth).toBeGreaterThan(0);
+        if (viewport.name === "compact") {
+          expect(outlinedHeading.strokeWidth).toBe(0);
+          expect(outlinedHeading.fillColor).toBe("rgb(87, 215, 255)");
+        } else {
+          expect(outlinedHeading.strokeWidth).toBeGreaterThan(0);
+        }
         const lensTreatment = await page.locator(".lens-grid article").first().evaluate((element) => {
           const style = getComputedStyle(element);
           return { background: style.backgroundColor, radius: style.borderRadius };

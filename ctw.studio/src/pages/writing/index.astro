@@ -8,6 +8,8 @@ interface WritingModule {
     description: string;
     date: string;
     category: string;
+    cover?: string;
+    coverAlt?: string;
   };
   url: string;
 }
@@ -15,6 +17,7 @@ interface WritingModule {
 const posts = Object.values(import.meta.glob<WritingModule>('./*/index.md', { eager: true }))
   .map(({ frontmatter, url }) => ({ ...frontmatter, url }))
   .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+const [featured, ...archive] = posts;
 
 const formatDate = (date: string) => new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -32,22 +35,39 @@ const formatDate = (date: string) => new Intl.DateTimeFormat('en-GB', {
 >
   <main id="main-content" class="ctw-container writing-main writing-index">
     <header class="writing-index__header">
-      <p class="ctw-section-number">Collection · {posts.length} entries</p>
+      <p class="ctw-section-number">Essays and notes</p>
       <h1 class="ctw-heading-lg">Writing</h1>
-      <p class="ctw-lede">Current essays and archived digital garden notes on interaction design, software, AI, and ways of working.</p>
+      <p class="ctw-lede">What happens when software changes how we think, make, and work? Essays from the projects and questions I keep returning to.</p>
     </header>
-    <ol class="writing-index__list">
-      {posts.map((post) => (
+    {featured && (
+      <section class="writing-feature" aria-labelledby="writing-feature-title">
+        <a class="writing-feature__link" href={featured.url}>
+          {featured.cover && (
+            <span class="writing-feature__media"><img src={featured.cover} width="1600" height="900" alt={featured.coverAlt || ''} decoding="async" /></span>
+          )}
+          <span class="writing-feature__copy">
+            <span class="ctw-meta writing-feature__eyebrow">Latest essay <time datetime={featured.date}>{formatDate(featured.date)}</time></span>
+            <span class="writing-feature__title" id="writing-feature-title">{featured.title}</span>
+            <span class="writing-feature__excerpt">{featured.description.split('. ')[0]}.</span>
+            <span class="writing-feature__action">Read the essay <span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
+      </section>
+    )}
+    <section class="writing-archive" aria-labelledby="writing-archive-title">
+      <div class="writing-archive__heading"><h2 id="writing-archive-title">More writing</h2><span class="ctw-meta">{archive.length} pieces</span></div>
+      <ol class="writing-index__list">
+      {archive.map((post) => (
         <li class="writing-index__item">
           <a href={post.url}>
-            <span class="writing-index__title">{post.title}</span>
+            <span class="writing-index__title">{post.title}<span aria-hidden="true"> ↗</span></span>
             <span class="ctw-meta writing-index__meta">
-              <span>{post.category}</span>
               <time datetime={post.date}>{formatDate(post.date)}</time>
             </span>
           </a>
         </li>
       ))}
-    </ol>
+      </ol>
+    </section>
   </main>
 </SiteLayout>

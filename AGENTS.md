@@ -2,6 +2,8 @@
 
 ## Boundaries
 
+- `ctw.studio` is Jessie’s one-person brand and portfolio, built through
+  collaborations with many entities. Do not describe it as a multi-person agency.
 - Treat `ctw.studio/`, `about/`, `dashboard/`, `jessegonzalez.dev/`,
   `ctw.studio2/`, and `ctw-kit/` as separate app roots.
 - Root package files cover only `ctw-kit/` and `jessegonzalez.dev/`. Never add
@@ -70,7 +72,7 @@ bun run static:check
 
 ## Architecture contracts
 
-- Thirty-six maintained Astro pages share `DocumentHead.astro`.
+- Thirty-seven maintained Astro pages share `DocumentHead.astro`.
 - All route navigation is native. Home and portfolio use CSS-only
   cross-document view transitions; portfolio behavior lives in one page-local
   processed TypeScript module.
@@ -111,7 +113,7 @@ bun run static:check
 ## Preservation and review
 
 - Route audit comes from built output plus manifest-declared preserved routes,
-  excluding declared redirect sources. Assert exact 43 content routes,
+  excluding declared redirect sources. Assert exact 44 content routes,
   directory legal URLs, and absent dotted aliases.
 - Preserve NLeSC and historical hashes. Never hand-edit `dist/`.
 - Protect Signals JSON facts and updater semantics unless task explicitly

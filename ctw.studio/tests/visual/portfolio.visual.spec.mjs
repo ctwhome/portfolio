@@ -56,17 +56,16 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
   await page.goto('/portfolio/');
   await expect(page.locator('.ctw-feedback-button')).toBeVisible();
   const wideLayout = await layout();
-  expect(wideLayout.cardCount).toBe(21);
+  expect(wideLayout.cardCount).toBe(22);
   expect(wideLayout.documentWidth).toBeLessThanOrEqual(wideLayout.viewportWidth);
   expect(wideLayout.cards).toHaveLength(4);
-  expect(Math.max(...wideLayout.cards.map(({ width }) => width)) - Math.min(...wideLayout.cards.map(({ width }) => width))).toBeLessThanOrEqual(2);
-  expect(wideLayout.cards[1].left - wideLayout.cards[0].right).toBeGreaterThanOrEqual(20);
-  expect(wideLayout.cards[0].width).toBeLessThan(wideLayout.gridWidth - 20);
-  expect(Math.abs(wideLayout.cards[0].top - wideLayout.cards[1].top)).toBeLessThanOrEqual(2);
-  expect(Math.abs(wideLayout.cards[2].top - wideLayout.cards[3].top)).toBeLessThanOrEqual(2);
-  expect(Math.abs(wideLayout.cards[0].left - wideLayout.cards[2].left)).toBeLessThanOrEqual(2);
-  expect(Math.abs(wideLayout.cards[1].left - wideLayout.cards[3].left)).toBeLessThanOrEqual(2);
-  for (const card of wideLayout.cards) expect(card.mediaRatio).toBeCloseTo(1.5, 2);
+  expect(Math.abs(wideLayout.cards[0].width - wideLayout.gridWidth)).toBeLessThanOrEqual(2);
+  expect(wideLayout.cards[0].mediaRatio).toBeCloseTo(2.2, 1);
+  expect(Math.abs(wideLayout.cards[1].width - wideLayout.cards[2].width)).toBeLessThanOrEqual(2);
+  expect(wideLayout.cards[2].left - wideLayout.cards[1].right).toBeGreaterThanOrEqual(20);
+  expect(Math.abs(wideLayout.cards[1].top - wideLayout.cards[2].top)).toBeLessThanOrEqual(2);
+  expect(wideLayout.cards[3].top).toBeGreaterThan(wideLayout.cards[1].bottom);
+  for (const card of wideLayout.cards.slice(1)) expect(card.mediaRatio).toBeCloseTo(1.5, 2);
   expect(wideLayout.feedbackWidth).toBeGreaterThanOrEqual(44);
   expect(wideLayout.feedbackHeight).toBeGreaterThanOrEqual(44);
   await prepareCapture();
@@ -87,7 +86,7 @@ test('@visual portfolio wide and compact layouts render', async ({ page }, testI
   }
   expect(compactLayout.feedbackWidth).toBeGreaterThanOrEqual(44);
   expect(compactLayout.feedbackHeight).toBeGreaterThanOrEqual(44);
-  expect(compactLayout.feedbackPosition).toBe('fixed');
+  expect(compactLayout.feedbackPosition).toBe('static');
 
   await page.locator('[data-project-link="data-storytelling"]').first().click();
   const controls = await page.evaluate(() => {

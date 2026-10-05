@@ -39,6 +39,7 @@ const coverUrl = (id: string, width: number) => `/portfolio/covers/${id}-${width
             <strong>{project.title}</strong>
             <span class="project-card__arrow" aria-hidden="true">↗</span>
           </span>
+          {index < 3 && <span class="project-card__summary">{project.headline}</span>}
         </span>
       </a>
     </li>

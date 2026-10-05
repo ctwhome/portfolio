@@ -118,10 +118,6 @@
   color: var(--so-signal);
 }
 
-.so-wordmark small {
-  font-size: 0.68em;
-  font-weight: 500;
-}
 
 .so-nav {
   align-items: center;

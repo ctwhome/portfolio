@@ -21,7 +21,8 @@ for (const viewport of viewports) {
 
     await page.setViewportSize(viewport);
     await page.goto('/writing/', { waitUntil: 'networkidle' });
-    await expect(page.locator('.writing-index__item')).toHaveCount(18);
+    await expect(page.locator('.writing-feature__link')).toHaveCount(1);
+    await expect(page.locator('.writing-index__item')).toHaveCount(17);
     const navigationLabels = await page.getByRole('navigation', { name: 'Primary navigation' })
       .getByRole('link')
       .evaluateAll((links) => links.map((link) => link.getAttribute('aria-label') ?? link.textContent.trim()));
@@ -46,8 +47,9 @@ test('Writing remains substantive and navigable without JavaScript', async ({ br
   const page = await context.newPage();
   await page.goto('/writing/');
   await expect(page.getByRole('heading', { level: 1, name: 'Writing' })).toBeVisible();
-  await expect(page.locator('.writing-index__item')).toHaveCount(18);
-  await expect(page.getByRole('link', { name: 'Jessie Gonzalez, home' })).toBeVisible();
+  await expect(page.locator('.writing-feature__link')).toHaveCount(1);
+  await expect(page.locator('.writing-index__item')).toHaveCount(17);
+  await expect(page.getByRole('link', { name: 'ctw.studio home' })).toBeVisible();
   await page.getByRole('link', { name: 'About my name' }).first().click();
   await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jesse' })).toBeVisible();
   expect((await page.locator('.writing-prose').innerText()).length).toBeGreaterThan(1_000);
@@ -55,10 +57,11 @@ test('Writing remains substantive and navigable without JavaScript', async ({ br
   await context.close();
 });
 
-test('Writing index content clears the floating feedback control', async ({ page }) => {
+test('Writing index content clears the footer feedback control', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto('/writing/', { waitUntil: 'networkidle' });
 
+  await expect(page.locator('.ctw-footer__links[aria-label="Contact destinations"] .ctw-feedback-button')).toHaveCount(1);
   const overlaps = await page.evaluate(() => {
     const feedback = document.querySelector('.ctw-feedback-button')?.getBoundingClientRect();
     if (!feedback) return ['missing feedback control'];
