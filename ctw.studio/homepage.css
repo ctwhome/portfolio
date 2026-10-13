@@ -537,11 +537,11 @@ body {
 }
 
 .studio-product__webgl {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
-  grid-area: 1 / 1;
   width: 100%;
-  height: 100%;
   border-radius: inherit;
   opacity: 0;
   pointer-events: none;

@@ -57,6 +57,7 @@ const initPageFluid = () => {
     uniform vec2 uResolution;
     uniform vec2 uPointer;
     uniform float uTime;
+    uniform vec2 uImageScale;
     uniform float uEnergy;
 
     float hash(vec2 p) {
@@ -320,9 +321,10 @@ const initProductLens = () => {
       float ripple = sin(distanceToPointer * 38.0 - uTime * 2.8) * 0.0035 * influence;
       vec2 offset = direction * (0.022 * influence + ripple);
       float split = 0.0035 * influence;
-      vec4 base = texture2D(uImage, vUv + offset);
-      float red = texture2D(uImage, vUv + offset + direction * split).r;
-      float blue = texture2D(uImage, vUv + offset - direction * split).b;
+      vec2 imageUv = (vUv + offset - 0.5) * uImageScale + 0.5;
+      vec4 base = texture2D(uImage, imageUv);
+      float red = texture2D(uImage, imageUv + direction * split * uImageScale).r;
+      float blue = texture2D(uImage, imageUv - direction * split * uImageScale).b;
       gl_FragColor = vec4(red, base.g, blue, 1.0);
     }
   `);
@@ -342,7 +344,8 @@ const initProductLens = () => {
   const strengthUniform = gl.getUniformLocation(program, 'uStrength');
   const timeUniform = gl.getUniformLocation(program, 'uTime');
   const imageUniform = gl.getUniformLocation(program, 'uImage');
-  if (position < 0 || !pointerUniform || !aspectUniform || !strengthUniform || !timeUniform || !imageUniform) return;
+  const imageScaleUniform = gl.getUniformLocation(program, 'uImageScale');
+  if (position < 0 || !pointerUniform || !aspectUniform || !strengthUniform || !timeUniform || !imageUniform || !imageScaleUniform) return;
 
   const buffer = gl.createBuffer();
   const texture = gl.createTexture();
@@ -386,7 +389,7 @@ const initProductLens = () => {
   };
 
   const setPointer = (card: HTMLElement, clientX: number, clientY: number) => {
-    const bounds = card.getBoundingClientRect();
+    const bounds = card.querySelector('img')!.getBoundingClientRect();
     targetX = (clientX - bounds.left) / bounds.width;
     targetY = 1 - (clientY - bounds.top) / bounds.height;
   };
@@ -402,18 +405,23 @@ const initProductLens = () => {
       if (activeCard !== card || !image.naturalWidth) return;
 
       card.append(canvas);
-      const bounds = card.getBoundingClientRect();
+      const bounds = image.getBoundingClientRect();
+      canvas.style.height = `${bounds.height}px`;
       const scale = Math.min(devicePixelRatio, 1.5);
       canvas.width = Math.round(bounds.width * scale);
       canvas.height = Math.round(bounds.height * scale);
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform1f(aspectUniform, bounds.width / bounds.height);
+      const imageAspect = image.naturalWidth / image.naturalHeight;
+      const displayAspect = bounds.width / bounds.height;
+      gl.uniform2f(imageScaleUniform, Math.min(1, displayAspect / imageAspect), Math.min(1, imageAspect / displayAspect));
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
       currentX = targetX;
       currentY = targetY;
-      energy = 0.78;
+      energy = 0;
+      if (frame) cancelAnimationFrame(frame);
+      draw(performance.now());
       canvas.classList.add('is-active');
-      startDrawing();
     });
 
     card.addEventListener('pointermove', (event) => {
