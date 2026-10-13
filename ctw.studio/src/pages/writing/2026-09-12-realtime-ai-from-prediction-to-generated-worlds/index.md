@@ -5,7 +5,7 @@ description: "AI is starting to generate the interface, the world, the person on
 date: "2026-09-12"
 category: "Digital Garden"
 cover: "/writing/2026-09-12-realtime-ai-from-prediction-to-generated-worlds/media/cover.avif"
-coverAlt: "A cursor moving from a fixed interface grid into a fluid generated world"
+coverAlt: "A person reaches from charcoal wireframe architecture into an amber-lit stone home and coastal landscape"
 coverWidth: 1600
 coverHeight: 900
 ---
