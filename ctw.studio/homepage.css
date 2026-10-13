@@ -511,6 +511,7 @@ body {
   object-fit: cover;
   border: 1px solid var(--studio-rule);
   background: var(--ctw-color-surface);
+  transition: filter var(--ctw-motion-fast) var(--ctw-ease-out), border-color var(--ctw-motion-fast) var(--ctw-ease-out);
 }
 
 .studio-product--primary img {
@@ -536,20 +537,22 @@ body {
   font-size: 0.9rem;
 }
 
-.studio-product__webgl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  border-radius: inherit;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--ctw-motion-fast) var(--ctw-ease-out);
+.studio-product:focus-visible img {
+  filter: brightness(1.08);
+  border-color: var(--studio-amber);
 }
 
-.studio-product__webgl.is-active {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .studio-product:hover img {
+    filter: brightness(1.08);
+    border-color: var(--studio-amber);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-product img {
+    transition: none;
+  }
 }
 
 
