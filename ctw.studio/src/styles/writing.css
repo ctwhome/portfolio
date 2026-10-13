@@ -3,7 +3,6 @@
 }
 
 .writing-main {
-  width: 100%;
   padding-block: clamp(var(--ctw-space-7), 8vw, var(--ctw-space-9));
 }
 
