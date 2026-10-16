@@ -22,7 +22,7 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     await page.goto('/writing/', { waitUntil: 'networkidle' });
     await expect(page.locator('.writing-feature__link')).toHaveCount(1);
-    await expect(page.locator('.writing-index__item')).toHaveCount(17);
+    await expect(page.locator('.writing-index__item')).toHaveCount(18);
     const navigationLabels = await page.getByRole('navigation', { name: 'Primary navigation' })
       .getByRole('link')
       .evaluateAll((links) => links.map((link) => link.getAttribute('aria-label') ?? link.textContent.trim()));
@@ -35,8 +35,14 @@ for (const viewport of viewports) {
     }
 
     await page.goto('/writing/2025-05-30-call-me-jesse/', { waitUntil: 'networkidle' });
-    await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jesse' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jessie' })).toBeVisible();
     await expect(page.locator('.writing-article__cover')).toHaveJSProperty('complete', true);
+    await page.goto('/writing/2026-10-16-the-future-of-cars-is-public-transport/', { waitUntil: 'networkidle' });
+    await expect(page.getByRole('heading', { level: 1, name: "The future of cars isn't flying cars. It's public transport." })).toBeVisible();
+    for (const image of await page.locator('main img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await expect.poll(() => image.evaluate((element) => element.naturalWidth)).toBeGreaterThan(0);
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
     expect(errors).toEqual([]);
   });
@@ -48,10 +54,10 @@ test('Writing remains substantive and navigable without JavaScript', async ({ br
   await page.goto('/writing/');
   await expect(page.getByRole('heading', { level: 1, name: 'Writing' })).toBeVisible();
   await expect(page.locator('.writing-feature__link')).toHaveCount(1);
-  await expect(page.locator('.writing-index__item')).toHaveCount(17);
+  await expect(page.locator('.writing-index__item')).toHaveCount(18);
   await expect(page.getByRole('link', { name: 'ctw.studio home' })).toBeVisible();
   await page.getByRole('link', { name: 'About my name' }).first().click();
-  await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jesse' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jessie' })).toBeVisible();
   expect((await page.locator('.writing-prose').innerText()).length).toBeGreaterThan(1_000);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
   await context.close();

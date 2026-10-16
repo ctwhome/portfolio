@@ -13,8 +13,9 @@ export const writingRoutes = [
   { slug: '2024-10-06-modern-education-system', title: 'Rethinking Education in the Age of AI', category: 'Digital Garden', date: '2024-10-06' },
   { slug: '2024-10-10-my-blueprint', title: 'Blueprint', category: 'Digital Garden', date: '2024-10-01' },
   { slug: '2025-01-27-the-archaitect-era', title: 'The Arch-AI-Tect Era', category: 'Digital Garden', date: '2025-01-27' },
-  { slug: '2025-05-30-call-me-jesse', oldSlug: '30-05-2025-jesse', title: 'Call Me Jesse', category: 'Digital Garden', date: '2025-05-30' },
+  { slug: '2025-05-30-call-me-jesse', oldSlug: '30-05-2025-jesse', title: 'Call Me Jessie', category: 'Digital Garden', date: '2025-05-30' },
   { slug: '2025-07-08-media-noise-and-oncemag', title: 'The Problem of Media Noise', category: 'Digital Garden', date: '2025-07-08' },
   { slug: '2025-10-05-remote-work-drives-productivity-and-wellbeing-while-cutting-costs-dramatically', oldSlug: '2025-10-05-Remote work drives productivity and wellbeing while cutting costs dramatically', title: 'Remote work drives productivity and wellbeing while cutting costs dramatically', category: 'Digital Garden', date: '2025-10-05' },
-  { slug: '2026-09-12-realtime-ai-from-prediction-to-generated-worlds', title: 'Realtime AI: From Prediction to Generated Worlds', category: 'Digital Garden', date: '2026-09-12' }
+  { slug: '2026-09-12-realtime-ai-from-prediction-to-generated-worlds', title: 'Realtime AI: From Prediction to Generated Worlds', category: 'Digital Garden', date: '2026-09-12' },
+  { slug: '2026-10-16-the-future-of-cars-is-public-transport', title: "The future of cars isn't flying cars. It's public transport.", category: 'Digital Garden', date: '2026-10-16' }
 ];

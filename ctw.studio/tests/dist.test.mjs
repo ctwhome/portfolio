@@ -43,7 +43,7 @@ test('Astro emits directory routes with personal homepage identity', async () =>
   assert.match(home, /<title>Jessie Gonzalez — Interaction Design Engineer<\/title>/);
   assert.match(home, /From research maps to AI tools and independent products, I design the interaction and build the software behind it/);
   assert.match(home, /CTW Studio is my independent commercial practice and legal vehicle/);
-  assert.match(home, /Tell me what you’re trying to make/);
+  assert.match(home, /Let’s exchange ideas/);
   assert.doesNotMatch(home, /AI Product Architect|https?:\/\/(?:www\.)?jessegonzalez\.dev/i);
   assert.match(portfolio, /Selected work/);
   assert.match(portfolio, /Complex work,<br>made usable\./);
@@ -117,7 +117,7 @@ test('stand-out keeps its transformation story, disclosure, and local media in s
   assert.doesNotMatch(html, /(?:testimonial|award-winning|guaranteed results|trusted by)/i);
 });
 
-test('all 37 maintained routes share metadata and exclude legacy navigation', async () => {
+test('all 38 maintained routes share metadata and exclude legacy navigation', async () => {
   const routes = [
     ['index.html', '/'],
     ['home2/index.html', '/home2/'],
