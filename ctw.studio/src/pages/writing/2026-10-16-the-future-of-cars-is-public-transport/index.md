@@ -16,7 +16,7 @@ For more than a century, people have dreamed of putting more and more horsepower
 
 <figure>
   <img src="/writing/2026-10-16-the-future-of-cars-is-public-transport/media/model-t.avif" alt="A red 1925 Ford Model T Runabout with a black fabric roof and wooden-spoked wheels, parked in Ljugarn, Sweden" width="1400" height="933" loading="lazy" decoding="async" />
-  <figcaption>A 1925 Ford Model T Runabout in Ljugarn, Sweden. Photo: <a href="https://commons.wikimedia.org/wiki/File:Ford_Model_T_Runabout_1925.jpg">Bene Riobó, 2020</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Resized and converted to AVIF.</figcaption>
+  <figcaption>A 1925 Ford Model T Runabout in Ljugarn, Sweden. Photo: <a href="https://commons.wikimedia.org/wiki/File:Ford_Model_T_Runabout_1925.jpg">Bene Riobó, 2020</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</figcaption>
 </figure>
 
 It's funny how the new (new) Tesla Roadster might be the peak of that whole era. We wanted more horsepower, and now we're discussing rocket thrusters. Adding rocket thrusters to a can with wheels doesn't make it a better car; it makes it a torpedo. Just a flex and a marketing trick.
@@ -25,7 +25,7 @@ And this isn't even the first time someone has strapped outrageous propulsion to
 
 <figure>
   <img src="/writing/2026-10-16-the-future-of-cars-is-public-transport/media/thrust-ssc.avif" alt="Jet-powered ThrustSSC speeding across a pale desert floor, trailing a cloud of dust" width="1104" height="621" loading="lazy" decoding="async" />
-  <figcaption>ThrustSSC, the jet-powered car that set the supersonic land-speed record in 1997. Image via <a href="https://static0.hotcarsimages.com/wordpress/wp-content/uploads/2021/10/201015-thrust-ssc.jpg?q=50&amp;fit=crop&amp;w=1104&amp;h=621&amp;dpr=1.5">HotCars</a>; photographer and photograph date not supplied with the image. Converted to AVIF.</figcaption>
+  <figcaption>ThrustSSC, the jet-powered car that set the supersonic land-speed record in 1997. Image via <a href="https://static0.hotcarsimages.com/wordpress/wp-content/uploads/2021/10/201015-thrust-ssc.jpg?q=50&amp;fit=crop&amp;w=1104&amp;h=621&amp;dpr=1.5">HotCars</a></figcaption>
 </figure>
 
 Car culture can feel permanent when you're living inside it. But compared with how long people have been getting from one place to another, it's relatively new. I actually think it's peaking.
