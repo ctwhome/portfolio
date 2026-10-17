@@ -38,7 +38,7 @@ for (const viewport of viewports) {
     await expect(page.getByRole('heading', { level: 1, name: 'Call Me Jessie' })).toBeVisible();
     await expect(page.locator('.writing-article__cover')).toHaveJSProperty('complete', true);
     await page.goto('/writing/2026-10-16-the-future-of-cars-is-public-transport/', { waitUntil: 'networkidle' });
-    await expect(page.getByRole('heading', { level: 1, name: "The future of cars isn't flying cars. It's public transport." })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: "The future of cars isn't flying cars. It's autonomous public transport." })).toBeVisible();
     for (const image of await page.locator('main img').all()) {
       await image.scrollIntoViewIfNeeded();
       await expect.poll(() => image.evaluate((element) => element.naturalWidth)).toBeGreaterThan(0);
